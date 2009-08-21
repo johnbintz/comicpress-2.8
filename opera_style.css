@@ -1,0 +1,20 @@
+/* ComicPress Custom CSS over-rides for [ opera ]: ComicPress - 2.8 */
+
+html { overflow-y: scroll; } 
+
+.comicarchiveframe {
+	opacity:0.99; /* firefox, opera, safari, chrome */
+}
+
+	.comicarchiveframe:hover {
+		opacity:0.70; /* firefox, opera, safari, chrome */
+		}
+		
+	.imagenav-link img {
+		opacity:0.5; /* firefox, opera, safari, chrome */
+		}
+
+			.imagenav-link img:hover {
+				opacity:0.5; /* firefox, opera, safari, chrome */
+				}
+

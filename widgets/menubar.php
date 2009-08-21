@@ -1,0 +1,115 @@
+<?php
+/*
+Widget Name: Menubar
+Widget URI: http://comicpress.org/
+Description: Display a calendar of this months posts.
+Author: Philip M. Hofer (Frumph)
+Version: 1.01
+Author URI: http://webcomicplanet.com/
+
+*/
+
+
+function comicpress_menubar() {
+	if (file_exists(get_template_directory() . '/custom-menubar.php') || function_exists('suckerfish')) {
+		if (function_exists('suckerfish')) { 
+			suckerfish();
+		} else { 
+			include(get_template_directory() . '/custom-menubar.php');
+		}
+	} else { ?>
+<div id="menubar">
+
+	<div id="menunav">
+	<?php if (is_home()) {
+		$comicFrontpage = new WP_Query(); $comicFrontpage->query('showposts=1&cat='.get_all_comic_categories_as_cat_string());
+		while ($comicFrontpage->have_posts()) : $comicFrontpage->the_post();
+			global $wp_query; $wp_query->is_single = true;
+			previous_comic_link('%link', '&lsaquo;');
+			$wp_query->is_single = false;
+		endwhile; 
+	} elseif (is_single() & in_comic_category()) {
+		previous_comic_link('%link', '&lsaquo;');
+		next_comic_link('%link', '&rsaquo;');
+		} ?>
+	</div>
+
+	<?php 
+	$menulinks = wp_list_bookmarks('echo=0&title_li=&categorize=0&title_before=&title_after=&category_name=menubar');
+	$menulinks = preg_replace('#<li ([^>]*)>#', '<li class="page-item link">', $menulinks);
+	$menulinks = preg_replace('#<ul ([^>]*)>#', '', $menulinks);
+	$menulinks = str_replace('</ul>', '', $menulinks);
+	$bookmarks = wp_list_bookmarks('echo=0&title_li=&categorize=0&title_before=&title_after=&category_name=menulinks'); 
+	$bookmarks = preg_replace('#<li ([^>]*)>#', '<li class="page-item link">', $bookmarks);
+	$bookmarks = preg_replace('#<ul ([^>]*)>#', '<ul>', $bookmarks);
+	$listpages = wp_list_pages('echo=0&sort_column=menu_order&depth=4&title_li=');
+		if (!empty($bookmarks)) {
+			$listpages = str_replace('Links</a></li>', 'Links</a>
+						<ul>
+						'.$bookmarks.'
+						</ul>
+						</li>
+						', $listpages);
+			$listpages .= $menulinks;
+		} else {
+			$listpages = str_replace('Links</a></li>', 'Links</a>
+						</li>
+						', $listpages);
+			$listpages .= $menulinks;			
+		}
+	?>
+	<ul id="menu">
+		<li class="page_item page-item-home<?php if (is_home()) { ?> current_page_item<?php } ?>"><a href="<?php bloginfo('url'); ?>">Home</a></li>
+		<?php echo $listpages; ?>
+	<?php if ($contact_in_menubar == 'yes') { ?>
+		<li class="page_item page-item-contact"><a href="mailto:<?php bloginfo('admin_email'); ?>">Contact</a></li>
+	<?php } ?>
+		<li><a href="<?php bloginfo('rss2_url'); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/data_rss.gif" class="rss" alt="RSS" /></a></li>		    
+	</ul>
+	<div class="clear"></div>
+</div>
+<?php } 
+} 
+
+class widget_comicpress_menubar extends WP_Widget {
+	
+	function widget_comicpress_menubar() {
+		$widget_ops = array('classname' => 'widget_comicpress_menubar', 'description' => 'Displays a menubar.' );
+		$this->WP_Widget('comicpress_menubar', 'Comicpress Menubar', $widget_ops);
+	}
+	
+	function widget($args, $instance) {
+		global $post;
+		extract($args, EXTR_SKIP); 
+		
+		echo $before_widget;
+		$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']); 
+		if ( !empty( $title ) ) { echo $before_title . $title . $after_title; };
+		comicpress_menubar();
+		echo $after_widget;
+	}
+	
+	function update($new_instance, $old_instance) {
+		$instance = $old_instance;
+		$instance['title'] = strip_tags($new_instance['title']);
+		return $instance;
+	}
+	
+	function form($instance) {
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '' ) );
+		$title = strip_tags($instance['title']);
+		?>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>">Title: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
+		<?php
+	}
+}
+register_widget('widget_comicpress_menubar');
+
+
+function widget_comicpress_menubar_init() {    
+	new widget_comicpress_menubar(); 
+} 
+
+add_action('widgets_init', 'widget_comicpress_menubar_init');
+
+?>
