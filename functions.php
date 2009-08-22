@@ -1,5 +1,12 @@
 <?php
 
+// Remove the wptexturizer from changing the quotes and squotes.
+remove_filter('the_title', 'wptexturize');
+remove_filter('the_content', 'wptexturize');
+remove_filter('the_excerpt', 'wptexturize');
+remove_filter('comment_text', 'wptexturize');
+
+
 global $wpmu_version;
 if (!empty($wpmu_version)) {
 	require_once(get_template_directory() . '/wpmu-functions.php');
