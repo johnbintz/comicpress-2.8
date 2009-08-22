@@ -29,14 +29,14 @@ function display_comic() {
 			if ($comic_clicks_next == 'yes') { 
 				$hovertext = get_post_meta( get_the_ID(), "hovertext", true ); 
 				if ($anomaly_says == 'yes' && !empty($hovertext)) { ?>
-					<a href="<?php echo $next_comic; ?>" class="tt"><span class="tooltip"><span class="top"></span><span class="middle"><strong>Anomaly Says, </strong>"<?php the_hovertext() ?>"</span><span class="bottom"></span></span><img src="<?php the_comic() ?>" alt="<?php the_title() ?>" title="<?php the_title(); ?>" /></a>
+					<a href="<?php echo $next_comic; ?>" class="tt"><span class="tooltip"><span class="top"></span><span class="middle"><?php the_hovertext() ?></span><span class="bottom"></span></span><img src="<?php the_comic() ?>" alt="<?php the_title() ?>" title="<?php the_title(); ?>" /></a>
 				<?php } else { ?>
 					<a href="<?php echo $next_comic; ?>"><img src="<?php the_comic() ?>" alt="<?php the_title() ?>" title="<?php the_hovertext() ?>" /></a>
 				<?php } ?>
 			<?php } else { 
 				$hovertext = get_post_meta( get_the_ID(), "hovertext", true ); 
 				if ($anomaly_says == 'yes' && !empty($hovertext)) { ?>
-					<a href="#" class="tt"><span class="tooltip"><span class="top"></span><span class="middle"><strong>Anomaly Says, </strong>"<?php the_hovertext() ?>"</span><span class="bottom"></span></span><img src="<?php the_comic() ?>" alt="<?php the_title() ?>" title="<?php the_title(); ?>" /></a>			
+					<a href="#" class="tt"><span class="tooltip"><span class="top"></span><span class="middle"><?php the_hovertext() ?></span><span class="bottom"></span></span><img src="<?php the_comic() ?>" alt="<?php the_title() ?>" title="<?php the_title(); ?>" /></a>			
 				<?php } else { ?>
 					<img src="<?php the_comic() ?>" alt="<?php the_title() ?>" title="<?php the_hovertext() ?>" />
 				<?php } 
