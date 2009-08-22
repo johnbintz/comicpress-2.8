@@ -24,6 +24,7 @@ function display_blog_post() {
 					<div class="post-text">
 						<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
 						<small> - By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?></small><br />
+						<small> - Subject: <?php the_category(','); ?> <?php edit_post_link('Edit Post', ' [ ', ' ] '); ?> </small><br />
 						<?php if(function_exists('the_ratings')) { the_ratings(); } ?>
 					</div>
 					<div class="clear"></div>
@@ -34,7 +35,7 @@ function display_blog_post() {
 				</div>
 				<div class="post-extras">
 					<div class="tags">
-						<?php the_tags('&#9492; Tags: ', ', ', '<br />'); ?> Posted in: <?php the_category(','); ?> <?php edit_post_link('Edit Post', ' [ ', ' ] '); ?> 
+						<?php the_tags('&#9492; Tags: ', ', ', '<br />'); ?>
 					</div>
 					<div class="comment-link">
 						<?php if ('open' == $post->comment_status) { comments_popup_link('&ldquo;Comment!&rdquo;', '&ldquo;1 Comment&rdquo;', '&ldquo;% Comments&rdquo;'); } ?>
