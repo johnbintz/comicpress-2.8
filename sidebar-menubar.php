@@ -4,4 +4,6 @@
 		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Menubar') ) : ?><?php endif; ?>
 	</div>
 </div>
-<?php } ?>
+<?php } else { 
+	comicpress_menubar();
+} ?>
