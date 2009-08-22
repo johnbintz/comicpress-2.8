@@ -105,7 +105,6 @@ require_once(get_template_directory() . '/widgets/comicdate.php');
 require_once(get_template_directory() . '/widgets/comictitle.php');
 require_once(get_template_directory() . '/widgets/comiccomments.php');
 require_once(get_template_directory() . '/widgets/menubar.php');
-require_once(get_template_directory() . '/widgets/keenspotnewsbox.php');
 
 // FUNCTIONS & Extra's
 
