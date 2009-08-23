@@ -76,15 +76,15 @@
 	<?php } 
 } 
 if ($disable_blog_frontpage == 'no') {
-	if (have_posts()): 
-
+	if (have_posts()) {
+		global $blog_postcount;
 		$blog_query = 'showposts='.$blog_postcount.'&cat=-"'.exclude_comic_categories().'"&paged='.$paged; 
-	
+		
 		$posts = query_posts($blog_query);
 		while (have_posts()) : the_post();
-		
-			display_blog_post();	
 			
+			display_blog_post();	
+		
 		endwhile; ?>
 
 
@@ -101,7 +101,7 @@ if ($disable_blog_frontpage == 'no') {
 			<?php } ?>
 			<div class="clear"></div>
 			
-<?php endif; } ?>
+<?php } } ?>
 			<?php get_sidebar('underblog'); ?>
 
 		</div>

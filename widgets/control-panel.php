@@ -13,8 +13,9 @@ Author URI: http://webcomicplanet.com/
 
 function comicpress_show_control_panel() { 
 global $wpmu_version; ?>
-<ul><li>
+<ul>
 	<?php if (!is_user_logged_in()) { ?>
+	<li>
 		<form action="<?php bloginfo('url') ?>/wp-login.php" method="post">
 		UserName:<br />
 		<input type="text" name="log" id="sname" value="<?php echo wp_specialchars(stripslashes($user_login), 1) ?>" size="22" /><br /><br />
@@ -37,21 +38,9 @@ global $wpmu_version; ?>
 		$uri = wp_nonce_url( site_url("wp-login.php?action=logout$redirect", 'login'), 'log-out' ); ?>
 		<li><a href="<?php echo $uri; ?>">Logout</a></li>
 		<?php wp_register(); ?>
-		<?php 
-		if (function_exists('pm_inbox_new_count')) {
-			$newmsgs = 0;
-			$newmsgs = pm_inbox_new_count($current_user->ID);
-			if (!$newmsgs) $newmsgs=0;
-		}
-		?>
-		<?php if (function_exists('pm_inbox_new_count')) { ?>
-			<li><a href="/forum?pmaction=viewinpm&pms=1">Inbox (<?php echo $newmsgs; ?>)</a></li>
-			<li><a href="/forum?profile=user">Profile</a></li>
-		<?php } else { ?>
-			<li><a href="/wp-admin/profile.php">Profile</a></li>
-		<?php } 
-	 } ?>
-	</li></ul>
+		<li><a href="/wp-admin/profile.php">Profile</a></li>
+	<?php } ?>
+	</ul>
 	<?php
 } 
 
