@@ -9,8 +9,6 @@ Author URI: http://webcomicplanet.com/
 
 */
 
-// The Control Panel function
-
 function comicpress_show_control_panel() { 
 global $wpmu_version; ?>
 <ul>
