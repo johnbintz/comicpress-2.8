@@ -351,6 +351,30 @@ function comicpress_admin() {
 				
 				<?php break;
 				
+			case "comicpress-disable_categories_in_posts": ?>
+				<tr>
+				<th scope="row"><strong>Disable showing categories in posts?</strong><br /><br /></th>
+				<td valign="top">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
+				</td>
+				</tr>
+				
+				<?php break;
+				
+			case "comicpress-disable_tags_in_posts": ?>
+				<tr>
+				<th scope="row"><strong>Disable showing tags in posts?</strong><br /><br /></th>
+				<td valign="top">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
+				</td>
+				</tr>
+				
+				<?php break;
+				
 				
 			case "comicpress-disable_css_style_editor": ?>
 				<tr>

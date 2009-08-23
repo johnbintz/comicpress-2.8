@@ -7,7 +7,7 @@
  */
 
 function display_comic_post() { 
-	global $post, $wp_query, $transcript_in_posts, $enable_related_comics, $enable_comic_post_author_gravatar, $enable_comic_post_calendar; 
+	global $post, $wp_query, $transcript_in_posts, $enable_related_comics, $enable_comic_post_author_gravatar, $enable_comic_post_calendar, $disable_categories_in_posts, $disable_tags_in_posts; 
 	$first_comic = get_first_comic_permalink(); $last_comic = get_last_comic_permalink();
 	?>
 	<div class="nav">
@@ -30,7 +30,7 @@ function display_comic_post() {
 			<?php } ?>
 			<div class="post-text">
 				<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
-				<small> - By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?></small><br />
+				<small> By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?> <?php edit_post_link('Edit Post', ' [ ', ' ] '); ?></small><br />
 				<?php if(function_exists('the_ratings')) { the_ratings(); } ?>
 			</div>
 			<div class="clear"></div>
@@ -41,8 +41,13 @@ function display_comic_post() {
 		</div>
 		<?php if ($transcript_in_posts == 'yes') the_transcript('styled'); ?>
 		<div class="post-extras">
+			<?php if ($disable_tags_in_posts != 'yes') { ?>
+				<div class="tags">
+				<?php the_tags('&#9492; Tags: ', ', ', '<br />'); ?>
+				</div>
+			<?php } ?>
 			<div class="tags">
-				<?php the_tags('&#9492; Tags: ', ', ', '<br />'); ?> <?php edit_post_link('Edit Post', ' [ ', ' ] '); ?> 
+				<?php if ($disable_tags_in_posts != 'yes') the_tags('&#9492; Tags: ', ', ', '<br />'); ?> 
 			</div>
 			<div class="comment-link">
 			<?php if ('open' == $post->comment_status) { comments_popup_link('&ldquo;Comment!&rdquo;', '&ldquo;1 Comment&rdquo;', '&ldquo;% Comments&rdquo;'); } ?>

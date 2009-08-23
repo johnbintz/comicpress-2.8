@@ -154,6 +154,16 @@ $options = array (
 			"default" => "no",
 			"type" => "comicpress-enable_comic_post_author_gravatar"),
 		
+		array(
+			"id" => "comicpress-disable_tags_in_posts",
+			"default" => "no",
+			"type" => "comicpress-disable_tags_in_posts"),
+			
+		array(
+			"id" => "comicpress-disable_categories_in_posts",
+			"default" => "no",
+			"type" => "comicpress-disable_categories_in_posts"),
+
 
 		array("type" => "close")
 		);

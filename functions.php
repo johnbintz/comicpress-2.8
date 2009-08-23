@@ -67,6 +67,8 @@ if (get_option('upload_path') !== false) {
 				'enable_post_author_gravatar'	=> 'enable_post_author_gravatar',
 				'enable_comic_post_calendar'		=> 'enable_comic_post_calendar',
 				'enable_comic_post_author_gravatar'	=> 'enable_comic_post_author_gravatar',
+				'disable_tags_in_posts'			=> 'disable_tags_in_posts',
+				'disable_categories_in_posts'	=> 'disable_categories_in_posts',
 				'contact_in_menubar'			=> 'contact_in_menubar' ) as $options => $variable_name) {
 		$variables_to_extract[$variable_name] = get_option("comicpress-${options}");
 	}
