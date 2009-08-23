@@ -11,6 +11,7 @@ Author URI: http://webcomicplanet.com/
 
 
 function comicpress_menubar() {
+	global $contact_in_menubar;
 	if (file_exists(get_template_directory() . '/custom-menubar.php') || function_exists('suckerfish')) {
 		if (function_exists('suckerfish')) { 
 			suckerfish();

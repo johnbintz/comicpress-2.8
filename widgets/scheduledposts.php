@@ -30,7 +30,7 @@ class widget_comicpress_show_scheduled_posts extends WP_Widget {
 			foreach($scheduled_posts as $post) : ?>
 				<ul>
 				<li><span class="scheduled-post-title"><?php echo $post->post_title; ?></span>
-				<span class="scheduled-post-date"><?php echo date('d/m/Y',$post->post_date); ?></span> </li>
+				<span class="scheduled-post-date"><?php echo date('m/d/Y',strtotime($post->post_date)); ?></span> </li>
 				</ul>
 			<?php endforeach;
 		} 
