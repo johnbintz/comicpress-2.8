@@ -21,7 +21,7 @@ function display_comic_post() {
 	<div class="post-comic">
 		<div class="post-info">
 			<?php if ($enable_comic_post_author_gravatar == 'yes') { ?>
-				<div class="post-author-gravatar"><?php echo get_avatar(get_the_author_meta('email'), 64,'', get_the_author_meta('display_name')); ?></div>
+				<div class="post-author-gravatar"><?php echo str_replace("alt='", "alt='".get_the_author_meta('display_name')."' title='".get_the_author_meta('display_name'),get_avatar(get_the_author_meta('email'), 64)); ?></div>
 			<?php } ?>
 			<?php if ($enable_comic_post_calendar == 'yes') { ?>
 				<div class="post-date">
