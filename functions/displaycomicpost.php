@@ -46,9 +46,6 @@ function display_comic_post() {
 				<?php the_tags('&#9492; Tags: ', ', ', '<br />'); ?>
 				</div>
 			<?php } ?>
-			<div class="tags">
-				<?php if ($disable_tags_in_posts != 'yes') the_tags('&#9492; Tags: ', ', ', '<br />'); ?> 
-			</div>
 			<div class="comment-link">
 			<?php if ('open' == $post->comment_status) { comments_popup_link('&ldquo;Comment!&rdquo;', '&ldquo;1 Comment&rdquo;', '&ldquo;% Comments&rdquo;'); } ?>
 		</div>
