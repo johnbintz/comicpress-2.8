@@ -302,6 +302,56 @@ function comicpress_admin() {
 				</tr>
 				
 				<?php break;
+				
+			case "comicpress-enable_post_calendar": ?>
+				<tr>
+				<th scope="row"><strong>Add graphic calendar to blog posts?</strong><br /><br />Enabling this option will display a calendar image on your posts.</th>
+				<td valign="top">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
+				</td>
+				</tr>
+				
+				<?php break;
+
+			case "comicpress-enable_post_author_gravatar": ?>
+				<tr>
+				<th scope="row"><strong>Display a gravatar of the post author on blog posts?</strong><br /><br />Enabling this option will show a gravatar of the post author based on the authors email.</th>
+				<td valign="top">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
+				</td>
+				</tr>
+				
+				<?php break;
+				
+			case "comicpress-enable_comic_post_calendar": ?>
+				<tr>
+				<th scope="row"><strong>Add graphic calendar to comic posts?</strong><br /><br />Enabling this option will display a calendar image on your posts.</th>
+				<td valign="top">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
+				</td>
+				</tr>
+				
+				<?php break;
+
+			case "comicpress-enable_comic_post_author_gravatar": ?>
+				<tr>
+				<th scope="row"><strong>Display a gravatar of the post author on comic posts?</strong><br /><br />Enabling this option will show a gravatar of the post author based on the authors email.</th>
+				<td valign="top">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
+				</td>
+				</tr>
+				
+				<?php break;
+				
+				
 			case "comicpress-disable_css_style_editor": ?>
 				<tr>
 				<th scope="row"><strong>Disable the styling in ComicPress CSS Editor?</strong><br /><br />This will let you disable the colored, styling CSS editor and be a normal form.<br /></th>
@@ -313,6 +363,7 @@ function comicpress_admin() {
 				</tr>
 				
 				<?php break;
+				
 		}
 	}
 	?>

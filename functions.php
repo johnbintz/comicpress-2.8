@@ -63,6 +63,10 @@ if (get_option('upload_path') !== false) {
 				'comic_clicks_next'				=> 'comic_clicks_next',
 				'anomaly_says'					=> 'anomaly_says',
 				'disable_css_style_editor'		=> 'disable_css_style_editor',
+				'enable_post_calendar'			=> 'enable_post_calendar',
+				'enable_post_author_gravatar'	=> 'enable_post_author_gravatar',
+				'enable_comic_post_calendar'		=> 'enable_comic_post_calendar',
+				'enable_comic_post_author_gravatar'	=> 'enable_comic_post_author_gravatar',
 				'contact_in_menubar'			=> 'contact_in_menubar' ) as $options => $variable_name) {
 		$variables_to_extract[$variable_name] = get_option("comicpress-${options}");
 	}

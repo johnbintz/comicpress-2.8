@@ -7,7 +7,7 @@
  */
 
 function display_blog_post() { 
-	global $post, $wp_query, $authordata, $enable_related_posts; 
+	global $post, $wp_query, $authordata, $enable_related_posts, $enable_post_author_gravatar, $enable_post_calendar; 
 	if (is_single()) { ?>
 		<div class="nav-blog">
 			<div class="nav-blog-previous"><?php previous_post_link('%link','&lsaquo; Previous', TRUE) ?></div>
@@ -18,9 +18,14 @@ function display_blog_post() {
 			<div class="post-head"></div>
 			<div class="post" id="post-<?php the_ID() ?>">
 				<div class="post-info">
-					<div class="post-date">
-						<div class="date"><span><?php the_time('M') ?></span> <?php the_time('d') ?></div>
-					</div>
+					<?php if ($enable_post_author_gravatar == 'yes') { ?>
+						<div class="post-author-gravatar"><?php echo get_avatar(get_the_author_meta('email'), 64,'', get_the_author_meta('display_name')); ?></div>
+					<?php } ?>
+					<?php if ($enable_post_calendar == 'yes') { ?>
+						<div class="post-date">
+							<div class="date"><span><?php the_time('M') ?></span> <?php the_time('d') ?></div>
+						</div>
+					<?php } ?>
 					<div class="post-text">
 						<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
 						<small> - By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?></small><br />

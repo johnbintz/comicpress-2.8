@@ -133,7 +133,28 @@ $options = array (
 			"id" => "comicpress-disable_css_style_editor",
 			"default" => "no",
 			"type" => "comicpress-disable_css_style_editor"),
+		
+		array(
+			"id" => "comicpress-enable_post_calendar",
+			"default" => "no",
+			"type" => "comicpress-enable_post_calendar"),
 			
+		array(
+			"id" => "comicpress-enable_post_author_gravatar",
+			"default" => "no",
+			"type" => "comicpress-enable_post_author_gravatar"),
+			
+		array(
+			"id" => "comicpress-enable_comic_post_calendar",
+			"default" => "no",
+			"type" => "comicpress-enable_comic_post_calendar"),
+		
+		array(
+			"id" => "comicpress-enable_comic_post_author_gravatar",
+			"default" => "no",
+			"type" => "comicpress-enable_comic_post_author_gravatar"),
+		
+
 		array("type" => "close")
 		);
 ?>

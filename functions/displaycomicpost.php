@@ -7,7 +7,7 @@
  */
 
 function display_comic_post() { 
-	global $post, $wp_query, $transcript_in_posts, $enable_related_comics; 
+	global $post, $wp_query, $transcript_in_posts, $enable_related_comics, $enable_comic_post_author_gravatar, $enable_comic_post_calendar; 
 	$first_comic = get_first_comic_permalink(); $last_comic = get_last_comic_permalink();
 	?>
 	<div class="nav">
@@ -20,9 +20,14 @@ function display_comic_post() {
 	<div class="post-comic-head"></div>
 	<div class="post-comic">
 		<div class="post-info">
-			<div class="post-date">
-				<div class="date"><span><?php the_time('M') ?></span> <?php the_time('d') ?></div>
-			</div>
+			<?php if ($enable_comic_post_author_gravatar == 'yes') { ?>
+				<div class="post-author-gravatar"><?php echo get_avatar(get_the_author_meta('email'), 64,'', get_the_author_meta('display_name')); ?></div>
+			<?php } ?>
+			<?php if ($enable_comic_post_calendar == 'yes') { ?>
+				<div class="post-date">
+					<div class="date"><span><?php the_time('M') ?></span> <?php the_time('d') ?></div>
+				</div>
+			<?php } ?>
 			<div class="post-text">
 				<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
 				<small> - By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?></small><br />

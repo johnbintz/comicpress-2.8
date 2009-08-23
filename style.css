@@ -507,6 +507,12 @@ h3, h3 a {
 		display: block;
 	}
 	
+	.post-author-gravatar {
+		float: left;
+		width: 63px;
+		height: 63px;
+	}
+	
 	.post-date {
 		color: #777;
 		font-family: 'Georgia' , serif;
