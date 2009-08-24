@@ -3,8 +3,15 @@
 include(get_template_directory() . '/comicpress-options-config.php');
 
 function comicpress_options() {
-	add_submenu_page('themes.php','comicpress', 'ComicPress Options', 10, 'comicpress-options', 'comicpress_admin');
+	$pagehook = add_submenu_page('themes.php','comicpress', 'ComicPress Options', 10, 'comicpress-options', 'comicpress_admin');
+	add_action('admin_head-'.$pagehook, 'comicpress_admin_page_head');
 }
+
+function comicpress_admin_page_head() { ?>
+<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/js/tabbed/tabbed_pages.css" type="text/css" media="screen" />
+<script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/tabbed/tabbed_pages.js"></script>
+<?php }
+
 
 function comicpress_admin() {
 	global $options, $upload_path, $blogcat, $moods_directory;
@@ -57,8 +64,17 @@ function comicpress_admin() {
 		}
 	</script>
 
-	<div class="stuffbox">
-	<h3><label for="link_url">Theme Style</label></h3>
+<div id="cpadmin">
+<div class="on" title="themestyle"><span>Theme Style</span></div>
+<div class="off" title="generaloptions"><span>General Settings</span></div>
+<div class="off" title="indexoptions"><span>Index Page</span></div>
+<div class="off" title="postoptions"><span>Post Options</span></div>
+<div class="off" title="customheader"><span>Custom Header</span></div>
+<div class="off" title="buyprintoptions"><span>Buy Print</span></div>
+
+</div>
+
+	<div id="themestyle" class="show">
 	<div class="inside">
 	<form method="post" id="myForm" name="template" enctype="multipart/form-data">
 	<?php wp_nonce_field('update-options') ?>
@@ -107,56 +123,19 @@ function comicpress_admin() {
 	</div>
 	</div>
 
+	<div id="generaloptions" class="hide">
+	<div class="inside">
 	<form method="post" id="myForm" name="template" enctype="multipart/form-data">
 	<?php wp_nonce_field('update-options') ?>
-	<div class="stuffbox">
-	<h3><label for="link_url">Settings - Extras / Addons</label></h3>
-	<div class="inside">
 	<table class="form-table" style="width: auto">
 	<?php
 	foreach ($options as $value) {
 		switch ( $value['type'] ) {
-			case "comicpress-disable_comic_frontpage": ?>
-				<tr>
-				<th scope="row"><strong>Disable Comic On Frontpage?</strong><br /><br />Set to &quot;Yes&quot; and the comic will not display on the index page/front page of your site.</th>
-				<td valign="top">
-				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
-				&nbsp;&nbsp;
-				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label><br />
-				</td>
-				<td valign="top" width="400">
-					Note: You can use the Latest Thumbnail widget to display your comic in a sidebar.  Make sure you set the archive-thumbnail size to under 200px.
-					Turning this off and using the GN style turns ComicPress into a Blog.
-				</td>
-				</tr>
-				
-				<?php break;
-			case "comicpress-disable_comic_blog_frontpage": ?>
-				<tr>
-				<th scope="row"><strong>Disable Comic Blog On Frontpage?</strong><br /><br />Set to &quot;Yes&quot; and the blog portion of the comic will not display on the index page/front page of your site.</th>
-				<td valign="top">
-				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
-				&nbsp;&nbsp;
-				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label><br />
-				</td>
-				</tr>
-				
-				<?php break;
-			case "comicpress-disable_blog_frontpage": ?>
-				<tr>
-				<th scope="row"><strong>Disable Blog On Frontpage?</strong><br /><br />Set to &quot;Yes&quot; and the blog area will not display on the index page/front page of your site.</th>
-				<td valign="top">
-				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
-				&nbsp;&nbsp;
-				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label><br />
-				</td>
-				</tr>
-				
-				<?php break;
+
 			case "comicpress-disable_extended_comments": ?>
 				<tr>
 				<th scope="row"><strong>Disable Extra Comment Code?</strong><br /><br />Set to &quot;Yes&quot; and the extended comment code will be disabled.</th>
-				<td valign="top">
+				<td valign="top" width="100">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label><br />
@@ -164,28 +143,6 @@ function comicpress_admin() {
 				</tr>
 				
 				<?php break;				
-			case "comicpress-transcript_in_posts": ?>
-				<tr>
-				<th scope="row"><strong>Show transcript in post area?</strong><br /><br />When enabled, if the comic has a transcript, the transcript will be displayed inside the post for the comic.</th>
-				<td valign="top">
-				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
-				&nbsp;&nbsp;
-				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
-				</td>
-				</tr>
-				
-				<?php break;
-			case "comicpress-disable_showing_comic_post_area": ?>
-				<tr>
-				<th scope="row"><strong>Disable showing the post for the comic?</strong><br /><br />Setting to &quot;Yes&quot; will disable showing the blog post of the comic on the home page and single pages.</th>
-				<td valign="top">
-				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
-				&nbsp;&nbsp;
-				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
-				</td>
-				</tr>
-				
-				<?php break;
 			case "comicpress-contact_in_menubar": ?>
 				<tr>
 				<th scope="row"><strong>Contact Link in Menubar</strong><br /><br />Setting to &quot;Yes&quot will put [&nbsp;CONTACT&nbsp;] in the menubar and associate it with your admin's email.</th>
@@ -194,30 +151,24 @@ function comicpress_admin() {
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
 				</td>
+				<td valign="top">
+				You can also create a links category called "menulinks" and whatever link you add to that will appear in the menubar.
+				</td>
 				</tr>
 				
 				<?php break;
 			case "comicpress-enable_widgetarea_use_sidebar_css": ?>
 				<tr>
-				<th scope="row"><strong>Enable Sidebar CSS?</strong><br /><br />Enabling this will use the standard CSS styling of the sidebars for all the widget areas.<br /><br />If not enabled it will use the .customwidgetarea user made styling only and only the Sidebar-left and Sidebar-right will use sidebar styling.</th>
+				<th scope="row"><strong>Enable Sidebar CSS?</strong><br /><br />Enabling this will use the standard CSS styling of the sidebars for all the widget areas.<br /><br /></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
 				</td>
-				</tr>
-				
-				<?php break;
-			case "comicpress-enable_custom_image_header": ?>
-				<tr>
-				<th scope="row"><strong>Enable Custom Image Header panel?</strong><br /><br />Setting to &quot;Yes&quot; will set a new option in your Dashboard -> Appearance menu.<br /><br />After saving the settings 2 new options will appear to set the height and width of the image that you want to use.</th>
 				<td valign="top">
-				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
-				&nbsp;&nbsp;
-				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
+					If not enabled it will use the .customwidgetarea user made styling only and only the Sidebar-left and Sidebar-right will use sidebar styling.<br />
 				</td>
 				</tr>
-				
 				<?php break;
 			case "comicpress-enable_numbered_pagination": ?>
 				<tr>
@@ -248,12 +199,176 @@ function comicpress_admin() {
 			case "comicpress-enable_dropdown_sidebar": ?>
 				<tr>
 				<th scope="row"><strong>Enable the Dropbar Widget area?</strong><br /></th>
-				<br />
-				To enable the drop down widget area choose [yes] here.<br />
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
+				</td>
+				</tr>
+				
+				<?php break;
+
+			case "comicpress-comic_clicks_next": ?>
+				<tr>
+				<th scope="row"><strong>Make the comic an Href that goes to next comic?</strong><br /><br />In doing this if someone clicks the comic it will go to the next comic (if possible)<br /></th>
+				<td valign="top">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
+				</td>
+				</tr>
+				
+				<?php break;
+			case "comicpress-anomaly_says": ?>
+				<tr>
+				<th scope="row"><strong>Request Anomaly to comment?</strong><br /><br />Enabling this option will summon Anomaly to your comic's universe and say what you request Anomaly to say by modifying the "Hovertext" in the comic post.<br /></th>
+				<td valign="top">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
+				</td>
+				</tr>
+				
+				<?php break;
+				
+			case "comicpress-disable_css_style_editor": ?>
+				<tr>
+				<th scope="row"><strong>Disable the styling in ComicPress Companion?</strong><br /><br />This will let you disable the colored, styling CSS editor and be a normal form.<br /><br /></th>
+				<td valign="top">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
+				</td>
+				<td valign="top">
+				<a href="http://wordpress.org/extend/plugins/comicpress-companion/">ComicPress Companion</a> is a plugin made specifically for ComicPress 2.8 versions.  It allows you to add CSS element changes without editing the original style.css file.
+				</td>
+				</tr>
+				
+				<?php break;
+		}
+	}
+	?>
+	</table>
+	<input name="comicpress_save" type="submit" class="button-primary" value="Save Settings" />
+	<input type="hidden" name="action" value="comicpress_save" />
+	</form>
+	</div>
+	</div>
+	
+	<div id="indexoptions" class="hide">
+	<div class="inside">
+	<form method="post" id="myForm" name="template" enctype="multipart/form-data">
+	<?php wp_nonce_field('update-options') ?>
+	<table class="form-table" style="width: auto">
+	<?php
+	foreach ($options as $value) {
+		switch ( $value['type'] ) {
+			case "comicpress-disable_comic_frontpage": ?>
+				<tr>
+				<th scope="row"><strong>Disable Comic On Frontpage?</strong><br /><br />Set to &quot;Yes&quot; and the comic will not display on the index page/front page of your site.</th>
+				<td valign="top" width="100">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label><br />
+				</td>
+				<td valign="top" width="400">
+					Note: You can use the Latest Thumbnail widget to display your comic in a sidebar.  Make sure you set the archive-thumbnail size to under 200px.
+					Turning this off and using the GN style turns ComicPress into a Blog.
+				</td>
+				</tr>
+				
+				<?php break;
+			case "comicpress-disable_comic_blog_frontpage": ?>
+				<tr>
+				<th scope="row"><strong>Disable Comic Blog On Frontpage?</strong><br /><br />Set to &quot;Yes&quot; and the blog portion of the comic will not display on the index page/front page of your site.<br /></th>
+				<td valign="top">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label><br />
+				</td>
+				</tr>
+				
+				<?php break;
+			case "comicpress-disable_blog_frontpage": ?>
+				<tr>
+				<th scope="row"><strong>Disable Blog On Frontpage?</strong><br /><br />Set to &quot;Yes&quot; and the blog area will not display on the index page/front page of your site.<br /></th>
+				<td valign="top">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label><br />
+				</td>
+				</tr>
+				
+				<?php break;
+			case "comicpress-disable_showing_comic_post_area": ?>
+				<tr>
+				<th scope="row"><strong>Disable showing the post for the comic?</strong><br /><br />Setting to &quot;Yes&quot; will disable showing the blog post of the comic on the home page and single pages.<br /></th>
+				<td valign="top">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
+				</td>
+				</tr>
+				
+				<?php break;
+		}
+	}
+	?>
+	</table>
+	<input name="comicpress_save" type="submit" class="button-primary" value="Save Settings" />
+	<input type="hidden" name="action" value="comicpress_save" />	
+	</form>
+	</div>
+	</div>	
+	
+
+	<div id="postoptions" class="hide">
+	<div class="inside">
+	<form method="post" id="myForm" name="template" enctype="multipart/form-data">
+	<?php wp_nonce_field('update-options') ?>
+	<table class="form-table" style="width: auto">
+	<?php
+	foreach ($options as $value) {
+		switch ( $value['type'] ) {
+			case "comicpress-transcript_in_posts": ?>
+				<tr>
+				<th scope="row"><strong>Show transcript in post area?</strong><br /><br />When enabled, if the comic has a transcript, the transcript will be displayed inside the post for the comic.</th>
+				<td valign="top" width="100">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
+				</td>
+				</tr>
+				
+				<?php break;
+			case "comicpress-moods_directory": 
+				$current_directory = get_option($value['id']);
+				if (empty($current_directory)) $current_directory = 'default';
+					
+				$count = count($results = glob(get_template_directory() . '/images/moods/'.$current_directory.'/*'));
+				$mood_directories = glob(get_template_directory() . '/images/moods/*');
+			?>
+				<tr>
+				<th scope="row"><strong>Moods Directory</strong><br /><br />Choose a directory to get the post moods from.<br /></th>
+				<td valign="top">
+						<label>
+								<select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
+				<?php
+					foreach ($mood_directories as $mood_dirs) {
+						if (is_dir($mood_dirs)) { 
+							$mood_dir_name = basename($mood_dirs); ?>
+							<option class="level-0" value="<?php echo $mood_dir_name; ?>" <?php if ($current_directory == $mood_dir_name) { ?>selected="selected"<?php } ?>><?php echo $mood_dir_name; ?></option>
+					<?php }
+					}
+				?>
+							</select>
+						</label>
+				</td>
+				<td valign="top">
+					Found: <?php echo $count; ?> moods in the "<?php echo $current_directory; ?>" directory.<br />
+					<br />
+					Mood directories are found in your theme directory/images/moods/* to create your own custom moods just create a directory
+					under images/moods/ and place ONLY image files inside of it.  The name of the image file represents what the mood is.
 				</td>
 				</tr>
 				
@@ -280,29 +395,6 @@ function comicpress_admin() {
 				</tr>
 				
 				<?php break;
-			case "comicpress-comic_clicks_next": ?>
-				<tr>
-				<th scope="row"><strong>Make the comic an Href that goes to next comic?</strong><br /><br />In doing this if someone clicks the comic it will go to the next comic (if possible)<br /></th>
-				<td valign="top">
-				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
-				&nbsp;&nbsp;
-				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
-				</td>
-				</tr>
-				
-				<?php break;
-			case "comicpress-anomaly_says": ?>
-				<tr>
-				<th scope="row"><strong>Request Anomaly to comment?</strong><br /><br />Enabling this option will summon Anomaly to your comic's universe and say what you request Anomaly to say by modifying the "Hovertext" in the comic post.<br /></th>
-				<td valign="top">
-				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
-				&nbsp;&nbsp;
-				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
-				</td>
-				</tr>
-				
-				<?php break;
-				
 			case "comicpress-enable_post_calendar": ?>
 				<tr>
 				<th scope="row"><strong>Add graphic calendar to blog posts?</strong><br /><br />Enabling this option will display a calendar image on your posts.</th>
@@ -374,12 +466,28 @@ function comicpress_admin() {
 				</tr>
 				
 				<?php break;
-				
-				
-			case "comicpress-disable_css_style_editor": ?>
+		}
+	}
+	?>
+	</table>
+	<input name="comicpress_save" type="submit" class="button-primary" value="Save Settings" />
+	<input type="hidden" name="action" value="comicpress_save" />	
+	</form>
+	</div>
+	</div>	
+	
+	<div id="customheader" class="hide">
+	<div class="inside">
+	<form method="post" id="myForm" name="template" enctype="multipart/form-data">
+	<?php wp_nonce_field('update-options') ?>
+	<table class="form-table" style="width: auto">
+		<?php
+		foreach ($options as $value) {
+			switch ( $value['type'] ) {
+			case "comicpress-enable_custom_image_header": ?>
 				<tr>
-				<th scope="row"><strong>Disable the styling in ComicPress CSS Editor?</strong><br /><br />This will let you disable the colored, styling CSS editor and be a normal form.<br /></th>
-				<td valign="top">
+				<th scope="row"><strong>Enable Custom Image Header panel?</strong><br /><br />Setting to &quot;Yes&quot; will set a new option in your Dashboard -> Appearance menu.<br /></th>
+				<td valign="top" width="100">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
@@ -387,58 +495,6 @@ function comicpress_admin() {
 				</tr>
 				
 				<?php break;
-				
-			case "comicpress-moods_directory": 
-				$current_directory = get_option($value['id']);
-				if (empty($current_directory)) $current_directory = 'default';
-					
-				$count = count($results = glob(get_template_directory() . '/images/moods/'.$current_directory.'/*'));
-				$mood_directories = glob(get_template_directory() . '/images/moods/*');
-			?>
-				<tr>
-				<th scope="row"><strong>Moods Directory</strong><br /><br />Choose a directory to get the post moods from.<br /></th>
-				<td valign="top">
-						<label>
-								<select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
-				<?php
-					foreach ($mood_directories as $mood_dirs) {
-						if (is_dir($mood_dirs)) { 
-							$mood_dir_name = basename($mood_dirs); ?>
-							<option class="level-0" value="<?php echo $mood_dir_name; ?>" <?php if ($current_directory == $mood_dir_name) { ?>selected="selected"<?php } ?>><?php echo $mood_dir_name; ?></option>
-					<?php }
-					}
-				?>
-							</select>
-						</label>
-				</td>
-				<td valign="top">
-					Found: <?php echo $count; ?> moods in the "<?php echo $current_directory; ?>" directory.<br />
-					<br />
-					Mood directories are found in your theme directory/images/moods/* to create your own custom moods just create a directory
-					under images/moods/ and place ONLY image files inside of it.  The name of the image file represents what the mood is.
-				</td>
-				</tr>
-				
-				<?php break;
-				
-		}
-	}
-	?>
-	</table>
-	</div>
-	</div>
-		<input name="comicpress_save" type="submit" class="button-primary" value="Save Settings" />
-		<input type="hidden" name="action" value="comicpress_save" />	
-		<br />
-		<br />
-
-		<div class="stuffbox">
-		<h3><label for="link_url">Settings - Custom Header</label></h3>
-		<div class="inside">
-		<table class="form-table" style="width: auto">
-		<?php
-		foreach ($options as $value) {
-			switch ( $value['type'] ) {
 				case "comicpress-custom_image_header_height": ?>
 					<tr>
 					<th scope="row"><b>Header Image Height</b><br /><br />Set the <b>height</b> of the image you want to use in the Custom Image Header panel.</th>
@@ -468,13 +524,18 @@ function comicpress_admin() {
 		}
 		?>
 		</table>
+		<input name="comicpress_save" type="submit" class="button-primary" value="Save Settings" />
+		<input type="hidden" name="action" value="comicpress_save" />
+		</form>
 		</div>
 		</div>
 	
-		<div class="stuffbox">
-		<h3><label for="link_url">Settings - Buy Print</label></h3>
-		<div class="inside">
-		<table class="form-table" style="width: auto">
+	<div id="buyprintoptions" class="hide">
+	<div class="inside">
+	<form method="post" id="myForm" name="template" enctype="multipart/form-data">
+	<?php wp_nonce_field('update-options') ?>
+	<table class="form-table" style="width: auto">
+
 		<?php
 		foreach ($options as $value) {
 			switch ( $value['type'] ) {
@@ -555,24 +616,14 @@ function comicpress_admin() {
 		}
 		?>
 		</table>
+		<input name="comicpress_save" type="submit" class="button-primary" value="Save Settings" />
+		<input type="hidden" name="action" value="comicpress_save" />
+		</form>
 		</div>
 		</div>
 
-	<div style="float: left">
-		<input name="comicpress_save" type="submit" class="button-primary" value="Save Settings" />
-		<input type="hidden" name="action" value="comicpress_save" />	
-		</form>
-	</div>
-	<div style="float: right">
-		<form method="post" id="myForm" name="template" enctype="multipart/form-data">
-		<?php wp_nonce_field('update-options'); ?>
-		<input name="comicpress_reset" type="submit" class="button-primary" value="Reset Settings" />
-		<input type="hidden" name="action" value="comicpress_reset" />	
-		</form>
-	</div>
-	<div style="clear:both;"></div>
-	<div style="width: 680px;margin: 10px auto; text-align:center;padding: 5px; background: #ddd; -moz-border-radius: 10px;-khtml-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: solid 1px #000;">
-	<a href="http://comicpress.org/">ComicPress</a>, created by <a href="http://mindfaucet.com/">Tyler Martin</a>, with <a href="http://www.coswellproductions.com/">John Bintz</a> and <a href="http://webcomicplanet.com/">Philip M. Hofer</a> (<a href="http://frumph.webcomicplanet.com/">Frumph</a>)<br />
+	<div style="text-align:center;padding: 5px; background: #ddd; -moz-border-radius: 10px;-khtml-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: solid 1px #000;">
+	<a href="http://comicpress.org/">ComicPress <?php echo comicpress_current_theme_version(); ?></a>, created by <a href="http://mindfaucet.com/">Tyler Martin</a>, with <a href="http://www.coswellproductions.com/">John Bintz</a> and <a href="http://webcomicplanet.com/">Philip M. Hofer</a> (<a href="http://frumph.webcomicplanet.com/">Frumph</a>)<br />
 	If you like the ComicPress theme, please donate.  It will help in creating new versions.<br />
 					
 					<form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="paypal-wrap">
