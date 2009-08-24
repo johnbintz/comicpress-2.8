@@ -3,6 +3,10 @@
  * Theme Function: Moods
  * Author: Philip M. Hofer (Frumph)
  * Created: 08/22/2009
+ * Author Email: philip@frumph.net
+ * You may use this and adapt this code to anything you like however keep the author information retained in 
+ * the appropriate files.
+ * 
  * Lets you set and make moods for your blog posts.
  * 
  * Usage:  if (function_exists('comicpress_show_mood_in_post')) comicpress_show_mood_in_post();
