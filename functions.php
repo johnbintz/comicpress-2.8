@@ -64,10 +64,11 @@ if (get_option('upload_path') !== false) {
 				'disable_css_style_editor'		=> 'disable_css_style_editor',
 				'enable_post_calendar'			=> 'enable_post_calendar',
 				'enable_post_author_gravatar'	=> 'enable_post_author_gravatar',
-				'enable_comic_post_calendar'		=> 'enable_comic_post_calendar',
+				'enable_comic_post_calendar'	=> 'enable_comic_post_calendar',
 				'enable_comic_post_author_gravatar'	=> 'enable_comic_post_author_gravatar',
 				'disable_tags_in_posts'			=> 'disable_tags_in_posts',
 				'disable_categories_in_posts'	=> 'disable_categories_in_posts',
+				'moods_directory'				=> 'moods_directory',
 				'contact_in_menubar'			=> 'contact_in_menubar' ) as $options => $variable_name) {
 		$variables_to_extract[$variable_name] = get_option("comicpress-${options}");
 	}
@@ -125,6 +126,7 @@ require_once(get_template_directory() . '/functions/relatedposts.php');
 require_once(get_template_directory() . '/functions/relatedcomics.php');
 require_once(get_template_directory() . '/functions/membersonly.php');
 require_once(get_template_directory() . '/functions/syndication.php');
+require_once(get_template_directory() . '/functions/moods.php');
 
 
 if ($enable_dropdown_sidebar == 'yes') {

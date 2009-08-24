@@ -163,6 +163,11 @@ $options = array (
 			"id" => "comicpress-disable_categories_in_posts",
 			"default" => "no",
 			"type" => "comicpress-disable_categories_in_posts"),
+			
+		array(
+			"id" => "comicpress-moods_directory",
+			"default" => "default",
+			"type" => "comicpress-moods_directory"),
 
 
 		array("type" => "close")

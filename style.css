@@ -516,6 +516,13 @@ h3, h3 a {
 		height: 63px;
 	}
 	
+	.post-mood {
+		float: left;
+		margin: 2px;
+		width: 63px;
+		height: 63px;
+	}
+	
 	.post-date {
 		color: #777;
 		font-family: 'Georgia' , serif;

@@ -65,7 +65,7 @@ function comicpress_menubar() {
 	<?php if ($contact_in_menubar == 'yes') { ?>
 		<li class="page_item page-item-contact"><a href="mailto:<?php bloginfo('admin_email'); ?>">Contact</a></li>
 	<?php } ?>
-		<li><a href="<?php bloginfo('rss2_url'); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/data_rss.gif" class="rss" alt="RSS" /></a></li>		    
+		<li class="page_item page-item-rss"><a href="<?php bloginfo('rss2_url'); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/data_rss.gif" class="rss" alt="RSS" /></a></li>		    
 	</ul>
 	<div class="clear"></div>
 </div>

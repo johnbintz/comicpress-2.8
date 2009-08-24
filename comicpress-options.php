@@ -7,7 +7,7 @@ function comicpress_options() {
 }
 
 function comicpress_admin() {
-	global $options, $upload_path, $blogcat;
+	global $options, $upload_path, $blogcat, $moods_directory;
 	
 
 	?>
@@ -388,13 +388,49 @@ function comicpress_admin() {
 				
 				<?php break;
 				
+			case "comicpress-moods_directory": 
+				$current_directory = get_option($value['id']);
+				if (empty($current_directory)) $current_directory = 'default';
+					
+				$count = count($results = glob(get_template_directory() . '/images/moods/'.$current_directory.'/*'));
+				$mood_directories = glob(get_template_directory() . '/images/moods/*');
+			?>
+				<tr>
+				<th scope="row"><strong>Moods Directory</strong><br /><br />Choose a directory to get the post moods from.<br /></th>
+				<td valign="top">
+						<label>
+								<select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
+				<?php
+					foreach ($mood_directories as $mood_dirs) {
+						if (is_dir($mood_dirs)) { 
+							$mood_dir_name = basename($mood_dirs); ?>
+							<option class="level-0" value="<?php echo $mood_dir_name; ?>" <?php if ($current_directory == $mood_dir_name) { ?>selected="selected"<?php } ?>><?php echo $mood_dir_name; ?></option>
+					<?php }
+					}
+				?>
+							</select>
+						</label>
+				</td>
+				<td valign="top">
+					Found: <?php echo $count; ?> moods in the "<?php echo $current_directory; ?>" directory.<br />
+					<br />
+					Mood directories are found in your theme directory/images/moods/* to create your own custom moods just create a directory
+					under images/moods/ and place ONLY image files inside of it.  The name of the image file represents what the mood is.
+				</td>
+				</tr>
+				
+				<?php break;
+				
 		}
 	}
 	?>
 	</table>
-
 	</div>
 	</div>
+		<input name="comicpress_save" type="submit" class="button-primary" value="Save Settings" />
+		<input type="hidden" name="action" value="comicpress_save" />	
+		<br />
+		<br />
 
 		<div class="stuffbox">
 		<h3><label for="link_url">Settings - Custom Header</label></h3>
