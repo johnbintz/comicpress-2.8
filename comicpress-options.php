@@ -251,6 +251,37 @@ function comicpress_admin() {
 				</tr>
 				
 				<?php break;
+			case "comicpress-graphicnav_directory": 
+				$current_gnav_directory = get_option($value['id']);
+				if (empty($current_directory)) $current_directory = 'scifi';
+					
+				$count = count($results = glob(get_template_directory() . '/images/nav/'.$current_directory.'/*'));
+				$gnav_directories = glob(get_template_directory() . '/images/nav/*');
+			?>
+				<tr>
+				<th scope="row"><strong>Graphic Navigation Directory</strong><br /><br />Choose a directory to get the graphic navigation styling from.<br /></th>
+				<td valign="top">
+						<label>
+								<select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
+				<?php
+					foreach ($gnav_directories as $gnav_dirs) {
+						if (is_dir($gnav_dirs)) { 
+							$gnav_dir_name = basename($gnav_dirs); ?>
+							<option class="level-0" value="<?php echo $gnav_dir_name; ?>" <?php if ($current_gnav_directory == $gnav_dir_name) { ?>selected="selected"<?php } ?>><?php echo $gnav_dir_name; ?></option>
+					<?php }
+					}
+				?>
+							</select>
+						</label>
+				</td>
+				<td valign="top">
+					<br />
+					Graphic Navigation directories are found in your theme directory/images/nav/* to create your own custom graphic navigation menu buttons just create a directory
+					under images/nav/ and place your image files inside of it and create a navstyle.css file to determine the style of your navigation display.
+				</td>
+				</tr>
+				
+			<?php break;
 		}
 	}
 	?>
@@ -629,7 +660,7 @@ function comicpress_admin() {
 		</div>
 
 	<div style="margin-top: 10px; text-align:center;padding: 5px; background: #ddd; -moz-border-radius: 10px;-khtml-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: solid 1px #000;">
-	<a href="http://comicpress.org/">ComicPress <?php echo comicpress_current_theme_version(); ?></a>, created by <a href="http://mindfaucet.com/">Tyler Martin</a>, with <a href="http://www.coswellproductions.com/">John Bintz</a> and <a href="http://webcomicplanet.com/">Philip M. Hofer</a> (<a href="http://frumph.webcomicplanet.com/">Frumph</a>)<br />
+	<a href="http://comicpress.org/">ComicPress <?php echo comicpress_current_theme_version(); ?></a>, created by <a href="http://mindfaucet.com/">Tyler Martin</a>, with <a href="http://www.coswellproductions.com/">John Bintz</a> and <a href="http://webcomicplanet.com/">Philip M. Hofer</a> (<a href="http://frumph.net/">Frumph</a>)<br />
 	If you like the ComicPress theme, please donate.  It will help in creating new versions.<br />
 					
 					<form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="paypal-wrap">

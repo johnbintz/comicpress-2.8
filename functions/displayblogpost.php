@@ -7,14 +7,7 @@
  */
 
 function display_blog_post() { 
-	global $post, $wp_query, $authordata, $enable_related_posts, $enable_post_author_gravatar, $enable_post_calendar; 
-	if (is_single()) { ?>
-		<div class="nav-blog">
-			<div class="nav-blog-previous"><?php previous_post_link('%link','&lsaquo; Previous', TRUE) ?></div>
-			<div class="nav-blog-next"><?php next_post_link('%link','Next &rsaquo;', TRUE) ?></div>
-		</div>
-		<div class="clear"></div>
-	<?php } ?>
+	global $post, $wp_query, $authordata, $enable_related_posts, $enable_post_author_gravatar, $enable_post_calendar;  ?>
 			<div class="post-head"></div>
 			<div class="post" id="post-<?php the_ID() ?>">
 				<div class="post-info">

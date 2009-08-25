@@ -1,0 +1,109 @@
+﻿/* COMIC NAVIGATION 
+Author: Philip M. Hofer (Frumph)
+Style: Sci Fi
+*/
+
+#comic_navi_wrapper {
+	width: 540px;
+	margin: 0 auto;
+}
+
+.comic_navi_comments_count {
+	top: 5px;
+	left: 15px;
+	font-size: 18px;
+	position: relative;
+}
+
+.comic_navi_first, .comic_navi_story_previous, .comic_navi_previous, 
+.comic_navi_random, .comic_navi_archives, .comic_navi_comments, 
+.comic_navi_next, .comic_navi_story_next, .comic_navi_latest {
+	padding: 0;
+	margin: 0 auto;
+	float: left;
+}
+
+
+a.rollnext, .rollnext {
+	display: inline-block;
+	height: 50px;
+	width: 60px;
+	text-decoration: none;
+	background: url('nextroll.png') no-repeat;
+}
+
+
+a.rolllast, .rolllast {
+	display: inline-block;
+	height: 50px;
+	width: 60px;
+	text-decoration: none;
+	background: url('lastroll.png') no-repeat;
+}
+
+
+a.rollprev, .rollprev {
+	display: inline-block;
+	height: 50px;
+	width: 60px;
+	text-decoration: none;
+	background: url('prevroll.png') no-repeat;
+}
+
+
+a.rollfirst, .rollfirst {
+	display: inline-block;
+	height: 50px;
+	width: 60px;
+	text-decoration: none;
+	background: url('firstroll.png') no-repeat;
+}
+
+a.rollstoryprev, .rollstoryprev {
+	display: inline-block;
+	height: 50px;
+	width: 60px;
+	text-decoration: none;
+	background: url('prevstoryroll.png') no-repeat;
+}
+
+a.rollstorynext, .rollstorynext {
+	display: inline-block;
+	height: 50px;
+	width: 60px;
+	text-decoration: none;
+	background: url('nextstoryroll.png') no-repeat;
+}
+
+a.rollrandom, .rollrandom {
+	display: inline-block;
+	height: 50px;
+	width: 60px;
+	text-decoration: none;
+	background: url('randomroll.png') no-repeat;
+}
+
+a.rollarchives, .rollarchives {
+	display: inline-block;
+	height: 50px;
+	width: 60px;
+	text-decoration: none;
+	background: url('archiveroll.png') no-repeat;
+}
+
+a.rollcomments, .rollcomments {
+	display: inline-block;
+	height: 50px;
+	width: 60px;
+	text-decoration: none;
+	background: url('commentsroll.png') no-repeat;
+}
+
+a.rollfirst:hover, a.rollprev:hover, a.rollnext:hover, a.rolllast:hover, a.rollrandom:hover, a.rollarchives:hover, a.rollcomments:hover, a.rollstoryprev:hover, a.rollstorynext:hover {
+	background-position: -60px 0;
+}
+
+
+.rollagain {
+	background-position: -120px 0;
+}

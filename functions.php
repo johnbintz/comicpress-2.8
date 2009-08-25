@@ -69,12 +69,16 @@ if (get_option('upload_path') !== false) {
 				'disable_tags_in_posts'			=> 'disable_tags_in_posts',
 				'disable_categories_in_posts'	=> 'disable_categories_in_posts',
 				'moods_directory'				=> 'moods_directory',
+				'graphicnav_directory'			=> 'graphicnav_directory',
 				'contact_in_menubar'			=> 'contact_in_menubar' ) as $options => $variable_name) {
 		$variables_to_extract[$variable_name] = get_option("comicpress-${options}");
 	}
 	
 	extract($variables_to_extract);
 }
+
+if (empty($graphicnav_directory)) $graphicnav_directory = 'scifi';
+if (empty($moods_directory)) $moods_directory = 'default';
 
 function is_cp_theme_style($choices) {
 global $cp_theme_style;

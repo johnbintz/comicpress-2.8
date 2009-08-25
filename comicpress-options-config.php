@@ -168,7 +168,11 @@ $options = array (
 			"id" => "comicpress-moods_directory",
 			"default" => "default",
 			"type" => "comicpress-moods_directory"),
-
+			
+		array(
+			"id" => "comicpress-graphicnav_directory",
+			"default" => "scifi",
+			"type" => "comicpress-graphicnav_directory"),
 
 		array("type" => "close")
 		);

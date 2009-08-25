@@ -1,3 +1,4 @@
+<div id="sidebar-right-top"></div>
 <div id="sidebar-right">
 	<div class="sidebar">
 			<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Right Sidebar') ) : ?>
@@ -31,3 +32,4 @@
 			<?php endif; ?>
 	</div>
 </div>
+<div id="sidebar-right-bottom"></div>

@@ -1,6 +1,6 @@
 #cpadmin {font:11px verdana,arial,sans-serif; padding:5px 0 0 0; line-height:5px;}
-#cpadmin div.off {color:#000; height:33px; margin-right:2px; line-height:33px; padding:0 20px; float:left; background:url(tabs_0.gif) repeat-x left bottom; border:1px solid #ddd; border-bottom-color:#000; cursor:pointer; position:relative; z-index:20;}
-#cpadmin div.on {color:#c00; padding:0 20px; margin-right:2px; margin-top:1px; float:left; background:url(tabs_2.gif) repeat-x left bottom; border:1px solid #000; cursor:pointer; border-bottom:0; height:33px; line-height:32px; position:relative; z-index:100;}
+#cpadmin div.off {color:#000; height:23px; margin-right:2px; line-height:23px; padding:0 10px; float:left; background:url(tabs_0.gif) repeat-x left bottom; border:1px solid #ddd; border-bottom-color:#000; cursor:pointer; position:relative; z-index:20;}
+#cpadmin div.on {color:#c00; padding:0 10px; margin-right:2px; margin-top:1px; float:left; background:url(tabs_2.gif) repeat-x left bottom; border:1px solid #000; cursor:pointer; border-bottom:0; height:23px; line-height:22px; position:relative; z-index:100;}
 
 div.hide {display:none; width:0; overflow:hidden;}
 div.show {clear:left; background:#fff; margin-top:0; top:-1px; border:1px solid #000;padding:20px; position:relative; z-index:50; font:11px verdana, arial, sans-serif; line-height:18px;}
