@@ -25,7 +25,13 @@ function comicpress_admin() {
 
 
 	<br clear="all" />		
-
+	<div style="float: right">
+		<form method="post" id="myForm" name="template" enctype="multipart/form-data">
+		<input name="comicpress_reset" type="submit" class="button-primary" value="Reset Settings" />
+		<input type="hidden" name="action" value="comicpress_reset" />	
+		</form>
+	</div>
+	<br clear="all" />
 	<?php 
 	if ( wp_verify_nonce($_POST['_wpnonce'], 'update-options') ) {
 		
@@ -89,10 +95,10 @@ function comicpress_admin() {
 						<label>
 							<select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" class="code" onchange="showimage(this,'cpthemestyle')">
 								<option class="level-0" value="standard" <?php if (get_option($value['id'])=='standard') {?>selected="selected" <?php } ?>>Standard</option>
-								<option class="level-0" value="3c" <?php if (get_option($value['id'])=='3c') {?>selected="selected" <?php } ?>>3C</option>
-								<option class="level-0" value="gn" <?php if (get_option($value['id'])=='gn') {?>selected="selected" <?php } ?>>GN</option>
-								<option class="level-0" value="v" <?php if (get_option($value['id'])=='v') {?>selected="selected" <?php } ?>>V</option>
-								<option class="level-0" value="v3c" <?php if (get_option($value['id'])=='v3c') {?>selected="selected" <?php } ?>>V3C</option>
+								<option class="level-0" value="3c" <?php if (get_option($value['id'])=='3c') {?>selected="selected" <?php } ?>>3-Column</option>
+								<option class="level-0" value="gn" <?php if (get_option($value['id'])=='gn') {?>selected="selected" <?php } ?>>Graphic Novel</option>
+								<option class="level-0" value="v" <?php if (get_option($value['id'])=='v') {?>selected="selected" <?php } ?>>Vertical</option>
+								<option class="level-0" value="v3c" <?php if (get_option($value['id'])=='v3c') {?>selected="selected" <?php } ?>>Vertical 3-Column</option>
 							</select>
 						</label>
 					</td>
@@ -622,7 +628,7 @@ function comicpress_admin() {
 		</div>
 		</div>
 
-	<div style="text-align:center;padding: 5px; background: #ddd; -moz-border-radius: 10px;-khtml-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: solid 1px #000;">
+	<div style="margin-top: 10px; text-align:center;padding: 5px; background: #ddd; -moz-border-radius: 10px;-khtml-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: solid 1px #000;">
 	<a href="http://comicpress.org/">ComicPress <?php echo comicpress_current_theme_version(); ?></a>, created by <a href="http://mindfaucet.com/">Tyler Martin</a>, with <a href="http://www.coswellproductions.com/">John Bintz</a> and <a href="http://webcomicplanet.com/">Philip M. Hofer</a> (<a href="http://frumph.webcomicplanet.com/">Frumph</a>)<br />
 	If you like the ComicPress theme, please donate.  It will help in creating new versions.<br />
 					

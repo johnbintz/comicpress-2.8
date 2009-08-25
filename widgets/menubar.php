@@ -40,7 +40,8 @@ function comicpress_menubar() {
 	$menulinks = preg_replace('#<li ([^>]*)>#', '<li class="page-item link">', $menulinks);
 	$menulinks = preg_replace('#<ul ([^>]*)>#', '', $menulinks);
 	$menulinks = str_replace('</ul>', '', $menulinks);
-	$bookmarks = wp_list_bookmarks('echo=0&title_li=&categorize=0&title_before=&title_after=&category_name=menulinks'); 
+	$bookmarkargs = 
+	$bookmarks = wp_list_bookmarks('echo=0&title_li=&categorize=1&title_before=&title_after=&exclude_name=menubar'); 
 	$bookmarks = preg_replace('#<li ([^>]*)>#', '<li class="page-item link">', $bookmarks);
 	$bookmarks = preg_replace('#<ul ([^>]*)>#', '<ul>', $bookmarks);
 	$listpages = wp_list_pages('echo=0&sort_column=menu_order&depth=4&title_li=');

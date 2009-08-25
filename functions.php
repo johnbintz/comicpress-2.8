@@ -699,4 +699,16 @@ function comicpress_is_active_sidebar( $name ) {
 	return false;
 }
 
+function cp_copyright_year() {
+	$latest_comic = get_terminal_post_in_category('',true);
+	$archive_year = get_post_time('Y', false, $latest_comic, true);
+	$current_year = date('Y');
+	if ($archive_year == $current_year) {
+		$return_year = $current_year;
+	} else {
+		$return_year = $archive_year . '-' . $current_year;
+	}
+	return $return_year;
+}
+
 ?>

@@ -52,24 +52,31 @@ function comicpress_showmood_edit_post() {
 		Using Moods from directory: '.$moods_directory.'<br />
 		Current Mood: '.$mood.'<br /><br />';
 		if (!empty($results)) { ?>
-			<div style="float:left; margin-top: 10px; text-align: center; width: 68px; padding-top: 64px;">
-			None.<br />
-			<label><input  name="postmood" id="postmood-none" type="radio" value="none"<?php if ( $mood == "none" ) { echo " checked"; } ?> /></label>
-			</div>
+		<div style="float:left; margin-top: 70px; text-align: center; width: 68px; overflow: hidden;"> 
+		<label for="postmood-none" style="cursor:pointer;">		
+		none
+		</label>
+		<br />
+			<input name="postmood" style="margin-top: 3px;" id="postmood-anger" type="radio" value="none" />
+		</div>
 			<?php foreach ($results as $file) {
 				$newmood_file = basename($file);
 				$newmood = explode(".", $newmood_file); 
 				$newmood = $newmood[0]; ?>
-				<div style="float:left; margin-top: 10px; text-align: center; width: 68px; overflow: hidden;">
-					<img src="<?php bloginfo('stylesheet_directory'); ?>/images/moods/<?php echo $moods_directory; ?>/<?php echo basename($file); ?>"><br />
-					<?php echo $newmood; ?><br />
-					<label><input  name="postmood" style="margin-top: 3px;" id="postmood-<?php echo $newmood; ?>" type="radio" value="<?php echo $newmood_file; ?>"<?php if ( $mood == $newmood ) { echo " checked"; } ?> /></label>
+				<div style="float:left; margin-top: 10px; text-align: center; width: 68px; overflow: hidden;"> 
+					<label for="<?php echo $newmood; ?>" style="cursor:pointer;">
+						<img src="<?php bloginfo('stylesheet_directory'); ?>/images/moods/<?php echo $moods_directory; ?>/<?php echo basename($file); ?>"><br />
+						<?php echo $newmood; ?>
+					</label>
+					<br />
+					<input  name="postmood" style="margin-top: 3px;" id="postmood-<?php echo $newmood; ?>" type="radio" value="<?php echo $newmood_file; ?>"<?php if ( $mood == $newmood ) { echo " checked"; } ?> />
 				</div>
 			<?php }
 		} ?>
 		</div>
 	</div>
 <?php }
+
 
 function comicpress_handle_edit_post_mood_save($post_id) {
 	if (empty($_POST['postmood']) || $_POST['postmood'] == 'none') {
