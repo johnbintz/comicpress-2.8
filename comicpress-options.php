@@ -149,6 +149,45 @@ function comicpress_admin() {
 				</tr>
 				
 				<?php break;				
+			case "comicpress-enable_search_in_menubar": ?>
+				<tr>
+				<th scope="row"><strong>Enable Search Form in Menubar?</strong><br /><br /></th>
+				<td valign="top">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
+				</td>
+				<td valign="top">
+				</td>
+				</tr>
+				
+				<?php break;
+			case "comicpress-enable_rss_in_menubar": ?>
+				<tr>
+				<th scope="row"><strong>Enable RSS Link in Menubar?</strong><br /><br /></th>
+				<td valign="top">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
+				</td>
+				<td valign="top">
+					</td>
+				</tr>
+				
+				<?php break;
+			case "comicpress-enable_navigation_in_menubar": ?>
+				<tr>
+				<th scope="row"><strong>Enable extra Navigation options in the Menubar?</strong><br /><br /></th>
+				<td valign="top">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
+				</td>
+				<td valign="top">
+					</td>
+				</tr>
+				
+				<?php break;
 			case "comicpress-contact_in_menubar": ?>
 				<tr>
 				<th scope="row"><strong>Contact Link in Menubar</strong><br /><br />Setting to &quot;Yes&quot will put [&nbsp;CONTACT&nbsp;] in the menubar and associate it with your admin's email.</th>

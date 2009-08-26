@@ -4,7 +4,7 @@
 		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Left Sidebar') ) : ?> 
 			<ul>
 				<li>
-					<?php get_calendar() ?>
+					<?php comicpress_calendar() ?>
 				</li>
 			</ul>
 			<?php comicpress_latest_comics() ?>

@@ -2,6 +2,7 @@
 <div id="sidebar-right">
 	<div class="sidebar">
 			<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Right Sidebar') ) : ?>
+				<br />
 				<?php comicpress_comic_bookmark() ?>
 				
 				<?php if (is_cp_theme_style('standard,v')) { ?>
@@ -24,13 +25,7 @@
 				<ul><?php wp_list_categories('title_li=<h2>Categories</h2>') ?></ul>
 
 				<ul><?php wp_list_bookmarks() ?></ul>
-				<ul>
-					<li>
-						<ul>
-							<?php include(get_template_directory() . '/searchform.php'); ?>
-						</ul>
-					</li>
-				</ul>
+
 			<?php endif; ?>
 	</div>
 </div>

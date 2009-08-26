@@ -18,18 +18,20 @@ class widget_comicpress_latest_thumbnail extends WP_Widget {
 	
 	function widget($args, $instance) {
 		global $post;
-		extract($args, EXTR_SKIP); 
-		
-		echo $before_widget;
-		$title = empty($instance['title']) ? 'Latest Comic' : apply_filters('widget_title', $instance['title']); 
-		if ( !empty( $title ) ) { echo $before_title . $title . $after_title; }; 
-		$latestcomics = get_posts('numberposts=1&category='.get_all_comic_categories_as_cat_string());
-		foreach($latestcomics as $post) : ?>
-		<center>
-			<a href="<?php the_permalink(); ?>"><img src="<?php the_comic_rss() ?>" alt="<?php the_title() ?>" title="<?php the_hovertext() ?>" /></a><br />
-		</center>
-		<?php endforeach; 
-		echo $after_widget;
+		if (is_home()) {
+			extract($args, EXTR_SKIP); 
+			
+			echo $before_widget;
+			$title = empty($instance['title']) ? 'Latest Comic' : apply_filters('widget_title', $instance['title']); 
+			if ( !empty( $title ) ) { echo $before_title . $title . $after_title; }; 
+			$latestcomics = get_posts('numberposts=1&category='.get_all_comic_categories_as_cat_string());
+			foreach($latestcomics as $post) : ?>
+				<center>
+				<a href="<?php the_permalink(); ?>"><img src="<?php the_comic_rss() ?>" alt="<?php the_title() ?>" title="<?php the_hovertext() ?>" /></a><br />
+				</center>
+				<?php endforeach; 
+			echo $after_widget;
+		}
 	}
 	
 	function update($new_instance, $old_instance) {

@@ -11,7 +11,7 @@ Author URI: http://webcomicplanet.com/
 
 
 function comicpress_menubar() {
-	global $contact_in_menubar;
+	global $contact_in_menubar,$enable_search_in_menubar,$enable_rss_in_menubar,$enable_navigation_in_menubar;
 	if (file_exists(get_template_directory() . '/custom-menubar.php') || function_exists('suckerfish')) {
 		if (function_exists('suckerfish')) { 
 			suckerfish();
@@ -21,20 +21,33 @@ function comicpress_menubar() {
 	} else { ?>
 <div id="menubar">
 
-	<div id="menunav">
-	<?php if (is_home()) {
-		$comicFrontpage = new WP_Query(); $comicFrontpage->query('showposts=1&cat='.get_all_comic_categories_as_cat_string());
-		while ($comicFrontpage->have_posts()) : $comicFrontpage->the_post();
-			global $wp_query; $wp_query->is_single = true;
-			previous_comic_link('%link', '&lsaquo;');
-			$wp_query->is_single = false;
-		endwhile; 
-	} elseif (is_single() & in_comic_category()) {
-		previous_comic_link('%link', '&lsaquo;');
-		next_comic_link('%link', '&rsaquo;');
-		} ?>
+		<div id="menunav">
+		<?php if ($enable_search_in_menubar == 'yes') { ?>
+			<div class="menunav-search"><?php include(get_template_directory() . '/searchform.php'); ?></div>
+		<?php } ?>
+		<?php if ($enable_rss_in_menubar == 'yes') { ?>
+			<a href="<?php bloginfo('rss2_url') ?>" title="RSS Feed" class="menunav-rss">RSS</a>
+		<?php } ?>
+		<?php if ($enable_navigation_in_menubar == 'yes') { ?>
+			<?php if (is_home()) {
+				$comicFrontpage = new WP_Query(); $comicFrontpage->query('showposts=1&cat='.get_all_comic_categories_as_cat_string());
+				while ($comicFrontpage->have_posts()) : $comicFrontpage->the_post();
+					global $wp_query; $wp_query->is_single = true; ?>
+					<div class="menunav-prev">
+					<?php previous_comic_link('%link', '&lsaquo;'); ?>
+					</div>
+					<?php $wp_query->is_single = false;
+				endwhile; 
+			} elseif (is_single() & in_comic_category()) { ?>
+				<div class="menunav-prev">
+				<?php previous_comic_link('%link', '&lsaquo;'); ?>
+				</div>
+				<div class="menunav-next">
+				<?php next_comic_link('%link', '&rsaquo;'); ?>
+				</div>
+			<?php } ?>
+		<?php } ?>
 	</div>
-
 	<?php 
 	$menulinks = wp_list_bookmarks('echo=0&title_li=&categorize=0&title_before=&title_after=&category_name=menubar');
 	$menulinks = preg_replace('#<li ([^>]*)>#', '<li class="page-item link">', $menulinks);
@@ -66,7 +79,6 @@ function comicpress_menubar() {
 	<?php if ($contact_in_menubar == 'yes') { ?>
 		<li class="page_item page-item-contact"><a href="mailto:<?php bloginfo('admin_email'); ?>">Contact</a></li>
 	<?php } ?>
-		<li class="page_item page-item-rss"><a href="<?php bloginfo('rss2_url'); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/data_rss.gif" class="rss" alt="RSS" /></a></li>		    
 	</ul>
 	<div class="clear"></div>
 </div>

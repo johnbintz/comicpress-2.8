@@ -15,7 +15,7 @@ Style: Default
 .navi {
 	width: 66px;
 	padding: 66px 0 0 0;
-	margin: 0 5px;
+/*	margin: 0 5px; */
 	display: block;
 	float: left;
 	overflow: hidden;
@@ -40,6 +40,11 @@ Style: Default
 .navi-prev {
 	margin-right: 30px;
 	background: url('prev.png') no-repeat;
+}
+
+
+.navi-comments, .navi-archive, .navi-random, .navi-buyprint {
+	margin: 0 5px;
 }
 
 .navi-buyprint {
@@ -107,5 +112,6 @@ Style: Default
 }
 
 .comic-left .navi-prev, .comic-right .navi-prev, .comic-left .navi-next, .comic-right .navi-next {
-	margin: 0 5px;
+/*	margin: 0 5px; */
 	}
+

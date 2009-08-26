@@ -173,6 +173,22 @@ $options = array (
 			"id" => "comicpress-graphicnav_directory",
 			"default" => "scifi",
 			"type" => "comicpress-graphicnav_directory"),
+		
+		array(
+			"id" => "comicpress-enable_search_in_menubar",
+			"default" => "no",
+			"type" => "comicpress-enable_search_in_menubar"),
+			
+		array(
+			"id" => "comicpress-enable_rss_in_menubar",
+			"default" => "no",
+			"type" => "comicpress-enable_rss_in_menubar"),
+			
+		array(
+			"id" => "comicpress-enable_navigation_in_menubar",
+			"default" => "yes",
+			"type" => "comicpress-enable_navigation_in_menubar"),
+			
 
 		array("type" => "close")
 		);

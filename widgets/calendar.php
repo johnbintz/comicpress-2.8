@@ -9,6 +9,15 @@ Author URI: http://webcomicplanet.com/
 
 */
 
+function comicpress_calendar() {
+	global $post; ?>
+	<div id="wp-calendar-top"></div>
+	<div id="wp-calendar-wrap">
+	<?php get_calendar(); ?>
+	</div>
+	<div id="wp-calendar-bottom"></div>
+<?php }
+
 class widget_comicpress_calendar extends WP_Widget {
 	
 	function widget_comicpress_calendar() {
@@ -23,7 +32,7 @@ class widget_comicpress_calendar extends WP_Widget {
 		echo $before_widget;
 		$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']); 
 		if ( !empty( $title ) ) { echo $before_title . $title . $after_title; };
-		get_calendar();
+		comicpress_calendar();
 		echo $after_widget;
 	}
 	

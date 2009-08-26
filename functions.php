@@ -70,6 +70,9 @@ if (get_option('upload_path') !== false) {
 				'disable_categories_in_posts'	=> 'disable_categories_in_posts',
 				'moods_directory'				=> 'moods_directory',
 				'graphicnav_directory'			=> 'graphicnav_directory',
+				'enable_search_in_menubar'		=> 'enable_search_in_menubar',
+				'enable_rss_in_menubar'			=> 'enable_rss_in_menubar',
+				'enable_navigation_in_menubar'	=> 'enable_navigation_in_menubar',
 				'contact_in_menubar'			=> 'contact_in_menubar' ) as $options => $variable_name) {
 		$variables_to_extract[$variable_name] = get_option("comicpress-${options}");
 	}
