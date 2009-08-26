@@ -294,7 +294,7 @@ function comicpress_admin() {
 				$current_gnav_directory = get_option($value['id']);
 				if (empty($current_directory)) $current_directory = 'scifi';
 					
-				$count = count($results = glob(get_template_directory() . '/images/nav/'.$current_directory.'/*'));
+				$count = count($results = glob(get_template_directory() . '/images/nav/'.$current_gnav_directory.'/*'));
 				$gnav_directories = glob(get_template_directory() . '/images/nav/*');
 			?>
 				<tr>
