@@ -323,6 +323,51 @@ function get_terminal_post_in_category($categoryID, $first = true) {
 }
 
 /**
+ * Find the first post in the storyline prior to the current one.
+ */
+function get_previous_storyline_start_permalink() {
+  if (($category_id = get_adjacent_storyline_category_id()) !== false) {
+    return get_terminal_post_in_category($category_id);
+  }
+  return false;
+}
+
+/**
+ * Find the first post in the storyline following to the current one.
+ */
+function get_next_storyline_start_permalink() {
+  if (($category_id = get_adjacent_storyline_category_id(true)) !== false) {
+    return get_terminal_post_in_category($category_id);
+  }
+  return false;
+}
+
+function get_adjacent_storyline_category_id($next = false) {
+  global $post, $category_tree;
+
+  $categories = wp_get_post_categories($post->ID);
+  if (is_array($categories)) {
+    $category_id = reset($categories);
+    for ($i = 0, $il = count($category_tree); $i < $il; ++$i) {
+      $storyline_category_id = end(explode("/", $category_tree[$i]));
+
+      if ($storyline_category_id == $category_id) {
+        $target_index = false;
+        if ($next) {
+          $target_index = $i + 1;
+        } else {
+          $target_index = $i - 1;
+        }
+        if (isset($category_tree[$target_index])) {
+          return end(explode('/', $category_tree[$target_index]));
+        }
+      }
+    }
+  }
+  return false;
+}
+
+/**
 * Find a comic file in the filesystem.
 * @param string $folder The folder name to search.
 * @param string $override_post A WP Post object to use in place of global $post.
