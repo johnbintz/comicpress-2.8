@@ -34,128 +34,209 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 		$prev_story = '';
 		$next_story = '';
 		?>
-		<div id="comic_navi_wrapper">
-		<?php if ($instance['firstlast'] != 'off') {  ?>
-			<div class="comic_navi_first">
-			<?php if (!empty($first_comic) && ($first_comic != $this_permalink)) { ?>
-				<a href="<?php echo $first_comic; ?>" class="rollfirst" title="First">&nbsp;</a>
+				
+<div id="comic_navi_wrapper">
+	<table id="comic_navi"><tr><td>
+		<?php if ($instance['first'] != 'off') {
+			if (!empty($first_comic) && ($first_comic != $this_permalink)) { ?>
+				<a href="<?php echo $first_comic; ?>" class="navi navi-first" title="<?php echo $instance['first_title']; ?>"><?php echo $instance['first_title']; ?></a>
 			<?php } else { ?>
-				<div class="rollfirst rollagain"></div>
-			<?php } ?>
-			</div>
-		<?php } 
-		if ($instance['storynav'] != 'off') { ?>
-			<div class="comic_navi_story_previous">
-			<?php if (!empty($prev_story)) { ?>
-				<a href="<?php echo $prev_story; ?>" class="rollstoryprev" title="Previous Story Start">&nbsp;</a>
+				<div class="navi navi-first navi-void"><?php echo $instance['first_title']; ?></div>
+			<?php } 
+		} 
+		if ($instance['story_prev'] != 'off') { 
+			if (!empty($prev_story)) { ?>
+				<a href="<?php echo $prev_story; ?>" class="navi navi-prevchap" title="<?php echo $instance['story_prev_title']; ?>"><?php echo $instance['story_prev_title']; ?></a>
 			<?php } else { ?>
-				<div class="rollstoryprev rollagain"></div>
-			<?php } ?>
-			</div>
-		<?php } 
-		if ($instance['previous'] != 'off') { ?>
-			<div class="comic_navi_previous">
-			<?php if (!empty($prev_comic)) { ?>
-				<a href="<?php echo $prev_comic; ?>" class="rollprev" title="Previous">&nbsp;</a>
+				<div class="navi navi-prevchap navi-void"><?php echo $instance['story_prev_title']; ?></div>
+			<?php } 
+		} 
+		if ($instance['previous'] != 'off') {
+			if (!empty($prev_comic)) { ?>
+				<a href="<?php echo $prev_comic; ?>" class="navi navi-prev" title="<?php echo $instance['previous_title']; ?>"><?php echo $instance['previous_title']; ?></a>
 			<?php } else { ?>
-				<div class="rollprev rollagain"></div>
-			<?php } ?>
-			</div>
-		<?php }
+				<div class="navi navi-prev navi-void"><?php echo $instance['previous_title']; ?></div>
+			<?php } 
+		}
 		if ($instance['archives'] != 'off' && !empty($instance['archive_path'])) { ?>
-			<div class="comic_navi_archives">
-			<a href="<?php echo $instance['archive_path']; ?>" class="rollarchives" title="Archives">&nbsp;</a>
-			</div>
+			<a href="<?php echo $instance['archive_path']; ?>" class="navi navi-archive" title="<?php echo $instance['archives_title']; ?>"><?php echo $instance['archives_title']; ?></a>
 		<?php } 
 		if ($instance['random'] != 'off') { ?>
-			<div class="comic_navi_random">
-				<a href="<?php echo bloginfo('url'); ?>/?randomcomic" class="rollrandom" title="Random Comic">&nbsp;</a>
-			</div>
+			<a href="<?php echo bloginfo('url'); ?>/?randomcomic" class="navi navi-random" title="<?php echo $instance['random_title']; ?>"><?php echo $instance['random_title']; ?></a>
 		<?php } 
 		if ($instance['comments'] != 'off') { ?>
-			<div class="comic_navi_comments">
-				<a href="<?php the_permalink(); ?>#respond" class="rollcomments" title="Comments"><span class="comic_navi_comments_count"><?php comments_number('0', '1', '%'); ?></span></a>
-			</div>
-		<?php } 		
-		if ($instance['next'] != 'off') { ?>
-			<div class="comic_navi_next">
-			<?php if (!empty($next_comic)) { ?>
-				<a href="<?php echo $next_comic; ?>" class="rollnext" title="Next">&nbsp;</a>
-			<?php } else { ?>
-				<div class="rollnext rollagain"></div>
-			<?php } ?>
-			</div>
-		<?php } 
-		if ($instance['storynav'] != 'off') { ?>
-			<div class="comic_navi_story_next">
-			<?php if (!empty($next_story)) { ?>
-				<a href="<?php echo $next_story; ?>" class="rollstorynext" title="Next Story Start">&nbsp;</a>
-			<?php } else { ?>
-				<div class="rollstorynext rollagain"></div>
-			<?php } ?>
-			</div>
+			<a href="<?php the_permalink(); ?>#comments" class="navi navi-comments" title="<?php echo $instance['comments_title']; ?>"><span class="navi-comments-count"><?php comments_number('0', '1', '%'); ?></span><?php echo $instance['comments_title']; ?></a>
 		<?php }
-		if ($instance['firstlast'] != 'off') {  ?>
-			<div class="comic_navi_latest">
-			<?php if (!empty($last_comic) && ($last_comic != $this_permalink)) { ?>
-				<a href="<?php echo $first_comic; ?>" class="rolllast" title="Latest">&nbsp;</a>
+		if ($instance['buyprint'] != 'off') { ?>	
+			<form method="post" title="<?php echo $instance['buyprint_title']; ?>" action="<?php global $buy_print_url; echo $buy_print_url; ?>" class="navi-buyprint-form"> 
+				<input type="hidden" name="comic" value="<?php echo get_the_ID(); ?>" /> 
+			<button class="navi navi-buyprint" type="submit" value="submit"><?php echo $instance['buyprint_title']; ?></button> 
+			</form> 
+		<?php } 	
+		if ($instance['next'] != 'off') {
+			if (!empty($next_comic)) { ?>
+				<a href="<?php echo $next_comic; ?>" class="navi navi-next" title="<?php echo $instance['next_title']; ?>"><?php echo $instance['next_title']; ?></a>
 			<?php } else { ?>
-				<div class="rolllast rollagain"></div>
-			<?php } ?>
-			</div>
-		<?php } ?>
-			<div class="clear"></div>
-		</div>
+				<div class="navi navi-next navi-void"><?php echo $instance['next_title']; ?></div>
+			<?php }
+		} 
+		if ($instance['story_next'] != 'off') { 
+			if (!empty($next_story)) { ?>
+				<a href="<?php echo $next_story; ?>" class="navi navi-nextchap" title="<?php echo $instance['story_next_title']; ?>"><?php echo $instance['story_next_title']; ?></a>
+			<?php } else { ?>
+				<div class="navi navi-nextchap navi-void"><?php echo $instance['story_next_title']; ?></div>
+			<?php }
+		}
+		if ($instance['last'] != 'off') {
+			if (!empty($last_comic) && ($last_comic != $this_permalink)) { ?>
+				<a href="<?php echo $last_comic; ?>" class="navi navi-last" title="<?php echo $instance['last_title']; ?>"><?php echo $instance['last_title']; ?></a>
+			<?php } else { ?>
+				<div class="navi navi-last navi-void"><?php echo $instance['last_title']; ?></div>
+			<?php }
+		} ?>
+	</td></tr></table>
+</div>
+
 <?php } 
 
 	
 	function update($new_instance, $old_instance) {
 		$instance = $old_instance;
-		$instance['firstlast'] = $new_instance['firstlast'];
-		$instance['storynav'] = $new_instance['storynav'];
+		$instance['first'] = $new_instance['first'];
+		$instance['last'] = $new_instance['last'];
+		$instance['story_prev'] = $new_instance['story_prev'];
+		$instance['story_next'] = $new_instance['story_next'];
 		$instance['previous'] = $new_instance['previous'];
 		$instance['random'] = $new_instance['random'];
 		$instance['archives'] = $new_instance['archives'];
 		$instance['comments'] = $new_instance['comments'];
 		$instance['next'] = $new_instance['next'];
 		$instance['archive_path'] = strip_tags($new_instance['archive_path']);
+		$instance['buyprint'] = $new_instance['buyprint'];
+		
+		$instance['first_title'] = strip_tags($new_instance['first_title']);
+		$instance['last_title'] = strip_tags($new_instance['last_title']);
+		$instance['story_prev_title'] = strip_tags($new_instance['story_prev_title']);
+		$instance['story_next_title'] = strip_tags($new_instance['story_next_title']);
+		$instance['previous_title'] = strip_tags($new_instance['previous_title']);
+		$instance['random_title'] = strip_tags($new_instance['random_title']);
+		$instance['archives_title'] = strip_tags($new_instance['archives_title']);
+		$instance['comments_title'] = strip_tags($new_instance['comments_title']);
+		$instance['next_title'] = strip_tags($new_instance['next_title']);
+		$instance['buyprint_title'] = strip_tags($new_instance['buyprint_title']);
 		return $instance;
 	}
 	
 	function form($instance) {
-		$instance = wp_parse_args( (array) $instance, array( 'firstlast' => 'on', 'storynav' => 'off', 'previous' => 'on',  'random' => 'off', 'archives' => 'off', 'comments' => 'off', 'next' => 'on', 'archive_path' => '' ) );
-		$firstlast = $instance['firstlast']; if (empty($firstlast)) $firstlast = 'on';
-		$storynav = $instance['storynav']; 	if (empty($storynav)) $storynav = 'off';
+		$instance = wp_parse_args( (array) $instance, array( 
+		'first' => 'on',
+		'last' => 'on',
+		'story_prev' => 'off',
+		'story_next' => 'off',
+		'previous' => 'on',  
+		'random' => 'off', 
+		'archives' => 'off', 
+		'comments' => 'off', 
+		'next' => 'on', 
+		'archive_path' => '', 
+		'buyprint' => 'off',
+		'first_title' => 'First',
+		'last_title' => 'Latest',
+		'story_prev_title' => 'Chapter',
+		'story_next_title' => 'Chapter',
+		'previous_title' => 'Previous',  
+		'random_title' => 'Random', 
+		'archives_title' => 'Archives', 
+		'comments_title' => 'Comments', 
+		'next_title' => 'Next', 
+		'buyprint_title' => 'Buy Print'
+		 ) );
+		$first = $instance['first']; if (empty($first)) $first = 'on';
+		$last = $instance['last']; if (empty($last)) $last = 'on';
+		$story_prev = $instance['story_prev']; 	if (empty($story_prev)) $story_prev = 'off';
+		$story_next = $instance['story_next']; 	if (empty($story_next)) $story_next = 'off';
 		$previous = $instance['previous']; 	if (empty($previous)) $previous = 'on';
 		$random = $instance['random']; if (empty($random)) $random = 'off';
 		$archives = $instance['archives']; if (empty($archives)) $archives = 'off';
 		$comments = $instance['comments']; if (empty($comments)) $comments = 'off';
 		$archive_path = $instance['archive_path'];
 		$next = $instance['next']; if (empty($next)) $next = 'on';
+		$buyprint = $instance['buyprint']; if (empty($buyprint)) $buyprint = 'off';
+		
+		$first_title = $instance['first_title']; 
+		$last_title = $instance['last_title']; 
+		$story_prev_title = $instance['story_prev_title']; 	
+		$story_next_title = $instance['story_next_title']; 
+		$previous_title = $instance['previous_title']; 	
+		$random_title = $instance['random_title']; 
+		$archives_title = $instance['archives_title'];
+		$comments_title = $instance['comments_title']; 
+		$next_title = $instance['next_title']; 
+		$buyprint_title = $instance['buyprint_title'];
+		
 		?>
 	
-		<label for="<?php echo $this->get_field_id('firstlast'); ?>"><strong>First &amp; Last</strong><br />
-		<input id="<?php echo $this->get_field_id('firstlast'); ?>" name="<?php echo $this->get_field_name('firstlast'); ?>" type="radio" value="on"<?php if ( $firstlast == "on") { echo " checked"; } ?> />On</label>&nbsp;<input id="<?php echo $this->get_field_id('firstlast'); ?>" name="<?php echo $this->get_field_name('firstlast'); ?>" type="radio" value="off"<?php if ( $firstlast == "off") { echo " checked"; } ?> />Off</label><br />
+		<label for="<?php echo $this->get_field_id('first'); ?>"><strong>First</strong><br />
+		<input id="<?php echo $this->get_field_id('first'); ?>" name="<?php echo $this->get_field_name('first'); ?>" type="radio" value="on"<?php if ( $first == "on") { echo " checked"; } ?> />On</label>&nbsp;<input id="<?php echo $this->get_field_id('first'); ?>" name="<?php echo $this->get_field_name('first'); ?>" type="radio" value="off"<?php if ( $first == "off") { echo " checked"; } ?> />Off</label><br />
+		Title:<br />
+		<input class="widefat" id="<?php echo $this->get_field_id('first_title'); ?>" name="<?php echo $this->get_field_name('first_title'); ?>" type="text" value="<?php echo attribute_escape($first_title); ?>" /></label><br />
+		
 		<br />
-		<label for="<?php echo $this->get_field_id('storynav'); ?>"><strong>Storyline Prev &amp; Next</strong><br />
-		<input id="<?php echo $this->get_field_id('storynav'); ?>" name="<?php echo $this->get_field_name('storynav'); ?>" type="radio" value="on"<?php if ( $storynav == "on") { echo " checked"; } ?> />On</label>&nbsp;<input id="<?php echo $this->get_field_id('storynav'); ?>" name="<?php echo $this->get_field_name('storynav'); ?>" type="radio" value="off"<?php if ( $storynav == "off") { echo " checked"; } ?> />Off</label><br />
+		<label for="<?php echo $this->get_field_id('last'); ?>"><strong>Last</strong><br />
+		<input id="<?php echo $this->get_field_id('last'); ?>" name="<?php echo $this->get_field_name('last'); ?>" type="radio" value="on"<?php if ( $last == "on") { echo " checked"; } ?> />On</label>&nbsp;<input id="<?php echo $this->get_field_id('last'); ?>" name="<?php echo $this->get_field_name('last'); ?>" type="radio" value="off"<?php if ( $last == "off") { echo " checked"; } ?> />Off</label><br />
+		Title:<br />
+		<input class="widefat" id="<?php echo $this->get_field_id('last_title'); ?>" name="<?php echo $this->get_field_name('last_title'); ?>" type="text" value="<?php echo attribute_escape($last_title); ?>" /></label><br />
+		
 		<br />
 		<label for="<?php echo $this->get_field_id('previous'); ?>"><strong>Previous</strong><br />
 		<input id="<?php echo $this->get_field_id('previous'); ?>" name="<?php echo $this->get_field_name('previous'); ?>" type="radio" value="on"<?php if ( $previous == "on") { echo " checked"; } ?> />On</label>&nbsp;<input id="<?php echo $this->get_field_id('previous'); ?>" name="<?php echo $this->get_field_name('previous'); ?>" type="radio" value="off"<?php if ( $previous == "off") { echo " checked"; } ?> />Off</label><br />
+		Title:<br />
+		<input class="widefat" id="<?php echo $this->get_field_id('previous_title'); ?>" name="<?php echo $this->get_field_name('previous_title'); ?>" type="text" value="<?php echo attribute_escape($previous_title); ?>" /></label><br />
+		
 		<br />
 		<label for="<?php echo $this->get_field_id('next'); ?>"><strong>Next</strong><br />
 		<input id="<?php echo $this->get_field_id('next'); ?>" name="<?php echo $this->get_field_name('next'); ?>" type="radio" value="on"<?php if ( $next == "on") { echo " checked"; } ?> />On</label>&nbsp;<input id="<?php echo $this->get_field_id('next'); ?>" name="<?php echo $this->get_field_name('next'); ?>" type="radio" value="off"<?php if ( $next == "off") { echo " checked"; } ?> />Off</label><br />
+		Title:<br />
+		<input class="widefat" id="<?php echo $this->get_field_id('next_title'); ?>" name="<?php echo $this->get_field_name('next_title'); ?>" type="text" value="<?php echo attribute_escape($next_title); ?>" /></label><br />
+		
+		<br />
+		<label for="<?php echo $this->get_field_id('story_prev'); ?>"><strong>Previous Chapter</strong><br />
+		<input id="<?php echo $this->get_field_id('story_prev'); ?>" name="<?php echo $this->get_field_name('story_prev'); ?>" type="radio" value="on"<?php if ( $story_prev == "on") { echo " checked"; } ?> />On</label>&nbsp;<input id="<?php echo $this->get_field_id('story_prev'); ?>" name="<?php echo $this->get_field_name('story_prev'); ?>" type="radio" value="off"<?php if ( $story_prev == "off") { echo " checked"; } ?> />Off</label><br />
+		Title:<br />
+		<input class="widefat" id="<?php echo $this->get_field_id('story_prev_title'); ?>" name="<?php echo $this->get_field_name('story_prev_title'); ?>" type="text" value="<?php echo attribute_escape($story_prev_title); ?>" /></label><br />
+		
+		<br />		
+		<label for="<?php echo $this->get_field_id('story_next'); ?>"><strong>Next Chapter</strong><br />
+		<input id="<?php echo $this->get_field_id('story_next'); ?>" name="<?php echo $this->get_field_name('story_next'); ?>" type="radio" value="on"<?php if ( $story_next == "on") { echo " checked"; } ?> />On</label>&nbsp;<input id="<?php echo $this->get_field_id('story_next'); ?>" name="<?php echo $this->get_field_name('story_next'); ?>" type="radio" value="off"<?php if ( $story_next == "off") { echo " checked"; } ?> />Off</label><br />
+		Title:<br />
+		<input class="widefat" id="<?php echo $this->get_field_id('story_next_title'); ?>" name="<?php echo $this->get_field_name('story_next_title'); ?>" type="text" value="<?php echo attribute_escape($story_next_title); ?>" /></label><br />
+		
 		<br />
 		<label for="<?php echo $this->get_field_id('archives'); ?>"><strong>Archives</strong><br />
 		<input id="<?php echo $this->get_field_id('archives'); ?>" name="<?php echo $this->get_field_name('archives'); ?>" type="radio" value="on"<?php if ( $archives == "on") { echo " checked"; } ?> />On</label>&nbsp;<input id="<?php echo $this->get_field_id('archives'); ?>" name="<?php echo $this->get_field_name('archives'); ?>" type="radio" value="off"<?php if ( $archives == "off") { echo " checked"; } ?> />Off<br />
+		Title:<br />
+		<input class="widefat" id="<?php echo $this->get_field_id('archives_title'); ?>" name="<?php echo $this->get_field_name('archives_title'); ?>" type="text" value="<?php echo attribute_escape($archives_title); ?>" /></label><br />
 		Archive URL:<br />
 		<input class="widefat" id="<?php echo $this->get_field_id('archive_path'); ?>" name="<?php echo $this->get_field_name('archive_path'); ?>" type="text" value="<?php echo attribute_escape($archive_path); ?>" /></label><br />
+
 		<br />
 		<label for="<?php echo $this->get_field_id('comments'); ?>"><strong>Comments</strong><br />
 		<input id="<?php echo $this->get_field_id('comments'); ?>" name="<?php echo $this->get_field_name('comments'); ?>" type="radio" value="on"<?php if ( $comments == "on") { echo " checked"; } ?> />On</label>&nbsp;<input id="<?php echo $this->get_field_id('comments'); ?>" name="<?php echo $this->get_field_name('comments'); ?>" type="radio" value="off"<?php if ( $comments == "off") { echo " checked"; } ?> />Off</label><br />
+		Title:<br />
+		<input class="widefat" id="<?php echo $this->get_field_id('comments_title'); ?>" name="<?php echo $this->get_field_name('comments_title'); ?>" type="text" value="<?php echo attribute_escape($comments_title); ?>" /></label><br />
+		
 		<br />
 		<label for="<?php echo $this->get_field_id('random'); ?>"><strong>Random</strong><br />
 		<input id="<?php echo $this->get_field_id('random'); ?>" name="<?php echo $this->get_field_name('random'); ?>" type="radio" value="on"<?php if ( $random == "on") { echo " checked"; } ?> />On</label>&nbsp;<input id="<?php echo $this->get_field_id('random'); ?>" name="<?php echo $this->get_field_name('random'); ?>" type="radio" value="off"<?php if ( $random == "off") { echo " checked"; } ?> />Off</label><br />
+		Title:<br />
+		<input class="widefat" id="<?php echo $this->get_field_id('random_title'); ?>" name="<?php echo $this->get_field_name('random_title'); ?>" type="text" value="<?php echo attribute_escape($random_title); ?>" /></label><br />
+		
+		<br />
+		<label for="<?php echo $this->get_field_id('buyprint'); ?>"><strong>Buy Print</strong><br />
+		<input id="<?php echo $this->get_field_id('buyprint'); ?>" name="<?php echo $this->get_field_name('buyprint'); ?>" type="radio" value="on"<?php if ( $buyprint == "on") { echo " checked"; } ?> />On</label>&nbsp;<input id="<?php echo $this->get_field_id('buyprint'); ?>" name="<?php echo $this->get_field_name('buyprint'); ?>" type="radio" value="off"<?php if ( $buyprint == "off") { echo " checked"; } ?> />Off</label><br />
+		Title:<br />
+		<input class="widefat" id="<?php echo $this->get_field_id('buyprint_title'); ?>" name="<?php echo $this->get_field_name('buyprint_title'); ?>" type="text" value="<?php echo attribute_escape($buyprint_title); ?>" /></label><br />
+		
 		
 		<?php
 	}

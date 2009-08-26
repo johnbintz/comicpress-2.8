@@ -442,7 +442,7 @@ h3, h3 a {
 
 
 .narrowcolumn {
-	width: 540px;
+	width: 560px;
 	margin: 0 auto;
 	float: left;
 }
@@ -764,14 +764,14 @@ ul.children {
 /* Left Sidebar Themes */
 #sidebar-left {
 	float: left;
-	width: 220px;
+	width: 210px;
 }
 
 
 /* Right Sidebar Themes */
 #sidebar-right {
 	float: right;
-	width: 220px;
+	width: 210px;
 }
 
 
@@ -792,9 +792,9 @@ ul.children {
 
 .sidebar {
 	font-size: 11px;
-	margin: 0 10px 0 10px;
+	margin: 0 5px 0 5px;
 	overflow: hidden;
-	padding: 0 0 10px 0;
+	padding: 0 0 5px 0;
 }
 
 

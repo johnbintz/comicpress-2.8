@@ -1,10 +1,9 @@
-﻿/* COMIC NAVIGATION 
-Author: Philip M. Hofer (Frumph)
-Style: Sci Fi
+/* COMIC NAVIGATION 
+Author: Tyler Martin
+Style: Default
 */
-
 #comic_navi_wrapper {
-	padding: 5px 0 5px 0;
+	padding: 5px 0 10px 0;
 }
 
 #comic_navi {
@@ -14,8 +13,9 @@ Style: Sci Fi
 }
 
 .navi {
-	width: 60px;
-	padding: 56px 0 0 0;
+	width: 66px;
+	padding: 66px 0 0 0;
+	margin: 0 5px;
 	display: block;
 	float: left;
 	overflow: hidden;
@@ -25,7 +25,7 @@ Style: Sci Fi
 }
 
 	.navi:hover {
-		background-position: -60px 0;
+		background-position: -66px 0;
 	}
 
 .navi-first {
@@ -38,7 +38,7 @@ Style: Sci Fi
 }
 
 .navi-prev {
-	margin-right: 10px;
+	margin-right: 30px;
 	background: url('prev.png') no-repeat;
 }
 
@@ -53,7 +53,7 @@ Style: Sci Fi
 	}
 
 	.navi-buyprint-form {
-		width: 60px;
+		width: 76px;
 		display: block;
 		float: left;
 		margin: 0;
@@ -74,14 +74,13 @@ Style: Sci Fi
 }
 
 	a.navi-comments span {
-		width: 60px;
-		height: 56px;
-		position: relative;	
+		width: 66px;
+		height: 66px;
 		display: block;
-		font-size: 22px;
+		font-size: 16px;
 		font-weight: bold;
-		line-height: 50px;
-		color: #FFF;
+		line-height: 66px;
+		color: #c5c5c5;
 	}
 	
 		a.navi-comments span:hover {
@@ -89,7 +88,7 @@ Style: Sci Fi
 			}
 	
 .navi-next {
-	margin-left: 10px;
+	margin-left: 30px;
 	background: url('next.png') no-repeat;
 }
 
@@ -104,8 +103,9 @@ Style: Sci Fi
 
 .navi-void, .navi-void:hover {
 	color: #999;
-	background-position: -120px 0;
+	background-position: -132px 0;
 }
 
 .comic-left .navi-prev, .comic-right .navi-prev, .comic-left .navi-next, .comic-right .navi-next {
+	margin: 0 5px;
 	}
