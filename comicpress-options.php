@@ -292,16 +292,17 @@ function comicpress_admin() {
 				<?php break;
 			case "comicpress-graphicnav_directory": 
 				$current_gnav_directory = get_option($value['id']);
-				if (empty($current_directory)) $current_directory = 'scifi';
+				if (empty($current_gnav_directory)) $current_gnav_directory = 'default';
 					
 				$count = count($results = glob(get_template_directory() . '/images/nav/'.$current_gnav_directory.'/*'));
 				$gnav_directories = glob(get_template_directory() . '/images/nav/*');
+				
 			?>
 				<tr>
 				<th scope="row"><strong>Graphic Navigation Directory</strong><br /><br />Choose a directory to get the graphic navigation styling from.<br /></th>
 				<td valign="top">
-						<label>
-								<select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
+					<label>
+						<select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
 				<?php
 					foreach ($gnav_directories as $gnav_dirs) {
 						if (is_dir($gnav_dirs)) { 
@@ -310,11 +311,12 @@ function comicpress_admin() {
 					<?php }
 					}
 				?>
-							</select>
-						</label>
+						</select>
+					</label>
 				</td>
 				<td valign="top">
 					<br />
+					<?php echo get_template_directory() . '/images/nav/'; ?>
 					Graphic Navigation directories are found in your theme directory/images/nav/* to create your own custom graphic navigation menu buttons just create a directory
 					under images/nav/ and place your image files inside of it and create a navstyle.css file to determine the style of your navigation display.
 				</td>

@@ -80,7 +80,7 @@ if (get_option('upload_path') !== false) {
 	extract($variables_to_extract);
 }
 
-if (empty($graphicnav_directory)) $graphicnav_directory = 'scifi';
+if (empty($graphicnav_directory)) $graphicnav_directory = 'default';
 if (empty($moods_directory)) $moods_directory = 'default';
 
 function is_cp_theme_style($choices) {
