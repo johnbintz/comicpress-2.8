@@ -105,8 +105,6 @@
     <div class="post-page-foot"></div>
 
   <?php endif; ?>
-        </div>
-	 <div class="post-page-foot"></div>
 	
 			<?php if(function_exists('wp_pagenavi')) { ?>
 				<div class="paginav">
@@ -119,9 +117,8 @@
 					<div class="clear"></div>
 				</div>
 			<?php } ?>
-			<div class="clear"></div>
-		</div>
-	
+	</div>
+	</div>
 </div>
 
 <?php 

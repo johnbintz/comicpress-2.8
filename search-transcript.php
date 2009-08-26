@@ -117,9 +117,8 @@
 				<div class="clear"></div>
 			</div>
 		<?php } ?>
-		<div class="clear"></div>
 	</div>
-	
+	</div>
 </div>
 
 <?php 
