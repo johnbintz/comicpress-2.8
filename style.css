@@ -474,32 +474,23 @@ h3, h3 a {
 	margin-bottom: 20px;
 }
 
-.entry {
-	padding: 5px;
-}
-
 .post-info {
 	margin-bottom: 5px;
 }
 
 .post-text {
-	padding-left: 5px;
 	overflow: hidden;
 	display: block;
 }
 
 .post-author-gravatar {
 	float: right;
-	margin: 3px;
-	width: 63px;
-	height: 63px;
+	margin-left: 2px;
 }
 
 .post-mood {
 	float: left;
-	margin: 2px;
-	width: 63px;
-	height: 63px;
+	margin-right: 2px;
 }
 
 .post-date {
@@ -508,6 +499,7 @@ h3, h3 a {
 	font-size: 15px;
 	font-weight: bold;
 	float: left;
+	margin-right: 3px;
 }
 
 .post-date .date {
@@ -937,6 +929,11 @@ ul.children {
 	border: 0;
 }
 
+.searchresults {
+	float: right;
+	padding: 5px;
+}
+
 .archive-dropdown-wrap {
 	background: url('images/browse-search.png') no-repeat;
 }
@@ -1145,41 +1142,6 @@ a.transcript-title {
 	font-family: 'Courier New' , monospace;
 	overflow: hidden;
 }
-
-
-#s-transcript {
-	width: 140px;
-	margin: 0;
-	padding: 2px;
-	font-size: 12px;
-	font-family: 'Georgia' , serif;
-	font-style: italic;
-}
-
-
-#searchsubmit-transcript {
-	padding: 0 5px;
-	font-size: 12px;
-	font-family: 'Arial' , sans-serif;
-}
-
-#s-search {
-	width: 140px;
-	margin: 0;
-	padding: 2px;
-	font-size: 12px;
-	font-family: 'Georgia' , serif;
-	font-style: italic;
-}
-
-
-#searchsubmit-search {
-	padding: 0 5px;
-	font-size: 12px;
-	font-family: 'Arial' , sans-serif;
-}
-
-
 
 
 /* Pingbacks and Trackbacks */

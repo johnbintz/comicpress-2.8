@@ -11,8 +11,8 @@ if (isset($_GET['archive_year'])) {
 } else { 
 	$latest_comic = get_terminal_post_in_category(get_all_comic_categories_as_cat_string(),false); 
 	$archive_year = get_post_time('Y', false, $latest_comic, true); 
-	if (empty($archive_year)) $archive_year = date('Y'); 
 }
+if (empty($archive_year)) $archive_year = date('Y'); 
 ?> 
 
 

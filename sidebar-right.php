@@ -25,9 +25,11 @@
 
 				<ul><?php wp_list_bookmarks() ?></ul>
 				<ul>
-				<li>
-					<?php include(get_template_directory() . '/searchform.php'); ?>
-				</li>
+					<li>
+						<ul>
+							<?php include(get_template_directory() . '/searchform.php'); ?>
+						</ul>
+					</li>
 				</ul>
 			<?php endif; ?>
 	</div>

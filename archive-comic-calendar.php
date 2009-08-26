@@ -13,11 +13,10 @@ $dayWidth = 22; //set to .cpcal-day total width in pixels including: width, left
 	if (isset($_GET['archive_year'])) { 
 		$archive_year = (int)$_GET['archive_year']; 
 	} else { 
-		$latest_comic = get_terminal_post_in_category(get_all_comic_categories_as_cat_string(),false); 
+		$latest_comic = get_terminal_post_in_category(get_all_comic_categories_as_cat_string(),true); 
 		$archive_year = get_post_time('Y', false, $latest_comic, true); 
-		if (empty($archive_year)) $archive_year = date('Y'); 
 	}
-
+	if (empty($archive_year)) $archive_year = date('Y'); 
 
 
 $firstDayMargins = array();
@@ -46,7 +45,7 @@ function leapYear($yr) {
 		} else {
 			if ($yr % 400 != 0) {
 				return 28;
-			} else {
+            } else {
 				return 29;
 			}
 		}
@@ -93,12 +92,12 @@ $month['12'] = array('month' => 'December', 'days' => '31');
 
 	<div class="post-page-head"></div>
 	<div class="post-page">
-	<?php while (have_posts()) : the_post() ?>
+	<?php if (have_posts()): ?>
 		<div class="entry">
 			<h2 class="pagetitle"><?php the_title() ?></h2>
 			<?php the_content(); ?>
 		</div>
-	<?php endwhile; ?>
+	<?php endif; ?>
 
 		<div class="archive-yearlist">| 
 <?php $years = $wpdb->get_col("SELECT DISTINCT YEAR(post_date) FROM $wpdb->posts WHERE post_status = 'publish' ORDER BY post_date ASC");

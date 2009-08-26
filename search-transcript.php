@@ -24,12 +24,12 @@
 	
   <div class="post-page-head"></div>
   <div class="post-page">			
-    <?php
-		$tmp_search = new WP_Query('s=' . wp_specialchars($_GET['s']) . '&show_posts=-1&posts_per_page=-1');
-		$count = $tmp_search->post_count;
-		if (!$count) $count = "no";
-    ?>
-	<div class="searchresults">Found <?php echo $count; ?> result<?php if ($count !== 1) { echo "s"; } ?>.</div>
+<?php
+$tmp_search = new WP_Query($query_string.'&order=desc&show_posts=-1&posts_per_page=-1');
+$count = $tmp_search->post_count;
+			?>
+		<?php if (!$count) $count = "no"; ?>
+		<div class="searchresults">Found <?php echo $count; ?> result<?php if ($count !== 1) { echo "s"; } ?>.</div>
     <h2 class="pagetitle">Transcript search for &lsquo;<?php the_search_query() ?>&rsquo;</h2>
 	
   <?php if (have_posts()) : ?>
@@ -41,19 +41,25 @@
 
 			<div class="post-comic-head"></div>
 			<div class="post-comic">
-				<div class="post-info">
-					<div class="post-date">
-						<div class="date"><span><?php the_time('M') ?></span> <?php the_time('d') ?></div>
-					</div>
-					<div class="post-text">
-						<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
-						<small> - By <?php the_author(); ?> on <?php the_time('F jS, Y'); ?></small><br />
-					</div>
-					<div class="clear"></div>
+		<div class="post-info">
+			<?php if ($enable_comic_post_author_gravatar == 'yes') { ?>
+				<div class="post-author-gravatar"><?php echo str_replace("alt='", "alt='".get_the_author_meta('display_name')."' title='".get_the_author_meta('display_name'),get_avatar(get_the_author_meta('email'), 64)); ?></div>
+			<?php } ?>
+			<?php if (function_exists('comicpress_show_mood_in_post')) comicpress_show_mood_in_post(); ?>
+			<?php if ($enable_comic_post_calendar == 'yes') { ?>
+				<div class="post-date">
+					<div class="date"><span><?php the_time('M') ?></span> <?php the_time('d') ?></div>
 				</div>
+			<?php } ?>
+			<div class="post-text">
+				<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
+				<small> By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?> <?php edit_post_link('Edit Post', ' [ ', ' ] '); ?></small><br />
+			</div>
+			<div class="clear"></div>
+		</div>
 				<div class="post-extras">
 					<div class="tags">
-						<?php the_tags('&#9492; Tags: ',', ','<br />'); ?> Posted in: <?php the_category(','); ?>
+						<?php the_tags('&#9492; Tags: ',', ','<br />'); ?>
 					</div>
 					<div class="clear"></div>
 				</div>
@@ -69,18 +75,27 @@
           <div class="post-head"></div>
           <div class="post">
 			<div class="post-info">
-				<div class="post-date">
-					<div class="date"><span><?php the_time('M') ?></span> <?php the_time('d') ?></div>
+					<?php if ($enable_post_author_gravatar == 'yes') { ?>
+						<div class="post-author-gravatar"><?php echo str_replace("alt='", "alt='".get_the_author_meta('display_name')."' title='".get_the_author_meta('display_name'),get_avatar(get_the_author_meta('email'), 64)); ?></div>
+					<?php } ?>
+					<?php if (function_exists('comicpress_show_mood_in_post')) comicpress_show_mood_in_post(); ?>
+					<?php if ($enable_post_calendar == 'yes') { ?>
+						<div class="post-date">
+							<div class="date"><span><?php the_time('M') ?></span> <?php the_time('d') ?></div>
+						</div>
+					<?php } ?>
+					<div class="post-text">
+						<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
+						<small> By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?> <?php edit_post_link('Edit Post', ' [ ', ' ] '); ?></small><br />
+						<?php if ($disable_categories_in_posts != 'yes') { ?>
+							<small> Posted In: <?php the_category(','); ?></small><br />
+						<?php } ?>
+					</div>
+					<div class="clear"></div>
 				</div>
-				<div class="post-text">
-					<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
-					<small> - By <?php the_author(); ?> on <?php the_time('F jS, Y'); ?></small><br />
-				</div>
-				<div class="clear"></div>
-			</div>
 			<div class="post-extras">
 				<div class="tags">
-					<?php the_tags('&#9492; Tags: ',', ','<br />'); ?> Posted in: <?php the_category(','); ?>
+					<?php the_tags('&#9492; Tags: ',', ','<br />'); ?>
 				</div>
 				<div class="clear"></div>
 			</div>
