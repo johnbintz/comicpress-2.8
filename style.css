@@ -22,32 +22,26 @@ body {
 	z-index: 0;
 }
 
-
 a {
 	color: #800;
 	text-decoration: none;
 }
 
-
 a:hover {
 	color: #f00;
 }
-
 
 a:focus {
 	outline: none;
 }
 
-
 a img {
 	border: none;
 }
 
-
 p {
 	margin: 12px 0;
 }
-
 
 img {
 	max-width: 100%;
@@ -210,159 +204,159 @@ h3, h3 a {
 	background: url('images/menu.png');
 	text-align: left;
 	border: 1px solid #999;
-	}
+}
 
 #menunav {
 	float: right;
-	text-align: center;	
-	}
-	
-	.menunav-search {
-		padding: 1px 1px 0 0;
-		float: left;
-		}
-	
-	.menunav-rss {
-		width: 25px;
-		height: 25px;
-		margin: 0 0 0 4px;
-		display: block;
-		float: left;
-		text-indent: -9999px;
-		overflow: hidden;
-		background: url('images/menu-nav.png') no-repeat;
-		}
-		
-		.menunav-rss:hover {
-			background-position: 0 -25px;
-			}
+	text-align: center;
+}
 
-	.menunav-prev, .menunav-next {
-		display: block;
-		float: left;
-		}
+.menunav-search {
+	padding: 1px 1px 0 0;
+	float: left;
+}
 
-	.menunav-prev {
-		margin: 0 0 0 5px;
-	}
+.menunav-rss {
+	width: 25px;
+	height: 25px;
+	margin: 0 0 0 4px;
+	display: block;
+	float: left;
+	text-indent: -9999px;
+	overflow: hidden;
+	background: url('images/menu-nav.png') no-repeat;
+}
 
-	.menunav-prev a, .menunav-next a {
-		width: 25px;
-		height: 25px;
-		display: block;
-		text-indent: -9999px;
-		overflow: hidden;
-		}
-		
-		.menunav-prev a {
-			background: url('images/menu-nav.png') -25px 0 no-repeat;
-		}
-			
-			.menunav-prev a:hover {
-				background-position: -25px -25px;
-			}
-			
-		.menunav-next a {
-			background: url('images/menu-nav.png') -50px 0 no-repeat;
-		}
-			
-			.menunav-next a:hover {
-				background-position: -50px -25px;
-			}
+.menunav-rss:hover {
+	background-position: 0 -25px;
+}
+
+.menunav-prev, .menunav-next {
+	display: block;
+	float: left;
+}
+
+.menunav-prev {
+	margin: 0 0 0 5px;
+}
+
+.menunav-prev a, .menunav-next a {
+	width: 25px;
+	height: 25px;
+	display: block;
+	text-indent: -9999px;
+	overflow: hidden;
+}
+
+.menunav-prev a {
+	background: url('images/menu-nav.png') -25px 0 no-repeat;
+}
+
+.menunav-prev a:hover {
+	background-position: -25px -25px;
+}
+
+.menunav-next a {
+	background: url('images/menu-nav.png') -50px 0 no-repeat;
+}
+
+.menunav-next a:hover {
+	background-position: -50px -25px;
+}
 
 #menu {
-    padding: 0;
-    margin: 0;
+	padding: 0;
+	margin: 0;
 	list-style: none;
-    float: left;
-    line-height: 25px;
+	float: left;
+	line-height: 25px;
 	font-size: 13px;
 	border-right: 1px solid #aaa;
-    }
+}
 
-	#menu a {
-		padding: 0px 10px 0 10px;
-		display: block;
-		color: #000;
-		text-decoration: none;
-		}
+#menu a {
+	padding: 0px 10px 0 10px;
+	display: block;
+	color: #000;
+	text-decoration: none;
+}
 
-	#menu li .rss {
-		padding: 5px 0 5px 0; 
-	}
-	
+#menu li .rss {
+	padding: 5px 0 5px 0;
+}
 
-	#menu li {
-		float: left;
-		}
-		
-	#menu li a {
-		border-left: 1px solid #aaa;
-		border-right: 1px solid #fff;
-		}
 
-	#menu li:hover a, #menu li.sfhover a {
-		border-left: 1px solid #8b160f;
-		border-right: 1px solid #c28380;
-	    color: #fff; /* Main menu highlighted text color */
-		background: url('images/menu.png') 0 -75px;
-	    }
+#menu li {
+	float: left;
+}
 
-	#menu li:hover, #menu li.sfhover {
-	     /* Main menu highlighted background color */
-	    }
-	
-	/* For submenu dropdowns - this order must be maintained */
+#menu li a {
+	border-left: 1px solid #aaa;
+	border-right: 1px solid #fff;
+}
 
-	#menu ul {
-		padding: 0;
-		margin: 0;
-		list-style: none;
-		position: absolute;
-		left: -9999px;
-		width: 175px;
-		line-height: 1;
-		}
-	#menu li li {
-		width: 165px;
-		padding: 4px 5px;
-		color: #fff;
-		}
-	#menu li li a {
-		width: 174px;
-		padding: 0;
-		color: #fff;
-		border: none;
-		}
-	#menu li ul ul {
-	    margin: -17px 0 0 170px;
-	    }
-	#menu li ul li:hover a, #menu li ul li li:hover a, #menu li ul li li li:hover a, #menu li ul li li li:hover a {
-	    color: #fff; /*Submenu highlighted text color */
-	    }
-	#menu li:hover li a, #menu li li:hover li a, #menu li li li:hover li a, #menu li li li li:hover li a  {
-	    color: #fff; /*Submenu text color */
-		border: none;
-		background: none;
-	    }
-	#menu li li:hover {
-	    background: #f00; /*Submenu highlighted background color */
-	    }
-	#menu li:hover ul ul, #menu li:hover ul ul ul, #menu li:hover ul ul ul ul, #menu li.sfhover ul ul, #menu li.sfhover ul ul ul, #menu li.sfhover ul ul ul ul {
-	    left: -9999px;
-	    }
-	#menu li:hover ul, #menu li li:hover ul, #menu li li li:hover ul, #menu li li li li:hover ul, #menu li.sfhover ul, #menu li li.sfhover ul, #menu li li li.sfhover ul, #menu li li li li.sfhover ul {
-	    left: auto;	    
-	    background: #000; /* Submenu background color */
-		text-transform: none;
-	    }
-	    
-	#menu .current_page_item a {
-		color: #fff;
-		border-left: 1px solid #555;
-		border-right: 1px solid #555;
-		background: url('images/menu.png') 0 -50px;
-	}
+#menu li:hover a, #menu li.sfhover a {
+	border-left: 1px solid #8b160f;
+	border-right: 1px solid #c28380;
+	color: #fff; /* Main menu highlighted text color */
+	background: url('images/menu.png') 0 -75px;
+}
+
+#menu li:hover, #menu li.sfhover {
+	/* Main menu highlighted background color */
+}
+
+/* For submenu dropdowns - this order must be maintained */
+
+#menu ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	position: absolute;
+	left: -9999px;
+	width: 175px;
+	line-height: 1;
+}
+#menu li li {
+	width: 165px;
+	padding: 4px 5px;
+	color: #fff;
+}
+#menu li li a {
+	width: 174px;
+	padding: 0;
+	color: #fff;
+	border: none;
+}
+#menu li ul ul {
+	margin: -17px 0 0 170px;
+}
+#menu li ul li:hover a, #menu li ul li li:hover a, #menu li ul li li li:hover a, #menu li ul li li li:hover a {
+	color: #fff; /*Submenu highlighted text color */
+}
+#menu li:hover li a, #menu li li:hover li a, #menu li li li:hover li a, #menu li li li li:hover li a {
+	color: #fff; /*Submenu text color */
+	border: none;
+	background: none;
+}
+#menu li li:hover {
+	background: #f00; /*Submenu highlighted background color */
+}
+#menu li:hover ul ul, #menu li:hover ul ul ul, #menu li:hover ul ul ul ul, #menu li.sfhover ul ul, #menu li.sfhover ul ul ul, #menu li.sfhover ul ul ul ul {
+	left: -9999px;
+}
+#menu li:hover ul, #menu li li:hover ul, #menu li li li:hover ul, #menu li li li li:hover ul, #menu li.sfhover ul, #menu li li.sfhover ul, #menu li li li.sfhover ul, #menu li li li li.sfhover ul {
+	left: auto;
+	background: #000; /* Submenu background color */
+	text-transform: none;
+}
+
+#menu .current_page_item a {
+	color: #fff;
+	border-left: 1px solid #555;
+	border-right: 1px solid #555;
+	background: url('images/menu.png') 0 -50px;
+}
 
 
 
@@ -370,9 +364,9 @@ h3, h3 a {
 
 
 #comic {
-	background:#fff;
-	padding:10px 0;
-	border:1px solid #999;
+	background: #fff;
+	padding: 10px 0;
+	border: 1px solid #999;
 	text-align: center;
 	z-index: 100;
 }
@@ -907,11 +901,11 @@ ul.children {
 	margin: 0 auto;
 }
 
-	.wp-calendar-thumb {
-		width: 178px;
-		height: 130px;
-		margin: 0 auto;
-	}
+.wp-calendar-thumb {
+	width: 178px;
+	height: 130px;
+	margin: 0 auto;
+}
 
 
 #wp-calendar th {
@@ -1211,25 +1205,20 @@ li.pingback div p, li.trackback div p {
 	margin-left: 0;
 }
 
-
 /* STORYLINES */
 
-
-#storyline-cats {
+.storyline-cats {
 	padding: 0;
-	margin: 0 10px 0 0;
+	margin: 0;
 	list-style: none;
 }
 
-
-#storyline-cats li {
+.storyline-cats li {
 	display: inline;
 }
 
-
-#storyline-cats ul {
-	display: inline;
-	margin-right: 10px;
+li.storyline-root {
+	display: none;
 }
 
 
@@ -1239,11 +1228,6 @@ li.pingback div p, li.trackback div p {
 .clear {
 	clear: both;
 }
-
-
-
-
-
 
 /* CLEAR MARGINS */
 /* Used with BR for clearing paragraph margins for Safari, Chrome - avoid background gaps */
@@ -1255,12 +1239,6 @@ li.pingback div p, li.trackback div p {
 	line-height: 0;
 	font-size: 0;
 }
-
-
-
-
-
-
 
 /** BUY THIS **/
 
@@ -1286,7 +1264,6 @@ li.pingback div p, li.trackback div p {
 	width: 100%;
 }
 
-
 .headerpwad {
 	float: right;
 	margin: 5px 5px 0 0;
@@ -1298,10 +1275,7 @@ li.pingback div p, li.trackback div p {
 	text-align: center;
 }
 
-
-
 /* Archive Calendar Template */
-
 
 .cpcal-month {
 	width: 157px;
@@ -1323,6 +1297,7 @@ li.pingback div p, li.trackback div p {
 	line-height: 16px;
 	letter-spacing: -1px;
 }
+
 .cpcal-dayletter {
 	width: 20px;
 	height: 15px;
@@ -1361,7 +1336,6 @@ li.pingback div p, li.trackback div p {
 }
 
 /* Storyline Template */
-
 
 #storyline, #storyline ul {
 	padding: 0;
@@ -1621,11 +1595,8 @@ a.tt:hover span.bottom {
 	padding: 0;
 }
 
-
 .userpage-posts li {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
-
-

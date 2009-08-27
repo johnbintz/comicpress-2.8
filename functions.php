@@ -325,22 +325,43 @@ function get_terminal_post_in_category($categoryID, $first = true) {
 /**
  * Find the first post in the storyline prior to the current one.
  */
+function get_previous_storyline_start() {
+  if (($category_id = get_adjacent_storyline_category_id(true)) !== false) {
+    return get_terminal_post_in_category($category_id);
+  }
+  return false;
+}
+
 function get_previous_storyline_start_permalink() {
+	$prev_story = get_previous_storyline_start();
+	if (is_object($prev_story)) {
+		if (isset($prev_story->ID)) {
+			return get_permalink($prev_story->ID);
+		}
+	}
+	return false;
+}
+
+/**
+ * Find the first post in the storyline following to the current one.
+ */
+function get_next_storyline_start() {
   if (($category_id = get_adjacent_storyline_category_id()) !== false) {
     return get_terminal_post_in_category($category_id);
   }
   return false;
 }
 
-/**
- * Find the first post in the storyline following to the current one.
- */
 function get_next_storyline_start_permalink() {
-  if (($category_id = get_adjacent_storyline_category_id(true)) !== false) {
-    return get_terminal_post_in_category($category_id);
-  }
-  return false;
+	$next_story = get_next_storyline_start();
+	if (is_object($next_story)) {
+		if (isset($next_story->ID)) {
+			return get_permalink($next_story->ID);
+		}
+	}
+	return false;
 }
+
 
 function get_adjacent_storyline_category_id($next = false) {
   global $post, $category_tree;

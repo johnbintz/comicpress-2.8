@@ -32,6 +32,9 @@ function display_comic_post() {
 			<div class="post-text">
 				<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
 				<small> By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?> <?php edit_post_link('Edit Post', ' [ ', ' ] '); ?></small><br />
+				<?php if (get_option('comicpress-enable-storyline-support') == 1) { ?>
+					<ul class="storyline-cats"><li class="storyline-root"><?php the_category(' &raquo; </li><li>', multiple) ?></li></ul>
+				<?php } ?>
 				<?php if(function_exists('the_ratings')) { the_ratings(); } ?>
 			</div>
 			<div class="clear"></div>

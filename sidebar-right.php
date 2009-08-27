@@ -8,7 +8,7 @@
 				<?php if (is_cp_theme_style('standard,v')) { ?>
 				<ul>
 					<li>
-						<?php get_calendar() ?>
+						<?php comicpress_calendar() ?>
 					</li>
 				</ul>
 				<?php } ?>
