@@ -11,7 +11,7 @@
 	<?php get_sidebar('footer'); ?>
 		<p>
 			&copy;<?php echo cp_copyright_year(); ?> <?php echo the_author_meta('firstname',0); echo "&nbsp;"; echo the_author_meta('lastname'); ?>. <?php bloginfo('name') ?> is powered by <a href="http://wordpress.org/">WordPress</a> with <a href="http://comicpress.org/">ComicPress</a>
-			| Subscribe: <a href="<?php bloginfo('rss2_url') ?>">RSS Feed</a> | <a href="#outside" onclick="scrollup(); return false;">Return to Top &nbsp;</a><br />
+			| Subscribe: <a href="<?php bloginfo('rss2_url') ?>">RSS Feed</a> | <a href="#outside" onclick="scrollup(); return false;">Back to Top &uarr;</a><br />
 			<!-- <?php echo get_num_queries() ?> queries. <?php timer_stop(1) ?> seconds. -->
 		</p>
 </div>

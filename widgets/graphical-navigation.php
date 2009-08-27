@@ -31,8 +31,8 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 		$first_comic = get_first_comic_permalink();
 		$last_comic = get_last_comic_permalink(); 
 		
-		$prev_story = '';
-		$next_story = '';
+		$prev_story = get_previous_storyline_start_permalink();
+		$next_story = get_next_storyline_start_permalink();
 		?>
 				
 <div id="comic_navi_wrapper">
