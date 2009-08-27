@@ -7,8 +7,14 @@ function comicpress_options() {
 	add_action('admin_head-'.$pagehook, 'comicpress_admin_page_head');
 }
 
-function comicpress_admin_page_head() { ?>
+function comicpress_admin_page_head() { 
+global $is_IE; 
+if ($is_IE) { 
+?>
+<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/js/tabbed/tabbed_pages_ie.css" type="text/css" media="screen" />
+<?php } else { ?>
 <link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/js/tabbed/tabbed_pages.css" type="text/css" media="screen" />
+<?php } ?>
 <script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/tabbed/tabbed_pages.js"></script>
 <?php }
 
@@ -711,8 +717,8 @@ function comicpress_admin() {
 			<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
 		</form>
 	</div>
-  </div>
 </div>
+
 <?php 
 }
 

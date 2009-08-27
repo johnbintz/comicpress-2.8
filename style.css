@@ -1430,34 +1430,59 @@ li.storyline-root {
 	margin-top: 20px;
 }
 
+/* Pagination */
 
-.wp-pagenavi, .paginav {
-	height: 25px;
-	line-height: 25px;
-	font-size: 14px;
+#wp-paginav {
+	background: url('images/menu.png');
+	text-align: left;
+	border: 1px solid #999;
 }
 
+#paginav {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	float: left;
+	line-height: 25px;
+	font-size: 13px;
+	border-right: 1px solid #aaa;
+}
 
-.wp-pagenavi a, .wp-pagenavi a:link, .wp-pagenavi a:visited, .wp-pagenavi a:hover, .wp-pagenavi a:active {
-	padding: 2px;
+#paginav .paginav-pages {
+	padding: 0 15px 0 15px;
+}
+
+#paginav a {
+	padding: 0px 10px 0 10px;
+	display: block;
+	color: #000;
 	text-decoration: none;
 }
 
+#paginav li {
+	float: left;
+}
 
-.wp-pagenavi span.pages {
-	color: #777;
-	margin-right: 10px;
+#paginav li a {
+	border-left: 1px solid #aaa;
+	border-right: 1px solid #fff;
+}
+
+#paginav .paginav-current {
+	padding: 0px 10px 0 10px;
+	color: #fff;
+	border-left: 1px solid #aaa;
+	background: url('images/menu.png') 0 -150px;
 }
 
 
-.wp-pagenavi span.current, .paginav .current {
-	font-size: 16px;
-	font-weight: bold;
+#paginav li:hover a {
+	border-left: 1px solid #8b160f;
+	border-right: 1px solid #c28380;
+	color: #fff; 
+	background: url('images/menu.png') 0 -75px;
 }
 
-
-.wp-pagenavi span.extend {
-}
 
 
 /* Drop Bar */
