@@ -22,6 +22,6 @@ $archive_comic_width = "380";
 $rss_comic_width = "180";
 
 //BLOG POSTCOUNT - the number of blog entries to appear on the home page (default "5").
-$blog_postcount = "2";
+$blog_postcount = "5";
 
 ?>
