@@ -119,13 +119,15 @@ class widget_comicpress_bookmark extends WP_Widget {
 	}
 	
 	function widget($args, $instance) {
+		global $post, $wp_query;
 		extract($args, EXTR_SKIP);
-		
-		echo $before_widget;
-		$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
-		if ( !empty( $title ) ) { echo $before_title . $title . $after_title; };
-		comicpress_comic_bookmark();
-		echo $after_widget;
+		if (!is_home() && !is_page() && !is_single()) {	
+			echo $before_widget;
+			$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
+			if ( !empty( $title ) ) { echo $before_title . $title . $after_title; };
+			comicpress_comic_bookmark();
+			echo $after_widget;
+		}
 	}
 	
 	function update($new_instance, $old_instance) {

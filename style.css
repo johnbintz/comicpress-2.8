@@ -494,6 +494,10 @@ h3, h3 a {
 .post-head, .post-page-head, .post-comic-head {
 }
 
+.post-head, .post-page-head {
+	padding:10px 0 0 0;
+}
+
 .post-foot, .post-comic-foot, .post-page-foot {
 }
 
@@ -1128,22 +1132,17 @@ ul.children {
 
 /* TRANSCRIPT */
 
-a.transcript-title {
-}
-
-.transcript-border {border-color:#555;}
-#transcript {border-color:#333;}
 #transcript {
 	padding: 0 10px;
 	font-size: 11px;
-	border-left: 4px dotted #000;
-	border-right: 4px dotted #000;
+	border-left: 4px dotted #333;
+	border-right: 4px dotted #333;
 }
 
 .transcript-border {
 	padding: 0 5px;
 	margin: 15px 0;
-	border: 1px solid #000;
+	border: 1px solid #555;
 	background: #fff;
 	clear: both;
 }
@@ -1154,14 +1153,13 @@ a.transcript-title {
 	display: block;
 	font-family: 'Georgia' , serif;
 	font-style: italic;
-	border-bottom: 1px dashed #000;
 	font-size: 12px;
 	font-style: normal;
 	font-weight: normal;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	line-height: 2em;
-	border-color: #777;
+	border-bottom: 1px dashed #777;
 }
 
 #transcript-content {

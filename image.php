@@ -81,6 +81,7 @@
 	<?php endif; ?>
 	<div class="clear">
 	</div>
+	</div>
 </div>
 
 <?php 

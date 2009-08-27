@@ -36,7 +36,6 @@
 
 <body <?php if (function_exists('body_class')) { body_class(); } ?>>
 <?php do_action('comicpress-header'); ?>
-
 <?php get_sidebar('above'); ?> 
 
 <?php if ($disable_page_restraints != 'yes') {
