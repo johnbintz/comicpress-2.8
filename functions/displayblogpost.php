@@ -40,9 +40,11 @@ function display_blog_post() {
 						<?php the_tags('&#9492; Tags: ', ', ', '<br />'); ?>
 						</div>
 					<?php } ?>
-					<div class="comment-link">
+					<?php if (!is_single()) { ?>
+						<div class="comment-link">
 						<?php if ('open' == $post->comment_status) { comments_popup_link('&ldquo;Comment!&rdquo;', '&ldquo;1 Comment&rdquo;', '&ldquo;% Comments&rdquo;'); } ?>
-					</div>
+						</div>
+					<?php } ?>
 					<div class="clear"></div>
 					<?php if ($enable_related_posts == 'yes') echo related_posts_shortcode(); ?>
 				</div>

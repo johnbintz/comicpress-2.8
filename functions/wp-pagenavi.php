@@ -78,7 +78,7 @@ function wp_pagenavi($before = '', $after = '') {
 		if($max_page > 1 || intval($pagenavi_options['always_show']) == 1) {
 			$pages_text = str_replace("%CURRENT_PAGE%", number_format_i18n($paged), $pagenavi_options['pages_text']);
 			$pages_text = str_replace("%TOTAL_PAGES%", number_format_i18n($max_page), $pages_text);
-			echo $before.'<div id="paginav">'."\n";
+			echo $before.'<div id="paginav"><ul>'."\n";
 			switch(intval($pagenavi_options['style'])) {
 				case 1:
 					if(!empty($pages_text)) {
@@ -91,9 +91,9 @@ function wp_pagenavi($before = '', $after = '') {
 							echo '<li class="paginav-extend">'.$pagenavi_options['dotleft_text'].'</li>';
 						}
 					}
-					echo "<li>";
+					echo '<li class="paginav-previous">';
 					previous_posts_link($pagenavi_options['prev_text']);
-					echo "</li>";
+					echo '</li>';
 					for($i = $start_page; $i  <= $end_page; $i++) {
 						if($i == $paged) {
 							$current_page_text = str_replace("%PAGE_NUMBER%", number_format_i18n($i), $pagenavi_options['current_text']);
@@ -103,12 +103,12 @@ function wp_pagenavi($before = '', $after = '') {
 							echo '<li><a href="'.clean_url(get_pagenum_link($i)).'" title="'.$page_text.'">'.$page_text.'</a></li>';
 						}
 					}
-					echo "<li>";
-					next_posts_link('<li>'.$pagenavi_options['next_text'].'</li>', $max_page);
-					echo "</li>";
+					echo '<li class="paginav-next">';
+					next_posts_link($pagenavi_options['next_text'], $max_page);
+					echo '</li>';
 					if ($end_page < $max_page) {
 						if(!empty($pagenavi_options['dotright_text'])) {
-							echo '<li>'.$pagenavi_options['dotright_text'].'</li>';
+							echo '<li class="paginav-extend">'.$pagenavi_options['dotright_text'].'</li>';
 						}
 						$last_page_text = str_replace("%TOTAL_PAGES%", number_format_i18n($max_page), $pagenavi_options['last_text']);
 						echo '<li><a href="'.clean_url(get_pagenum_link($max_page)).'" title="'.$last_page_text.'">'.$last_page_text.'</a></li>';
@@ -134,7 +134,7 @@ function wp_pagenavi($before = '', $after = '') {
 					echo "</form>\n";
 					break;
 			}
-			echo '</div>'.$after."\n";
+			echo '</ul></div>'.$after."\n";
 		}
 	}
 }

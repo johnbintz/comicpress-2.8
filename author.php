@@ -69,8 +69,9 @@
 					</ol>
 					
 		<?php if(function_exists('wp_pagenavi')) { ?>
-			<div class="paginav">
+			<div id="wp-paginav">
 				<?php wp_pagenavi(); ?>
+				<div class="clear"></div>
 			</div>
 			<?php } else { ?>
 			<div class="pagenav">

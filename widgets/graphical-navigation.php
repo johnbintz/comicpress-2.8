@@ -25,13 +25,14 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 		$wp_query->is_single = true;
 		$prev_comic = get_previous_comic_permalink();
 		$next_comic = get_next_comic_permalink();
-		$prev_story = get_previous_storyline_start_permalink();
-		$next_story = get_next_storyline_start_permalink();
 		$wp_query->is_single = $temp_query;
 		$temp_query = null;
 		
 		$first_comic = get_first_comic_permalink();
-		$last_comic = get_last_comic_permalink(); 
+		$last_comic = get_last_comic_permalink();
+		
+		$prev_story = get_previous_storyline_start_permalink();
+		$next_story = get_next_storyline_start_permalink(); 
 		?>
 				
 <div id="comic_navi_wrapper">
@@ -80,7 +81,7 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 			<?php }
 		} 
 		if ($instance['story_next'] != 'off') { 
-			if (!empty($next_story)) { ?>
+			if (!empty($next_story) && !is_home()) { ?>
 				<a href="<?php echo $next_story; ?>" class="navi navi-nextchap" title="<?php echo $instance['story_next_title']; ?>"><?php echo $instance['story_next_title']; ?></a>
 			<?php } else { ?>
 				<div class="navi navi-nextchap navi-void"><?php echo $instance['story_next_title']; ?></div>
