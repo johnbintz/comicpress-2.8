@@ -2,7 +2,7 @@
 
 // Custom Image Header
 define('HEADER_TEXTCOLOR', '000');
-// define('HEADER_IMAGE', '%s/images/header-blank.png'); // %s is theme dir uri
+define('HEADER_IMAGE', '%s/images/header-blank.png'); // %s is theme dir
 define('HEADER_IMAGE_WIDTH', $custom_image_header_width);
 define('HEADER_IMAGE_HEIGHT', $custom_image_header_height);
 

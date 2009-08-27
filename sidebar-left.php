@@ -7,6 +7,7 @@
 					<?php comicpress_calendar() ?>
 				</li>
 			</ul>
+			<?php comicpress_archive_dropdown(); ?>
 			<?php comicpress_latest_comics() ?>
 			<ul>
 				<li>

@@ -20,7 +20,11 @@ function comicpress_calendar($instance) {
 	<div id="wp-calendar-wrap">
 	<?php if (!empty($thumbnail)) { ?>
 		<img src="<?php echo $thumbnail; ?>" alt="" class="wp-calendar-thumb" /><br />
-		<?php if (!empty($small)) { ?>[<a href="<?php echo $small; ?>">S</a>] <?php } ?><?php if (!empty($medium)) { ?>[<a href="<?php echo $medium; ?>">M</a>] <?php } ?><?php if (!empty($large)) { ?>[<a href="<?php echo $large; ?>">L</a>] <?php } ?>
+		<?php if (!empty($small) || !empty($medium) || !empty($large)) { ?>
+			<div class="wp-calendar-download">
+			<?php if (!empty($small)) { ?>[<a href="<?php echo $small; ?>" title="Download">S</a>] <?php } ?><?php if (!empty($medium)) { ?>[<a href="<?php echo $medium; ?>" title="Download">M</a>] <?php } ?><?php if (!empty($large)) { ?>[<a href="<?php echo $large; ?>" title="Download">L</a>] <?php } ?>
+			</div>
+		<?php } ?>
 	<?php } ?>
 	<?php get_calendar(); ?>
 	</div>
@@ -65,7 +69,7 @@ class widget_comicpress_calendar extends WP_Widget {
 		?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>">Title: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
 		
-		<p><label for="<?php echo $this->get_field_id('thumbnail'); ?>">Thumbnail URL: <input class="widefat" id="<?php echo $this->get_field_id('thumbnail'); ?>" name="<?php echo $this->get_field_name('thumbnail'); ?>" type="text" value="<?php echo attribute_escape($thumbnail); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('thumbnail'); ?>">Thumbnail URL (178px by 130px): <input class="widefat" id="<?php echo $this->get_field_id('thumbnail'); ?>" name="<?php echo $this->get_field_name('thumbnail'); ?>" type="text" value="<?php echo attribute_escape($thumbnail); ?>" /></label></p>
 		<p><label for="<?php echo $this->get_field_id('small'); ?>">Wallpaper URL (Small): <input class="widefat" id="<?php echo $this->get_field_id('small'); ?>" name="<?php echo $this->get_field_name('small'); ?>" type="text" value="<?php echo attribute_escape($small); ?>" /></label></p>
 		<p><label for="<?php echo $this->get_field_id('medium'); ?>">Wallpaper URL (Medium): <input class="widefat" id="<?php echo $this->get_field_id('medium'); ?>" name="<?php echo $this->get_field_name('medium'); ?>" type="text" value="<?php echo attribute_escape($medium); ?>" /></label></p>
 		<p><label for="<?php echo $this->get_field_id('large'); ?>">Wallpaper URL (Large): <input class="widefat" id="<?php echo $this->get_field_id('large'); ?>" name="<?php echo $this->get_field_name('large'); ?>" type="text" value="<?php echo attribute_escape($large); ?>" /></label></p>

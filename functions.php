@@ -120,6 +120,7 @@ require_once(get_template_directory() . '/widgets/comicdate.php');
 require_once(get_template_directory() . '/widgets/comictitle.php');
 require_once(get_template_directory() . '/widgets/comiccomments.php');
 require_once(get_template_directory() . '/widgets/menubar.php');
+require_once(get_template_directory() . '/widgets/archive-dropdown.php');
 
 // FUNCTIONS & Extra's
 
@@ -361,28 +362,28 @@ function get_next_storyline_start_permalink() {
 
 
 function get_adjacent_storyline_category_id($next = false) {
-  global $post, $category_tree;
+	global $post, $category_tree;
 
-  $categories = wp_get_post_categories($post->ID);
-  if (is_array($categories)) {
+	$categories = wp_get_post_categories($post->ID);
+	if (is_array($categories)) {
     $category_id = reset($categories);
-    for ($i = 0, $il = count($category_tree); $i < $il; ++$i) {
-      $storyline_category_id = end(explode("/", $category_tree[$i]));
+	for ($i = 0, $il = count($category_tree); $i < $il; ++$i) {
+		$storyline_category_id = end(explode("/", $category_tree[$i]));
 
-      if ($storyline_category_id == $category_id) {
-        $target_index = false;
-        if ($next) {
-          $target_index = $i + 1;
-        } else {
-          $target_index = $i - 1;
-        }
-        if (isset($category_tree[$target_index])) {
-          return end(explode('/', $category_tree[$target_index]));
-        }
-      }
-    }
-  }
-  return false;
+			if ($storyline_category_id == $category_id) { 
+				$target_index = false;
+				if ($next) {
+				  $target_index = $i + 1;
+				} else {
+				  $target_index = $i - 1;
+				}
+				if (isset($category_tree[$target_index])) {
+				  return end(explode('/', $category_tree[$target_index]));
+				}
+			} 
+		}
+	}
+	return false;
 }
 
 /**
@@ -715,20 +716,7 @@ if ( function_exists('register_sidebar') ) {
 	register_sidebar(array('name'=>'Under Blog','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
 	register_sidebar(array('name'=>'Footer','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
 	register_sidebar(array('name'=>'Drop Bar','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-}
- 
-  
-function widget_comicpress_archive_dropdown() { ?>
-<ul>
-	<li class="archive-dropdown-wrap">
-		<select name="archive-dropdown" class="archive-dropdown" onchange='document.location.href=this.options[this.selectedIndex].value;'> 
-		<option value=""><?php echo attribute_escape(__('Archives...')); ?></option> 
-		<?php wp_get_archives('type=monthly&format=option&show_post_count=1'); ?> </select>
-	</li>
-</ul>
-	<?php } if ( function_exists('register_sidebar_widget') )
-	register_sidebar_widget(__('Archive Dropdown'), 'widget_comicpress_archive_dropdown');
-      
+}     
 
 function storyline_category_list() {
 	$listcats = wp_list_categories('echo=0&title_li=&include='.get_all_comic_categories_as_cat_string());
