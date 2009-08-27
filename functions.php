@@ -1,5 +1,7 @@
 <?php
 
+$comicpress_version = '2.8.0.9';
+
 // Remove the wptexturizer from changing the quotes and squotes.
 // remove_filter('the_title', 'wptexturize');
 // remove_filter('the_content', 'wptexturize');
@@ -733,20 +735,6 @@ function storyline_category_list() {
 	$listcats = str_replace("<ul class='children'>", "<ul class='children'> &raquo; ", $listcats);
 	echo $listcats;
 }
-
-
-/**
- * This is function comicpress_current_theme_version
- *
- * @return mixed return straight current theme version #
- *
- */
-function comicpress_current_theme_version() {
-	$themes = get_themes();
-	$current_theme = get_current_theme();
-	return $themes[$current_theme]['Version'];
-}
-
 
 /**
  * This is function comicpress_is_active_sidebar

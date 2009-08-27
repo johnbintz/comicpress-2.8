@@ -26,7 +26,7 @@
 	<link rel="alternate" type="application/atom+xml" title="<?php bloginfo('name') ?> Atom Feed" href="<?php bloginfo('atom_url') ?>" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url') ?>" />
 	<script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/scroll.js"></script>
-	<meta name="ComicPress" content="<?php echo comicpress_current_theme_version(); ?>" />
+	<meta name="ComicPress" content="<?php global $comicpress_version; echo $comicpress_version; ?>" />
 <!--[if lte IE 7]>
    <script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/ie6submenus.js"></script>
 <![endif]-->
