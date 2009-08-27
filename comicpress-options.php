@@ -153,6 +153,7 @@ function comicpress_admin() {
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
 				</td>
 				<td valign="top">
+					Searchforms can be fun when you have something to search for.
 				</td>
 				</tr>
 				
@@ -165,20 +166,22 @@ function comicpress_admin() {
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
 				</td>
-				<td valign="top">
+					<td valign="top">
+					It's a link, it links to the RSS.  It does *not* link to your the winning lottory numbers.
 					</td>
 				</tr>
 				
 				<?php break;
 			case "comicpress-enable_navigation_in_menubar": ?>
 				<tr>
-				<th scope="row"><strong>Enable mini navigation buttons in the Menubar?</strong><br /><br />Mini Navigation arrows reside on the right side of the menubar, just the previous and next arrows.</th>
+				<th scope="row"><strong>Enable mini navigation buttons in the Menubar?</strong><br /><br /></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
 				</td>
 				<td valign="top">
+					Mini Navigation arrows reside on the right side of the menubar, just the previous and next arrows.
 				</td>
 				</tr>
 				
@@ -258,16 +261,18 @@ function comicpress_admin() {
 				<?php break;
 			case "comicpress-anomaly_says": ?>
 				<tr>
-				<th scope="row"><strong>Request Anomaly to comment?</strong><br /><br />Enabling this option will summon Anomaly to your comic's universe and say what you request Anomaly to say by modifying the "Hovertext" in the comic post.<br /></th>
+				<th scope="row"><strong>Enable comic hovertext hover commenting?</strong><br /><br />Enabling this option will make a comic bubble appear over the comic and write out what you put in the hovertext.<br /></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
 				</td>
+				<td valign="top">
+					You can add hovertext when uploading your comic with ComicPress Manager.  To change the graphics for this you should probably know CSS quite well.  If you don't good luck with it.
+				</td>
 				</tr>
 				
 				<?php break;
-
 			case "comicpress-graphicnav_directory": 
 				$current_gnav_directory = get_option($value['id']);
 				if (empty($current_gnav_directory)) $current_gnav_directory = 'default';
@@ -350,33 +355,28 @@ function comicpress_admin() {
 				<?php break;
 			case "comicpress-disable_comic_blog_frontpage": ?>
 				<tr>
-				<th scope="row"><strong>Disable Comic Blog On Frontpage?</strong><br /><br />Set to &quot;Yes&quot; and the blog portion of the comic will not display on the index page/front page of your site.<br /></th>
+				<th scope="row"><strong>Disable the comic blog on the index page?</strong><br /><br />Set to &quot;Yes&quot; and the blog portion of the comic will not display on the index page/front page of your site.<br /></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label><br />
+				</td>
+				<td valign="top">
+				*Some* people,.. not naming names ..do not like to have a comic post let alone showing on the index page.
 				</td>
 				</tr>
 				
 				<?php break;
 			case "comicpress-disable_blog_frontpage": ?>
 				<tr>
-				<th scope="row"><strong>Disable Blog On Frontpage?</strong><br /><br />Set to &quot;Yes&quot; and the blog area will not display on the index page/front page of your site.<br /></th>
+				<th scope="row"><strong>Disable the blog on the index page?</strong><br /><br />Set to &quot;Yes&quot; and the blog area will not display on the index page/front page of your site.<br /></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label><br />
 				</td>
-				</tr>
-				
-				<?php break;
-			case "comicpress-disable_showing_comic_post_area": ?>
-				<tr>
-				<th scope="row"><strong>Disable showing the post for the comic?</strong><br /><br />Setting to &quot;Yes&quot; will disable showing the blog post of the comic on the home page and single pages.<br /></th>
 				<td valign="top">
-				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
-				&nbsp;&nbsp;
-				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
+				This feature is quite handy actually.  If you disable this you can add a page to your menubar and associate it to the "blog" template, still keeping your blog, .. just not on the index page.
 				</td>
 				</tr>
 				
@@ -407,6 +407,9 @@ function comicpress_admin() {
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
+				</td>
+				<td valign="top">
+				The transcript is text that that you can have of your comic's speech.   When you add a transcript of the comic to the post-edit or when you upload your comic you can enable this and a transcript box will appear *in* that comic's post area, alternatively you can set the transcript widget and have it placed anywhere *in* the same area of the comic.
 				</td>
 				</tr>
 				
@@ -445,11 +448,14 @@ function comicpress_admin() {
 				<?php break;
 			case "comicpress-enable_related_comics": ?>
 				<tr>
-				<th scope="row"><strong>Put Related Comics in comic posts?</strong><br /></th>
+				<th scope="row"><strong>Put Related Comics in comic posts?</strong><br /><br />Related comics on the list will be related by 'tags' that you create for each comic post.</th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
+				</td>
+				<td valign="top">
+				When creating tags for your comics, include *only* the subject material and possibly cast.   Do not use tags that can relate to the entire archive or storyline the post is on.
 				</td>
 				</tr>
 				
@@ -462,6 +468,9 @@ function comicpress_admin() {
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
 				</td>
+				<td valign="top">
+				Like the related posts for comics, the related posts for blog post checked with other blog posts comparing the tags.  Do no use tags that relate to a massive amount of other things, make sure you stick to only using 1-5 tags total, the less the better.
+				</td>
 				</tr>
 				
 				<?php break;
@@ -472,6 +481,9 @@ function comicpress_admin() {
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
+				</td>
+				<td valign="top">
+				The graphic calendar is an image that has the date of the post overlayed on top of it.  This option is for the blog posts.
 				</td>
 				</tr>
 				
@@ -484,6 +496,9 @@ function comicpress_admin() {
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
+				</td>
+				<td valign="top">
+					Gravatar's are associated by your email address and you can create them at <a href="http://gravatar.com/">http://gravatar.com</a>.  They are pictures of you, your cat of whatever you want to represent yourself.
 				</td>
 				</tr>
 				
