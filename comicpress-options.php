@@ -390,7 +390,7 @@ function comicpress_admin() {
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label><br />
 				</td>
 				<td valign="top">
-				Minimalists dream.
+				Minimalists dream.  Best not to use with theme styles that have one of the styles that are to the side of the comic.
 				</td>
 				</tr>
 				

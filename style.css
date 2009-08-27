@@ -373,6 +373,7 @@ h3, h3 a {
 	border: 1px solid #999;
 	text-align: center;
 	z-index: 100;
+	margin: 10px 0;
 }
 
 	#comic .comic-left {
