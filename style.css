@@ -373,7 +373,6 @@ h3, h3 a {
 	background:#fff;
 	padding:10px 0;
 	border:1px solid #999;
-	margin:10px 0 0 0;
 	text-align: center;
 	z-index: 100;
 }
@@ -907,6 +906,12 @@ ul.children {
 	width: 165px;
 	margin: 0 auto;
 }
+
+	.wp-calendar-thumb {
+		width: 178px;
+		height: 130px;
+		margin: 0 auto;
+	}
 
 
 #wp-calendar th {
