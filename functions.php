@@ -121,6 +121,7 @@ require_once(get_template_directory() . '/widgets/comictitle.php');
 require_once(get_template_directory() . '/widgets/comiccomments.php');
 require_once(get_template_directory() . '/widgets/menubar.php');
 require_once(get_template_directory() . '/widgets/archive-dropdown.php');
+require_once(get_template_directory() . '/widgets/comicblogpost.php');
 
 // FUNCTIONS & Extra's
 
