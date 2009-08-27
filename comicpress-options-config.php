@@ -171,7 +171,7 @@ $options = array (
 			
 		array(
 			"id" => "comicpress-graphicnav_directory",
-			"default" => "scifi",
+			"default" => "default",
 			"type" => "comicpress-graphicnav_directory"),
 		
 		array(
@@ -188,6 +188,11 @@ $options = array (
 			"id" => "comicpress-enable_navigation_in_menubar",
 			"default" => "yes",
 			"type" => "comicpress-enable_navigation_in_menubar"),
+			
+		array(
+			"id" => "comicpress-disable_lrsidebars_frontpage",
+			"default" => "no",
+			"type" => "comicpress-disable_lrsidebars_frontpage"),
 			
 
 		array("type" => "close")

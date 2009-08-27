@@ -1,3 +1,4 @@
+<?php global $disable_lrsidebars_frontpage; if ($disable_lrsidebars_frontpage != 'yes') { ?>
 <div id="sidebar-left-top"></div>
 <div id="sidebar-left">
 	<div class="sidebar">
@@ -21,3 +22,4 @@
 	</div>
 </div>
 <div id="sidebar-left-bottom"></div>
+<?php } ?>

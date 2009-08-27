@@ -381,6 +381,20 @@ function comicpress_admin() {
 				</tr>
 				
 				<?php break;
+			case "comicpress-disable_lrsidebars_frontpage": ?>
+				<tr>
+				<th scope="row"><strong>Disable the left and right sidebars on the index page?</strong><br /><br />Set to &quot;Yes&quot; and the index page/front page of your site will not display the left and right sidebars.<br /></th>
+				<td valign="top">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label><br />
+				</td>
+				<td valign="top">
+				Minimalists dream.
+				</td>
+				</tr>
+				
+				<?php break;
 		}
 	}
 	?>
