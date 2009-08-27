@@ -96,7 +96,7 @@ function comicpress_admin() {
 		switch ( $value['type'] ) {
 			case "comicpress-cp_theme_style": ?>
 				<tr>
-					<th scope="row"><strong>Choose which theme style you want to use.</strong><br /><br />This is the style in which your theme will be presented.<br /><br />NOTE: Use 3-Column theme if you're using ComicPress as a Blog.</th>
+					<th scope="row"><strong>Choose which theme style you want to use.</strong><br /><br />This is the style in which your theme will be presented.<br /><br /></th>
 					<td valign="top">
 						<label>
 							<select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" class="code" onchange="showimage(this,'cpthemestyle')">
@@ -512,6 +512,9 @@ function comicpress_admin() {
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
 				</td>
+				<td valign="top">
+					The graphic calendar is an image that has the date of the post overlayed on top of it.  This option is for the comic posts, and yes this was cut and pasted from the other one just the word "blog" was changed to "comic".
+				</td>
 				</tr>
 				
 				<?php break;
@@ -524,17 +527,23 @@ function comicpress_admin() {
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
 				</td>
+				<td valign="top">
+					Gravatar's are associated by your email address and you can create them at <a href="http://gravatar.com/">http://gravatar.com</a>.  They are pictures of you, your cat of whatever you want to represent yourself.  I didn't cut and paste this one, I just wasn't clever enough to change the text.
+				</td>
 				</tr>
 				
 				<?php break;
 				
 			case "comicpress-disable_categories_in_posts": ?>
 				<tr>
-				<th scope="row"><strong>Disable showing categories in posts?</strong><br /><br /></th>
+				<th scope="row"><strong>Disable showing categories in posts?</strong><br /><br />The categories that are shown by default are the ones the post in set to.</th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
+				</td>
+				<td valign="top">
+				Categores != Tags
 				</td>
 				</tr>
 				
@@ -542,11 +551,14 @@ function comicpress_admin() {
 				
 			case "comicpress-disable_tags_in_posts": ?>
 				<tr>
-				<th scope="row"><strong>Disable showing tags in posts?</strong><br /><br /></th>
+				<th scope="row"><strong>Disable showing tags in posts?</strong><br /><br />Tags are 'descriptive keywords' describing the content of the post.</th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
+				</td>
+				<td valign="top">
+				Tags != Categories
 				</td>
 				</tr>
 				
@@ -577,6 +589,9 @@ function comicpress_admin() {
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
 				</td>
+				<td valign="top">
+					Setting to "Yes" will set a new option in your Dashboard -> Appearance menu.   Setting to "Yes" will set a new option in your Dashboard -> Appearance menu.   Setting to "No" will not set a new option in your Dashboard -> Appearance menu.   Setting to "Yes" will set a new option in your Dashboard -> Appearance menu.
+				</td>
 				</tr>
 				
 				<?php break;
@@ -587,6 +602,9 @@ function comicpress_admin() {
 					<label>
 					<input type="text" size="5" name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" value="<?php print get_option($value['id']); ?>" /><br />
 					</label>
+					</td>
+					<td valign="top">
+					This area intentionally left blank.
 					</td>
 					</tr>
 					
@@ -706,9 +724,9 @@ function comicpress_admin() {
 		</form>
 		</div>
 		</div>
-
-	<div style="margin-top: 10px; text-align:center;padding: 5px; background: #ddd; -moz-border-radius: 10px;-khtml-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: solid 1px #000;">
-	<a href="http://comicpress.org/">ComicPress <?php echo comicpress_current_theme_version(); ?></a>, created by <a href="http://mindfaucet.com/">Tyler Martin</a>, with <a href="http://www.coswellproductions.com/">John Bintz</a> and <a href="http://webcomicplanet.com/">Philip M. Hofer</a> (<a href="http://frumph.net/">Frumph</a>)<br />
+	</div>
+	<div style="margin-top: 10px; text-align:center;padding: 5px; background: #eee; -moz-border-radius: 10px;-khtml-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: solid 1px #000;">
+	<a href="http://comicpress.org/">ComicPress 2.8 (<?php global $comicpress_version; echo $comicpress_version; ?>)</a>, created by <a href="http://mindfaucet.com/">Tyler Martin</a>, with <a href="http://www.coswellproductions.com/">John Bintz</a> and <a href="http://webcomicplanet.com/">Philip M. Hofer</a> (<a href="http://frumph.net/">Frumph</a>)<br />
 	If you like the ComicPress theme, please donate.  It will help in creating new versions.<br />
 					
 					<form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="paypal-wrap">
