@@ -15,7 +15,7 @@ http://www.opensource.org/licenses/gpl-3.0.html
 
 body {
 	margin: 0;
-	font-family: “Lucida Sans Unicode”, “Lucida Grande”, sans-serif;
+	font-family: 'Arial', sans-serif;
 	font-size: 13px;
 	font-style: normal;
 	font-weight: normal;
@@ -102,8 +102,20 @@ form {
 }
 
 	.button {
-		background: #aaa url('images/menu.png');
 		height: 25px;
+		padding: 0 5px;
+		background: #aaa url('images/menu.png');
+		color: #000;
+		font-family: 'Arial', sans-serif;
+		font-size: 13px;
+		line-height: 13px;
+		border: 1px solid #999;
+		cursor: pointer;
+	}
+		
+	.button:hover {
+		color: #fff;
+		background: #f00 url('images/menu.png') 0 -75px;
 	}
 
 .sfhover {
@@ -384,6 +396,10 @@ h3, h3 a {
 }
 
 /* NAVIGATION */
+
+a.navi-comments:hover span {
+	color:#860b04;
+}
 
 .nav {
 	float: right;

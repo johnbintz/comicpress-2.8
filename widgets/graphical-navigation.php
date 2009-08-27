@@ -65,7 +65,7 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 			<a href="<?php echo bloginfo('url'); ?>/?randomcomic" class="navi navi-random" title="<?php echo $instance['random_title']; ?>"><?php echo $instance['random_title']; ?></a>
 		<?php } 
 		if ($instance['comments'] != 'off') { ?>
-			<a href="<?php the_permalink(); ?>#comments" class="navi navi-comments" title="<?php echo $instance['comments_title']; ?>"><span class="navi-comments-count"><?php comments_number('0', '1', '%'); ?></span><?php echo $instance['comments_title']; ?></a>
+			<a href="<?php the_permalink(); ?>#comment" class="navi navi-comments" title="<?php echo $instance['comments_title']; ?>"><span class="navi-comments-count"><?php comments_number('0', '1', '%'); ?></span><?php echo $instance['comments_title']; ?></a>
 		<?php }
 		if ($instance['buyprint'] != 'off') { ?>	
 			<form method="post" title="<?php echo $instance['buyprint_title']; ?>" action="<?php global $buy_print_url; echo $buy_print_url; ?>" class="navi-buyprint-form"> 

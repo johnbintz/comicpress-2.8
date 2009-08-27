@@ -143,18 +143,7 @@ function comicpress_admin() {
 	<?php
 	foreach ($options as $value) {
 		switch ( $value['type'] ) {
-
-			case "comicpress-disable_extended_comments": ?>
-				<tr>
-				<th scope="row"><strong>Disable Extra Comment Code?</strong><br /><br />Set to &quot;Yes&quot; and the extended comment code will be disabled.</th>
-				<td valign="top" width="100">
-				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
-				&nbsp;&nbsp;
-				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label><br />
-				</td>
-				</tr>
-				
-				<?php break;				
+			
 			case "comicpress-enable_search_in_menubar": ?>
 				<tr>
 				<th scope="row"><strong>Enable Search Form in Menubar?</strong><br /><br /></th>
@@ -183,14 +172,14 @@ function comicpress_admin() {
 				<?php break;
 			case "comicpress-enable_navigation_in_menubar": ?>
 				<tr>
-				<th scope="row"><strong>Enable extra Navigation options in the Menubar?</strong><br /><br /></th>
+				<th scope="row"><strong>Enable mini navigation buttons in the Menubar?</strong><br /><br />Mini Navigation arrows reside on the right side of the menubar, just the previous and next arrows.</th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
 				</td>
 				<td valign="top">
-					</td>
+				</td>
 				</tr>
 				
 				<?php break;
@@ -229,6 +218,9 @@ function comicpress_admin() {
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
 				</td>
+				<td valign="top">
+				Numbered pagination appears on the home(index) page, the authors page the blog template and comments/single when there are more then the set # of comments per page.  It's default is off, it is styled like the menubar.
+				</td>
 				</tr>
 				
 				<?php break;
@@ -238,11 +230,13 @@ function comicpress_admin() {
 				<br />
 				Turning this option to Yes will make it so that the divs for #page and #page-wide will not load.<br />
 				<br />
-				What you can do with this is use the entire *page* for your canvas instead of the 780px/980px that the two elements keep you in.</th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
+				</td>
+				<td valign="top">
+					What you can do with this is use the entire browser for your canvas instead of the 780px/980px that the two elements keep you in.</th>
 				</td>
 				</tr>
 				
@@ -255,6 +249,9 @@ function comicpress_admin() {
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
+				</td>
+				<td valign="top">
+				When a user or yourself puts their mouse cursor over the comic that is displayed on either the index or single page the action that happens next is the first step in the larger, bigger, more astonishing consequence of actually having any the other things you place your mouse cursor over and click.  You click, it goes to the next comic.
 				</td>
 				</tr>
 				
@@ -270,21 +267,7 @@ function comicpress_admin() {
 				</tr>
 				
 				<?php break;
-				
-			case "comicpress-disable_css_style_editor": ?>
-				<tr>
-				<th scope="row"><strong>Disable the styling in ComicPress Companion?</strong><br /><br />This will let you disable the colored, styling CSS editor and be a normal form.<br /><br /></th>
-				<td valign="top">
-				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
-				&nbsp;&nbsp;
-				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
-				</td>
-				<td valign="top">
-				<a href="http://wordpress.org/extend/plugins/comicpress-companion/">ComicPress Companion</a> is a plugin made specifically for ComicPress 2.8 versions.  It allows you to add CSS element changes without editing the original style.css file.
-				</td>
-				</tr>
-				
-				<?php break;
+
 			case "comicpress-graphicnav_directory": 
 				$current_gnav_directory = get_option($value['id']);
 				if (empty($current_gnav_directory)) $current_gnav_directory = 'default';
@@ -318,6 +301,20 @@ function comicpress_admin() {
 				</tr>
 				
 			<?php break;
+			case "comicpress-disable_extended_comments": ?>
+				<tr>
+				<th scope="row"><strong>Disable Extra Comment Code?</strong><br /><br />Set to &quot;Yes&quot; and the extended comment code will be disabled.<br /><br /></th>
+				<td valign="top" width="100">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label><br />
+				</td>
+				<td valign="top">
+				Extra Comment code is advanced code for how your comments are used.  Turning this off might increase the speed of your site but doubt it.  If turned off it will revert to the ComicPress 2.7 styling.
+				</td>
+				</tr>
+				
+				<?php break;	
 		}
 	}
 	?>
