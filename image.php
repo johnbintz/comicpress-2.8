@@ -65,6 +65,9 @@
 				<div class="clear"></div>
 			</div>
 			<?php the_content() ?>
+		<?php if ('open' == $post->comment_status) {
+			comments_template('', true);
+			} ?>
 			<br class="clear-margins" />
 		</div>
 		<div class="post-page-foot"></div>

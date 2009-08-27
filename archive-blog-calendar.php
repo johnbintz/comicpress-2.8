@@ -93,7 +93,7 @@ $month['12'] = array('month' => 'December', 'days' => '31');
 	<div class="post-page">
 	<?php while (have_posts()) : the_post() ?>
 		<div class="entry">
-			<h2 class="pagetitle"><?php the_title() ?></h2>
+			<h2 class="pagetitle"><?php the_title() ?> <span class="page-archive-year"> <?php echo $archive_year; ?></span></h2>
 			<?php the_content(); ?>
 		</div>
 	<?php endwhile; ?>

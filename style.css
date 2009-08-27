@@ -196,7 +196,9 @@ h3, h3 a {
 #menubar {
 	background: url('images/menu.png');
 	text-align: left;
-	border: 1px solid #999;
+	border-width: 1px 1px 1px 0;
+	border-style: solid;
+	border-color: #999;
 }
 
 #menunav {
@@ -994,6 +996,7 @@ ul.children {
 	border: 1px solid #000;
 	overflow: hidden;
 	background: #000;
+	text-align: center;
 }
 
 

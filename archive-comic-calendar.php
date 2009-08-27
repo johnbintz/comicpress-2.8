@@ -92,12 +92,12 @@ $month['12'] = array('month' => 'December', 'days' => '31');
 
 	<div class="post-page-head"></div>
 	<div class="post-page">
-	<?php if (have_posts()): ?>
+	<?php while (have_posts()) : the_post() ?>
 		<div class="entry">
 			<h2 class="pagetitle"><?php the_title() ?> <span class="page-archive-year"> <?php echo $archive_year; ?></span></h2>
 			<?php the_content(); ?>
 		</div>
-	<?php endif; ?>
+	<?php endwhile; ?>
 
 		<div class="archive-yearlist">| 
 <?php $years = $wpdb->get_col("SELECT DISTINCT YEAR(post_date) FROM $wpdb->posts WHERE post_status = 'publish' ORDER BY post_date ASC");
