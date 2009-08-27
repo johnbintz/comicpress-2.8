@@ -35,6 +35,7 @@
 </head>
 
 <body <?php if (function_exists('body_class')) { body_class(); } ?>>
+<?php if ( function_exists( 'get_sliding_panel' ) ) get_sliding_panel(); ?>
 <?php do_action('comicpress-header'); ?>
 <?php get_sidebar('above'); ?> 
 
