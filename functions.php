@@ -135,11 +135,6 @@ require_once(get_template_directory() . '/functions/membersonly.php');
 require_once(get_template_directory() . '/functions/syndication.php');
 require_once(get_template_directory() . '/functions/moods.php');
 
-
-if ($enable_dropdown_sidebar == 'yes') {
-	require_once(get_template_directory() . '/functions/dropbar.php');
-}
-
 if ($enable_numbered_pagination == 'yes') {
 	require_once(get_template_directory() . '/functions/wp-pagenavi.php');
 }

@@ -100,11 +100,10 @@ if ( have_comments() ) : ?>
 
 <?php endif; ?>
 <?php do_action('comment_form', $post->ID); ?>
-<p><textarea name="comment" id="comment" cols="50" rows="6" tabindex="4"></textarea>
+<p><textarea name="comment" id="comment" cols="50" rows="6" tabindex="4"></textarea></p>
 <button type="submit" class="button">Submit Comment</button>
 <p><small><strong>NOTE - You can use these tags:</strong><br /><?php echo allowed_tags(); ?></small></p>
 <?php comment_id_fields(); ?>
-</p>
 
 <div class="clear"></div>
 

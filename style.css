@@ -539,7 +539,7 @@ h3, h3 a {
 	height: 50px;
 	width: 45px;
 	background: url(images/calendar.png) center no-repeat;
-	font: normal 22px Verdana, Arial, Helvetica, sans-serif;
+	font: normal 22px Georgia;
 	color: #000;
 	text-align: center;
 	line-height: 100%;
@@ -565,6 +565,10 @@ h3, h3 a {
 	font-size: 11px;
 }
 
+.entry {
+	line-height: 1.45em;
+	font-size: 13px;
+}
 
 .more-link {
 	border-top: 1px dashed #000;
@@ -594,6 +598,12 @@ h3, h3 a {
 	font-size: 12px;
 }
 
+.members-only {
+	border: solid 1px #000;
+	background: #eee;
+	padding: 3px;
+}
+
 /* THE BLOG HEADER */
 
 #blogheader {
@@ -601,7 +611,7 @@ h3, h3 a {
 	padding: 5px 0 5px 0;
 	font-size: 32px;
 	letter-spacing: -2px;
-	border-top: 1px groove #000;
+	border-top: 1px solid #999;
 	margin-top: 10px;
 }
 
@@ -633,7 +643,6 @@ h3, h3 a {
 	.comment .comment {
 		margin-left: 10px;
 		padding-bottom: 10px;
-		background: #fff;
 	}
 
 		.comment .comment .comment {
@@ -641,13 +650,11 @@ h3, h3 a {
 			padding: 5px;
 			margin-top: 2px;
 			border: 1px dotted #ccc;
-			background: #fff;
 		}
 
 			.comment .comment .comment .comment {
 				background: transparent;
 				border: none;
-				background: #fff;
 			}
 
 	.comment .avatar {
@@ -805,6 +812,7 @@ ul.children {
 
 
 .sidebar h2, .sidebar h2 a {
+	font-family:arial;
 	font-size: 16px;
 }
 
@@ -918,6 +926,15 @@ ul.children {
 #wp-calendar a:hover {
 	color: #fff;
 	background: #000;
+}
+
+table#wp-calendar {
+	border:none;
+	background: transparent;
+}
+
+table#wp-calendar td {
+	border-color: #999;
 }
 
 /* SEARCH */
@@ -1462,39 +1479,6 @@ li.storyline-root {
 		color: #fff; 
 		background: url('images/menu.png') 0 -75px;
 	}
-
-/* Drop Bar */
-
-.dropbar {
-	position: absolute;
-	left: 0px;
-	width: 100%;
-	height: 98px;
-	border-bottom: solid 1px #fff;
-	color: white;
-	font-family: Verdana;
-	font-size: 11px;
-	z-index: 10000;
-	background: #000;
-}
-
-
-.dropbar .droptab {
-	position: absolute;
-	bottom: -23px;
-	left: 30px;
-	width: 142px;
-	height: 23px;
-	background-image: url('images/dropbar.png');
-}
-
-/* members only */
-
-.members-only {
-	border: solid 1px #000;
-	background: #eee;
-	padding: 3px;
-}
 
 /* Tool Tips */
 

@@ -130,9 +130,9 @@ function comicpress_comments_callback($comment, $args, $depth) {
 	<?php comicpress_comment_author(); ?><br />
 	</div>
 	
-	<abbr class="comment-time" title="<?php comment_date(__('l, F jS, Y, g:i a','comicpress')); ?>">
+	<span class="comment-time" title="<?php comment_date(__('l, F jS, Y, g:i a','comicpress')); ?>">
 	<?php printf(__('%1$s at %2$s','comicpress'), get_comment_date(), get_comment_time()); ?>
-	</abbr> 
+	</span> 
 	
 	<span class="separator">|</span> <a class="permalink" href="#comment-<?php echo str_replace('&', '&amp;', get_comment_ID()); ?>" title="<?php _e('Permalink to comment','comicpress'); ?>"><?php _e('Permalink','comicpress'); ?></a>
 
