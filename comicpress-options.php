@@ -259,9 +259,9 @@ function comicpress_admin() {
 				</tr>
 				
 				<?php break;
-			case "comicpress-anomaly_says": ?>
+			case "comicpress-rascal_says": ?>
 				<tr>
-				<th scope="row"><strong>Enable comic hovertext hover commenting?</strong><br /><br />Enabling this option will make a comic bubble appear over the comic and write out what you put in the hovertext.<br /></th>
+				<th scope="row"><strong>Enable Rascal the ComicPress Mascot?</strong><br /><br />Enabling this option will make a comic bubble appear over the comic and write out what you put in the hovertext.<br /></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
 				&nbsp;&nbsp;

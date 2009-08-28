@@ -125,9 +125,9 @@ $options = array (
 			"type" => "comicpress-comic_clicks_next"),
 
 		array(
-			"id" => "comicpress-anomaly_says",
+			"id" => "comicpress-rascal_says",
 			"default" => "no",
-			"type" => "comicpress-anomaly_says"),
+			"type" => "comicpress-rascal_says"),
 			
 		array(
 			"id" => "comicpress-disable_css_style_editor",

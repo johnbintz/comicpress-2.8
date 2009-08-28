@@ -62,7 +62,7 @@ if (get_option('upload_path') !== false) {
 				'enable_related_comics'			=> 'enable_related_comics',
 				'enable_related_posts'			=> 'enable_related_posts',
 				'comic_clicks_next'				=> 'comic_clicks_next',
-				'anomaly_says'					=> 'anomaly_says',
+				'rascal_says'					=> 'rascal_says',
 				'disable_css_style_editor'		=> 'disable_css_style_editor',
 				'enable_post_calendar'			=> 'enable_post_calendar',
 				'enable_post_author_gravatar'	=> 'enable_post_author_gravatar',
