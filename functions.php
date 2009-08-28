@@ -129,6 +129,7 @@ require_once(get_template_directory() . '/widgets/comicblogpost.php');
 require_once(get_template_directory() . '/functions/displaycomic.php');
 require_once(get_template_directory() . '/functions/displaycomicpost.php');
 require_once(get_template_directory() . '/functions/displayblogpost.php');
+require_once(get_template_directory() . '/functions/pagination.php');
 require_once(get_template_directory() . '/functions/adminnotes.php');
 require_once(get_template_directory() . '/functions/checkbrowser.php');
 require_once(get_template_directory() . '/functions/searchcustomfields.php');

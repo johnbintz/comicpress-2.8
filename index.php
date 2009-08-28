@@ -85,26 +85,13 @@ if ($disable_blog_frontpage == 'no') {
 			
 			display_blog_post();	
 		
-		endwhile; ?>
+		endwhile;
+		
+		comicpress_pagination();
+	} 
+} ?>
 
-
-			<?php if(function_exists('wp_pagenavi')) { ?>
-				<div id="wp-paginav">
-					<?php wp_pagenavi(); ?>
-					<div class="clear"></div>
-				</div>
-				<?php } else { ?>
-				<div id="pagenav">
-					  <div class="pagenav-right"><?php previous_posts_link('Newer Entries &uarr;') ?></div>
-					  <div class="pagenav-left"><?php next_posts_link('&darr; Previous Entries') ?></div>
-					<div class="clear"></div>
-				</div>
-			<?php } ?>
-			<div class="clear"></div>
-			
-<?php } } ?>
-			<?php get_sidebar('underblog'); ?>
-
+		<?php get_sidebar('underblog'); ?>
 		</div>
 </div>
 
