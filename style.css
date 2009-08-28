@@ -1500,19 +1500,17 @@ li.storyline-root {
 
 /* Tool Tips */
 
-
 .tt a {
 	position: relative;
 	z-index: 1000;
 	color: #3CA3FF;
 	font-weight: bold;
 	text-decoration: none;
-	margin-bottom: -100px;
+	margin-bottom: -110px;
 }
 a.tt span {
 	display: none;
 }
-
 
 a.tt:hover span.tooltip {
 	position: absolute;
@@ -1522,26 +1520,26 @@ a.tt:hover span.tooltip {
 	margin: 0 auto;
 	text-align: center;
 	height: 164px;
-	background: url('images/anomaly.png') no-repeat;
+	background: url('images/comicpress-rascal.png') no-repeat;
 	z-index: 1000;
 }
 a.tt:hover span.top {
 	display: block;
 	width: 200px;
-	height: 20px;
-	padding-top: 10px;
-	margin-top: 55px;
+	height: 35px;
+	padding-top: 10px 10px 0 10px;
+	margin-top: 59px;
 	margin-left: 25px;
-	background: url('images/bubble.gif') no-repeat top;
+	background: url('images/bubble.png') 0 0 no-repeat;
 	z-index: 1000;
 }
 a.tt:hover span.middle {
 	/* different middle bg for stretch */
 	display: block;
-	width: 190px;
+	width: 180px;
 	margin-left: 25px;
-	padding: 0 5px 0 5px;
-	background: url('images/bubble_filler.gif') repeat bottom;
+	padding: 0 10px;
+	background: url('images/bubble.png') -200px 0 repeat-y;
 	z-index: 1000;
 }
 a.tt:hover span.bottom {
@@ -1551,10 +1549,9 @@ a.tt:hover span.bottom {
 	background-position: -100px;
 	color: #548912;
 	margin-left: 25px;
-	background: url('images/bubble.gif') no-repeat bottom;
+	background: url('images/bubble.png') 0 -35px no-repeat;
 	z-index: 1000;
 }
-
 
 /* User Pages */
 
