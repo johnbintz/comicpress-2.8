@@ -10,7 +10,6 @@ if ($disable_lrsidebars_frontpage == 'yes' && is_home()) {
 					<?php comicpress_calendar() ?>
 				</li>
 			</ul>
-			<div style="padding-top:20px;"></div>
 			<?php comicpress_archive_dropdown(); ?>
 			<?php comicpress_latest_comics() ?>
 		<?php endif; ?>
