@@ -121,16 +121,18 @@ $count = $tmp_search->post_count;
   <?php endif; ?>
 	
 			<?php if(function_exists('wp_pagenavi')) { ?>
-				<div class="paginav">
+				<div id="wp-paginav">
 					<?php wp_pagenavi(); ?>
+					<div class="clear"></div>
 				</div>
 				<?php } else { ?>
-				<div class="pagenav">
+				<div id="pagenav">
 					  <div class="pagenav-right"><?php previous_posts_link('Newer Entries &uarr;') ?></div>
 					  <div class="pagenav-left"><?php next_posts_link('&darr; Previous Entries') ?></div>
 					<div class="clear"></div>
 				</div>
 			<?php } ?>
+			<div class="clear"></div>
 	</div>
 	</div>
 </div>
