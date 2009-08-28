@@ -807,17 +807,6 @@ ul.children {
 	list-style: none;
 }
 
-.widget {
-	margin: 0 auto;
-}
-
-.widget_comicpress_comictitle {
-	font-size: 36px;
-	font-family: georgia;
-	letter-spacing: -2px;
-	text-align: center;
-}
-
 /* Sidebar Class */
 
 
@@ -865,12 +854,22 @@ ul.children {
 /* WIDGETS */
 
 
+.widget {
+	margin: 0 auto;
+}
+
+.widget_comicpress_comictitle {
+	font-size: 36px;
+	font-family: georgia;
+	letter-spacing: -2px;
+	text-align: center;
+}
+
 .random-comic-icon {
 	padding: 0 5px;
 	color: #fff;
 	background: #000;
 }
-
 
 .comic-bookmark {
 	width: 185px;
@@ -878,15 +877,26 @@ ul.children {
 	margin-bottom: 10px;
 }
 
-
-.archive-dropdown {
-	max-width: 100%;
+.archive-dropdown-wrap {
+	background: url('images/browse-search.png') no-repeat;
 }
 
+.archive-dropdown-wrap:hover {
+	background-position: 0 -23px;
+}
 
-
-
-
+.archive-dropdown {
+	margin: 0;
+	padding: 0;
+	width: 166px;
+	height: 23px;
+	font-size: 12px;
+	font-family: 'Arial' , sans-serif;
+	border: none;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	cursor: pointer;
+}
 
 /* CALENDAR */
 
@@ -999,28 +1009,6 @@ table#wp-calendar td {
 	float: right;
 	padding: 5px;
 }
-
-.archive-dropdown-wrap {
-	background: url('images/browse-search.png') no-repeat;
-}
-
-.archive-dropdown-wrap:hover {
-	background-position: 0 -23px;
-}
-
-.archive-dropdown {
-	margin: 0;
-	padding: 0;
-	width: 166px;
-	height: 23px;
-	font-size: 12px;
-	font-family: 'Arial' , sans-serif;
-	border: none;
-	opacity: 0;
-	filter: alpha(opacity=0);
-	cursor: pointer;
-}
-
 
 
 /* GALLERY */

@@ -64,11 +64,12 @@
 							<table class="month-table">
 					<?php while (have_posts()) : the_post() ?>
 							<tr><td class="archive-date" align="right"><?php the_time('M j, Y') ?></td><td class="archive-title"><a href="<?php the_permalink(); ?>"><?php the_title() ?></a></td>
+											
 					<?php endwhile; ?>
 							</table>
 					</ol>
 					
-				<?php comicpress_pagination(); ?>
+					<?php comicpress_pagination(); ?>
 				
 				<?php } ?>
 			</div>
