@@ -9,12 +9,14 @@ Author URI: http://webcomicplanet.com/
 
 */
 
-function comicpress_calendar($instance) {
+function comicpress_calendar($instance = null) {
 	global $post; 
-	$thumbnail = $instance['thumbnail'];
-	$small = $instance['small'];
-	$medium = $instance['medium'];
-	$large = $instance['large'];
+	if (!empty($instance)) {
+		$thumbnail = $instance['thumbnail'];
+		$small = $instance['small'];
+		$medium = $instance['medium'];
+		$large = $instance['large'];
+	}
 	?>
 	<div id="wp-calendar-top"></div>
 	<div id="wp-calendar-wrap">

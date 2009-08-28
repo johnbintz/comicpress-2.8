@@ -1,6 +1,6 @@
 <?php
 /*
-Widget Name: 
+Widget Name: comicpress_archive_dropdown
 Widget URI: http://comicpress.org/
 Description: 
 Author: Philip M. Hofer (Frumph)
@@ -22,7 +22,7 @@ function comicpress_archive_dropdown() { ?>
 class widget_comicpress_archive_dropdown extends WP_Widget {
 	
 	function widget_comicpress_archive_dropdown() {
-		$widget_ops = array('classname' => 'widget_comicpress_archive_dropdown', 'description' => 'Display a thumbnail of the latest comic, clickable to go to the comic post.' );
+		$widget_ops = array('classname' => 'widget_comicpress_archive_dropdown', 'description' => 'Display a dropdown of your archive.' );
 		$this->WP_Widget('archive_dropdown', 'ComicPress Archive Dropdown', $widget_ops);
 	}
 	
