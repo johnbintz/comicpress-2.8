@@ -742,13 +742,17 @@ function comicpress_admin() {
 	<div style="margin-top: 10px; text-align:center;padding: 5px; background: #eee; -moz-border-radius: 10px;-khtml-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: solid 1px #000;">
 	<a href="http://comicpress.org/">ComicPress 2.8 (<?php global $comicpress_version; echo $comicpress_version; ?>)</a>, created by <a href="http://mindfaucet.com/">Tyler Martin</a>, with <a href="http://www.coswellproductions.com/">John Bintz</a> and <a href="http://webcomicplanet.com/">Philip M. Hofer</a> (<a href="http://frumph.net/">Frumph</a>)<br />
 	If you like the ComicPress theme, please donate.  It will help in creating new versions.<br />
-					
-					<form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="paypal-wrap">
-			<input type="hidden" name="cmd" value="_s-xclick">
-			<input type="hidden" name="hosted_button_id" value="3142149">
-			<input type="submit" border="0" name="submit" alt="" value="Donate" id="paypal">
-			<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-		</form>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="7827910">
+<input type="image"
+src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif"
+border="0" name="submit" alt="PayPal - The safer, easier way to pay
+online!">
+<img alt="" border="0"
+src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1"
+height="1">
+</form>
 	</div>
 </div>
 

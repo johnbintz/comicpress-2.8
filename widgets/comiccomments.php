@@ -22,7 +22,7 @@ class widget_comicpress_comments extends WP_Widget {
 		
 		echo $before_widget;
 		$title = empty($instance['title']) ? 'Permalink' : apply_filters('widget_title', $instance['title']); ?>
-			<?php if ('open' == $post->comment_status) { comments_popup_link('&ldquo;Comment!&rdquo;', '&ldquo;1 Comment&rdquo;', '&ldquo;% Comments&rdquo;'); } ?>
+		<?php if ('open' == $post->comment_status) { ?><div class="comment-link"><?php comments_popup_link('<span class="comment-balloon comment-balloon-empty">&rdquo;</span>Comment ', '<span class="comment-balloon">1</span>Comment ', '<span class="comment-balloon">%</span>Comment '); ?></div><?php } ?>
 		<?php
 		echo $after_widget;
 	}

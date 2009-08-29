@@ -27,7 +27,7 @@
 	<link rel="pingback" href="<?php bloginfo('pingback_url') ?>" />
 	<script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/scroll.js"></script>
 	<meta name="ComicPress" content="<?php global $comicpress_version; echo $comicpress_version; ?>" />
-<!--[if lte IE 7]>
+<!--[if lt IE 7]>
    <script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/ie6submenus.js"></script>
 <![endif]-->
 	<?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>

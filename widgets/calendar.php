@@ -21,12 +21,12 @@ function comicpress_calendar($instance = null) {
 	<div id="wp-calendar-top"></div>
 	<div id="wp-calendar-wrap">
 	<?php if (!empty($thumbnail)) { ?>
-		<img src="<?php echo $thumbnail; ?>" alt="" class="wp-calendar-thumb" /><br />
+		<div class="wp-calendar-download">
+		<img src="<?php echo $thumbnail; ?>" alt="" /><br />
 		<?php if (!empty($small) || !empty($medium) || !empty($large)) { ?>
-			<div class="wp-calendar-download">
-			<?php if (!empty($small)) { ?>[<a href="<?php echo $small; ?>" title="Download">S</a>] <?php } ?><?php if (!empty($medium)) { ?>[<a href="<?php echo $medium; ?>" title="Download">M</a>] <?php } ?><?php if (!empty($large)) { ?>[<a href="<?php echo $large; ?>" title="Download">L</a>] <?php } ?>
-			</div>
+			DOWNLOAD <?php if (!empty($small)) { ?><a href="<?php echo $small; ?>" title="Download Small">S</a><?php } ?><?php if (!empty($medium)) { ?><a href="<?php echo $medium; ?>" title="Download Medium">M</a><?php } ?><?php if (!empty($large)) { ?><a href="<?php echo $large; ?>" title="Download Large">L</a><?php } ?>
 		<?php } ?>
+		</div>
 	<?php } ?>
 	<?php get_calendar(); ?>
 	</div>

@@ -1,6 +1,6 @@
 <?php
 
-$comicpress_version = '2.8.0.9';
+$comicpress_version = '2.8.0.R';
 
 // Remove the wptexturizer from changing the quotes and squotes.
 // remove_filter('the_title', 'wptexturize');

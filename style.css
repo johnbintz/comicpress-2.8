@@ -22,7 +22,7 @@ body {
 	text-transform: none;
 	letter-spacing: normal;
 	color: #333;
-	background: #fff url('images/background.jpg') top repeat-x; 
+	background: #fff url('images/bgs/background.png') top repeat-x; 
 	z-index: 0;
 }
 
@@ -292,9 +292,9 @@ h3, h3 a {
 		padding: 5px 0 5px 0;
 	}
 
-
 	#menu li {
 		float: left;
+		cursor:pointer;
 	}
 
 	#menu li a {
@@ -599,12 +599,6 @@ a.navi-comments:hover span {
 	font-size: 11px;
 }
 
-.comment-link {
-	font-family: 'Georgia' , serif;
-	font-size: 13px;
-	text-align: right;
-}
-
 .related_posts {
 	margin-top: 10px;
 	font-weight: 700;
@@ -621,6 +615,49 @@ a.navi-comments:hover span {
 	background: #eee;
 	padding: 3px;
 }
+
+/* COMMENT LINK */
+
+.comment-link {
+	height: 25px;
+	line-height: 20px;
+	font-family: 'Arial', sans-serif;
+	font-weight: bold;
+	text-align: right;
+}
+
+	.comment-link a {
+		color: #333;
+	}
+		
+	.comment-link a:hover {
+		color: #800;
+	}
+		
+	.comment-balloon {
+		width: 30px;
+		height: 25px;
+		display: block;
+		margin: 0 0 0 5px;
+		float: right;
+		overflow: hidden;
+		text-align: center;
+		line-height: 16px;
+		font-family: 'Georgia', serif;
+		font-size: 16px;
+		font-weight: normal;
+		background: url('images/comment-balloon.png') no-repeat;
+	}
+	
+		.comment-link a:hover .comment-balloon {
+			color: #fff;
+			background-position: 0 -25px;
+		}
+		
+	.comment-balloon-empty {
+		font-size: 20px;
+		line-height: 30px;
+		}
 
 /* THE BLOG HEADER */
 
@@ -964,6 +1001,29 @@ table#wp-calendar {
 table#wp-calendar td {
 	border-color: #999;
 }
+
+.wp-calendar-download {
+	width: 166px;
+	margin: 0 auto;
+	overflow: hidden;
+	font-size: 10px;
+	text-align: right;
+	color: #777;
+	background: #222;
+}
+
+	.wp-calendar-download a {
+		padding: 0 3px;
+		font-weight: bold;
+		color: #fff;
+		background: #000;
+		border-left: 1px solid #777;
+	}
+
+		.wp-calendar-download a:hover {
+			background: #800;
+		}
+
 
 /* SEARCH */
 

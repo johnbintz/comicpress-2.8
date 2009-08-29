@@ -56,7 +56,7 @@ function comicpress_menubar() {
 	$bookmarkargs = 
 	$bookmarks = wp_list_bookmarks('echo=0&title_li=&categorize=1&title_before=&title_after=&exclude_name=menubar'); 
 	$bookmarks = preg_replace('#<li ([^>]*)>#', '<li class="page-item link">', $bookmarks);
-	$bookmarks = preg_replace('#<ul ([^>]*)>#', '<ul>', $bookmarks);
+	$bookmarks = preg_replace('#<ul ([^>]*)>#', '<ul>', $bookmarks); 
 	$listpages = wp_list_pages('echo=0&sort_column=menu_order&depth=4&title_li=');
 		if (!empty($bookmarks)) {
 			$listpages = str_replace('Links</a></li>', 'Links</a>
@@ -66,12 +66,12 @@ function comicpress_menubar() {
 						</li>
 						', $listpages);
 			$listpages .= $menulinks;
-		} else {
+		} else { 
 			$listpages = str_replace('Links</a></li>', 'Links</a>
 						</li>
 						', $listpages);
 			$listpages .= $menulinks;			
-		}
+		} 
 	?>
 	<ul id="menu">
 		<li class="page_item page-item-home<?php if (is_home()) { ?> current_page_item<?php } ?>"><a href="<?php bloginfo('url'); ?>">Home</a></li>

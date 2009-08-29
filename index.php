@@ -75,7 +75,8 @@
 			<div class="column">
 	<?php } 
 } 
-if ($disable_blog_frontpage == 'no') {
+
+if ($disable_blog_frontpage != 'yes') { 
 	if (have_posts()) {
 		global $blog_postcount;
 		$blog_query = 'showposts='.$blog_postcount.'&cat=-"'.exclude_comic_categories().'"&paged='.$paged; 
