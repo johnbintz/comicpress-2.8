@@ -194,6 +194,11 @@ $options = array (
 			"default" => "no",
 			"type" => "comicpress-disable_lrsidebars_frontpage"),
 			
+		array(
+			"id" => "comicpress-calendar_directory",
+			"default" => "none",
+			"type" => "comicpress-calendar_directory"),
+			
 
 		array("type" => "close")
 		);

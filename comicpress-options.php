@@ -20,7 +20,7 @@ if ($is_IE) {
 
 
 function comicpress_admin() {
-	global $options, $upload_path, $blogcat, $moods_directory;
+	global $options, $upload_path, $blogcat, $moods_directory, $calendar_directory, $graphicnav_directory;
 	
 
 	?>
@@ -306,6 +306,41 @@ function comicpress_admin() {
 				</tr>
 				
 			<?php break;
+			case "comicpress-calendar_directory": 
+				$current_cal_directory = get_option($value['id']);
+				if (empty($current_cal_directory)) $current_cal_directory = 'default';
+					
+				$count = count($results = glob(get_template_directory() . '/images/cal/'.$current_cal_directory.'/*'));
+				$cal_directories = glob(get_template_directory() . '/images/cal/*');
+				
+			?>
+				<tr>
+				<th scope="row"><strong>Calendar Directory</strong><br /><br />Choose a directory to get the Archive Calendar styling from.<br /></th>
+				<td valign="top">
+					<label>
+						<select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
+						<option class="level-0" value="none" <?php if ($current_cal_directory == "none") { ?>selected="selected"<?php } ?>>none</option>
+				<?php
+					foreach ($cal_directories as $cal_dirs) {
+						if (is_dir($cal_dirs)) { 
+							$cal_dir_name = basename($cal_dirs); ?>
+							<option class="level-0" value="<?php echo $cal_dir_name; ?>" <?php if ($current_cal_directory == $cal_dir_name) { ?>selected="selected"<?php } ?>><?php echo $cal_dir_name; ?></option>
+					<?php }
+					}
+				?>
+						</select>
+					</label>
+				</td>
+				<td valign="top">
+					To not have calendar graphics, set this as "none".<br />
+					<br />
+					<?php echo get_template_directory() . '/images/cal/'; ?>
+					Calendar directories are found in your theme directory/images/cal/* to create your own custom archive calendar images just create a directory
+					under images/cal/ and place your image files inside of it.
+				</td>
+				</tr>
+				
+			<?php break;
 			case "comicpress-disable_extended_comments": ?>
 				<tr>
 				<th scope="row"><strong>Disable Extra Comment Code?</strong><br /><br />Set to &quot;Yes&quot; and the extended comment code will be disabled.<br /><br /></th>
@@ -355,14 +390,14 @@ function comicpress_admin() {
 				<?php break;
 			case "comicpress-disable_comic_blog_frontpage": ?>
 				<tr>
-				<th scope="row"><strong>Disable the comic blog on the index page?</strong><br /><br />Set to &quot;Yes&quot; and the blog portion of the comic will not display on the index page/front page of your site.<br /></th>
+				<th scope="row"><strong>Disable the comic blog on the index and single pages?</strong><br /><br />Set to &quot;Yes&quot; and the blog portion of the comic will not display on the index page/front page of your site.<br /></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label><br />
 				</td>
 				<td valign="top">
-				*Some* people,.. not naming names ..do not like to have a comic post let alone showing on the index page.
+				*Some* people,.. not naming names ..do not like to have a comic post let alone showing on the index page.  You can use the comic blog post widget and place it anywhere around the comic.   IF there is no content in the post it will not display.
 				</td>
 				</tr>
 				

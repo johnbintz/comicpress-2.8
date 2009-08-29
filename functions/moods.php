@@ -22,7 +22,7 @@ function comicpress_show_mood_in_post() {
 	$mood = explode(".", $mood);
 	$mood = reset($mood);
 	if ( !empty($mood_file) && file_exists(get_template_directory() . '/images/moods/'.$moods_directory.'/'.$mood_file) ) { ?>
-		<div class="post-mood post-<?php echo $mood; ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/moods/default/<?php echo $mood_file; ?>" alt="<?php echo $mood; ?>" title="<?php echo $mood; ?>" /></div>
+		<div class="post-mood post-<?php echo $mood; ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/moods/<?php echo $moods_directory; ?>/<?php echo $mood_file; ?>" alt="<?php echo $mood; ?>" title="<?php echo $mood; ?>" /></div>
 	<?php }
 }
 

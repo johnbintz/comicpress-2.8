@@ -45,7 +45,10 @@
 	<?php get_sidebar('blog'); ?>	
 	<?php if (have_posts()) : while (have_posts()) : the_post();
 		if (in_comic_category()) {
-			display_comic_post();
+			global $disable_comic_blog_frontpage;
+			if ($disable_comic_blog_frontpage != 'yes') {
+				display_comic_post();
+			}
 		} else { 
 			display_blog_post();			
 		} 

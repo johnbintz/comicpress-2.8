@@ -1,6 +1,6 @@
 <?php
 
-$comicpress_version = '2.8.0.R';
+$comicpress_version = '2.8.0.R2';
 
 // Remove the wptexturizer from changing the quotes and squotes.
 // remove_filter('the_title', 'wptexturize');
@@ -76,6 +76,7 @@ if (get_option('upload_path') !== false) {
 				'enable_rss_in_menubar'			=> 'enable_rss_in_menubar',
 				'enable_navigation_in_menubar'	=> 'enable_navigation_in_menubar',
 				'disable_lrsidebars_frontpage'	=> 'disable_lrsidebars_frontpage',
+				'comicpress-calendar_directory' => 'comicpress-calendar_directory',
 				'contact_in_menubar'			=> 'contact_in_menubar' ) as $options => $variable_name) {
 		$variables_to_extract[$variable_name] = get_option("comicpress-${options}");
 	}
@@ -85,6 +86,7 @@ if (get_option('upload_path') !== false) {
 
 if (empty($graphicnav_directory)) $graphicnav_directory = 'default';
 if (empty($moods_directory)) $moods_directory = 'default';
+if (empty($calendar_directory)) $calendar_directory = 'none';
 
 function is_cp_theme_style($choices) {
 global $cp_theme_style;

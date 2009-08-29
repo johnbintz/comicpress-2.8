@@ -211,6 +211,7 @@ h3, h3 a {
 	border-width: 1px 1px 1px 0;
 	border-style: solid;
 	border-color: #999;
+	list-style: none;
 }
 
 #menunav {
@@ -1331,9 +1332,13 @@ li.storyline-root {
 
 /* Archive Calendar Template */
 
+.cpcal-image {
+	height: 120px;
+	width: 152px;
+}
+
 .cpcal-month {
 	width: 157px;
-	height: 138px;
 	padding: 5px 0 5px 5px;
 	margin: 0 8px 8px 0;
 	float: left;
