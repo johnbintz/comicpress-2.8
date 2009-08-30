@@ -18,7 +18,8 @@ class widget_comicpress_comic_blog_post extends WP_Widget {
 	
 	function widget($args, $instance) {
 		global $post, $wp_query;
-		extract($args, EXTR_SKIP);
+		if (is_home() || is_single()) {
+			extract($args, EXTR_SKIP);
 			if (!empty($post->post_content)) {
 				echo $before_widget;
 				$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
@@ -27,6 +28,7 @@ class widget_comicpress_comic_blog_post extends WP_Widget {
 				display_comic_post();
 				echo $after_widget;
 			}
+		}
 	}
 	
 	function update($new_instance, $old_instance) {
