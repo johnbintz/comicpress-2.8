@@ -314,7 +314,7 @@ h3, h3 a {
 		/* Main menu highlighted background color */
 	}
 
-/* For submenu dropdowns - this order must be maintained */
+	/* For submenu dropdowns - this order must be maintained */
 
 	#menu ul {
 		padding: 0;
@@ -379,9 +379,9 @@ h3, h3 a {
 	z-index: 100;
 }
 
-#comic img {
-	margin: 5px;
-}
+	#comic img {
+		margin: 5px;
+	}
 
 #comic-foot {
 	padding-bottom: 5px;
@@ -409,25 +409,25 @@ a.navi-comments:hover span {
 	padding: 8px 5px 5px 5px;
 }
 
-.nav-first {
-	padding: 0 5px 0 0;
-	float: left;
-}
+	.nav-first {
+		padding: 0 5px 0 0;
+		float: left;
+	}
 
-.nav-previous {
-	padding: 0 5px;
-	float: left;
-}
+	.nav-previous {
+		padding: 0 5px;
+		float: left;
+	}
 
-.nav-next {
-	padding: 0 5px;
-	float: left;
-}
+	.nav-next {
+		padding: 0 5px;
+		float: left;
+	}
 
-.nav-last {
-	padding: 0 0 0 5px;
-	float: left;
-}
+	.nav-last {
+		padding: 0 0 0 5px;
+		float: left;
+	}
 
 .pagenav, .commentnav {
 	height: 25px;
@@ -440,33 +440,25 @@ a.navi-comments:hover span {
 	clear: both;
 }
 
+	.pagenav-left, .commentnav-left {
+		float: left;
+	}
 
-.pagenav-left, .commentnav-left {
-	float: left;
-}
+	.pagenav-right, .commentnav-right {
+		float: right;
+	}
 
+	.nav a, .pagenav a, .nav-blog a {
+		display: block;
+		float: left;
+		color: #000;
+	}
 
-.pagenav-right, .commentnav-right {
-	float: right;
-}
-
-
-.nav a, .pagenav a, .nav-blog a {
-	display: block;
-	float: left;
-	color: #000;
-}
-
-
-.nav a:hover, .pagenav a:hover, .nav-blog a:hover {
-	color: #800;
-}
-
-
-
+	.nav a:hover, .pagenav a:hover, .nav-blog a:hover {
+		color: #800;
+	}
 
 /* POSTS - PAGES */
-
 
 #pagewrap-right {
 	width: 770px;
@@ -481,7 +473,6 @@ a.navi-comments:hover span {
 	margin: 0;
 	padding: 0;
 }
-
 
 #content {
 	float: left;
@@ -575,7 +566,6 @@ a.navi-comments:hover span {
 .comicdate {
 	font-size: 14px;
 }
-
 
 .postdate {
 	font-size: 11px;
@@ -727,7 +717,6 @@ a.navi-comments:hover span {
 		background: #efefef;
 	}
 
-
 .comment-author {
 	display: inline;
 }
@@ -742,7 +731,6 @@ a.navi-comments:hover span {
 .says {
 	display: none;
 }
-
 
 .commentsrsslink {
 	float: right;
@@ -844,7 +832,6 @@ ul.children {
 
 /* Sidebar Class */
 
-
 .sidebar {
 	font-size: 11px;
 	margin: 0 5px 0 5px;
@@ -852,39 +839,37 @@ ul.children {
 	padding: 0 0 5px 0;
 }
 
+	.sidebar h2, .sidebar h2 a {
+		font-family:arial;
+		font-size: 16px;
+	}
 
-.sidebar h2, .sidebar h2 a {
-	font-family:arial;
-	font-size: 16px;
-}
+	.sidebar .widget {
+		margin-bottom: 10px;
+	}
 
-.sidebar .widget {
-	margin-bottom: 10px;
-}
+	.sidebar ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
 
-.sidebar ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
+		.sidebar ul li {
+			margin: 0;
+			padding: 0;
+			text-align: left;
+			list-style: none;
+		}
 
-.sidebar ul li {
-	margin: 0;
-	padding: 0;
-	text-align: left;
-	list-style: none;
-}
+		.sidebar ul li ul li {
+			margin: 0 0 0 13px;
+			padding: 0;
+			text-align: left;
+		}
 
-
-.sidebar ul li ul li {
-	margin: 0 0 0 13px;
-	padding: 0;
-	text-align: left;
-}
-
-.sidebar li h2 {
-	margin-top: 15px;
-}
+	.sidebar li h2 {
+		margin-top: 15px;
+	}
 
 /* WIDGETS */
 
@@ -893,12 +878,12 @@ ul.children {
 	margin: 0 auto;
 }
 
-.widget_comicpress_comictitle {
-	font-size: 36px;
-	font-family: georgia;
-	letter-spacing: -2px;
-	text-align: center;
-}
+	.widget_comicpress_comictitle {
+		font-size: 36px;
+		font-family: georgia;
+		letter-spacing: -2px;
+		text-align: center;
+	}
 
 .random-comic-icon {
 	padding: 0 5px;
@@ -916,9 +901,9 @@ ul.children {
 	background: url('images/browse-search.png') no-repeat;
 }
 
-.archive-dropdown-wrap:hover {
-	background-position: 0 -23px;
-}
+	.archive-dropdown-wrap:hover {
+		background-position: 0 -23px;
+	}
 
 .archive-dropdown {
 	margin: 0;
@@ -949,79 +934,73 @@ ul.children {
 	margin: 0 auto;
 }
 
-.wp-calendar-thumb {
-	width: 178px;
-	height: 130px;
-	margin: 0 auto;
-}
-
-
-#wp-calendar th {
-	font-size: 10px;
-	font-weight: normal;
-	text-align: center;
-}
-
-
-#wp-calendar caption {
-	font-family: 'Georgia' , sans-serif;
-	font-size: 18px;
-	letter-spacing: -1px;
-	font-variant: small-caps;
-}
-
-
-#wp-calendar td {
-	min-width: 20px;
-	padding: 0;
-	text-align: center;
-	border: 1px solid #000;
-}
-
-
-#wp-calendar a {
-	display: block;
-	text-decoration: none;
-	font-weight: bold;
-}
-
-
-#wp-calendar a:hover {
-	color: #fff;
-	background: #000;
-}
-
-table#wp-calendar {
-	border:none;
-	background: transparent;
-}
-
-table#wp-calendar td {
-	border-color: #999;
-}
-
-.wp-calendar-download {
-	width: 166px;
-	margin: 0 auto;
-	overflow: hidden;
-	font-size: 10px;
-	text-align: right;
-	color: #777;
-	background: #222;
-}
-
-	.wp-calendar-download a {
-		padding: 0 3px;
-		font-weight: bold;
-		color: #fff;
-		background: #000;
-		border-left: 1px solid #777;
+	.wp-calendar-thumb {
+		width: 178px;
+		height: 130px;
+		margin: 0 auto;
 	}
 
-		.wp-calendar-download a:hover {
-			background: #800;
+	#wp-calendar th {
+		font-size: 10px;
+		font-weight: normal;
+		text-align: center;
+	}
+
+	#wp-calendar caption {
+		font-family: 'Georgia' , sans-serif;
+		font-size: 18px;
+		letter-spacing: -1px;
+		font-variant: small-caps;
+	}
+
+	#wp-calendar td {
+		min-width: 20px;
+		padding: 0;
+		text-align: center;
+		border: 1px solid #000;
+	}
+
+	#wp-calendar a {
+		display: block;
+		text-decoration: none;
+		font-weight: bold;
+	}
+
+	#wp-calendar a:hover {
+		color: #fff;
+		background: #000;
+	}
+
+	table#wp-calendar {
+		border:none;
+		background: transparent;
+	}
+
+	table#wp-calendar td {
+		border-color: #999;
+	}
+
+	.wp-calendar-download {
+		width: 166px;
+		margin: 0 auto;
+		overflow: hidden;
+		font-size: 10px;
+		text-align: right;
+		color: #777;
+		background: #222;
+	}
+
+		.wp-calendar-download a {
+			padding: 0 3px;
+			font-weight: bold;
+			color: #fff;
+			background: #000;
+			border-left: 1px solid #777;
 		}
 
+			.wp-calendar-download a:hover {
+				background: #800;
+			}
 
 /* SEARCH */
 
@@ -1037,40 +1016,38 @@ table#wp-calendar td {
 	background: url('images/browse-search.png') 0 -46px no-repeat;
 }
 
-#s-search:hover, #s-search:focus, #s-transcript:hover, #s-transcript:focus {
-	color: #550000;
-	background-position: 0 -69px;
-}
+	#s-search:hover, #s-search:focus, #s-transcript:hover, #s-transcript:focus {
+		color: #550000;
+		background-position: 0 -69px;
+	}
 
-#searchform button, #searchform-transcript button {
-	padding: 0;
-	margin: 0;
-	border: none;
-	height: 23px;
-	width: 23px;
-	line-height: 0;
-	font-size: 0;
-	cursor: pointer;
-	text-indent: -9999px;
-	background: url('images/browse-search.png') -143px -46px no-repeat;
-}
+	#searchform button, #searchform-transcript button {
+		padding: 0;
+		margin: 0;
+		border: none;
+		height: 23px;
+		width: 23px;
+		line-height: 0;
+		font-size: 0;
+		cursor: pointer;
+		text-indent: -9999px;
+		background: url('images/browse-search.png') -143px -46px no-repeat;
+	}
 
-#searchform button:hover, #searchform-transcript button:hover {
-	background-position: -143px -69px;
-}
+	#searchform button:hover, #searchform-transcript button:hover {
+		background-position: -143px -69px;
+	}
 
-#searchform button:hover, #searchform-transcript button:-moz-focus-inner {
-	border: 0;
-}
+	#searchform button:hover, #searchform-transcript button:-moz-focus-inner {
+		border: 0;
+	}
 
-.searchresults {
-	float: right;
-	padding: 5px;
-}
-
+	.searchresults {
+		float: right;
+		padding: 5px;
+	}
 
 /* GALLERY */
-
 
 .gallery-image {
 	width: 518px;
@@ -1080,25 +1057,22 @@ table#wp-calendar td {
 	text-align: center;
 }
 
-
 .gallery-caption {
 	font-size: 11px;
 }
 
-.gallery-caption p {
-	width: 510px;
-	padding: 5px;
-	margin: 0;
-	text-align: center;
-	color: #fff;
-	background: #000;
-}
-
+	.gallery-caption p {
+		width: 510px;
+		padding: 5px;
+		margin: 0;
+		text-align: center;
+		color: #fff;
+		background: #000;
+	}
 
 .imagenav-wrap {
 	margin: 5px 0 0 0;
 }
-
 
 .imagenav {
 	width: 77px;
@@ -1106,7 +1080,6 @@ table#wp-calendar td {
 	float: left;
 	overflow: hidden;
 }
-
 
 .imagenav-center {
 	width: 344px;
@@ -1120,12 +1093,10 @@ table#wp-calendar td {
 	overflow: hidden;
 }
 
-
 .imagetitle {
 	color: #000;
 	font-size: 18px;
 }
-
 
 .imagenav-bg {
 	width: 75px;
@@ -1137,12 +1108,10 @@ table#wp-calendar td {
 	overflow: hidden;
 }
 
-
 .imagenav-bg img {
 	width: 75px;
 	height: 75px;
 }
-
 
 .imagenav-arrow {
 	width: 75px;
@@ -1158,7 +1127,6 @@ table#wp-calendar td {
 	float: left;
 }
 
-
 .imagenav-link {
 	width: 75px;
 	height: 75px;
@@ -1169,24 +1137,17 @@ table#wp-calendar td {
 	overflow: hidden;
 }
 
-
 .imagenav-link img {
 	width: 75px;
-	height: 75px; /*		opacity: 0.50; 		filter: alpha(opacity=50); */
+	height: 75px; 
+/*		opacity: 0.50; 		filter: alpha(opacity=50); */
 }
-
 
 .imagenav-link img:hover {
-	/*				opacity: 0.00;  				filter: alpha(opacity=0); */
+/*		opacity: 0.00;  	filter: alpha(opacity=0); */
 }
 
-
-
-
-
-
 /* POSTED IMAGES  */
-
 
 .wp-caption p {
 	margin: 5px 0;
@@ -1194,19 +1155,16 @@ table#wp-calendar td {
 	font-size: 11px;
 }
 
-
 .aligncenter {
 	margin: 0 auto;
 	display: block;
 }
-
 
 .alignright {
 	margin: 10px 0 10px 10px;
 	display: inline;
 	float: right;
 }
-
 
 .alignleft {
 	margin: 10px 10px 10px 0;
@@ -1223,28 +1181,28 @@ table#wp-calendar td {
 	border-right: 4px dotted #333;
 }
 
-.transcript-border {
-	padding: 0 5px;
-	margin: 15px 0;
-	border: 1px solid #555;
-	background: #fff;
-	clear: both;
-}
+	.transcript-border {
+		padding: 0 5px;
+		margin: 15px 0;
+		border: 1px solid #555;
+		background: #fff;
+		clear: both;
+	}
 
-a.transcript-title {
-	padding: 0 0 5px 0;
-	margin: 0 0 5px 0;
-	display: block;
-	font-family: 'Georgia' , serif;
-	font-style: italic;
-	font-size: 12px;
-	font-style: normal;
-	font-weight: normal;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	line-height: 2em;
-	border-bottom: 1px dashed #777;
-}
+	a.transcript-title {
+		padding: 0 0 5px 0;
+		margin: 0 0 5px 0;
+		display: block;
+		font-family: 'Georgia' , serif;
+		font-style: italic;
+		font-size: 12px;
+		font-style: normal;
+		font-weight: normal;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		line-height: 2em;
+		border-bottom: 1px dashed #777;
+	}
 
 #transcript-content {
 	font-family: 'Courier New' , monospace;
@@ -1265,17 +1223,15 @@ li.pingback div p, li.trackback div p {
 	list-style: none;
 }
 
-.storyline-cats li {
-	display: inline;
-}
+	.storyline-cats li {
+		display: inline;
+	}
 
-li.storyline-root {
-	display: none;
-}
-
+	li.storyline-root {
+		display: none;
+	}
 
 /* CLEAR FLOATS */
-
 
 .clear {
 	clear: both;
@@ -1283,7 +1239,6 @@ li.storyline-root {
 
 /* CLEAR MARGINS */
 /* Used with BR for clearing paragraph margins for Safari, Chrome - avoid background gaps */
-
 
 .clear-margins {
 	clear: both;
@@ -1294,11 +1249,9 @@ li.storyline-root {
 
 /** BUY THIS **/
 
-
 .buythis {
 	padding: 0 5px 0 5px;
 }
-
 
 .buythisbutton {
 	height: 27px;
@@ -1307,9 +1260,7 @@ li.storyline-root {
 	background: url('images/buythis.png') no-repeat;
 }
 
-
 /** Project Wonderful CSS Embedded areas **/
-
 
 .blogpwad {
 	text-align: center;
@@ -1459,7 +1410,6 @@ li.storyline-root {
 
 /* Archive Year Template */
 
-
 .archive-date {
 	padding: 0 5px 0 0;
 	font-size: 11px;
@@ -1477,11 +1427,9 @@ li.storyline-root {
 	margin: 0 0 20px 0;
 }
 
-
 #linkspage, #linkspage ul, #linkspage li {
 	list-style: none;
 }
-
 
 #linkspage h2 {
 	margin-top: 20px;
@@ -1559,93 +1507,88 @@ li.storyline-root {
 	text-decoration: none;
 	margin-bottom: -110px;
 }
-a.tt span {
-	display: none;
-}
 
-a.tt:hover span.tooltip {
-	position: absolute;
-	display: block;
-	width: 200px;
-	color: #000;
-	margin: 0 auto;
-	text-align: center;
-	height: 164px;
-	background: url('images/comicpress-rascal.png') no-repeat;
-	z-index: 1000;
-}
-a.tt:hover span.top {
-	display: block;
-	width: 200px;
-	height: 35px;
-	padding-top: 10px 10px 0 10px;
-	margin-top: 59px;
-	margin-left: 25px;
-	background: url('images/bubble.png') 0 0 no-repeat;
-	z-index: 1000;
-}
-a.tt:hover span.middle {
-	/* different middle bg for stretch */
-	display: block;
-	width: 180px;
-	margin-left: 25px;
-	padding: 0 10px;
-	background: url('images/bubble.png') -200px 0 repeat-y;
-	z-index: 1000;
-}
-a.tt:hover span.bottom {
-	display: block;
-	width: 200px;
-	height: 15px;
-	background-position: -100px;
-	color: #548912;
-	margin-left: 25px;
-	background: url('images/bubble.png') 0 -35px no-repeat;
-	z-index: 1000;
-}
+	a.tt span {
+		display: none;
+	}
+
+	a.tt:hover span.tooltip {
+		position: absolute;
+		display: block;
+		width: 200px;
+		color: #000;
+		margin: 0 auto;
+		text-align: center;
+		height: 164px;
+		background: url('images/comicpress-rascal.png') no-repeat;
+		z-index: 1000;
+	}
+	a.tt:hover span.top {
+		display: block;
+		width: 200px;
+		height: 35px;
+		padding-top: 10px 10px 0 10px;
+		margin-top: 59px;
+		margin-left: 25px;
+		background: url('images/bubble.png') 0 0 no-repeat;
+		z-index: 1000;
+	}
+	a.tt:hover span.middle {
+		/* different middle bg for stretch */
+		display: block;
+		width: 180px;
+		margin-left: 25px;
+		padding: 0 10px;
+		background: url('images/bubble.png') -200px 0 repeat-y;
+		z-index: 1000;
+	}
+	a.tt:hover span.bottom {
+		display: block;
+		width: 200px;
+		height: 15px;
+		background-position: -100px;
+		color: #548912;
+		margin-left: 25px;
+		background: url('images/bubble.png') 0 -35px no-repeat;
+		z-index: 1000;
+	}
 
 /* User Pages */
-
 
 #userpage {
 	width: 100%;
 	padding: 5px;
 }
 
+	.userpage-avatar {
+		float: left;
+		width: 64px;
+		height: 64px;
+	}
 
-.userpage-avatar {
-	float: left;
-	width: 64px;
-	height: 64px;
-}
+	.userpage-info {
+		margin-left: 10px;
+		float: left;
+	}
 
+	.userpage-desc {
+		width: 400px;
+		padding: 5px;
+		margin-top: 30px;
+		border: 1px dotted #efefef;
+	}
 
-.userpage-info {
-	margin-left: 10px;
-	float: left;
-}
+	.userpage-posts {
+		margin-top: 20px;
+	}
 
+	.userpage-posts ol {
+		margin: 10px 0 0 30px;
+		padding: 0;
+	}
 
-.userpage-desc {
-	width: 400px;
-	padding: 5px;
-	margin-top: 30px;
-	border: 1px dotted #efefef;
-}
-
-
-.userpage-posts {
-	margin-top: 20px;
-}
-
-
-.userpage-posts ol {
-	margin: 10px 0 0 30px;
-	padding: 0;
-}
-
-.userpage-posts li {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
+	.userpage-posts li {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}

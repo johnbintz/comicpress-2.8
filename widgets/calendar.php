@@ -22,7 +22,7 @@ function comicpress_calendar($instance = null) {
 	<div id="wp-calendar-wrap">
 	<?php if (!empty($thumbnail)) { ?>
 		<div class="wp-calendar-download">
-		<img src="<?php echo $thumbnail; ?>" alt="" /><br />
+		<img src="<?php echo $thumbnail; ?>" class="wp-calendar-thumb" alt="" /><br />
 		<?php if (!empty($small) || !empty($medium) || !empty($large)) { ?>
 			DOWNLOAD <?php if (!empty($small)) { ?><a href="<?php echo $small; ?>" title="Download Small">S</a><?php } ?><?php if (!empty($medium)) { ?><a href="<?php echo $medium; ?>" title="Download Medium">M</a><?php } ?><?php if (!empty($large)) { ?><a href="<?php echo $large; ?>" title="Download Large">L</a><?php } ?>
 		<?php } ?>
@@ -62,7 +62,8 @@ class widget_comicpress_calendar extends WP_Widget {
 	}
 	
 	function form($instance) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'thumbnail' => '', 'small' => '', 'medium' => '', 'large' => '') );
+		$default_image = get_bloginfo('stylesheet_directory').'/images/cal/default.png';
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'thumbnail' => $default_image, 'small' => '', 'medium' => '', 'large' => '') );
 		$title = strip_tags($instance['title']);
 		$thumbnail = strip_tags($instance['thumbnail']);
 		$small = strip_tags($instance['small']);
@@ -70,7 +71,6 @@ class widget_comicpress_calendar extends WP_Widget {
 		$large = strip_tags($instance['large']);
 		?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>">Title: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
-		
 		<p><label for="<?php echo $this->get_field_id('thumbnail'); ?>">Thumbnail URL (178px by 130px): <input class="widefat" id="<?php echo $this->get_field_id('thumbnail'); ?>" name="<?php echo $this->get_field_name('thumbnail'); ?>" type="text" value="<?php echo attribute_escape($thumbnail); ?>" /></label></p>
 		<p><label for="<?php echo $this->get_field_id('small'); ?>">Wallpaper URL (Small): <input class="widefat" id="<?php echo $this->get_field_id('small'); ?>" name="<?php echo $this->get_field_name('small'); ?>" type="text" value="<?php echo attribute_escape($small); ?>" /></label></p>
 		<p><label for="<?php echo $this->get_field_id('medium'); ?>">Wallpaper URL (Medium): <input class="widefat" id="<?php echo $this->get_field_id('medium'); ?>" name="<?php echo $this->get_field_name('medium'); ?>" type="text" value="<?php echo attribute_escape($medium); ?>" /></label></p>

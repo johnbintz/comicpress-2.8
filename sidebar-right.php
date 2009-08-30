@@ -10,7 +10,8 @@ if ($disable_lrsidebars_frontpage == 'yes' && is_home()) {
 				<?php if (is_cp_theme_style('standard,v')) { ?>
 				<ul>
 					<li>
-						<?php comicpress_calendar() ?>
+						<?php $default_image = get_bloginfo('stylesheet_directory').'/images/cal/default.png'; ?>
+						<?php comicpress_calendar(array('thumbnail' => $default_image)) ?>
 					</li>
 				</ul>
 				<?php } ?>

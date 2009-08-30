@@ -7,7 +7,8 @@ if ($disable_lrsidebars_frontpage == 'yes' && is_home()) {
 		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Left Sidebar') ) : ?> 
 			<ul>
 				<li>
-					<?php comicpress_calendar() ?>
+					<?php $default_image = get_bloginfo('stylesheet_directory').'/images/cal/default.png'; ?>
+					<?php comicpress_calendar(array('thumbnail' => $default_image)) ?>
 				</li>
 			</ul>
 			<?php comicpress_archive_dropdown(); ?>
