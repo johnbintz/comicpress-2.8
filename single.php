@@ -12,16 +12,16 @@
 <?php } ?>
 
 	<?php while (have_posts()) : the_post(); if (in_comic_category()) { ?>
+	
 		<div id="comic-head"><?php get_sidebar('over'); ?></div>
+		<?php get_sidebar('comicleft'); ?>
 		<div id="comic">
-			<div class="comic-left"><?php get_sidebar('comicleft'); ?></div>
-			<div class="comic-content">
-				<?php display_comic(); ?>
-			</div>
-			<div class="comic-right"><?php get_sidebar('comicright'); ?></div>
-			<div class="clear"></div>
+			<?php display_comic(); ?>
 		</div>
-		<div id="comic-foot"><?php get_sidebar('under'); ?></div>	
+		<?php get_sidebar('comicright'); ?>
+		<div class="clear"></div>
+		<div id="comic-foot"><?php get_sidebar('under'); ?></div>
+		
 	<?php } endwhile; ?>
 
 	<?php if (is_cp_theme_style('3c,standard')) { ?>

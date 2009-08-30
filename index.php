@@ -13,27 +13,26 @@
 
 <?php if (!(is_paged())) { ?>
 
-<?php if ($disable_comic_frontpage != 'yes') { ?>
+	<?php if ($disable_comic_frontpage != 'yes') { ?>
 
-	<?php $wp_query ->in_the_loop = true; $comicFrontpage = new WP_Query(); $comicFrontpage->query('showposts=1&cat='.get_all_comic_categories_as_cat_string());
-	while ($comicFrontpage->have_posts()) : $comicFrontpage->the_post() ?>		
+		<?php $wp_query ->in_the_loop = true; $comicFrontpage = new WP_Query(); $comicFrontpage->query('showposts=1&cat='.get_all_comic_categories_as_cat_string());
+		while ($comicFrontpage->have_posts()) : $comicFrontpage->the_post() ?>		
 
-		<div id="comic-head"><?php get_sidebar('over'); ?></div>
-		<div id="comic">
-			<div class="comic-left"><?php get_sidebar('comicleft'); ?></div>
-			<div class="comic-content">
+			<div id="comic-head"><?php get_sidebar('over'); ?></div>
+			<?php get_sidebar('comicleft'); ?>
+			<div id="comic">
 				<?php display_comic(); ?>
 			</div>
-			<div class="comic-right"><?php get_sidebar('comicright'); ?></div>
+			<?php get_sidebar('comicright'); ?>
 			<div class="clear"></div>
-		</div>
-		<div id="comic-foot"><?php get_sidebar('under'); ?></div>
-	<?php endwhile; ?>
-	
-<?php } ?>
+			<div id="comic-foot"><?php get_sidebar('under'); ?></div>
+			
+		<?php endwhile; ?>
+		
+	<?php } ?>
 
 	<?php if (is_cp_theme_style('3c,standard')) { ?>
-	<div id="content-wrapper">
+		<div id="content-wrapper">
 	<?php } ?>
 	<?php get_sidebar('overblog'); ?>
 	<?php if (is_cp_theme_style('3c')) get_sidebar('left'); ?>
@@ -53,16 +52,8 @@
 		<div id="blogheader"><!-- This area can be used for a heading above your main page blog posts --></div>
 
 	<?php } 
-		if (function_exists('the_project_wonderful_ad')) { ?>
-			<div class="blogpwad">
-				<center>
-				<?php the_project_wonderful_ad('blog'); ?>
-				</center>
-			</div>
-		<?php } ?>
-		
-		<?php get_sidebar('blog'); ?>
-<?php } else { ?>
+	
+} else { ?>
 
 	<?php if (is_cp_theme_style('3c,standard')) { ?>
 	<div id="content-wrapper">
@@ -75,6 +66,16 @@
 			<div class="column">
 	<?php } 
 } 
+
+	if (function_exists('the_project_wonderful_ad')) { ?>
+		<div class="blogpwad">
+			<center>
+			<?php the_project_wonderful_ad('blog'); ?>
+			</center>
+		</div>
+	<?php }
+	
+	get_sidebar('blog');
 
 if ($disable_blog_frontpage != 'yes') { 
 	if (have_posts()) {

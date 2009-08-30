@@ -368,27 +368,25 @@ h3, h3 a {
 
 /* THE COMIC */
 
+#comic-head {
+	padding-top: 5px;
+}
+
 #comic {
 	background: #fff;
-	padding: 10px 0;
 	border: 1px solid #999;
 	text-align: center;
 	z-index: 100;
-	margin: 10px 0;
 }
 
-	#comic .comic-left {
-		float: left;
-	}
-	
-	#comic .comic-right {
-		float: right;
-	}
+#comic img {
+	margin: 5px;
+}
 
+#comic-foot {
+	padding-bottom: 5px;
+}
 
-	#comic .comic-content {
-		z-index: 100;
-	}
 
 /* THE FOOTER */
 
@@ -478,11 +476,10 @@ a.navi-comments:hover span {
 	margin: 0;
 }
 
-
+/* Wraps the content area */
 #content-wrapper {
-	margin: 0 auto;
+	margin: 0;
 	padding: 0;
-	clear: both;
 }
 
 
@@ -1342,7 +1339,8 @@ li.storyline-root {
 	padding: 5px 0 5px 5px;
 	margin: 0 8px 8px 0;
 	float: left;
-	border: 1px solid #000;
+	border: 1px solid #999;
+	background:#fff;
 }
 
 .cpcal-monthtitle {
@@ -1377,7 +1375,7 @@ li.storyline-root {
 	text-align: center;
 	font-size: 10px;
 	line-height: 13px;
-	border: 1px solid #000;
+	border: 1px solid #999;
 }
 
 .cpcal-day a {
