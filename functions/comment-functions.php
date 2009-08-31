@@ -211,16 +211,6 @@ function comicpress_comment_class() {
 	endif;
 	
 	/*
-	* Alt classes
-	*/
-	if($comment_alt++ % 2) :
-		$classes[] = 'even';
-		$classes[] = 'alt';
-	else :
-		$classes[] = 'odd';
-	endif;
-	
-	/*
 	* http://microid.org
 	*/
 	$email = get_comment_author_email();
