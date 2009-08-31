@@ -12,19 +12,22 @@ function display_comic() {
 	
 	$comic = explode(".", the_comic_filename()); 
 	if ($comic[1] == 'swf') { ?>
-		<object id="myId" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="<?php echo get_post_meta( get_the_ID(), "fwidth", true ); ?>" height="<?php echo get_post_meta( get_the_ID(), "fheight", true ); ?>">
-		<param name="movie" value="/<?php echo the_comic_filename(); ?>" />
+		<?php 
+			$height = get_post_meta( get_the_ID(), "fheight", true );
+			$width = get_post_meta( get_the_ID(), "fwidth", true );
+			if (empty($height)) $height = '300';
+			if (empty($width)) $width = '100%';
+		?>
+		<object id="myId" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="<?php echo $width; ?>" height="<?php echo $height; ?>">
+		<param name="movie" value="<?php echo get_comic_url(); ?>" />
 		<!--[if !IE]>-->
-			<object type="application/x-shockwave-flash" data="/<?php echo the_comic_filename(); ?>" width="<?php echo get_post_meta( get_the_ID(), "fwidth", true ); ?>" height="<?php echo get_post_meta( get_the_ID(), "fheight", true ); ?>">
+			<object type="application/x-shockwave-flash" data="<?php echo get_comic_url(); ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>">
 			<!--<![endif]-->
 			<div>
 				<h1>Get Flash!</h1>
 				<p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
 			</div>
-			<!--[if !IE]>-->
-			</object>
-		<!--<![endif]-->
-		</object>
+			<!--[if !IE]>--></object><!--<![endif]--></object>
 		<?php } else {
 			if ($comic_clicks_next == 'yes') { 
 				$hovertext = get_post_meta( get_the_ID(), "hovertext", true ); 

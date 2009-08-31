@@ -112,10 +112,10 @@ foreach ( $years as $year ) {
 		
 			
 		?>
-			<?php if ($calendar_directory != 'none') { ?>
+			<?php if (!empty($calendar_directory) && $calendar_directory != 'none') { ?>
 					<div class="cpcal-month" style="height: 257px;" id="<?php echo $month[$i]['month'] ?>">
 				<?php if (file_exists(get_template_directory().'/images/cal/'.$calendar_directory.'/'.$archive_year)) { ?>
-			<?php if (count($monthfile = glob(get_template_directory().'/images/cal/'.$calendar_directory.'/'.$archive_year.'/'.strtolower($month[$i]['month']).'.*')) > 0) { 
+					<?php if (count($monthfile = glob(get_template_directory().'/images/cal/'.$calendar_directory.'/'.$archive_year.'/'.strtolower($month[$i]['month']).'.*')) > 0) { 
 						if (is_array($monthfile)) $monthfile = reset($monthfile); ?>
 						<img class="cpcal-image" src="<?php bloginfo('stylesheet_directory'); ?>/images/cal/<?php echo $calendar_directory; ?>/<?php echo $archive_year; ?>/<?php echo basename($monthfile); ?>" alt="<?php echo $month[$i]['month'] ?>" title="<?php echo $month[$i]['month'] ?>" />
 					<?php } else { ?>

@@ -196,7 +196,7 @@ $options = array (
 			
 		array(
 			"id" => "comicpress-calendar_directory",
-			"default" => "none",
+			"default" => "default",
 			"type" => "comicpress-calendar_directory"),
 			
 

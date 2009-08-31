@@ -1,6 +1,11 @@
 <?php
 
-$comicpress_version = '2.8.0.R2';
+// remove intense debates control over the comment numbers
+if (function_exists('id_get_comment_number')) {
+	remove_filter('comments_number','id_get_comment_number');
+}
+
+$comicpress_version = '2.8.0.R5';
 
 // Remove the wptexturizer from changing the quotes and squotes.
 // remove_filter('the_title', 'wptexturize');
@@ -86,7 +91,7 @@ if (get_option('upload_path') !== false) {
 
 if (empty($graphicnav_directory)) $graphicnav_directory = 'default';
 if (empty($moods_directory)) $moods_directory = 'default';
-if (empty($calendar_directory)) $calendar_directory = 'none';
+if (empty($calendar_directory)) $calendar_directory = 'default';
 
 function is_cp_theme_style($choices) {
 global $cp_theme_style;
