@@ -81,7 +81,7 @@ if (get_option('upload_path') !== false) {
 				'enable_rss_in_menubar'			=> 'enable_rss_in_menubar',
 				'enable_navigation_in_menubar'	=> 'enable_navigation_in_menubar',
 				'disable_lrsidebars_frontpage'	=> 'disable_lrsidebars_frontpage',
-				'comicpress-calendar_directory' => 'comicpress-calendar_directory',
+				'calendar_directory'			=> 'calendar_directory',
 				'contact_in_menubar'			=> 'contact_in_menubar' ) as $options => $variable_name) {
 		$variables_to_extract[$variable_name] = get_option("comicpress-${options}");
 	}
@@ -95,7 +95,7 @@ if (empty($calendar_directory)) $calendar_directory = 'default';
 
 function is_cp_theme_style($choices) {
 global $cp_theme_style;
-	
+	if (empty($cp_theme_style)) $cp_theme_style='standard';
 	$choices = explode(",", $choices);
 	foreach ($choices as $choice) {
 
