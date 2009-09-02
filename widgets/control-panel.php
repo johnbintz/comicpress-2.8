@@ -14,22 +14,24 @@ global $wpmu_version; ?>
 <ul>
 	<?php if (!is_user_logged_in()) { ?>
 	<li>
-		<form action="<?php bloginfo('url') ?>/wp-login.php" method="post">
-		UserName:<br />
-		<input type="text" name="log" id="sname" value="<?php echo wp_specialchars(stripslashes($user_login), 1) ?>" size="22" /><br /><br />
-		Password:<br />
-		<input type="password" name="pwd" id="spassword" size="22" /><br />
-		<label for="rememberme"><input name="rememberme" id="rememberme" type="checkbox" checked="checked" value="forever" /> Remember me</label><br />
-		<br />
-		<button type="submit" class="button">Login</button>
-		<input type="hidden" name="redirect_to" value="<?php echo $_SERVER['REQUEST_URI']; ?>"/>
-		</form>
-		<br />
-		<?php if (!empty($wpmu_version)) { ?>
-			<a href="<?php bloginfo('url') ?>/wp-signup.php">Register</a><br />
-		<?php } else { ?>
-			<a href="<?php bloginfo('url') ?>/wp-register.php">Register</a><br />
-		<?php } ?>		
+		<?php if ( get_option('users_can_register') ) { ?>
+			<form action="<?php bloginfo('url') ?>/wp-login.php" method="post">
+			UserName:<br />
+			<input type="text" name="log" id="sname" value="<?php echo wp_specialchars(stripslashes($user_login), 1) ?>" size="22" /><br /><br />
+			Password:<br />
+			<input type="password" name="pwd" id="spassword" size="22" /><br />
+			<label for="rememberme"><input name="rememberme" id="rememberme" type="checkbox" checked="checked" value="forever" /> Remember me</label><br />
+			<br />
+			<button type="submit" class="button">Login</button>
+			<input type="hidden" name="redirect_to" value="<?php echo $_SERVER['REQUEST_URI']; ?>"/>
+			</form>
+			<br />
+			<?php if (!empty($wpmu_version)) { ?>
+				<a href="<?php bloginfo('url') ?>/wp-signup.php">Register</a><br />
+			<?php } else { ?>
+				<a href="<?php bloginfo('url') ?>/wp-register.php">Register</a><br />
+			<?php } ?>
+		<?php } ?>
 		<a href="<?php bloginfo('url') ?>/wp-login.php?action=lostpassword">Recover password</a>
 	<?php } else { ?>
 		<?php $redirect = '&amp;redirect_to='.urlencode(wp_make_link_relative(get_option('siteurl')));

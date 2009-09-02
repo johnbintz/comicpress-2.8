@@ -377,11 +377,9 @@ h3, h3 a {
 	border: 1px solid #999;
 	text-align: center;
 	z-index: 100;
+	padding: 5px;
 }
 
-	#comic img {
-		margin: 5px;
-	}
 
 #comic-foot {
 	padding-bottom: 5px;
