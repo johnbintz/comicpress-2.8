@@ -3,7 +3,11 @@
 Template Name: Blog
 */
 ?>
-<?php get_header(); ?>
+<?php get_header();  ?>
+
+<?php if (is_cp_theme_style('gn,v3c,v')) { ?>
+	<div id="content-wrapper">
+<?php } ?>
 
 <?php if (is_cp_theme_style('gn,v3c')) get_sidebar('left'); ?>
 
@@ -12,9 +16,9 @@ Template Name: Blog
 		<div class="column">
 <?php } ?>
 
-<?php if (is_cp_theme_style('gn')) { ?>
-	<div id="pagewrap-right">
-<?php } ?>
+		<?php if (is_cp_theme_style('gn')) { ?>
+			<div id="pagewrap-right">
+		<?php } ?>
 
 	<?php if (is_cp_theme_style('3c,standard')) { ?>
 	<div id="content-wrapper">
@@ -42,18 +46,20 @@ Template Name: Blog
 			
 <?php endif; ?>
 			<?php get_sidebar('underblog'); ?>
-
 		</div>
-</div>
+	</div>
 
 <?php 
 if (is_cp_theme_style('3c,v3c,gn,standard,v')) { 
-	get_sidebar('right');
-} ?>
+	get_sidebar('right'); ?>
+<?php } ?>
 
-<?php if (is_cp_theme_style('standard,gn,3c')) { ?>
+	<?php if (is_cp_theme_style('gn')) { ?>
+		</div>
+	<?php } ?>	
+
 	<div class="clear"></div>
+	</div>
 </div> <!-- end pageright-wrapper / content-wrapper -->
-<?php } ?>	
 
 <?php get_footer() ?>

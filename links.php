@@ -3,7 +3,11 @@
 Template Name: Links
 */
 ?>
-<?php get_header(); ?>
+<?php get_header();  ?>
+
+<?php if (is_cp_theme_style('gn,v3c,v')) { ?>
+	<div id="content-wrapper">
+<?php } ?>
 
 <?php if (is_cp_theme_style('gn,v3c')) get_sidebar('left'); ?>
 
@@ -12,9 +16,9 @@ Template Name: Links
 		<div class="column">
 <?php } ?>
 
-<?php if (is_cp_theme_style('gn')) { ?>
-	<div id="pagewrap-right">
-<?php } ?>
+		<?php if (is_cp_theme_style('gn')) { ?>
+			<div id="pagewrap-right">
+		<?php } ?>
 
 	<?php if (is_cp_theme_style('3c,standard')) { ?>
 	<div id="content-wrapper">
@@ -30,8 +34,10 @@ Template Name: Links
 			$bookmarks = preg_replace('#<li ([^>]*)>#', '<li>', $bookmarks);
 			$bookmarks = preg_replace('#<ul ([^>]*)>#', '<ul>', $bookmarks);
 	 ?>
-	<div class="post-page-head">
+	
 	<?php while (have_posts()) : the_post() ?>
+	
+		<div class="post-page-head"></div>
 		<div class="post-page">
 			<h2 class="pagetitle"><?php the_title() ?></h2>
 			<div id="linkspage">
@@ -41,22 +47,24 @@ Template Name: Links
 			</div>
 			<br class="clear-margins" />
 		</div>
-	<?php endwhile; ?>
 		<div class="post-page-foot"></div>
-		</div>
-		<div class="clear"></div>
-	</div>
 		
-</div>
-	
+	<?php endwhile; ?>
+
+		</div>
+	</div>
+
 <?php 
 if (is_cp_theme_style('3c,v3c,gn,standard,v')) { 
-	get_sidebar('right');
-} ?>
+	get_sidebar('right'); ?>
+<?php } ?>
 
-<?php if (is_cp_theme_style('standard,gn,3c')) { ?>
+	<?php if (is_cp_theme_style('gn')) { ?>
+		</div>
+	<?php } ?>	
+
 	<div class="clear"></div>
+	</div>
 </div> <!-- end pageright-wrapper / content-wrapper -->
-<?php } ?>	
 
 <?php get_footer() ?>

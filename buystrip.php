@@ -7,8 +7,11 @@ Templete Author Email: philip@frumph.net
 */
     if (isset($_REQUEST['comic'])) $comicnum = (int)$_REQUEST['comic'];
 ?>
+<?php get_header();  ?>
 
-<?php get_header(); ?>
+<?php if (is_cp_theme_style('gn,v3c,v')) { ?>
+	<div id="content-wrapper">
+<?php } ?>
 
 <?php if (is_cp_theme_style('gn,v3c')) get_sidebar('left'); ?>
 
@@ -17,9 +20,9 @@ Templete Author Email: philip@frumph.net
 		<div class="column">
 <?php } ?>
 
-<?php if (is_cp_theme_style('gn')) { ?>
-	<div id="pagewrap-right">
-<?php } ?>
+		<?php if (is_cp_theme_style('gn')) { ?>
+			<div id="pagewrap-right">
+		<?php } ?>
 
 	<?php if (is_cp_theme_style('3c,standard')) { ?>
 	<div id="content-wrapper">
@@ -120,17 +123,20 @@ Templete Author Email: philip@frumph.net
 		    <div class="post-page-foot"></div>
 	    <?php endwhile; endif; ?>
 	<?php endif; ?>	
+		</div>
 	</div>
-</div>
 
 <?php 
 if (is_cp_theme_style('3c,v3c,gn,standard,v')) { 
-	get_sidebar('right');
-} ?>
+	get_sidebar('right'); ?>
+<?php } ?>
 
-<?php if (is_cp_theme_style('standard,gn,3c')) { ?>
+	<?php if (is_cp_theme_style('gn')) { ?>
+		</div>
+	<?php } ?>	
+
 	<div class="clear"></div>
+	</div>
 </div> <!-- end pageright-wrapper / content-wrapper -->
-<?php } ?>	
 
-<?php get_footer(); ?>
+<?php get_footer() ?>

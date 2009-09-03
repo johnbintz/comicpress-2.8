@@ -1,5 +1,9 @@
 <?php get_header();  ?>
 
+<?php if (is_cp_theme_style('gn,v3c,v')) { ?>
+	<div id="content-wrapper">
+<?php } ?>
+
 <?php if (is_cp_theme_style('gn,v3c')) get_sidebar('left'); ?>
 
 <?php if (is_cp_theme_style('v3c,v')) { ?>
@@ -7,20 +11,21 @@
 		<div class="column">
 <?php } ?>
 
-<?php if (is_cp_theme_style('gn')) { ?>
-	<div id="pagewrap-right">
-<?php } ?>
+		<?php if (is_cp_theme_style('gn')) { ?>
+			<div id="pagewrap-right">
+		<?php } ?>
 
-	<?php while (have_posts()) : the_post(); if (in_comic_category()) { ?>
+	<?php while (have_posts()) : the_post(); 
+		if (in_comic_category()) { ?>
 	
-		<div id="comic-head"><?php get_sidebar('over'); ?></div>
-		<?php get_sidebar('comicleft'); ?>
-		<div id="comic">
-			<?php display_comic(); ?>
-		</div>
-		<?php get_sidebar('comicright'); ?>
-		<div class="clear"></div>
-		<div id="comic-foot"><?php get_sidebar('under'); ?></div>
+				<div id="comic-head"><?php get_sidebar('over'); ?></div>
+				<?php get_sidebar('comicleft'); ?>
+				<div id="comic">
+					<?php display_comic(); ?>
+				</div>
+				<?php get_sidebar('comicright'); ?>
+				<div class="clear"></div>
+				<div id="comic-foot"><?php get_sidebar('under'); ?></div>
 		
 	<?php } endwhile; ?>
 
@@ -65,22 +70,24 @@
 			<br class="clear-margins" />
 		</div>
 		<div class="post-foot"></div>
-		<center>
-			<?php get_sidebar('underblog'); ?>
-		</center>
+		
 	<?php endif; ?>
-	<div class="clear"></div>
+	
+		<?php get_sidebar('underblog'); ?>
+		</div>
 	</div>
-</div>
 
 <?php 
 if (is_cp_theme_style('3c,v3c,gn,standard,v')) { 
-	get_sidebar('right');
-} ?>
+	get_sidebar('right'); ?>
+<?php } ?>
 
-<?php if (is_cp_theme_style('standard,gn,3c')) { ?>
+	<?php if (is_cp_theme_style('gn')) { ?>
+		</div>
+	<?php } ?>	
+
 	<div class="clear"></div>
+	</div>
 </div> <!-- end pageright-wrapper / content-wrapper -->
-<?php } ?>	
 
 <?php get_footer() ?>

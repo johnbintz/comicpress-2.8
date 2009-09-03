@@ -1,4 +1,8 @@
-<?php get_header(); ?>
+<?php get_header();  ?>
+
+<?php if (is_cp_theme_style('gn,v3c,v')) { ?>
+	<div id="content-wrapper">
+<?php } ?>
 
 <?php if (is_cp_theme_style('gn,v3c')) get_sidebar('left'); ?>
 
@@ -7,14 +11,16 @@
 		<div class="column">
 <?php } ?>
 
-<?php if (is_cp_theme_style('gn')) { ?>
-	<div id="pagewrap-right">
-<?php } ?>
+		<?php if (is_cp_theme_style('gn')) { ?>
+			<div id="pagewrap-right">
+		<?php } ?>
 
 	<?php if (is_cp_theme_style('3c,standard')) { ?>
-	<div id="content-wrapper">
+		<div id="content-wrapper">
 	<?php } ?>
+	
 	<?php get_sidebar('overblog'); ?>
+	
 	<?php if (is_cp_theme_style('3c')) get_sidebar('left'); ?>
 
 	<?php if (is_cp_theme_style('gn,standard,3c')) { ?>
@@ -37,19 +43,16 @@
 		<?php if ('open' == $post->comment_status) {
 			comments_template('', true);
 			} ?>
-	<?php endwhile; endif; ?>
-	<div class="clear"></div>
+			<?php endwhile; endif; ?>
+			<div class="clear"></div>
+		</div>
 	</div>
-</div>
-
+	
 <?php 
 if (is_cp_theme_style('3c,v3c,gn,standard,v')) { 
-	get_sidebar('right');
-} ?>
-
-<?php if (is_cp_theme_style('standard,gn,3c')) { ?>
+	get_sidebar('right'); ?>
+<?php } ?>
 	<div class="clear"></div>
 </div> <!-- end pageright-wrapper / content-wrapper -->
-<?php } ?>	
-	
+
 <?php get_footer() ?>
