@@ -19,12 +19,12 @@
 		if (in_comic_category()) { ?>
 	
 				<div id="comic-head"><?php get_sidebar('over'); ?></div>
-				<?php get_sidebar('comicleft'); ?>
 				<div id="comic">
+					<?php get_sidebar('comicleft'); ?>
 					<?php display_comic(); ?>
+					<?php get_sidebar('comicright'); ?>
+					<div class="clear"></div>
 				</div>
-				<?php get_sidebar('comicright'); ?>
-				<div class="clear"></div>
 				<div id="comic-foot"><?php get_sidebar('under'); ?></div>
 		
 	<?php } endwhile; ?>
@@ -87,7 +87,7 @@ if (is_cp_theme_style('3c,v3c,gn,standard,v')) {
 	<?php } ?>	
 
 	<div class="clear"></div>
-	</div>
+
 </div> <!-- end pageright-wrapper / content-wrapper -->
 
 <?php get_footer() ?>

@@ -67,4 +67,17 @@ if (is_cp_theme_style('3c,v3c,gn,standard,v')) {
 	</div>
 </div> <!-- end pageright-wrapper / content-wrapper -->
 
+<?php get_footer() ?><?php 
+if (is_cp_theme_style('3c,v3c,gn,standard,v')) { 
+	get_sidebar('right'); ?>
+<?php } ?>
+
+	<?php if (is_cp_theme_style('gn')) { ?>
+		</div>
+	<?php } ?>	
+
+	<div class="clear"></div>
+
+</div> <!-- end pageright-wrapper / content-wrapper -->
+
 <?php get_footer() ?>

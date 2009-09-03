@@ -385,6 +385,14 @@ h3, h3 a {
 	padding-bottom: 5px;
 }
 
+#sidebar-comicleft {
+float: left;
+}
+
+#sidebar-comicright {
+float: right;
+}
+
 
 /* THE FOOTER */
 

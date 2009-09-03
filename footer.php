@@ -1,5 +1,3 @@
-<div class="clear"></div><!-- Clears floated columns and sidebars -->
-
 <div id="footer">
 	<?php if (function_exists('the_project_wonderful_ad')) { ?>
 		<div class="footerpwad">

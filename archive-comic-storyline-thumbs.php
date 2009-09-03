@@ -106,7 +106,7 @@ if (is_cp_theme_style('3c,v3c,gn,standard,v')) {
 	<?php } ?>	
 
 	<div class="clear"></div>
-	</div>
+
 </div> <!-- end pageright-wrapper / content-wrapper -->
 
 <?php get_footer() ?>
