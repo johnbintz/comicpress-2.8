@@ -20,14 +20,12 @@ function display_comic() {
 		?>
 		<object id="myId" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="<?php echo $width; ?>" height="<?php echo $height; ?>">
 		<param name="movie" value="<?php echo get_comic_url(); ?>" />
-		<!--[if !IE]>-->
-			<object type="application/x-shockwave-flash" data="<?php echo get_comic_url(); ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>">
-			<!--<![endif]-->
+		<!--[if !IE]>--><object type="application/x-shockwave-flash" data="<?php echo get_comic_url(); ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>"><!--<![endif]-->
 			<div>
 				<h1>Get Flash!</h1>
 				<p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
 			</div>
-			<!--[if !IE]>--></object><!--<![endif]--></object>
+		<!--[if !IE]>--></object><!--<![endif]--></object>
 		<?php } else {
 			if ($comic_clicks_next == 'yes') { 
 				$hovertext = get_post_meta( get_the_ID(), "hovertext", true ); 

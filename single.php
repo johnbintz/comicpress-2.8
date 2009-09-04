@@ -18,14 +18,13 @@
 	<?php while (have_posts()) : the_post(); 
 		if (in_comic_category()) { ?>
 	
-				<div id="comic-head"><?php get_sidebar('over'); ?></div>
-				<div id="comic">
-					<?php get_sidebar('comicleft'); ?>
-					<?php display_comic(); ?>
-					<?php get_sidebar('comicright'); ?>
-					<div class="clear"></div>
-				</div>
-				<div id="comic-foot"><?php get_sidebar('under'); ?></div>
+			<div id="comic-head"><?php get_sidebar('over'); ?></div>
+			<div class="clear"></div>
+			<div id="comic-left"><?php get_sidebar('comicleft'); ?></div>
+			<div id="comic"><?php display_comic(); ?></div>
+			<div id="comic-right"><?php get_sidebar('comicright'); ?></div>
+			<div class="clear"></div>
+			<div id="comic-foot"><?php get_sidebar('under'); ?></div>
 		
 	<?php } endwhile; ?>
 

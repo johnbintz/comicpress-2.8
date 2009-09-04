@@ -28,8 +28,8 @@ if (!empty($wpmu_version)) {
 					'comicsarchive_path'  => 'archive_comic_folder',
 					'archive_comic_width' => 'archive_comic_width',
 					'rss_comic_width'     => 'rss_comic_width',
-					'blog_postcount'      => 'blog_postcount') as $option => $variable_name) {
-			$variables_to_extract[$variable_name] = get_option("comicpress-${option}");
+					'blog_postcount'      => 'blog_postcount') as $options => $variable_name) {
+			$variables_to_extract[$variable_name] = get_option("comicpress-${options}");
 		}
 		
 		extract($variables_to_extract);
@@ -82,7 +82,8 @@ if (get_option('upload_path') !== false) {
 				'enable_navigation_in_menubar'	=> 'enable_navigation_in_menubar',
 				'disable_lrsidebars_frontpage'	=> 'disable_lrsidebars_frontpage',
 				'calendar_directory'			=> 'calendar_directory',
-				'contact_in_menubar'			=> 'contact_in_menubar' ) as $options => $variable_name) {
+				'contact_in_menubar'			=> 'contact_in_menubar',
+				'disable_dynamic_menubar_links'	=> 'disable_dynamic_menubar_links' ) as $options => $variable_name) {
 		$variables_to_extract[$variable_name] = get_option("comicpress-${options}");
 	}
 	
@@ -105,8 +106,6 @@ global $cp_theme_style;
 	}	
 	return false;
 }
-
-require_once(get_template_directory() . '/functions/userpages.php');
 
 // WIDGETS WP 2.8 compatible ONLY, no backwards compatibility here.
 

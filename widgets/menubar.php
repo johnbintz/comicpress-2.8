@@ -11,7 +11,7 @@ Author URI: http://webcomicplanet.com/
 
 
 function comicpress_menubar() {
-	global $contact_in_menubar,$enable_search_in_menubar,$enable_rss_in_menubar,$enable_navigation_in_menubar;
+	global $contact_in_menubar,$enable_search_in_menubar,$enable_rss_in_menubar,$enable_navigation_in_menubar,$disable_dynamic_menubar_links;
 	if (file_exists(get_template_directory() . '/custom-menubar.php') || function_exists('suckerfish')) {
 		if (function_exists('suckerfish')) { 
 			suckerfish();
@@ -49,15 +49,18 @@ function comicpress_menubar() {
 		<?php } ?>
 	</div>
 	<?php 
-	$menulinks = wp_list_bookmarks('echo=0&title_li=&categorize=0&title_before=&title_after=&category_name=menubar');
-	$menulinks = preg_replace('#<li ([^>]*)>#', '<li class="page-item link">', $menulinks);
-	$menulinks = preg_replace('#<ul ([^>]*)>#', '', $menulinks);
-	$menulinks = str_replace('</ul>', '', $menulinks);
-	$bookmarkargs = 
-	$bookmarks = wp_list_bookmarks('echo=0&title_li=&categorize=1&title_before=&title_after=&exclude_name=menubar'); 
-	$bookmarks = preg_replace('#<li ([^>]*)>#', '<li class="page-item link">', $bookmarks);
-	$bookmarks = preg_replace('#<ul ([^>]*)>#', '<ul>', $bookmarks); 
-	$listpages = wp_list_pages('echo=0&sort_column=menu_order&depth=4&title_li=');
+		$menulinks = wp_list_bookmarks('echo=0&title_li=&categorize=0&title_before=&title_after=&category_name=menubar');
+		$menulinks = preg_replace('#<li ([^>]*)>#', '<li class="page-item link">', $menulinks);
+		$menulinks = preg_replace('#<ul ([^>]*)>#', '', $menulinks);
+		$menulinks = str_replace('</ul>', '', $menulinks);
+		$bookmarkargs = 
+		$bookmarks = wp_list_bookmarks('echo=0&title_li=&categorize=1&title_before=&title_after=&exclude_name=menubar'); 
+		$bookmarks = preg_replace('#<li ([^>]*)>#', '<li class="page-item link">', $bookmarks);
+		$bookmarks = preg_replace('#<ul ([^>]*)>#', '<ul>', $bookmarks); 
+		$listpages = '';
+		if ($disable_dynamic_menubar_links != 'yes') {
+			$listpages = wp_list_pages('echo=0&sort_column=menu_order&depth=4&title_li=');
+		}
 		if (!empty($bookmarks)) {
 			$listpages = str_replace('Links</a></li>', 'Links</a>
 						<ul>

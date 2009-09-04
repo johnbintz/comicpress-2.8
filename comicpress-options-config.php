@@ -199,6 +199,11 @@ $options = array (
 			"default" => "default",
 			"type" => "comicpress-calendar_directory"),
 			
+		array(
+			"id" => "comicpress-disable_dynamic_menubar_links",
+			"default" => "no",
+			"type" => "comicpress-disable_dynamic_menubar_links"),
+			
 
 		array("type" => "close")
 		);
