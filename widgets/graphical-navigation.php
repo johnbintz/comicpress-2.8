@@ -36,7 +36,7 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 		?>
 				
 <div id="comic_navi_wrapper">
-	<table id="comic_navi"><tr><td>
+	<table id="comic_navi" cellpadding="0" cellspacing="0"><tr><td>
 		<?php if ($instance['first'] != 'off') {
 			if (!empty($first_comic) && ($first_comic != $this_permalink)) { ?>
 				<a href="<?php echo $first_comic; ?>" class="navi navi-first" title="<?php echo $instance['first_title']; ?>"><?php echo $instance['first_title']; ?></a>
