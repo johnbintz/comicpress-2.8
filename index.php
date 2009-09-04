@@ -24,9 +24,9 @@
 
 			<div id="comic-head"><?php get_sidebar('over'); ?></div>
 			<div class="clear"></div>
-			<div id="comic-left"><?php get_sidebar('comicleft'); ?></div>
+			<?php get_sidebar('comicleft'); ?>
 			<div id="comic"><?php display_comic(); ?></div>
-			<div id="comic-right"><?php get_sidebar('comicright'); ?></div>
+			<?php get_sidebar('comicright'); ?>
 			<div class="clear"></div>
 			<div id="comic-foot"><?php get_sidebar('under'); ?></div>
 			
