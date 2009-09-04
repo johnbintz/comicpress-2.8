@@ -20,9 +20,9 @@
 	
 			<div id="comic-head"><?php get_sidebar('over'); ?></div>
 			<div class="clear"></div>
-			<?php get_sidebar('comicleft'); ?>
+			<div id="comic-left"><?php get_sidebar('comicleft'); ?></div>
 			<div id="comic"><?php display_comic(); ?></div>
-			<?php get_sidebar('comicright'); ?>
+			<div id="comic-right"><?php get_sidebar('comicright'); ?></div>
 			<div class="clear"></div>
 			<div id="comic-foot"><?php get_sidebar('under'); ?></div>
 		
