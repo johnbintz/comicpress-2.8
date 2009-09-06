@@ -21,8 +21,7 @@ body {
 	font-weight: normal;
 	text-transform: none;
 	letter-spacing: normal;
-	color: #333;
-	background: #fff url('images/bgs/background.png') top repeat-x; 
+	color: #000;
 	z-index: 0;
 }
 
@@ -114,18 +113,16 @@ form {
 	.button {
 		height: 25px;
 		padding: 0 5px;
-		background: #aaa url('images/menu.png');
 		color: #000;
 		font-family: 'Arial', sans-serif;
 		font-size: 13px;
 		line-height: 13px;
-		border: 1px solid #999;
 		cursor: pointer;
 	}
 		
 	.button:hover {
 		color: #fff;
-		background: #f00 url('images/menu.png') 0 -75px;
+		background: #f00;
 	}
 
 .sfhover {
@@ -202,11 +199,11 @@ h3, h3 a {
 }
 
 	#header a {
-		color: #fff;
+		color: #000;
 	}
 
 	#header .description {
-		color: #ddd;
+		color: #555;
 		padding: 0 0 10px 0;
 		font-size: 14px;
 		font-style: italic;
@@ -216,11 +213,8 @@ h3, h3 a {
 /* THE MENU */
 
 #menubar {
-	background: url('images/menu.png');
+	background: #000;
 	text-align: left;
-	border-width: 1px 1px 1px 0;
-	border-style: solid;
-	border-color: #999;
 	list-style: none;
 }
 
@@ -229,24 +223,28 @@ h3, h3 a {
 	text-align: center;
 }
 
+#menunav a {
+	color: #fff;
+}
+
 .menunav-search {
 	padding: 1px 1px 0 0;
 	float: left;
 }
 
 .menunav-rss {
-	width: 25px;
+	width: 30px;
 	height: 25px;
+	line-height: 25px;
+	padding: 0 7px 0 5px;
 	margin: 0 0 0 4px;
 	display: block;
 	float: left;
-	text-indent: -9999px;
 	overflow: hidden;
-	background: url('images/menu-nav.png') no-repeat;
 }
-
 	.menunav-rss:hover {
-		background-position: 0 -25px;
+		background: #b00;
+		color: #fff;
 	}
 
 .menunav-prev, .menunav-next {
@@ -261,25 +259,24 @@ h3, h3 a {
 	.menunav-prev a, .menunav-next a {
 		width: 25px;
 		height: 25px;
+		line-height: 20px;
+		font-size: 28px;
 		display: block;
-		text-indent: -9999px;
 		overflow: hidden;
 	}
 
 	.menunav-prev a {
-		background: url('images/menu-nav.png') -25px 0 no-repeat;
 	}
 
 	.menunav-prev a:hover {
-		background-position: -25px -25px;
+		background: #b00;
 	}
 
 .menunav-next a {
-	background: url('images/menu-nav.png') -50px 0 no-repeat;
 }
 
 	.menunav-next a:hover {
-		background-position: -50px -25px;
+		background: #b00;
 	}
 
 #menu {
@@ -289,13 +286,12 @@ h3, h3 a {
 	float: left;
 	line-height: 25px;
 	font-size: 13px;
-	border-right: 1px solid #aaa;
 }
 
 	#menu a {
 		padding: 0px 10px 0 10px;
 		display: block;
-		color: #000;
+		color: #fff;
 		text-decoration: none;
 	}
 
@@ -309,19 +305,15 @@ h3, h3 a {
 	}
 
 	#menu li a {
-		border-left: 1px solid #aaa;
-		border-right: 1px solid #fff;
 	}
 
 	#menu li:hover a, #menu li.sfhover a {
-		border-left: 1px solid #8b160f;
-		border-right: 1px solid #c28380;
 		color: #fff; /* Main menu highlighted text color */
-		background: url('images/menu.png') 0 -75px;
+
 	}
 
 	#menu li:hover, #menu li.sfhover {
-		/* Main menu highlighted background color */
+		background: #b00; /* Main menu highlighted background color */
 	}
 
 	/* For submenu dropdowns - this order must be maintained */
@@ -371,27 +363,21 @@ h3, h3 a {
 
 	#menu .current_page_item a {
 		color: #fff;
-		border-left: 1px solid #555;
-		border-right: 1px solid #555;
-		background: url('images/menu.png') 0 -50px;
+		background: #555;
 	}
 
 /* THE COMIC */
 
 #comic-head {
-	padding-top: 5px;
 }
 
 #comic {
-	background: #fff;
-	border: 1px solid #999;
+	padding: 5px;
 	text-align: center;
 	z-index: 100;
-	padding: 5px;
 }
 
 #comic-foot {
-	padding-bottom: 5px;
 }
 
 /* THE FOOTER */
@@ -617,40 +603,25 @@ a.navi-comments:hover span {
 	line-height: 20px;
 	font-family: 'Arial', sans-serif;
 	font-weight: bold;
+	font-size: smaller;
 	text-align: right;
 }
 
 	.comment-link a {
-		color: #333;
-	}
-		
-	.comment-link a:hover {
 		color: #800;
 	}
 		
+	.comment-link a:hover {
+		color: #ff0000;
+	}
+		
 	.comment-balloon {
-		width: 30px;
-		height: 25px;
-		display: block;
-		margin: 0 0 0 5px;
-		float: right;
-		overflow: hidden;
-		text-align: center;
-		line-height: 16px;
-		font-family: 'Georgia', serif;
-		font-size: 16px;
-		font-weight: normal;
-		background: url('images/comment-balloon.png') no-repeat;
 	}
 	
 		.comment-link a:hover .comment-balloon {
-			color: #fff;
-			background-position: 0 -25px;
 		}
 		
 	.comment-balloon-empty {
-		font-size: 20px;
-		line-height: 30px;
 		}
 
 /* THE BLOG HEADER */
@@ -684,27 +655,15 @@ a.navi-comments:hover span {
 
 .comment {
 	padding: 2px;
-	margin: 10px 0 0 0;
 	clear: both;
 	min-height: 64px;
 }
 
 	.comment .comment {
-		margin-left: 10px;
+		margin-left: 30px;
 		padding-bottom: 10px;
 	}
 
-		.comment .comment .comment {
-			margin-left: 30px;
-			padding: 5px;
-			margin-top: 2px;
-			border: 1px dotted #ccc;
-		}
-
-			.comment .comment .comment .comment {
-				background: transparent;
-				border: none;
-			}
 
 	.comment .avatar {
 		margin: 0 10px 5px 0;
@@ -717,10 +676,6 @@ a.navi-comments:hover span {
 
 	.comment #respond {
 		padding: 5px;
-	}
-
-	.comment .comment .bypostauthor, .comment .comment .comment .bypostauthor {
-		background: #efefef;
 	}
 
 .comment-author {
@@ -818,10 +773,12 @@ ul.children {
 #sidebar-left {
 	float: left;
 	width: 210px;
+	padding-top: 5px;
 }
 
 /* Right Sidebar Themes */
 #sidebar-right {
+	padding-top: 5px;
 	float: right;
 	width: 210px;
 }
@@ -904,11 +861,9 @@ ul.children {
 }
 
 .archive-dropdown-wrap {
-	background: url('images/browse-search.png') no-repeat;
 }
 
 	.archive-dropdown-wrap:hover {
-		background-position: 0 -23px;
 	}
 
 .archive-dropdown {
@@ -918,9 +873,6 @@ ul.children {
 	height: 23px;
 	font-size: 12px;
 	font-family: 'Arial' , sans-serif;
-	border: none;
-	opacity: 0;
-	filter: alpha(opacity=0);
 	cursor: pointer;
 }
 
@@ -934,8 +886,6 @@ ul.children {
 }
 
 #wp-calendar {
-	border: solid 1px #000;
-	background: #efefef;
 	width: 165px;
 	margin: 0 auto;
 }
@@ -1014,38 +964,26 @@ ul.children {
 	width: 138px;
 	padding: 4px 0 0 5px;
 	font-size: 12px;
-	height: 19px;
+	height: 15px;
 	font-family: 'Arial' , sans-serif;
 	color: #000;
-	border: none;
 	float: left;
-	background: url('images/browse-search.png') 0 -46px no-repeat;
 }
 
 	#s-search:hover, #s-search:focus, #s-transcript:hover, #s-transcript:focus {
-		color: #550000;
-		background-position: 0 -69px;
 	}
 
 	#searchform button, #searchform-transcript button {
-		padding: 0;
-		margin: 0;
-		border: none;
-		height: 23px;
+		height: 24px;
 		width: 23px;
-		line-height: 0;
-		font-size: 0;
+		line-height: 20px;
 		cursor: pointer;
-		text-indent: -9999px;
-		background: url('images/browse-search.png') -143px -46px no-repeat;
 	}
 
 	#searchform button:hover, #searchform-transcript button:hover {
-		background-position: -143px -69px;
 	}
 
 	#searchform button:hover, #searchform-transcript button:-moz-focus-inner {
-		border: 0;
 	}
 
 	.searchresults {
@@ -1057,9 +995,7 @@ ul.children {
 
 .gallery-image {
 	width: 518px;
-	border: 1px solid #000;
 	overflow: hidden;
-	background: #000;
 	text-align: center;
 }
 
@@ -1072,8 +1008,6 @@ ul.children {
 		padding: 5px;
 		margin: 0;
 		text-align: center;
-		color: #fff;
-		background: #000;
 	}
 
 .imagenav-wrap {
@@ -1095,7 +1029,6 @@ ul.children {
 	float: left;
 	color: #000;
 	text-align: center;
-	border: 1px solid #000;
 	overflow: hidden;
 }
 
@@ -1444,9 +1377,7 @@ li.pingback div p, li.trackback div p {
 /* Pagination */
 
 #wp-paginav {
-	background: url('images/menu.png');
 	text-align: left;
-	border: 1px solid #999;
 }
 
 #paginav {
@@ -1456,7 +1387,6 @@ li.pingback div p, li.trackback div p {
 	float: left;
 	line-height: 25px;
 	font-size: 13px;
-	border-right: 1px solid #aaa;
 }
 
 	#paginav .paginav-pages, #paginav .paginav-extend {
@@ -1481,8 +1411,7 @@ li.pingback div p, li.trackback div p {
 	}
 
 	#paginav li a {
-		border-left: 1px solid #aaa;
-		border-right: 1px solid #ccc;
+		color: #555;
 	}
 
 	#paginav .paginav-next, #paginav .paginav-previous {
@@ -1491,16 +1420,12 @@ li.pingback div p, li.trackback div p {
 
 	#paginav .paginav-current, #paginav .current {
 		padding: 0px 10px 0 10px;
-		color: #fff;
-		border-left: 1px solid #aaa;
-		background: url('images/menu.png') 0 -150px;
+		color: #000;
+		font-size: larger;
 	}
 
 	#paginav li:hover a {
-		border-left: 1px solid #8b160f;
-		border-right: 1px solid #c28380;
-		color: #fff; 
-		background: url('images/menu.png') 0 -75px;
+		color: #ff0000; 
 	}
 
 /* Tool Tips */

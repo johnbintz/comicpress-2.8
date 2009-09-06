@@ -18,6 +18,10 @@
   ?></title>
 	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type') ?>; charset=<?php bloginfo('charset') ?>" />
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url') ?>" type="text/css" media="screen" />
+	<?php global $themepack_directory;
+	if ($themepack_directory != 'none') { ?>
+	<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/themepack/<?php echo $themepack_directory; ?>/style.css" type="text/css" media="screen" />
+	<?php } ?>
 <?php global $graphicnav_directory; if (file_exists(get_template_directory() . '/images/nav/' .$graphicnav_directory. '/navstyle.css')) { ?>
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory') ?>/images/nav/<?php echo $graphicnav_directory; ?>/navstyle.css" type="text/css" media="screen" />
 <?php } ?>

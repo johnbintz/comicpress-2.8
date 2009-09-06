@@ -1,0 +1,73 @@
+/*
+ThemePack Name: twopointfive
+ThemePack URI: http://comicpress.org
+Description: 
+Author: Tyler Martin
+Author URI: http://mindfaucet.com/
+Version: 0.1.0
+.
+The CSS, XHTML and design is released under GPL v3:
+http://www.opensource.org/licenses/gpl-3.0.html
+.
+*/
+
+/* STANDARD TAGS */
+
+body {
+	background: #555;
+}
+
+#header {
+	background: #333;
+}
+
+#content-wrapper {
+	background: #dedede;
+}
+
+#footer {
+	padding: 20px 0;
+	color: #fff;
+	background: #222;
+}
+
+#comic_navi_wrapper, #comic, .pagenav {
+	background: #fff;
+}
+
+.narrowcolumn, .widecolumn {
+	background: #efefef;
+}
+
+#header h1 a, #header .description {
+	color: #fff;
+}
+
+#page-wide, #page {
+	background: #ddd;
+	border-left: solid 2px #000;
+	border-right: solid 2px #000;
+	border-bottom: solid 2px #000;
+}
+
+#sidebar-left, #sidebar-right {
+	padding-top: 5px;
+}
+
+#comic-head {
+	padding: 0;
+	margin: 0;
+}
+
+#comic {
+	margin: 0;
+	border: 0;
+}
+
+
+#footer a {
+	color: #ff0000;
+}
+#footer a:hover {
+	color: #fff;
+}

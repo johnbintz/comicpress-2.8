@@ -5,7 +5,7 @@ if (function_exists('id_get_comment_number')) {
 	remove_filter('comments_number','id_get_comment_number');
 }
 
-$comicpress_version = '2.8.1.2';
+$comicpress_version = '2.8.1.3';
 
 // Remove the wptexturizer from changing the quotes and squotes.
 // remove_filter('the_title', 'wptexturize');
@@ -83,13 +83,15 @@ if (get_option('upload_path') !== false) {
 				'calendar_directory'			=> 'calendar_directory',
 				'contact_in_menubar'			=> 'contact_in_menubar',
 				'disable_dynamic_menubar_links'	=> 'disable_dynamic_menubar_links',
-				'disable_footer_text'			=> 'disable_footer_text' ) as $options => $variable_name) {
+				'disable_footer_text'			=> 'disable_footer_text',
+				'themepack_directory'			=> 'themepack_directory' ) as $options => $variable_name) {
 		$variables_to_extract[$variable_name] = get_option("comicpress-${options}");
 	}
 	
 	extract($variables_to_extract);
 }
 
+if (empty($themepack_directory)) $themepack_directory = 'silver';
 if (empty($graphicnav_directory)) $graphicnav_directory = 'default';
 if (empty($moods_directory)) $moods_directory = 'default';
 if (empty($calendar_directory)) $calendar_directory = 'default';
@@ -737,8 +739,6 @@ function copyrightDate() {
 	}
 	return false;
 }
-
-
 
 function cp_copyright_year() {
 	global $wpdb;

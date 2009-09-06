@@ -208,6 +208,11 @@ $options = array (
 			"id" => "comicpress-disable_footer_text",
 			"default" => "no",
 			"type" => "comicpress-disable_footer_text"),
+			
+		array(
+			"id" => "comicpress-themepack_directory",
+			"default" => "silver",
+			"type" => "comicpress-themepack_directory"),
 
 		array("type" => "close")
 		);
