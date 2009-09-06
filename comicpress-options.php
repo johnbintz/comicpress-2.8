@@ -97,7 +97,7 @@ function comicpress_admin() {
 		switch ( $value['type'] ) {
 			case "comicpress-cp_theme_style": ?>
 				<tr>
-					<th scope="row"><strong>Choose which theme style you want to use.</strong><br /><br />This is the style in which your theme will be presented.<br /><br /></th>
+					<th scope="row"><strong>Choose which theme layout you want to use.</strong><br /><br />This is the layout in which your theme will be presented.<br /><br /></th>
 					<td valign="top">
 						<label>
 							<select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" class="code" onchange="showimage(this,'cpthemestyle')">

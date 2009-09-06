@@ -50,7 +50,11 @@ body {
 	border-bottom: solid 2px #000;
 }
 
-#sidebar-left, #sidebar-right {
+#sidebar-left {
+	padding-top: 0;
+}
+
+#sidebar-right {
 	padding-top: 5px;
 }
 
