@@ -98,6 +98,15 @@ acronym, abbr {
 	border-bottom: 1px dashed #000;
 }
 
+pre { 
+	background: #eee; 
+	padding: 5px;
+	border: 1px solid #999;
+	overflow: hidden;
+	margin: 0 0 15px 0; 
+	font-family: Courier, Monospace;
+}
+
 form {
 	margin: 0;
 }

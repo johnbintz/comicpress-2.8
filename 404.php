@@ -1,5 +1,9 @@
 <?php get_header(); ?>
 
+<?php if (is_cp_theme_style('gn,v3c,v')) { ?>
+	<div id="content-wrapper">
+<?php } ?>
+
 <?php if (is_cp_theme_style('gn,v3c')) get_sidebar('left'); ?>
 
 <?php if (is_cp_theme_style('v3c,v')) { ?>
@@ -7,9 +11,9 @@
 		<div class="column">
 <?php } ?>
 
-<?php if (is_cp_theme_style('gn')) { ?>
-	<div id="pagewrap-right">
-<?php } ?>
+		<?php if (is_cp_theme_style('gn')) { ?>
+			<div id="pagewrap-right">
+		<?php } ?>
 
 	<?php if (is_cp_theme_style('3c,standard')) { ?>
 	<div id="content-wrapper">
@@ -30,9 +34,8 @@
 		<br class="clear-margins" />
 	</div>
 	<div class="post-page-foot"></div>
+		</div>
 	</div>
-	<div class="clear"></div>
-</div>
 
 <?php 
 if (is_cp_theme_style('3c,v3c,gn,standard,v')) { 

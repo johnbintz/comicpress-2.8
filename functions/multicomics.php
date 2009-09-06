@@ -9,7 +9,7 @@
  */
 function display_comics_multi() {
 	global $post;
-	if (($result = get_comic_path($folder, $override_post, $filter, 1)) !== false) {
+	if (($result = get_comic_path('comic', '', '', 1)) !== false) {
 		foreach ($result as $pathto_comic) { ?>
 			<div class="comicdisp">
 			<img src="<?php echo get_option('home'). '/' .$pathto_comic; ?>" alt="<?php the_title(); ?>" title="<?php the_hovertext(); ?>" />
@@ -17,7 +17,7 @@ function display_comics_multi() {
 		<?php }
 	} else {
 		if (($folder == 'archive' || $folder == 'rss')) {
-			if (($result = get_comic_path('comic', $override_post, $filter, 1)) !== false) {
+			if (($result = get_comic_path('comic', '', '', 1)) !== false) {
 				foreach ($result as $pathto_comic) { ?>
 					<div class="comicdisp">
 					<img src="<?php echo get_option('home'). '/' .$pathto_comic; ?>" alt="<?php the_title(); ?>" title="<?php the_hovertext(); ?>" />

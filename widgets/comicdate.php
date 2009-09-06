@@ -22,22 +22,27 @@ class widget_comicpress_comic_date extends WP_Widget {
 		
 		echo $before_widget;
 		$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
-		if ( !empty( $title ) ) { echo $title; } ?>	<?php the_time('F jS, Y'); ?>
+		if ( !empty( $title ) ) { echo $title; } ?>	<?php the_time($instance['format']); ?>
 		<?php echo $after_widget;
 	}
 	
 	function update($new_instance, $old_instance) {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
+		$instance['format'] = strip_tags($new_instance['format']);
+		if (empty($instance['format'])) $instance['format'] = 'F jS, Y';
 		return $instance;
 	}
 	
 	function form($instance) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '' ) );
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'format' => '' ) );
 		$title = strip_tags($instance['title']);
+		$format = strip_tags($instance['format']);
+		if (empty($format)) $format = 'F jS, Y';
 		?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>">Words to use before date:<br /><input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
-			
+		<p><label for="<?php echo $this->get_field_id('format'); ?>">Format of the Time/Date:<br /><input class="widefat" id="<?php echo $this->get_field_id('format'); ?>" name="<?php echo $this->get_field_name('format'); ?>" type="text" value="<?php echo attribute_escape($format); ?>" /></label></p>
+		
 		<?php
 	}
 }

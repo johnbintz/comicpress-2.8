@@ -5,7 +5,7 @@ if (function_exists('id_get_comment_number')) {
 	remove_filter('comments_number','id_get_comment_number');
 }
 
-$comicpress_version = '2.8.1.1';
+$comicpress_version = '2.8.1.2';
 
 // Remove the wptexturizer from changing the quotes and squotes.
 // remove_filter('the_title', 'wptexturize');
@@ -38,7 +38,6 @@ if (!empty($wpmu_version)) {
 } else {
 	require_once(get_template_directory() . '/comicpress-config.php');
 }
-
 
 if (get_option('upload_path') !== false) {
 	$variables_to_extract = array();
@@ -108,60 +107,28 @@ global $cp_theme_style;
 }
 
 // WIDGETS WP 2.8 compatible ONLY, no backwards compatibility here.
-
-require_once(get_template_directory() . '/widgets/control-panel.php');
-require_once(get_template_directory() . '/widgets/graphical-navigation.php');
-require_once(get_template_directory() . '/widgets/buythisprint.php');
-require_once(get_template_directory() . '/widgets/bookmark.php');
-require_once(get_template_directory() . '/widgets/transcription.php');
-require_once(get_template_directory() . '/widgets/latestthumb.php');
-require_once(get_template_directory() . '/widgets/latestcomics.php');
-require_once(get_template_directory() . '/widgets/scheduledposts.php');
-require_once(get_template_directory() . '/widgets/calendar.php');
-require_once(get_template_directory() . '/widgets/randomcomic.php');
-require_once(get_template_directory() . '/widgets/randompost.php');
-require_once(get_template_directory() . '/widgets/searchtranscript.php');
-require_once(get_template_directory() . '/widgets/latestcomicjump.php');
-require_once(get_template_directory() . '/widgets/permalink.php');
-require_once(get_template_directory() . '/widgets/comicdate.php');
-require_once(get_template_directory() . '/widgets/comictitle.php');
-require_once(get_template_directory() . '/widgets/comiccomments.php');
-require_once(get_template_directory() . '/widgets/menubar.php');
-require_once(get_template_directory() . '/widgets/archive-dropdown.php');
-require_once(get_template_directory() . '/widgets/comicblogpost.php');
+foreach (glob(dirname(__FILE__) . '/widgets/*.php') as $__file) { require_once($__file); }
 
 // FUNCTIONS & Extra's
+foreach (glob(dirname(__FILE__) . '/functions/*.php') as $__file) { require_once($__file); }
 
-require_once(get_template_directory() . '/functions/displaycomic.php');
-require_once(get_template_directory() . '/functions/displaycomicpost.php');
-require_once(get_template_directory() . '/functions/displayblogpost.php');
-require_once(get_template_directory() . '/functions/pagination.php');
-require_once(get_template_directory() . '/functions/adminnotes.php');
-require_once(get_template_directory() . '/functions/checkbrowser.php');
-require_once(get_template_directory() . '/functions/searchcustomfields.php');
-require_once(get_template_directory() . '/functions/multicomics.php');
-require_once(get_template_directory() . '/functions/rawformatting.php');
-require_once(get_template_directory() . '/functions/relatedposts.php');
-require_once(get_template_directory() . '/functions/relatedcomics.php');
-require_once(get_template_directory() . '/functions/membersonly.php');
-require_once(get_template_directory() . '/functions/syndication.php');
-require_once(get_template_directory() . '/functions/moods.php');
+// These are in the options directory because they have toggles in the options configuration and do not get loaded
+// unless they are needed.
 
 if ($enable_numbered_pagination == 'yes') {
-	require_once(get_template_directory() . '/functions/wp-pagenavi.php');
+	require_once(get_template_directory() . '/options/wp-pagenavi.php');
 }
 
-if ($disable_extended_comments == 'no') {
-	require_once(get_template_directory() . '/functions/comment-functions.php');
+if ($disable_extended_comments != 'yes') {
+	require_once(get_template_directory() . '/options/comment-functions.php');
+}
+
+if ($enable_custom_image_header == 'yes') {
+	require_once(get_template_directory() . '/options/custom-image-header.php');
 }
 
 // Dashboard Menu Comicpress Options and ComicPress CSS
-
 require_once(get_template_directory() . '/comicpress-options.php');
-
-if ($enable_custom_image_header == 'yes') {
-	require_once(get_template_directory() . '/functions/custom-image-header.php');
-}
 
 // If any errors occur while searching for a comic file, the error messages will be pushed into here.
 $comic_pathfinding_errors = array();
@@ -751,16 +718,45 @@ function comicpress_is_active_sidebar( $name ) {
 	return false;
 }
 
-function cp_copyright_year() {
-	$latest_comic = get_terminal_post_in_category('',true);
-	$archive_year = get_post_time('Y', false, $latest_comic, true);
-	$current_year = date('Y');
-	if ($archive_year == $current_year) {
-		$return_year = $current_year;
-	} else {
-		$return_year = $archive_year . '-' . $current_year;
+function copyrightDate() {
+	global $wpdb;
+	$copyright_dates = $wpdb->get_results("
+		SELECT 
+			YEAR(min(post_date_gmt)) AS firstdate, 
+			YEAR(max(post_date_gmt)) AS lastdate 
+		FROM 
+			$wpdb->posts
+	");
+	if($copyright_dates) {
+		$copyright = "&copy; " . $copyright_dates[0]->firstdate;
+		if($copyright_dates[0]->firstdate != $copyright_dates[0]->lastdate) {
+			$copyright .= '-' . $copyright_dates[0]->lastdate;
+		}
+		echo $copyright . "&nbsp;" . get_bloginfo('name');
 	}
-	return $return_year;
+	return false;
+}
+
+
+
+function cp_copyright_year() {
+	global $wpdb;
+	$copyright_dates = $wpdb->get_results("
+		SELECT 
+			YEAR(min(post_date_gmt)) AS firstdate, 
+			YEAR(max(post_date_gmt)) AS lastdate 
+		FROM 
+			$wpdb->posts
+	");
+	$output = '';
+	if($copyright_dates) {
+		$copyright = "&copy; " . $copyright_dates[0]->firstdate;
+		if($copyright_dates[0]->firstdate != $copyright_dates[0]->lastdate) {
+			$copyright .= '-' . $copyright_dates[0]->lastdate;
+		}
+		$output =  $copyright . "&nbsp;" . get_bloginfo('name');
+	}
+	return $output;
 }
 
 ?>
