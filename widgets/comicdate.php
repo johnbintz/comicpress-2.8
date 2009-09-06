@@ -42,6 +42,7 @@ class widget_comicpress_comic_date extends WP_Widget {
 		?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>">Words to use before date:<br /><input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
 		<p><label for="<?php echo $this->get_field_id('format'); ?>">Format of the Time/Date:<br /><input class="widefat" id="<?php echo $this->get_field_id('format'); ?>" name="<?php echo $this->get_field_name('format'); ?>" type="text" value="<?php echo attribute_escape($format); ?>" /></label></p>
+		<p><a href="http://us.php.net/manual/en/function.date.php" target="_blank">Date String Examples</a></p>
 		
 		<?php
 	}

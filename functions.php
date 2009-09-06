@@ -82,7 +82,8 @@ if (get_option('upload_path') !== false) {
 				'disable_lrsidebars_frontpage'	=> 'disable_lrsidebars_frontpage',
 				'calendar_directory'			=> 'calendar_directory',
 				'contact_in_menubar'			=> 'contact_in_menubar',
-				'disable_dynamic_menubar_links'	=> 'disable_dynamic_menubar_links' ) as $options => $variable_name) {
+				'disable_dynamic_menubar_links'	=> 'disable_dynamic_menubar_links',
+				'disable_footer_text'			=> 'disable_footer_text' ) as $options => $variable_name) {
 		$variables_to_extract[$variable_name] = get_option("comicpress-${options}");
 	}
 	

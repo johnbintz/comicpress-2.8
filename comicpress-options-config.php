@@ -204,6 +204,10 @@ $options = array (
 			"default" => "no",
 			"type" => "comicpress-disable_dynamic_menubar_links"),
 			
+		array(
+			"id" => "comicpress-disable_footer_text",
+			"default" => "no",
+			"type" => "comicpress-disable_footer_text"),
 
 		array("type" => "close")
 		);

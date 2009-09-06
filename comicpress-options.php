@@ -298,6 +298,20 @@ function comicpress_admin() {
 				</td>
 				</tr>
 				
+				<?php break;
+			case "comicpress-disable_footer_text": ?>
+				<tr>
+				<th scope="row"><strong>Disable the default text in the footer?</strong><br /><br />Set to &quot;Yes&quot; and the text in the footer will not show.<br /><br /></th>
+				<td valign="top" width="100">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label><br />
+				</td>
+				<td valign="top">
+				Footer text that shows up in the #footer area can be simply removed this way.
+				</td>
+				</tr>
+				
 				<?php break;	
 		}
 	}
