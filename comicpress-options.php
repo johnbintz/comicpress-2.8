@@ -115,7 +115,7 @@ function comicpress_admin() {
 					<td valign="bottom" colspan="2">
             <p><em>(Check the vaildity of your theme's HTML &amp; CSS using the links below. Stock ComicPress is XHTML 1.0 and CSS 2 compliant.)</em></p>
 						<a href="http://validator.w3.org/check?uri=referer"><img
-							src="http://www.w3.org/Icons/valid-xhtml10"
+							src="http://www.w3.org/avatars/valid-xhtml10"
 							alt="Valid XHTML 1.0 Transitional" height="31" width="88" /></a>
 						<a href="http://jigsaw.w3.org/css-validator/check/referer">
 							<img style="border:0;width:88px;height:31px"
@@ -366,24 +366,24 @@ function comicpress_admin() {
 				</tr>
 				
 				<?php break;
-			case "comicpress-icon_directory": 
-				$current_icon_directory = get_option($value['id']);
-				if (empty($current_icon_directory)) $current_icon_directory = 'default';
+			case "comicpress-avatar_directory": 
+				$current_avatar_directory = get_option($value['id']);
+				if (empty($current_avatar_directory)) $current_avatar_directory = 'default';
 					
-				$count = count($results = glob(get_template_directory() . '/images/icons/'.$current_icon_directory.'/*'));
-				$icon_directories = glob(get_template_directory() . '/images/icons/*');
+				$count = count($results = glob(get_template_directory() . '/images/avatars/'.$current_avatar_directory.'/*'));
+				$avatar_directories = glob(get_template_directory() . '/images/avatars/*');
 				
 			?>
 				<tr>
-				<th scope="row"><strong>Icon (no Gravatar) Directory</strong><br /><br />Choose a directory to get the icons for default gravatars if someone doesnt have one.<br /></th>
+				<th scope="row"><strong>Avatar (no Gravatar) Directory</strong><br /><br />Choose a directory to get the avatars for default gravatars if someone doesnt have one.<br /></th>
 				<td valign="top">
 					<label>
 						<select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
 				<?php
-					foreach ($icon_directories as $icon_dirs) {
-						if (is_dir($icon_dirs)) { 
-							$icon_dir_name = basename($icon_dirs); ?>
-							<option class="level-0" value="<?php echo $icon_dir_name; ?>" <?php if ($current_icon_directory == $icon_dir_name) { ?>selected="selected"<?php } ?>><?php echo $icon_dir_name; ?></option>
+					foreach ($avatar_directories as $avatar_dirs) {
+						if (is_dir($avatar_dirs)) { 
+							$avatar_dir_name = basename($avatar_dirs); ?>
+							<option class="level-0" value="<?php echo $avatar_dir_name; ?>" <?php if ($current_avatar_directory == $avatar_dir_name) { ?>selected="selected"<?php } ?>><?php echo $avatar_dir_name; ?></option>
 					<?php }
 					}
 				?>

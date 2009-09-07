@@ -80,10 +80,10 @@ function comicpress_get_avatar( $id_or_email, $size = '64', $alt = false) {
 }
 
 function comicpress_random_default_avatar($id_or_email = '') {
-	$current_icon_directory = get_option('comicpress-icon_directory');
-	if (empty($current_icon_directory)) $current_icon_directory = 'default';
+	$current_avatar_directory = get_option('comicpress-avatar_directory');
+	if (empty($current_avatar_directory)) $current_avatar_directory = 'default';
 		
-	$count = count($results = glob(get_template_directory() . '/images/avatars/'.$current_icon_directory.'/*'));
+	$count = count($results = glob(get_template_directory() . '/images/avatars/'.$current_avatar_directory.'/*'));
 	$default = '';
 	
 	$checknum = hexdec(substr(md5($id_or_email),0,5)) % $count;
@@ -92,7 +92,7 @@ function comicpress_random_default_avatar($id_or_email = '') {
 	} else {
 		return false;
 	}
-	return get_bloginfo('stylesheet_directory').'/images/avatars/'.$current_icon_directory.'/'.$default;
+	return get_bloginfo('stylesheet_directory').'/images/avatars/'.$current_avatar_directory.'/'.$default;
 }
 
 ?>

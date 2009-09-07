@@ -215,9 +215,9 @@ $options = array (
 			"type" => "comicpress-themepack_directory"),
 			
 		array(
-			"id" => "comicpress-icon_directory",
+			"id" => "comicpress-avatar_directory",
 			"default" => "default",
-			"type" => "comicpress-icon_directory"),		
+			"type" => "comicpress-avatar_directory"),		
 
 		array("type" => "close")
 		);

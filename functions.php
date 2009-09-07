@@ -85,14 +85,14 @@ if (get_option('upload_path') !== false) {
 				'disable_dynamic_menubar_links'	=> 'disable_dynamic_menubar_links',
 				'disable_footer_text'			=> 'disable_footer_text',
 				'themepack_directory'			=> 'themepack_directory',
-				'icon_directory'				=> 'icon_directory' ) as $options => $variable_name) {
+				'avatar_directory'				=> 'avatar_directory' ) as $options => $variable_name) {
 		$variables_to_extract[$variable_name] = get_option("comicpress-${options}");
 	}
 	
 	extract($variables_to_extract);
 }
 
-if (empty($icon_directory)) $icon_directory = 'default';
+if (empty($avatar_directory)) $avatar_directory = 'default';
 if (empty($themepack_directory)) $themepack_directory = 'silver';
 if (empty($graphicnav_directory)) $graphicnav_directory = 'default';
 if (empty($moods_directory)) $moods_directory = 'default';
