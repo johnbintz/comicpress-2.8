@@ -182,13 +182,17 @@ h3, h3 a {
 /* THE PAGE WRAPPER */
 /* Change this width to set the entire site's width - increase/reduce #content width by the same amount */
 
+/* Maintains the #page and #pagewide width after padding is set */
+#page-wrap {
+}
+
 #page {
 	width: 780px;
 	margin: 0px auto;
 }
 
 #page-wide {
-	width: 980px;
+	width: 990px;
 	margin: 0px auto;
 }
 

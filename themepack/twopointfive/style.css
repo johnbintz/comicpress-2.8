@@ -14,11 +14,22 @@ http://www.opensource.org/licenses/gpl-3.0.html
 /* STANDARD TAGS */
 
 body {
-	background: #555;
+	background: #cfb256 url('background.jpg') repeat;
 }
 
 #header {
 	background: #333;
+	padding: 20px 0;
+}
+
+#header h1 {
+	text-align: left;
+	padding-left: 20px;
+}
+
+#header .description {
+	text-align: left;
+	padding-left: 60px;
 }
 
 #content-wrapper {
@@ -43,11 +54,21 @@ body {
 	color: #fff;
 }
 
-#page-wide, #page {
+#page {
+	padding: 0 20px;
+	background: url('classic-background-narrow.png') top center repeat-y;
+}
+
+#page-wide {
+	padding: 0 20px;
+	background: url('classic-background-wide.png') top center repeat-y;
+}
+
+#page-wrap {
 	background: #ddd;
-	border-left: solid 2px #000;
-	border-right: solid 2px #000;
-	border-bottom: solid 2px #000;
+	border-left: solid 1px #000;
+	border-right: solid 1px #000;
+	border-bottom: solid 1px #000;
 }
 
 #sidebar-left {
@@ -75,6 +96,32 @@ body {
 #footer a:hover {
 	color: #fff;
 }
+
+
+/* MENU */
+
+.menunav-prev a, .menunav-next a {
+	border-left: solid 1px #aaa;
+}
+	
+	.menunav-rss:hover {
+		background: #ff6600;
+	}
+
+#menu {
+	text-transform: uppercase;
+	font-size: 12px;
+}
+
+#menu li a {
+	border-right: solid 1px #aaa;
+}
+
+	#menu li:hover li a, #menu li li:hover li a, #menu li li li:hover li a, #menu li li li li:hover li a,
+	#menu li:hover li, #menu li li:hover li, #menu li li li:hover li, #menu li li li li:hover li {
+		text-transform: uppercase;
+		font-size: 12px;
+	}
 
 /* COMMENT LINK */
 

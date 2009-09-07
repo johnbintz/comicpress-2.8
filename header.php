@@ -48,8 +48,10 @@
 <?php if ($disable_page_restraints != 'yes') {
 	if (is_cp_theme_layout('standard,v')) { ?>
 	<div id="page"><!-- Defines entire site width - Ends in Footer -->
+		<div id="page-wrap"><!-- Wraps inside the site width -->
 <?php } else { ?>
 	<div id="page-wide">
+		<div id="page-wrap">
 	<?php } 
 } ?>
 

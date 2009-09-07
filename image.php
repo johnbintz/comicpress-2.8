@@ -1,6 +1,7 @@
 <?php get_header();  ?>
 
 <?php if (is_cp_theme_layout('gn,v3c,v')) { ?>
+	<div id="content-wrapper-top"></div>
 	<div id="content-wrapper">
 <?php } ?>
 
@@ -16,7 +17,8 @@
 		<?php } ?>
 
 	<?php if (is_cp_theme_layout('3c,standard')) { ?>
-	<div id="content-wrapper">
+		<div id="content-wrapper-top"></div>
+		<div id="content-wrapper">
 	<?php } ?>
 	<?php get_sidebar('overblog'); ?>
 	<?php if (is_cp_theme_layout('3c')) get_sidebar('left'); ?>
@@ -99,7 +101,6 @@ if (is_cp_theme_layout('3c,v3c,gn,standard,v')) {
 	<?php } ?>	
 
 	<div class="clear"></div>
-
-</div> <!-- end pageright-wrapper / content-wrapper -->
-
+</div>
+<div id="content-wrapper-bottom"></div>
 <?php get_footer() ?>

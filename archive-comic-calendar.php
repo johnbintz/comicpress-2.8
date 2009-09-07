@@ -6,6 +6,7 @@ Template Name: Comic Calendar Archive
 <?php get_header();  ?>
 
 <?php if (is_cp_theme_layout('gn,v3c,v')) { ?>
+	<div id="content-wrapper-top"></div>
 	<div id="content-wrapper">
 <?php } ?>
 
@@ -19,6 +20,20 @@ Template Name: Comic Calendar Archive
 		<?php if (is_cp_theme_layout('gn')) { ?>
 			<div id="pagewrap-right">
 		<?php } ?>
+
+	<?php if (is_cp_theme_layout('3c,standard')) { ?>
+		<div id="content-wrapper-top"></div>
+		<div id="content-wrapper">
+	<?php } ?>
+	
+	<?php get_sidebar('overblog'); ?>
+	
+	<?php if (is_cp_theme_layout('3c')) get_sidebar('left'); ?>
+
+	<?php if (is_cp_theme_layout('gn,standard,3c')) { ?>
+		<div id="content" class="narrowcolumn">
+			<div class="column">
+	<?php } ?>
 
 <?php
 
@@ -81,17 +96,6 @@ $month['11'] = array('month' => 'November', 'days' => '30');
 $month['12'] = array('month' => 'December', 'days' => '31');
 
 ?>
-	<?php if (is_cp_theme_layout('3c,standard')) { ?>
-	<div id="content-wrapper">
-	<?php } ?>
-	<?php get_sidebar('overblog'); ?>
-	<?php if (is_cp_theme_layout('3c')) get_sidebar('left'); ?>
-
-	<?php if (is_cp_theme_layout('gn,standard,3c')) { ?>
-		<div id="content" class="narrowcolumn">
-			<div class="column">
-	<?php } ?>
-
 	<div class="post-page-head"></div>
 	<div class="post-page">
 	<?php while (have_posts()) : the_post() ?>
@@ -176,7 +180,6 @@ if (is_cp_theme_layout('3c,v3c,gn,standard,v')) {
 	<?php } ?>	
 
 	<div class="clear"></div>
-
-</div> <!-- end pageright-wrapper / content-wrapper -->
-
+</div>
+<div id="content-wrapper-bottom"></div>
 <?php get_footer() ?>

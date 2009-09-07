@@ -36,13 +36,28 @@ function comicpress_body_class($classes = '') {
 		foreach ( (array)get_the_category( $wp_query->post->ID ) as $cat ) :
 			$classes[] = 'single-category-' . sanitize_html_class( $cat->slug, $cat->term_id );
 		endforeach;
-		
 		$classes[] = 'single-author-' . get_the_author_meta( 'user_nicename', $wp_query->post->post_author );
-
 	}
 
 	if ( is_sticky( $wp_query->post->ID ) ) {
 		$classes[] = 'single-sticky';
+	}
+	
+// NOT hijacked from anything, doi! people should do this.
+	$rightnow = date('gi');
+	$ampm = date('a');
+	$classes[] = $ampm;
+	
+	if ($ampm == 'am') {
+		if ((int)$rightnow < 30) $classes[] = 'midnight';
+		if ((int)$rightnow < 560) $classes[] = 'night';
+		if ((int)$rightnow > 559 && (int)$rightnow < 1130) $classes[] = 'morning';
+		if ((int)$rightnow > 1129) $classes[]='noon';
+	} else {
+		if ((int)$rightnow < 30) $classes[] = 'noon';
+		if ((int)$rightnow < 560) $classes[] = 'day';
+		if ((int)$rightnow > 559 && (int)$rightnow < 1130) $classes[] = 'evening';
+		if ((int)$rightnow > 1129) $classes[]='midnight';
 	}
 
 	if ( is_attachment() ) {
