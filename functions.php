@@ -54,7 +54,7 @@ if (get_option('upload_path') !== false) {
 				'buy_print_us_ship'				=> 'buy_print_us_ship',
 				'buy_print_int_ship'			=> 'buy_print_int_ship',
 				'custom_css'					=> 'custom_css',
-				'cp_theme_style'				=> 'cp_theme_style',
+				'cp_theme_layout'				=> 'cp_theme_layout',
 				'transcript_in_posts'			=> 'transcript_in_posts',
 				'enable_widgetarea_use_sidebar_css'	=> 'enable_widgetarea_use_sidebar_css',
 				'enable_custom_image_header'	=> 'enable_custom_image_header',
@@ -97,14 +97,15 @@ if (empty($themepack_directory)) $themepack_directory = 'silver';
 if (empty($graphicnav_directory)) $graphicnav_directory = 'default';
 if (empty($moods_directory)) $moods_directory = 'default';
 if (empty($calendar_directory)) $calendar_directory = 'default';
+if (empty($cp_theme_layout)) $cp_theme_layout='standard';
 
-function is_cp_theme_style($choices) {
-global $cp_theme_style;
-	if (empty($cp_theme_style)) $cp_theme_style='standard';
+function is_cp_theme_layout($choices) {
+global $cp_theme_layout;
+	if (empty($cp_theme_layout)) $cp_theme_layout='standard';
 	$choices = explode(",", $choices);
 	foreach ($choices as $choice) {
 
-		if ($choice == $cp_theme_style) { 
+		if ($choice == $cp_theme_layout) { 
 			return true; 
 		}  
 	}	

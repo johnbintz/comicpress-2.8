@@ -240,12 +240,11 @@ body {
 }
 
 	.comment-link a {
-		color: #800;
-		font-size: inherit;
+		color: #333;
 	}
 		
 	.comment-link a:hover {
-		color: #b00;
+		color: #800;
 	}
 		
 	.comment-balloon {
@@ -272,7 +271,6 @@ body {
 		font-size: 20px;
 		line-height: 30px;
 		}
-
 
 
 /* WIDGETS */

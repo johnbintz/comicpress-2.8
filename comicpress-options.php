@@ -95,7 +95,7 @@ function comicpress_admin() {
 	<?php
 	foreach ($options as $value) {
 		switch ( $value['type'] ) {
-			case "comicpress-cp_theme_style": ?>
+			case "comicpress-cp_theme_layout": ?>
 				<tr>
 					<th scope="row"><strong>Choose which theme layout you want to use.</strong><br /><br />This is the layout in which your theme will be presented.<br /><br /></th>
 					<td valign="top">
@@ -139,7 +139,7 @@ function comicpress_admin() {
 				<td valign="top">
 					<label>
 						<select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
-						<option class="level-0" value="none" <?php if ($current_themepack_directory == "none") { ?>selected="selected"<?php } ?>>none</option>
+							<option class="level-0" value="none" <?php if ($current_themepack_directory == "none") { ?>selected="selected"<?php } ?>>none</option>
 				<?php
 					foreach ($themepack_directories as $themepack_dirs) {
 						if (is_dir($themepack_dirs)) { 
@@ -379,6 +379,7 @@ function comicpress_admin() {
 				<td valign="top">
 					<label>
 						<select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
+							<option class="level-0" value="none" <?php if ($current_cal_directory == "none") { ?>selected="selected"<?php } ?>>none</option>
 				<?php
 					foreach ($avatar_directories as $avatar_dirs) {
 						if (is_dir($avatar_dirs)) { 

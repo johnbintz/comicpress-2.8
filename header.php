@@ -18,12 +18,12 @@
   ?></title>
 	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type') ?>; charset=<?php bloginfo('charset') ?>" />
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url') ?>" type="text/css" media="screen" />
-	<?php global $themepack_directory;
-	if ($themepack_directory != 'none') { ?>
-	<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/themepack/<?php echo $themepack_directory; ?>/style.css" type="text/css" media="screen" />
-	<?php } ?>
 <?php global $graphicnav_directory; if (file_exists(get_template_directory() . '/images/nav/' .$graphicnav_directory. '/navstyle.css')) { ?>
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory') ?>/images/nav/<?php echo $graphicnav_directory; ?>/navstyle.css" type="text/css" media="screen" />
+<?php } ?>
+<?php global $themepack_directory;
+	if ($themepack_directory != 'none') { ?>
+	<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/themepack/<?php echo $themepack_directory; ?>/style.css" type="text/css" media="screen" />
 <?php } ?>
 	<link rel="SHORTCUT ICON" href="<?php bloginfo('stylesheet_directory'); ?>/favicon.ico"/>
 	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name') ?> RSS2 Feed" href="<?php bloginfo('rss2_url') ?>" />
@@ -43,8 +43,10 @@
 <?php do_action('comicpress-header'); ?>
 <?php get_sidebar('above'); ?> 
 
+<div id="page-top"></div>
+
 <?php if ($disable_page_restraints != 'yes') {
-	if (is_cp_theme_style('standard,v')) { ?>
+	if (is_cp_theme_layout('standard,v')) { ?>
 	<div id="page"><!-- Defines entire site width - Ends in Footer -->
 <?php } else { ?>
 	<div id="page-wide">

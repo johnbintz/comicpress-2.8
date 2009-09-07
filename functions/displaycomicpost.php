@@ -7,7 +7,7 @@
  */
 
 function display_comic_post() { 
-	global $post, $wp_query, $transcript_in_posts, $enable_related_comics, $enable_comic_post_author_gravatar, $enable_comic_post_calendar, $disable_categories_in_posts, $disable_tags_in_posts; 
+	global $post, $wp_query, $transcript_in_posts, $enable_related_comics, $enable_comic_post_author_gravatar, $enable_comic_post_calendar, $disable_categories_in_posts, $disable_tags_in_posts, $themepack_directory;; 
 	$first_comic = get_first_comic_permalink(); $last_comic = get_last_comic_permalink();
 	?>
 	<div class="nav">
@@ -44,16 +44,25 @@ function display_comic_post() {
 			<?php the_content('&darr; Read More..') ?>
 		</div>
 		<?php if ($transcript_in_posts == 'yes') the_transcript('styled'); ?>
-		<div class="post-extras">
-			<?php if ($disable_tags_in_posts != 'yes') { ?>
-				<div class="tags">
-				<?php the_tags('&#9492; Tags: ', ', ', '<br />'); ?>
+				<div class="post-extras">
+					<?php if ($disable_tags_in_posts != 'yes') { ?>
+						<div class="tags">
+						<?php the_tags('&#9492; Tags: ', ', ', '<br />'); ?>
+						</div>
+					<?php } ?>
+					<?php if (!is_single()) { 
+							if ('open' == $post->comment_status) { 
+								if ( ($themepack_directory != 'none' && !empty($themepack_directory) ) && file_exists(get_template_directory() . '/themepack/'.$themepack_directory.'/commentlink.php') ) { 
+									include(get_template_directory() . '/themepack/' .$themepack_directory. '/commentlink.php');
+								} else { ?>
+									<div class="comment-link"><?php comments_popup_link('<span class="comment-balloon comment-balloon-empty">&nbsp;</span> No Comments ', '<span class="comment-balloon">1</span> Comment ', '<span class="comment-balloon">%</span> Comments '); ?></div>
+							<?php }
+							}					
+						} ?>
+					<div class="clear"></div>
+					<?php if ($enable_related_comics == 'yes') echo related_comics_shortcode(); ?>
 				</div>
-			<?php } ?>
-			<?php if ('open' == $post->comment_status) { ?><div class="comment-link"><?php comments_popup_link('<span class="comment-balloon comment-balloon-empty">&nbsp;</span> No Comments ', '<span class="comment-balloon">1</span> Comment ', '<span class="comment-balloon">%</span> Comments '); ?></div><?php } ?>
-			<?php if ($enable_related_comics == 'yes') echo related_comics_shortcode(); ?>
-		</div>
-		<br class="clear-margins" />
+				<br class="clear-margins" />
 	</div>
 	<div class="post-comic-foot"></div>
 	

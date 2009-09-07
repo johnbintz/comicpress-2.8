@@ -19,9 +19,9 @@
 <?php global $disable_page_restraints; if ($disable_page_restraints == 'no') { ?>
 </div><!-- Ends "page" -->
 <?php } ?>
- 
+<div id="page-bottom"></div>
+
 <?php wp_footer() ?>
 
 </body>
-
 </html>

@@ -25,9 +25,9 @@ $options = array (
 			"type" => "comicpress-custom_css"),
 			
 		array(
-			"id" => "comicpress-cp_theme_style",
+			"id" => "comicpress-cp_theme_layout",
 			"default" => "standard",
-			"type" => "comicpress-cp_theme_style"),
+			"type" => "comicpress-cp_theme_layout"),
 			
 		array(
 			"id" => "comicpress-buy_print_email",

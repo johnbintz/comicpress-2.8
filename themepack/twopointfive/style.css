@@ -75,3 +75,11 @@ body {
 #footer a:hover {
 	color: #fff;
 }
+
+/* COMMENT LINK */
+
+.comment-link {
+	font-size: 9px;
+}
+
+

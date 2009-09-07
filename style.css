@@ -16,7 +16,7 @@ http://www.opensource.org/licenses/gpl-3.0.html
 body {
 	margin: 0;
 	font-family: 'Arial', sans-serif;
-	font-size: 13px;
+	font-size: 12px;
 	font-style: normal;
 	font-weight: normal;
 	text-transform: none;
@@ -603,7 +603,6 @@ a.navi-comments:hover span {
 	line-height: 20px;
 	font-family: 'Arial', sans-serif;
 	font-weight: bold;
-	font-size: smaller;
 	text-align: right;
 }
 

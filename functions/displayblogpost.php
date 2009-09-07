@@ -7,7 +7,7 @@
  */
 
 function display_blog_post() { 
-	global $post, $wp_query, $authordata, $enable_related_posts, $enable_post_author_gravatar, $enable_post_calendar;  ?>
+	global $post, $wp_query, $authordata, $enable_related_posts, $enable_post_author_gravatar, $enable_post_calendar, $themepack_directory;  ?>
 			<div class="post-head"></div>
 			<div class="post" id="post-<?php the_ID() ?>">
 				<div class="post-info">
@@ -40,9 +40,15 @@ function display_blog_post() {
 						<?php the_tags('&#9492; Tags: ', ', ', '<br />'); ?>
 						</div>
 					<?php } ?>
-					<?php if (!is_single()) { ?>
-						<?php if ('open' == $post->comment_status) { ?><div class="comment-link"><?php comments_popup_link('<span class="comment-balloon comment-balloon-empty">&nbsp;</span> No Comments ', '<span class="comment-balloon">1</span> Comment ', '<span class="comment-balloon">%</span> Comments '); ?></div><?php } ?>
-					<?php } ?>
+					<?php if (!is_single()) { 
+							if ('open' == $post->comment_status) { 
+								if ( ($themepack_directory != 'none' && !empty($themepack_directory) ) && file_exists(get_template_directory() . '/themepack/'.$themepack_directory.'/commentlink.php') ) { 
+									include(get_template_directory() . '/themepack/' .$themepack_directory. '/commentlink.php');
+								} else { ?>
+									<div class="comment-link"><?php comments_popup_link('<span class="comment-balloon comment-balloon-empty">&nbsp;</span> No Comments ', '<span class="comment-balloon">1</span> Comment ', '<span class="comment-balloon">%</span> Comments '); ?></div>
+							<?php }
+							}					
+						} ?>
 					<div class="clear"></div>
 					<?php if ($enable_related_posts == 'yes') echo related_posts_shortcode(); ?>
 				</div>

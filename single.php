@@ -1,17 +1,17 @@
 <?php get_header();  ?>
 
-<?php if (is_cp_theme_style('gn,v3c,v')) { ?>
+<?php if (is_cp_theme_layout('gn,v3c,v')) { ?>
 	<div id="content-wrapper">
 <?php } ?>
 
-<?php if (is_cp_theme_style('gn,v3c')) get_sidebar('left'); ?>
+<?php if (is_cp_theme_layout('gn,v3c')) get_sidebar('left'); ?>
 
-<?php if (is_cp_theme_style('v3c,v')) { ?>
+<?php if (is_cp_theme_layout('v3c,v')) { ?>
 	<div id="content" class="narrowcolumn">
 		<div class="column">
 <?php } ?>
 
-		<?php if (is_cp_theme_style('gn')) { ?>
+		<?php if (is_cp_theme_layout('gn')) { ?>
 			<div id="pagewrap-right">
 		<?php } ?>
 
@@ -28,13 +28,13 @@
 		
 	<?php } endwhile; ?>
 
-	<?php if (is_cp_theme_style('3c,standard')) { ?>
+	<?php if (is_cp_theme_layout('3c,standard')) { ?>
 	<div id="content-wrapper">
 	<?php } ?>
 	<?php get_sidebar('overblog'); ?>
-	<?php if (is_cp_theme_style('3c')) get_sidebar('left'); ?>
+	<?php if (is_cp_theme_layout('3c')) get_sidebar('left'); ?>
 
-	<?php if (is_cp_theme_style('gn,standard,3c')) { ?>
+	<?php if (is_cp_theme_layout('gn,standard,3c')) { ?>
 	<div id="content" class="narrowcolumn">
 		<div class="column">
 	<?php } ?>
@@ -77,11 +77,11 @@
 	</div>
 
 <?php 
-if (is_cp_theme_style('3c,v3c,gn,standard,v')) { 
+if (is_cp_theme_layout('3c,v3c,gn,standard,v')) { 
 	get_sidebar('right'); ?>
 <?php } ?>
 
-	<?php if (is_cp_theme_style('gn')) { ?>
+	<?php if (is_cp_theme_layout('gn')) { ?>
 		</div>
 	<?php } ?>	
 

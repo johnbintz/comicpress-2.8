@@ -8,7 +8,7 @@ if ($disable_lrsidebars_frontpage == 'yes' && is_home()) {
 				<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Right Sidebar') ) : ?>
 					<?php comicpress_comic_bookmark() ?>
 					
-					<?php if (is_cp_theme_style('standard,v')) { ?>
+					<?php if (is_cp_theme_layout('standard,v')) { ?>
 					<ul>
 						<li>
 							<?php $default_image = get_bloginfo('stylesheet_directory').'/images/cal/default.png'; ?>
