@@ -213,6 +213,11 @@ $options = array (
 			"id" => "comicpress-themepack_directory",
 			"default" => "silver",
 			"type" => "comicpress-themepack_directory"),
+			
+		array(
+			"id" => "comicpress-icon_directory",
+			"default" => "default",
+			"type" => "comicpress-icon_directory"),		
 
 		array("type" => "close")
 		);

@@ -365,7 +365,34 @@ function comicpress_admin() {
 				</td>
 				</tr>
 				
-				<?php break;	
+				<?php break;
+			case "comicpress-icon_directory": 
+				$current_icon_directory = get_option($value['id']);
+				if (empty($current_icon_directory)) $current_icon_directory = 'default';
+					
+				$count = count($results = glob(get_template_directory() . '/images/icons/'.$current_icon_directory.'/*'));
+				$icon_directories = glob(get_template_directory() . '/images/icons/*');
+				
+			?>
+				<tr>
+				<th scope="row"><strong>Icon (no Gravatar) Directory</strong><br /><br />Choose a directory to get the icons for default gravatars if someone doesnt have one.<br /></th>
+				<td valign="top">
+					<label>
+						<select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
+				<?php
+					foreach ($icon_directories as $icon_dirs) {
+						if (is_dir($icon_dirs)) { 
+							$icon_dir_name = basename($icon_dirs); ?>
+							<option class="level-0" value="<?php echo $icon_dir_name; ?>" <?php if ($current_icon_directory == $icon_dir_name) { ?>selected="selected"<?php } ?>><?php echo $icon_dir_name; ?></option>
+					<?php }
+					}
+				?>
+						</select>
+					</label>
+				</td>
+				</tr>
+				
+			<?php break;
 		}
 	}
 	?>

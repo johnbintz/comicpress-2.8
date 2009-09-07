@@ -16,5 +16,4 @@ function sc_note( $atts, $content = null ) {
 	return '';
 }
 
-
 ?>
