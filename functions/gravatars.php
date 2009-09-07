@@ -83,7 +83,7 @@ function comicpress_random_default_avatar($id_or_email = '') {
 	$current_icon_directory = get_option('comicpress-icon_directory');
 	if (empty($current_icon_directory)) $current_icon_directory = 'default';
 		
-	$count = count($results = glob(get_template_directory() . '/images/icons/'.$current_icon_directory.'/*'));
+	$count = count($results = glob(get_template_directory() . '/images/avatars/'.$current_icon_directory.'/*'));
 	$default = '';
 	
 	$checknum = hexdec(substr(md5($id_or_email),0,5)) % $count;
@@ -92,41 +92,7 @@ function comicpress_random_default_avatar($id_or_email = '') {
 	} else {
 		return false;
 	}
-	return get_bloginfo('stylesheet_directory').'/images/icons/'.$current_icon_directory.'/'.$default;
-}
-
-function letter_to_number($letter = '') {
-	if (!empty($letter)) {
-		if ($letter == 'a') $number = 1;
-		if ($letter == 'b') $number = 2;
-		if ($letter == 'c') $number = 3;
-		if ($letter == 'd') $number = 4;
-		if ($letter == 'e') $number = 5;
-		if ($letter == 'f') $number = 6;
-		if ($letter == 'g') $number = 7;
-		if ($letter == 'h') $number = 8;
-		if ($letter == 'i') $number = 9;
-		if ($letter == 'j') $number = 10;
-		if ($letter == 'k') $number = 11;
-		if ($letter == 'l') $number = 12;
-		if ($letter == 'm') $number = 13;
-		if ($letter == 'n') $number = 14;
-		if ($letter == 'o') $number = 15;
-		if ($letter == 'p') $number = 16;
-		if ($letter == 'q') $number = 17;
-		if ($letter == 'r') $number = 18;
-		if ($letter == 's') $number = 19;
-		if ($letter == 't') $number = 20;
-		if ($letter == 'u') $number = 21;
-		if ($letter == 'v') $number = 22;
-		if ($letter == 'w') $number = 23;
-		if ($letter == 'x') $number = 24;
-		if ($letter == 'y') $number = 25;
-		if ($letter == 'z') $number = 26;
-	} else {
-		return false;
-	}
-	return $number;
+	return get_bloginfo('stylesheet_directory').'/images/avatars/'.$current_icon_directory.'/'.$default;
 }
 
 ?>
