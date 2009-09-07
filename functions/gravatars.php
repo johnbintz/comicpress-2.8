@@ -87,9 +87,6 @@ function comicpress_random_default_avatar($id_or_email = '') {
 	$default = '';
 	
 	$checknum = hexdec(substr(md5($id_or_email),0,5)) % $count;
-	var_dump($id_or_email);
-	var_dump($checknum);
-	var_dump($count);
 	if ($count > 0) {
 		$default = basename($results[(int)$checknum]); 
 	} else {
