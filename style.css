@@ -447,11 +447,9 @@ a.navi-comments:hover span {
 	.nav a, .pagenav a, .nav-blog a {
 		display: block;
 		float: left;
-		color: #000;
 	}
 
 	.nav a:hover, .pagenav a:hover, .nav-blog a:hover {
-		color: #800;
 	}
 
 /* POSTS - PAGES */
@@ -611,11 +609,9 @@ a.navi-comments:hover span {
 }
 
 	.comment-link a {
-		color: #800;
 	}
 		
 	.comment-link a:hover {
-		color: #ff0000;
 	}
 		
 	.comment-balloon {

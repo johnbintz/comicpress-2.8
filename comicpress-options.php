@@ -394,6 +394,21 @@ function comicpress_admin() {
 				</tr>
 				
 			<?php break;
+			case "comicpress-archive_display_order": 
+			?>
+				<tr>
+				<th scope="row"><strong>Display Archive in Ascending or Descending order?</strong><br /><br />Long time ago or most recent displays first?<br /></th>
+				<td valign="top">
+					<label>
+						<select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
+							<option class="level-0" value="asc" <?php if ($value['id'] == "asc") { ?>selected="selected"<?php } ?>>Ascending</option>
+							<option class="level-0" value="desc" <?php if ($value['id'] == "desc") { ?>selected="selected"<?php } ?>>Descending</option>
+						</select>
+					</label>
+				</td>
+				</tr>
+				
+			<?php break;
 		}
 	}
 	?>

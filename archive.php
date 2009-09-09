@@ -28,14 +28,16 @@
 			<div class="column">
 	<?php } ?>
 		<?php
-		$tmp_search = new WP_Query($query_string.'&order=desc&show_posts=-1&posts_per_page=-1');
+		global $archive_display_order;
+		if (empty($archive_display_order)) $archive_display_order = 'desc';
+		$tmp_search = new WP_Query($query_string.'&order='.$archive_display_order.'&show_posts=-1&posts_per_page=-1');
 		$count = $tmp_search->post_count;
 			?>
 		<?php if (!$count) $count = "no"; ?>
 		<div class="searchresults">Found <?php echo $count; ?> result<?php if ($count !== 1) { echo "s"; } ?>.</div>
 
 	<?php if (have_posts()) : ?>
-		<?php $posts = query_posts($query_string.'&order=desc'); ?>
+		<?php $posts = query_posts($query_string.'&order='.$archive_display_order); ?>
 		<div class="post-page-head"></div>
 		<div class="post-page">	
 	

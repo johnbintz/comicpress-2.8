@@ -217,7 +217,12 @@ $options = array (
 		array(
 			"id" => "comicpress-avatar_directory",
 			"default" => "default",
-			"type" => "comicpress-avatar_directory"),		
+			"type" => "comicpress-avatar_directory"),
+			
+		array(
+			"id" => "comicpress-archive_display_order",
+			"default" => "desc",
+			"type" => "comicpress-archive_display_order"),	
 
 		array("type" => "close")
 		);
