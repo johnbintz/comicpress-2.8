@@ -409,6 +409,18 @@ function comicpress_admin() {
 				</tr>
 				
 			<?php break;
+			case "comicpress-disable_comment_note": ?>
+				<tr>
+				<th scope="row"><strong>Disable the comment notes?</strong><br /><br />Disabling this will remove the note text that displays with more options for adding to comments (html).<br /><br /></th>
+				<td valign="top">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
+				</td>
+				<td valign="top">
+				</td>
+				</tr>
+				<?php break;
 		}
 	}
 	?>

@@ -223,6 +223,11 @@ $options = array (
 			"id" => "comicpress-archive_display_order",
 			"default" => "desc",
 			"type" => "comicpress-archive_display_order"),	
+			
+		array(
+			"id" => "comicpress-disable_comment_note",
+			"default" => "no",
+			"type" => "comicpress-disable_comment_note"),	
 
 		array("type" => "close")
 		);

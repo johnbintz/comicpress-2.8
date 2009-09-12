@@ -102,7 +102,10 @@ if ( have_comments() ) : ?>
 <?php do_action('comment_form', $post->ID); ?>
 <p><textarea name="comment" id="comment" cols="50" rows="6" tabindex="4"></textarea></p>
 <button type="submit" class="button">Submit Comment</button>
-<p><small><strong>NOTE - You can use these tags:</strong><br /><?php echo allowed_tags(); ?></small></p>
+<?php global $disable_comment_note;
+	if ($disable_comment_note != 'yes') { ?>
+		<div class="comment-note">NOTE - You can use these tags:<br /><?php echo allowed_tags(); ?></div>
+	<?php } ?>
 <?php comment_id_fields(); ?>
 
 <div class="clear"></div>
