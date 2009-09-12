@@ -38,6 +38,7 @@
 
 	<?php if (have_posts()) : ?>
 		<?php $posts = query_posts($query_string.'&order='.$archive_display_order); ?>
+	<div class="<?php commpress_blogpost_class(); ?>">
 		<div class="post-page-head"></div>
 		<div class="post-page">	
 	
@@ -60,13 +61,13 @@
 			<br class="clear-margins" />
 		</div>
 		<div class="post-page-foot"></div>
-
+	</div>
 
 
 		<?php while (have_posts()) : the_post() ?>
 
 			<?php global $archive_comic_width; if (in_comic_category()) { ?>
-
+			<div class="<?php commpress_blogpost_class(); ?>">
 				<div class="post-comic-head"></div>
 				<div class="post-comic">
 					<div class="post-info">
@@ -92,9 +93,9 @@
 					<br class="clear-margins" />
 				</div>
 				<div class="post-comic-foot"></div>
-
+			</div>
 			<?php } else { ?>
-
+			<div class="<?php commpress_blogpost_class(); ?>">
 				<div class="post-head"></div>
 				<div class="post">
 				<div class="post-info">
@@ -127,13 +128,13 @@
 					</div>
 				</div>
 				<div class="post-foot"></div>
-
+			</div>
 			<?php } ?>			
 
 		<?php endwhile; ?>
 
 	<?php else : ?>
-
+	<div class="<?php commpress_blogpost_class(); ?>">
 		<div class="post-head"></div>
 		<div class="post">
 			<h3>No entries found.</h3>
@@ -142,7 +143,7 @@
 			<br class="clear-margins" />
 		</div>
 		<div class="post-foot"></div>
-
+	</div>
 	<?php endif; ?>
 		
 			<?php comicpress_pagination(); ?>

@@ -31,6 +31,7 @@
 	<?php } ?>
 
 	<?php if (have_posts()) : while (have_posts()) : the_post() ?>
+	<div class="<?php commpress_blogpost_class(); ?>">
 		<div class="post-page-head"></div>
 		<div class="post-page" id="post-<?php the_ID() ?>">
 			<h2 class="pagetitle"><?php the_title() ?></h2>
@@ -42,11 +43,11 @@
 			<br class="clear-margins" />
 		</div>
 		<div class="post-page-foot"></div>
+	</div>
 		<?php if ('open' == $post->comment_status) {
 			comments_template('', true);
 			} ?>
 			<?php endwhile; endif; ?>
-			<div class="clear"></div>
 		</div>
 	</div>
 	

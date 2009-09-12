@@ -96,6 +96,7 @@ $month['11'] = array('month' => 'November', 'days' => '30');
 $month['12'] = array('month' => 'December', 'days' => '31');
 
 ?>
+<div class="<?php commpress_blogpost_class(); ?>">
 	<div class="post-page-head"></div>
 	<div class="post-page">
 	<?php while (have_posts()) : the_post() ?>
@@ -164,6 +165,7 @@ foreach ( $years as $year ) {
 
 	</div>
 	<div class="post-page-foot"></div>
+</div>
 <?php if ('open' == $post->comment_status) {
 	comments_template('', true);
 			} ?>

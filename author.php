@@ -40,6 +40,7 @@
 		if (empty($curauth)) { ?>
 			<h2>No such author.</h2>
 		<?php } else { ?>
+		<div class="<?php commpress_blogpost_class(); ?>">
 			<div class="post-page-head"></div>
 			<div class="post-page">
 					<div class="userpage-avatar">
@@ -82,6 +83,7 @@
 					</div>
 				</div>
 				<div class="post-page-foot"></div>
+			</div>
 		<?php } ?>
 		</div>
 	</div>

@@ -40,6 +40,7 @@ Templete Author Email: philip@frumph.net
 	<?php if (!empty($comicnum)): ?>
 		<?php $temppost = $post; ?>
 		<?php $post = & get_post( $comicnum ); ?>
+	<div class="<?php commpress_blogpost_class(); ?>">
 		<div class="post-page-head"></div>
 		<div class="post-page">
 			<div style="float:right;">
@@ -110,8 +111,11 @@ Templete Author Email: philip@frumph.net
 			<?php $post = $temppost; ?>
 			<div class="clear"></div>
 		</div>
+		<div class="post-page-foot"></div>
+	</div>
 	<?php else: ?>
 	    <?php if (have_posts()) : while (have_posts()) : the_post() ?>
+		<div class="<?php commpress_blogpost_class(); ?>">
 		    <div class="post-page-head"></div>
 		    <div class="post-page" id="post-<?php the_ID() ?>">
 			    <h2 class="pagetitle"><?php the_title() ?></h2>
@@ -123,6 +127,7 @@ Templete Author Email: philip@frumph.net
 			    <br class="clear-margins" />
 		    </div>
 		    <div class="post-page-foot"></div>
+		</div>
 	    <?php endwhile; endif; ?>
 	<?php endif; ?>	
 		</div>

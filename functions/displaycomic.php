@@ -7,7 +7,12 @@
  */
 
 function display_comic() { 
-	global $post, $wp_query, $rascal_says, $comic_clicks_next;
+	global $post, $wp_query, $rascal_says, $comic_clicks_next, $comic_filename_filters;
+	
+	
+	
+	
+	
 	$next_comic = get_next_comic_permalink();
 	
 	$comic = explode(".", the_comic_filename()); 

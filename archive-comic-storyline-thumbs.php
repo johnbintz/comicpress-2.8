@@ -32,7 +32,7 @@ Template Name: Comic Storyline with Thumbs
 		<div id="content" class="narrowcolumn">
 			<div class="column">
 	<?php } ?>
-	
+<div class="<?php commpress_blogpost_class(); ?>">
 	<div class="post-page-head"></div>
 	<div class="post-page">
 	<?php while (have_posts()) : the_post() ?>
@@ -95,6 +95,7 @@ Template Name: Comic Storyline with Thumbs
 		<br class="clear-margins" />
 	</div>
 	<div class="post-page-foot"></div>
+</div>
 		</div>
 	</div>
 

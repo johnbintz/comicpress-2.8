@@ -40,7 +40,7 @@ Template Name: Links
 	 ?>
 	
 	<?php while (have_posts()) : the_post() ?>
-	
+	<div class="<?php commpress_blogpost_class(); ?>">
 		<div class="post-page-head"></div>
 		<div class="post-page">
 			<h2 class="pagetitle"><?php the_title() ?></h2>
@@ -52,9 +52,8 @@ Template Name: Links
 			<br class="clear-margins" />
 		</div>
 		<div class="post-page-foot"></div>
-		
+	</div>
 	<?php endwhile; ?>
-		<div class="clear"></div>
 		</div>
 	</div>
 	

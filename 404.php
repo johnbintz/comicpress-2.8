@@ -25,7 +25,7 @@
 		<div id="content" class="narrowcolumn">
 			<div class="column">
 	<?php } ?>
-
+<div class="<?php commpress_blogpost_class(); ?>">
 	<div class="post-page-head"></div>
 	<div class="post-page">
 		<h2 class="pagetitle">Page Not Found</h2>
@@ -34,6 +34,7 @@
 		<br class="clear-margins" />
 	</div>
 	<div class="post-page-foot"></div>
+</div>
 		</div>
 	</div>
 

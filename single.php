@@ -64,14 +64,14 @@
 			<?php get_sidebar('underblog'); ?>
 		</center>		
 	<?php endwhile; else: ?>
-		
+	<div class="<?php commpress_blogpost_class(); ?>">
 		<div class="post-head"></div>
 		<div class="post">
 			<p>Sorry, no posts matched your criteria.</p>
 			<br class="clear-margins" />
 		</div>
 		<div class="post-foot"></div>
-		
+	</div>
 	<?php endif; ?>
 	
 		<?php get_sidebar('underblog'); ?>

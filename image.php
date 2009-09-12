@@ -29,7 +29,7 @@
 	<?php } ?>
 
 	<?php if (have_posts()) : while (have_posts()) : the_post() ?>
-
+	<div class="<?php commpress_blogpost_class(); ?>">
 		<div class="post-page-head"></div>
 		<div class="post-page" id="post-<?php the_ID() ?>">
 			<h2 class="pagetitle">
@@ -77,16 +77,16 @@
 			<br class="clear-margins" />
 		</div>
 		<div class="post-page-foot"></div>
-		
+	</div>
 	<?php endwhile; else: ?>
-
+	<div class="<?php commpress_blogpost_class(); ?>">
 		<div class="post-page-head"></div>
 		<div class="post-page">
 			<p>Sorry, no image matched your criteria.</p>
 			<br class="clear-margins" />
 		</div>
 		<div class="post-page-foot"></div>
-
+	</div>
 	<?php endif; ?>
 		</div>
 	</div>

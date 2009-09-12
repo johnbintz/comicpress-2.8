@@ -32,7 +32,7 @@ Template Name: Archives
 		<div id="content" class="narrowcolumn">
 			<div class="column">
 	<?php } ?>
-
+		<div class="<?php commpress_blogpost_class(); ?>">
 			<div class="post-page-head"></div>
 			<div class="post-page">
 				<h2>Archives by Month:</h2>
@@ -42,9 +42,9 @@ Template Name: Archives
 				<br class="clear-margins" />
 			</div>
 			<div class="post-page-foot"></div>
-			
 		</div>
 	</div>
+</div>
 
 <?php 
 if (is_cp_theme_layout('3c,v3c,gn,standard,v')) { 

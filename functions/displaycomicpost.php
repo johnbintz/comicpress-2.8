@@ -17,6 +17,7 @@ function display_comic_post() {
 		<?php if ( get_permalink() != $last_comic ) { ?><div class="nav-last"><a href="<?php echo $last_comic ?>">Last &rsaquo;&rsaquo;</a></div><?php } ?>
 	</div>
 	<div class="clear"></div>
+<div class="<?php commpress_blogpost_class(); ?>">
 	<div class="post-comic-head"></div>
 	<div class="post-comic">
 		<div class="post-info">
@@ -34,6 +35,10 @@ function display_comic_post() {
 				<small> By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?> <?php edit_post_link('Edit Post', ' [ ', ' ] '); ?></small><br />
 				<?php if (get_option('comicpress-enable-storyline-support') == 1) { ?>
 					<ul class="storyline-cats"><li class="storyline-root"><?php the_category(' &raquo; </li><li>', multiple) ?></li></ul>
+				<?php } else { ?>
+					<?php if ($disable_categories_in_posts != 'yes') { ?>
+						<small> Posted In: <?php the_category(','); ?></small><br />
+					<?php } ?>
 				<?php } ?>
 				<?php if(function_exists('the_ratings')) { the_ratings(); } ?>
 			</div>
@@ -65,6 +70,7 @@ function display_comic_post() {
 				<br class="clear-margins" />
 	</div>
 	<div class="post-comic-foot"></div>
+</div>
 	
 <?php 
 }

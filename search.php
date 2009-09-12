@@ -44,7 +44,7 @@ $count = $tmp_search->post_count;
     while (have_posts()) : the_post() ?>
       
         <?php global $archive_comic_width; if (in_comic_category()) { ?>
-
+		<div class="<?php commpress_blogpost_class(); ?>">
 			<div class="post-comic-head"></div>
 			<div class="post-comic">
 				<div class="post-info">
@@ -69,9 +69,9 @@ $count = $tmp_search->post_count;
 				<br class="clear-margins" />
 			</div>
 			<div class="post-comic-foot"></div>
-
+		</div>
         <?php } else { ?>
-
+		<div class="<?php commpress_blogpost_class(); ?>">
 			<div class="post-head"></div>
 			<div class="post">
 				<div class="post-info">
@@ -108,13 +108,13 @@ $count = $tmp_search->post_count;
 				</div>
 			</div>
 			<div class="post-foot"></div>
-          
+          </div>
         <?php } ?>
 
     <?php endwhile; ?>
     
   <?php else : ?>
-
+		<div class="<?php commpress_blogpost_class(); ?>">
 			<div class="post-page-head"></div>
 			<div class="post-page">
 				<h3>No entries found.</h3>
@@ -123,7 +123,7 @@ $count = $tmp_search->post_count;
 				<br class="clear-margins" />
 			</div>
 			<div class="post-page-foot"></div>
-
+		</div>
   <?php endif; ?>
 	
 			<?php comicpress_pagination(); ?>

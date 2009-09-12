@@ -8,6 +8,7 @@
 
 function display_blog_post() { 
 	global $post, $wp_query, $authordata, $enable_related_posts, $enable_post_author_gravatar, $enable_post_calendar, $themepack_directory;  ?>
+		<div class="<?php commpress_blogpost_class(); ?>">
 			<div class="post-head"></div>
 			<div class="post" id="post-<?php the_ID() ?>">
 				<div class="post-info">
@@ -55,6 +56,7 @@ function display_blog_post() {
 				<br class="clear-margins" />
 			</div>
 			<div class="post-foot"></div>
+		</div>
 <?php 
 }
 

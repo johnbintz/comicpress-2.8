@@ -38,7 +38,7 @@ function related_posts_shortcode( $atts = '' ) {
 				<div class="related_posts">
 				Related Posts &not;';
 		$retval .= '
-				<ul>';
+				<ul><li>';
 		if ( $related ) {
 			$comic_categories = array();
 			foreach ($category_tree as $node) {
@@ -51,7 +51,7 @@ function related_posts_shortcode( $atts = '' ) {
 			foreach($related as $r) :
 				if (count(array_intersect($comic_categories, wp_get_post_categories($r->ID))) == 0)
 					$retval .= '
-							<tr><td class="archive-date" align="right">'.date('M j, y',strtotime($r->post_date)).'</td><td class="archive-title"><a title="'.wptexturize($r->post_title).'" href="'.get_permalink($r->ID).'">'.wptexturize($r->post_title).'</a></td></tr>';
+							<tr><td class="archive-date" align="right">'.date('M j, Y',strtotime($r->post_date)).'</td><td class="archive-title"><a title="'.wptexturize($r->post_title).'" href="'.get_permalink($r->ID).'">'.wptexturize($r->post_title).'</a></td></tr>';
 			endforeach;
 			$retval .= '
 					</table>';
@@ -60,7 +60,7 @@ function related_posts_shortcode( $atts = '' ) {
 		<li>No related posts found</li>';
 		}
 		$retval .= '
-	</ul>';
+	</li></ul>';
 		$retval .= '
 </div>';
 		return $retval;
