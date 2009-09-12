@@ -1365,7 +1365,7 @@ li.pingback div p, li.trackback div p {
 	margin: 0 0 20px 0;
 }
 
-#linkspage, #linkspage ul, #linkspage li {
+#linkspage, #linkspage ul, #linkspage li, #archivepage, #archivepage url, #archivepage li {
 	list-style: none;
 }
 

@@ -35,11 +35,13 @@ Template Name: Archives
 		<div class="<?php commpress_blogpost_class(); ?>">
 			<div class="post-page-head"></div>
 			<div class="post-page">
-				<h2>Archives by Month:</h2>
-				<ul><?php wp_get_archives('type=monthly') ?></ul>
-				<h2>Archives by Subject:</h2>
-				<ul><?php wp_list_categories() ?></ul>
-				<br class="clear-margins" />
+				<div id="archivepage">
+					<h2>Archives by Month:</h2>
+					<ul><?php wp_get_archives('type=monthly') ?></ul>
+					<h2>Archives by Subject:</h2>
+					<ul><?php wp_list_categories() ?></ul>
+					<br class="clear-margins" />
+				</div>
 			</div>
 			<div class="post-page-foot"></div>
 		</div>
