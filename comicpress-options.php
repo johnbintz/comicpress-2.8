@@ -537,10 +537,12 @@ function comicpress_admin() {
 				$mood_directories = glob(get_template_directory() . '/images/moods/*');
 			?>
 				<tr>
-				<th scope="row"><strong>Moods Directory</strong><br /><br />Choose a directory to get the post moods from.<br /></th>
+				<th scope="row"><strong>Moods Directory</strong><br /><br />Choose a directory to get the post moods from.<br /><br />Set this to 'none' to turn off use.<br /></th>
 				<td valign="top">
 						<label>
 								<select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
+							<option class="level-0" value="none" <?php if ($current_directory == "none") { ?>selected="selected"<?php } ?>>none</option>
+
 				<?php
 					foreach ($mood_directories as $mood_dirs) {
 						if (is_dir($mood_dirs)) { 

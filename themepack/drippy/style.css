@@ -1,6 +1,6 @@
 /*
-ThemePack Name: Space Case
-ThemePack URI: http://comicpress.org
+ThemePack Name: Drippy
+ThemePack URI: http://commpress.org
 Description: 
 Author: Philip M. Hofer (Frumph)
 Author URI: http://frumph.net/
@@ -16,51 +16,21 @@ http://www.opensource.org/licenses/gpl-3.0.html
 body {
 	margin: 0;
 	font-family: 'Arial', sans-serif;
-	color: #ddd;
-	background: #000 url('background.jpg') fixed repeat;
+	background: #00344f url('background.jpg') top repeat-x;
 }
 
-a { color: #fff000; }
-
-a:hover { color: #fff; }
 
 h1, h1 a, h2, h2 a, h3, h3 a {
-	color: #fff;
+	color: #0b3b6e;
 }
 
 h1 a:hover, h2 a:hover, h3 a:hover {
-	color: #ff0000;
+	color: #fff;
 }
 
-#comic-head {
-	padding-top: 10px;
-}
-
-#comic img {
-	border: solid 1px #000;
-}
-
-#comic { 
-	padding: 5px;
-	background: #111 url('metal.png') repeat;
-	-moz-border-radius: 10px 10px 0 0;
-	-khtml-border-radius: 10px 10px 0 0;
-	-webkit-border-radius: 10px 10px 0 0;
-	border-radius: 10px 10px 0 0;
-}
-
-#comic-foot {
-	background: #111 url('metal.png') repeat;
-	-moz-border-radius: 0 0 10px 10px;
-	-khtml-border-radius: 0 0 10px 10px;
-	-webkit-border-radius: 0 0 10px 10px;
-	border-radius: 0 0 10px 10px;
-	text-align: center;
-}
-
-#header {width: 980px; height: 140px; background: url('header.png') top center no-repeat; overflow: hidden;}
+#header {width: 980px; height: 105px; background: url('header.png') top center no-repeat; overflow: hidden;}
 #header h1 {padding: 0;}
-#header h1 a {display: block; width: 980px; height: 140px; text-indent: -9999px;}
+#header h1 a {display: block; width: 980px; height: 105px; text-indent: -9999px;}
 #header .description {display: none;}
 
 /* THE MENU */
@@ -92,42 +62,9 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 		background: Transparent url('menu-nav.png') 0 -25px no-repeat;
 	}
 
-.menunav-prev, .menunav-next {
-	display: block;
-	float: left;
-}
-
 .menunav a:hover {
 	background: #fff;
 }
-
-.menunav-prev {
-	margin: 0 0 0 5px;
-}
-
-	.menunav-prev a, .menunav-next a {
-		width: 25px;
-		height: 25px;
-		display: block;
-		text-indent: -9999px;
-		overflow: hidden;
-	}
-
-	.menunav-prev a {
-		background: transparent url('menu-nav.png') -25px 0 no-repeat;
-	}
-
-	.menunav-prev a:hover {
-		background: transparent url('menu-nav.png') -25px -25px no-repeat;
-	}
-
-.menunav-next a {
-	background: url('menu-nav.png') -50px 0 no-repeat;
-}
-
-	.menunav-next a:hover {
-		background: transparent url('menu-nav.png') -50px -25px no-repeat;
-	}
 
 #menu {
 	border-right: 1px solid #111;
@@ -208,7 +145,7 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 	}
 	#menu li:hover ul, #menu li li:hover ul, #menu li li li:hover ul, #menu li li li li:hover ul, #menu li.sfhover ul, #menu li li.sfhover ul, #menu li li li.sfhover ul, #menu li li li li.sfhover ul {
 		left: auto;
-		background: #000; /* Submenu background color */
+		background: #3d5875; /* Submenu background color */
 		text-transform: none;
 	}
 
@@ -219,17 +156,70 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 		background: url('menu.png') 0 -50px;
 	}
 
+#content-wrapper {
+	padding-top: 10px;
+}
 
-.narrowcolumn { 
-	width: 558px;
+#comic-foot {
+	text-align: center;
+}
+
+.photo {
+	margin-top: 2px;
+	border: solid 1px #000;
+}
+
+.post-head, .post-page-head, .post-comic-head {
+	padding-top: 5px;
+}
+
+.post, .post-page, .post-comic { 
+	background: #bcc7d2;
+	-moz-border-radius: 10px 10px 0 0;
+	-khtml-border-radius: 10px 10px 0 0;
+	-webkit-border-radius: 10px 10px 0 0;
+	border-radius: 10px 10px 0 0;
+	padding-top: 2px;
+}
+
+
+.comment {
+	background: #bcc7d2;
 	margin-top: 5px;
-	background: #111;
-	-moz-border-radius: 10px;
-	-khtml-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
-	border: solid 1px #333;
-	padding-bottom: 5px;
+	padding-top: 5px;
+	-moz-border-radius: 10px 10px;
+	-khtml-border-radius: 10px 10px;
+	-webkit-border-radius: 10px 10px;
+	border-radius: 10px 10px;
+}
+
+.comment .comment {
+	background-color: Transparent;
+}
+
+
+#footer {
+	color: #3d5875;
+}
+
+#footer a {
+	color: #bcc7d2;
+}
+
+#footer a:hover {
+	color: #fff;
+}
+
+.nav { display: none; }
+
+.odd .post-foot, .odd .post-page-foot, .odd .post-page-foot, .odd .post-comic-foot {
+	height: 40px;
+	background: url('post-bottom-odd.png') top center no-repeat;
+}
+
+.even .post-foot, .even .post-page-foot, .even .post-page-foot, .even .post-comic-foot {
+	height: 40px;
+	background: url('post-bottom.png') top center no-repeat;
 }
 
 	.button {
@@ -311,7 +301,7 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 
 /* SEARCH */
 
-#s-search, #s-transcript {
+#s-search {
 	width: 138px;
 	padding: 4px 0 0 5px;
 	font-size: 12px;
@@ -323,12 +313,12 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 	background: url('browse-search.png') 0 -46px no-repeat;
 }
 
-	#s-search:hover, #s-search:focus, #s-transcript:hover, #s-transcript:focus {
+	#s-search:hover, #s-search:focus {
 		color: #550000;
 		background-position: 0 -69px;
 	}
 
-	#searchform button, #searchform-transcript button {
+	#searchform button {
 		padding: 0;
 		margin: 0;
 		border: none;
@@ -341,11 +331,11 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 		background: url('browse-search.png') -143px -46px no-repeat;
 	}
 
-	#searchform button:hover, #searchform-transcript button:hover {
+	#searchform button:hover {
 		background-position: -143px -69px;
 	}
 
-	#searchform button:hover, #searchform-transcript button:-moz-focus-inner {
+	#searchform button:hover {
 		border: 0;
 	}
 
@@ -473,6 +463,7 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 	float: left;
 	line-height: 25px;
 	font-size: 13px;
+	color: #fff;
 	border-right: 1px solid #222;
 }
 
@@ -523,7 +514,7 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 
 
 #wp-calendar-wrap {
-	background: #111;
+	background: #b0bfce;
 	border: solid 1px #333;
 	-moz-border-radius: 10px;
 	-khtml-border-radius: 10px;
@@ -541,18 +532,40 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 	
 /* SIDEBAR */
 
+.sidebar-content {
+	background: #5c738a;
+	-moz-border-radius: 10px 10px 0 0;
+	-khtml-border-radius: 10px 10px 0 0;
+	-webkit-border-radius: 10px 10px 0 0;
+	border-radius: 10px 10px 0 0;
+	padding: 5px 0;
+}
+
+#sidebar-left .sidebar-bottom {
+	height: 40px;
+	background: url('sidebar-left-bottom.png') top center no-repeat;
+}
+
+#sidebar-right .sidebar-bottom {
+	height: 40px;
+	background: url('sidebar-right-bottom.png') top center no-repeat;
+}
+
 .sidebar h2 {
 	font-weight: 700;
 	letter-spacing: normal;
 }
 
-/* Navigation Style */
-
-#comic_navi_wrapper a, #comic_navi_wrapper .navi, #comic_navi_wrapper .navi-void {
-	text-indent: -99999px;
+.sidebar a {
+	color: #bcc7d2;
 }
 
-.widget_sociable_widget {
-	margin: 0 auto;
-	padding: 0 0;
+.sidebar a:hover {
+	color: #fff;
+}
+
+#page-bottom {
+	height: 40px;
+	width: 100%;
+	background: url('belowfooter.png') bottom repeat-x;
 }

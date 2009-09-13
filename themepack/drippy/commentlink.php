@@ -1,0 +1,1 @@
+<?php if ('open' == $post->comment_status) { ?><div class="comment-link"><?php comments_popup_link('<span class="comment-balloon comment-balloon-empty">&rdquo;</span>Comment ', '<span class="comment-balloon">1</span>Comment ', '<span class="comment-balloon">%</span>Comment '); ?></div><?php } ?>

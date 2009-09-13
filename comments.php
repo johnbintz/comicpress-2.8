@@ -51,7 +51,32 @@ if ( have_comments() ) : ?>
 			}?>	
 			</ul>
 		</ol>
-	<?php endif; ?>		
+	<?php endif; ?>
+	
+		<?php global $enable_numbered_pagination; if ($enable_numbered_pagination == 'yes') { ?>
+		<?php 
+			$pagelinks = paginate_comments_links(array('echo' => 0)); 
+			if (!empty($pagelinks)) {
+				$pagelinks = preg_replace('#\<a#', '<li><a', $pagelinks);
+				$pagelinks = preg_replace('#\<\/a\>#', '</a></li>', $pagelinks); 
+				$pagelinks = preg_replace('#\<span#', '<li', $pagelinks); 
+				$pagelinks = preg_replace('#\<\/span\>#', '</li>', $pagelinks); ?>
+			<div id="wp-paginav">
+				<div id="paginav">				
+					<?php echo '<ul><li class="paginav-extend">Comment Pages</li>'. $pagelinks . '</ul>'; ?>
+					</div>
+				<div class="clear"></div>
+			</div>					
+			<?php } ?>
+
+		<?php } else { ?>
+			<div class="commentnav">
+				<div class="commentnav-right"><?php next_comments_link('Newer Comments &uarr;') ?></div>
+				<div class="commentnav-left"><?php previous_comments_link('&darr; Previous Comments') ?></div>
+				<div class="clear"></div>
+			</div>
+		<?php } ?>
+
 	
 <?php else : // this is displayed if there are no comments so far ?>
 
@@ -114,31 +139,6 @@ if ( have_comments() ) : ?>
 	
 <?php endif; // If registration required and not logged in ?>
 </div>
-
-	<?php global $enable_numbered_pagination; if ($enable_numbered_pagination == 'yes') { ?>
-		<?php 
-			$pagelinks = paginate_comments_links(array('echo' => 0)); 
-			if (!empty($pagelinks)) {
-				$pagelinks = preg_replace('#\<a#', '<li><a', $pagelinks);
-				$pagelinks = preg_replace('#\<\/a\>#', '</a></li>', $pagelinks); 
-				$pagelinks = preg_replace('#\<span#', '<li', $pagelinks); 
-				$pagelinks = preg_replace('#\<\/span\>#', '</li>', $pagelinks); ?>
-		<div id="wp-paginav">
-			<div id="paginav">				
-				<?php echo '<ul><li class="paginav-extend">Comment Pages</li>'. $pagelinks . '</ul>'; ?>
-				</div>
-			<div class="clear"></div>
-		</div>			
-				
-		<?php } ?>
-
-	<?php } else { ?>
-		<div class="commentnav">
-			<div class="commentnav-right"><?php next_comments_link('Newer Comments &uarr;') ?></div>
-			<div class="commentnav-left"><?php previous_comments_link('&darr; Previous Comments') ?></div>
-			<div class="clear"></div>
-		</div>
-	<?php } ?>
 
 <?php endif; ?>
 

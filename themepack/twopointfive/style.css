@@ -47,6 +47,10 @@ body {
 	background: #fff;
 }
 
+.narrowcolumn {
+	width: 568px;
+}
+
 .narrowcolumn, .widecolumn {
 	background: #efefef;
 }
@@ -85,11 +89,18 @@ body {
 	margin: 0;
 }
 
+#sidebar-abovecomic {
+	background: #fff;
+}
+
 #comic {
 	margin: 0;
 	border: 0;
 }
 
+#sidebar-undercomic, #comic-foot {
+	background: #fff;
+}
 
 #footer a {
 	color: #ff0000;
@@ -130,4 +141,11 @@ body {
 	font-size: 9px;
 }
 
+#sidebar-undercomic {
+	text-align: center;
+}
 
+.widget_sociable_widget {
+	margin: 0 auto;
+	padding: 0 0;
+}
