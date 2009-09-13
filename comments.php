@@ -1,4 +1,4 @@
-<div <?php comment_class(); ?>>
+
 
 <?php
 if (!empty($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME']))
@@ -11,6 +11,7 @@ if ( post_password_required() ) { ?>
 }
 
 if ( have_comments() ) : ?>
+<div <?php comment_class(); ?>>
 
 	<?php if ( ! empty($comments_by_type['comment']) ) : ?>
 		<div class="commentsrsslink">[ <?php comments_rss_link('Comments RSS'); ?> ]</div>
@@ -139,7 +140,7 @@ if ( have_comments() ) : ?>
 	
 <?php endif; // If registration required and not logged in ?>
 </div>
-
+</div>
 <?php endif; ?>
 
-</div>
+

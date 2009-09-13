@@ -595,6 +595,11 @@ a.navi-comments:hover span {
 	padding: 3px;
 }
 
+.linkpages {
+	float: right;
+	margin: 5px;
+}
+
 /* COMMENT LINK */
 
 .comment-link {

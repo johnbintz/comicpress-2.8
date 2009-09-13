@@ -34,6 +34,7 @@ function display_blog_post() {
 				<div class="entry">
 					<?php if (!is_single()) { global $more; $more = 0; } ?>
 					<?php the_content('&darr; Read the rest of this entry...') ?>
+					<?php if (is_single()) wp_link_pages(array('before' => '<div class="linkpages"><span class="linkpages-pagetext">Pages:</span> ', 'after' => '</div>', 'next_or_number' => 'number'));  ?>
 				</div>
 				<div class="post-extras">
 					<?php if ($disable_tags_in_posts != 'yes') { ?>

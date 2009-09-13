@@ -5,7 +5,7 @@ if (function_exists('id_get_comment_number')) {
 	remove_filter('comments_number','id_get_comment_number');
 }
 
-$comicpress_version = '2.8.1.6';
+$comicpress_version = '2.8.1.7';
 
 // Remove the wptexturizer from changing the quotes and squotes.
 // remove_filter('the_title', 'wptexturize');

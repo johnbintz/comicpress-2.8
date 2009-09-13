@@ -47,6 +47,7 @@ function display_comic_post() {
 		<div class="entry">
 			<?php if (!is_single()) { global $more; $more = 0; } ?>
 			<?php the_content('&darr; Read More..') ?>
+			<?php if (is_single()) wp_link_pages(array('before' => '<div class="linkpages"><span class="linkpages-pagetext">Pages:</span> ', 'after' => '</div>', 'next_or_number' => 'number'));  ?>
 		</div>
 		<?php if ($transcript_in_posts == 'yes') the_transcript('styled'); ?>
 				<div class="post-extras">
