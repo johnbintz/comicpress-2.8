@@ -103,7 +103,7 @@ h1, h1 a, h2, h2 a, h3, h3 a {
 	border: 0;
 }
 
-.layout-gn #comic, .layout-standard #comic {
+.layout-gn #comic, .layout-standard #comic, .layout-3c #comic {
 	padding: 5px;
 	margin: 0 5px;
 }
