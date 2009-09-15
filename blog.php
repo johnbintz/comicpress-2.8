@@ -5,33 +5,27 @@ Template Name: Blog
 ?>
 <?php get_header();  ?>
 
-<?php if (is_cp_theme_layout('gn,v3c,v')) { ?>
-	<div id="content-wrapper-top"></div>
+<div id="content-wrapper-top"></div>
 	<div id="content-wrapper">
-<?php } ?>
 
-<?php if (is_cp_theme_layout('gn,v3c')) get_sidebar('left'); ?>
+	<?php if (is_cp_theme_layout('gn,v3c')) get_sidebar('left'); ?>
 
-<?php if (is_cp_theme_layout('v3c,v')) { ?>
-	<div id="content" class="narrowcolumn">
-		<div class="column">
-<?php } ?>
-
-		<?php if (is_cp_theme_layout('gn')) { ?>
-			<div id="pagewrap-right">
-		<?php } ?>
-
-	<?php if (is_cp_theme_layout('3c,standard')) { ?>
-		<div id="content-wrapper-top"></div>
-		<div id="content-wrapper">
+	<?php if (is_cp_theme_layout('gn')) { ?>
+		<div id="pagewrap-right">
 	<?php } ?>
+
+	<?php if (is_cp_theme_layout('v3c,v')) { ?>
+		<div id="content" class="narrowcolumn">
+			<div class="column">	
+	<?php } ?>
+	
 	<?php get_sidebar('overblog'); ?>
 	<?php if (is_cp_theme_layout('3c')) get_sidebar('left'); ?>
 
-	<?php if (is_cp_theme_layout('gn,standard,3c')) { ?>
+	<?php if (!is_cp_theme_layout('v3c,v')) { ?>
 		<div id="content" class="narrowcolumn">
-			<div class="column">
-	<?php } 
+			<div class="column">	
+	<?php }
 	
 	if (have_posts()): 
 
@@ -44,10 +38,10 @@ Template Name: Blog
 
 			endwhile; 
 			
-			comicpress_pagination(); ?>
+			comicpress_pagination(); 
 			
-<?php endif; ?>
-			<?php get_sidebar('underblog'); ?>
+	endif; ?>
+		<?php get_sidebar('underblog'); ?>
 		</div>
 	</div>
 

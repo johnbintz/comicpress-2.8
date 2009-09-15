@@ -5,34 +5,26 @@ Template Name: Comic Calendar Archive
 ?>
 <?php get_header();  ?>
 
-<?php if (is_cp_theme_layout('gn,v3c,v')) { ?>
-	<div id="content-wrapper-top"></div>
+<div id="content-wrapper-top"></div>
 	<div id="content-wrapper">
-<?php } ?>
 
-<?php if (is_cp_theme_layout('gn,v3c')) get_sidebar('left'); ?>
+	<?php if (is_cp_theme_layout('gn,v3c')) get_sidebar('left'); ?>
 
-<?php if (is_cp_theme_layout('v3c,v')) { ?>
-	<div id="content" class="narrowcolumn">
-		<div class="column">
-<?php } ?>
+	<?php if (is_cp_theme_layout('gn')) { ?>
+		<div id="pagewrap-right">
+	<?php } ?>
 
-		<?php if (is_cp_theme_layout('gn')) { ?>
-			<div id="pagewrap-right">
-		<?php } ?>
-
-	<?php if (is_cp_theme_layout('3c,standard')) { ?>
-		<div id="content-wrapper-top"></div>
-		<div id="content-wrapper">
+	<?php if (is_cp_theme_layout('v3c,v')) { ?>
+		<div id="content" class="narrowcolumn">
+			<div class="column">	
 	<?php } ?>
 	
 	<?php get_sidebar('overblog'); ?>
-	
 	<?php if (is_cp_theme_layout('3c')) get_sidebar('left'); ?>
 
-	<?php if (is_cp_theme_layout('gn,standard,3c')) { ?>
+	<?php if (!is_cp_theme_layout('v3c,v')) { ?>
 		<div id="content" class="narrowcolumn">
-			<div class="column">
+			<div class="column">	
 	<?php } ?>
 
 <?php
@@ -96,7 +88,7 @@ $month['11'] = array('month' => 'November', 'days' => '30');
 $month['12'] = array('month' => 'December', 'days' => '31');
 
 ?>
-<div class="<?php commpress_blogpost_class(); ?>">
+<div class="<?php comicpress_blogpost_class(); ?>">
 	<div class="post-page-head"></div>
 	<div class="post-page">
 	<?php while (have_posts()) : the_post() ?>
@@ -113,14 +105,11 @@ foreach ( $years as $year ) {
 				<a href="<?php echo add_query_arg('archive_year', $year) ?>"><strong><?php echo $year ?></strong></a> |
 			<?php } } ?>
 		</div>
-		
+		<div class="cpcal-cals">
 		<?php $i=1; while($i<=12) { 
-			$calendar_directory = get_option('comicpress-calendar_directory');
-		
-			
-		?>
-			<?php if (!empty($calendar_directory) && $calendar_directory != 'none') { ?>
-					<div class="cpcal-month" style="height: 257px;" id="<?php echo $month[$i]['month'] ?>">
+			$calendar_directory = get_option('comicpress-calendar_directory'); 
+			if (!empty($calendar_directory) && $calendar_directory != 'none') { ?>
+				<div class="cpcal-month" style="height: 257px;" id="<?php echo $month[$i]['month'] ?>">
 				<?php if (file_exists(get_template_directory().'/images/cal/'.$calendar_directory.'/'.$archive_year)) { ?>
 					<?php if (count($monthfile = glob(get_template_directory().'/images/cal/'.$calendar_directory.'/'.$archive_year.'/'.strtolower($month[$i]['month']).'.*')) > 0) { 
 						if (is_array($monthfile)) $monthfile = reset($monthfile); ?>
@@ -137,14 +126,14 @@ foreach ( $years as $year ) {
 					<?php } ?>
 				<?php } ?>
 			<?php } else { ?>
-				<div class="cpcal-month" style="height: 137px;" id="<?php echo $month[$i]['month'] ?>">
+					<div class="cpcal-month" style="height: 137px;" id="<?php echo $month[$i]['month'] ?>">
 			<?php } ?>
-				<div class="cpcal-monthtitle"><?php echo $month[$i]['month']." ".$archive_year ?></div>
+						<div class="cpcal-monthtitle"><?php echo $month[$i]['month']." ".$archive_year ?></div>
 				<?php foreach(array("S", "M", "T", "W", "T", "F", "S") as $dow) { ?>
-					<div class="cpcal-dayletter"><?php echo $dow ?></div>		
+							<div class="cpcal-dayletter"><?php echo $dow ?></div>		
 				<?php } ?>
-				<div class="clear"></div>
-	<?php $day=1; while($day<=$month[$i]['days']) {
+							<div class="clear"></div>
+				<?php $day=1; while($day<=$month[$i]['days']) {
 					if ($day == 1) { ?>
 						<div style="width:<?php echo $firstDayMargins[$i]; ?>px;height:15px;float:left;"></div>
 					<?php } ?>
@@ -160,9 +149,7 @@ foreach ( $years as $year ) {
 				++$i ?>
 			</div>
 		<?php } ?>
-		
-		<br class="clear-margins" />
-
+		</div>
 	</div>
 	<div class="post-page-foot"></div>
 </div>

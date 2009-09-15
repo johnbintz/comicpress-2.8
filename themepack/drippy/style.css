@@ -156,21 +156,25 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 		background: url('menu.png') 0 -50px;
 	}
 
+.nav a { color: #fff; }
+.nav a:hover { color: #fff000; }
+
+#blogheader {
+	border-color: #3d5875;
+	border-width: 2px;
+}
+
 #content-wrapper {
-	padding-top: 10px;
+	padding-top: 5px;
 }
 
 #comic-foot {
 	text-align: center;
 }
 
-.photo {
-	margin-top: 2px;
+.post-author-gravatar {
+	margin-top: 5px;
 	border: solid 1px #000;
-}
-
-.post-head, .post-page-head, .post-comic-head {
-	padding-top: 5px;
 }
 
 .post, .post-page, .post-comic { 
@@ -209,8 +213,6 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 #footer a:hover {
 	color: #fff;
 }
-
-.nav { display: none; }
 
 .odd .post-foot, .odd .post-page-foot, .odd .post-page-foot, .odd .post-comic-foot {
 	height: 40px;

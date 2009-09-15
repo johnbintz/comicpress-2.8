@@ -1,44 +1,39 @@
 <?php get_header();  ?>
 
-<?php if (is_cp_theme_layout('gn,v3c,v')) { ?>
-	<div id="content-wrapper-top"></div>
+<div id="content-wrapper-top"></div>
 	<div id="content-wrapper">
-<?php } ?>
 
-<?php if (is_cp_theme_layout('gn,v3c')) get_sidebar('left'); ?>
+	<?php if (is_cp_theme_layout('gn,v3c')) get_sidebar('left'); ?>
 
-<?php if (is_cp_theme_layout('v3c,v')) { ?>
-	<div id="content" class="narrowcolumn">
-		<div class="column">
-<?php } ?>
-
-		<?php if (is_cp_theme_layout('gn')) { ?>
-			<div id="pagewrap-right">
-		<?php } ?>
-
-	<?php if (is_cp_theme_layout('3c,standard')) { ?>
-		<div id="content-wrapper-top"></div>
-		<div id="content-wrapper">
+	<?php if (is_cp_theme_layout('gn')) { ?>
+		<div id="pagewrap-right">
 	<?php } ?>
+
+	<?php if (is_cp_theme_layout('v3c,v')) { ?>
+		<div id="content" class="narrowcolumn">
+			<div class="column">	
+	<?php } ?>
+	
 	<?php get_sidebar('overblog'); ?>
 	<?php if (is_cp_theme_layout('3c')) get_sidebar('left'); ?>
 
-	<?php if (is_cp_theme_layout('gn,standard,3c')) { ?>
+	<?php if (!is_cp_theme_layout('v3c,v')) { ?>
 		<div id="content" class="narrowcolumn">
-			<div class="column">
+			<div class="column">	
 	<?php } ?>
-		<?php
+	
+	<?php
 		global $archive_display_order;
 		if (empty($archive_display_order)) $archive_display_order = 'desc';
 		$tmp_search = new WP_Query($query_string.'&order='.$archive_display_order.'&show_posts=-1&posts_per_page=-1');
 		$count = $tmp_search->post_count;
-			?>
+	?>
 		<?php if (!$count) $count = "no"; ?>
 		<div class="searchresults">Found <?php echo $count; ?> result<?php if ($count !== 1) { echo "s"; } ?>.</div>
 
 	<?php if (have_posts()) : ?>
 		<?php $posts = query_posts($query_string.'&order='.$archive_display_order); ?>
-	<div class="<?php commpress_blogpost_class(); ?>">
+	<div class="<?php comicpress_blogpost_class(); ?>">
 		<div class="post-page-head"></div>
 		<div class="post-page">	
 	
@@ -67,7 +62,7 @@
 		<?php while (have_posts()) : the_post() ?>
 
 			<?php global $archive_comic_width; if (in_comic_category()) { ?>
-			<div class="<?php commpress_blogpost_class(); ?>">
+			<div class="<?php comicpress_blogpost_class(); ?>">
 				<div class="post-comic-head"></div>
 				<div class="post-comic">
 					<div class="post-info">
@@ -95,7 +90,7 @@
 				<div class="post-comic-foot"></div>
 			</div>
 			<?php } else { ?>
-			<div class="<?php commpress_blogpost_class(); ?>">
+			<div class="<?php comicpress_blogpost_class(); ?>">
 				<div class="post-head"></div>
 				<div class="post">
 				<div class="post-info">
@@ -134,7 +129,7 @@
 		<?php endwhile; ?>
 
 	<?php else : ?>
-	<div class="<?php commpress_blogpost_class(); ?>">
+	<div class="<?php comicpress_blogpost_class(); ?>">
 		<div class="post-head"></div>
 		<div class="post">
 			<h3>No entries found.</h3>

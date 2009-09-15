@@ -212,10 +212,6 @@ body {
 
 /* THE COMIC */
 
-#comic-head {
-	padding-top: 5px;
-}
-
 #comic {
 	background: #fff;
 	border: 1px solid #999;
@@ -223,11 +219,6 @@ body {
 	z-index: 100;
 	padding: 5px;
 }
-
-#comic-foot {
-	padding-bottom: 5px;
-}
-
 
 /* COMMENT LINK */
 

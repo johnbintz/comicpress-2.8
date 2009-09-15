@@ -33,9 +33,9 @@ function comicpress_showmood_edit_post() {
 	$moods_directory = get_option('comicpress-moods_directory');
 	if (!empty($moods_directory) && $moods_directory != 'none') { ?>
 		<div id="mooddiv" class="postbox">
-		<h3><?php _e("Available Moods", 'commpress') ?></h3>
+		<h3><?php _e("Available Moods", 'comicpress') ?></h3>
 		<div class="inside" style="overflow: hidden">
-		Available Moods here, you can set which mood images to use in the commpress Options.<br />
+		Available Moods here, you can set which mood images to use in the comicpress Options.<br />
 		<br />
 		<?php 
 		

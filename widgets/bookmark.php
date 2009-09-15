@@ -10,7 +10,8 @@ Author URI: http://webcomicplanet.com/
 */
 
 function comicpress_comic_bookmark() { 
-global $post, $wp_query; ?>
+global $post, $wp_query; 
+	if (is_home() || is_single()) { ?>
 	<div class="comic-bookmark">
 		<script language="javascript" type="text/javascript">
 			<!--
@@ -44,7 +45,7 @@ global $post, $wp_query; ?>
 						document.write('<a href="#" onClick="gto();return false;"><img src="'+gt+'" alt="Goto Tag" border="0" id="gtc"></a>');
 						document.write('<a href="#" onClick="bmc();return false;"><img src="'+ct+'" alt="Clear Tag" border="0" id="rmc"></a>');
 						document.write('<a href="#" onMouseOver="document.getElementById(\'bmh\').style.visibility=\'visible\';" onMouseOut="document.getElementById(\'bmh\').style.visibility=\'hidden\';" onClick="return false;"><img src="'+imgInfo+'" alt="" border="0"></a>');
-					<?php } elseif (is_single() & in_comic_category()) { ?>
+					<?php } elseif (is_single() && in_comic_category()) { ?>
 						document.write('<a href="#" onClick="bm();return false;"><img src="'+imgTag+'" alt="Tag This Page" border="0"></a>');
 						document.write('<a href="#" onClick="gto();return false;"><img src="'+gt+'" alt="Goto Tag" border="0" id="gtc"></a>');
 						document.write('<a href="#" onClick="bmc();return false;"><img src="'+ct+'" alt="Clear Tag" border="0" id="rmc"></a>');
@@ -108,7 +109,8 @@ global $post, $wp_query; ?>
 			//-->
 		</script>
 	</div>
-<?php } 
+<?php }
+} 
 	
 
 class widget_comicpress_bookmark extends WP_Widget {

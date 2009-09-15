@@ -1,21 +1,19 @@
 <?php get_header();  ?>
 
-<?php if (is_cp_theme_layout('gn,v3c,v')) { ?>
-	<div id="content-wrapper-top"></div>
+<div id="content-wrapper-top"></div>
 	<div id="content-wrapper">
-<?php } ?>
 
-<?php if (is_cp_theme_layout('gn,v3c')) get_sidebar('left'); ?>
+	<?php if (is_cp_theme_layout('gn,v3c')) get_sidebar('left'); ?>
 
-<?php if (is_cp_theme_layout('v3c,v')) { ?>
-	<div id="content" class="narrowcolumn">
-		<div class="column">
-<?php } ?>
+	<?php if (is_cp_theme_layout('gn')) { ?>
+		<div id="pagewrap-right">
+	<?php } ?>
 
-		<?php if (is_cp_theme_layout('gn')) { ?>
-			<div id="pagewrap-right">
-		<?php } ?>
-
+	<?php if (is_cp_theme_layout('v3c,v')) { ?>
+		<div id="content" class="narrowcolumn">
+			<div class="column">	
+	<?php } ?>
+	
 <?php if (!(is_paged())) { ?>
 
 	<?php if ($disable_comic_frontpage != 'yes') { ?>
@@ -35,16 +33,12 @@
 		
 	<?php } ?>
 
-	<?php if (is_cp_theme_layout('3c,standard')) { ?>
-		<div id="content-wrapper-top"></div>
-		<div id="content-wrapper">
-	<?php } ?>
 	<?php get_sidebar('overblog'); ?>
 	<?php if (is_cp_theme_layout('3c')) get_sidebar('left'); ?>
 
-	<?php if (is_cp_theme_layout('gn,standard,3c')) { ?>
+	<?php if (!is_cp_theme_layout('v3c,v')) { ?>
 		<div id="content" class="narrowcolumn">
-			<div class="column">
+			<div class="column">	
 	<?php } ?>
 
 	<?php if ($disable_comic_frontpage != 'yes' && $disable_comic_blog_frontpage != 'yes') { 
@@ -59,22 +53,16 @@
 	<?php } 
 	
 } else { ?>
-
-	<?php if (is_cp_theme_layout('3c,standard')) { ?>
-		<div id="content-wrapper-top"></div>
-		<div id="content-wrapper">
-	<?php } ?>
 	
 	<?php get_sidebar('overblog'); ?>
 	
 	<?php if (is_cp_theme_layout('3c')) get_sidebar('left'); ?>
 
-	<?php if (is_cp_theme_layout('gn,standard,3c')) { ?>
-	<div id="content" class="narrowcolumn">
-		<div class="column">
+	<?php if (!is_cp_theme_layout('v3c')) { ?>
+		<div id="content" class="narrowcolumn">
+			<div class="column">	
 	<?php } 
 } 
-
 	if (function_exists('the_project_wonderful_ad')) { ?>
 			<div class="blogpwad">
 				<center>

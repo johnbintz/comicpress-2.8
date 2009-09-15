@@ -33,6 +33,7 @@ body {
 }
 
 #content-wrapper {
+	padding: 0;
 	background: #dedede;
 }
 
@@ -47,12 +48,20 @@ body {
 	background: #fff;
 }
 
+#pagewrap-right {
+	width: 778px;
+}
+
 .narrowcolumn {
-	width: 568px;
+	width: 558px;
 }
 
 .narrowcolumn, .widecolumn {
 	background: #efefef;
+}
+
+.page .narrowcolumn, .page .widecolumn {
+	margin-top: 5px;
 }
 
 #header h1 a, #header .description {
@@ -76,13 +85,7 @@ body {
 	border-bottom: solid 1px #000;
 }
 
-#sidebar-left {
-	padding-top: 0;
-}
-
-#sidebar-right {
-	padding-top: 5px;
-}
+.page .narrowcolumn { padding-top: 5px; }
 
 #comic-head {
 	padding: 0;
@@ -96,6 +99,10 @@ body {
 #comic {
 	margin: 0;
 	border: 0;
+}
+
+.sidebar {
+	padding: 5px 0;
 }
 
 #sidebar-undercomic, #comic-foot {

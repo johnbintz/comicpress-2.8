@@ -1,34 +1,26 @@
 <?php get_header();  ?>
 
-<?php if (is_cp_theme_layout('gn,v3c,v')) { ?>
-	<div id="content-wrapper-top"></div>
+<div id="content-wrapper-top"></div>
 	<div id="content-wrapper">
-<?php } ?>
 
-<?php if (is_cp_theme_layout('gn,v3c')) get_sidebar('left'); ?>
+	<?php if (is_cp_theme_layout('gn,v3c')) get_sidebar('left'); ?>
 
-<?php if (is_cp_theme_layout('v3c,v')) { ?>
-	<div id="content" class="narrowcolumn">
-		<div class="column">
-<?php } ?>
+	<?php if (is_cp_theme_layout('gn')) { ?>
+		<div id="pagewrap-right">
+	<?php } ?>
 
-		<?php if (is_cp_theme_layout('gn')) { ?>
-			<div id="pagewrap-right">
-		<?php } ?>
-
-	<?php if (is_cp_theme_layout('3c,standard')) { ?>
-		<div id="content-wrapper-top"></div>
-		<div id="content-wrapper">
+	<?php if (is_cp_theme_layout('v3c,v')) { ?>
+		<div id="content" class="narrowcolumn">
+			<div class="column">	
 	<?php } ?>
 	
 	<?php get_sidebar('overblog'); ?>
-	
 	<?php if (is_cp_theme_layout('3c')) get_sidebar('left'); ?>
 
-	<?php if (is_cp_theme_layout('gn,standard,3c')) { ?>
+	<?php if (!is_cp_theme_layout('v3c,v')) { ?>
 		<div id="content" class="narrowcolumn">
-			<div class="column">
-	<?php } ?>
+			<div class="column">	
+	<?php } ?>	
 
 <?php
 $tmp_search = new WP_Query($query_string.'&order=desc&show_posts=-1&posts_per_page=-1');
@@ -44,7 +36,8 @@ $count = $tmp_search->post_count;
     while (have_posts()) : the_post() ?>
       
         <?php global $archive_comic_width; if (in_comic_category()) { ?>
-		<div class="<?php commpress_blogpost_class(); ?>">
+		
+		<div class="<?php comicpress_blogpost_class(); ?>">
 			<div class="post-comic-head"></div>
 			<div class="post-comic">
 				<div class="post-info">
@@ -70,8 +63,10 @@ $count = $tmp_search->post_count;
 			</div>
 			<div class="post-comic-foot"></div>
 		</div>
+		
         <?php } else { ?>
-		<div class="<?php commpress_blogpost_class(); ?>">
+		
+		<div class="<?php comicpress_blogpost_class(); ?>">
 			<div class="post-head"></div>
 			<div class="post">
 				<div class="post-info">
@@ -114,7 +109,7 @@ $count = $tmp_search->post_count;
     <?php endwhile; ?>
     
   <?php else : ?>
-		<div class="<?php commpress_blogpost_class(); ?>">
+		<div class="<?php comicpress_blogpost_class(); ?>">
 			<div class="post-page-head"></div>
 			<div class="post-page">
 				<h3>No entries found.</h3>
