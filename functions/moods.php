@@ -20,11 +20,13 @@ function comicpress_show_mood_in_post() {
 	$moods_directory = get_option('comicpress-moods_directory');
 	if (!empty($moods_directory) && $moods_directory != 'none') {
 		$mood_file = get_post_meta( get_the_ID(), "mood", true );
-		$mood = explode(".", $mood);
-		$mood = reset($mood);
-		if ( !empty($mood_file) && file_exists(get_template_directory() . '/images/moods/'.$moods_directory.'/'.$mood_file) ) { ?>
-			<div class="post-mood post-<?php echo $mood; ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/moods/<?php echo $moods_directory; ?>/<?php echo $mood_file; ?>" alt="<?php echo $mood; ?>" title="<?php echo $mood; ?>" /></div>
-		<?php }
+		if (!empty($mood_file) && $mood_file != '') {
+			$mood = explode(".", $mood);
+			$mood = reset($mood);
+			if ( !empty($mood_file) && file_exists(get_template_directory() . '/images/moods/'.$moods_directory.'/'.$mood_file) ) { ?>
+				<div class="post-mood post-<?php echo $mood; ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/moods/<?php echo $moods_directory; ?>/<?php echo $mood_file; ?>" alt="<?php echo $mood; ?>" title="<?php echo $mood; ?>" /></div>
+			<?php } 
+		}
 	}
 }
 

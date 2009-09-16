@@ -113,7 +113,12 @@
 					</div>
 					<div class="clear"></div>
 				</div>
-					<?php the_excerpt() ?>
+					<?php global $excerpt_or_content_archive; 
+					if ($excerpt_or_content_archive != 'excerpt') {
+						the_content('&darr; Read the rest of this entry...');
+					} else { 
+						the_excerpt();
+					} ?>
 					<br class="clear-margins" />
 					<div class="post-extras">
 						<div class="tags">

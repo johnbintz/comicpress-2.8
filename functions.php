@@ -87,7 +87,9 @@ if (get_option('upload_path') !== false) {
 				'themepack_directory'			=> 'themepack_directory',
 				'avatar_directory'				=> 'avatar_directory',
 				'archive_display_order'			=> 'archive_display_order',
-				'disable_comment_note'			=> 'disable_comment_note' ) as $options => $variable_name) {
+				'disable_comment_note'			=> 'disable_comment_note',
+				'excerpt_or_content_archive'	=> 'excerpt_or_content_archive',
+				'excerpt_or_content_search'		=> 'excerpt_or_content_search' ) as $options => $variable_name) {
 		$variables_to_extract[$variable_name] = get_option("comicpress-${options}");
 	}
 	

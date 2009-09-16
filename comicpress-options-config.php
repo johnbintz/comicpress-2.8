@@ -227,7 +227,17 @@ $options = array (
 		array(
 			"id" => "comicpress-disable_comment_note",
 			"default" => "no",
-			"type" => "comicpress-disable_comment_note"),	
+			"type" => "comicpress-disable_comment_note"),
+			
+		array(
+			"id" => "comicpress-excerpt_or_content_archive",
+			"default" => "excerpt",
+			"type" => "comicpress-excerpt_or_content_archive"),
+			
+		array(
+			"id" => "comicpress-excerpt_or_content_search",
+			"default" => "excerpt",
+			"type" => "comicpress-excerpt_or_content_search"),
 
 		array("type" => "close")
 		);
