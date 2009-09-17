@@ -1,30 +1,5 @@
 <?php get_header();  ?>
-
-<div id="content-wrapper-top"></div>
-	<div id="content-wrapper">
-
-	<?php if (is_cp_theme_layout('gn,v3c')) get_sidebar('left'); ?>
-
-	<?php if (is_cp_theme_layout('gn')) { ?>
-		<div id="pagewrap-right">
-	<?php } ?>
-
-	<?php if (is_cp_theme_layout('v3c,v')) { ?>
-		<div id="content" class="narrowcolumn">
-			<div class="column">	
-	<?php } ?>
-
-<?php if (is_cp_theme_layout('3c,v')) {  ?>
-	<div id="area-wrapper">
-<?php } ?>
-	
-	<?php get_sidebar('overblog'); ?>
-	<?php if (is_cp_theme_layout('3c')) get_sidebar('left'); ?>
-
-	<?php if (!is_cp_theme_layout('v3c,v')) { ?>
-		<div id="content" class="narrowcolumn">
-			<div class="column">	
-	<?php } ?>	
+<?php include(get_template_directory() . '/layout-head.php'); ?>
 
 <?php
 $tmp_search = new WP_Query($query_string.'&order=desc&show_posts=-1&posts_per_page=-1');
@@ -134,21 +109,5 @@ $count = $tmp_search->post_count;
 		</div>
 	</div>
 
-<?php 
-if (is_cp_theme_layout('3c,v3c,gn,standard,v')) { 
-	get_sidebar('right'); ?>
-<?php } ?>
-
-<?php if (is_cp_theme_layout('3c,v')) {  ?>
-		<div class="clear"></div>
-	</div>
-<?php } ?>
-
-	<?php if (is_cp_theme_layout('gn')) { ?>
-		</div>
-	<?php } ?>	
-
-	<div class="clear"></div>
-</div>
-<div id="content-wrapper-bottom"></div>
+<?php include(get_template_directory() . '/layout-foot.php'); ?>
 <?php get_footer() ?>

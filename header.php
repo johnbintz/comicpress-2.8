@@ -24,7 +24,6 @@
 	if ($themepack_directory != 'none') { ?>
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/themepack/<?php echo $themepack_directory; ?>/style.css" type="text/css" media="screen" />
 <?php } ?>
-	<link rel="SHORTCUT ICON" href="<?php bloginfo('stylesheet_directory'); ?>/favicon.ico" />
 	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name') ?> RSS2 Feed" href="<?php bloginfo('rss2_url') ?>" />
 	<link rel="alternate" type="application/atom+xml" title="<?php bloginfo('name') ?> Atom Feed" href="<?php bloginfo('atom_url') ?>" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url') ?>" />
@@ -38,7 +37,6 @@
 </head>
 
 <body <?php if (function_exists('body_class')) { body_class(); } ?>>
-<?php if ( function_exists( 'get_sliding_panel' ) ) get_sliding_panel(); ?>
 <?php do_action('comicpress-header'); ?>
 <?php get_sidebar('above'); ?> 
 
@@ -46,14 +44,16 @@
 
 <?php if ($disable_page_restraints != 'yes') {
 	if (is_cp_theme_layout('standard,v')) { ?>
-	<div id="page"><!-- Defines entire site width - Ends in Footer -->
-		<div id="page-wrap"><!-- Wraps inside the site width -->
+	<div id="page-wrap"><!-- Wraps outside the site width -->
+		<div id="page"><!-- Defines entire site width - Ends in Footer -->
 <?php } else { ?>
-	<div id="page-wide">
-		<div id="page-wrap">
+	<div id="page-wrap-wide">
+		<div id="page-wide">
 	<?php } 
 } ?>
 
+<?php 
+if (comicpress_check_themepack_file('header.php') == false) { ?>
 <div id="header">
 	<?php if (function_exists('the_project_wonderful_ad')) { ?>
 		<div class="headerpwad">
@@ -68,4 +68,5 @@
 	<?php } ?>
 	<div class="clear"></div>
 </div>
+<?php } ?>
 <?php get_sidebar('menubar'); ?>

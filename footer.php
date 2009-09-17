@@ -18,7 +18,7 @@
  
 <?php global $disable_page_restraints; if ($disable_page_restraints == 'no') { ?>
 	</div><!-- Ends "page/page-wide" -->
-</div><!-- ends "page-wrap" -->
+</div><!-- Ends "page-wrap" -->
 <?php } ?>
 <div id="page-bottom"></div>
 

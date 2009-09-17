@@ -68,21 +68,22 @@ body {
 	color: #fff;
 }
 
-#page {
-	padding: 0 20px;
-	background: url('classic-background-narrow.png') top center repeat-y;
-}
 
-#page-wide {
-	padding: 0 20px;
-	background: url('classic-background-wide.png') top center repeat-y;
-}
-
-#page-wrap {
+#page, #page-wide {
 	background: #ddd;
 	border-left: solid 1px #000;
 	border-right: solid 1px #000;
 	border-bottom: solid 1px #000;
+}
+
+#page-wrap {
+	padding: 0 10px;
+	background: url('classic-background-narrow.png') top center repeat-y;
+}	
+
+#page-wrap-wide {
+	padding: 0 10px;
+	background: url('classic-background-wide.png') top center repeat-y;
 }
 
 .page .narrowcolumn { padding-top: 5px; }

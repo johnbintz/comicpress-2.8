@@ -34,7 +34,8 @@
 	<?php } ?>
 
 <?php if (is_cp_theme_layout('3c,v')) {  ?>
-	<div id="area-wrapper">
+<div id="subcontent-wrapper-head"></div>
+	<div id="subcontent-wrapper">
 <?php } ?>
 
 	<?php get_sidebar('overblog'); ?>
@@ -57,6 +58,11 @@
 	<?php } 
 	
 } else { ?>
+
+<?php if (is_cp_theme_layout('3c,v')) {  ?>
+<div id="subcontent-wrapper-head"></div>
+	<div id="subcontent-wrapper">
+<?php } ?>
 	
 	<?php get_sidebar('overblog'); ?>
 	
@@ -96,21 +102,5 @@ if ($disable_blog_frontpage != 'yes') {
 		</div>
 	</div>
 
-<?php 
-if (is_cp_theme_layout('3c,v3c,gn,standard,v')) { 
-	get_sidebar('right'); ?>
-<?php } ?>
-
-<?php if (is_cp_theme_layout('3c,v')) {  ?>
-		<div class="clear"></div>
-	</div>
-<?php } ?>
-
-	<?php if (is_cp_theme_layout('gn')) { ?>
-		</div>
-	<?php } ?>	
-
-	<div class="clear"></div>
-</div>
-<div id="content-wrapper-bottom"></div>
+<?php include(get_template_directory() . '/layout-foot.php'); ?>
 <?php get_footer() ?>

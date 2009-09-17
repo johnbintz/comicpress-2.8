@@ -44,9 +44,7 @@ function display_blog_post() {
 					<?php } ?>
 					<?php if (!is_single()) { 
 							if ('open' == $post->comment_status) { 
-								if ( ($themepack_directory != 'none' && !empty($themepack_directory) ) && file_exists(get_template_directory() . '/themepack/'.$themepack_directory.'/commentlink.php') ) { 
-									include(get_template_directory() . '/themepack/' .$themepack_directory. '/commentlink.php');
-								} else { ?>
+								if (comicpress_check_themepack_file('commentlink.php') == false) { ?>
 									<div class="comment-link"><?php comments_popup_link('<span class="comment-balloon comment-balloon-empty">&nbsp;</span> No Comments ', '<span class="comment-balloon">1</span> Comment ', '<span class="comment-balloon">%</span> Comments '); ?></div>
 							<?php }
 							}					

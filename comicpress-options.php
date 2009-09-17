@@ -425,7 +425,7 @@ function comicpress_admin() {
 			case "comicpress-excerpt_or_content_search": ?>
 				<tr>
 				<th scope="row"><strong>Would you like to have users see the entire content or just an excerpt when searching?</strong><br /><br /></th>
-				<td valign="top">
+				<td valign="top" width="160">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-excerpt" type="radio" value="excerpt"<?php if ( get_option( $value['id'] ) == "excerpt") { echo " checked"; } ?> />Excerpt</label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-content" type="radio" value="content"<?php if ( get_option( $value['id'] ) == "content") { echo " checked"; } ?> />Content</label>

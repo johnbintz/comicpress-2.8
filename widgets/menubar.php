@@ -11,81 +11,79 @@ Author URI: http://webcomicplanet.com/
 
 
 function comicpress_menubar() {
-	global $contact_in_menubar,$enable_search_in_menubar,$enable_rss_in_menubar,$enable_navigation_in_menubar,$disable_dynamic_menubar_links, $themepack_directory;
-	if (file_exists(get_template_directory() . '/'.$themepack_directory.'/menubar.php') || function_exists('suckerfish')) {
+global $contact_in_menubar,$enable_search_in_menubar,$enable_rss_in_menubar,$enable_navigation_in_menubar,$disable_dynamic_menubar_links, $themepack_directory;
+	if (comicpress_check_themepack_file('menubar.php') == false) {
 		if (function_exists('suckerfish')) { 
 			suckerfish();
-		} else { 
-			include(get_template_directory() . '/'.$themepack_directory.'/menubar.php');
-		}
-	} else { ?>
-<div id="menubar">
-
-		<div id="menunav">
-		<?php if ($enable_search_in_menubar == 'yes') { ?>
-			<div class="menunav-search"><?php include(get_template_directory() . '/searchform.php'); ?></div>
-		<?php } ?>
-		<?php if ($enable_rss_in_menubar == 'yes') { ?>
-			<a href="<?php bloginfo('rss2_url') ?>" title="RSS Feed" class="menunav-rss">RSS</a>
-		<?php } ?>
-		<?php if ($enable_navigation_in_menubar == 'yes') { ?>
-			<?php if (is_home()) {
-				$comicFrontpage = new WP_Query(); $comicFrontpage->query('showposts=1&cat='.get_all_comic_categories_as_cat_string());
-				while ($comicFrontpage->have_posts()) : $comicFrontpage->the_post();
-					global $wp_query; $wp_query->is_single = true; ?>
+		} else { ?>
+			<div id="menubar">
+			
+			<div id="menunav">
+			<?php if ($enable_search_in_menubar == 'yes') { ?>
+				<div class="menunav-search"><?php include(get_template_directory() . '/searchform.php'); ?></div>
+			<?php } ?>
+			<?php if ($enable_rss_in_menubar == 'yes') { ?>
+				<a href="<?php bloginfo('rss2_url') ?>" title="RSS Feed" class="menunav-rss">RSS</a>
+			<?php } ?>
+			<?php if ($enable_navigation_in_menubar == 'yes') { ?>
+				<?php if (is_home()) {
+					$comicFrontpage = new WP_Query(); $comicFrontpage->query('showposts=1&cat='.get_all_comic_categories_as_cat_string());
+					while ($comicFrontpage->have_posts()) : $comicFrontpage->the_post();
+						global $wp_query; $wp_query->is_single = true; ?>
+						<div class="menunav-prev">
+						<?php previous_comic_link('%link', '&lsaquo;'); ?>
+						</div>
+						<?php $wp_query->is_single = false;
+					endwhile; 
+				} elseif (is_single() & in_comic_category()) { ?>
 					<div class="menunav-prev">
 					<?php previous_comic_link('%link', '&lsaquo;'); ?>
 					</div>
-					<?php $wp_query->is_single = false;
-				endwhile; 
-			} elseif (is_single() & in_comic_category()) { ?>
-				<div class="menunav-prev">
-				<?php previous_comic_link('%link', '&lsaquo;'); ?>
-				</div>
-				<div class="menunav-next">
-				<?php next_comic_link('%link', '&rsaquo;'); ?>
-				</div>
+					<div class="menunav-next">
+					<?php next_comic_link('%link', '&rsaquo;'); ?>
+					</div>
+				<?php } ?>
 			<?php } ?>
-		<?php } ?>
-	</div>
-	<?php 
-		$menulinks = wp_list_bookmarks('echo=0&title_li=&categorize=0&title_before=&title_after=&category_name=menubar');
-		$menulinks = preg_replace('#<li ([^>]*)>#', '<li class="page-item link">', $menulinks);
-		$menulinks = preg_replace('#<ul ([^>]*)>#', '', $menulinks);
-		$menulinks = str_replace('</ul>', '', $menulinks);
-		$bookmarkargs = 
-		$bookmarks = wp_list_bookmarks('echo=0&title_li=&categorize=1&title_before=&title_after=&exclude_name=menubar'); 
-		$bookmarks = preg_replace('#<li ([^>]*)>#', '<li class="page-item link">', $bookmarks);
-		$bookmarks = preg_replace('#<ul ([^>]*)>#', '<ul>', $bookmarks); 
-		$listpages = '';
-		if ($disable_dynamic_menubar_links != 'yes') {
-			$listpages = wp_list_pages('echo=0&sort_column=menu_order&depth=4&title_li=');
-		}
-		if (!empty($bookmarks)) {
-			$listpages = str_replace('Links</a></li>', 'Links</a>
-						<ul>
-						'.$bookmarks.'
-						</ul>
-						</li>
-						', $listpages);
-			$listpages .= $menulinks;
-		} else { 
-			$listpages = str_replace('Links</a></li>', 'Links</a>
-						</li>
-						', $listpages);
-			$listpages .= $menulinks;			
-		} 
-	?>
-	<ul id="menu">
-		<li class="page_item page-item-home<?php if (is_home()) { ?> current_page_item<?php } ?>"><a href="<?php bloginfo('url'); ?>">Home</a></li>
-		<?php echo $listpages; ?>
-	<?php if ($contact_in_menubar == 'yes') { ?>
-		<li class="page_item page-item-contact"><a href="mailto:<?php bloginfo('admin_email'); ?>">Contact</a></li>
-	<?php } ?>
-	</ul>
-	<div class="clear"></div>
-</div>
-<?php } 
+			</div>
+			<?php 
+			$menulinks = wp_list_bookmarks('echo=0&title_li=&categorize=0&title_before=&title_after=&category_name=menubar');
+			$menulinks = preg_replace('#<li ([^>]*)>#', '<li class="page-item link">', $menulinks);
+			$menulinks = preg_replace('#<ul ([^>]*)>#', '', $menulinks);
+			$menulinks = str_replace('</ul>', '', $menulinks);
+			$bookmarkargs = 
+				$bookmarks = wp_list_bookmarks('echo=0&title_li=&categorize=1&title_before=&title_after=&exclude_name=menubar'); 
+			$bookmarks = preg_replace('#<li ([^>]*)>#', '<li class="page-item link">', $bookmarks);
+			$bookmarks = preg_replace('#<ul ([^>]*)>#', '<ul>', $bookmarks); 
+			$listpages = '';
+			if ($disable_dynamic_menubar_links != 'yes') {
+				$listpages = wp_list_pages('echo=0&sort_column=menu_order&depth=4&title_li=');
+			}
+			if (!empty($bookmarks)) {
+				$listpages = str_replace('Links</a></li>', 'Links</a>
+							<ul>
+							'.$bookmarks.'
+							</ul>
+							</li>
+							', $listpages);
+				$listpages .= $menulinks;
+			} else { 
+				$listpages = str_replace('Links</a></li>', 'Links</a>
+							</li>
+							', $listpages);
+				$listpages .= $menulinks;			
+			} 
+			?>
+			<ul id="menu">
+			<li class="page_item page-item-home<?php if (is_home()) { ?> current_page_item<?php } ?>"><a href="<?php bloginfo('url'); ?>">Home</a></li>
+			<?php echo $listpages; ?>
+			<?php if ($contact_in_menubar == 'yes') { ?>
+				<li class="page_item page-item-contact"><a href="mailto:<?php bloginfo('admin_email'); ?>">Contact</a></li>
+			<?php } ?>
+			</ul>
+			<div class="clear"></div>
+			</div>
+		<?php } 
+	}
 } 
 
 class widget_comicpress_menubar extends WP_Widget {

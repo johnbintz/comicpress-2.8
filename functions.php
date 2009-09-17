@@ -5,7 +5,7 @@ if (function_exists('id_get_comment_number')) {
 	remove_filter('comments_number','id_get_comment_number');
 }
 
-$comicpress_version = '2.8.1.8';
+$comicpress_version = '2.8.1.9';
 
 // Remove the wptexturizer from changing the quotes and squotes.
 // remove_filter('the_title', 'wptexturize');
@@ -765,6 +765,16 @@ function cp_copyright_year() {
 		$output =  $copyright . "&nbsp;" . get_bloginfo('name');
 	}
 	return $output;
+}
+
+function comicpress_check_themepack_file($filename = '') {
+	global $themepack_directory;
+	if (empty($filename)) return false;
+	if ( ($themepack_directory != 'none' && !empty($themepack_directory) ) && file_exists(get_template_directory() . '/themepack/'.$themepack_directory.'/'.$filename) ) { 
+		include(get_template_directory() . '/themepack/' .$themepack_directory. '/'.$filename);
+		return true;
+	}
+	return false;
 }
 
 ?>
