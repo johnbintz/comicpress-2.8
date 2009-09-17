@@ -19,6 +19,10 @@ Template Name: Links
 			<div class="column">	
 	<?php } ?>
 	
+<?php if (is_cp_theme_layout('3c,v')) {  ?>
+	<div id="area-wrapper">
+<?php } ?>
+	
 	<?php get_sidebar('overblog'); ?>
 	<?php if (is_cp_theme_layout('3c')) get_sidebar('left'); ?>
 
@@ -52,6 +56,11 @@ Template Name: Links
 <?php 
 if (is_cp_theme_layout('3c,v3c,gn,standard,v')) { 
 	get_sidebar('right'); ?>
+<?php } ?>
+
+<?php if (is_cp_theme_layout('3c,v')) {  ?>
+		<div class="clear"></div>
+	</div>
 <?php } ?>
 
 	<?php if (is_cp_theme_layout('gn')) { ?>
