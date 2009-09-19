@@ -583,8 +583,14 @@ a.navi-comments:hover span {
 }
 
 .members-only {
-	border: solid 1px #000;
-	background: #eee;
+	border: dotted 1px #000;
+	background: #fafafa;
+	padding: 3px;
+}
+
+.non-member {
+	border: dotted 1px #000;
+	background: #fafafa;
 	padding: 3px;
 }
 
@@ -737,11 +743,18 @@ ul.children {
 /* ARCHIVE */
 /* For the built-in WordPress archive pages (by month or category) as well as search result pages */
 
+.comicthumbwrap {
+	overflow: hidden;
+	float: left;
+	height: 140px;
+	margin: 2px 2px 16px 2px;
+}
+
 .comicarchiveframe {
 	padding: 5px;
 	border: 1px solid #000;
 	background: #fff;
-	margin-bottom: 20px;
+	margin-bottom: 2px;
 }
 
 .comicarchiveframe:hover {

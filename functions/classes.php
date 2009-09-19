@@ -3,16 +3,15 @@
  * Body Classes
  * function function comicpress_body_class
  * 
- * This has two functions, the first being it adds the browser type as a class
+ * Author: Philip M. Hofer (Frumph)
+ * Author URI: http://webcomicplanet.com/ http://frumph.net/
+ * Version: 1.0.1
+ * 
+ * This function adds the browser type as a class
  * in the <body> tag where you can then do .ie #page and do things specific
  * for each browser type as well as a few other classes that the normal body_class
  * does not yet support.
  * 
- * The second is you can write code specific for a particular browser.
- * 
- * example:  if (reset(browser_body_class()) == 'ie') {
- * 
- * the reset() portion resets the array to a string.
  * 
  */
 
@@ -21,12 +20,17 @@ add_filter('body_class','comicpress_body_class');
 function comicpress_body_class($classes = '') {
 	global  $current_user, $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone, $post, $wp_query, $cp_theme_layout;
 	
-	$current_user = get_currentuserinfo();
 	if (!empty($current_user)) {
 		$user_login = addslashes($current_user->user_login);
 		$classes[] = 'user-'.$user_login;
 	} else {
 		$classes[] = 'user-guest';
+	}
+	
+	if (comicpress_is_member()) {
+		$classes[] = 'member';
+	} else {
+		$classes[] = 'non-member';
 	}
 	
 	if($is_lynx) $classes[] = 'lynx';
@@ -81,7 +85,7 @@ function comicpress_body_class($classes = '') {
 	return $classes;
 }
 
-function comicpress_blogpost_class($class = '') {
+function comicpress_post_class($class = '') {
 	global $post;
 	static $post_alt;
 
@@ -122,7 +126,7 @@ function comicpress_blogpost_class($class = '') {
 	/* Join all the classes into one string and echo them. */
 	$class = join( ' ', $classes );
 
-	echo apply_filters( 'comicpress_blogpost_class', $class );
+	echo apply_filters( 'comicpress_post_class', $class );
 }
 
 ?>

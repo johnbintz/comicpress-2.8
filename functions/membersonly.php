@@ -20,17 +20,41 @@ add_action('show_user_profile', 'comicpress_profile_members_only');
 add_action('edit_user_profile', 'comicpress_profile_members_only');
 add_action('profile_update', 'comicpress_profile_members_only_save');
 
-function shortcode_for_comicpress_members_only( $atts, $content = null ) {
-	global $post, $userdata, $profileuser, $current_user, $errormsg;
-	if ( !empty($userdata->ID) ) {
-		$is_member = get_usermeta($current_user->ID,'comicpress-is-member');
-		if ( ( $is_member == 'yes' || current_user_can( 'publish_posts' ) ) && !is_feed() ) {
-			return '<div class="members-only">'.$content.'</div>';
+
+add_filter('pre_get_posts','comicpress_members_filter');
+
+function comicpress_members_filter($query) {
+	global $members_post_category, $current_user;
+	if ($members_post_category != 'none' && !empty($members_post_category) && !$query->is_search && !$query->is_page && !$query->is_archive) {
+		$oldset = $query->get('cat');
+		$is_member = '';
+		
+		if (!empty($oldset)) {
+			$excludeset = $oldset.',-'.$members_post_category;
 		} else {
-			return '<div class="non-member">There is Members Only content here.</div>';
+			$excludeset = '-'.$members_post_category;
+		}
+		
+		if ( !empty($current_user->ID) ) {
+			$is_member = get_usermeta($current_user->ID,'comicpress-is-member');
+		}
+		if ($is_member != 'yes' || empty($is_member)) {
+			$query->set('cat',$excludeset);
 		}
 	}
-	return '';
+	return $query;
+}
+
+function shortcode_for_comicpress_members_only( $atts, $content = null ) {
+	global $post, $userdata, $profileuser, $current_user, $errormsg;
+	$returninfo = '<div class="non-member">There is Members Only content here. To view this content you need to be a member of this site.</div>';
+	if ( !empty($current_user->ID) ) {
+		$is_member = get_usermeta($current_user->ID,'comicpress-is-member');
+		if ( ( $is_member == 'yes' ) ) {
+			$returninfo = '<div class="members-only">'.$content.'</div>';
+		}
+	}
+	return $returninfo;
 }
 
 function comicpress_profile_members_only() { 
@@ -70,6 +94,29 @@ function comicpress_profile_members_only_save() {
 	if (!empty($comicpress_is_member)) {
 		update_usermeta($id, 'comicpress-is-member', $comicpress_is_member);
 	}
+}
+
+/**
+ * Return true if the current post is in the members category.
+ */
+function in_members_category() {
+	global $post, $category_tree, $members_post_category;
+
+	$members_post_category_array = array();
+	$members_post_category_array = explode($members_post_category);
+
+	return (count(array_intersect($members_post_category, wp_get_post_categories($post->ID))) > 0);
+}
+
+function comicpress_is_member() {
+	global $current_user;
+	if (!empty($current_user)) {
+		$is_member = get_usermeta($current_user->ID,'comicpress-is-member');
+		if ($is_member == 'yes' || current_user_can('publish_post')) {
+			return true;
+		}
+	}
+	return false;	
 }
 
 ?>

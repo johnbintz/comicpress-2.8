@@ -17,7 +17,7 @@ function display_comic_post() {
 		<?php if ( get_permalink() != $last_comic ) { ?><div class="nav-last"><a href="<?php echo $last_comic ?>">Last &rsaquo;&rsaquo;</a></div><?php } ?>
 	</div>
 	<div class="clear"></div>
-<div class="<?php comicpress_blogpost_class(); ?>">
+<div class="<?php comicpress_post_class(); ?>">
 	<div class="post-comic-head"></div>
 	<div class="post-comic">
 		<div class="post-info">

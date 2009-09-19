@@ -13,7 +13,7 @@ Templete Author Email: philip@frumph.net
 	<?php if (!empty($comicnum)): ?>
 		<?php $temppost = $post; ?>
 		<?php $post = & get_post( $comicnum ); ?>
-	<div class="<?php comicpress_blogpost_class(); ?>">
+	<div class="<?php comicpress_post_class(); ?>">
 		<div class="post-page-head"></div>
 		<div class="post-page">
 			<div style="float:right;">
@@ -88,7 +88,7 @@ Templete Author Email: philip@frumph.net
 	</div>
 	<?php else: ?>
 	    <?php if (have_posts()) : while (have_posts()) : the_post() ?>
-		<div class="<?php comicpress_blogpost_class(); ?>">
+		<div class="<?php comicpress_post_class(); ?>">
 		    <div class="post-page-head"></div>
 		    <div class="post-page" id="post-<?php the_ID() ?>">
 			    <h2 class="pagetitle"><?php the_title() ?></h2>

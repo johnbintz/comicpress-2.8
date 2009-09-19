@@ -6,7 +6,7 @@ Template Name: Comic Storyline with Thumbs
 <?php get_header();  ?>
 <?php include(get_template_directory() . '/layout-head.php'); ?>
 	
-<div class="<?php comicpress_blogpost_class(); ?>">
+<div class="<?php comicpress_post_class(); ?>">
 	<div class="post-page-head"></div>
 	<div class="post-page">
 	<?php while (have_posts()) : the_post() ?>
@@ -27,7 +27,7 @@ Template Name: Comic Storyline with Thumbs
 			$category_id = end($parts);
 			$category = $categories_by_id[$category_id];
 			$description = $category->description;
-			$first_comic_in_category = get_terminal_post_in_category($category_id);
+			$first_comic_in_category = get_terminal_post_in_category($category_id,true);
 			$first_comic_permalink = get_permalink($first_comic_in_category->ID);
 			$archive_image = null;
 			foreach (array("archive", "rss", "comic") as $type) {

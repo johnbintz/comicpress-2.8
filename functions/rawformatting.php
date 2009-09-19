@@ -26,9 +26,6 @@ function my_formatter($content) {
 	return $new_content;
 }
 
-remove_filter('the_content', 'wpautop');
-remove_filter('the_content', 'wptexturize');
-
 add_filter('the_content', 'my_formatter', 99);
 
 

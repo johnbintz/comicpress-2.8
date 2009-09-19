@@ -5,7 +5,7 @@ Template Name: Comic Calendar Archive
 ?>
 <?php get_header();  ?>
 <?php include(get_template_directory() . '/layout-head.php'); ?>
-
+<?php remove_filter('pre_get_posts','comicpress_members_filter'); ?>
 <?php
 
 $dayWidth = 22; //set to .cpcal-day total width in pixels including: width, left & right border, left & right margin, left & right padding
@@ -67,7 +67,7 @@ $month['11'] = array('month' => 'November', 'days' => '30');
 $month['12'] = array('month' => 'December', 'days' => '31');
 
 ?>
-<div class="<?php comicpress_blogpost_class(); ?>">
+<div class="<?php comicpress_post_class(); ?>">
 	<div class="post-page-head"></div>
 	<div class="post-page">
 	<?php while (have_posts()) : the_post() ?>

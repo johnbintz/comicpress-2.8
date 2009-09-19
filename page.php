@@ -2,7 +2,7 @@
 <?php include(get_template_directory() . '/layout-head.php'); ?>
 
 	<?php if (have_posts()) : while (have_posts()) : the_post() ?>
-	<div class="<?php comicpress_blogpost_class(); ?>">
+	<div class="<?php comicpress_post_class(); ?>">
 		<div class="post-page-head"></div>
 		<div class="post-page" id="post-<?php the_ID() ?>">
 			<h2 class="pagetitle"><?php the_title() ?></h2>

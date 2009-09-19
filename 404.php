@@ -1,15 +1,7 @@
 <?php get_header(); ?>
 <?php include(get_template_directory() . '/layout-head.php'); ?>
 	
-	<?php get_sidebar('overblog'); ?>
-	<?php if (is_cp_theme_layout('3c')) get_sidebar('left'); ?>
-
-	<?php if (!is_cp_theme_layout('v3c,v')) { ?>
-		<div id="content" class="narrowcolumn">
-			<div class="column">	
-	<?php } ?>
-	
-<div class="<?php comicpress_blogpost_class(); ?>">
+<div class="<?php comicpress_post_class(); ?>">
 	<div class="post-page-head"></div>
 	<div class="post-page">
 		<h2 class="pagetitle">Page Not Found</h2>

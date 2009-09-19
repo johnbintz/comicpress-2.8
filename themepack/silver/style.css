@@ -1,9 +1,9 @@
 /*
-ThemePack Name: Drippy
-ThemePack URI: http://commpress.org
+ThemePack Name: Silver
+ThemePack URI: http://comicpress.org
 Description: 
-Author: Philip M. Hofer (Frumph)
-Author URI: http://frumph.net/
+Author: Tyler Martin
+Author URI: http://mindfaucet.com/
 Version: 0.1.0
 .
 The CSS, XHTML and design is released under GPL v3:
@@ -15,23 +15,44 @@ http://www.opensource.org/licenses/gpl-3.0.html
 
 body {
 	margin: 0;
-	font-family: 'Verdana', sans-serif;
-	background: #00344f url('background.jpg') top repeat-x;
+	font-family: 'Arial', sans-serif;
+	color: #333;
+	background: #fff url('background.png') top repeat-x; 
 }
 
+	.button {
+		background: #aaa url('menu.png');
+		color: #000;
+		font-family: 'Arial', sans-serif;
+		font-size: 13px;
+		line-height: 13px;
+		border: 1px solid #999;
+		cursor: pointer;
+	}
+		
+	.button:hover {
+		color: #fff;
+		background: #f00 url('menu.png') 0 -75px;
+	}
 
-h1, h1 a, h2, h2 a, h3, h3 a {
-	color: #0b3b6e;
+/* THE HEADER */
+
+#header {
+	text-align: center;
 }
 
-h1 a:hover, h2 a:hover, h3 a:hover {
-	color: #fff;
-}
+	#header a {
+		color: #eee;
+	}
 
-#header {width: 980px; height: 105px; background: url('header.png') top center no-repeat; overflow: hidden;}
-#header h1 {padding: 0;}
-#header h1 a {display: block; width: 980px; height: 105px; text-indent: -9999px;}
-#header .description {display: none;}
+	#header .description {
+		color: #555;
+		padding: 0 0 10px 0;
+		font-size: 14px;
+		font-style: italic;
+		letter-spacing: 2px;
+	}
+
 
 /* THE MENU */
 
@@ -39,11 +60,7 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 	background: url('menu.png');
 	border-width: 1px 1px 1px 0;
 	border-style: solid;
-	border-color: #000;
-	-moz-border-radius: 10px;
-	-khtml-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
+	border-color: #999;
 }
 
 .menunav-rss {
@@ -62,20 +79,57 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 		background: Transparent url('menu-nav.png') 0 -25px no-repeat;
 	}
 
+.menunav-prev, .menunav-next {
+	display: block;
+	float: left;
+}
+
 .menunav a:hover {
 	background: #fff;
 }
 
+.menunav-prev {
+	margin: 0 0 0 5px;
+}
+
+	.menunav-prev a, .menunav-next a {
+		width: 25px;
+		height: 25px;
+		display: block;
+		text-indent: -9999px;
+		overflow: hidden;
+	}
+
+	.menunav-prev a {
+		background: transparent url('menu-nav.png') -25px 0 no-repeat;
+	}
+
+	.menunav-prev a:hover {
+		background: transparent url('menu-nav.png') -25px -25px no-repeat;
+	}
+
+.menunav-next a {
+	background: url('menu-nav.png') -50px 0 no-repeat;
+}
+
+	.menunav-next a:hover {
+		background: transparent url('menu-nav.png') -50px -25px no-repeat;
+	}
+
 #menu {
-	border-right: 1px solid #111;
-	margin-left: 10px;
-	text-transform: uppercase;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	float: left;
+	line-height: 25px;
+	font-size: 13px;
+	border-right: 1px solid #aaa;
 }
 
 	#menu a {
 		padding: 0px 10px 0 10px;
 		display: block;
-		color: #fff;
+		color: #000;
 		text-decoration: none;
 	}
 
@@ -89,8 +143,8 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 	}
 
 	#menu li a {
-		border-left: 1px solid #333;
-		border-right: 1px solid #555;
+		border-left: 1px solid #aaa;
+		border-right: 1px solid #fff;
 	}
 
 	#menu li:hover a, #menu li.sfhover a {
@@ -145,7 +199,7 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 	}
 	#menu li:hover ul, #menu li li:hover ul, #menu li li li:hover ul, #menu li li li li:hover ul, #menu li.sfhover ul, #menu li li.sfhover ul, #menu li li li.sfhover ul, #menu li li li li.sfhover ul {
 		left: auto;
-		background: #3d5875; /* Submenu background color */
+		background: #000; /* Submenu background color */
 		text-transform: none;
 	}
 
@@ -156,89 +210,16 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 		background: url('menu.png') 0 -50px;
 	}
 
-.nav a { color: #fff; }
-.nav a:hover { color: #fff000; }
+/* THE COMIC */
 
-#blogheader {
-	border-color: #3d5875;
-	border-width: 2px;
-}
-
-#content-wrapper {
-	padding-top: 5px;
-}
-
-#comic-foot {
+#comic {
+	background: #fff;
+	border: 1px solid #999;
 	text-align: center;
+	z-index: 100;
+	padding: 5px;
 }
 
-.post-author-gravatar {
-	margin-top: 5px;
-	border: solid 1px #000;
-}
-
-.post, .post-page, .post-comic { 
-	background: #bcc7d2;
-	-moz-border-radius: 10px 10px 0 0;
-	-khtml-border-radius: 10px 10px 0 0;
-	-webkit-border-radius: 10px 10px 0 0;
-	border-radius: 10px 10px 0 0;
-	padding-top: 2px;
-}
-
-
-.comment {
-	background: #bcc7d2;
-	margin-top: 5px;
-	padding-top: 5px;
-	-moz-border-radius: 10px 10px;
-	-khtml-border-radius: 10px 10px;
-	-webkit-border-radius: 10px 10px;
-	border-radius: 10px 10px;
-}
-
-.comment .comment {
-	background-color: Transparent;
-}
-
-
-#footer {
-	color: #3d5875;
-}
-
-#footer a {
-	color: #bcc7d2;
-}
-
-#footer a:hover {
-	color: #fff;
-}
-
-.odd .post-foot, .odd .post-page-foot, .odd .post-page-foot, .odd .post-comic-foot {
-	height: 40px;
-	background: url('post-bottom-odd.png') top center no-repeat;
-}
-
-.even .post-foot, .even .post-page-foot, .even .post-page-foot, .even .post-comic-foot {
-	height: 40px;
-	background: url('post-bottom.png') top center no-repeat;
-}
-
-	.button {
-		background: #aaa url('menu.png');
-		color: #fff;
-		font-family: 'Arial', sans-serif;
-		font-size: 13px;
-		line-height: 13px;
-		border: 1px solid #333;
-		cursor: pointer;
-	}
-		
-	.button:hover {
-		color: #eee;
-		background: #f00 url('menu.png') 0 -75px;
-	}
-	
 /* COMMENT LINK */
 
 .comment-link {
@@ -248,6 +229,14 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 	font-weight: bold;
 	text-align: right;
 }
+
+	.comment-link a {
+		color: #333;
+	}
+		
+	.comment-link a:hover {
+		color: #800;
+	}
 		
 	.comment-balloon {
 		width: 30px;
@@ -263,10 +252,6 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 		font-weight: normal;
 		background: url('comment-balloon.png') no-repeat;
 	}
-
-		.comment-link a .comment-balloon {
-			color: #000;
-		}
 	
 		.comment-link a:hover .comment-balloon {
 			color: #fff;
@@ -277,7 +262,8 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 		font-size: 20px;
 		line-height: 30px;
 		}
-		
+
+
 /* WIDGETS */
 
 .archive-dropdown-wrap {
@@ -303,7 +289,7 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 
 /* SEARCH */
 
-#s-search {
+#s-search, #s-transcript {
 	width: 138px;
 	padding: 4px 0 0 5px;
 	font-size: 12px;
@@ -315,12 +301,12 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 	background: url('browse-search.png') 0 -46px no-repeat;
 }
 
-	#s-search:hover, #s-search:focus {
+	#s-search:hover, #s-search:focus, #s-transcript:hover, #s-transcript:focus {
 		color: #550000;
 		background-position: 0 -69px;
 	}
 
-	#searchform button {
+	#searchform button, #searchform-transcript button {
 		padding: 0;
 		margin: 0;
 		border: none;
@@ -333,11 +319,11 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 		background: url('browse-search.png') -143px -46px no-repeat;
 	}
 
-	#searchform button:hover {
+	#searchform button:hover, #searchform-transcript button:hover {
 		background-position: -143px -69px;
 	}
 
-	#searchform button:hover {
+	#searchform button:hover, #searchform-transcript button:-moz-focus-inner {
 		border: 0;
 	}
 
@@ -451,11 +437,7 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 #wp-paginav {
 	background: url('menu.png');
 	text-align: left;
-	border: 1px solid #000;
-	-moz-border-radius: 10px;
-	-khtml-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
+	border: 1px solid #999;
 }
 
 #paginav {
@@ -465,8 +447,7 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 	float: left;
 	line-height: 25px;
 	font-size: 13px;
-	color: #fff;
-	border-right: 1px solid #222;
+	border-right: 1px solid #aaa;
 }
 
 	#paginav .paginav-pages, #paginav .paginav-extend {
@@ -476,7 +457,7 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 	#paginav a {
 		padding: 0px 10px 0 10px;
 		display: block;
-		color: #777;
+		color: #000;
 		text-decoration: none;
 	}
 
@@ -491,9 +472,8 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 	}
 
 	#paginav li a {
-		border-left: 1px solid #111;
-		border-right: 1px solid #444;
-		color: #eee;
+		border-left: 1px solid #aaa;
+		border-right: 1px solid #ccc;
 	}
 
 	#paginav .paginav-next, #paginav .paginav-previous {
@@ -503,71 +483,15 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 	#paginav .paginav-current, #paginav .current {
 		padding: 0px 10px 0 10px;
 		color: #fff;
-		border-left: 1px solid #222;
+		border-left: 1px solid #aaa;
 		background: url('menu.png') 0 -150px;
 	}
 
 	#paginav li:hover a {
-		border-left: 1px solid #333;
-		border-right: 1px solid #555;
+		border-left: 1px solid #8b160f;
+		border-right: 1px solid #c28380;
 		color: #fff; 
 		background: url('menu.png') 0 -75px;
 	}
 
 
-#wp-calendar-wrap {
-	background: #b0bfce;
-	border: solid 1px #333;
-	-moz-border-radius: 10px;
-	-khtml-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
-	margin: 0 0 10px 0;
-}
-
-.wp-calendar-thumb img {
-	-moz-border-radius: 10px;
-	-khtml-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
-}
-	
-/* SIDEBAR */
-
-.sidebar-content {
-	background: #5c738a;
-	-moz-border-radius: 10px 10px 0 0;
-	-khtml-border-radius: 10px 10px 0 0;
-	-webkit-border-radius: 10px 10px 0 0;
-	border-radius: 10px 10px 0 0;
-	padding: 5px 0;
-}
-
-#sidebar-left .sidebar-bottom {
-	height: 40px;
-	background: url('sidebar-left-bottom.png') top center no-repeat;
-}
-
-#sidebar-right .sidebar-bottom {
-	height: 40px;
-	background: url('sidebar-right-bottom.png') top center no-repeat;
-}
-
-.sidebar h2 {
-	font-weight: 700;
-	letter-spacing: normal;
-}
-
-.sidebar a {
-	color: #bcc7d2;
-}
-
-.sidebar a:hover {
-	color: #fff;
-}
-
-#page-bottom {
-	height: 40px;
-	width: 100%;
-	background: url('belowfooter.png') bottom repeat-x;
-}

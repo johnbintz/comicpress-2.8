@@ -13,7 +13,7 @@ Template Name: Links
 	 ?>
 	
 	<?php while (have_posts()) : the_post() ?>
-	<div class="<?php comicpress_blogpost_class(); ?>">
+	<div class="<?php comicpress_post_class(); ?>">
 		<div class="post-page-head"></div>
 		<div class="post-page">
 			<h2 class="pagetitle"><?php the_title() ?></h2>

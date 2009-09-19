@@ -238,6 +238,17 @@ $options = array (
 			"id" => "comicpress-excerpt_or_content_search",
 			"default" => "excerpt",
 			"type" => "comicpress-excerpt_or_content_search"),
+			
+		array(
+			"id" => "comicpress-category_thumbnail_postcount",
+			"default" => "30",
+			"type" => "comicpress-category_thumbnail_postcount"),
+			
+		array(
+			"id" => "comicpress-members_post_category",
+			"default" => "",
+			"type" => "comicpress-members_post_category"),
+			
 
 		array("type" => "close")
 		);

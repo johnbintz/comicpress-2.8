@@ -63,7 +63,7 @@
 			<?php get_sidebar('underblog'); ?>
 		</center>		
 	<?php endwhile; else: ?>
-	<div class="<?php comicpress_blogpost_class(); ?>">
+	<div class="<?php comicpress_post_class(); ?>">
 		<div class="post-head"></div>
 		<div class="post">
 			<p>Sorry, no posts matched your criteria.</p>

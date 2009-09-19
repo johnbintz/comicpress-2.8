@@ -11,7 +11,7 @@
 		if (empty($curauth)) { ?>
 			<h2>No such author.</h2>
 		<?php } else { ?>
-		<div class="<?php comicpress_blogpost_class(); ?>">
+		<div class="<?php comicpress_post_class(); ?>">
 			<div class="post-page-head"></div>
 			<div class="post-page">
 					<div class="userpage-avatar">
