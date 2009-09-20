@@ -305,7 +305,7 @@ function get_terminal_post_in_category($categoryID, $first = true) {
  * Find the first post in the storyline prior to the current one.
  */
 function get_previous_storyline_start() {
-  if (($category_id = get_adjacent_storyline_category_id(true)) !== false) {
+  if (($category_id = get_adjacent_storyline_category_id(false)) !== false) {
     return get_terminal_post_in_category($category_id);
   }
   return false;
@@ -325,7 +325,7 @@ function get_previous_storyline_start_permalink() {
  * Find the first post in the storyline following to the current one.
  */
 function get_next_storyline_start() {
-  if (($category_id = get_adjacent_storyline_category_id()) !== false) {
+  if (($category_id = get_adjacent_storyline_category_id(true)) !== false) {
     return get_terminal_post_in_category($category_id);
   }
   return false;

@@ -81,14 +81,6 @@ cite {
 	font-style: normal;
 }
 
-code {
-	padding: 10px;
-	display: block;
-	font-family: 'Courier New' , monospace;
-	border: 1px dotted #000;
-	overflow: scroll;
-}
-
 acronym, abbr, span.caps {
 	cursor: help;
 }
@@ -398,7 +390,7 @@ a.navi-comments:hover span {
 	color:#860b04;
 }
 
-.nav {
+.nav,.blognav {
 	float: right;
 	font-size: 12px;
 	font-weight: bold;
