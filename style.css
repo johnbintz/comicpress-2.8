@@ -22,7 +22,6 @@ body {
 	text-transform: none;
 	letter-spacing: normal;
 	color: #000;
-	z-index: 0;
 }
 
 a {
@@ -574,13 +573,13 @@ a.navi-comments:hover span {
 	font-size: 12px;
 }
 
-.members-only {
+.post .members-only {
 	border: dotted 1px #000;
 	background: #fafafa;
 	padding: 3px;
 }
 
-.non-member {
+.post .non-member {
 	border: dotted 1px #000;
 	background: #fafafa;
 	padding: 3px;
