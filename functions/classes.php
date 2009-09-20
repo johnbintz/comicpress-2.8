@@ -27,10 +27,12 @@ function comicpress_body_class($classes = '') {
 		$classes[] = 'user-guest';
 	}
 	
-	if (comicpress_is_member()) {
-		$classes[] = 'sitemember';
-	} else {
-		$classes[] = 'non-sitemember';
+	if (function_exists('comicpress_is_member')) {
+		if (comicpress_is_member()) {
+			$classes[] = 'sitemember';
+		} else {
+			$classes[] = 'non-sitemember';
+		}
 	}
 	
 	if($is_lynx) $classes[] = 'lynx';

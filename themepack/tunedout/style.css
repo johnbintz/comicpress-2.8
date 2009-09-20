@@ -14,8 +14,12 @@ body {
 }
 
 #comic img {
-	width: 100%;
 	border: solid 1px #000;
+}
+
+#header {
+	background: #494e5e;
+	width: 100%;
 }
 
 #header {width: 780px; height: 200px; background: url('header.jpg') top center no-repeat; overflow: hidden;}

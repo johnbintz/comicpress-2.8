@@ -36,8 +36,8 @@
 				<td valign="top">
 					<label>
 						<select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
-							<option class="level-0" value="asc" <?php if ($value['id'] == "asc") { ?>selected="selected"<?php } ?>>Ascending</option>
-							<option class="level-0" value="desc" <?php if ($value['id'] == "desc") { ?>selected="selected"<?php } ?>>Descending</option>
+							<option class="level-0" value="asc" <?php if (get_option($value['id']) == "asc") { ?>selected="selected"<?php } ?>>Ascending</option>
+							<option class="level-0" value="desc" <?php if (get_option($value['id']) == "desc") { ?>selected="selected"<?php } ?>>Descending</option>
 						</select>
 					</label>
 				</td>
