@@ -28,9 +28,9 @@ function comicpress_body_class($classes = '') {
 	}
 	
 	if (comicpress_is_member()) {
-		$classes[] = 'member';
+		$classes[] = 'sitemember';
 	} else {
-		$classes[] = 'non-member';
+		$classes[] = 'non-sitemember';
 	}
 	
 	if($is_lynx) $classes[] = 'lynx';

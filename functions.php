@@ -762,8 +762,7 @@ function comicpress_check_themepack_file($filename = '') {
 	global $themepack_directory;
 	if (empty($filename)) return false;
 	if ( ($themepack_directory != 'none' && !empty($themepack_directory) ) && file_exists(get_template_directory() . '/themepack/'.$themepack_directory.'/'.$filename) ) { 
-		$uhohkay = include(get_template_directory() . '/themepack/' .$themepack_directory. '/'.$filename);
-		echo "got here".$uhohkay;
+		@include(get_template_directory() . '/themepack/' .$themepack_directory. '/'.$filename);
 		return true;
 	}
 	return false;

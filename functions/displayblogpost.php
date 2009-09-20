@@ -56,7 +56,7 @@ function display_blog_post() {
 								if (comicpress_check_themepack_file('commentlink.php') == false) { ?>
 									<div class="comment-link"><?php comments_popup_link('<span class="comment-balloon comment-balloon-empty">&nbsp;</span> No Comments ', '<span class="comment-balloon">1</span> Comment ', '<span class="comment-balloon">%</span> Comments '); ?></div>
 							<?php }
-							}					
+							}
 						} ?>
 					<div class="clear"></div>
 					<?php if ($enable_related_posts == 'yes') echo related_posts_shortcode(); ?>
