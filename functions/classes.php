@@ -54,7 +54,7 @@ function comicpress_body_class($classes = '') {
 	}
 
 	if ( is_sticky( $wp_query->post->ID ) ) {
-		$classes[] = 'single-sticky';
+		$classes[] = 'sticky-post';
 	}
 	
 // NOT hijacked from anything, doi! people should do this.
