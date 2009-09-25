@@ -735,10 +735,11 @@ ul.children {
 /* For the built-in WordPress archive pages (by month or category) as well as search result pages */
 
 .comicthumbwrap {
-	overflow: hidden;
 	float: left;
-	height: 140px;
-	margin: 2px 2px 16px 2px;
+	width: 120px;
+	height: 130px;
+	overflow: hidden;
+	margin: 2px 2px 6px 2px;
 }
 
 .comicarchiveframe {

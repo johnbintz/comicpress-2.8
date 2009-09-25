@@ -27,6 +27,14 @@ function comicpress_body_class($classes = '') {
 		$classes[] = 'user-guest';
 	}
 	
+	if (is_single()) {
+		if (in_comic_category()) {
+			$classes[] = 'comiccat';
+		} else {
+			$classes[] = 'blogcat';
+		}
+	}
+	
 	if (function_exists('comicpress_is_member')) {
 		if (comicpress_is_member()) {
 			$classes[] = 'sitemember';
@@ -69,7 +77,7 @@ function comicpress_body_class($classes = '') {
 		if ((int)$rightnow > 1129) $classes[]='noon';
 	} else {
 		if ((int)$rightnow < 30) $classes[] = 'noon';
-		if ((int)$rightnow < 560) $classes[] = 'day';
+		if ((int)$rightnow < 559) $classes[] = 'day';
 		if ((int)$rightnow > 559 && (int)$rightnow < 1130) $classes[] = 'evening';
 		if ((int)$rightnow > 1129) $classes[]='midnight';
 	}

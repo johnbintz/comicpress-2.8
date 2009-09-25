@@ -49,8 +49,8 @@
 			<?php if (is_category() && in_comic_category()) { ?>
 
 				<div class="comicthumbwrap">
-					<div class="comicarchiveframe" style="width:120px;">
-						<a href="<?php the_permalink() ?>"><img src="<?php the_comic_archive() ?>" alt="<?php the_title() ?>" title="Click for full size." width="120" /></a><br />
+					<div class="comicarchiveframe">
+						<a href="<?php the_permalink() ?>"><img src="<?php the_comic_archive() ?>" alt="<?php the_title() ?>" title="<?php the_title() ?>" /></a><br />
 					</div>
 				</div>
 

@@ -4,7 +4,7 @@ Widget Name: Menubar
 Widget URI: http://comicpress.org/
 Description: Display a calendar of this months posts.
 Author: Philip M. Hofer (Frumph)
-Version: 1.01
+Version: 1.05
 Author URI: http://webcomicplanet.com/
 
 */
@@ -50,8 +50,7 @@ global $contact_in_menubar,$enable_search_in_menubar,$enable_rss_in_menubar,$ena
 			$menulinks = preg_replace('#<li ([^>]*)>#', '<li class="page-item link">', $menulinks);
 			$menulinks = preg_replace('#<ul ([^>]*)>#', '', $menulinks);
 			$menulinks = str_replace('</ul>', '', $menulinks);
-			$bookmarkargs = 
-				$bookmarks = wp_list_bookmarks('echo=0&title_li=&categorize=1&title_before=&title_after=&exclude_name=menubar'); 
+			$bookmarks = wp_list_bookmarks('echo=0&title_li=&categorize=1&title_before=&title_after=&exclude_category=menubar'); 
 			$bookmarks = preg_replace('#<li ([^>]*)>#', '<li class="page-item link">', $bookmarks);
 			$bookmarks = preg_replace('#<ul ([^>]*)>#', '<ul>', $bookmarks); 
 			$listpages = '';
