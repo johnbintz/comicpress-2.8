@@ -3,7 +3,7 @@
 
 	<?php if (is_cp_theme_layout('gn,v3c')) get_sidebar('left'); ?>
 
-	<?php if (is_cp_theme_layout('gn')) { ?>
+	<?php if (is_cp_theme_layout('gn,rgn')) { ?>
 		<div id="pagewrap-right">
 	<?php } ?>
 
@@ -18,7 +18,7 @@
 <?php } ?>
 	
 	<?php get_sidebar('overblog'); ?>
-	<?php if (is_cp_theme_layout('3c')) get_sidebar('left'); ?>
+	<?php if (is_cp_theme_layout('3c,rgn')) get_sidebar('left'); ?>
 
 	<?php if (!is_cp_theme_layout('v3c,v')) { ?>
 		<div id="content" class="narrowcolumn">

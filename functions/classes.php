@@ -5,7 +5,7 @@
  * 
  * Author: Philip M. Hofer (Frumph)
  * Author URI: http://webcomicplanet.com/ http://frumph.net/
- * Version: 1.0.1
+ * Version: 1.0.6
  * 
  * This function adds the browser type as a class
  * in the <body> tag where you can then do .ie #page and do things specific
@@ -19,22 +19,14 @@ add_filter('body_class','comicpress_body_class');
 
 function comicpress_body_class($classes = '') {
 	global  $current_user, $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone, $post, $wp_query, $cp_theme_layout;
-	
+
 	if (!empty($current_user)) {
 		$user_login = addslashes($current_user->user_login);
 		$classes[] = 'user-'.$user_login;
 	} else {
 		$classes[] = 'user-guest';
 	}
-	
-	if (is_single()) {
-		if (in_comic_category()) {
-			$classes[] = 'comiccat';
-		} else {
-			$classes[] = 'blogcat';
-		}
-	}
-	
+
 	if (function_exists('comicpress_is_member')) {
 		if (comicpress_is_member()) {
 			$classes[] = 'sitemember';
@@ -42,7 +34,7 @@ function comicpress_body_class($classes = '') {
 			$classes[] = 'non-sitemember';
 		}
 	}
-	
+
 	if($is_lynx) $classes[] = 'lynx';
 	elseif($is_gecko) $classes[] = 'gecko';
 	elseif($is_opera) $classes[] = 'opera';
@@ -64,23 +56,21 @@ function comicpress_body_class($classes = '') {
 	if ( is_sticky( $wp_query->post->ID ) ) {
 		$classes[] = 'sticky-post';
 	}
-	
+
 // NOT hijacked from anything, doi! people should do this.
-	$rightnow = date('gi');
+	$rightnow = date('Gi');
 	$ampm = date('a');
 	$classes[] = $ampm;
+
+	if ((int)$rightnow > 559 && (int)$rightnow < 1800) $classes[] = 'day';
+	if ((int)$rightnow < 600 || (int)$rightnow > 1759) $classes[] = 'night';
 	
-	if ($ampm == 'am') {
-		if ((int)$rightnow < 30) $classes[] = 'midnight';
-		if ((int)$rightnow < 560) $classes[] = 'night';
-		if ((int)$rightnow > 559 && (int)$rightnow < 1130) $classes[] = 'morning';
-		if ((int)$rightnow > 1129) $classes[]='noon';
-	} else {
-		if ((int)$rightnow < 30) $classes[] = 'noon';
-		if ((int)$rightnow < 559) $classes[] = 'day';
-		if ((int)$rightnow > 559 && (int)$rightnow < 1130) $classes[] = 'evening';
-		if ((int)$rightnow > 1129) $classes[]='midnight';
-	}
+	if ((int)$rightnow > 2329 || (int)$rightnow < 0030) $classes[] = 'midnight';
+	if ((int)$rightnow > 0559 && (int)$rightnow < 1130) $classes[] = 'morning';
+	if ((int)$rightnow > 1129 && (int)$rightnow < 1230) $classes[] = 'noon';
+	if ((int)$rightnow > 1759 && (int)$rightnow < 2330) $classes[] = 'evening';
+	
+	$classes[] = strtolower(date('D'));
 
 	if ( is_attachment() ) {
 		$classes[] = 'attachment attachment-' . $wp_query->post->ID;
@@ -89,9 +79,9 @@ function comicpress_body_class($classes = '') {
 			$classes[] = 'attachment-' . $type;
 		endforeach;
 	}
-	
+
 	$classes[] = 'layout-'.$cp_theme_layout;
-	
+
 	return $classes;
 }
 

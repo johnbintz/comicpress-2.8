@@ -1,0 +1,425 @@
+/*
+ThemePack Name: MooseMountain
+ThemePack URI: http://comicpress.org
+Description: 
+Author: Philip M. Hofer (Frumph)
+Author URI: http://frumph.net/
+Version: 0.1.0
+.
+The CSS, XHTML and design is released under GPL v3:
+http://www.opensource.org/licenses/gpl-3.0.html
+.
+*/
+
+/* STANDARD TAGS */
+
+body {
+	margin: 0;
+	font-family: 'Arial',sans-serif;
+	background: #A28366 none repeat scroll 0 0;
+	color: #572B2A;
+	font-size: 14px;
+}
+
+a {
+	color: #000;
+	text-decoration: none;
+  	}
+  	
+  	a:hover {
+  		color: #5e6f29;
+  		}
+
+	a img {
+		border: none;
+		}
+
+hr {
+	height: 1px;
+	color: #5e6f29;
+	background-color: #5e6f29;
+	border: 0px;
+	}
+
+blockquote {
+	margin: 10px;
+	padding: 5px 10px 5px 20px;
+	border-width: 1px 1px 1px 5px;
+	border-style: solid;
+	border-color: #d6e1b4;
+	}
+
+	blockquote cite {
+		margin: 5px 0 0;
+		display: block;
+		}
+
+/* HEADINGS */
+
+h1, h1 a, h1 a:hover {
+	margin: 0;
+	padding: 0 0 0 5px;
+	color: #fff;
+	font-family: 'Georgia', serif;
+	font-size: 50px;
+	font-weight: normal;
+	text-align: left;
+	text-decoration: none;
+	letter-spacing: -2px;
+	}
+
+h2, h2 a {
+	margin: 0;
+	color: #fff;
+	font-weight: bold;
+	font-size: 22px;
+	text-align: left;
+	text-decoration: none;
+	}
+
+	h2.pagetitle, h2.pagetitle a {
+		margin: 20px 0 0 0;
+		padding: 0 0 5px 0;
+		color: #fff;
+		font-family: 'Georgia', serif;
+		font-size: 32px;
+		font-weight: normal;		
+		letter-spacing: -2px;
+		text-align: left;
+		}
+
+h3, h3 a {
+	margin: 30px 10px 0 0;
+	padding: 0;
+	color: #fff;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: left;
+	text-decoration: none;
+	clear: both;
+	}
+
+h2 a:hover, h3 a:hover {
+	color: #fff;
+	border-bottom: 1px dotted #fff;
+	}
+
+
+
+/* PAGE */
+
+#page-wide {
+	width: 900px;
+}
+
+/* THE HEADER */
+
+#header {
+	width: 567px;
+	height: 56px;
+	padding: 102px 0 0 333px;
+	margin: 0 auto;
+	background: url('header.jpg') no-repeat;
+	overflow: hidden;
+	}
+	
+	#header h1 {
+		text-indent: -9999px;
+	}
+	
+	.description {
+		text-indent: -9999px;
+	}
+
+	#header ul {
+		margin: 0;		
+		padding: 0;
+		list-style: none;
+		background: #f00;
+		}
+
+	#header li {
+ 		margin: 0;
+ 		padding: 0;
+ 		float: left;
+		}
+
+	#header li a {
+		height: 40px;
+		padding: 0;
+		margin: 0;
+		display: block;
+		text-indent: -1000px;
+		background-image: url('header.jpg');
+		background-repeat: no-repeat;
+		overflow: hidden;
+		}
+
+		.menu-home {
+			width: 78px;
+			background-position: 0 40px;
+			}
+
+			.menu-home:hover {
+				background-position: -333px -158px;
+				}
+
+		.menu-newreaders {
+			width: 162px;
+			background-position: 0 40px;
+			}
+			
+			.menu-newreaders:hover {
+				background-position: -411px -158px;
+				}
+
+		.menu-forum {
+			width: 94px;
+			background-position: 0 40px;
+			}
+
+			.menu-forum:hover {
+				background-position: -573px -158px;
+				}
+
+		.menu-store {
+			width: 87px;
+			background-position: 0 40px;
+			}
+
+			.menu-store:hover {
+				background-position: -667px -158px;
+				}
+			
+		.menu-contact {
+			width: 110px;
+			background-position: 0 40px;
+			}
+			
+			.menu-contact:hover {
+				background-position: -754px -158px;
+				}
+
+/* THE MENU */
+
+#menubar {
+	width: 900px;
+	height: 25px;
+	margin: 0 auto;
+	background: #000;
+	}
+
+#menunav {
+	margin: 0;
+	padding: 1px 0 0 0;
+	float: right;
+	font-size: 19px;
+	}
+
+	#menunav a  {
+		margin: 0 1px 0 0;
+		color: #aaa;
+		text-decoration: none;
+		background: #222;
+		-moz-border-radius: 10px;
+		-khtml-border-radius: 10px;	
+		-webkit-border-radius: 10px;
+		border-radius: 10px;
+		}
+
+		#menunav a:hover {
+			color: #fff;
+			background: #555;
+			} 
+		
+		.prev {
+			padding: 0 2px 0 0;
+			}
+		
+		.next {
+			padding: 0 0 0 2px;
+			}
+  
+#menu {
+	color: #999;
+	font-size: 12px;
+	text-transform: uppercase;
+	}
+
+	#menu ul {
+		margin: 0;		
+		padding: 0;
+		list-style: none;	
+		}
+
+	#menu li {
+ 		margin: 0;
+ 		padding: 0;
+ 		float: left;
+		}
+
+	#menu li a {
+		height: 25px;
+		padding: 0 5px 0 5px;
+		display: block;
+		float: left;
+		color: #aaa;
+		line-height: 25px;
+		text-decoration: none;
+		border-width: 0 1px 0 0;
+		border-style: solid;
+		border-color: #aaa;
+		}
+
+	#menu li a:hover {
+		color: #fff;
+		background: #333;
+		}
+
+
+#content-wrapper {
+	padding: 0;
+}
+
+/* Comic */
+
+#comic-head, #comic, #comic-foot {
+	background: #fff;
+	border: 0;
+}
+
+#comic-foot {
+	border-bottom: 30px solid #5e6f29;
+}
+
+#subcontent-wrapper {
+		background: #9bae5f;
+		padding: 5px 0;
+}
+
+.narrowcolumn {
+	width: 470px;
+}
+
+/* CALENDAR */
+
+#wp-calendar-wrap {
+	background-color: transparent;
+	border: 0;
+}
+
+#wp-calendar-wrap img {
+	border: solid 1px #5d2d29;
+	width: 163px;
+}
+
+table#wp-calendar td {
+	border: 1px solid #5E6F29;
+}
+
+#wp-calendar th {
+	color: #5e6f29;
+	}
+
+#wp-calendar caption {
+	color: #5e6f29;
+	font-size: 20px;
+	}
+
+#wp-calendar td {
+	border: 1px solid #5E6F29;
+	font-size: 12px;
+	}
+
+#wp-calendar a {
+	color: #fff;
+	background: #5e6f29;	
+	}
+	
+	#wp-calendar a:hover {
+		color: #fff;
+		background: #572b2a;
+		}
+		
+
+/* Sidebar */
+
+.sidebar ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	}
+
+	.sidebar ul li {
+		padding: 0;
+		}
+
+		.sidebar ul li ul li {
+			padding: 0;
+			}
+
+			.sidebar ul li ul li a {
+				color: #000;
+				text-decoration: none;
+				}
+
+				.sidebar ul li ul li a:hover {
+					color: #000;
+					background: #d6e1b4;
+					}
+
+.sidebar-earl a {
+	width: 192px;
+	height: 192px;
+	display: block;
+	color: #9bae5f;
+	background: url('earl-extras.jpg') no-repeat;
+	}
+	
+	.sidebar-earl a:hover {
+		color: #9bae5f;
+		background-position: 0 -192px;
+		}
+	
+.sidebar-extras a {
+	width: 192px;
+	height: 154px;
+	line-height: 154px;
+	display: block;
+	color: #9bae5f;
+	background: url('earl-extras.jpg') 0 -384px no-repeat;
+	}
+
+	.sidebar-extras a:hover {
+		color: #9bae5f;
+		background-position: 0 -538px;
+		}
+
+
+/* THE FOOTER */
+
+#footer {
+	width: 900px;
+	margin: 0px auto;
+	padding: 20px 0;	
+	color: #9bae5f;
+	text-align: center;
+	background: #5e6f29;
+	}
+
+	#footer a {
+		color: #fff;
+		text-decoration: none;
+		border: none;
+		}
+
+	#footer a:hover {
+		border-bottom: 1px dotted #fff;
+		}
+
+#footer-ad {
+	width: 900px;
+	margin: 0 auto;
+	padding: 30px 0;
+	text-align: center;
+	}

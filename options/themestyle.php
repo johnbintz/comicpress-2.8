@@ -22,11 +22,12 @@
 					<td valign="top">
 						<label>
 							<select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" class="code" onchange="showimage(this,'cpthemestyle')">
-								<option class="level-0" value="standard" <?php if (get_option($value['id'])=='standard') {?>selected="selected" <?php } ?>>Standard</option>
-								<option class="level-0" value="3c" <?php if (get_option($value['id'])=='3c') {?>selected="selected" <?php } ?>>3-Column</option>
-								<option class="level-0" value="gn" <?php if (get_option($value['id'])=='gn') {?>selected="selected" <?php } ?>>Graphic Novel</option>
-								<option class="level-0" value="v" <?php if (get_option($value['id'])=='v') {?>selected="selected" <?php } ?>>Vertical</option>
-								<option class="level-0" value="v3c" <?php if (get_option($value['id'])=='v3c') {?>selected="selected" <?php } ?>>Vertical 3-Column</option>
+								<option class="level-0" value="standard" <?php if (get_option($value['id'])=='standard') { ?>selected="selected" <?php } ?>>Standard</option>
+								<option class="level-0" value="3c" <?php if (get_option($value['id'])=='3c') { ?>selected="selected" <?php } ?>>3-Column</option>
+								<option class="level-0" value="gn" <?php if (get_option($value['id'])=='gn') { ?>selected="selected" <?php } ?>>Graphic Novel</option>
+								<option class="level-0" value="rgn" <?php if (get_option($value['id'])=='rgn') { ?>selected="selected" <?php } ?>>R Graphic Novel</option>
+								<option class="level-0" value="v" <?php if (get_option($value['id'])=='v') { ?>selected="selected" <?php } ?>>Vertical</option>
+								<option class="level-0" value="v3c" <?php if (get_option($value['id'])=='v3c') { ?>selected="selected" <?php } ?>>Vertical 3-Column</option>
 							</select>
 						</label>
 					</td>

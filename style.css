@@ -174,7 +174,7 @@ h3, h3 a {
 /* Change this width to set the entire site's width - increase/reduce #content width by the same amount */
 
 /* Maintains the #page and #pagewide width after padding is set */
-#page-wrap {
+#page-wrap, #page-wrap-wide {
 }
 
 #page {

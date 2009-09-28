@@ -17,10 +17,16 @@
   ?></title>
 	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type') ?>; charset=<?php bloginfo('charset') ?>" />
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url') ?>" type="text/css" media="screen" />
-<?php global $graphicnav_directory; if (file_exists(get_template_directory() . '/images/nav/' .$graphicnav_directory. '/navstyle.css')) { ?>
-	<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory') ?>/images/nav/<?php echo $graphicnav_directory; ?>/navstyle.css" type="text/css" media="screen" />
-<?php } ?>
-<?php global $themepack_directory;
+<?php global $graphicnav_directory, $themepack_directory; 
+	if ($graphicnav_directory == 'themepack') { ?>
+<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory') ?>/themepack/<?php echo $themepack_directory; ?>/nav/navstyle.css" type="text/css" media="screen" />
+	<?php } else { 
+		if (file_exists(get_template_directory() . '/images/nav/' .$graphicnav_directory. '/navstyle.css')) { ?>
+<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory') ?>/images/nav/<?php echo $graphicnav_directory; ?>/navstyle.css" type="text/css" media="screen" />
+		<?php } 
+	}
+?>
+<?php 
 	if ($themepack_directory != 'none') { ?>
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/themepack/<?php echo $themepack_directory; ?>/style.css" type="text/css" media="screen" />
 <?php } ?>
@@ -44,11 +50,11 @@
 
 <?php if ($disable_page_restraints != 'yes') {
 	if (is_cp_theme_layout('standard,v')) { ?>
-	<div id="page-wrap"><!-- Wraps outside the site width -->
-		<div id="page"><!-- Defines entire site width - Ends in Footer -->
+	<div id="page"><!-- Wraps outside the site width -->
+		<div id="page-wrap"><!-- Defines entire site width - Ends in Footer -->
 <?php } else { ?>
-	<div id="page-wrap-wide">
-		<div id="page-wide">
+	<div id="page-wide">
+		<div id="page-wrap-wide">
 	<?php } 
 } ?>
 

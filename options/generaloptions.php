@@ -86,12 +86,20 @@
 				$count = count($results = glob(get_template_directory() . '/images/nav/'.$current_gnav_directory.'/*'));
 				$gnav_directories = glob(get_template_directory() . '/images/nav/*');
 				
+				$themepack_directory = get_option('comicpress-themepack_directory');
+				if (!empty($themepack_directory) && $themepack_directory != 'none') {
+					if (file_exists(get_template_directory().'/themepack/'.$themepack_directory.'/nav/navstyle.css')) $themepacknav = 1;
+				}
+					
 			?>
 				<tr>
 				<th scope="row"><strong>Graphic Navigation Directory</strong><br /><br />Choose a directory to get the graphic navigation styling from.<br /></th>
 				<td valign="top">
 					<label>
 						<select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
+						<?php if ($themepacknav) { ?>
+							<option class="level-0" value="themepack" <?php if ($current_gnav_directory == "themepack") { ?>selected="selected"<?php } ?>>ThemePack (<?php echo $themepack_directory; ?>)</option>
+						<?php } ?>
 				<?php
 					foreach ($gnav_directories as $gnav_dirs) {
 						if (is_dir($gnav_dirs)) { 
