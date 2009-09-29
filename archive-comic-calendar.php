@@ -86,23 +86,47 @@ foreach ( $years as $year ) {
 		</div>
 		<div class="cpcal-cals">
 		<?php $i=1; while($i<=12) { 
-			$calendar_directory = get_option('comicpress-calendar_directory'); 
+			$calendar_directory = get_option('comicpress-calendar_directory');
+			$themepack_directory = get_option('comicpress-themepack_directory');
 			if (!empty($calendar_directory) && $calendar_directory != 'none') { ?>
 				<div class="cpcal-month" style="height: 257px;" id="<?php echo $month[$i]['month'] ?>">
-				<?php if (file_exists(get_template_directory().'/images/cal/'.$calendar_directory.'/'.$archive_year)) { ?>
-					<?php if (count($monthfile = glob(get_template_directory().'/images/cal/'.$calendar_directory.'/'.$archive_year.'/'.strtolower($month[$i]['month']).'.*')) > 0) { 
-						if (is_array($monthfile)) $monthfile = reset($monthfile); ?>
-						<img class="cpcal-image" src="<?php bloginfo('stylesheet_directory'); ?>/images/cal/<?php echo $calendar_directory; ?>/<?php echo $archive_year; ?>/<?php echo basename($monthfile); ?>" alt="<?php echo $month[$i]['month'] ?>" title="<?php echo $month[$i]['month'] ?>" />
+				<?php if ($calendar_directory == 'themepack') { ?>
+
+					<?php if (file_exists(get_template_directory().'/themepack/'.$themepack_directory.'/cal/'.$archive_year)) { ?>
+						<?php if (count($monthfile = glob(get_template_directory().'/themepack/'.$themepack_directory.'/cal/'.$archive_year.'/'.strtolower($month[$i]['month']).'.*')) > 0) { 
+							if (is_array($monthfile)) $monthfile = reset($monthfile); ?>
+							<img class="cpcal-image" src="<?php bloginfo('stylesheet_directory'); ?>/themepack/<?php echo $themepack_directory; ?>/cal/<?php echo $archive_year; ?>/<?php echo basename($monthfile); ?>" alt="<?php echo $month[$i]['month'] ?>" title="<?php echo $month[$i]['month'] ?>" />
+						<?php } else { ?>
+							<img class="cpcal-image" src="<?php bloginfo('stylesheet_directory'); ?>/images/cal/default.png" alt="<?php echo $month[$i]['month'] ?>" title="<?php echo $month[$i]['month'] ?>" />
+						<?php } ?>
 					<?php } else { ?>
-						<img class="cpcal-image" src="<?php bloginfo('stylesheet_directory'); ?>/images/cal/default.png" alt="<?php echo $month[$i]['month'] ?>" title="<?php echo $month[$i]['month'] ?>" />
-					<?php } ?>
+						<?php if (count($monthfile = glob(get_template_directory().'/themepack/'.$themepack_directory.'/cal/'.strtolower($month[$i]['month']).'.*')) > 0) { 
+							if (is_array($monthfile)) $monthfile = reset($monthfile); ?>
+							<img class="cpcal-image" src="<?php bloginfo('stylesheet_directory'); ?>/themepack/<?php echo $themepack_directory; ?>/cal/<?php echo basename($monthfile); ?>" alt="<?php echo $month[$i]['month'] ?>" title="<?php echo $month[$i]['month'] ?>" />				
+						<?php } else { ?>
+							<img class="cpcal-image" src="<?php bloginfo('stylesheet_directory'); ?>/images/cal/default.png" alt="<?php echo $month[$i]['month'] ?>" title="<?php echo $month[$i]['month'] ?>" />
+						<?php } ?>
+					<?php } ?>			
+				
 				<?php } else { ?>
-					<?php if (count($monthfile = glob(get_template_directory().'/images/cal/'.$calendar_directory.'/'.strtolower($month[$i]['month']).'.*')) > 0) { 
-						if (is_array($monthfile)) $monthfile = reset($monthfile); ?>
-						<img class="cpcal-image" src="<?php bloginfo('stylesheet_directory'); ?>/images/cal/<?php echo $calendar_directory; ?>/<?php echo basename($monthfile); ?>" alt="<?php echo $month[$i]['month'] ?>" title="<?php echo $month[$i]['month'] ?>" />				
+				
+
+					<?php if (file_exists(get_template_directory().'/images/cal/'.$calendar_directory.'/'.$archive_year)) { ?>
+						<?php if (count($monthfile = glob(get_template_directory().'/images/cal/'.$calendar_directory.'/'.$archive_year.'/'.strtolower($month[$i]['month']).'.*')) > 0) { 
+							if (is_array($monthfile)) $monthfile = reset($monthfile); ?>
+							<img class="cpcal-image" src="<?php bloginfo('stylesheet_directory'); ?>/images/cal/<?php echo $calendar_directory; ?>/<?php echo $archive_year; ?>/<?php echo basename($monthfile); ?>" alt="<?php echo $month[$i]['month'] ?>" title="<?php echo $month[$i]['month'] ?>" />
+						<?php } else { ?>
+							<img class="cpcal-image" src="<?php bloginfo('stylesheet_directory'); ?>/images/cal/default.png" alt="<?php echo $month[$i]['month'] ?>" title="<?php echo $month[$i]['month'] ?>" />
+						<?php } ?>
 					<?php } else { ?>
-						<img class="cpcal-image" src="<?php bloginfo('stylesheet_directory'); ?>/images/cal/default.png" alt="<?php echo $month[$i]['month'] ?>" title="<?php echo $month[$i]['month'] ?>" />
+						<?php if (count($monthfile = glob(get_template_directory().'/images/cal/'.$calendar_directory.'/'.strtolower($month[$i]['month']).'.*')) > 0) { 
+							if (is_array($monthfile)) $monthfile = reset($monthfile); ?>
+							<img class="cpcal-image" src="<?php bloginfo('stylesheet_directory'); ?>/images/cal/<?php echo $calendar_directory; ?>/<?php echo basename($monthfile); ?>" alt="<?php echo $month[$i]['month'] ?>" title="<?php echo $month[$i]['month'] ?>" />				
+						<?php } else { ?>
+							<img class="cpcal-image" src="<?php bloginfo('stylesheet_directory'); ?>/images/cal/default.png" alt="<?php echo $month[$i]['month'] ?>" title="<?php echo $month[$i]['month'] ?>" />
+						<?php } ?>
 					<?php } ?>
+					
 				<?php } ?>
 			<?php } else { ?>
 					<div class="cpcal-month" style="height: 137px;" id="<?php echo $month[$i]['month'] ?>">

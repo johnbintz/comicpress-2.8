@@ -5,7 +5,7 @@
 	<?php
 		global $archive_display_order;
 		if (empty($archive_display_order)) $archive_display_order = 'desc';
-		$tmp_search = new WP_Query($query_string.'&order='.$archive_display_order.'&show_posts=-1&posts_per_page=-1&cat=-'.$members_post_category);
+		$tmp_search = new WP_Query($query_string.'&order='.$archive_display_order.'&show_posts=-1&posts_per_page=-1');
 		$count = $tmp_search->post_count;
 	?>
 		<?php if (!$count) $count = "no"; ?>

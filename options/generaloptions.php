@@ -127,6 +127,11 @@
 				$count = count($results = glob(get_template_directory() . '/images/cal/'.$current_cal_directory.'/*'));
 				$cal_directories = glob(get_template_directory() . '/images/cal/*');
 				
+				$themepack_directory = get_option('comicpress-themepack_directory');
+				if (!empty($themepack_directory) && $themepack_directory != 'none') {
+					if (file_exists(get_template_directory().'/themepack/'.$themepack_directory.'/cal')) $themepackcal = 1;
+				}
+				
 			?>
 				<tr>
 				<th scope="row"><strong>Calendar Directory</strong><br /><br />Choose a directory to get the Archive Calendar styling from.<br /></th>
@@ -134,6 +139,9 @@
 					<label>
 						<select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
 						<option class="level-0" value="none" <?php if ($current_cal_directory == "none") { ?>selected="selected"<?php } ?>>none</option>
+						<?php if ($themepackcal) { ?>
+							<option class="level-0" value="themepack" <?php if ($current_cal_directory == "themepack") { ?>selected="selected"<?php } ?>>ThemePack (<?php echo $themepack_directory; ?>)</option>
+						<?php } ?>
 				<?php
 					foreach ($cal_directories as $cal_dirs) {
 						if (is_dir($cal_dirs)) { 
