@@ -20,15 +20,15 @@
 
 		<?php $wp_query ->in_the_loop = true; $comicFrontpage = new WP_Query(); $comicFrontpage->query('showposts=1&cat='.get_all_comic_categories_as_cat_string());
 		while ($comicFrontpage->have_posts()) : $comicFrontpage->the_post() ?>	
-
-			<div id="comic-head"><?php get_sidebar('over'); ?></div>
-			<div class="clear"></div>
-			<?php get_sidebar('comicleft'); ?>
-			<div id="comic"><?php display_comic(); ?></div>
-			<?php get_sidebar('comicright'); ?>
-			<div class="clear"></div>
-			<div id="comic-foot"><?php get_sidebar('under'); ?></div>
-			
+			<?php if (comicpress_check_themepack_file('displaycomic.php') == false) { ?>
+				<div id="comic-head"><?php get_sidebar('over'); ?></div>
+				<div class="clear"></div>
+				<?php get_sidebar('comicleft'); ?>
+				<div id="comic"><?php display_comic(); ?></div>
+				<?php get_sidebar('comicright'); ?>
+				<div class="clear"></div>
+				<div id="comic-foot"><?php get_sidebar('under'); ?></div>
+			<?php } ?>
 		<?php endwhile; ?>
 		
 	<?php } ?>

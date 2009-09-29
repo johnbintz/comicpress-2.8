@@ -171,6 +171,20 @@
 				</tr>
 				
 				<?php break;
+			case "comicpress-blogposts_with_comic": ?>
+				<tr>
+				<th scope="row"><strong>Show all posts on the same day while viewing single comics?</strong><br /><br /></th>
+				<td valign="top">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> />Yes</label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> />No</label>
+				</td>
+				<td valign="top">
+				All the blog posts that are on the same day as the comic your viewing will appear.
+				</td>
+				</tr>
+				
+				<?php break;
 		}
 	}
 	?>

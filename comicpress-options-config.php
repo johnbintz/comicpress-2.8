@@ -249,7 +249,11 @@ $options = array (
 			"default" => "",
 			"type" => "comicpress-members_post_category"),
 			
-
+		array(
+			"id" => "comicpress-blogposts_with_comic",
+			"default" => "no",
+			"type" => "comicpress-blogposts_with_comic"),
+			
 		array("type" => "close")
 		);
 ?>

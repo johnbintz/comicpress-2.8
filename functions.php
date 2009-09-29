@@ -88,7 +88,8 @@ if (get_option('upload_path') !== false) {
 				'excerpt_or_content_archive'	=> 'excerpt_or_content_archive',
 				'excerpt_or_content_search'		=> 'excerpt_or_content_search',
 				'category_thumbnail_postcount'	=> 'category_thumbnail_postcount',
-				'members_post_category'			=> 'members_post_category' ) as $options => $variable_name) {
+				'members_post_category'			=> 'members_post_category',
+				'blogposts_with_comic'				=> 'blogposts_with_comic' ) as $options => $variable_name) {
 		$variables_to_extract[$variable_name] = get_option("comicpress-${options}");
 	}
 	

@@ -16,15 +16,15 @@
 
 	<?php while (have_posts()) : the_post(); 
 		if (in_comic_category()) { ?>
-	
-			<div id="comic-head"><?php get_sidebar('over'); ?></div>
-			<div class="clear"></div>
-			<?php get_sidebar('comicleft'); ?>
-			<div id="comic"><?php display_comic(); ?></div>
-			<?php get_sidebar('comicright'); ?>
-			<div class="clear"></div>
-			<div id="comic-foot"><?php get_sidebar('under'); ?></div>
-		
+			<?php if (comicpress_check_themepack_file('displaycomic.php') == false) { ?>
+				<div id="comic-head"><?php get_sidebar('over'); ?></div>
+				<div class="clear"></div>
+				<?php get_sidebar('comicleft'); ?>
+				<div id="comic"><?php display_comic(); ?></div>
+				<?php get_sidebar('comicright'); ?>
+				<div class="clear"></div>
+				<div id="comic-foot"><?php get_sidebar('under'); ?></div>
+			<?php } ?>
 	<?php } endwhile; ?>
 	
 <?php if (is_cp_theme_layout('3c,v')) {  ?>
@@ -48,21 +48,48 @@
 		</div>
 	<?php } ?>
 	<?php get_sidebar('blog'); ?>	
-	<?php if (have_posts()) : while (have_posts()) : the_post();
+<?php if (have_posts()) : while (have_posts()) : the_post();
 		if (in_comic_category()) {
 			global $disable_comic_blog_frontpage;
 			if ($disable_comic_blog_frontpage != 'yes') {
 				display_comic_post();
+				$cur_date = mysql2date('Y-m-j', $post->post_date);
+				$next_comic = get_next_comic();
+				$next_comic = (array)$next_comic;
+				$next_date = mysql2date('Y-m-j', $next_comic['post_date']);
+				$blog_query = 'showposts='.$blog_postcount.'&order=asc&cat=-'.exclude_comic_categories();
 			}
 		} else { 
 			display_blog_post();			
 		} 
-		comments_template('', true); ?>
+	endwhile; 
+	
+		global $blogposts_with_comic;
 		
-		<center>
-			<?php get_sidebar('underblog'); ?>
-		</center>		
-	<?php endwhile; else: ?>
+	if ($blogposts_with_comic == 'yes') {
+		
+		$temppost = $post;
+		$temp_query = $wp_query;		
+		
+		if (in_comic_category() && !empty($blog_query)) {
+			function filter_where($where = '') {
+				global $cur_date, $next_date;
+				$where .= " AND post_date >= '".$cur_date."' AND post_date < '".$next_date."'";
+				return $where;
+			}
+			add_filter('posts_where', 'filter_where');
+			$posts = query_posts($blog_query);
+			if (have_posts()) { while (have_posts()) : the_post();
+					display_blog_post();
+			endwhile; }
+		} 
+		$post = $temppost; $wp_query = $temp_query; $temppost = null; $temp_query = null;
+		} ?>
+	
+		<?php comments_template('', true); ?>		
+		<?php get_sidebar('underblog'); ?>	
+	<?php else: ?>
+		
 	<div class="<?php comicpress_post_class(); ?>">
 		<div class="post-head"></div>
 		<div class="post">
@@ -71,9 +98,9 @@
 		</div>
 		<div class="post-foot"></div>
 	</div>
+	
 	<?php endif; ?>
 	
-		<?php get_sidebar('underblog'); ?>
 		</div>
 	</div>
 
