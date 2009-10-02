@@ -1,5 +1,13 @@
 <?php
 
+load_theme_textdomain( 'comicpress', get_template_directory().'/languages' );
+
+$locale = get_locale();
+$locale_file = get_template_directory()."/languages/$locale.php";
+if (file_exists($locale_file)) require_once($locale_file);
+
+
+
 // remove intense debates control over the comment numbers
 if (function_exists('id_get_comment_number')) {
 	remove_filter('comments_number','id_get_comment_number');
@@ -697,19 +705,19 @@ add_filter('the_content','insert_comic_feed');
 // Register Sidebar and Define Widgets
 	
 if ( function_exists('register_sidebar') ) {
-	register_sidebar(array('name'=>'Left Sidebar','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>'Right Sidebar','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>'Above Header','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>'Header','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>'Menubar','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>'Over Comic','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>'Left of Comic','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>'Right of Comic','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>'Under Comic','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>'Over Blog','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>'Blog','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>'Under Blog','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>'Footer','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
+	register_sidebar(array('name'=>__('Left Sidebar','comicpress'),'before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
+	register_sidebar(array('name'=>__('Right Sidebar','comicpress'),'before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
+	register_sidebar(array('name'=>__('Above Header','comicpress'),'before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
+	register_sidebar(array('name'=>__('Header','comicpress'),'before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
+	register_sidebar(array('name'=>__('Menubar','comicpress'),'before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
+	register_sidebar(array('name'=>__('Over Comic','comicpress'),'before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
+	register_sidebar(array('name'=>__('Left of Comic','comicpress'),'before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
+	register_sidebar(array('name'=>__('Right of Comic','comicpress'),'before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
+	register_sidebar(array('name'=>__('Under Comic','comicpress'),'before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
+	register_sidebar(array('name'=>__('Over Blog','comicpress'),'before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
+	register_sidebar(array('name'=>__('Blog','comicpress'),'before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
+	register_sidebar(array('name'=>__('Under Blog','comicpress'),'before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
+	register_sidebar(array('name'=>__('Footer','comicpress'),'before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
 }     
 
 function storyline_category_list() {

@@ -11,8 +11,8 @@ function display_blog_post() {
 	<?php if (is_single()) { ?>
 		<div class="blognav">
 				<div class="nav-single">
-					<?php previous_post_link('%link','Previous', TRUE); ?>
-					<?php next_post_link('%link','Next', TRUE); ?>
+					<?php previous_post_link('%link',__('Previous','comicpress'), TRUE); ?>
+					<?php next_post_link('%link',__('Next','comicpress'), TRUE); ?>
 				</div>
 		</div>
 	<?php } ?>
@@ -34,7 +34,7 @@ function display_blog_post() {
 						<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
 						<small> By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?> <?php edit_post_link('Edit Post', ' [ ', ' ] '); ?></small><br />
 						<?php if ($disable_categories_in_posts != 'yes') { ?>
-							<small> Posted In: <?php the_category(','); ?></small><br />
+							<small><?php _e('Posted In:','comicpress'); ?> <?php the_category(','); ?></small><br />
 						<?php } ?>
 						<?php if(function_exists('the_ratings')) { the_ratings(); } ?>
 					</div>

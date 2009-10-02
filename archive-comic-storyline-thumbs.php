@@ -63,7 +63,7 @@ Template Name: Comic Storyline with Thumbs
 		}
 	}
 			} else { ?>
-				<li><h3>Storyline Support is not currently enabled on this site.</h3><br /><br /><strong>Note to the Administrator:</strong><br /> To enable storyline support and manage storyline categories make sure you are running the latest version of the <a href="http://wordpress.org/extend/plugins/comicpress-manager/">ComicPress Manager</a> plugin and check your storyline settings from it's administration menu.</h3></li>
+				<li><h3><?php _e('Storyline Support is not currently enabled on this site.','comicpress'); ?></h3><br /><br /><strong><?php _e('Note to the Administrator:','comicpress'); ?></strong><br /> <?php _e('To enable storyline support and manage storyline categories make sure you are running the latest version of the ','comicpress'); ?><a href="http://wordpress.org/extend/plugins/comicpress-manager/">ComicPress Manager</a> <?php _e('plugin and check your storyline settings from it\'s administration menu.','comicpress'); ?></h3></li>
 			<?php } ?>
 		</ul>
 		<br class="clear-margins" />

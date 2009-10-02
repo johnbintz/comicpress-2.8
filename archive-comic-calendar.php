@@ -53,18 +53,18 @@ function leapYear($yr) {
 }
 $leapYear = leapYear($archive_year);
 
-$month['1'] = array('month' => 'January', 'days' => '31');
-$month['2'] = array('month' => 'February', 'days' => $leapYear);
-$month['3'] = array('month' => 'March', 'days' => '31');
-$month['4'] = array('month' => 'April', 'days' => '30');
-$month['5'] = array('month' => 'May', 'days' => '31');
-$month['6'] = array('month' => 'June', 'days' => '30');
-$month['7'] = array('month' => 'July', 'days' => '31');
-$month['8'] = array('month' => 'August', 'days' => '31');
-$month['9'] = array('month' => 'September', 'days' => '30');
-$month['10'] = array('month' => 'October', 'days' => '31');
-$month['11'] = array('month' => 'November', 'days' => '30');
-$month['12'] = array('month' => 'December', 'days' => '31');
+$month['1'] = array('month' => __('January','comicpress'), 'days' => '31');
+$month['2'] = array('month' => __('February','comicpress'), 'days' => $leapYear);
+$month['3'] = array('month' => __('March','comicpress'), 'days' => '31');
+$month['4'] = array('month' => __('April','comicpress'), 'days' => '30');
+$month['5'] = array('month' => __('May','comicpress'), 'days' => '31');
+$month['6'] = array('month' => __('June','comicpress'), 'days' => '30');
+$month['7'] = array('month' => __('July','comicpress'), 'days' => '31');
+$month['8'] = array('month' => __('August','comicpress'), 'days' => '31');
+$month['9'] = array('month' => __('September','comicpress'), 'days' => '30');
+$month['10'] = array('month' => __('October','comicpress'), 'days' => '31');
+$month['11'] = array('month' => __('November','comicpress'), 'days' => '30');
+$month['12'] = array('month' => __('December','comicpress'), 'days' => '31');
 
 ?>
 <div class="<?php comicpress_post_class(); ?>">

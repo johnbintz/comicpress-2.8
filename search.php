@@ -7,8 +7,9 @@ $tmp_search = new WP_Query($query_string.'&order=desc&show_posts=-1&posts_per_pa
 $count = $tmp_search->post_count;
 			?>
 		<?php if (!$count) $count = "no"; ?>
-		<div class="searchresults">Found <?php echo $count; ?> result<?php if ($count !== 1) { echo "s"; } ?>.</div>
-		<h2 class="pagetitle">Search for &lsquo;<?php the_search_query() ?>&rsquo;</h2>
+		
+		<div class="searchresults"><?php printf(__ngettext("Found %d result.", "Found %d results.", $count,'comicpress'),$count); ?></div>
+		<h2 class="pagetitle"><?php _e('Search for &lsquo;','comicpress'); the_search_query(); _e('&rsquo;','comicpress'); ?></h2>
     
   <?php if (have_posts()) : ?>
     
@@ -32,7 +33,7 @@ $count = $tmp_search->post_count;
 					<?php } ?>
 					<div class="post-text">
 						<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
-						<small> By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?> <?php edit_post_link('Edit Post', ' [ ', ' ] '); ?></small><br />
+						<small> <?php _e('By','comicpress'); ?> <?php the_author_posts_link(); ?> <?php _e('on','comicpress'); ?> <?php the_time('F jS, Y'); ?> <?php edit_post_link('Edit Post', ' [ ', ' ] '); ?></small><br />
 					</div>
 					<div class="clear"></div>
 				</div>
@@ -61,12 +62,12 @@ $count = $tmp_search->post_count;
 					<?php } ?>
 					<div class="post-text">
 						<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
-						<small> By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?> <?php edit_post_link('Edit Post', ' [ ', ' ] '); ?></small><br />
+						<small> <?php _e('By','comicpress'); ?> <?php the_author_posts_link(); ?> <?php _e('on','comicpress'); ?> <?php the_time('F jS, Y'); ?> <?php edit_post_link('Edit Post', ' [ ', ' ] '); ?></small><br />
 						<?php if ($disable_categories_in_posts != 'yes') { ?>
-							<?php if (is_page()) { ?>
-								<small>This is a page.</small><break />
+							<?php if ($post->post_type == 'page') { ?>
+								<small><?php _e('This is a page.','comicpress'); ?></small><break />
 							<?php } else { ?>
-								<small> Posted In: <?php the_category(','); ?></small><br />
+								<small><?php _e('Posted In:','comicpress'); ?> <?php the_category(','); ?></small><br />
 							<?php } ?>
 						<?php } ?>
 						<?php if(function_exists('the_ratings')) { the_ratings(); } ?>
@@ -75,14 +76,14 @@ $count = $tmp_search->post_count;
 				</div>
 					<?php global $excerpt_or_content_search; 
 					if ($excerpt_or_content_search != 'excerpt') {
-						the_content('&darr; Read the rest of this entry...');
+						the_content(__('&darr; Read the rest of this entry...','comicpress'));
 					} else { 
 						the_excerpt();
 					} ?>
 				<br class="clear-margins" />
 				<div class="post-extras">
 					<div class="tags">
-						<?php the_tags('&#9492; Tags: ',',','<br />');?>
+						<?php the_tags(__('&#9492; Tags:','comicpress'),', ','<br />'); ?>
 					</div>
 					<div class="clear"></div>
 				</div>
@@ -97,8 +98,8 @@ $count = $tmp_search->post_count;
 		<div class="<?php comicpress_post_class(); ?>">
 			<div class="post-page-head"></div>
 			<div class="post-page">
-				<h3>No entries found.</h3>
-				<p>Try another search?</p>
+				<h3><?php _e('No entries found.','comicpress'); ?></h3>
+				<p><?php _e('Try another search?','comicpress'); ?></p>
 				<p><?php include (get_template_directory() . '/searchform.php') ?></p>
 				<br class="clear-margins" />
 			</div>

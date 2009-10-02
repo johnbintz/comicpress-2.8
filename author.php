@@ -9,7 +9,7 @@
 		$curauth = get_userdata(get_query_var('author'));
 	}
 		if (empty($curauth)) { ?>
-			<h2>No such author.</h2>
+			<h2><?php _e('No such author.','comicpress'); ?></h2>
 		<?php } else { ?>
 		<div class="<?php comicpress_post_class(); ?>">
 			<div class="post-page-head"></div>
@@ -20,7 +20,7 @@
 					<div class="userpage-info">
 						<div class="userpage-bio">
 							<h2><?php echo $curauth->display_name; ?></h2>
-							Registered on <?php echo date('l \\t\h\e jS \o\f M, Y',strtotime($curauth->user_registered)); ?><br />
+							<?php _e('Registered on','comicpress'); ?> <?php echo date('l \\t\h\e jS \o\f M, Y',strtotime($curauth->user_registered)); ?><br />
 							<br />
 							<?php if (!empty($curauth->user_url)) { ?>Website: <a href="<?php echo $curauth->user_url; ?>" target="_blank"><?php echo $curauth->user_url; ?></a><br /><?php } ?>
 							<?php if (!empty($curauth->aim)) { ?>AIM: <a href="<?php echo $curauth->user_aim; ?>" target="_blank"><?php echo $curauth->aim; ?></a><br /><?php } ?>
@@ -37,7 +37,7 @@
 					<div class="clear"></div>
 					<div class="userpage-posts">
 						<?php if (have_posts()) { ?>
-							<h3>Posts by <?php echo $curauth->nickname; ?> (<?php echo get_usernumposts($curauth->ID); ?>) &not;</h3>
+							<h3><?php _e('Posts by','comicpress'); ?> <?php echo $curauth->nickname; ?> (<?php echo get_usernumposts($curauth->ID); ?>) &not;</h3>
 							<?php // this area is a loop that shows what posts the person has done. ?>
 							<ol>
 									<table class="month-table">

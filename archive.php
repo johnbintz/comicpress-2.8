@@ -24,19 +24,19 @@
 	
 			<?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
 			<?php /* Category Archive */ if (is_category()) { ?>
-				<div class="content"><h2 class="pagetitle">Archive for &#8216;<?php single_cat_title() ?>&#8217;</h2></div>
+				<div class="content"><h2 class="pagetitle"><?php _e('Archive for &#8216;','comicpress'); ?><?php single_cat_title() ?>&#8217;</h2></div>
 			<?php /* Tag Archive */ } elseif( is_tag() ) { ?>
-				<div class="content"><h2 class="pagetitle">Posts Tagged &#8216;<?php single_tag_title() ?>&#8217;</h2></div>
+				<div class="content"><h2 class="pagetitle"><?php _e('Posts Tagged &#8216;','comicpress'); ?><?php single_tag_title() ?>&#8217;</h2></div>
 			<?php /* Daily Archive */ } elseif (is_day()) { ?>
-				<div class="content"><h2 class="pagetitle">Archive for <?php the_time('F jS, Y') ?></h2></div>
+				<div class="content"><h2 class="pagetitle"><?php _e('Archive for','comicpress'); ?> <?php the_time('F jS, Y') ?></h2></div>
 			<?php /* Monthly Archive */ } elseif (is_month()) { ?>
-				<div class="content"><h2 class="pagetitle">Archive for <?php the_time('F, Y') ?></h2></div>
+				<div class="content"><h2 class="pagetitle"><?php _e('Archive for','comicpress'); ?> <?php the_time('F, Y') ?></h2></div>
 			<?php /* Yearly Archive */ } elseif (is_year()) { ?>
-				<div class="content"><h2 class="pagetitle">Archive for <?php the_time('Y') ?></h2></div>
+				<div class="content"><h2 class="pagetitle"><?php _e('Archive for','comicpress'); ?> <?php the_time('Y') ?></h2></div>
 			<?php /* Author Archive */ } elseif (is_author()) { ?>
-				<div class="content"><h2 class="pagetitle">Author Archive</h2></div>
+				<div class="content"><h2 class="pagetitle"><?php _e('Author Archive','comicpress'); ?></h2></div>
 			<?php /* Paged Archive */ } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) { ?>
-				<div class="content"><h2 class="pagetitle">Archives</h2></div>
+				<div class="content"><h2 class="pagetitle"><?php _e('Archives','comicpress'); ?></h2></div>
 			<?php } ?>
 			<br class="clear-margins" />
 		</div>
@@ -71,7 +71,14 @@
 							<?php } ?>
 							<div class="post-text">
 								<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
-								<small> By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?> <?php edit_post_link('Edit Post', ' [ ', ' ] '); ?></small><br />
+								<small> <?php _e('By','comicpress'); ?> <?php the_author_posts_link(); ?> <?php _e('on','comicpress'); ?> <?php the_time('F jS, Y'); ?> <?php edit_post_link('Edit Post', ' [ ', ' ] '); ?></small><br />
+								<?php if (get_option('comicpress-enable-storyline-support') == 1) { ?>
+									<ul class="storyline-cats"><li class="storyline-root"><?php the_category(' &raquo; </li><li>', multiple) ?></li></ul>
+								<?php } else { ?>
+									<?php if ($disable_categories_in_posts != 'yes') { ?>
+										<small> <?php _e('Posted In:','comicpress'); ?> <?php the_category(','); ?></small><br />
+									<?php } ?>
+								<?php } ?>
 								<?php if(function_exists('the_ratings')) { the_ratings(); } ?>
 							</div>
 							<div class="clear"></div>
@@ -99,9 +106,9 @@
 						<?php } ?>
 						<div class="post-text">
 							<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
-							<small> By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?> <?php edit_post_link('Edit Post', ' [ ', ' ] '); ?></small><br />
+							<small> <?php _e('By','comicpress'); ?> <?php the_author_posts_link(); ?> <?php _e('on','comicpress'); ?> <?php the_time('F jS, Y'); ?> <?php edit_post_link('Edit Post', ' [ ', ' ] '); ?></small><br />
 							<?php if ($disable_categories_in_posts != 'yes') { ?>
-								<small> Posted In: <?php the_category(','); ?></small><br />
+								<small> <?php _e('Posted In:','comicpress'); ?> <?php the_category(','); ?></small><br />
 							<?php } ?>
 							<?php if(function_exists('the_ratings')) { the_ratings(); } ?>
 						</div>
@@ -109,14 +116,14 @@
 					</div>
 				<?php global $excerpt_or_content_archive; 
 				if ($excerpt_or_content_archive != 'excerpt') {
-					the_content('&darr; Read the rest of this entry...');
+					the_content(__('&darr; Read the rest of this entry...','comicpress'));
 				} else { 
 					the_excerpt();
 						} ?>
 						<br class="clear-margins" />
 						<div class="post-extras">
 							<div class="tags">
-								<?php the_tags('&#9492; Tags: ',',','<br />');?>
+								<?php the_tags(__('&#9492; Tags:','comicpress'),'','','<br />'); ?>
 							</div>
 							<div class="clear"></div>
 						</div>

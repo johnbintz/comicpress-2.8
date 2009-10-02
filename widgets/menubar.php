@@ -46,11 +46,13 @@ global $contact_in_menubar,$enable_search_in_menubar,$enable_rss_in_menubar,$ena
 			<?php } ?>
 			</div>
 			<?php 
+			$linkcatid = get_term_by('name','menubar','link_category');
+			$linkcatid = $linkcatid->term_id;
 			$menulinks = wp_list_bookmarks('echo=0&title_li=&categorize=0&title_before=&title_after=&category_name=menubar');
 			$menulinks = preg_replace('#<li ([^>]*)>#', '<li class="page-item link">', $menulinks);
 			$menulinks = preg_replace('#<ul ([^>]*)>#', '', $menulinks);
 			$menulinks = str_replace('</ul>', '', $menulinks);
-			$bookmarks = wp_list_bookmarks('echo=0&title_li=&categorize=1&title_before=&title_after=&exclude_category=menubar'); 
+			$bookmarks = wp_list_bookmarks('echo=0&title_li=&categorize=1&title_before=&title_after=&exclude_category='.$linkcatid); 
 			$bookmarks = preg_replace('#<li ([^>]*)>#', '<li class="page-item link">', $bookmarks);
 			$bookmarks = preg_replace('#<ul ([^>]*)>#', '<ul>', $bookmarks); 
 			$listpages = '';

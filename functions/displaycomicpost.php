@@ -37,7 +37,7 @@ function display_comic_post() {
 					<ul class="storyline-cats"><li class="storyline-root"><?php the_category(' &raquo; </li><li>', multiple) ?></li></ul>
 				<?php } else { ?>
 					<?php if ($disable_categories_in_posts != 'yes') { ?>
-						<small> Posted In: <?php the_category(','); ?></small><br />
+						<small><?php _e('Posted In:','comicpress'); ?> <?php the_category(','); ?></small><br />
 					<?php } ?>
 				<?php } ?>
 				<?php if(function_exists('the_ratings')) { the_ratings(); } ?>

@@ -63,17 +63,16 @@
 <div id="subcontent-wrapper-head"></div>
 	<div id="subcontent-wrapper">
 <?php } ?>
-	
+
 	<?php get_sidebar('overblog'); ?>
-	
 	<?php if (is_cp_theme_layout('3c,rgn')) get_sidebar('left'); ?>
 
-	<?php if (!is_cp_theme_layout('v3c')) { ?>
+	<?php if (!is_cp_theme_layout('v3c,v')) { ?>
 		<div id="content" class="narrowcolumn">
 			<div class="column">	
-	<?php } 
-} 
-	if (function_exists('the_project_wonderful_ad')) { ?>
+	<?php } ?>
+<?php } ?>
+	<?php if (function_exists('the_project_wonderful_ad')) { ?>
 			<div class="blogpwad">
 				<center>
 				<?php the_project_wonderful_ad('blog'); ?>

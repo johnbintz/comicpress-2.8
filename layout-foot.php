@@ -8,7 +8,6 @@ if (is_cp_theme_layout('3c,v3c,gn,standard,v')) {
 <?php } ?>
 
 <?php if (is_cp_theme_layout('3c')) {  ?>
-		<div class="clear"></div>
 		<div id="subcontent-wrapper-bottom"></div>
 	</div>
 <?php } ?>
