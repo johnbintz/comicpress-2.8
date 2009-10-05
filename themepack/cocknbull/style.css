@@ -1,0 +1,68 @@
+/*
+ThemePack Name: CockNBull
+ThemePack URI: http://commpress.org
+Description: http://cocknbull.com/
+Author: Philip M. Hofer (Frumph)
+Author URI: http://frumph.net/
+Version: 0.1.0
+.
+The CSS, XHTML and design is released under GPL v3:
+http://www.opensource.org/licenses/gpl-3.0.html
+.
+*/
+
+/* STANDARD TAGS */
+body {
+	background: #fff url('background.jpg') top center no-repeat;
+}
+
+#page-wide {
+	width: 1000px;
+}
+
+#header {
+	background: url('header-logo.gif') top left no-repeat;
+	height: 100px;
+	text-indent: -9999px;
+}
+
+#comic {
+	float: left;
+}
+
+#sidebar-comicright {
+	float: right;
+	background: #ccc;
+	height: 300px;
+	width: 98px;
+	border: solid 1px #000;
+}
+
+#menubar {
+	padding: 2px;
+}
+
+#menu {
+	text-transform: uppercase;
+}
+
+.narrowcolumn {
+	width: 560px;
+}
+
+#sidebar-left, #sidebar-right {
+	padding: 5px 0;
+	background: #000;
+}
+
+.sidebar h2 a {
+	color: #fff;
+}
+
+.sidebar a {
+	color: #fff;
+}
+
+.sidebar a:hover {
+	color: #ff0000;
+}
