@@ -90,8 +90,8 @@ global $contact_in_menubar,$enable_search_in_menubar,$enable_rss_in_menubar,$ena
 class widget_comicpress_menubar extends WP_Widget {
 	
 	function widget_comicpress_menubar() {
-		$widget_ops = array('classname' => 'widget_comicpress_menubar', 'description' => 'Displays a menubar.' );
-		$this->WP_Widget('comicpress_menubar', 'Comicpress Menubar', $widget_ops);
+		$widget_ops = array('classname' => 'widget_comicpress_menubar', 'description' => __('Displays a menubar.','comicpress') );
+		$this->WP_Widget('comicpress_menubar', __('Comicpress Menubar','comicpress'), $widget_ops);
 	}
 	
 	function widget($args, $instance) {
@@ -115,7 +115,7 @@ class widget_comicpress_menubar extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '' ) );
 		$title = strip_tags($instance['title']);
 		?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>">Title: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:','comicpress'); ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
 		<?php
 	}
 }

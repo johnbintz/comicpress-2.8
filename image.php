@@ -9,7 +9,7 @@
 				<a href="<?php echo get_permalink($post->post_parent) ?>" rev="attachment"><?php echo get_the_title($post->post_parent) ?></a>
 			</h2>
 			<div class="gallery-image">
-				<a href="<?php echo wp_get_attachment_url($post->ID) ?>" target="_blank" title="Click for full size." ><img src="<?php echo wp_get_attachment_url($post->ID) ?>" alt="<?php the_title() ?>" /></a>
+				<a href="<?php echo wp_get_attachment_url($post->ID) ?>" target="_blank" title="<?php _e('Click for full size.','comicpress'); ?>" ><img src="<?php echo wp_get_attachment_url($post->ID) ?>" alt="<?php the_title() ?>" /></a>
 			</div>
 			<div class="gallery-caption">
 				<?php the_excerpt() ?>
@@ -28,7 +28,7 @@
 				</div>
 				<div class="imagenav-center">
 					<a href="<?php echo wp_get_attachment_url($post->ID) ?>" target="_blank" title="Click for full size." class="imagetitle"><?php the_title() ?></a><br />
-					<a href="<?php echo get_permalink($post->post_parent) ?>" rev="attachment">&larr; Back to Gallery</a>
+					<a href="<?php echo get_permalink($post->post_parent) ?>" rev="attachment"><?php _e('&larr; Back to Gallery','comicpress'); ?></a>
 				</div>
 				<div class="imagenav">
 					<div class="imagenav-bg">
@@ -55,7 +55,7 @@
 	<div class="<?php comicpress_post_class(); ?>">
 		<div class="post-page-head"></div>
 		<div class="post-page">
-			<p>Sorry, no image matched your criteria.</p>
+			<p><?php _e('Sorry, no image matched your criteria.','comicpress'); ?></p>
 			<br class="clear-margins" />
 		</div>
 		<div class="post-page-foot"></div>

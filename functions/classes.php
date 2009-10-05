@@ -116,16 +116,6 @@ function comicpress_post_class($class = '') {
 	if ( post_password_required() )
 		$classes[] = 'protected';
 
-	/* User-created classes. */
-	if ( !empty( $class ) ) :
-		if ( !is_array( $class ) )
-			$class = preg_split( '#\s+#', $class );
-		$classes = array_merge( $classes, $class );
-	endif;
-
-	/* Join all the classes into one string and echo them. */
-	$class = join( ' ', $classes );
-
 	echo apply_filters( 'comicpress_post_class', $class );
 }
 

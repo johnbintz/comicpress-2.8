@@ -52,7 +52,7 @@ Template Name: Comic Storyline Archive
 									<?php echo $description ?>
 								<?php } ?>
 								<?php if (!empty($first_comic_in_category)) { ?>
-									Begins with &ldquo;<a href="<?php echo $first_comic_permalink ?>"><?php echo $first_comic_in_category->post_title ?></a>&rdquo;.
+									<?php _e('Begins with &ldquo;','comicpress'); ?><a href="<?php echo $first_comic_permalink ?>"><?php echo $first_comic_in_category->post_title ?></a><?php _e('&rdquo;','comicpress'); ?>
 								<?php } ?>
 							</div>
 							<div class="storyline-foot"></div>

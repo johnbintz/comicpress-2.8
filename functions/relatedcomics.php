@@ -36,10 +36,10 @@ function related_comics_shortcode( $atts = '' ) {
 		$related = $wpdb->get_results($q);
 		if ( $related ) {
 			$retval = '
-<div class="related_posts">
-	Related Comics &not;';
+					<div class="related_posts">
+					'.__('Related Comics &not;','comicpress');
 			$retval .= '
-	<ul><li>';
+					<ul><li>';
 			$comic_categories = array();
 			foreach ($category_tree as $node) {
 				$comic_categories[] = end(explode("/", $node));
@@ -56,7 +56,7 @@ function related_comics_shortcode( $atts = '' ) {
 					</table>';
 		} else {
 			$retval .= '
-					<li>No related comics found</li>';
+					<li>'.__('No related comics found','comicpress').'</li>';
 		}
 		$retval .= '
 				</li></ul>';

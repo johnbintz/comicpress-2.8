@@ -47,7 +47,7 @@ function comicpress_members_filter($query) {
 
 function shortcode_for_comicpress_members_only( $atts, $content = null ) {
 	global $post, $userdata, $profileuser, $current_user, $errormsg;
-	$returninfo = '<div class="non-member">There is Members Only content here. To view this content you need to be a member of this site.</div>';
+	$returninfo = '<div class="non-member">'.__('There is Members Only content here. To view this content you need to be a member of this site.','comicpress').'</div>';
 	if ( !empty($current_user->ID) ) {
 		$is_member = get_usermeta($current_user->ID,'comicpress-is-member');
 		if ( ( $is_member == 'yes' ) ) {
@@ -62,16 +62,16 @@ function comicpress_profile_members_only() {
 	$comicpress_is_member = get_usermeta($profileuser->ID,'comicpress-is-member');
 	if (empty($comicpress_is_member)) $comicpress_is_member = 'no';
 	?>
-	<h3>Member of <?php bloginfo('name'); ?></h3>
+	<h3><?php _e('Member of','comicpress'); ?> <?php bloginfo('name'); ?></h3>
 	<table class="form-table">
 	<tr>
-		<th><label for="Memberflag">Member?</label></th>
+	<th><label for="Memberflag"><?php _e('Member?','comicpress'); ?></label></th>
 		<td> 
 		<?php 
 			if (current_user_can('manage_options')) { ?>
-		<label><input name="comicpress-is-member" id="comicpress-is-member-yes" type="radio" value="yes"<?php if ( get_usermeta($profileuser->ID,'comicpress-is-member') == "yes") { echo " checked"; } ?> />Yes</label>
+		<label><input name="comicpress-is-member" id="comicpress-is-member-yes" type="radio" value="yes"<?php if ( get_usermeta($profileuser->ID,'comicpress-is-member') == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;
-		<label><input  name="comicpress-is-member" id="comicpress-is-member-no" type="radio" value="no"<?php if ( get_usermeta($profileuser->ID,'comicpress-is-member') != "yes" ) { echo " checked"; } ?> />No</label>
+		<label><input  name="comicpress-is-member" id="comicpress-is-member-no" type="radio" value="no"<?php if ( get_usermeta($profileuser->ID,'comicpress-is-member') != "yes" ) { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label>
 
 			<?php } else {
 				if ($comicpress_is_member == 'yes') { 

@@ -8,7 +8,7 @@
 		switch ( $value['type'] ) {
 			case "comicpress-excerpt_or_content_archive": ?>
 				<tr>
-				<th scope="row"><strong>Would you like to have users see the entire content or just an excerpt when viewing the archives?</strong><br /><br /></th>
+				<th scope="row"><strong><?php _e('Would you like to have users see the entire content or just an excerpt when viewing the archives?','comicpress'); ?></strong><br /><br /></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-excerpt" type="radio" value="excerpt"<?php if ( get_option( $value['id'] ) == "excerpt") { echo " checked"; } ?> />Excerpt</label>
 				&nbsp;&nbsp;
@@ -20,7 +20,7 @@
 				<?php break;
 			case "comicpress-excerpt_or_content_search": ?>
 				<tr>
-				<th scope="row"><strong>Would you like to have users see the entire content or just an excerpt when searching?</strong><br /><br /></th>
+				<th scope="row"><strong><?php _e('Would you like to have users see the entire content or just an excerpt when searching?','comicpress'); ?></strong><br /><br /></th>
 				<td valign="top" width="160">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-excerpt" type="radio" value="excerpt"<?php if ( get_option( $value['id'] ) == "excerpt") { echo " checked"; } ?> />Excerpt</label>
 				&nbsp;&nbsp;
@@ -32,7 +32,7 @@
 				<?php break;
 			case "comicpress-archive_display_order": ?>
 				<tr>
-				<th scope="row"><strong>Display Archive in Ascending or Descending order?</strong><br /><br />Long time ago or most recent displays first?<br /></th>
+				<th scope="row"><strong><?php _e('Display Archive in Ascending or Descending order?','comicpress'); ?></strong><br /><br /><?php _e('Long time ago or most recent displays first?','comicpress'); ?><br /></th>
 				<td valign="top">
 					<label>
 						<select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
@@ -45,14 +45,14 @@
 			<?php break;
 			case "comicpress-category_thumbnail_postcount": ?>
 				<tr>
-					<th scope="row"><b>Thumbnail PostCount (Archive)</b><br /><br />How many images in the comic category would you like to see in the archive page?</th>
+					<th scope="row"><b><?php _e('Thumbnail PostCount (Archive)','comicpress'); ?></b><br /><br /><?php _e('How many images in the comic category would you like to see in the archive page?','comicpress'); ?></th>
 					<td valign="top">
 					<label>
 					<input type="text" size="5" name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" value="<?php print get_option($value['id']); ?>" /><br />
 					</label>
 					</td>
 					<td valign="top">
-						If you set this to -1 it will display *all* available thumbnails for the comic category that is chosen to view.
+						<?php _e('If you set this to -1 it will display *all* available thumbnails for the comic category that is chosen to view.','comicpress'); ?>
 					</td>
 				</tr>
 			<?php break;

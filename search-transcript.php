@@ -31,7 +31,7 @@ $count = $tmp_search->post_count;
 			<?php } ?>
 			<div class="post-text">
 				<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
-				<small> By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?> <?php edit_post_link('Edit Post', ' [ ', ' ] '); ?></small><br />
+				<small> By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?> <?php edit_post_link(__('Edit Post','comicpress'), ' [ ', ' ] '); ?></small><br />
 			</div>
 			<div class="clear"></div>
 		</div>
@@ -64,7 +64,7 @@ $count = $tmp_search->post_count;
 					<?php } ?>
 					<div class="post-text">
 						<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
-						<small> By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?> <?php edit_post_link('Edit Post', ' [ ', ' ] '); ?></small><br />
+						<small> By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?> <?php edit_post_link(__('Edit Post','comicpress'), ' [ ', ' ] '); ?></small><br />
 						<?php if ($disable_categories_in_posts != 'yes') { ?>
 							<small><?php _e('Posted In:','comicpress'); ?><?php the_category(','); ?></small><br />
 						<?php } ?>
@@ -73,7 +73,7 @@ $count = $tmp_search->post_count;
 				</div>
 			<div class="post-extras">
 				<div class="tags">
-					<?php the_tags('&#9492; Tags: ',', ','<br />'); ?>
+					<?php the_tags(__('&#9492; Tags: ','comicpress'),', ','<br />'); ?>
 				</div>
 				<div class="clear"></div>
 			</div>

@@ -93,7 +93,7 @@
 	<div class="<?php comicpress_post_class(); ?>">
 		<div class="post-head"></div>
 		<div class="post">
-			<p>Sorry, no posts matched your criteria.</p>
+			<p><?php _e('Sorry, no posts matched your criteria.','comicpress'); ?></p>
 			<br class="clear-margins" />
 		</div>
 		<div class="post-foot"></div>

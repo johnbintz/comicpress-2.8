@@ -23,8 +23,8 @@ function buy_this_print_comic() {
 class widget_comicpress_buy_this_print extends WP_Widget {
 	
 	function widget_comicpress_buy_this_print() {
-		$widget_ops = array('classname' => 'widget_comicpress_buy_this_print', 'description' => 'Adds a button that goes to the buy print template page.' );
-		$this->WP_Widget('comicpress_buyprint', 'Buy This Print', $widget_ops);
+		$widget_ops = array('classname' => 'widget_comicpress_buy_this_print', 'description' => __('Adds a button that goes to the buy print template page.','comicpress') );
+		$this->WP_Widget('comicpress_buyprint', __('Buy This Print','comicpress'), $widget_ops);
 	}
 	
 	function widget($args, $instance) {
@@ -48,7 +48,7 @@ class widget_comicpress_buy_this_print extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '' ) );
 		$title = strip_tags($instance['title']);
 		?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>">Title: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:','comicpress'); ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
 		<?php
 	}
 }

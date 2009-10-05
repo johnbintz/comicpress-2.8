@@ -13,8 +13,8 @@ Author URI: http://webcomicplanet.com/
 class widget_comicpress_show_transcription extends WP_Widget {
 	
 	function widget_comicpress_show_transcription() {
-		$widget_ops = array('classname' => 'widget_comicpress_show_transcription', 'description' => 'Display the transcription of the current post if there is one.' );
-		$this->WP_Widget('transcript', 'Transcript', $widget_ops);
+		$widget_ops = array('classname' => 'widget_comicpress_show_transcription', 'description' => __('Display the transcription of the current post if there is one. (used in comic sidebars)','comicpress') );
+		$this->WP_Widget('transcript', __('Transcript','comicpress'), $widget_ops);
 	}
 	
 	function widget($args, $instance) {
@@ -41,11 +41,11 @@ class widget_comicpress_show_transcription extends WP_Widget {
 		$transtype = strip_tags($instance['transtype']);
 		if (empty($transtype)) $transtype = 'styled';
 		?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>">Title: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:','comicpress'); ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
 		<p>
-		<label><input name="<?php echo $this->get_field_name('transtype'); ?>" id="<?php echo $this->get_field_id('transtype'); ?>-styled" type="radio" value="styled"<?php if ( $transtype == "styled") { echo " checked"; } ?> />Styled</label><br />
-		<label><input name="<?php echo $this->get_field_name('transtype'); ?>" id="<?php echo $this->get_field_id('transtype'); ?>-br" type="radio" value="br"<?php if ( $transtype == "br") { echo " checked"; } ?> />Add BR's</label><br />
-		<label><input name="<?php echo $this->get_field_name('transtype'); ?>" id="<?php echo $this->get_field_id('transtype'); ?>-raw" type="radio" value="raw"<?php if ( $transtype == "raw") { echo " checked"; } ?> />Raw Output</label>
+		<label><input name="<?php echo $this->get_field_name('transtype'); ?>" id="<?php echo $this->get_field_id('transtype'); ?>-styled" type="radio" value="styled"<?php if ( $transtype == "styled") { echo " checked"; } ?> /><?php _e('Styled','comicpress'); ?></label><br />
+		<label><input name="<?php echo $this->get_field_name('transtype'); ?>" id="<?php echo $this->get_field_id('transtype'); ?>-br" type="radio" value="br"<?php if ( $transtype == "br") { echo " checked"; } ?> /><?php _e('Add BR','comicpress'); ?></label><br />
+		<label><input name="<?php echo $this->get_field_name('transtype'); ?>" id="<?php echo $this->get_field_id('transtype'); ?>-raw" type="radio" value="raw"<?php if ( $transtype == "raw") { echo " checked"; } ?> /><?php _e('Raw Output','comicpress'); ?></label>
 		</p>		
 		<?php
 	}

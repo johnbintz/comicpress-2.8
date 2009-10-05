@@ -37,14 +37,14 @@ function comicpress_showmood_edit_post() {
 		<div id="mooddiv" class="postbox">
 		<h3><?php _e("Available Moods", 'comicpress') ?></h3>
 		<div class="inside" style="overflow: hidden">
-		Available Moods here, you can set which mood images to use in the comicpress Options.<br />
+		<?php _e('Available Moods, you can set which mood images to use in the comicpress Options.','comicpress'); ?><br />
 		<br />
 		<?php 
 		
 		$currentmood = get_post_meta( $post->ID, "mood", true );
 		
 		if (empty($currentmood) || $currentmood == '' || $currentmood == null) { 
-			$mood = 'none';
+			$mood = __('none','comicpress');
 		} else {
 			$mood = explode(".", $currentmood);
 			$mood = reset($mood);
@@ -52,9 +52,9 @@ function comicpress_showmood_edit_post() {
 		
 		$filtered_glob_results = array();
 		$count = count($results = glob(get_template_directory() . '/images/moods/'.$moods_directory.'/*'));
-		echo $count .' moods are available.<br />
-				Using Moods from directory: '.$moods_directory.'<br />
-				Current Mood: '.$mood.'<br /><br />';
+		echo $count .__(' moods are available.','comicpress').'<br />
+				'.__('Using Moods from directory: ','comicpress').$moods_directory.'<br />
+				'.__('Current Mood: ','comicpress').$mood.'<br /><br />';
 		if (!empty($results)) { ?>
 			<div style="float:left; margin-top: 70px; text-align: center; width: 68px; overflow: hidden;"> 
 			<label for="postmood-none" style="cursor:pointer;">		

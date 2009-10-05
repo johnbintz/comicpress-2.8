@@ -10,7 +10,7 @@
     } elseif (is_single() || is_page() ) { 
       echo " - "; single_post_title();
     } elseif (is_search() ) { 
-      echo " search results: "; echo wp_specialchars($s);
+		echo __(" search results: ",'comicpress'); echo wp_specialchars($s);
     } else { 
       echo " - "; wp_title('',true);
     }
@@ -50,11 +50,11 @@
 
 <?php if ($disable_page_restraints != 'yes') {
 	if (is_cp_theme_layout('standard,v')) { ?>
-	<div id="page"><!-- Wraps outside the site width -->
-		<div id="page-wrap"><!-- Defines entire site width - Ends in Footer -->
+	<div id="page-wrap"><!-- Wraps outside the site width -->
+		<div id="page"><!-- Defines entire site width - Ends in Footer -->
 <?php } else { ?>
-	<div id="page-wide">
-		<div id="page-wrap-wide">
+	<div id="page-wide-wrap">
+		<div id="page-wide">
 	<?php } 
 } ?>
 

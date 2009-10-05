@@ -34,12 +34,13 @@ function related_posts_shortcode( $atts = '' ) {
 				LIMIT $limit;";
 		
 		$related = $wpdb->get_results($q);
-		$retval = '
-				<div class="related_posts">
-				Related Posts &not;';
-		$retval .= '
-				<ul><li>';
+
 		if ( $related ) {
+			$retval = '
+					<div class="related_posts">
+					'.__('Related Posts &not;','comicpress');
+			$retval .= '
+					<ul><li>';
 			$comic_categories = array();
 			foreach ($category_tree as $node) {
 				$comic_categories[] = end(explode("/", $node));
@@ -57,7 +58,7 @@ function related_posts_shortcode( $atts = '' ) {
 					</table>';
 		} else {
 			$retval .= '
-		<li>No related posts found</li>';
+		<li>'.__('No related posts found','comicpress').'</li>';
 		}
 		$retval .= '
 	</li></ul>';
@@ -67,46 +68,7 @@ function related_posts_shortcode( $atts = '' ) {
 	}
 	return;
 }
-/*
-function related_posts_shortcode( $atts = '' ) {
-	extract(shortcode_atts(array(
-					'limit' => '5',
-					), $atts));
-	
-	global $wp_query, $wpdb, $post, $non_comic_categories;
-	if ($post->ID) {
-		if (empty($limit)) $limit = 5;
 
-		//for use in the loop, list 5 post titles related to first tag on current post
-		$tags = wp_get_post_tags($post->ID);
-		$tagIDs = array();
-		if ($tags) {
-			$tagcount = count($tags);
-			for ($i = 0; $i < $tagcount; $i++) {
-				$tagIDs[$i] = $tags[$i]->term_id;
-			}
-			$args=array(
-					'category__in' => array(1,3,31),
-					'tag__and' => $tagIDs,
-					'showposts'=>5,
-					'post__not_in' => array($post->ID),
-					'caller_get_posts'=>1
-					);
-			$my_query = new WP_Query($args);
-			$temp_query = $wp_query;
-			$wp_query->in_the_loop = true;
-			if( $my_query->have_posts() ) {
-				while ($my_query->have_posts()) : $my_query->the_post(); ?>
-					<li><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a></li>
-					<?php endwhile;
-			}
-			$wp_query = $temp_query;
-			$temp_query = null;
-		}
-
-	}
-}
-*/
 add_shortcode('related_posts', 'related_posts_shortcode');
 
 ?>

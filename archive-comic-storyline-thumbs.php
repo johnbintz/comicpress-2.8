@@ -47,7 +47,7 @@ Template Name: Comic Storyline with Thumbs
 						
 						<li id="storyline-<?php echo $category->category_nicename ?>"<?php echo $storyline_root; $storyline_root = null ?>>
 							<?php if (!empty($first_comic_in_category)) { ?>
-								<a href="<?php echo $first_comic_permalink ?>" title="First comic in <?php echo $category->cat_name ?>."><img src="<?php echo $archive_image ?>" /></a>
+								<a href="<?php echo $first_comic_permalink ?>" title="<?php _e('First comic in','comicpress'); ?> <?php echo $category->cat_name ?>."><img src="<?php echo $archive_image ?>" /></a>
 							<?php } ?>
 							<a href="<?php echo get_category_link($category_id) ?>" class="storyline-title"><?php echo $category->cat_name ?></a>
 							<?php if (!empty($description)) { ?>

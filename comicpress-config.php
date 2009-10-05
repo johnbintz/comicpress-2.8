@@ -24,4 +24,7 @@ $rss_comic_width = "600";
 //BLOG POSTCOUNT - the number of blog entries to appear on the home page (default "5").
 $blog_postcount = "5";
 
+//Mini Comic Width - The width your comics will appear in minithumbs (default "100")
+$mini_comic_width = "100";
+
 ?>

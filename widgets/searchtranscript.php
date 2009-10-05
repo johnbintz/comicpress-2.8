@@ -12,8 +12,8 @@ Author URI: http://webcomicplanet.com/
 class widget_comicpress_search_transcripts extends WP_Widget {
 	
 	function widget_comicpress_search_transcripts() {
-		$widget_ops = array('classname' => 'widget_comicpress_search_transcripts', 'description' => 'Displays a form input box for searching transcripts.' );
-		$this->WP_Widget('comicpress_search_transcripts', 'Search Transcripts', $widget_ops);
+		$widget_ops = array('classname' => 'widget_comicpress_search_transcripts', 'description' => __('Displays a form input box for searching transcripts.','comicpress') );
+		$this->WP_Widget('comicpress_search_transcripts', __('Search Transcripts','comicpress'), $widget_ops);
 	}
 	
 	function widget($args, $instance) {
@@ -37,7 +37,7 @@ class widget_comicpress_search_transcripts extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '' ) );
 		$title = strip_tags($instance['title']);
 		?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>">Title: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:','comicpress'); ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
 		<?php
 	}
 }

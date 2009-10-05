@@ -6,14 +6,12 @@ $locale = get_locale();
 $locale_file = get_template_directory()."/languages/$locale.php";
 if (file_exists($locale_file)) require_once($locale_file);
 
-
-
 // remove intense debates control over the comment numbers
 if (function_exists('id_get_comment_number')) {
 	remove_filter('comments_number','id_get_comment_number');
 }
 
-$comicpress_version = '2.8.1.13';
+$comicpress_version = '2.8.1.16';
 
 // Remove the wptexturizer from changing the quotes and squotes.
 // remove_filter('the_content', 'wpautop');
@@ -34,8 +32,10 @@ if (!empty($wpmu_version)) {
 					'comics_path'         => 'comic_folder',
 					'comicsrss_path'      => 'rss_comic_folder',
 					'comicsarchive_path'  => 'archive_comic_folder',
+					'comicsmini_path'     => 'mini_comic_folder',
 					'archive_comic_width' => 'archive_comic_width',
 					'rss_comic_width'     => 'rss_comic_width',
+					'mini_comic_width'    => 'mini_comic_width',
 					'blog_postcount'      => 'blog_postcount') as $options => $variable_name) {
 			$variables_to_extract[$variable_name] = get_option("comicpress-${options}");
 		}
@@ -130,17 +130,6 @@ foreach (glob(dirname(__FILE__) . '/widgets/*.php') as $__file) { require_once($
 // FUNCTIONS & Extra's
 foreach (glob(dirname(__FILE__) . '/functions/*.php') as $__file) { require_once($__file); }
 
-// These are in the options directory because they have toggles in the options configuration and do not get loaded
-// unless they are needed.
-
-if ($enable_numbered_pagination == 'yes') {
-	require_once(get_template_directory() . '/options/wp-pagenavi.php');
-}
-
-if ($enable_custom_image_header == 'yes') {
-	require_once(get_template_directory() . '/options/custom-image-header.php');
-}
-
 // Dashboard Menu Comicpress Options and ComicPress CSS
 require_once(get_template_directory() . '/comicpress-options.php');
 
@@ -201,7 +190,6 @@ function get_last_comic_permalink() {
   return !empty($terminal) ? get_permalink($terminal->ID) : false;
 }
 
-
 /**
  * Given a category ID or an array of category IDs, create an exclusion string that will
  * filter out every category but the provided ones.
@@ -238,8 +226,6 @@ function get_previous_comic($category = null) { return get_adjacent_comic($categ
  */
 function get_next_comic($category = null) { return get_adjacent_comic($category); }
 
-
-
 /**
  * This is function get_next_comic_permalink
  *
@@ -255,7 +241,6 @@ function get_next_comic_permalink() {
 	}
 	return false;
 }
-
 
 /**
  * This is function get_previous_comic_permalink
@@ -350,7 +335,6 @@ function get_next_storyline_start_permalink() {
 	return false;
 }
 
-
 function get_adjacent_storyline_category_id($next = false) {
 	global $post, $category_tree;
 
@@ -394,6 +378,7 @@ function get_comic_path($folder = 'comic', $override_post = null, $filter = 'def
 	}
 
 	switch ($folder) {
+		case "mini": $folder_to_user = $mini_comic_folder; break;
 		case "rss": $folder_to_use = $rss_comic_folder; break;
 		case "archive": $folder_to_use = $archive_comic_folder; break;
 		case "comic": default: $folder_to_use = $comic_folder; break;
@@ -443,7 +428,7 @@ function get_comic_url($folder = 'comic', $override_post = null, $filter = 'defa
 	if (($result = get_comic_path($folder, $override_post, $filter)) !== false) {
 		return get_option('home') . '/' . $result;
 	} else {
-		if (($folder == 'archive' || $folder == 'rss')) {
+		if (($folder == 'archive' || $folder == 'rss' || $folder == 'mini')) {
 			if (($result = get_comic_path('comic', $override_post, $filter)) !== false) {
 				return get_option('home') . '/' . $result;
 			}
@@ -598,6 +583,10 @@ function the_comic_rss($filter = 'default') { echo get_comic_url('rss', null, $f
 	//The following is deprecated...
 	function comic_rss($filter = 'default') { echo get_comic_url('rss', null, $filter); }
 
+function the_comic_mini($filter = 'default') { echo get_comic_url('mini', null, $filter); }
+	//The following is deprecated...
+	function comic_mini($filter = 'default') { echo get_comic_url('mini', null, $filter); }
+	
 /**
  * Display the list of Storyline categories.
  */
@@ -605,7 +594,7 @@ function comicpress_list_storyline_categories($args = "") {
   global $category_tree;
 
   $defaults = array(
-    'style' => 'list', 'title_li' => __('Storyline')
+    'style' => 'list', 'title_li' => __('Storyline','comicpress')
   );
 
   $r = wp_parse_args($args, $defaults);
@@ -705,19 +694,19 @@ add_filter('the_content','insert_comic_feed');
 // Register Sidebar and Define Widgets
 	
 if ( function_exists('register_sidebar') ) {
-	register_sidebar(array('name'=>__('Left Sidebar','comicpress'),'before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>__('Right Sidebar','comicpress'),'before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>__('Above Header','comicpress'),'before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>__('Header','comicpress'),'before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>__('Menubar','comicpress'),'before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>__('Over Comic','comicpress'),'before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>__('Left of Comic','comicpress'),'before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>__('Right of Comic','comicpress'),'before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>__('Under Comic','comicpress'),'before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>__('Over Blog','comicpress'),'before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>__('Blog','comicpress'),'before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>__('Under Blog','comicpress'),'before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>__('Footer','comicpress'),'before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
+	register_sidebar(array('name'=>'Left Sidebar','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
+	register_sidebar(array('name'=>'Right Sidebar','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
+	register_sidebar(array('name'=>'Above Header','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
+	register_sidebar(array('name'=>'Header','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
+	register_sidebar(array('name'=>'Menubar','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
+	register_sidebar(array('name'=>'Over Comic','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
+	register_sidebar(array('name'=>'Left of Comic','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
+	register_sidebar(array('name'=>'Right of Comic','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
+	register_sidebar(array('name'=>'Under Comic','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
+	register_sidebar(array('name'=>'Over Blog','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
+	register_sidebar(array('name'=>'Blog','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
+	register_sidebar(array('name'=>'Under Blog','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
+	register_sidebar(array('name'=>'Footer','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
 }     
 
 function storyline_category_list() {
@@ -745,7 +734,7 @@ function comicpress_is_active_sidebar( $name ) {
 	return false;
 }
 
-function cp_copyright_year() {
+function cp_copyright() {
 	global $wpdb;
 	$copyright_dates = $wpdb->get_results("
 		SELECT 
@@ -762,7 +751,7 @@ function cp_copyright_year() {
 		if($copyright_dates[0]->firstdate != $copyright_dates[0]->lastdate) {
 			$copyright .= '-' . $copyright_dates[0]->lastdate;
 		}
-		$output =  $copyright . "&nbsp;" . get_bloginfo('name');
+		$output =  $copyright;
 	}
 	return $output;
 }

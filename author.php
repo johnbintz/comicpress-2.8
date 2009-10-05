@@ -22,11 +22,10 @@
 							<h2><?php echo $curauth->display_name; ?></h2>
 							<?php _e('Registered on','comicpress'); ?> <?php echo date('l \\t\h\e jS \o\f M, Y',strtotime($curauth->user_registered)); ?><br />
 							<br />
-							<?php if (!empty($curauth->user_url)) { ?>Website: <a href="<?php echo $curauth->user_url; ?>" target="_blank"><?php echo $curauth->user_url; ?></a><br /><?php } ?>
-							<?php if (!empty($curauth->aim)) { ?>AIM: <a href="<?php echo $curauth->user_aim; ?>" target="_blank"><?php echo $curauth->aim; ?></a><br /><?php } ?>
-							<?php if (!empty($curauth->jabber)) { ?>Jabber/Google Talk: <a href="<?php echo $curauth->jabber; ?>" target="_blank"><?php echo $curauth->jabber; ?></a><br /><?php } ?>
-							<?php if (!empty($curauth->yim)) { ?>Yahoo IM: <a href="<?php echo $curauth->jabber; ?>" target="_blank"><?php echo $curauth->jabber; ?></a><br /><?php } ?>
-
+							<?php if (!empty($curauth->user_url)) { ?><?php _e('Website:','comicpress'); ?> <a href="<?php echo $curauth->user_url; ?>" target="_blank"><?php echo $curauth->user_url; ?></a><br /><?php } ?>
+							<?php if (!empty($curauth->aim)) { ?><?php _e('AIM:','comicpress'); ?> <a href="<?php echo $curauth->user_aim; ?>" target="_blank"><?php echo $curauth->aim; ?></a><br /><?php } ?>
+							<?php if (!empty($curauth->jabber)) { ?><?php _e('Jabber/Google Talk:','comicpress'); ?> <a href="<?php echo $curauth->jabber; ?>" target="_blank"><?php echo $curauth->jabber; ?></a><br /><?php } ?>
+							<?php if (!empty($curauth->yim)) { ?><?php _e('Yahoo IM:','comicpress'); ?> <a href="<?php echo $curauth->jabber; ?>" target="_blank"><?php echo $curauth->jabber; ?></a><br /><?php } ?>
 						</div>
 						<?php if (!empty($curauth->description)) { ?>
 						<div class="userpage-desc">

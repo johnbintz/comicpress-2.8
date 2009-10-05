@@ -25,8 +25,8 @@ if ( isset( $_GET['randompost'] ) )
 class widget_comicpress_random_post extends WP_Widget {
 	
 	function widget_comicpress_random_post() {
-		$widget_ops = array('classname' => 'widget_comicpress_random_post', 'description' => 'Displays a link to click to trigger a random blog post.' );
-		$this->WP_Widget('random_post', 'Random Post', $widget_ops);
+		$widget_ops = array('classname' => 'widget_comicpress_random_post', 'description' => __('Displays a link to click to trigger a random blog post.','comicpress') );
+		$this->WP_Widget('random_post', __('Random Post','comicpress'), $widget_ops);
 	}
 	
 	function widget($args, $instance) {
@@ -36,7 +36,7 @@ class widget_comicpress_random_post extends WP_Widget {
 		echo $before_widget;
 		$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']); 
 		if ( !empty( $title ) ) { echo $before_title . $title . $after_title; }; ?>
-			<h2><a href="?randompost"><span class="random-comic-icon">?</span> Random Post</a></h2>
+			<h2><a href="?randompost"><span class="random-comic-icon">?</span> <?php _e('Random Post','comicpress'); ?></a></h2>
 		<?php
 		echo $after_widget;
 	}
@@ -51,7 +51,7 @@ class widget_comicpress_random_post extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '' ) );
 		$title = strip_tags($instance['title']);
 		?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>">Title: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:','comicpress'); ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
 		<?php
 	}
 }

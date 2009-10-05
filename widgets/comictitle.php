@@ -12,8 +12,8 @@ Author URI: http://webcomicplanet.com/
 class widget_comicpress_comictitle extends WP_Widget {
 	
 	function widget_comicpress_comictitle() {
-		$widget_ops = array('classname' => 'widget_comicpress_comictitle', 'description' => 'Displays the title of the comic.' );
-		$this->WP_Widget('comictitle', 'Comic Title', $widget_ops);
+		$widget_ops = array('classname' => 'widget_comicpress_comictitle', 'description' => __('Displays the title of the comic. (used in comic sidebars)','comicpress') );
+		$this->WP_Widget('comictitle', __('Comic Title','comicpress'), $widget_ops);
 	}
 	
 	function widget($args, $instance) {

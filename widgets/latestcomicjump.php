@@ -21,8 +21,8 @@ function latest_comic_jump() {
 class widget_comicpress_latest_comic_jump extends WP_Widget {
 	
 	function widget_comicpress_latest_comic_jump() {
-		$widget_ops = array('classname' => 'widget_comicpress_latest_comic_jump', 'description' => 'Displays a link to click to go to the latest comic.' );
-		$this->WP_Widget('latest_comic_jump', 'Latest Comic Link', $widget_ops);
+		$widget_ops = array('classname' => 'widget_comicpress_latest_comic_jump', 'description' => __('Displays a link to click to go to the latest comic.','comicpress') );
+		$this->WP_Widget('latest_comic_jump', __('Latest Comic Link','comicpress'), $widget_ops);
 	}
 	
 	function widget($args, $instance) {
@@ -47,7 +47,7 @@ class widget_comicpress_latest_comic_jump extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '' ) );
 		$title = strip_tags($instance['title']);
 		?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>">Title: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:','comicpress'); ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
 		<?php
 	}
 }

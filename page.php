@@ -8,9 +8,9 @@
 			<h2 class="pagetitle"><?php the_title() ?></h2>
 			<div class="entry">
 				<?php the_content() ?>
-				<?php wp_link_pages(array('before' => '<div class="linkpages"><span class="linkpages-pagetext">Pages:</span> ', 'after' => '</div>', 'next_or_number' => 'number'));  ?>
+				<?php wp_link_pages(array('before' => '<div class="linkpages"><span class="linkpages-pagetext">'.__('Pages:','comicpress').'</span> ', 'after' => '</div>', 'next_or_number' => 'number'));  ?>
 			</div>
-			<?php edit_post_link('Edit this page.', '<p>', '</p>') ?>
+			<?php edit_post_link(__('Edit this page.','comicpress'), '<p>', '</p>') ?>
 			<br class="clear-margins" />
 		</div>
 		<div class="post-page-foot"></div>

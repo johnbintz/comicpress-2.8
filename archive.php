@@ -71,7 +71,7 @@
 							<?php } ?>
 							<div class="post-text">
 								<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
-								<small> <?php _e('By','comicpress'); ?> <?php the_author_posts_link(); ?> <?php _e('on','comicpress'); ?> <?php the_time('F jS, Y'); ?> <?php edit_post_link('Edit Post', ' [ ', ' ] '); ?></small><br />
+								<small> <?php _e('By','comicpress'); ?> <?php the_author_posts_link(); ?> <?php _e('on','comicpress'); ?> <?php the_time('F jS, Y'); ?> <?php edit_post_link(__('Edit Post','comicpress'), ' [ ', ' ] '); ?></small><br />
 								<?php if (get_option('comicpress-enable-storyline-support') == 1) { ?>
 									<ul class="storyline-cats"><li class="storyline-root"><?php the_category(' &raquo; </li><li>', multiple) ?></li></ul>
 								<?php } else { ?>
@@ -105,8 +105,8 @@
 							</div>
 						<?php } ?>
 						<div class="post-text">
-							<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
-							<small> <?php _e('By','comicpress'); ?> <?php the_author_posts_link(); ?> <?php _e('on','comicpress'); ?> <?php the_time('F jS, Y'); ?> <?php edit_post_link('Edit Post', ' [ ', ' ] '); ?></small><br />
+							<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php _e('Permanent Link to','comicpress'); ?> <?php the_title(); ?>"><?php the_title(); ?></a></h2>
+							<small> <?php _e('By','comicpress'); ?> <?php the_author_posts_link(); ?> <?php _e('on','comicpress'); ?> <?php the_time('F jS, Y'); ?> <?php edit_post_link(__('Edit Post','comicpress'), ' [ ', ' ] '); ?></small><br />
 							<?php if ($disable_categories_in_posts != 'yes') { ?>
 								<small> <?php _e('Posted In:','comicpress'); ?> <?php the_category(','); ?></small><br />
 							<?php } ?>
@@ -138,8 +138,8 @@
 	<div class="<?php comicpress_post_class(); ?>">
 		<div class="post-head"></div>
 		<div class="post">
-			<h3>No entries found.</h3>
-			<p>Try another search?</p>
+			<h3><?php _e('No posts found.','comicpress'); ?></h3>
+			<p><?php _e('Try another search?','comicpress'); ?></p>
 			<p><?php include(get_template_directory() . '/searchform.php') ?></p>
 			<br class="clear-margins" />
 		</div>

@@ -24,7 +24,7 @@ function comicpress_calendar($instance = null) {
 		<div class="wp-calendar-download">
 		<img src="<?php echo $thumbnail; ?>" class="wp-calendar-thumb" alt="" /><br />
 		<?php if (!empty($small) || !empty($medium) || !empty($large)) { ?>
-			DOWNLOAD <?php if (!empty($small)) { ?><a href="<?php echo $small; ?>" title="Download Small">S</a><?php } ?><?php if (!empty($medium)) { ?><a href="<?php echo $medium; ?>" title="Download Medium">M</a><?php } ?><?php if (!empty($large)) { ?><a href="<?php echo $large; ?>" title="Download Large">L</a><?php } ?>
+			<?php _e('DOWNLOAD','comicpress'); ?> <?php if (!empty($small)) { ?><a href="<?php echo $small; ?>" title="<?php _e('Download Small','comicpress'); ?>"><?php _e('S','comicpress'); ?></a><?php } ?><?php if (!empty($medium)) { ?><a href="<?php echo $medium; ?>" title="<?php _e('Download Medium','comicpress'); ?>"><?php _e('M','comicpress'); ?></a><?php } ?><?php if (!empty($large)) { ?><a href="<?php echo $large; ?>" title="<?php _e('Download Large','comicpress'); ?>"><?php _e('L','comicpress'); ?></a><?php } ?>
 		<?php } ?>
 		</div>
 	<?php } ?>
@@ -36,8 +36,8 @@ function comicpress_calendar($instance = null) {
 class widget_comicpress_calendar extends WP_Widget {
 	
 	function widget_comicpress_calendar() {
-		$widget_ops = array('classname' => 'widget_comicpress_calendar', 'description' => 'Display a calendar showing this months posts. (this calendar does not drop lines if there is no title given.)' );
-		$this->WP_Widget('comicpress_calendar', 'Comicpress Calendar', $widget_ops);
+		$widget_ops = array('classname' => 'widget_comicpress_calendar', 'description' => __('Display a calendar showing this months posts. (this calendar does not drop lines if there is no title given.)','comicpress') );
+		$this->WP_Widget('comicpress_calendar', __('Comicpress Calendar','comicpress'), $widget_ops);
 	}
 	
 	function widget($args, $instance) {
@@ -70,11 +70,11 @@ class widget_comicpress_calendar extends WP_Widget {
 		$medium = strip_tags($instance['medium']);
 		$large = strip_tags($instance['large']);
 		?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>">Title: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
-		<p><label for="<?php echo $this->get_field_id('thumbnail'); ?>">Thumbnail URL (178px by 130px): <input class="widefat" id="<?php echo $this->get_field_id('thumbnail'); ?>" name="<?php echo $this->get_field_name('thumbnail'); ?>" type="text" value="<?php echo attribute_escape($thumbnail); ?>" /></label></p>
-		<p><label for="<?php echo $this->get_field_id('small'); ?>">Wallpaper URL (Small): <input class="widefat" id="<?php echo $this->get_field_id('small'); ?>" name="<?php echo $this->get_field_name('small'); ?>" type="text" value="<?php echo attribute_escape($small); ?>" /></label></p>
-		<p><label for="<?php echo $this->get_field_id('medium'); ?>">Wallpaper URL (Medium): <input class="widefat" id="<?php echo $this->get_field_id('medium'); ?>" name="<?php echo $this->get_field_name('medium'); ?>" type="text" value="<?php echo attribute_escape($medium); ?>" /></label></p>
-		<p><label for="<?php echo $this->get_field_id('large'); ?>">Wallpaper URL (Large): <input class="widefat" id="<?php echo $this->get_field_id('large'); ?>" name="<?php echo $this->get_field_name('large'); ?>" type="text" value="<?php echo attribute_escape($large); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:','comicpress'); ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('thumbnail'); ?>"><?php _e('Thumbnail URL (178px by 130px):','comicpress'); ?> <input class="widefat" id="<?php echo $this->get_field_id('thumbnail'); ?>" name="<?php echo $this->get_field_name('thumbnail'); ?>" type="text" value="<?php echo attribute_escape($thumbnail); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('small'); ?>"><?php _e('Wallpaper URL (Small):','comicpress'); ?> <input class="widefat" id="<?php echo $this->get_field_id('small'); ?>" name="<?php echo $this->get_field_name('small'); ?>" type="text" value="<?php echo attribute_escape($small); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('medium'); ?>"><?php _e('Wallpaper URL (Medium):','comicpress'); ?> <input class="widefat" id="<?php echo $this->get_field_id('medium'); ?>" name="<?php echo $this->get_field_name('medium'); ?>" type="text" value="<?php echo attribute_escape($medium); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('large'); ?>"><?php _e('Wallpaper URL (Large):','comicpress'); ?> <input class="widefat" id="<?php echo $this->get_field_id('large'); ?>" name="<?php echo $this->get_field_name('large'); ?>" type="text" value="<?php echo attribute_escape($large); ?>" /></label></p>
 
 		<?php
 	}

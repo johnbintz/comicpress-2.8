@@ -12,8 +12,8 @@ Author URI: http://webcomicplanet.com/
 class widget_comicpress_comic_blog_post extends WP_Widget {
 	
 	function widget_comicpress_comic_blog_post() {
-		$widget_ops = array('classname' => 'widget_comicpress_comic_blog_post', 'description' => 'Displays the comic blog post, ..used to be around the comic areas.' );
-		$this->WP_Widget('comic_blog_post', 'Comic Blog Post', $widget_ops);
+		$widget_ops = array('classname' => 'widget_comicpress_comic_blog_post', 'description' => __('Displays the comic blog post, ..used to be around the comic areas.  Does not show if there is no content.','comicpress') );
+		$this->WP_Widget('comic_blog_post', __('Comic Blog Post','comicpress'), $widget_ops);
 	}
 	
 	function widget($args, $instance) {

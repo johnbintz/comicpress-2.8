@@ -13,7 +13,7 @@ function comicpress_archive_dropdown() { ?>
 <ul>
 	<li class="archive-dropdown-wrap">
 		<select name="archive-dropdown" class="archive-dropdown" onchange='document.location.href=this.options[this.selectedIndex].value;'> 
-		<option value=""><?php echo attribute_escape(__('Archives...')); ?></option> 
+		<option value=""><?php echo attribute_escape(__('Archives...','comicpress')); ?></option> 
 		<?php wp_get_archives('type=monthly&format=option&show_post_count=1'); ?> </select>
 	</li>
 </ul>
@@ -22,8 +22,8 @@ function comicpress_archive_dropdown() { ?>
 class widget_comicpress_archive_dropdown extends WP_Widget {
 	
 	function widget_comicpress_archive_dropdown() {
-		$widget_ops = array('classname' => 'widget_comicpress_archive_dropdown', 'description' => 'Display a dropdown list of your archives, styled.' );
-		$this->WP_Widget('archive_dropdown', 'ComicPress Archive Dropdown', $widget_ops);
+		$widget_ops = array('classname' => 'widget_comicpress_archive_dropdown', 'description' => __('Display a dropdown list of your archives, styled.','comicpress') );
+		$this->WP_Widget('archive_dropdown', __('ComicPress Archive Dropdown','comicpress'), $widget_ops);
 	}
 	
 	function widget($args, $instance) {
@@ -47,7 +47,7 @@ class widget_comicpress_archive_dropdown extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '' ) );
 		$title = strip_tags($instance['title']);
 		?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>">Title: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:','comicpress'); ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
 		<?php
 	}
 }
