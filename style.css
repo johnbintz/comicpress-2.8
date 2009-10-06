@@ -459,13 +459,12 @@ a.navi-comments:hover span {
 	margin: 0;
 }
 
-/* Wraps the content area */
+/* Wraps the content area w/comic */
 #content-wrapper {
-	padding: 5px 0;
 }
 
+/* wraps the content area */
 #subcontent-wrapper {
-	padding: 5px 0;
 }
 
 #content {
@@ -473,7 +472,7 @@ a.navi-comments:hover span {
 }
 
 	.narrowcolumn {
-		width: 570px;
+		width: 560px;
 		padding: 5px;
 	}
 
@@ -489,13 +488,16 @@ a.navi-comments:hover span {
 .post, .post-comic, .post-page {
 	clear: both;
 	text-align: left;
-	padding: 5px;
 }
 
 .post-head, .post-page-head, .post-comic-head {
 }
 
 .post-foot, .post-comic-foot, .post-page-foot {
+}
+
+.post-page-head {
+	padding-top: 5px;
 }
 
 .post-foot {
@@ -787,13 +789,15 @@ ul.children {
 /* Left Sidebar Themes */
 #sidebar-left {
 	float: left;
-	width: 210px;
+	width: 200px;
+	padding: 5px;
 }
 
 /* Right Sidebar Themes */
 #sidebar-right {
 	float: right;
-	width: 210px;
+	width: 200px;
+	padding: 5px;
 }
 
 #sidebar-overcomic {
@@ -811,7 +815,6 @@ ul.children {
 .sidebar {
 	font-size: 11px;
 	overflow: hidden;
-	margin: 0 5px;
 }
 
 	.sidebar h2, .sidebar h2 a {

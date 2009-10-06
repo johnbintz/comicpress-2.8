@@ -94,15 +94,15 @@ function comicpress_post_class($class = '') {
 	);
 
 	/* Microformats. */
-	$classes[] = 'hentry';
+	$classes[] = 'uentry';
 
 	/* Post alt class. */
-	$classes[] = 'post-' . ++$post_alt;
+	$classes[] = 'postonpage-' . ++$post_alt;
 
 	if ( $post_alt % 2 )
 		$classes[] = 'odd';
 	else
-		$classes[] = 'even alt';
+		$classes[] = 'even';
 
 	/* Sticky class (only on home/blog page). */
 	if( is_sticky() && is_home() )
@@ -115,6 +115,16 @@ function comicpress_post_class($class = '') {
 	/* Password-protected posts. */
 	if ( post_password_required() )
 		$classes[] = 'protected';
+
+	/* User-created classes. */
+	if ( !empty( $class ) ) :
+		if ( !is_array( $class ) )
+			$class = preg_split( '#\s+#', $class );
+		$classes = array_merge( $classes, $class );
+	endif;
+
+	/* Join all the classes into one string and echo them. */
+	$class = join( ' ', $classes );
 
 	echo apply_filters( 'comicpress_post_class', $class );
 }

@@ -20,7 +20,7 @@ function display_blog_post() {
 		<div class="clear"></div>
 		<div class="<?php comicpress_post_class(); ?>">
 			<div class="post-head"></div>
-				<div class="post" id="post-<?php the_ID() ?>">
+				<div <?php post_class(); ?> id="post-<?php the_ID() ?>">
 				<div class="post-info">
 				<?php if ($enable_post_author_gravatar == 'yes') { ?>
 					<div class="post-author-gravatar"><?php echo str_replace("alt='", "alt='".get_the_author_meta('display_name')."' title='".get_the_author_meta('display_name'),get_avatar(get_the_author_meta('email'), 64)); ?></div>

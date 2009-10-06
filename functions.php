@@ -1,10 +1,15 @@
 <?php
 
-load_theme_textdomain( 'comicpress', get_template_directory().'/languages' );
-
-$locale = get_locale();
-$locale_file = get_template_directory()."/languages/$locale.php";
-if (file_exists($locale_file)) require_once($locale_file);
+function init_language(){
+	// xili-language plugin check
+	if (class_exists('xili_language')) {
+		define('THEME_TEXTDOMAIN','comicpress');
+		define('THEME_LANGS_FOLDER','/lang');
+	} else {
+	   load_theme_textdomain( 'comicpress', get_template_directory().'/lang' );
+	}
+}
+add_action ('init', 'init_language');
 
 // remove intense debates control over the comment numbers
 if (function_exists('id_get_comment_number')) {
@@ -129,6 +134,11 @@ foreach (glob(dirname(__FILE__) . '/widgets/*.php') as $__file) { require_once($
 
 // FUNCTIONS & Extra's
 foreach (glob(dirname(__FILE__) . '/functions/*.php') as $__file) { require_once($__file); }
+
+// widgets in the themepack
+if (file_exists(get_template_directory(). '/themepack/'. $themepack_directory.'/widgets')) {
+	foreach (glob(get_template_directory(). '/themepack/'. $themepack_directory . '/widgets/*.php') as $__file) { require_once($__file); }
+}
 
 // Dashboard Menu Comicpress Options and ComicPress CSS
 require_once(get_template_directory() . '/comicpress-options.php');

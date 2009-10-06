@@ -27,7 +27,7 @@
 			<?php } ?>
 	<?php } endwhile; ?>
 	
-<?php if (is_cp_theme_layout('3c,v')) {  ?>
+<?php if (is_cp_theme_layout('3c,standard')) {  ?>
 	<div id="subcontent-wrapper-top"></div>
 		<div id="subcontent-wrapper">
 <?php } ?>

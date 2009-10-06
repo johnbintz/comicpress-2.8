@@ -29,7 +29,7 @@ body {
 		color: #fff;
 		background: #f00 url('menu.png') 0 -75px;
 	}
-
+	
 .narrowcolumn {
 	width: 560px;
 }
@@ -211,6 +211,10 @@ body {
 	}
 
 /* THE COMIC */
+
+#comic-head {
+	padding-top: 2px;
+}
 
 #comic {
 	background: #fff;

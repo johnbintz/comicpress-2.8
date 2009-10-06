@@ -32,34 +32,10 @@
 		<?php endwhile; ?>
 		
 	<?php } ?>
-
-<?php if (is_cp_theme_layout('3c,v')) {  ?>
-<div id="subcontent-wrapper-head"></div>
-	<div id="subcontent-wrapper">
-<?php } ?>
-
-	<?php get_sidebar('overblog'); ?>
-	<?php if (is_cp_theme_layout('3c,rgn')) get_sidebar('left'); ?>
-
-	<?php if (!is_cp_theme_layout('v3c,v')) { ?>
-		<div id="content" class="narrowcolumn">
-			<div class="column">	
-	<?php } ?>
-
-	<?php if ($disable_comic_frontpage != 'yes' && $disable_comic_blog_frontpage != 'yes') { 
-		while ($comicFrontpage->have_posts()) : $comicFrontpage->the_post();
-			
-			display_comic_post();
-		
-		endwhile; ?>
-
-		<div id="blogheader"><!-- This area can be used for a heading above your main page blog posts --></div>
-
-	<?php } 
 	
-} else { ?>
+<?php } ?>
 
-<?php if (is_cp_theme_layout('3c,v')) {  ?>
+<?php if (is_cp_theme_layout('3c,standard,3c2r')) {  ?>
 <div id="subcontent-wrapper-head"></div>
 	<div id="subcontent-wrapper">
 <?php } ?>
@@ -71,7 +47,7 @@
 		<div id="content" class="narrowcolumn">
 			<div class="column">	
 	<?php } ?>
-<?php } ?>
+
 	<?php if (function_exists('the_project_wonderful_ad')) { ?>
 			<div class="blogpwad">
 				<center>
@@ -79,6 +55,17 @@
 				</center>
 			</div>
 	<?php }
+	
+if ($disable_comic_frontpage != 'yes' && $disable_comic_blog_frontpage != 'yes' && !is_paged() )  { 
+	while ($comicFrontpage->have_posts()) : $comicFrontpage->the_post();
+		
+		display_comic_post();
+	
+	endwhile; ?>
+
+	<div id="blogheader"><!-- This area can be used for a heading above your main page blog posts --></div>
+
+<?php } 
 	
 	get_sidebar('blog');
 
@@ -100,6 +87,5 @@ if ($disable_blog_frontpage != 'yes') {
 			<?php get_sidebar('underblog'); ?>
 		</div>
 	</div>
-
 <?php include(get_template_directory() . '/layout-foot.php'); ?>
 <?php get_footer() ?>

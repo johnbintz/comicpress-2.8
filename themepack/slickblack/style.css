@@ -60,6 +60,7 @@ h1, h1 a, h2, h2 a, h3, h3 a {
 
 #content-wrapper {
 	background: #555;
+	padding: 5px 0;
 	border: solid 1px #000;
 }
 
@@ -67,6 +68,11 @@ h1, h1 a, h2, h2 a, h3, h3 a {
 	width: 556px;
 	background: #333;
 	border: solid 1px #000;
+}
+
+.layout-standard .narrowcolumn, .layout-3c2r .narrowcolumn, .layout-v .narrowcolumn {
+	width: 551px;
+	margin-left: 5px;
 }
 
 #menubar {
@@ -103,9 +109,13 @@ h1, h1 a, h2, h2 a, h3, h3 a {
 	border: 0;
 }
 
-.layout-gn #comic, .layout-standard #comic, .layout-3c #comic {
+.layout-gn #comic, .layout-standard #comic, .layout-3c #comic, .layout-3c2r #comic, .layout-rgn #comic {
 	padding: 5px;
 	margin: 0 5px;
+}
+
+#sidebar-left, #sidebar-right {
+	padding: 0 5px;
 }
 
 .sidebar h2 {
