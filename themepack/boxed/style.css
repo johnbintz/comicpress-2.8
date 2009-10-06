@@ -1,0 +1,146 @@
+/*
+ThemePack Name: boxed
+ThemePack URI: http://comicpress.org
+Author: ComicPress Developement Team
+Author URI: http://mindfaucet.com/
+Version: 0.1.4
+*/
+
+/* STANDARD TAGS */
+
+body {
+	background: #444 url('background.png') repeat;
+}
+
+#page, #page-wide {
+	background: #ddd;
+	border-left: solid 1px #000;
+	border-right: solid 1px #000;
+	border-bottom: solid 1px #000;
+}
+
+#page-wrap {
+	padding: 0 10px;
+	background: url('classic-background-narrow.png') top center repeat-y;
+}	
+
+#page-wide-wrap {
+	padding: 0 10px;
+	background: url('classic-background-wide.png') top center repeat-y;
+}
+
+#header {
+	background: #333;
+	padding: 20px 0;
+}
+
+#header h1 {
+	text-align: left;
+	padding-left: 20px;
+}
+
+#header .description {
+	text-align: left;
+	padding-left: 60px;
+}
+
+#content-wrapper, #content-wrapper {
+	background: #a0a0a0;
+}
+
+#subcontent-wrapper {
+	background: #dfdfdf;
+}
+
+#footer {
+	padding: 20px 0;
+	color: #fff;
+	background: #222;
+	border-bottom: solid 1px #000;
+}
+
+#comic_navi_wrapper, #comic, .pagenav {
+	background: #fff;
+}
+
+.narrowcolumn, .widecolumn {
+	background: #efefef;
+}
+
+#header h1 a, #header .description {
+	color: #fff;
+}
+
+.page .narrowcolumn { padding-top: 5px; }
+
+#comic-head {
+	padding: 0;
+	margin: 0;
+}
+
+#sidebar-abovecomic {
+	background: #fff;
+}
+
+#comic {
+	margin: 0;
+	border: 0;
+}
+
+#sidebar-undercomic, #comic-foot {
+	background: #fff;
+}
+
+#footer a {
+	color: #ff0000;
+}
+#footer a:hover {
+	color: #fff;
+}
+
+
+/* MENU */
+
+.menunav-prev a, .menunav-next a {
+	border-left: solid 1px #aaa;
+}
+	
+	.menunav-rss:hover {
+		background: #ff6600;
+	}
+
+#menu {
+	text-transform: uppercase;
+	font-size: 12px;
+}
+
+#menu li a {
+	border-right: solid 1px #aaa;
+}
+
+	#menu li:hover li a, #menu li li:hover li a, #menu li li li:hover li a, #menu li li li li:hover li a,
+	#menu li:hover li, #menu li li:hover li, #menu li li li:hover li, #menu li li li li:hover li {
+		text-transform: uppercase;
+		font-size: 12px;
+	}
+
+/* COMMENT LINK */
+
+.comment-link {
+	font-size: 9px;
+}
+
+#sidebar-undercomic {
+	text-align: center;
+}
+
+.widget_sociable_widget {
+	margin: 0 auto;
+	padding: 0 0;
+}
+
+.cpcal-cals {
+	width: 516px;
+	margin: 0 auto;
+	padding-left: 5px;
+}
