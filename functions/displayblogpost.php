@@ -33,10 +33,11 @@ function display_blog_post() {
 				<?php } ?>
 				<div class="post-text">
 				<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
-				<small> By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?> <?php edit_post_link(__('Edit Post','comicpress'), ' [ ', ' ] '); ?></small><br />
+				<small> By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?></small><br />
 				<?php if ($disable_categories_in_posts != 'yes') { ?>
 					<small><?php _e('Posted In:','comicpress'); ?> <?php the_category(','); ?></small><br />
 				<?php } ?>
+				<small><?php edit_post_link(__('Edit Post','comicpress'), ' [ ', ' ] '); ?></small>
 				<?php if(function_exists('the_ratings')) { the_ratings(); } ?>
 				</div>
 				<div class="clear"></div>

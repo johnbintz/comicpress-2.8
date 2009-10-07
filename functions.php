@@ -16,7 +16,7 @@ if (function_exists('id_get_comment_number')) {
 	remove_filter('comments_number','id_get_comment_number');
 }
 
-$comicpress_version = '2.8.1.16';
+$comicpress_version = '2.8.1.18';
 
 // Remove the wptexturizer from changing the quotes and squotes.
 // remove_filter('the_content', 'wpautop');
@@ -102,7 +102,10 @@ if (get_option('upload_path') !== false) {
 				'excerpt_or_content_search'		=> 'excerpt_or_content_search',
 				'category_thumbnail_postcount'	=> 'category_thumbnail_postcount',
 				'members_post_category'			=> 'members_post_category',
-				'blogposts_with_comic'				=> 'blogposts_with_comic' ) as $options => $variable_name) {
+				'blogposts_with_comic'			=> 'blogposts_with_comic',
+				'split_column_in_two'			=> 'split_column_in_two',
+				'author_column_one'				=> 'author_column_one',
+				'author_column_two'				=> 'author_column_two' ) as $options => $variable_name) {
 		$variables_to_extract[$variable_name] = get_option("comicpress-${options}");
 	}
 	

@@ -11,7 +11,7 @@
 
 	<?php if (is_cp_theme_layout('v3c,v')) { ?>
 		<div id="content" class="narrowcolumn">
-			<div class="column">	
+			<div class="column">
 	<?php } ?>
 	
 <?php if (!(is_paged())) { ?>
@@ -45,7 +45,7 @@
 
 	<?php if (!is_cp_theme_layout('v3c,v')) { ?>
 		<div id="content" class="narrowcolumn">
-			<div class="column">	
+			<div class="column">
 	<?php } ?>
 
 	<?php if (function_exists('the_project_wonderful_ad')) { ?>
@@ -54,36 +54,60 @@
 				<?php the_project_wonderful_ad('blog'); ?>
 				</center>
 			</div>
-	<?php }
-	
-if ($disable_comic_frontpage != 'yes' && $disable_comic_blog_frontpage != 'yes' && !is_paged() )  { 
-	while ($comicFrontpage->have_posts()) : $comicFrontpage->the_post();
-		
+<?php }
+
+if ($disable_comic_frontpage != 'yes' && $disable_comic_blog_frontpage != 'yes' && !is_paged() )  { ?>
+	<?php while ($comicFrontpage->have_posts()) : $comicFrontpage->the_post();
 		display_comic_post();
-	
 	endwhile; ?>
+<?php } ?>
 
 	<div id="blogheader"><!-- This area can be used for a heading above your main page blog posts --></div>
-
-<?php } 
 	
-	get_sidebar('blog');
+	<?php get_sidebar('blog'); ?>
 
-if ($disable_blog_frontpage != 'yes') { 
-	if (have_posts()) {
-		global $blog_postcount;
-		$blog_query = 'showposts='.$blog_postcount.'&cat=-"'.exclude_comic_categories().'"&paged='.$paged; 
+<?php if ($disable_blog_frontpage != 'yes') {
+	global $blog_postcount; ?>
+	<?php 
+	if ($split_column_in_two != 'yes') {
+		$blog_query = 'showposts='.$blog_postcount.'&cat="-'.exclude_comic_categories().'"&paged='.$paged; 
 		
 		$posts = query_posts($blog_query);
-		while (have_posts()) : the_post();
+		if (have_posts()) {
 			
-			display_blog_post();	
-		
-		endwhile;
-		
+			while (have_posts()) : the_post();
+				
+				display_blog_post();	
+			
+			endwhile;
+			
+		}
 		comicpress_pagination();
-	} 
+	} else { ?>
+		<div class="column_one">
+		<?php $blog_query = 'showposts='.$blog_postcount.'&cat="-'.exclude_comic_categories().'"&author='.$author_column_one.'&paged='.$paged; 
+		$posts = query_posts($blog_query);
+		if (have_posts()) {
+			while (have_posts()) : the_post();
+				display_blog_post();	
+			endwhile;
+			} ?>
+			<span class="viewpostsbyone">View all posts by: <?php the_author_posts_link(); ?><span><br />
+		</div>
+		<div class="column_two">
+		<?php $blog_query = 'showposts='.$blog_postcount.'&cat="-'.exclude_comic_categories().'"&author='.$author_column_two; 
+		$posts = query_posts($blog_query);
+		if (have_posts()) {
+			while (have_posts()) : the_post();
+				display_blog_post();	
+			endwhile;
+			} ?>
+			<span class="viewpostsbytwo">View all posts by: <?php the_author_posts_link(); ?></span><br />
+		</div>
+		<div class="clear"></div>
+	<?php } 
 } ?>
+
 			<?php get_sidebar('underblog'); ?>
 		</div>
 	</div>

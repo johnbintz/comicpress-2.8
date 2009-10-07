@@ -4,6 +4,7 @@
 	<?php wp_nonce_field('update-options') ?>
 	<table class="form-table" style="width: auto">
 	<?php
+	global $split_column_in_two, $author_column_one, $author_column_two;
 	foreach ($options as $value) {
 		switch ( $value['type'] ) {
 			case "comicpress-transcript_in_posts": ?>
@@ -181,6 +182,58 @@
 				</td>
 				<td valign="top">
 				<?php _e('All the blog posts that are on the same day and greater to the next comic post on the comic your viewing will appear.','comicpress'); ?>
+				</td>
+				</tr>
+				
+				<?php break;
+			case "comicpress-split_column_in_two": ?>
+				<tr>
+				<th scope="row"><strong><?php _e('Split the column in two to have 2 author post columns?','comicpress'); ?></strong><br /><br /></th>
+				<td valign="top" width="100">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label>
+				</td>
+				<td valign="top">
+					<?php _e('When enabled, it will make 2 seperate columns to have two seperate columns available to two different post authors.','comicpress'); ?>
+				</td>
+				</tr>
+				
+				<?php break;
+			case "comicpress-author_column_one": ?>
+				<tr>
+				<th scope="row"><strong><?php _e('Author for Column one?','comicpress'); ?></strong><br /><br /><?php _e('If column is split in two.','comicpress'); ?></th>
+				<td valign="top" width="100">
+					<label>
+					<?php 
+						$args = array('echo' => '0', 'show' => 'display_name', 'selected' => $author_column_one);
+						$selected = wp_dropdown_users($args);
+						$selected = preg_replace('#<select([^>]*)>#', '<select name="'.$value['id'].'" id="'.$value['id'].'">', $selected);
+						
+						echo $selected;
+					?>
+					</label>
+				</td>
+				<td valign="top">
+				</td>
+				</tr>
+				
+				<?php break;
+			case "comicpress-author_column_two": ?>
+				<tr>
+				<th scope="row"><strong><?php _e('Author for Column two?','comicpress'); ?></strong><br /><br /><?php _e('If column is split in two.','comicpress'); ?></th>
+				<td valign="top" width="100">
+					<label>
+			<?php 
+			$args = array('echo' => '0', 'show' => 'display_name', 'selected' => $author_column_two);
+			$selected = wp_dropdown_users($args);
+			$selected = preg_replace('#<select([^>]*)>#', '<select name="'.$value['id'].'" id="'.$value['id'].'">', $selected);
+			
+			echo $selected;
+							?>
+					</label>
+				</td>
+				<td valign="top">
 				</td>
 				</tr>
 				

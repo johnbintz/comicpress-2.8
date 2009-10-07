@@ -484,6 +484,18 @@ a.navi-comments:hover span {
 	.column {
 		overflow: hidden;
 	}
+	
+	.column_one {
+		width: 48%; 
+		float: left; 
+		padding: 1%; 
+	}
+	
+	.column_two {
+		width: 48%; 
+		float: left; 
+		padding: 1%; 
+	}
 
 .post, .post-comic, .post-page {
 	clear: both;
@@ -563,6 +575,7 @@ a.navi-comments:hover span {
 .entry {
 	line-height: 1.45em;
 	font-size: 13px;
+	padding: 3px 0;
 }
 
 .more-link {

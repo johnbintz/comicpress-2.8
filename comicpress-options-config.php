@@ -254,6 +254,21 @@ $options = array (
 			"default" => "no",
 			"type" => "comicpress-blogposts_with_comic"),
 			
+		array(
+			"id" => "comicpress-split_column_in_two",
+			"default" => "no",
+			"type" => "comicpress-split_column_in_two"),
+			
+		array(
+			"id" => "comicpress-author_column_one",
+			"default" => "1",
+			"type" => "comicpress-author_column_one"),
+			
+		array(
+			"id" => "comicpress-author_column_two",
+			"default" => "1",
+			"type" => "comicpress-author_column_two"),
+			
 		array("type" => "close")
 		);
 ?>
