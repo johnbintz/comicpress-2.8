@@ -66,12 +66,9 @@ if (comicpress_check_themepack_file('header.php') == false) { ?>
 			<?php the_project_wonderful_ad('header'); ?>
 		</div>
 	<?php } ?>
-	<?php if (!comicpress_is_active_sidebar('Header')) { ?>
 		<h1><a href="<?php echo get_settings('home') ?>"><?php bloginfo('name') ?></a></h1>
 		<div class="description"><?php bloginfo('description') ?></div>
-	<?php } else { ?>
 		<?php get_sidebar('header'); ?>
-	<?php } ?>
 	<div class="clear"></div>
 </div>
 <?php } ?>

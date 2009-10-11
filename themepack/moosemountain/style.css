@@ -120,10 +120,6 @@ h2 a:hover, h3 a:hover {
 	background: url('header.png');
 }
 
-#header h1 {
-	padding: 0;
-}
-
 #logo {
 	height: 158px;
 	width: 320px;
@@ -133,7 +129,7 @@ h2 a:hover, h3 a:hover {
 	text-indent: -9999px;
 }
 
-.description {
+#header h1, #header .description {
 	display: none;
 }
 
@@ -257,20 +253,6 @@ table#wp-calendar td {
 
 
 /* Sidebar */
-
-.sidebar ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
-.sidebar ul li {
-	padding: 0;
-}
-
-.sidebar ul li ul li {
-	padding: 0;
-}
 
 .sidebar ul li ul li a {
 	color: #000;
@@ -471,7 +453,6 @@ table#wp-calendar td {
 /* ARCHIVE */
 
 .comicarchiveframe {
-	margin: 20px 0 10px 0;
 	padding: 5px 10px 5px 10px;
 	border-width: 1px;
 	border-style: solid;
@@ -624,3 +605,55 @@ ol.commentlist {
 .userpage-info {
 	padding-left: 10px;
 }
+
+.widget_comicpress_comic_date {
+	float: left;
+	width: 160px;
+	margin-left: 20px;
+}
+
+.widget_comicpress_comments {
+	width: 160px;
+	margin-right: 20px;
+}
+
+.
+
+/* COMMENT LINK */
+
+.comment-link {
+	height: 25px;
+	line-height: 20px;
+	font-family: 'Arial', sans-serif;
+	font-weight: bold;
+	text-align: right;
+}
+		
+	.comment-balloon {
+		width: 30px;
+		height: 25px;
+		display: block;
+		margin: 0 0 0 5px;
+		float: right;
+		overflow: hidden;
+		text-align: center;
+		line-height: 16px;
+		font-family: 'Georgia', serif;
+		font-size: 16px;
+		font-weight: normal;
+		background: url('comment-balloon.png') no-repeat;
+	}
+
+		.comment-link a .comment-balloon {
+			color: #000;
+		}
+	
+		.comment-link a:hover .comment-balloon {
+			color: #fff;
+			background-position: 0 -25px;
+		}
+		
+	.comment-balloon-empty {
+		font-size: 20px;
+		line-height: 30px;
+		}

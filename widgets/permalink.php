@@ -21,7 +21,7 @@ class widget_comicpress_permalink extends WP_Widget {
 		extract($args, EXTR_SKIP); 
 		
 		echo $before_widget;
-		$title = empty($instance['title']) ? __('Permalink','comicpress') : apply_filters('widget_title', $instance['title']); ?>
+		$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']); ?>
 		<a href="<?php the_permalink(); ?><?php if ($instance['comment'] == 'yes') { ?>#comment<?php } ?>" class="widget_permalink_href"><?php echo $title; ?></a>
 		<?php
 		echo $after_widget;

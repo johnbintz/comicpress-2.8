@@ -19,86 +19,91 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 	function widget($args, $instance) {
 		global $wp_query, $post;
 		
-		$this_permalink = get_permalink();
-		
-		$temp_query = $wp_query->is_single;
-		$wp_query->is_single = true;
-		$prev_comic = get_previous_comic_permalink();
-		$next_comic = get_next_comic_permalink();
-		$wp_query->is_single = $temp_query;
-		$temp_query = null;
-		
-		$first_comic = get_first_comic_permalink();
-		$last_comic = get_last_comic_permalink();
-		
-		$prev_story = get_previous_storyline_start_permalink();
-		$next_story = get_next_storyline_start_permalink(); 
-		?>
-				
-<div id="comic_navi_wrapper">
-	<table id="comic_navi" cellpadding="0" cellspacing="0"><tr><td>
-		<?php if ($instance['first'] != 'off') {
-			if (!empty($first_comic) && ($first_comic != $this_permalink)) { ?>
-				<a href="<?php echo $first_comic; ?>" class="navi navi-first" title="<?php echo $instance['first_title']; ?>"><?php echo $instance['first_title']; ?></a>
-			<?php } else { ?>
-				<div class="navi navi-first navi-void"><?php echo $instance['first_title']; ?></div>
+		if (is_home() || is_single()) {
+			
+			$this_permalink = get_permalink();
+			
+			$temp_query = $wp_query->is_single;
+			$wp_query->is_single = true;
+			$prev_comic = get_previous_comic_permalink();
+			$next_comic = get_next_comic_permalink();
+			$wp_query->is_single = $temp_query;
+			$temp_query = null;
+			
+			$first_comic = get_first_comic_permalink();
+			$last_comic = get_last_comic_permalink();
+			
+			$prev_story = get_previous_storyline_start_permalink();
+			$next_story = get_next_storyline_start_permalink(); 
+			?>
+			
+			<div id="comic_navi_wrapper">
+			<table id="comic_navi" cellpadding="0" cellspacing="0"><tr><td>
+			<?php if ($instance['first'] != 'off') {
+				if (!empty($first_comic) && ($first_comic != $this_permalink)) { ?>
+					<a href="<?php echo $first_comic; ?>" class="navi navi-first" title="<?php echo $instance['first_title']; ?>"><?php echo $instance['first_title']; ?></a>
+				<?php } else { ?>
+					<div class="navi navi-first navi-void"><?php echo $instance['first_title']; ?></div>
+				<?php } 
+			} 
+			if ($instance['story_prev'] != 'off') { 
+				if (!empty($prev_story)) { ?>
+					<a href="<?php echo $prev_story; ?>" class="navi navi-prevchap" title="<?php echo $instance['story_prev_title']; ?>"><?php echo $instance['story_prev_title']; ?></a>
+				<?php } else { ?>
+					<div class="navi navi-prevchap navi-void"><?php echo $instance['story_prev_title']; ?></div>
+				<?php } 
+			} 
+			if ($instance['previous'] != 'off') {
+				if (!empty($prev_comic)) { ?>
+					<a href="<?php echo $prev_comic; ?>" class="navi navi-prev" title="<?php echo $instance['previous_title']; ?>"><?php echo $instance['previous_title']; ?></a>
+				<?php } else { ?>
+					<div class="navi navi-prev navi-void"><?php echo $instance['previous_title']; ?></div>
+				<?php } 
+			}
+			if ($instance['archives'] != 'off' && !empty($instance['archive_path'])) { ?>
+				<a href="<?php echo $instance['archive_path']; ?>" class="navi navi-archive" title="<?php echo $instance['archives_title']; ?>"><?php echo $instance['archives_title']; ?></a>
 			<?php } 
-		} 
-		if ($instance['story_prev'] != 'off') { 
-			if (!empty($prev_story)) { ?>
-				<a href="<?php echo $prev_story; ?>" class="navi navi-prevchap" title="<?php echo $instance['story_prev_title']; ?>"><?php echo $instance['story_prev_title']; ?></a>
-			<?php } else { ?>
-				<div class="navi navi-prevchap navi-void"><?php echo $instance['story_prev_title']; ?></div>
+			if ($instance['random'] != 'off') { ?>
+				<a href="<?php echo bloginfo('url'); ?>/?randomcomic" class="navi navi-random" title="<?php echo $instance['random_title']; ?>"><?php echo $instance['random_title']; ?></a>
+			<?php }
+			if ($instance['comictitle'] != 'off') { ?>
+				<div class="navi-comictitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></div>
 			<?php } 
-		} 
-		if ($instance['previous'] != 'off') {
-			if (!empty($prev_comic)) { ?>
-				<a href="<?php echo $prev_comic; ?>" class="navi navi-prev" title="<?php echo $instance['previous_title']; ?>"><?php echo $instance['previous_title']; ?></a>
-			<?php } else { ?>
-				<div class="navi navi-prev navi-void"><?php echo $instance['previous_title']; ?></div>
-			<?php } 
-		}
-		if ($instance['archives'] != 'off' && !empty($instance['archive_path'])) { ?>
-			<a href="<?php echo $instance['archive_path']; ?>" class="navi navi-archive" title="<?php echo $instance['archives_title']; ?>"><?php echo $instance['archives_title']; ?></a>
-		<?php } 
-		if ($instance['random'] != 'off') { ?>
-			<a href="<?php echo bloginfo('url'); ?>/?randomcomic" class="navi navi-random" title="<?php echo $instance['random_title']; ?>"><?php echo $instance['random_title']; ?></a>
-		<?php } 
-		if ($instance['comments'] != 'off') { ?>
-			<a href="<?php the_permalink(); ?>#comment" class="navi navi-comments" title="<?php echo $instance['comments_title']; ?>"><span class="navi-comments-count"><?php comments_number('0', '1', '%'); ?></span><?php echo $instance['comments_title']; ?></a>
-		<?php }
-		if ($instance['buyprint'] != 'off') { ?>	
-			<form method="post" title="<?php echo $instance['buyprint_title']; ?>" action="<?php global $buy_print_url; echo $buy_print_url; ?>" class="navi-buyprint-form"> 
+			if ($instance['comments'] != 'off') { ?>
+				<a href="<?php the_permalink(); ?>#comment" class="navi navi-comments" title="<?php echo $instance['comments_title']; ?>"><span class="navi-comments-count"><?php comments_number('0', '1', '%'); ?></span><?php echo $instance['comments_title']; ?></a>
+			<?php }
+			if ($instance['buyprint'] != 'off') { ?>	
+				<form method="post" title="<?php echo $instance['buyprint_title']; ?>" action="<?php global $buy_print_url; echo $buy_print_url; ?>" class="navi-buyprint-form"> 
 				<input type="hidden" name="comic" value="<?php echo get_the_ID(); ?>" /> 
-			<button class="navi navi-buyprint" type="submit" value="submit"><?php echo $instance['buyprint_title']; ?></button> 
-			</form> 
-		<?php } 	
-		if ($instance['next'] != 'off') {
-			if (!empty($next_comic)) { ?>
-				<a href="<?php echo $next_comic; ?>" class="navi navi-next" title="<?php echo $instance['next_title']; ?>"><?php echo $instance['next_title']; ?></a>
-			<?php } else { ?>
-				<div class="navi navi-next navi-void"><?php echo $instance['next_title']; ?></div>
-			<?php }
-		} 
-		if ($instance['story_next'] != 'off') { 
-			if (!empty($next_story) && !is_home()) { ?>
-				<a href="<?php echo $next_story; ?>" class="navi navi-nextchap" title="<?php echo $instance['story_next_title']; ?>"><?php echo $instance['story_next_title']; ?></a>
-			<?php } else { ?>
-				<div class="navi navi-nextchap navi-void"><?php echo $instance['story_next_title']; ?></div>
-			<?php }
-		}
-		if ($instance['last'] != 'off') {
-			if (!empty($last_comic) && ($last_comic != $this_permalink)) { ?>
-				<a href="<?php echo $last_comic; ?>" class="navi navi-last" title="<?php echo $instance['last_title']; ?>"><?php echo $instance['last_title']; ?></a>
-			<?php } else { ?>
-				<div class="navi navi-last navi-void"><?php echo $instance['last_title']; ?></div>
-			<?php }
-		} ?>
-	</td></tr></table>
-</div>
-
-<?php } 
-
+				<button class="navi navi-buyprint" type="submit" value="submit"><?php echo $instance['buyprint_title']; ?></button> 
+				</form> 
+			<?php } 	
+			if ($instance['next'] != 'off') {
+				if (!empty($next_comic)) { ?>
+					<a href="<?php echo $next_comic; ?>" class="navi navi-next" title="<?php echo $instance['next_title']; ?>"><?php echo $instance['next_title']; ?></a>
+				<?php } else { ?>
+					<div class="navi navi-next navi-void"><?php echo $instance['next_title']; ?></div>
+				<?php }
+			} 
+			if ($instance['story_next'] != 'off') { 
+				if (!empty($next_story) && !is_home()) { ?>
+					<a href="<?php echo $next_story; ?>" class="navi navi-nextchap" title="<?php echo $instance['story_next_title']; ?>"><?php echo $instance['story_next_title']; ?></a>
+				<?php } else { ?>
+					<div class="navi navi-nextchap navi-void"><?php echo $instance['story_next_title']; ?></div>
+				<?php }
+			}
+			if ($instance['last'] != 'off') {
+				if (!empty($last_comic) && ($last_comic != $this_permalink)) { ?>
+					<a href="<?php echo $last_comic; ?>" class="navi navi-last" title="<?php echo $instance['last_title']; ?>"><?php echo $instance['last_title']; ?></a>
+				<?php } else { ?>
+					<div class="navi navi-last navi-void"><?php echo $instance['last_title']; ?></div>
+				<?php }
+			} ?>
+			</td></tr></table>
+			</div>
+			
+		<?php } 
+	}
 	
 	function update($new_instance, $old_instance) {
 		$instance = $old_instance;
@@ -113,6 +118,7 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 		$instance['next'] = $new_instance['next'];
 		$instance['archive_path'] = strip_tags($new_instance['archive_path']);
 		$instance['buyprint'] = $new_instance['buyprint'];
+		$instance['comictitle'] = $new_instance['comictitle'];
 		
 		$instance['first_title'] = strip_tags($new_instance['first_title']);
 		$instance['last_title'] = strip_tags($new_instance['last_title']);
@@ -140,16 +146,17 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 		'next' => 'on', 
 		'archive_path' => '', 
 		'buyprint' => 'off',
-					'first_title' => __('First','comicpress'),
-					'last_title' => __('Latest','comicpress'),
-					'story_prev_title' => __('Chapter','comicpress'),
-					'story_next_title' => __('Chapter','comicpress'),
-					'previous_title' => __('Previous','comicpress'),  
-					'random_title' => __('Random','comicpress'), 
-					'archives_title' => __('Archives','comicpress'), 
-					'comments_title' => __('Comments','comicpress'), 
-					'next_title' => __('Next','comicpress'), 
-					'buyprint_title' => __('Buy Print','comicpress')
+					'first_title' => 'First',
+					'last_title' => 'Latest',
+					'story_prev_title' => 'Chapter',
+					'story_next_title' => 'Chapter',
+					'previous_title' => 'Previous',  
+					'random_title' => 'Random', 
+					'archives_title' => 'Archives', 
+					'comments_title' => 'Comments', 
+					'next_title' => 'Next', 
+					'buyprint_title' => 'Buy Print',
+					'comictitle' => 'off'
 		 ) );
 		$first = $instance['first']; if (empty($first)) $first = 'on';
 		$last = $instance['last']; if (empty($last)) $last = 'on';
@@ -162,7 +169,9 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 		$archive_path = $instance['archive_path'];
 		$next = $instance['next']; if (empty($next)) $next = 'on';
 		$buyprint = $instance['buyprint']; if (empty($buyprint)) $buyprint = 'off';
+		$comictitle = $instance['comictitle']; if (empty($comictitle)) $comictitle = 'off';
 		
+				
 		$first_title = $instance['first_title']; 
 		$last_title = $instance['last_title']; 
 		$story_prev_title = $instance['story_prev_title']; 	
@@ -173,6 +182,9 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 		$comments_title = $instance['comments_title']; 
 		$next_title = $instance['next_title']; 
 		$buyprint_title = $instance['buyprint_title'];
+
+		
+		
 		
 		?>
 	
@@ -210,6 +222,10 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 		<input id="<?php echo $this->get_field_id('story_next'); ?>" name="<?php echo $this->get_field_name('story_next'); ?>" type="radio" value="on"<?php if ( $story_next == "on") { echo " checked"; } ?> />On</label>&nbsp;<input id="<?php echo $this->get_field_id('story_next'); ?>" name="<?php echo $this->get_field_name('story_next'); ?>" type="radio" value="off"<?php if ( $story_next == "off") { echo " checked"; } ?> />Off</label><br />
 		Title:<br />
 		<input class="widefat" id="<?php echo $this->get_field_id('story_next_title'); ?>" name="<?php echo $this->get_field_name('story_next_title'); ?>" type="text" value="<?php echo attribute_escape($story_next_title); ?>" /></label><br />
+		
+		<br />
+		<label for="<?php echo $this->get_field_id('comictitle'); ?>"><strong><?php _e('Comic Title','comicpress'); ?></strong><br />
+		<input id="<?php echo $this->get_field_id('comictitle'); ?>" name="<?php echo $this->get_field_name('comictitle'); ?>" type="radio" value="on"<?php if ( $comictitle == "on") { echo " checked"; } ?> />On</label>&nbsp;<input id="<?php echo $this->get_field_id('comictitle'); ?>" name="<?php echo $this->get_field_name('comictitle'); ?>" type="radio" value="off"<?php if ( $comictitle == "off") { echo " checked"; } ?> />Off<br />
 		
 		<br />
 		<label for="<?php echo $this->get_field_id('archives'); ?>"><strong><?php _e('Archives','comicpress'); ?></strong><br />

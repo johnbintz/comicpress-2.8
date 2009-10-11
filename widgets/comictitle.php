@@ -20,9 +20,9 @@ class widget_comicpress_comictitle extends WP_Widget {
 		global $post;
 		extract($args, EXTR_SKIP); 
 		
-		echo $before_widget; 
-			the_title();
-		echo $after_widget;
+		echo $before_widget;?>
+		<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+		<?php echo $after_widget;
 	}
 	
 	function update($new_instance, $old_instance) {

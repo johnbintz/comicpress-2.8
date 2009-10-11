@@ -36,7 +36,7 @@ class widget_comicpress_random_post extends WP_Widget {
 		echo $before_widget;
 		$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']); 
 		if ( !empty( $title ) ) { echo $before_title . $title . $after_title; }; ?>
-			<h2><a href="?randompost"><span class="random-comic-icon">?</span> <?php _e('Random Post','comicpress'); ?></a></h2>
+			<h2><a href="?randompost"><span class="random-post-icon">?</span> <?php _e('Random Post','comicpress'); ?></a></h2>
 		<?php
 		echo $after_widget;
 	}

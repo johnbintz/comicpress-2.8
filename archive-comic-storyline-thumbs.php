@@ -30,8 +30,8 @@ Template Name: Comic Storyline with Thumbs
 			$first_comic_in_category = get_terminal_post_in_category($category_id,true);
 			$first_comic_permalink = get_permalink($first_comic_in_category->ID);
 			$archive_image = null;
-			foreach (array("archive", "rss", "comic") as $type) {
-				if (($requested_archive_image = get_comic_url("archive", $first_comic_in_category)) !== false) {
+			foreach (array("mini", "archive", "rss", "comic") as $type) {
+				if (($requested_archive_image = get_comic_url($type, $first_comic_in_category)) !== false) {
 					$archive_image = $requested_archive_image; break;
 				}
 			}

@@ -238,6 +238,18 @@
 				</tr>
 				
 				<?php break;
+			case "comicpress-remove_wptexturize": ?>
+				<tr>
+				<th scope="row"><strong><?php _e('Remove WPs texturization from the content area?','comicpress'); ?></strong><br /><br /></th>
+				<td valign="top" width="100">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label>
+				</td>
+				<td valign="top">
+				</td>
+				</tr>
+				<?php break;
 		}
 	}
 	?>

@@ -47,10 +47,10 @@ function comicpress_members_filter($query) {
 
 function shortcode_for_comicpress_members_only( $atts, $content = null ) {
 	global $post, $userdata, $profileuser, $current_user, $errormsg;
-	$returninfo = '<div class="non-member">'.__('There is Members Only content here. To view this content you need to be a member of this site.','comicpress').'</div>';
+	$returninfo = '<div class="non-member">'.__('There is Members Only content here.<br />To view this content you need to be a member of this site.','comicpress').'</div>';
 	if ( !empty($current_user->ID) ) {
 		$is_member = get_usermeta($current_user->ID,'comicpress-is-member');
-		if ( ( $is_member == 'yes' ) ) {
+		if ($is_member == 'yes' || current_user_can('publish_posts')) {
 			$returninfo = '<div class="members-only">'.$content.'</div>';
 		}
 	}
@@ -109,10 +109,10 @@ function in_members_category() {
 }
 
 function comicpress_is_member() {
-	global $current_user;
-	if (!empty($current_user)) {
-		$is_member = get_usermeta($current_user->ID,'comicpress-is-member');
-		if ($is_member == 'yes' || current_user_can('publish_post')) {
+	global $user_ID;
+	if (!empty($user_ID)) {
+		$is_member = get_usermeta($user_ID,'comicpress-is-member');
+		if ($is_member == 'yes' || current_user_can('publish_posts')) {
 			return true;
 		}
 	}

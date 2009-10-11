@@ -8,7 +8,7 @@ if ( post_password_required() ) { ?>
 	return;
 } ?>
 
-<div <?php comment_class(); ?>>
+<div id="comment-wrapper">
 
 <?php if ( have_comments() ) : ?>
 
@@ -22,7 +22,7 @@ if ( post_password_required() ) { ?>
 		if (function_exists('comicpress_comments_callback')) { 
 			wp_list_comments(array(
 						'type' => 'comment',
-						'reply_text' => _('Reply to %s&not;','comicpress'), 
+						'reply_text' => __('Reply to %s&not;','comicpress'), 
 						'callback' => 'comicpress_comments_callback',
 						'end-callback' => 'comicpress_comments_end_callback',
 						'avatar_size'=>64

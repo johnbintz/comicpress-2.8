@@ -10,13 +10,12 @@ Author URI: http://webcomicplanet.com/
 */
 
 function comicpress_archive_dropdown() { ?>
-<ul>
-	<li class="archive-dropdown-wrap">
+	<div class="archive-dropdown-wrap">
 		<select name="archive-dropdown" class="archive-dropdown" onchange='document.location.href=this.options[this.selectedIndex].value;'> 
 		<option value=""><?php echo attribute_escape(__('Archives...','comicpress')); ?></option> 
-		<?php wp_get_archives('type=monthly&format=option&show_post_count=1'); ?> </select>
-	</li>
-</ul>
+			<?php wp_get_archives('type=monthly&format=option&show_post_count=1'); ?> 
+		</select>
+	</div>
 <?php }
 
 class widget_comicpress_archive_dropdown extends WP_Widget {

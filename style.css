@@ -459,14 +459,6 @@ a.navi-comments:hover span {
 	margin: 0;
 }
 
-/* Wraps the content area w/comic */
-#content-wrapper {
-}
-
-/* wraps the content area */
-#subcontent-wrapper {
-}
-
 #content {
 	float: left;
 }
@@ -491,11 +483,20 @@ a.navi-comments:hover span {
 		padding: 1%; 
 	}
 	
+		.column_one_header {
+			padding: 5px;
+			border-top: solid 1px #c45253;
+		}
+	
 	.column_two {
 		width: 48%; 
 		float: left; 
 		padding: 1%; 
 	}
+		.column_two_header {
+			padding: 5px;
+			border-top: solid 1px #c45253;
+		}
 
 .post, .post-comic, .post-page {
 	clear: both;
@@ -620,27 +621,10 @@ a.navi-comments:hover span {
 /* COMMENT LINK */
 
 .comment-link {
-	height: 25px;
-	line-height: 20px;
 	font-family: 'Arial', sans-serif;
 	font-weight: bold;
 	text-align: right;
 }
-
-	.comment-link a {
-	}
-		
-	.comment-link a:hover {
-	}
-		
-	.comment-balloon {
-	}
-	
-		.comment-link a:hover .comment-balloon {
-		}
-		
-	.comment-balloon-empty {
-		}
 
 /* THE BLOG HEADER */
 
@@ -655,11 +639,12 @@ a.navi-comments:hover span {
 
 /* COMMENTS */
 
-.comment-wrap {
+#comment-wrapper {
+	margin-top: 5px;
 	padding: 0 20px;
 }
 
-.comment-wrap h3 {
+#comment-wrapper h3 {
 	margin: 0;
 	padding: 20px 0 0 0;
 	font-weight: normal;
@@ -763,10 +748,15 @@ ul.children {
 
 .comicthumbwrap {
 	float: left;
-	width: 120px;
-	height: 130px;
+	max-width: 120px;
+	max-height: 130px;
 	overflow: hidden;
 	margin: 2px 2px 6px 2px;
+}
+
+.comicthumbwrap img {
+	width: 120px;
+	max-height: 130px;
 }
 
 .comicarchiveframe {
@@ -831,52 +821,35 @@ ul.children {
 }
 
 	.sidebar h2, .sidebar h2 a {
+		margin: 10px 0 0 0;
+		padding: 0 0 0 1px;
 		font-family:arial;
+		display: block;
 		font-size: 16px;
 	}
-
+	
 	.sidebar ul {
-		margin: 0 0 10px 0;
-		padding: 0;
+		margin: 0;
 		list-style: none;
+		padding: 0;
 	}
 	
-	.sidebar ul li ul {
+	.sidebar ul li ul li {
 		margin: 0;
+		padding-left: 14px;
 	}
 
-		.sidebar ul li {
-			margin: 0;
-			padding: 0;
-			text-align: left;
-			list-style: none;
-		}
-
-		.sidebar ul li ul li {
-			margin: 0 0 0 13px;
-			padding: 0;
-			text-align: left;
-		}
-
-	.sidebar li h2 {
-		margin-top: 10px;
+	.sidebar .widget {
+		margin: 10px 0;
 	}
-
+	
+	.sidebar .widget .post-extras, .sidebar .widget .entry {
+		padding: 3px;
+	}
+	
 /* WIDGETS */
 
-
-.widget {
-	margin: 0 auto;
-}
-
-	.widget_comicpress_comictitle {
-		font-size: 36px;
-		font-family: georgia;
-		letter-spacing: -2px;
-		text-align: center;
-	}
-
-.random-comic-icon {
+.random-comic-icon, .random-post-icon {
 	padding: 0 5px;
 	color: #fff;
 	background: #000;
@@ -889,10 +862,8 @@ ul.children {
 }
 
 .archive-dropdown-wrap {
+	margin: 10px 0;
 }
-
-	.archive-dropdown-wrap:hover {
-	}
 
 .archive-dropdown {
 	margin: 0;
@@ -1328,7 +1299,6 @@ li.pingback div p, li.trackback div p {
 }
 
 #storyline li img {
-	height: 50px;
 	display: none;
 }
 

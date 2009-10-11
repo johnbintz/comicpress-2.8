@@ -31,11 +31,10 @@ body {
 }
 
 #sidebar-comicright {
+	margin-top: 5px;
 	float: right;
-	background: #ccc;
-	height: 300px;
+	height: 305px;
 	width: 98px;
-	border: solid 1px #000;
 }
 
 #menubar {
@@ -51,7 +50,7 @@ body {
 }
 
 #sidebar-left, #sidebar-right {
-	padding: 5px 0;
+	padding: 5px;
 	background: #000;
 }
 
@@ -66,3 +65,5 @@ body {
 .sidebar a:hover {
 	color: #ff0000;
 }
+
+.nav { display: none; }

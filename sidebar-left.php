@@ -6,12 +6,8 @@ if ($disable_lrsidebars_frontpage == 'yes' && is_home()) {
 	<div class="sidebar-content">
 		<div class="sidebar">
 			<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Left Sidebar') ) : ?> 
-				<ul>
-					<li>
-						<?php $default_image = get_bloginfo('stylesheet_directory').'/images/cal/default.png'; ?>
-						<?php comicpress_calendar(array('thumbnail' => $default_image)) ?>
-					</li>
-				</ul>
+				<?php $default_image = get_bloginfo('stylesheet_directory').'/images/cal/default.png'; ?>
+				<?php comicpress_calendar(array('thumbnail' => $default_image)) ?>
 				<?php comicpress_archive_dropdown(); ?>
 				<?php comicpress_latest_comics() ?>
 			<?php endif; ?>

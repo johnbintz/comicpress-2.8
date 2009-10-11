@@ -50,7 +50,7 @@
 
 				<div class="comicthumbwrap">
 					<div class="comicarchiveframe">
-						<a href="<?php the_permalink() ?>"><img src="<?php the_comic_archive() ?>" alt="<?php the_title() ?>" title="<?php the_title() ?>" /></a><br />
+						<a href="<?php the_permalink() ?>"><img src="<?php the_comic_mini() ?>" alt="<?php the_title() ?>" title="<?php the_title() ?>" /></a><br />
 					</div>
 				</div>
 

@@ -10,6 +10,15 @@ Style: Default
 	display: table;
 	border-collapse: collapse;
 	margin: 0 auto;
+
+}
+
+.navi-comictitle {
+	text-align: center;
+	float: left;
+	display: block;
+	padding-top: 26px;
+	max-width: 200px;
 }
 
 .navi {

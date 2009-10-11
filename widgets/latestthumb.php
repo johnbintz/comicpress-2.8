@@ -27,7 +27,8 @@ class widget_comicpress_latest_thumbnail extends WP_Widget {
 			$latestcomics = get_posts('numberposts=1&category='.get_all_comic_categories_as_cat_string());
 			foreach($latestcomics as $post) : ?>
 				<center>
-				<a href="<?php the_permalink(); ?>"><img src="<?php the_comic_rss() ?>" alt="<?php the_title() ?>" title="<?php the_hovertext() ?>" /></a><br />
+				<a href="<?php the_permalink(); ?>"><img src="<?php the_comic_mini() ?>" alt="<?php the_title() ?> - <?php the_date(); ?>" title="<?php the_hovertext() ?>" /></a><br />
+				<span class="latest_thumbnail_date"><?php the_date(); ?></span>
 				</center>
 				<?php endforeach; 
 			echo $after_widget;

@@ -269,6 +269,11 @@ $options = array (
 			"default" => "1",
 			"type" => "comicpress-author_column_two"),
 			
+		array(
+			"id" => "comicpress-remove_wptexturize",
+			"default" => "no",
+			"type" => "comicpress-remove_wptexturize"),
+			
 		array("type" => "close")
 		);
 ?>

@@ -27,4 +27,7 @@ $blog_postcount = "3";
 //Mini Comic Width - The width your comics will appear in minithumbs (default "100")
 $mini_comic_width = "100";
 
+//Minithumb Comic Folder - The folder for your your mini thumbs (default "comics-mini")
+$mini_comic_folder = "comics-mini";
+
 ?>

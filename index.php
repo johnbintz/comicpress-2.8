@@ -21,6 +21,7 @@
 		<?php $wp_query ->in_the_loop = true; $comicFrontpage = new WP_Query(); $comicFrontpage->query('showposts=1&cat='.get_all_comic_categories_as_cat_string());
 		while ($comicFrontpage->have_posts()) : $comicFrontpage->the_post() ?>	
 			<?php if (comicpress_check_themepack_file('displaycomic.php') == false) { ?>
+			<div id="comic-wrap">
 				<div id="comic-head"><?php get_sidebar('over'); ?></div>
 				<div class="clear"></div>
 				<?php get_sidebar('comicleft'); ?>
@@ -28,6 +29,7 @@
 				<?php get_sidebar('comicright'); ?>
 				<div class="clear"></div>
 				<div id="comic-foot"><?php get_sidebar('under'); ?></div>
+			</div>
 			<?php } ?>
 		<?php endwhile; ?>
 		
@@ -84,7 +86,9 @@ if ($disable_comic_frontpage != 'yes' && $disable_comic_blog_frontpage != 'yes' 
 		}
 		comicpress_pagination();
 	} else { ?>
+	<div id="dualcolumns">
 		<div class="column_one">
+			<div class="column_one_header"></div>
 		<?php $blog_query = 'showposts='.$blog_postcount.'&cat="-'.exclude_comic_categories().'"&author='.$author_column_one.'&paged='.$paged; 
 		$posts = query_posts($blog_query);
 		if (have_posts()) {
@@ -95,6 +99,7 @@ if ($disable_comic_frontpage != 'yes' && $disable_comic_blog_frontpage != 'yes' 
 			<span class="viewpostsbyone">View all posts by: <?php the_author_posts_link(); ?><span><br />
 		</div>
 		<div class="column_two">
+			<div class="column_two_header"></div>
 		<?php $blog_query = 'showposts='.$blog_postcount.'&cat="-'.exclude_comic_categories().'"&author='.$author_column_two; 
 		$posts = query_posts($blog_query);
 		if (have_posts()) {
@@ -105,6 +110,7 @@ if ($disable_comic_frontpage != 'yes' && $disable_comic_blog_frontpage != 'yes' 
 			<span class="viewpostsbytwo">View all posts by: <?php the_author_posts_link(); ?></span><br />
 		</div>
 		<div class="clear"></div>
+	</div>
 	<?php } 
 } ?>
 

@@ -16,14 +16,7 @@ if (function_exists('id_get_comment_number')) {
 	remove_filter('comments_number','id_get_comment_number');
 }
 
-$comicpress_version = '2.8.1.18';
-
-// Remove the wptexturizer from changing the quotes and squotes.
-// remove_filter('the_content', 'wpautop');
-// remove_filter('the_title', 'wptexturize');
-remove_filter('the_content', 'wptexturize');
-// remove_filter('the_excerpt', 'wptexturize');
-// remove_filter('comment_text', 'wptexturize');
+$comicpress_version = '2.8.1.21';
 
 global $wpmu_version;
 if (!empty($wpmu_version)) {
@@ -49,7 +42,7 @@ if (!empty($wpmu_version)) {
 	}
 	
 } else {
-	require_once(get_template_directory() . '/comicpress-config.php');
+	require(get_template_directory() . '/comicpress-config.php');
 }
 
 if (get_option('upload_path') !== false) {
@@ -105,7 +98,8 @@ if (get_option('upload_path') !== false) {
 				'blogposts_with_comic'			=> 'blogposts_with_comic',
 				'split_column_in_two'			=> 'split_column_in_two',
 				'author_column_one'				=> 'author_column_one',
-				'author_column_two'				=> 'author_column_two' ) as $options => $variable_name) {
+				'author_column_two'				=> 'author_column_two',
+				'remove_wptexturize'			=> 'remove_wptexturize' ) as $options => $variable_name) {
 		$variables_to_extract[$variable_name] = get_option("comicpress-${options}");
 	}
 	
@@ -130,6 +124,15 @@ global $cp_theme_layout;
 		}  
 	}	
 	return false;
+}
+
+if ($remove_wptexturize == 'yes') {
+	// Remove the wptexturizer from changing the quotes and squotes.
+	// remove_filter('the_content', 'wpautop');
+	// remove_filter('the_title', 'wptexturize');
+	remove_filter('the_content', 'wptexturize');
+	// remove_filter('the_excerpt', 'wptexturize');
+	// remove_filter('comment_text', 'wptexturize');
 }
 
 // WIDGETS WP 2.8 compatible ONLY, no backwards compatibility here.
@@ -350,22 +353,22 @@ function get_next_storyline_start_permalink() {
 
 function get_adjacent_storyline_category_id($next = false) {
 	global $post, $category_tree;
-
+	
 	$categories = wp_get_post_categories($post->ID);
 	if (is_array($categories)) {
-    $category_id = reset($categories);
-	for ($i = 0, $il = count($category_tree); $i < $il; ++$i) {
-		$storyline_category_id = end(explode("/", $category_tree[$i]));
-
+		$category_id = reset($categories);
+		for ($i = 0, $il = count($category_tree); $i < $il; ++$i) {
+			$storyline_category_id = end(explode("/", $category_tree[$i]));
+			
 			if ($storyline_category_id == $category_id) { 
 				$target_index = false;
 				if ($next) {
-				  $target_index = $i + 1;
+					$target_index = $i + 1;
 				} else {
-				  $target_index = $i - 1;
+					$target_index = $i - 1;
 				}
 				if (isset($category_tree[$target_index])) {
-				  return end(explode('/', $category_tree[$target_index]));
+					return end(explode('/', $category_tree[$target_index]));
 				}
 			} 
 		}
@@ -382,7 +385,7 @@ function get_adjacent_storyline_category_id($next = false) {
 */
 
 function get_comic_path($folder = 'comic', $override_post = null, $filter = 'default', $multi = null) {
-	global $post, $comic_filename_filters, $comic_folder, $archive_comic_folder, $rss_comic_folder, $comic_pathfinding_errors, $wpmu_version;
+	global $post, $comic_filename_filters, $comic_folder, $archive_comic_folder, $rss_comic_folder, $mini_comic_folder, $comic_pathfinding_errors, $wpmu_version;
 
 	if (isset($comic_filename_filters[$filter])) {
 		$filter_to_use = $comic_filename_filters[$filter];
@@ -391,9 +394,9 @@ function get_comic_path($folder = 'comic', $override_post = null, $filter = 'def
 	}
 
 	switch ($folder) {
-		case "mini": $folder_to_user = $mini_comic_folder; break;
 		case "rss": $folder_to_use = $rss_comic_folder; break;
 		case "archive": $folder_to_use = $archive_comic_folder; break;
+		case "mini": $folder_to_use = $mini_comic_folder; break;
 		case "comic": default: $folder_to_use = $comic_folder; break;
 	}
 
@@ -441,10 +444,8 @@ function get_comic_url($folder = 'comic', $override_post = null, $filter = 'defa
 	if (($result = get_comic_path($folder, $override_post, $filter)) !== false) {
 		return get_option('home') . '/' . $result;
 	} else {
-		if (($folder == 'archive' || $folder == 'rss' || $folder == 'mini')) {
-			if (($result = get_comic_path('comic', $override_post, $filter)) !== false) {
-				return get_option('home') . '/' . $result;
-			}
+		if (($result = get_comic_path('comic', $override_post, $filter)) !== false) {
+			return get_option('home') . '/' . $result; 
 		}
 	}
 	return false;
@@ -705,21 +706,73 @@ function insert_comic_feed($content) {
 add_filter('the_content','insert_comic_feed');
 	
 // Register Sidebar and Define Widgets
-	
+
 if ( function_exists('register_sidebar') ) {
-	register_sidebar(array('name'=>'Left Sidebar','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>'Right Sidebar','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>'Above Header','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>'Header','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>'Menubar','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>'Over Comic','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>'Left of Comic','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>'Right of Comic','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>'Under Comic','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>'Over Blog','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>'Blog','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>'Under Blog','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
-	register_sidebar(array('name'=>'Footer','before_widget' => '<ul><li id="%1$s" class="widget %2$s">','after_widget'  => '</li></ul>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>' ));
+	register_sidebar(array('name'=>'Left Sidebar','before_widget' => '
+	<div id="%1$s" class="widget %2$s">
+','after_widget'  => '
+</div>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>
+' ));
+	register_sidebar(array('name'=>'Right Sidebar','before_widget' => '
+	<div id="%1$s" class="widget %2$s">
+','after_widget'  => '
+</div>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>
+' ));
+	register_sidebar(array('name'=>'Above Header','before_widget' => '
+	<div id="%1$s" class="widget %2$s">
+','after_widget'  => '
+</div>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>
+' ));
+	register_sidebar(array('name'=>'Header','before_widget' => '
+	<div id="%1$s" class="widget %2$s">
+','after_widget'  => '
+</div>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>
+' ));
+	register_sidebar(array('name'=>'Menubar','before_widget' => '
+	<div id="%1$s" class="widget %2$s">
+','after_widget'  => '
+</div>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>
+' ));
+	register_sidebar(array('name'=>'Over Comic','before_widget' => '
+	<div id="%1$s" class="widget %2$s">
+','after_widget'  => '
+</div>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>
+' ));
+	register_sidebar(array('name'=>'Left of Comic','before_widget' => '
+	<div id="%1$s" class="widget %2$s">
+','after_widget'  => '
+</div>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>
+' ));
+	register_sidebar(array('name'=>'Right of Comic','before_widget' => '
+	<div id="%1$s" class="widget %2$s">
+','after_widget'  => '
+</div>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>
+' ));
+	register_sidebar(array('name'=>'Under Comic','before_widget' => '
+	<div id="%1$s" class="widget %2$s">
+','after_widget'  => '
+</div>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>
+' ));
+	register_sidebar(array('name'=>'Over Blog','before_widget' => '
+	<div id="%1$s" class="widget %2$s">
+','after_widget'  => '
+</div>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>
+' ));
+	register_sidebar(array('name'=>'Blog','before_widget' => '
+	<div id="%1$s" class="widget %2$s">
+','after_widget'  => '
+</div>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>
+' ));
+	register_sidebar(array('name'=>'Under Blog','before_widget' => '
+	<div id="%1$s" class="widget %2$s">
+','after_widget'  => '
+</div>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>
+' ));
+	register_sidebar(array('name'=>'Footer','before_widget' => '
+	<div id="%1$s" class="widget %2$s">
+','after_widget'  => '
+</div>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>
+' ));
 }     
 
 function storyline_category_list() {
