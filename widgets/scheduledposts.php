@@ -26,14 +26,13 @@ class widget_comicpress_show_scheduled_posts extends WP_Widget {
 		$scheduled_posts = get_posts('post_status=future&numberposts=-1');
 		if (empty($scheduled_posts)) {
 			echo '<ul><li>None.</li></ul>';
-		} else {
-			foreach($scheduled_posts as $post) : ?>
-				<ul>
-				<li><span class="scheduled-post-title"><?php echo $post->post_title; ?></span>
-				<span class="scheduled-post-date"><?php echo date('m/d/Y',strtotime($post->post_date)); ?></span> </li>
-				</ul>
-			<?php endforeach;
-		} 
+		} else { ?>
+			<ul>
+			<?php foreach($scheduled_posts as $post) : ?>
+				<li><span class="scheduled-post-date"><?php echo date('m/d/Y',strtotime($post->post_date)); ?></span> <span class="scheduled-post-title"><?php echo $post->post_title; ?></span></li>
+			<?php endforeach; ?>
+			</ul>
+		<?php } 
 		echo $after_widget;
 		echo '</div>';
 	}

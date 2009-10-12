@@ -9,21 +9,17 @@ Author URI: http://webcomicplanet.com/
 
 */
 
- function comicpress_latest_comics() { ?>
-	<ul>
-	<li>
-		<h2>Latest Comics</h2>
-		<ul>	
-			 <?php global $post;
-			$latestcomics = get_posts('numberposts=5&category='.get_all_comic_categories_as_cat_string());
-			foreach($latestcomics as $post) : ?>
-				<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-			<?php endforeach; ?>
-     	</ul>
-	</li>
+function comicpress_latest_comics() { ?>
+	<h2>Latest Comics</h2>
+	<ul>	
+	<?php global $post;
+	$latestcomics = get_posts('numberposts=5&category='.get_all_comic_categories_as_cat_string());
+	foreach($latestcomics as $post) : ?>
+		<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+		<?php endforeach; ?>
 	</ul>
 	<?php 
-} 
+}
 
 class widget_comicpress_latest_comics extends WP_Widget {
 	

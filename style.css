@@ -830,13 +830,25 @@ ul.children {
 	
 	.sidebar ul {
 		margin: 0;
+		padding: 0 0 0 14px;
 		list-style: none;
-		padding: 0;
 	}
-	
-	.sidebar ul li ul li {
-		margin: 0;
-		padding-left: 14px;
+
+		.sidebar ul li {
+			margin: 0;
+			padding: 0;
+			text-align: left;
+			list-style: none;
+		}
+
+		.sidebar ul li ul li {
+			margin: 0;
+			padding: 0;
+			text-align: left;
+		}
+
+	.sidebar li h2 {
+		margin-top: 15px;
 	}
 
 	.sidebar .widget {

@@ -410,13 +410,20 @@ function get_comic_path($folder = 'comic', $override_post = null, $filter = 'def
 	$post_date = mysql2date(CP_DATE_FORMAT, $post_to_use->post_date);
 
 	$filter_with_date = str_replace('{date}', $post_date, $filter_to_use);
-
+	
+	$cwd = get_stylesheet_directory();
+	if ($cwd !== false) {
+		// Strip the wp-admin part and just get to the root.
+		$root_path = preg_replace('#[\\/]wp-(admin|content).*#', '', $cwd);
+	}
+	
 	$results = array();
-
-	if (count($results = glob("${folder_to_use}/${filter_with_date}")) > 0) {
+	/* have to use root_path to get subdirectory installation directories */
+	if (count($results = glob("${root_path}/${folder_to_use}/${filter_with_date}")) > 0) {
 
 		if (!empty($wpmu_version)) {
 			$comic = reset($results);
+			$comic = $folder_to_use . '/'. basename($comic);
 			if ($wpmu_path !== false) { $comic = str_replace($wpmu_path, "files", $comic); }
 			return $comic;
 		}
@@ -424,11 +431,14 @@ function get_comic_path($folder = 'comic', $override_post = null, $filter = 'def
 		if (!empty($multi)) {
 			return $results;
 		} else {
-			return reset($results);
+			/* clear the root path */
+			$comic = reset($results);
+			$comic = $folder_to_use .'/'. basename($comic);
+			return $comic;
 		}
 	}
 
-	$comic_pathfinding_errors[] = sprintf(__("Unable to find the file in the <strong>%s</strong> folder that matched the pattern <strong>%s</strong>. Check your WordPress and ComicPress settings.", 'comicpress'), $folder, $filter_with_date);
+	echo $comic_pathfinding_errors[] = sprintf(__("Unable to find the file in the <strong>%s</strong> folder that matched the pattern <strong>%s</strong>. Check your WordPress and ComicPress settings.", 'comicpress'), $folder_to_use, $filter_with_date);
 	return false;
 }
 
@@ -442,13 +452,14 @@ function get_comic_path($folder = 'comic', $override_post = null, $filter = 'def
 */
 function get_comic_url($folder = 'comic', $override_post = null, $filter = 'default') {
 	if (($result = get_comic_path($folder, $override_post, $filter)) !== false) {
-		return get_option('home') . '/' . $result;
+		return get_bloginfo('wpurl') . '/' . $result;
 	} else {
 		if (($result = get_comic_path('comic', $override_post, $filter)) !== false) {
-			return get_option('home') . '/' . $result; 
+			$basecomic = basename($result);
+			return get_bloginfo('wpurl') .  '/' . $result; 
 		}
 	}
-	return false;
+	return $result;
 }
 
 /**

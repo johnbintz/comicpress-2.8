@@ -4,43 +4,42 @@ Widget Name: Control Panel
 Widget URI: http://comicpress.org/
 Description: Display an area for login and logout, forgot password and register.
 Author: Philip M. Hofer (Frumph)
-Version: 1.01
+Version: 1.02
 Author URI: http://webcomicplanet.com/
 
 */
 
 function comicpress_show_control_panel() { 
 global $wpmu_version; ?>
-<ul>
 	<?php if (!is_user_logged_in()) { ?>
-	<li>
-		<?php if ( get_option('users_can_register') ) { ?>
-			<form action="<?php bloginfo('url') ?>/wp-login.php" method="post">
-			<?php _e('UserName:','comicpress'); ?><br />
-			<input type="text" name="log" id="sname" value="<?php echo wp_specialchars(stripslashes($user_login), 1) ?>" size="22" /><br /><br />
-			<?php _e('Password:','comicpress'); ?><br />
-			<input type="password" name="pwd" id="spassword" size="22" /><br />
-			<label for="rememberme"><input name="rememberme" id="rememberme" type="checkbox" checked="checked" value="forever" /> Remember me</label><br />
-			<br />
-			<button type="submit" class="button"><?php _e('Login','comicpress'); ?></button>
-			<input type="hidden" name="redirect_to" value="<?php echo $_SERVER['REQUEST_URI']; ?>"/>
-			</form>
-			<br />
-			<?php if (!empty($wpmu_version)) { ?>
-				<a href="<?php bloginfo('url') ?>/wp-signup.php"><?php _e('Register','comicpress'); ?></a><br />
-			<?php } else { ?>
-				<a href="<?php bloginfo('url') ?>/wp-register.php"><?php _e('Register','comicpress'); ?></a><br />
-			<?php } ?>
+		<form action="<?php bloginfo('wpurl') ?>/wp-login.php" method="post">
+		<?php _e('UserName:','comicpress'); ?><br />
+		<input type="text" name="log" id="sname" value="<?php echo wp_specialchars(stripslashes($user_login), 1) ?>" size="22" /><br /><br />
+		<?php _e('Password:','comicpress'); ?><br />
+		<input type="password" name="pwd" id="spassword" size="22" /><br />
+		<label for="rememberme"><input name="rememberme" id="rememberme" type="checkbox" checked="checked" value="forever" /> Remember me</label><br />
+		<br />
+		<button type="submit" class="button"><?php _e('Login','comicpress'); ?></button>
+		<input type="hidden" name="redirect_to" value="<?php echo $_SERVER['REQUEST_URI']; ?>"/>
+		</form>
+		<br />
+		<ul>
+		<?php if (!empty($wpmu_version)) { ?>
+			<li><a href="<?php bloginfo('wpurl') ?>/wp-signup.php"><?php _e('Register','comicpress'); ?></a></li>
+		<?php } else { ?>
+			<li><a href="<?php bloginfo('wpurl') ?>/wp-register.php"><?php _e('Register','comicpress'); ?></a></li>
 		<?php } ?>
-		<a href="<?php bloginfo('url') ?>/wp-login.php?action=lostpassword"><?php _e('Recover password','comicpress'); ?></a>
+		<li><a href="<?php bloginfo('wpurl') ?>/wp-login.php?action=lostpassword"><?php _e('Recover password','comicpress'); ?></a></li>
+		</ul>
 	<?php } else { ?>
-		<?php $redirect = '&amp;redirect_to='.urlencode(wp_make_link_relative(get_option('siteurl')));
+		<ul>
+		<?php $redirect = '&amp;redirect_to='.urlencode(wp_make_link_relative(get_bloginfo('wpurl')));
 		$uri = wp_nonce_url( site_url("wp-login.php?action=logout$redirect", 'login'), 'log-out' ); ?>
 		<li><a href="<?php echo $uri; ?>"><?php _e('Logout','comicpress'); ?></a></li>
 		<?php wp_register(); ?>
-		<li><a href="/wp-admin/profile.php"><?php _e('Profile','comicpress'); ?></a></li>
+		<li><a href="<?php bloginfo('wpurl'); ?>/wp-admin/profile.php"><?php _e('Profile','comicpress'); ?></a></li>
+		</ul>
 	<?php } ?>
-	</ul>
 	<?php
 } 
 
