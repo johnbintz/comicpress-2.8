@@ -274,6 +274,11 @@ $options = array (
 			"default" => "no",
 			"type" => "comicpress-remove_wptexturize"),
 			
+		array(
+			"id" => "comicpress-disable_default_menubar",
+			"default" => "no",
+			"type" => "comicpress-disable_default_menubar"),
+			
 		array("type" => "close")
 		);
 ?>

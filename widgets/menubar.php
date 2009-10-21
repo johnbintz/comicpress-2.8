@@ -12,11 +12,11 @@ Author URI: http://webcomicplanet.com/
 
 function comicpress_menubar() {
 global $contact_in_menubar,$enable_search_in_menubar,$enable_rss_in_menubar,$enable_navigation_in_menubar,$disable_dynamic_menubar_links, $themepack_directory;
-	if (comicpress_check_themepack_file('menubar.php') == false) {
-		if (function_exists('suckerfish')) { 
-			suckerfish();
+	if (comicpress_check_themepack_file('menubar') == false) {
+		if (file_exists(get_template_directory() . '/custom-menubar.php')) {
+			include(get_template_directory() . '/custom-menubar.php');
 		} else { ?>
-			<div id="menubar">
+		<div id="menubar">
 			
 			<div id="menunav">
 			<?php if ($enable_search_in_menubar == 'yes') { ?>
@@ -82,8 +82,8 @@ global $contact_in_menubar,$enable_search_in_menubar,$enable_rss_in_menubar,$ena
 			<?php } ?>
 			</ul>
 			<div class="clear"></div>
-			</div>
-		<?php } 
+		</div>
+	<?php } 
 	}
 } 
 

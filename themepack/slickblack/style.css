@@ -18,10 +18,17 @@ body {
 	color: #ccc;
 }
 
-#header {width: 780px; height: 140px; background: url('header.png') top left no-repeat; overflow: hidden;}
-#header h1 {padding: 0;}
-#header h1 a {display: block; width: 980px; height: 140px; text-indent: -9999px;}
-#header .description {display: none;}
+#header {
+	text-align: left;
+}
+
+#header h1 a {
+	color: #fff;
+}
+
+#header h1 a:hover {
+	color: #fff000;
+}
 
 a {
 	color: #b4d3df;
@@ -55,7 +62,7 @@ h1, h1 a, h2, h2 a, h3, h3 a {
 	}
 
 #pagewrap-right {
-	width: 778px;
+	width: 768px;
 }
 
 #content-wrapper {
@@ -65,7 +72,7 @@ h1, h1 a, h2, h2 a, h3, h3 a {
 }
 
 .narrowcolumn {
-	width: 556px;
+	width: 546px;
 	background: #333;
 	border: solid 1px #000;
 }

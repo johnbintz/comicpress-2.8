@@ -58,18 +58,17 @@
 	<?php } 
 } ?>
 
-<?php 
-if (comicpress_check_themepack_file('header.php') == false) { ?>
-<div id="header">
-	<?php if (function_exists('the_project_wonderful_ad')) { ?>
-		<div class="headerpwad">
-			<?php the_project_wonderful_ad('header'); ?>
-		</div>
-	<?php } ?>
-		<h1><a href="<?php echo get_settings('home') ?>"><?php bloginfo('name') ?></a></h1>
-		<div class="description"><?php bloginfo('description') ?></div>
-		<?php get_sidebar('header'); ?>
-	<div class="clear"></div>
-</div>
+<?php if (comicpress_check_themepack_file('header') == false) { ?>
+	<div id="header">
+		<?php if (function_exists('the_project_wonderful_ad')) { ?>
+			<div class="headerpwad">
+				<?php the_project_wonderful_ad('header'); ?>
+			</div>
+		<?php } ?>
+			<h1><a href="<?php echo get_settings('home') ?>"><?php bloginfo('name') ?></a></h1>
+			<div class="description"><?php bloginfo('description') ?></div>
+			<?php get_sidebar('header'); ?>
+		<div class="clear"></div>
+	</div>
 <?php } ?>
 <?php get_sidebar('menubar'); ?>

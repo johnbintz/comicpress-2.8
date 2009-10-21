@@ -8,6 +8,7 @@ if ( post_password_required() ) { ?>
 	return;
 } ?>
 
+<div id="comment-wrapper-head"></div>
 <div id="comment-wrapper">
 
 <?php if ( have_comments() ) : ?>
@@ -121,7 +122,7 @@ if ( post_password_required() ) { ?>
 				<?php endif; ?>
 				<?php do_action('comment_form', $post->ID); ?>
 				<p><textarea name="comment" id="comment" cols="50" rows="6" tabindex="4"></textarea></p>
-				<button type="submit" class="button"><?php _e('Submit Comment','comicpress'); ?></button>
+				<button type="submit"><?php _e('Submit Comment','comicpress'); ?></button>
 				<?php global $disable_comment_note;
 				if ($disable_comment_note != 'yes') { ?>
 					<div class="comment-note"><?php _e('NOTE - You can use these tags:','comicpress'); ?><br /><?php echo allowed_tags(); ?></div>
@@ -133,3 +134,4 @@ if ( post_password_required() ) { ?>
 
 <?php endif; ?>
 </div>
+<div id="comment-wrapper-foot"></div>

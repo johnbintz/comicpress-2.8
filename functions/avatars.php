@@ -92,15 +92,19 @@ function comicpress_random_default_avatar($id_or_email = '') {
 	if (empty($current_avatar_directory)) $current_avatar_directory = 'default';
 	
 	$count = count($results = glob(get_template_directory() . '/images/avatars/'.$current_avatar_directory.'/*'));
-	$default = '';
 	
-	$checknum = hexdec(substr(md5($id_or_email),0,5)) % $count;
-	if ($count > 0) {
-		$default = basename($results[(int)$checknum]); 
-	} else {
-		return false;
+	if ($count) { 
+		$default = '';
+		
+		$checknum = hexdec(substr(md5($id_or_email),0,5)) % $count;
+		if ($count > 0) {
+			$default = basename($results[(int)$checknum]); 
+		} else {
+			return false;
+		}
+		return get_bloginfo('stylesheet_directory').'/images/avatars/'.$current_avatar_directory.'/'.$default;
 	}
-	return get_bloginfo('stylesheet_directory').'/images/avatars/'.$current_avatar_directory.'/'.$default;
+	return false;
 }
 
 ?>

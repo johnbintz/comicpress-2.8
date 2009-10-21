@@ -7,8 +7,8 @@
  */
 
 function display_blog_post() { 
-	if (comicpress_check_themepack_file('displayblogpost.php') == false) {
-		global $post, $wp_query, $authordata, $enable_related_posts, $enable_post_author_gravatar, $enable_post_calendar, $themepack_directory;  ?>
+	if (comicpress_check_themepack_file('displayblogpost') == false) {
+		global $post, $wp_query, $authordata, $enable_related_posts, $enable_post_author_gravatar, $enable_post_calendar, $themepack_directory, $disable_categories_in_posts, $disable_tags_in_posts;  ?>
 		<?php if (is_single()) { ?>
 			<div class="blognav">
 				<div class="nav-single">
@@ -55,7 +55,7 @@ function display_blog_post() {
 				<?php } ?>
 				<?php 
 					if ('open' == $post->comment_status) { 
-						if (comicpress_check_themepack_file('commentlink.php') == false) { ?>
+						if (comicpress_check_themepack_file('commentlink') == false) { ?>
 							<div class="comment-link"><?php comments_popup_link('<span class="comment-balloon comment-balloon-empty">&nbsp;</span> '.__('No Comments ','comicpress'), '<span class="comment-balloon">1</span> '.__('Comment ','comicpress'), '<span class="comment-balloon">%</span> '.__('Comments ','comicpress')); ?></div>
 						<?php }
 					}

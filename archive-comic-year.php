@@ -16,8 +16,6 @@ if (isset($_REQUEST['archive_year'])) {
 }
 if (empty($archive_year) || $archive_year == '') $archive_year = date('Y');
 ?> 
-
-
 	
 <div class="<?php comicpress_post_class(); ?>">
 	<div class="post-page-head"></div>

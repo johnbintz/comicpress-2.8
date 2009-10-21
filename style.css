@@ -17,10 +17,6 @@ body {
 	margin: 0;
 	font-family: 'Arial', sans-serif;
 	font-size: 12px;
-	font-style: normal;
-	font-weight: normal;
-	text-transform: none;
-	letter-spacing: normal;
 	color: #000;
 }
 
@@ -29,17 +25,17 @@ a {
 	text-decoration: none;
 }
 
-a:hover {
-	color: #f00;
-}
+	a:hover {
+		color: #f00;
+	}
 
-a:focus {
-	outline: none;
-}
+	a:focus {
+		outline: none;
+	}
 
-a img {
-	border: none;
-}
+	a img {
+		border: none;
+	}
 
 p {
 	margin: 12px 0;
@@ -58,24 +54,24 @@ small {
 hr {
 	height: 1px;
 	color: #000;
+	background-color: #000;
 	border: 0px;
 }
 
 blockquote {
 	margin: 10px;
 	padding: 5px 10px 5px 20px;
+	font-family: 'Georgia', serif;
+	font-size: 13px;
 	border-width: 1px 1px 1px 5px;
 	border-style: solid;
 	border-color: #000;
 }
 
-blockquote cite {
-	margin: 5px 0 0;
-	display: block;
-}
-
 cite {
-	font-size: 13px;
+	display: block;
+	font-family: 'Arial', sans-serif;
+	font-size: 11px;
 	font-weight: bold;
 	font-style: normal;
 }
@@ -88,36 +84,16 @@ acronym, abbr {
 	border-bottom: 1px dashed #000;
 }
 
-pre { 
-	background: #eee; 
+code {
 	padding: 5px;
-	border: 1px solid #999;
-	overflow: hidden;
-	margin: 0 0 15px 0; 
-	font-family: Courier, Monospace;
+	margin: 10px 0; 
+	display: block;
+	overflow: auto;
+	font-family: 'Courier', monospace;
+	border: 1px dotted #000;
 }
 
 form {
-	margin: 0;
-}
-
-	.button {
-		height: 25px;
-		padding: 0 5px;
-		color: #000;
-		font-family: 'Arial', sans-serif;
-		font-size: 13px;
-		line-height: 13px;
-		cursor: pointer;
-	}
-		
-	.button:hover {
-		color: #fff;
-		background: #f00;
-	}
-
-.sfhover {
-	padding: 0;
 	margin: 0;
 }
 
@@ -128,7 +104,7 @@ h1, h1 a {
 	margin: 0;
 	color: #fff;
 	font-size: 56px;
-	font-family: 'georgia' , serif;
+	font-family: 'Georgia' , serif;
 	font-weight: normal;
 	line-height: 46px;
 	text-decoration: none;
@@ -137,14 +113,14 @@ h1, h1 a {
 }
 
 h2, h2 a {
+	padding: 0 0 2px 0;
 	margin: 0;
 	color: #333;
-	font-weight: normal;
-	letter-spacing: -1px;
+	font-family: 'Trebuchet MS', sans-serif;
 	font-size: 24px;
 	line-height: 24px;
-	padding-bottom: 2px;
-	font-family: 'trebuchet ms';
+	font-weight: normal;
+	letter-spacing: -1px;	
 }
 
 	h2.pagetitle, h2.pagetitle a {
@@ -167,15 +143,9 @@ h3, h3 a {
 	text-decoration: none;
 	clear: both;
 	letter-spacing: -1px;
-	font-family: 'verdana';
 }
 
 /* THE PAGE WRAPPER */
-/* Change this width to set the entire site's width - increase/reduce #content width by the same amount */
-
-/* Maintains the #page and #pagewide width after padding is set */
-#page-wrap, #page-wrap-wide {
-}
 
 #page {
 	width: 780px;
@@ -183,7 +153,7 @@ h3, h3 a {
 }
 
 #page-wide {
-	width: 990px;
+	width: 980px;
 	margin: 0px auto;
 }
 
@@ -311,6 +281,11 @@ h3, h3 a {
 		background: #b00; /* Main menu highlighted background color */
 	}
 
+	.sfhover {
+		padding: 0;
+		margin: 0;
+	}
+	
 	/* For submenu dropdowns - this order must be maintained */
 
 	#menu ul {
@@ -363,13 +338,9 @@ h3, h3 a {
 
 /* THE COMIC */
 
-#comic-head {
-}
-
 #comic {
 	padding: 5px 0;
 	text-align: center;
-	z-index: 100;
 }
 
 #comic-foot {
@@ -384,7 +355,6 @@ h3, h3 a {
 }
 	
 	#footer .footer-pipe {
-		color: #fff000;
 		padding: 0 2px;
 	}
 
@@ -452,11 +422,11 @@ a.navi-comments:hover span {
 /* POSTS - PAGES */
 
 #pagewrap-right {
-	width: 780px;
-	float: left;
-	overflow: hidden;
+	width: 770px;
 	padding: 0;
 	margin: 0;
+	float: left;
+	overflow: hidden;	
 }
 
 #content {
@@ -464,13 +434,19 @@ a.navi-comments:hover span {
 }
 
 	.narrowcolumn {
-		width: 560px;
-		padding: 5px;
+		width: 540px;
+		padding: 5px 10px;
 	}
-
+	
+	/* add 10px to smaller width layouts */
+		.layout-standard .narrowcolumn, .layout-v .narrowcolumn {
+			width: 550px;
+		}
+		
 	.widecolumn {
-		width: 770px;
-		padding: 5px;
+		width: 760px;
+		padding: 5px 10px;
+		overflow: hidden;
 	}
 	
 	.column {
@@ -501,12 +477,6 @@ a.navi-comments:hover span {
 .post, .post-comic, .post-page {
 	clear: both;
 	text-align: left;
-}
-
-.post-head, .post-page-head, .post-comic-head {
-}
-
-.post-foot, .post-comic-foot, .post-page-foot {
 }
 
 .post-page-head {
@@ -629,12 +599,9 @@ a.navi-comments:hover span {
 /* THE BLOG HEADER */
 
 #blogheader {
-	font-family: 'Georgia' , serif;
 	padding: 5px 0 5px 0;
-	font-size: 32px;
-	letter-spacing: -2px;
 	border-top: 1px solid #999;
-	margin-top: 10px;
+	margin: 10px 0 20px 0;
 }
 
 /* COMMENTS */
@@ -651,9 +618,6 @@ a.navi-comments:hover span {
 	font-size: 20px;
 	clear: both;
 	font-family: 'Georgia' , serif;
-}
-
-.commentlist {
 }
 
 .comment {
@@ -748,22 +712,11 @@ ul.children {
 
 .comicthumbwrap {
 	float: left;
-	max-width: 120px;
-	max-height: 130px;
-	overflow: hidden;
-	margin: 2px 2px 6px 2px;
+	padding: 2px 2px 6px 2px;
 }
 
-.comicthumbwrap img {
-	width: 120px;
-	max-height: 130px;
-}
-
-.comicarchiveframe {
-	padding: 5px;
+.comicarchiveframe img {
 	border: 1px solid #000;
-	background: #fff;
-	margin-bottom: 2px;
 }
 
 .comicarchiveframe:hover {
@@ -821,38 +774,26 @@ ul.children {
 }
 
 	.sidebar h2, .sidebar h2 a {
-		margin: 10px 0 0 0;
-		padding: 0 0 0 1px;
-		font-family:arial;
 		display: block;
-		font-size: 16px;
+		display: block;
+		font-size: 17px;
+		margin: 0;
+		padding: 0;
 	}
 	
 	.sidebar ul {
 		margin: 0;
-		padding: 0 0 0 14px;
+		padding: 0;
 		list-style: none;
 	}
 
 		.sidebar ul li {
-			margin: 0;
+			margin: 0 0 0 10px;
 			padding: 0;
-			text-align: left;
-			list-style: none;
 		}
 
-		.sidebar ul li ul li {
-			margin: 0;
-			padding: 0;
-			text-align: left;
-		}
-
-	.sidebar li h2 {
-		margin-top: 15px;
-	}
-
-	.sidebar .widget {
-		margin: 10px 0;
+	.widget {
+		margin-bottom: 10px;
 	}
 	
 	.sidebar .widget .post-extras, .sidebar .widget .entry {
@@ -890,6 +831,8 @@ ul.children {
 /* CALENDAR */
 
 #wp-calendar-wrap {
+	margin: 0 auto;
+	width: 170px;
 	background:#fff;
 	padding:10px;
 	border:1px solid #999;
@@ -979,27 +922,15 @@ ul.children {
 	color: #000;
 	float: left;
 }
-
-	#s-search:hover, #s-search:focus, #s-transcript:hover, #s-transcript:focus {
+	
+#searchform button, #searchform-transcript button {
+	height: 23px;
 	}
 
-	#searchform button, #searchform-transcript button {
-		height: 24px;
-		width: 23px;
-		line-height: 20px;
-		cursor: pointer;
-	}
-
-	#searchform button:hover, #searchform-transcript button:hover {
-	}
-
-	#searchform button:hover, #searchform-transcript button:-moz-focus-inner {
-	}
-
-	.searchresults {
-		float: right;
-		padding: 5px;
-	}
+.searchresults {
+	float: right;
+	padding: 5px;
+}
 
 /* GALLERY */
 

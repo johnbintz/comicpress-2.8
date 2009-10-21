@@ -28,8 +28,15 @@ Templete Author Email: philip@frumph.net
 			<?php _e('Title:','comicpress'); ?>	<?php echo the_title(); ?><br />
 			<br />
 			<?php $post = & get_post( $comicnum ); ?>
+				<?php
+				foreach (array("archive", "rss", "comic", "mini") as $type) {
+					if (($requested_image = get_comic_url($type, $post)) !== false) {
+						$image = $requested_image; break;
+					}
+				}
+			?>
 			<center>
-			<img src="<?php echo the_comic_archive(); ?>" alt="<?php the_title(); ?>" title="<?php the_title(); ?>" width="<?php echo $archive_comic_width; ?>" /><br />
+			<img src="<?php echo $image; ?>" alt="<?php the_title(); ?>" title="<?php the_title(); ?>" /><br />
 			<br />
 			<table>
 			<tr>

@@ -34,8 +34,6 @@ function comicpress_showmood_edit_post() {
 	global $post;
 	$moods_directory = get_option('comicpress-moods_directory');
 	if (!empty($moods_directory) && $moods_directory != 'none') { ?>
-		<div id="mooddiv" class="postbox">
-		<h3><?php _e("Available Moods", 'comicpress') ?></h3>
 		<div class="inside" style="overflow: hidden">
 		<?php _e('Available Moods, you can set which mood images to use in the comicpress Options.','comicpress'); ?><br />
 		<br />
@@ -78,7 +76,6 @@ function comicpress_showmood_edit_post() {
 			<?php }
 		} ?>
 		</div>
-		</div>
 	<?php }
 }
 
@@ -95,7 +92,18 @@ function comicpress_handle_edit_post_mood_save($post_id) {
 	}
 }
 
+function mood_admin_function() {
+	add_meta_box(
+			'mood-for-this-post',
+			__('Mood For This Post', 'comicpress'),
+			'comicpress_showmood_edit_post',
+			'post',
+			'normal',
+			'low'
+			);
+}
 
-add_action('edit_form_advanced', 'comicpress_showmood_edit_post', 5, 1);
+add_action('admin_menu', 'mood_admin_function');
+// add_action('edit_form_advanced', 'comicpress_showmood_edit_post', 5, 1);
 add_action('save_post', 'comicpress_handle_edit_post_mood_save' ,5, 1);
 ?>

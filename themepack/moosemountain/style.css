@@ -133,7 +133,7 @@ h2 a:hover, h3 a:hover {
 	display: none;
 }
 
-#menu-rss {
+#sidebar-header #menu-rss {
 	height: 40px;
 	width: 60px;
 	display: block;
@@ -142,11 +142,11 @@ h2 a:hover, h3 a:hover {
 	text-indent: -9999px;
 }
 
-#menu-rss:hover {
+#sidebar-header #menu-rss:hover {
 	background: url('header.png') -640px -158px;
 }
 
-#menu-shop {
+#sidebar-header #menu-shop {
 	height: 40px;
 	width: 80px;
 	display: block;
@@ -155,11 +155,11 @@ h2 a:hover, h3 a:hover {
 	text-indent: -9999px;
 }
 
-#menu-shop:hover {
+#sidebar-header #menu-shop:hover {
 	background: url('header.png') -700px -158px;
 }
 
-#menu-contact {
+#sidebar-header #menu-contact {
 	height: 40px;
 	width: 100px;
 	display: block;
@@ -168,7 +168,7 @@ h2 a:hover, h3 a:hover {
 	text-indent: -9999px;
 }
 
-#menu-contact:hover {
+#sidebar-header #menu-contact:hover {
 	background: url('header.png') -780px -158px;
 }
 
@@ -198,13 +198,35 @@ h2 a:hover, h3 a:hover {
 
 #sidebar-undercomic p {
 	padding: 5px;
-	margin-left: 30px;
-	margin-right: 30px;
 	background: #d6e1b4;
 	border: 1px solid #9bae5f;
 	text-align: center;
+	margin: 4px 30px;
+	font-size: 14px;
 }
 
+	#sidebar-undercomic .entry, #sidebar-undercomic .widget {
+		margin: 0;
+		padding: 0;
+	}
+	
+	#sidebar-undercomic .widget_comicpress_comic_date {
+		float: left;
+		width: 160px;
+		margin-left: 30px;
+	}
+
+	#sidebar-undercomic .widget_comicpress_comments {
+		width: 160px;
+		margin-right: 30px;
+		float: right;
+	}
+
+	#sidebar-menubar .widget {
+		margin: 0;
+		padding: 0;
+	}
+	
 .nav, #sidebar-undercomic .post-text, #sidebar-undercomic .post-extras {
 	display: none;
 }
@@ -606,19 +628,6 @@ ol.commentlist {
 	padding-left: 10px;
 }
 
-.widget_comicpress_comic_date {
-	float: left;
-	width: 160px;
-	margin-left: 20px;
-}
-
-.widget_comicpress_comments {
-	width: 160px;
-	margin-right: 20px;
-}
-
-.
-
 /* COMMENT LINK */
 
 .comment-link {
@@ -657,3 +666,26 @@ ol.commentlist {
 		font-size: 20px;
 		line-height: 30px;
 		}
+		
+	/* WIDGETS */
+
+.archive-dropdown-wrap {
+	background: url('browse-search.png') no-repeat;
+}
+
+	.archive-dropdown-wrap:hover {
+		background-position: 0 -23px;
+	}
+
+.archive-dropdown {
+	margin: 0;
+	padding: 0;
+	width: 166px;
+	height: 23px;
+	font-size: 12px;
+	font-family: 'Arial' , sans-serif;
+	border: none;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	cursor: pointer;
+}

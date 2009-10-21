@@ -6,6 +6,20 @@
 	<?php
 	foreach ($options as $value) {
 		switch ( $value['type'] ) {
+			case "comicpress-disable_default_menubar": ?>
+				<tr>
+				<th scope="row"><strong><?php _e('Disable the default menubar?','comicpress'); ?></strong><br /><br /></th>
+				<td valign="top" width="100">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label>
+				</td>
+				<td valign="top">
+					<?php _e('This will let you use the menubar widget to place the menubar in other sidebars.','comicpress'); ?>
+				</td>
+				</tr>
+				
+				<?php break;
 			case "comicpress-enable_search_in_menubar": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Enable Search Form in Menubar?','comicpress'); ?></strong><br /><br /></th>

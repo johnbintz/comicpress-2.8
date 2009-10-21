@@ -7,7 +7,7 @@
  */
 
 function display_comic_post() { 
-	if (comicpress_check_themepack_file('displaycomicpost.php') == false) {
+	if (comicpress_check_themepack_file('displaycomicpost') == false) {
 		global $post, $wp_query, $transcript_in_posts, $enable_related_comics, $enable_comic_post_author_gravatar, $enable_comic_post_calendar, $disable_categories_in_posts, $disable_tags_in_posts, $themepack_directory;
 		$first_comic = get_first_comic_permalink(); $last_comic = get_last_comic_permalink();
 		?>
@@ -59,7 +59,7 @@ function display_comic_post() {
 		<?php } ?>
 		<?php 
 			if ('open' == $post->comment_status) { 
-				if (comicpress_check_themepack_file('commentlink.php') == false) { ?>
+				if (comicpress_check_themepack_file('commentlink') == false) { ?>
 					<div class="comment-link"><?php comments_popup_link('<span class="comment-balloon comment-balloon-empty">&nbsp;</span> '.__('No Comments ','comicpress'), '<span class="comment-balloon">1</span> '.__('Comment ','comicpress'), '<span class="comment-balloon">%</span> '.__('Comments ','comicpress')); ?></div>
 				<?php }
 			}

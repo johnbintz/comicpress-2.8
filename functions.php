@@ -16,7 +16,7 @@ if (function_exists('id_get_comment_number')) {
 	remove_filter('comments_number','id_get_comment_number');
 }
 
-$comicpress_version = '2.8.1.21';
+$comicpress_version = '2.8.1.32';
 
 global $wpmu_version;
 if (!empty($wpmu_version)) {
@@ -99,7 +99,8 @@ if (get_option('upload_path') !== false) {
 				'split_column_in_two'			=> 'split_column_in_two',
 				'author_column_one'				=> 'author_column_one',
 				'author_column_two'				=> 'author_column_two',
-				'remove_wptexturize'			=> 'remove_wptexturize' ) as $options => $variable_name) {
+				'remove_wptexturize'			=> 'remove_wptexturize',
+				'disable_default_menubar'		=> 'disable_default_menubar' ) as $options => $variable_name) {
 		$variables_to_extract[$variable_name] = get_option("comicpress-${options}");
 	}
 	
@@ -784,7 +785,7 @@ if ( function_exists('register_sidebar') ) {
 ','after_widget'  => '
 </div>','before_title'  => '<h2 class="widgettitle">', 'after_title'   => '</h2>
 ' ));
-}     
+}      
 
 function storyline_category_list() {
 	$listcats = wp_list_categories('echo=0&title_li=&include='.get_all_comic_categories_as_cat_string());
@@ -793,20 +794,26 @@ function storyline_category_list() {
 }
 
 /**
- * This is function comicpress_is_active_sidebar
+ * function is_active_sidebar
+ * check if a sidebar has widgets based on index number or name
  *
- * @param $name - sidebar name made with register_sidebar(array('name'=>'Name of Sidebar'), 
- * use 'Sidebar 1' .. # if no sidebar names specified.
- * @return true if sidebar with $name has widgets, false if not.
- *
+ * @param $index - sidebar name made with register_sidebar(array('name'=>'Name of Sidebar'), 
+ * OR the index # as an int for specific sidebar.
+ * @return true if sidebar with $index has widgets, false if not.
+ * 
  */
-function comicpress_is_active_sidebar( $name ) {
+function comicpress_is_active_sidebar( $index ) {
 	global $wp_registered_sidebars, $_wp_sidebars_widgets;
-	$i = 1;
-	foreach ( $wp_registered_sidebars as $sidebar => $registered_sidebar ) {
-		if ( $name == $registered_sidebar['name'] && !empty($_wp_sidebars_widgets[sanitize_title("sidebar-$i")]) )
+	if ( is_int($index) ) {
+		if (!empty($_wp_sidebars_widgets[sanitize_title("sidebar-$index")]) )
 			return true;
-		$i++; 
+	} else {
+		$i = 1;
+		foreach ( $wp_registered_sidebars as $sidebar => $registered_sidebar ) {
+			if ( $index == $registered_sidebar['name'] && !empty($_wp_sidebars_widgets[sanitize_title("sidebar-$i")]) )
+				return true;
+			$i++; 
+		}
 	}
 	return false;
 }
@@ -836,11 +843,24 @@ function cp_copyright() {
 function comicpress_check_themepack_file($filename = '') {
 	global $themepack_directory;
 	if (empty($filename)) return false;
-	if ( ($themepack_directory != 'none' && !empty($themepack_directory) ) && file_exists(get_template_directory() . '/themepack/'.$themepack_directory.'/'.$filename) ) { 
-		@include(get_template_directory() . '/themepack/' .$themepack_directory. '/'.$filename);
+	if ( ($themepack_directory != 'none' && !empty($themepack_directory) ) && file_exists(get_template_directory() . '/themepack/'.$themepack_directory.'/'.$filename.'.php') ) { 
+		@include(get_template_directory() . '/themepack/' .$themepack_directory. '/'.$filename .'.php');
 		return true;
 	}
 	return false;
 }
+
+function rss_count_comments(){
+	global $wpdb,$post;
+	$args = func_get_args();
+	$comments = get_comments_number();
+	echo $args[0];
+	if ($comments == 0) $comment_text = " (No Comments)";
+	if ($comments == 1) $comment_text = " (1 Comment)";
+	if ($comments > 1) $comment_text = " (". $comments . " Comments)";
+	if ($comments>0) echo $comment_text;
+}
+
+add_action('the_title_rss','rss_count_comments');
 
 ?>

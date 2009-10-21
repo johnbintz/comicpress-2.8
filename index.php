@@ -20,7 +20,7 @@
 
 		<?php $wp_query ->in_the_loop = true; $comicFrontpage = new WP_Query(); $comicFrontpage->query('showposts=1&cat='.get_all_comic_categories_as_cat_string());
 		while ($comicFrontpage->have_posts()) : $comicFrontpage->the_post() ?>	
-			<?php if (comicpress_check_themepack_file('displaycomic.php') == false) { ?>
+			<?php if (comicpress_check_themepack_file('displaycomic') == false) { ?>
 			<div id="comic-wrap">
 				<div id="comic-head"><?php get_sidebar('over'); ?></div>
 				<div class="clear"></div>
@@ -75,15 +75,17 @@ if ($disable_comic_frontpage != 'yes' && $disable_comic_blog_frontpage != 'yes' 
 		$blog_query = 'showposts='.$blog_postcount.'&cat="-'.exclude_comic_categories().'"&paged='.$paged; 
 		
 		$posts = query_posts($blog_query);
-		if (have_posts()) {
-			
-			while (have_posts()) : the_post();
+		if (have_posts()) { ?>
+			<div class="blogindex-head"></div>
+			<div class="blogindex">
+			<?php while (have_posts()) : the_post();
 				
 				display_blog_post();	
 			
-			endwhile;
-			
-		}
+			endwhile; ?>
+			</div>
+			<div class="blogindex-foot"></div>
+		<?php }
 		comicpress_pagination();
 	} else { ?>
 	<div id="dualcolumns">

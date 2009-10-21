@@ -1,6 +1,6 @@
 <strong>ThemePack (default)</strong>: Silver<br />
 <strong>Author</strong>: ComicPress Development Team<br />
-<strong>Layouts</strong>: standard, 3c, gn, v, v3c<br />
+<strong>Version</strong>: 1.0.5
 <br />
 <strong>Installation Notes</strong>:<br />
 None.

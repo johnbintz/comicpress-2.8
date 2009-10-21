@@ -16,7 +16,8 @@
 
 	<?php while (have_posts()) : the_post(); 
 		if (in_comic_category()) { ?>
-			<?php if (comicpress_check_themepack_file('displaycomic.php') == false) { ?>
+			<?php if (comicpress_check_themepack_file('displaycomic') == false) { ?>
+			<div id="comic-wrap">
 				<div id="comic-head"><?php get_sidebar('over'); ?></div>
 				<div class="clear"></div>
 				<?php get_sidebar('comicleft'); ?>
@@ -24,6 +25,7 @@
 				<?php get_sidebar('comicright'); ?>
 				<div class="clear"></div>
 				<div id="comic-foot"><?php get_sidebar('under'); ?></div>
+			</div>
 			<?php } ?>
 	<?php } endwhile; ?>
 	

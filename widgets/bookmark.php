@@ -11,7 +11,7 @@ Author URI: http://webcomicplanet.com/
 
 function comicpress_comic_bookmark() { 
 global $post, $wp_query; 
-	if (is_home() || is_single()) { ?>
+if (is_home() || is_single()) { ?>
 	<div class="comic-bookmark">
 		<script language="javascript" type="text/javascript">
 			<!--
@@ -39,18 +39,11 @@ global $post, $wp_query;
 						gt = imgGotoOn;
 						ct = imgClearOn;
 					}
-					document.write('<div id="bmh" style="width: 173px; margin: 15px 0 0 0; padding: 5px; position: absolute; color: #eee; font-size: 11px; background-color:#222; border: 1px solid #ccc; visibility: hidden;"><strong>COMIC BOOKMARK</strong><br />Click "Tag Page" to bookmark a comic page. When you return to the site, click "Goto Tag" to continue where you left off.</div>');
-					<?php if (is_home()) { ?>
-						document.write('<a href="#" onClick="bmhome();return false;"><img src="'+imgTag+'" alt="<?php __('Tag This Page','comicpress'); ?>" border="0"></a>');
-						document.write('<a href="#" onClick="gto();return false;"><img src="'+gt+'" alt="Goto Tag" border="0" id="gtc"></a>');
-						document.write('<a href="#" onClick="bmc();return false;"><img src="'+ct+'" alt="Clear Tag" border="0" id="rmc"></a>');
-						document.write('<a href="#" onMouseOver="document.getElementById(\'bmh\').style.visibility=\'visible\';" onMouseOut="document.getElementById(\'bmh\').style.visibility=\'hidden\';" onClick="return false;"><img src="'+imgInfo+'" alt="" border="0"></a>');
-					<?php } elseif (is_single() && in_comic_category()) { ?>
-						document.write('<a href="#" onClick="bm();return false;"><img src="'+imgTag+'" alt="Tag This Page" border="0"></a>');
-						document.write('<a href="#" onClick="gto();return false;"><img src="'+gt+'" alt="Goto Tag" border="0" id="gtc"></a>');
-						document.write('<a href="#" onClick="bmc();return false;"><img src="'+ct+'" alt="Clear Tag" border="0" id="rmc"></a>');
-						document.write('<a href="#" onMouseOver="document.getElementById(\'bmh\').style.visibility=\'visible\';" onMouseOut="document.getElementById(\'bmh\').style.visibility=\'hidden\';" onClick="return false;"><img src="'+imgInfo+'" alt="" border="0"></a>');
-					<?php } ?>
+					document.write('<div id="bmh" style="width: 173px; margin: 15px 0 0 0; padding: 5px; position: absolute; color: #eee; font-size: 11px; background-color:#222; border: 1px solid #ccc; visibility: hidden;"><strong>BOOKMARK</strong><br />Click "Tag Page" to bookmark a page. When you return to the site, click "Goto Tag" to continue where you left off.</div>');
+					document.write('<a href="#" onClick="bmhome();return false;"><img src="'+imgTag+'" alt="<?php __('Tag This Page','comicpress'); ?>" border="0"></a>');
+					document.write('<a href="#" onClick="gto();return false;"><img src="'+gt+'" alt="Goto Tag" border="0" id="gtc"></a>');
+					document.write('<a href="#" onClick="bmc();return false;"><img src="'+ct+'" alt="Clear Tag" border="0" id="rmc"></a>');
+					document.write('<a href="#" onMouseOver="document.getElementById(\'bmh\').style.visibility=\'visible\';" onMouseOut="document.getElementById(\'bmh\').style.visibility=\'hidden\';" onClick="return false;"><img src="'+imgInfo+'" alt="" border="0"></a>');
 				}
 
 				/* Below are our functions for this little script */
@@ -110,7 +103,7 @@ global $post, $wp_query;
 		</script>
 	</div>
 <?php }
-} 
+}
 	
 
 class widget_comicpress_bookmark extends WP_Widget {
@@ -122,12 +115,14 @@ class widget_comicpress_bookmark extends WP_Widget {
 	
 	function widget($args, $instance) {
 		global $post, $wp_query;
-		extract($args, EXTR_SKIP);
-		echo $before_widget;
-		$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
-		if ( !empty( $title ) ) { echo $before_title . $title . $after_title; };
-		comicpress_comic_bookmark();
-		echo $after_widget;
+		if (is_home() || is_single()) { 
+			extract($args, EXTR_SKIP);
+			echo $before_widget;
+			$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
+			if ( !empty( $title ) ) { echo $before_title . $title . $after_title; };
+			comicpress_comic_bookmark();
+			echo $after_widget;
+		}
 	}
 	
 	function update($new_instance, $old_instance) {

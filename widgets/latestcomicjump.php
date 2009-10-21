@@ -12,7 +12,7 @@ Author URI: http://webcomicplanet.com/
 if ( isset( $_GET['latestcomic'] ) )
 	add_action( 'template_redirect', 'latest_comic_jump' );
 
-//Generate a random comic page - to use simply create a URL link to "/?randomcomic"
+//to use simply create a URL link to "/?latestcomic"
 function latest_comic_jump() {
 	wp_redirect( get_permalink( get_terminal_post_in_category(get_all_comic_categories_as_cat_string(), false) ) );
 	exit;

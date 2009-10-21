@@ -35,6 +35,9 @@
 					<td valign="top">
 						<img id="cpthemestyle" src="<?php echo get_bloginfo('stylesheet_directory'); ?>/images/options/<?php echo get_option($value['id']); ?>.png" alt="ComicPress Theme Style" />
 					</td>
+					<td valign="top">
+						Standard and Vertical themes are 780px, 3 Column, Graphic Novel and Vertical 3 Column are 980px wide.
+					</td>
 				</tr>
 				
 				<?php break;

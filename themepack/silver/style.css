@@ -3,7 +3,7 @@ ThemePack Name: Silver
 ThemePack URI: http://comicpress.org
 Author: Tyler Martin
 Author URI: http://mindfaucet.com/
-Version: 0.1.0
+Version: 0.1.5
 */
 
 /* STANDARD TAGS */
@@ -15,25 +15,20 @@ body {
 	background: #fff url('background.png') top center repeat-x;
 }
 
-	.button {
-		background: #aaa url('menu.png');
-		color: #000;
-		font-family: 'Arial', sans-serif;
-		font-size: 13px;
-		line-height: 13px;
-		border: 1px solid #999;
-		cursor: pointer;
-	}
+button {
+	background: #aaa url('menu.png');
+	color: #000;
+	font-family: 'Arial', sans-serif;
+	font-size: 13px;
+	line-height: 13px;
+	border: 1px solid #999;
+	cursor: pointer;
+}
 		
-	.button:hover {
+	button:hover {
 		color: #fff;
 		background: #f00 url('menu.png') 0 -75px;
 	}
-	
-.narrowcolumn {
-	width: 560px;
-}
-
 
 /* THE HEADER */
 
@@ -236,6 +231,7 @@ body {
 
 	.comment-link a {
 		color: #333;
+		padding: 0 5px 0 0;
 	}
 		
 	.comment-link a:hover {
@@ -246,7 +242,6 @@ body {
 		width: 30px;
 		height: 25px;
 		display: block;
-		margin: 0 0 0 5px;
 		float: right;
 		overflow: hidden;
 		text-align: center;

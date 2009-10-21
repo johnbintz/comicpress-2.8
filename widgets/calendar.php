@@ -18,6 +18,7 @@ function comicpress_calendar($instance = null) {
 		$large = $instance['large'];
 	}
 	?>
+	<center>
 	<div id="wp-calendar-top"></div>
 	<div id="wp-calendar-wrap">
 	<?php if (!empty($thumbnail)) { ?>
@@ -31,7 +32,9 @@ function comicpress_calendar($instance = null) {
 	<?php get_calendar(); ?>
 	</div>
 	<div id="wp-calendar-bottom"></div>
+	</center>
 <?php }
+
 
 class widget_comicpress_calendar extends WP_Widget {
 	

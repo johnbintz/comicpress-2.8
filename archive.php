@@ -49,8 +49,8 @@
 			<?php if (is_category() && in_comic_category()) { ?>
 
 				<div class="comicthumbwrap">
-					<div class="comicarchiveframe">
-						<a href="<?php the_permalink() ?>"><img src="<?php the_comic_mini() ?>" alt="<?php the_title() ?>" title="<?php the_title() ?>" /></a><br />
+					<div class="comicarchiveframe" style="width: <?php echo $mini_comic_width; ?>px">
+						<a href="<?php the_permalink() ?>"><img src="<?php the_comic_mini() ?>" alt="<?php the_title() ?>" title="<?php the_title() ?>" /></a>
 					</div>
 				</div>
 
@@ -133,7 +133,7 @@
 				<?php } ?>
 			<?php } ?>
 		<?php endwhile; ?>
-
+		<div class="clear"></div>
 	<?php else : ?>
 	<div class="<?php comicpress_post_class(); ?>">
 		<div class="post-head"></div>

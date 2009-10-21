@@ -3,13 +3,13 @@ ThemePack Name: boxed
 ThemePack URI: http://comicpress.org
 Author: ComicPress Developement Team
 Author URI: http://mindfaucet.com/
-Version: 0.1.4
+Version: 0.1.5
 */
 
 /* STANDARD TAGS */
 
 body {
-	background: #444 url('background.png') repeat;
+	background: #222 url('background.png') repeat;
 }
 
 #page, #page-wide {
