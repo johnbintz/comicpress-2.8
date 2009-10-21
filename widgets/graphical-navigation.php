@@ -10,7 +10,6 @@ Author URI: http://webcomicplanet.com/
 */
 
 class widget_comicpress_graphical_navigation extends WP_Widget {
-
 	function widget_comicpress_graphical_navigation() {
 		$widget_ops = array('classname' => 'widget_comicpress_graphical_navigation', 'description' => __('Displays Graphical Navigation Buttons. (used in comic sidebars)','comicpress') );
 		$this->WP_Widget('graphicalnavigation', __('Comic Navigation','comicpress'), $widget_ops);
@@ -130,131 +129,84 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 	}
 
 	function form($instance) {
-		$instance = wp_parse_args( (array) $instance, array(
-		'first' => 'on',
-		'last' => 'on',
-		'story_prev' => 'off',
-		'story_next' => 'off',
-		'previous' => 'on',
-		'random' => 'off',
-		'archives' => 'off',
-		'comments' => 'off',
-		'next' => 'on',
-		'archive_path' => '',
-		'buyprint' => 'off',
-					'first_title' => 'First',
-					'last_title' => 'Latest',
-					'story_prev_title' => 'Chapter',
-					'story_next_title' => 'Chapter',
-					'previous_title' => 'Previous',
-					'random_title' => 'Random',
-					'archives_title' => 'Archives',
-					'comments_title' => 'Comments',
-					'next_title' => 'Next',
-					'buyprint_title' => 'Buy Print',
-					'comictitle' => 'off'
-		 ) );
-		$first = $instance['first']; if (empty($first)) $first = 'on';
-		$last = $instance['last']; if (empty($last)) $last = 'on';
-		$story_prev = $instance['story_prev']; 	if (empty($story_prev)) $story_prev = 'off';
-		$story_next = $instance['story_next']; 	if (empty($story_next)) $story_next = 'off';
-		$previous = $instance['previous']; 	if (empty($previous)) $previous = 'on';
-		$random = $instance['random']; if (empty($random)) $random = 'off';
-		$archives = $instance['archives']; if (empty($archives)) $archives = 'off';
-		$comments = $instance['comments']; if (empty($comments)) $comments = 'off';
-		$archive_path = $instance['archive_path'];
-		$next = $instance['next']; if (empty($next)) $next = 'on';
-		$buyprint = $instance['buyprint']; if (empty($buyprint)) $buyprint = 'off';
-		$comictitle = $instance['comictitle']; if (empty($comictitle)) $comictitle = 'off';
+		$field_defaults = array(
+			'first' => 'on',
+			'last' => 'on',
+			'story_prev' => 'off',
+			'story_next' => 'off',
+			'previous' => 'on',
+			'random' => 'off',
+			'archives' => 'off',
+			'comments' => 'off',
+			'next' => 'on',
+			'archive_path' => '',
+			'buyprint' => 'off',
+			'comictitle' => 'off'
+		);
 
+		$title_defaults = array(
+			'first_title' => __('First', 'comicpress'),
+			'last_title' => __('Latest', 'comicpress'),
+			'story_prev_title' => __('Chapter', 'comicpress'),
+			'story_next_title' => __('Chapter', 'comicpress'),
+			'previous_title' => __('Previous', 'comicpress'),
+			'random_title' => __('Random', 'comicpress'),
+			'archives_title' => __('Archives', 'comicpress'),
+			'comments_title' => __('Comments', 'comicpress'),
+			'next_title' => __('Next', 'comicpress'),
+			'buyprint_title' => __('Buy Print', 'comicpress')
+	  );
 
-		$first_title = $instance['first_title'];
-		$last_title = $instance['last_title'];
-		$story_prev_title = $instance['story_prev_title'];
-		$story_next_title = $instance['story_next_title'];
-		$previous_title = $instance['previous_title'];
-		$random_title = $instance['random_title'];
-		$archives_title = $instance['archives_title'];
-		$comments_title = $instance['comments_title'];
-		$next_title = $instance['next_title'];
-		$buyprint_title = $instance['buyprint_title'];
+		$instance = wp_parse_args((array)$instance, array_merge($field_defaults, $title_defaults));
 
+		foreach (array(
+			'first' => __('First', 'comicpress'),
+			'last' => __('Last', 'comicpress'),
+			'previous' => __('Previous', 'comicpress'),
+			'next' => __('Next', 'comicpress'),
+			'story_prev' => __('Previous Chapter', 'comicpress'),
+			'story_next' => __('Next Chapter', 'comicpress'),
+			'comictitle' => __('Comic Title', 'comicpress'),
+			'archives' => __('Archives', 'comicpress'),
+			'comments' => __('Comments', 'comicpress'),
+			'random' => __('Random', 'comicpress'),
+			'buyprint' => __('Buy Print', 'comicpress'),
+		) as $field => $label) {
+		  $title_field = "${field}_title"; ?>
+			<label for="<?php echo $this->get_field_id($key); ?>">
+			  <strong><?php echo $label ?></strong>
+				<br />
+				<?php foreach (array(
+					'on' => __('On', 'comicpress'),
+					'off' => __('Off', 'comicpress')
+				) as $key => $title) { ?>
+				  <input id="<?php echo $this->get_field_id($field); ?>"
+								 name="<?php echo $this->get_field_name($field); ?>"
+								 type="radio" value="on"<?php if ($instance[$field] == $key) { echo ' checked="checked"'; } ?> /><?php echo $title; ?></label>&nbsp;
+				<?php } ?>
+				<?php if (isset($instance[$title_field])) { ?>
+					<input class="widefat"
+								 id="<?php echo $this->get_field_id($title_field); ?>"
+								 name="<?php echo $this->get_field_name($title_field); ?>"
+								 type="text"
+								 value="<?php echo attribute_escape($instance[$title_field]); ?>" />
+				<?php } ?>
 
-
-
-		?>
-
-		<label for="<?php echo $this->get_field_id('first'); ?>"><strong><?php _e('First','comicpress'); ?></strong><br />
-		<input id="<?php echo $this->get_field_id('first'); ?>" name="<?php echo $this->get_field_name('first'); ?>" type="radio" value="on"<?php if ( $first == "on") { echo " checked"; } ?> />On</label>&nbsp;<input id="<?php echo $this->get_field_id('first'); ?>" name="<?php echo $this->get_field_name('first'); ?>" type="radio" value="off"<?php if ( $first == "off") { echo " checked"; } ?> />Off</label><br />
-		Title:<br />
-		<input class="widefat" id="<?php echo $this->get_field_id('first_title'); ?>" name="<?php echo $this->get_field_name('first_title'); ?>" type="text" value="<?php echo attribute_escape($first_title); ?>" /></label><br />
-
-		<br />
-		<label for="<?php echo $this->get_field_id('last'); ?>"><strong><?php _e('Last','comicpress'); ?></strong><br />
-		<input id="<?php echo $this->get_field_id('last'); ?>" name="<?php echo $this->get_field_name('last'); ?>" type="radio" value="on"<?php if ( $last == "on") { echo " checked"; } ?> />On</label>&nbsp;<input id="<?php echo $this->get_field_id('last'); ?>" name="<?php echo $this->get_field_name('last'); ?>" type="radio" value="off"<?php if ( $last == "off") { echo " checked"; } ?> />Off</label><br />
-		Title:<br />
-		<input class="widefat" id="<?php echo $this->get_field_id('last_title'); ?>" name="<?php echo $this->get_field_name('last_title'); ?>" type="text" value="<?php echo attribute_escape($last_title); ?>" /></label><br />
-
-		<br />
-		<label for="<?php echo $this->get_field_id('previous'); ?>"><strong><?php _e('Previous','comicpress'); ?></strong><br />
-		<input id="<?php echo $this->get_field_id('previous'); ?>" name="<?php echo $this->get_field_name('previous'); ?>" type="radio" value="on"<?php if ( $previous == "on") { echo " checked"; } ?> />On</label>&nbsp;<input id="<?php echo $this->get_field_id('previous'); ?>" name="<?php echo $this->get_field_name('previous'); ?>" type="radio" value="off"<?php if ( $previous == "off") { echo " checked"; } ?> />Off</label><br />
-		Title:<br />
-		<input class="widefat" id="<?php echo $this->get_field_id('previous_title'); ?>" name="<?php echo $this->get_field_name('previous_title'); ?>" type="text" value="<?php echo attribute_escape($previous_title); ?>" /></label><br />
-
-		<br />
-		<label for="<?php echo $this->get_field_id('next'); ?>"><strong><?php _e('Next','comicpress'); ?></strong><br />
-		<input id="<?php echo $this->get_field_id('next'); ?>" name="<?php echo $this->get_field_name('next'); ?>" type="radio" value="on"<?php if ( $next == "on") { echo " checked"; } ?> />On</label>&nbsp;<input id="<?php echo $this->get_field_id('next'); ?>" name="<?php echo $this->get_field_name('next'); ?>" type="radio" value="off"<?php if ( $next == "off") { echo " checked"; } ?> />Off</label><br />
-		Title:<br />
-		<input class="widefat" id="<?php echo $this->get_field_id('next_title'); ?>" name="<?php echo $this->get_field_name('next_title'); ?>" type="text" value="<?php echo attribute_escape($next_title); ?>" /></label><br />
-
-		<br />
-		<label for="<?php echo $this->get_field_id('story_prev'); ?>"><strong><?php _e('Previous Chapter','comicpress'); ?></strong><br />
-		<input id="<?php echo $this->get_field_id('story_prev'); ?>" name="<?php echo $this->get_field_name('story_prev'); ?>" type="radio" value="on"<?php if ( $story_prev == "on") { echo " checked"; } ?> />On</label>&nbsp;<input id="<?php echo $this->get_field_id('story_prev'); ?>" name="<?php echo $this->get_field_name('story_prev'); ?>" type="radio" value="off"<?php if ( $story_prev == "off") { echo " checked"; } ?> />Off</label><br />
-		Title:<br />
-		<input class="widefat" id="<?php echo $this->get_field_id('story_prev_title'); ?>" name="<?php echo $this->get_field_name('story_prev_title'); ?>" type="text" value="<?php echo attribute_escape($story_prev_title); ?>" /></label><br />
-
-		<br />
-		<label for="<?php echo $this->get_field_id('story_next'); ?>"><strong><?php _e('Next Chapter','comicpress'); ?></strong><br />
-		<input id="<?php echo $this->get_field_id('story_next'); ?>" name="<?php echo $this->get_field_name('story_next'); ?>" type="radio" value="on"<?php if ( $story_next == "on") { echo " checked"; } ?> />On</label>&nbsp;<input id="<?php echo $this->get_field_id('story_next'); ?>" name="<?php echo $this->get_field_name('story_next'); ?>" type="radio" value="off"<?php if ( $story_next == "off") { echo " checked"; } ?> />Off</label><br />
-		Title:<br />
-		<input class="widefat" id="<?php echo $this->get_field_id('story_next_title'); ?>" name="<?php echo $this->get_field_name('story_next_title'); ?>" type="text" value="<?php echo attribute_escape($story_next_title); ?>" /></label><br />
-
-		<br />
-		<label for="<?php echo $this->get_field_id('comictitle'); ?>"><strong><?php _e('Comic Title','comicpress'); ?></strong><br />
-		<input id="<?php echo $this->get_field_id('comictitle'); ?>" name="<?php echo $this->get_field_name('comictitle'); ?>" type="radio" value="on"<?php if ( $comictitle == "on") { echo " checked"; } ?> />On</label>&nbsp;<input id="<?php echo $this->get_field_id('comictitle'); ?>" name="<?php echo $this->get_field_name('comictitle'); ?>" type="radio" value="off"<?php if ( $comictitle == "off") { echo " checked"; } ?> />Off<br />
-
-		<br />
-		<label for="<?php echo $this->get_field_id('archives'); ?>"><strong><?php _e('Archives','comicpress'); ?></strong><br />
-		<input id="<?php echo $this->get_field_id('archives'); ?>" name="<?php echo $this->get_field_name('archives'); ?>" type="radio" value="on"<?php if ( $archives == "on") { echo " checked"; } ?> />On</label>&nbsp;<input id="<?php echo $this->get_field_id('archives'); ?>" name="<?php echo $this->get_field_name('archives'); ?>" type="radio" value="off"<?php if ( $archives == "off") { echo " checked"; } ?> />Off<br />
-		Title:<br />
-		<input class="widefat" id="<?php echo $this->get_field_id('archives_title'); ?>" name="<?php echo $this->get_field_name('archives_title'); ?>" type="text" value="<?php echo attribute_escape($archives_title); ?>" /></label><br />
-		Archive URL:<br />
-		<input class="widefat" id="<?php echo $this->get_field_id('archive_path'); ?>" name="<?php echo $this->get_field_name('archive_path'); ?>" type="text" value="<?php echo attribute_escape($archive_path); ?>" /></label><br />
-
-		<br />
-		<label for="<?php echo $this->get_field_id('comments'); ?>"><strong><?php _e('Comments','comicpress'); ?></strong><br />
-		<input id="<?php echo $this->get_field_id('comments'); ?>" name="<?php echo $this->get_field_name('comments'); ?>" type="radio" value="on"<?php if ( $comments == "on") { echo " checked"; } ?> />On</label>&nbsp;<input id="<?php echo $this->get_field_id('comments'); ?>" name="<?php echo $this->get_field_name('comments'); ?>" type="radio" value="off"<?php if ( $comments == "off") { echo " checked"; } ?> />Off</label><br />
-		Title:<br />
-		<input class="widefat" id="<?php echo $this->get_field_id('comments_title'); ?>" name="<?php echo $this->get_field_name('comments_title'); ?>" type="text" value="<?php echo attribute_escape($comments_title); ?>" /></label><br />
-
-		<br />
-		<label for="<?php echo $this->get_field_id('random'); ?>"><strong><?php _e('Random','comicpress'); ?></strong><br />
-		<input id="<?php echo $this->get_field_id('random'); ?>" name="<?php echo $this->get_field_name('random'); ?>" type="radio" value="on"<?php if ( $random == "on") { echo " checked"; } ?> />On</label>&nbsp;<input id="<?php echo $this->get_field_id('random'); ?>" name="<?php echo $this->get_field_name('random'); ?>" type="radio" value="off"<?php if ( $random == "off") { echo " checked"; } ?> />Off</label><br />
-		Title:<br />
-		<input class="widefat" id="<?php echo $this->get_field_id('random_title'); ?>" name="<?php echo $this->get_field_name('random_title'); ?>" type="text" value="<?php echo attribute_escape($random_title); ?>" /></label><br />
-
-		<br />
-		<label for="<?php echo $this->get_field_id('buyprint'); ?>"><strong><?php _e('Buy Print','comicpress'); ?></strong><br />
-		<input id="<?php echo $this->get_field_id('buyprint'); ?>" name="<?php echo $this->get_field_name('buyprint'); ?>" type="radio" value="on"<?php if ( $buyprint == "on") { echo " checked"; } ?> />On</label>&nbsp;<input id="<?php echo $this->get_field_id('buyprint'); ?>" name="<?php echo $this->get_field_name('buyprint'); ?>" type="radio" value="off"<?php if ( $buyprint == "off") { echo " checked"; } ?> />Off</label><br />
-		Title:<br />
-		<input class="widefat" id="<?php echo $this->get_field_id('buyprint_title'); ?>" name="<?php echo $this->get_field_name('buyprint_title'); ?>" type="text" value="<?php echo attribute_escape($buyprint_title); ?>" /></label><br />
-
-
-		<?php
+				<?php if ($field == "archives") { ?>
+					<?php _e('Archive URL:', 'comicpress') ?>
+					<br />
+					<input class="widefat"
+								 id="<?php echo $this->get_field_id('archive_path'); ?>"
+								 name="<?php echo $this->get_field_name('archive_path'); ?>"
+								 type="text"
+								 value="<?php echo attribute_escape($instance['archive_path']); ?>" /></label><br />
+				<?php } ?>
+			</label>
+			<br />
+		<?php }
 	}
 }
 register_widget('widget_comicpress_graphical_navigation');
-
 
 function widget_comicpress_graphical_navigation_init() {
 	new widget_comicpress_graphical_navigation();
