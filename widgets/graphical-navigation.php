@@ -115,9 +115,7 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
     $all_fields = explode(' ', 'first last story_prev story_next previous random archives comments next buyprint comictitle');
 
     foreach ($all_fields as $field) {
-      if (isset($new_instance[$field])) {
-        $instance[$field] = $new_instance[$field];
-      }
+      $instance[$field] = (isset($new_instance[$field])) ? 'on' : 'off';
       if (isset($new_instance["${field}_title"])) {
         $instance["${field}_title"] = strip_tags($new_instance["${field}_title"]);
       }
@@ -173,37 +171,56 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 			'buyprint' => __('Buy Print', 'comicpress'),
 		) as $field => $label) {
 		  $title_field = "${field}_title"; ?>
-			<label for="<?php echo $this->get_field_id($key); ?>">
-			  <strong><?php echo $label ?></strong>
-				<br />
-				<?php foreach (array(
-					'on' => __('On', 'comicpress'),
-					'off' => __('Off', 'comicpress')
-				) as $key => $title) { ?>
+			<div class="comicpress-field-holder">
+				<label>
 				  <input id="<?php echo $this->get_field_id($field); ?>"
 								 name="<?php echo $this->get_field_name($field); ?>"
-								 type="radio" value="on"<?php if ($instance[$field] == $key) { echo ' checked="checked"'; } ?> /><?php echo $title; ?></label>&nbsp;
-				<?php } ?>
-				<?php if (isset($instance[$title_field])) { ?>
-					<input class="widefat"
-								 id="<?php echo $this->get_field_id($title_field); ?>"
-								 name="<?php echo $this->get_field_name($title_field); ?>"
-								 type="text"
-								 value="<?php echo attribute_escape($instance[$title_field]); ?>" />
-				<?php } ?>
+								 type="checkbox" class="comicpress-field" value="yes"<?php if ($instance[$field] == "on") { echo ' checked="checked"'; } ?> />
+					<strong><?php echo $label; ?><strong>
+				</label>
 
-				<?php if ($field == "archives") { ?>
-					<?php _e('Archive URL:', 'comicpress') ?>
-					<br />
-					<input class="widefat"
-								 id="<?php echo $this->get_field_id('archive_path'); ?>"
-								 name="<?php echo $this->get_field_name('archive_path'); ?>"
-								 type="text"
-								 value="<?php echo attribute_escape($instance['archive_path']); ?>" /></label><br />
-				<?php } ?>
-			</label>
-			<br />
+					<?php if (isset($title_defaults[$title_field])) { ?>
+						<input class="widefat comicpress-field"
+									 id="<?php echo $this->get_field_id($title_field); ?>"
+									 name="<?php echo $this->get_field_name($title_field); ?>"
+									 type="text"
+									 value="<?php echo attribute_escape($instance[$title_field]); ?>" />
+					<?php } ?>
+
+					<?php if ($field == "archives") { ?>
+						<div>
+							<?php _e('Archive URL:', 'comicpress') ?>
+							<br />
+							<input class="widefat"
+										 id="<?php echo $this->get_field_id('archive_path'); ?>"
+										 name="<?php echo $this->get_field_name('archive_path'); ?>"
+										 type="text"
+										 value="<?php echo attribute_escape($instance['archive_path']); ?>" />
+						</div>
+					<?php } ?>
+				</label>
+		  </div>
 		<?php }
+
+		?>
+
+		<script type="text/javascript">
+			var _get_comicpress_show_hide_text = function(container, immediate) {
+			  return function(e) {
+					var checkbox = jQuery('.comicpress-field[type=checkbox]', container).get(0);
+					if (checkbox) {
+						jQuery('.comicpress-field[type=text]', container)[checkbox.checked ? 'show' : 'hide'](immediate ? null : 'fast');
+					}
+				}
+			};
+			
+			jQuery('.comicpress-field-holder').each(function(fh) {
+				jQuery('.comicpress-field[type=checkbox]', this).bind('click', _get_comicpress_show_hide_text(this, false));
+				_get_comicpress_show_hide_text(this, true)();
+			});
+		</script>
+
+		<?php
 	}
 }
 register_widget('widget_comicpress_graphical_navigation');
