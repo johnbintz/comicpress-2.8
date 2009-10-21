@@ -34,6 +34,12 @@ function comicpress_body_class($classes = '') {
 			$classes[] = 'non-sitemember';
 		}
 	}
+	
+	if (in_comic_category()) {
+		$classes[] = 'comic';
+	} else {
+		$classes[] = 'noncomic';
+	}
 
 	if($is_lynx) $classes[] = 'lynx';
 	elseif($is_gecko) $classes[] = 'gecko';

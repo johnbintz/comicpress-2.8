@@ -8,7 +8,7 @@
 			switch ( $value['type'] ) {
 				case "comicpress-members_post_category": ?>
 					<tr>	
-					<th scope="row"><strong>Members Category</strong><br /><br />The category that is disignated to show members only content.<br /><br /></th>
+					<th scope="row"><strong>Members Category</strong><br /><br />The category that is designated to show members only content.<br /><br /></th>
 					<td valign="top">
 						<label>
 						<?php 
