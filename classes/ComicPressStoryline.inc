@@ -18,6 +18,10 @@ class ComicPressStoryline {
 
     $adjacents_by_parent = array();
 
+		if (is_string($structure)) {
+			$structure = explode(',', $structure);
+		}
+
     if (is_array($structure)) {
       $is_valid = true;
       foreach ($structure as $branch) {
@@ -61,7 +65,7 @@ class ComicPressStoryline {
             }
           }
         }
-      
+
         $this->_structure = $new_structure;
       }
     }
@@ -114,6 +118,10 @@ class ComicPressStoryline {
     }
     return $result;
   }
+
+	function get_comic_categories() {
+		return array_keys($this->_structure);
+	}
 }
 
 ?>

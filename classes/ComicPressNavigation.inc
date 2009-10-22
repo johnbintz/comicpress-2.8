@@ -37,6 +37,8 @@ class ComicPressNavigation {
         }
       }
     }
+
+		return $nav;
   }
 }
 

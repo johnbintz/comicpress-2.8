@@ -9,16 +9,61 @@ Author URI: http://webcomicplanet.com/
 
 */
 
+require_once(dirname(__FILE__) . '/../classes/ComicPressNavigation.inc');
+
 class widget_comicpress_graphical_navigation extends WP_Widget {
 	function widget_comicpress_graphical_navigation() {
 		$widget_ops = array('classname' => 'widget_comicpress_graphical_navigation', 'description' => __('Displays Graphical Navigation Buttons. (used in comic sidebars)','comicpress') );
 		$this->WP_Widget('graphicalnavigation', __('Comic Navigation','comicpress'), $widget_ops);
 	}
 
+	function comicpress_display_navigation_link($which, $current, $target, $title, $content = '') {
+		switch ($which) {
+			case 'first':
+			
+		}
+	}
+
+	/**
+	 * Returns true if the combination of target and current post will show or hide this nav link.
+	 * Different from whether or not a user explicitly hid this link.
+	 * @param string $which The link to test.
+	 * @param object $current The currently visible post.
+	 * @param object $target The target post to comare to.
+	 * @return boolean True if this link should be visible.
+	 */
+	function _will_display_nav_link($which, $current, $target) {
+		switch ($which) {
+			case 'first':
+			case 'last':
+				return ($target->ID != $current->ID);
+			default:
+				return true;
+		}
+	}
+
+	function comicpress_display_navigation_order($order = array()) {
+    return array(
+			'first', 'storyline-previous', 'previous', 'archives', 'random', 'comictitle', 'comments', 'buyprint', 'next', 'storynext', 'last'
+		);
+	}
+
 	function widget($args, $instance) {
-		global $wp_query, $post;
+		global $post;
 
 		if (is_home() || is_single()) {
+			$storyline = new ComicPressStoryline();
+			$storyline->create_structure(get_option('comicpress-storyline-category-order'));
+
+			$dbi = ComicPressDBInterface::get_instance();
+			$dbi->set_comic_categories($storyline->get_comic_categories());
+
+			$navigation = new ComicPressNavigation();
+			$navigation->init($storyline);
+
+			$storyline_to_nav_mapping = array(
+				
+			);
 
 			$this_permalink = get_permalink();
 
@@ -179,26 +224,31 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 					<strong><?php echo $label; ?><strong>
 				</label>
 
+				<div class="comicpress-field">
 					<?php if (isset($title_defaults[$title_field])) { ?>
-						<input class="widefat comicpress-field"
+						<input class="widefat"
 									 id="<?php echo $this->get_field_id($title_field); ?>"
 									 name="<?php echo $this->get_field_name($title_field); ?>"
 									 type="text"
 									 value="<?php echo attribute_escape($instance[$title_field]); ?>" />
 					<?php } ?>
 
-					<?php if ($field == "archives") { ?>
-						<div>
-							<?php _e('Archive URL:', 'comicpress') ?>
-							<br />
-							<input class="widefat"
-										 id="<?php echo $this->get_field_id('archive_path'); ?>"
-										 name="<?php echo $this->get_field_name('archive_path'); ?>"
-										 type="text"
-										 value="<?php echo attribute_escape($instance['archive_path']); ?>" />
-						</div>
-					<?php } ?>
-				</label>
+					<?php
+					  switch($field) {
+							case "archives": ?>
+								<div>
+									<?php _e('Archive URL:', 'comicpress') ?>
+									<br />
+									<input class="widefat"
+												 id="<?php echo $this->get_field_id('archive_path'); ?>"
+												 name="<?php echo $this->get_field_name('archive_path'); ?>"
+												 type="text"
+												 value="<?php echo attribute_escape($instance['archive_path']); ?>" />
+								</div>
+							<?php break;
+						}
+					?>
+				</div>
 		  </div>
 		<?php }
 
@@ -209,7 +259,7 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 			  return function(e) {
 					var checkbox = jQuery('.comicpress-field[type=checkbox]', container).get(0);
 					if (checkbox) {
-						jQuery('.comicpress-field[type=text]', container)[checkbox.checked ? 'show' : 'hide'](immediate ? null : 'fast');
+						jQuery('div.comicpress-field', container)[checkbox.checked ? 'show' : 'hide'](immediate ? null : 'fast');
 					}
 				}
 			};
