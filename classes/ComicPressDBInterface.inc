@@ -30,6 +30,8 @@ class ComicPressDBInterface {
    * Find the terminal post in a specific category.
    */
   function get_terminal_post_in_category($category_id, $first = true) {
+    global $wp_query;
+
     $temp = $wp_query; $wp_query = null;
     $sort_order = $first ? "asc" : "desc";
     $terminal_comic_query = new WP_Query();
