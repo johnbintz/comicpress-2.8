@@ -6,7 +6,6 @@ Description: This widget places graphical navigation buttons on your comic. For 
 Author: Philip M. Hofer (Frumph) &amp; John Bintz
 Version: 1.2
 Author URI: http://webcomicplanet.com/
-
 */
 
 require_once(dirname(__FILE__) . '/../classes/ComicPressNavigation.inc');
@@ -17,11 +16,108 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 		$this->WP_Widget('graphicalnavigation', __('Comic Navigation','comicpress'), $widget_ops);
 	}
 
-	function comicpress_display_navigation_link($which, $current, $target, $title, $content = '') {
+	/**
+	 * Initialize the widget class.
+	 */
+	function init() {
+		add_filter('comicpress_display_navigation_order', array(&$this, 'comicpress_display_navigation_order'));
+		add_filter('comicpress_display_navigation_link', array(&$this, 'comicpress_display_navigation_link'), 10, 5);
+		add_filter('comicpress_wrap_navigation_buttons', array(&$this, 'comicpress_wrap_navigation_buttons'), 10, 2);
+
+		// these two need to be moved one level up
+		add_filter('comicpress_get_random_link_url', array(&$this, 'comicpress_get_random_link_url'));
+		add_filter('comicpress_get_buy_print_url', array(&$this, 'comicpress_get_buy_print_url'));
+	}
+
+	/**
+	 * Get the random link URL.
+	 */
+	function comicpress_get_random_link_url($url = '') {
+		return bloginfo('url') . '/?randomcomic';
+	}
+
+	/**
+	 * Get the URL to buy a print.
+	 * Handles hitting the global namespace for you.
+	 */
+	function comicpress_get_buy_print_url($url = '') {
+		global $buy_print_url;
+		return $buy_print_url;
+	}
+
+	/**
+	 * Render a button.
+	 */
+	function comicpress_display_navigation_link($which, $current, $target, $instance, $content = '') {
+		global $id;
+		
+		$ok = true;
 		switch ($which) {
-			case 'first':
-			
+      case 'first':
+      case 'last':
+				$ok = $this->_will_display_nav_link($which, $current, $target);
+				break;
+      case 'previous':
+      case 'next':
+      case 'story_prev':
+      case 'story_next':
+				$ok = !empty($target);
+			  break;
+			case 'archives':
+				$ok = !empty($instance['archive_path']);
+				break;
 		}
+		
+		ob_start();
+		switch ($which) {
+      case 'first':
+      case 'last':
+      case 'previous':
+      case 'next':
+      case 'story_prev':
+      case 'story_next':
+				if ($ok) {
+				  ?><a href="<?php echo get_permalink($target) ?>"
+					  	 class="navi navi-<?php echo $which ; ?>"
+							 title="<?php echo $instance["${which}_title"]; ?>"><?php echo $instance["${which}_title"]; ?></a><?php
+				} else {
+				  ?><div class="navi navi-<?php echo $which ; ?> navi-void"><?php echo $instance["${which}_title"]; ?></div><?php
+				}
+			  break;
+			case 'archives':
+				?><a href="<?php echo $instance['archive_path']; ?>"
+				     class="navi navi-archives"
+						 title="<?php echo $instance['archives_title']; ?>"><?php echo $instance['archives_title']; ?></a><?php
+				break;
+			case 'random':
+			  ?><a href="<?php echo apply_filters('comicpress_get_random_link_url', '') ?>"
+					   class="navi navi-random"
+						 title="<?php echo $instance['random_title']; ?>"><?php echo $instance['random_title']; ?></a><?php
+				break;
+			case 'comictitle':
+			  ?><div class="navi-comictitle"><a href="<?php echo get_permalink($current) ?>"><?php echo get_the_title($current->ID); ?></a></div><?php
+				break;
+			case 'comments':
+				$temp_id = $id;
+				$id = $current->ID;
+			  ?><a href="<?php echo get_permalink($current); ?>#comment"
+						 class="navi navi-comments"
+						 title="<?php echo $instance['comments_title']; ?>"><span class="navi-comments-count"><?php comments_number('0', '1', '%'); ?></span><?php echo $instance['comments_title']; ?></a><?php
+				$id = $temp_id;
+				break;
+			case 'buyprint':
+				?><form method="post"
+								title="<?php echo $instance['buyprint_title']; ?>"
+								action="<?php echo apply_filters('comicpress_get_buy_print_url', ''); ?>"
+								class="navi-buyprint-form">
+						<input type="hidden" name="comic" value="<?php echo $current->ID; ?>" />
+						<button class="navi navi-buyprint"
+									  type="submit"
+										value="submit"><?php echo $instance['buyprint_title']; ?></button>
+				</form><?php
+				break;
+		}
+		return array($which, $current, $target, $instance, ob_get_clean());
 	}
 
 	/**
@@ -42,12 +138,34 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 		}
 	}
 
+	/**
+	 * Get the order of the buttons to be displayed on-screen.
+	 */
 	function comicpress_display_navigation_order($order = array()) {
     return array(
-			'first', 'storyline-previous', 'previous', 'archives', 'random', 'comictitle', 'comments', 'buyprint', 'next', 'storynext', 'last'
+			'first', 'story_prev', 'previous', 'archives', 'random', 'comictitle', 'comments', 'buyprint', 'next', 'story_next', 'last'
 		);
 	}
 
+	/**
+	 * Wrap navigation buttons in a holder.
+	 * @param string|array $buttons The buttons to wrap.
+	 * @param string $content The wrapped content.
+	 */
+	function comicpress_wrap_navigation_buttons($buttons = '', $content = '') {
+		$buttons_text = $buttons;
+	  if (is_array($buttons)) { $buttons_text = implode('', $buttons); }
+		ob_start(); ?>
+			<div id="comic_navi_wrapper">
+				<table id="comic_navi" cellpadding="0" cellspacing="0"><tr><td><?php echo $buttons_text; ?></td></tr></table>
+			</div>
+		<?php
+		return array($buttons, $content);
+	}
+
+	/**
+	 * Render the widget.
+	 */
 	function widget($args, $instance) {
 		global $post;
 
@@ -60,93 +178,27 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 
 			$navigation = new ComicPressNavigation();
 			$navigation->init($storyline);
+			$post_nav = $navigation->get_post_nav($post);
 
 			$storyline_to_nav_mapping = array(
-				
+				'story_prev' => 'storyline-previous',
+				'story_next' => 'storyline-next'
 			);
 
-			$this_permalink = get_permalink();
+			$nav_links = array();
+			foreach (apply_filters('comicpress_display_navigation_order', array()) as $order) {
+				if ($instance[$order] == "on") {
+					$target_post_nav = (isset($storyline_to_nav_mapping[$order])) ? $storyline_to_nav_mapping[$order] : $order;
 
-			$temp_query = $wp_query->is_single;
-			$wp_query->is_single = true;
-			$prev_comic = get_previous_comic_permalink();
-			$next_comic = get_next_comic_permalink();
-			$wp_query->is_single = $temp_query;
-			$temp_query = null;
+					$target_post = null;
+					if (isset($post_nav[$target_post_nav])) { $target_post = $post_nav[$target_post_nav]; }
 
-			$first_comic = get_first_comic_permalink();
-			$last_comic = get_last_comic_permalink();
+					$nav_links[] = end(apply_filters('comicpress_display_navigation_link', $order, $post, $target_post, $instance, ''));
+				}
+			}
 
-			$prev_story = get_previous_storyline_start_permalink();
-			$next_story = get_next_storyline_start_permalink();
-			?>
-
-			<div id="comic_navi_wrapper">
-			<table id="comic_navi" cellpadding="0" cellspacing="0"><tr><td>
-			<?php if ($instance['first'] != 'off') {
-				if (!empty($first_comic) && ($first_comic != $this_permalink)) { ?>
-					<a href="<?php echo $first_comic; ?>" class="navi navi-first" title="<?php echo $instance['first_title']; ?>"><?php echo $instance['first_title']; ?></a>
-				<?php } else { ?>
-					<div class="navi navi-first navi-void"><?php echo $instance['first_title']; ?></div>
-				<?php }
-			}
-			if ($instance['story_prev'] != 'off') {
-				if (!empty($prev_story)) { ?>
-					<a href="<?php echo $prev_story; ?>" class="navi navi-prevchap" title="<?php echo $instance['story_prev_title']; ?>"><?php echo $instance['story_prev_title']; ?></a>
-				<?php } else { ?>
-					<div class="navi navi-prevchap navi-void"><?php echo $instance['story_prev_title']; ?></div>
-				<?php }
-			}
-			if ($instance['previous'] != 'off') {
-				if (!empty($prev_comic)) { ?>
-					<a href="<?php echo $prev_comic; ?>" class="navi navi-prev" title="<?php echo $instance['previous_title']; ?>"><?php echo $instance['previous_title']; ?></a>
-				<?php } else { ?>
-					<div class="navi navi-prev navi-void"><?php echo $instance['previous_title']; ?></div>
-				<?php }
-			}
-			if ($instance['archives'] != 'off' && !empty($instance['archive_path'])) { ?>
-				<a href="<?php echo $instance['archive_path']; ?>" class="navi navi-archive" title="<?php echo $instance['archives_title']; ?>"><?php echo $instance['archives_title']; ?></a>
-			<?php }
-			if ($instance['random'] != 'off') { ?>
-				<a href="<?php echo bloginfo('url'); ?>/?randomcomic" class="navi navi-random" title="<?php echo $instance['random_title']; ?>"><?php echo $instance['random_title']; ?></a>
-			<?php }
-			if ($instance['comictitle'] != 'off') { ?>
-				<div class="navi-comictitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></div>
-			<?php }
-			if ($instance['comments'] != 'off') { ?>
-				<a href="<?php the_permalink(); ?>#comment" class="navi navi-comments" title="<?php echo $instance['comments_title']; ?>"><span class="navi-comments-count"><?php comments_number('0', '1', '%'); ?></span><?php echo $instance['comments_title']; ?></a>
-			<?php }
-			if ($instance['buyprint'] != 'off') { ?>
-				<form method="post" title="<?php echo $instance['buyprint_title']; ?>" action="<?php global $buy_print_url; echo $buy_print_url; ?>" class="navi-buyprint-form">
-				<input type="hidden" name="comic" value="<?php echo get_the_ID(); ?>" />
-				<button class="navi navi-buyprint" type="submit" value="submit"><?php echo $instance['buyprint_title']; ?></button>
-				</form>
-			<?php }
-			if ($instance['next'] != 'off') {
-				if (!empty($next_comic)) { ?>
-					<a href="<?php echo $next_comic; ?>" class="navi navi-next" title="<?php echo $instance['next_title']; ?>"><?php echo $instance['next_title']; ?></a>
-				<?php } else { ?>
-					<div class="navi navi-next navi-void"><?php echo $instance['next_title']; ?></div>
-				<?php }
-			}
-			if ($instance['story_next'] != 'off') {
-				if (!empty($next_story) && !is_home()) { ?>
-					<a href="<?php echo $next_story; ?>" class="navi navi-nextchap" title="<?php echo $instance['story_next_title']; ?>"><?php echo $instance['story_next_title']; ?></a>
-				<?php } else { ?>
-					<div class="navi navi-nextchap navi-void"><?php echo $instance['story_next_title']; ?></div>
-				<?php }
-			}
-			if ($instance['last'] != 'off') {
-				if (!empty($last_comic) && ($last_comic != $this_permalink)) { ?>
-					<a href="<?php echo $last_comic; ?>" class="navi navi-last" title="<?php echo $instance['last_title']; ?>"><?php echo $instance['last_title']; ?></a>
-				<?php } else { ?>
-					<div class="navi navi-last navi-void"><?php echo $instance['last_title']; ?></div>
-				<?php }
-			} ?>
-			</td></tr></table>
-			</div>
-
-		<?php }
+			echo end(apply_filters('comicpress_wrap_navigation_buttons', $nav_links, ''));
+		}
 	}
 
   /**
@@ -250,9 +302,7 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 					?>
 				</div>
 		  </div>
-		<?php }
-
-		?>
+		<?php }	?>
 
 		<script type="text/javascript">
 			var _get_comicpress_show_hide_text = function(container, immediate) {
@@ -275,8 +325,15 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 }
 register_widget('widget_comicpress_graphical_navigation');
 
+/**
+ * Handle pre-init stuff.
+ * In this case, instantiate a copy of the widget and hook up its filters.
+ * The original will hang around due to the callback references. Don't use any
+ * object properties in those filters!
+ */
 function widget_comicpress_graphical_navigation_init() {
-	new widget_comicpress_graphical_navigation();
+	$a = new widget_comicpress_graphical_navigation();
+	$a->init();
 }
 
 add_action('widgets_init', 'widget_comicpress_graphical_navigation_init');
