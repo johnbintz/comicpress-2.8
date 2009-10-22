@@ -46,7 +46,7 @@ Style: Default
 	background: url('prevchap.png') no-repeat;
 }
 
-.navi-prev {
+.navi-prev, .navi-previous {
 	margin-right: 30px;
 	background: url('prev.png') no-repeat;
 }
@@ -76,7 +76,7 @@ Style: Default
 		padding: 0;
 		}
 
-.navi-archive {
+.navi-archive, .navi-archives {
 	background: url('archive.png') no-repeat;
 }
 
