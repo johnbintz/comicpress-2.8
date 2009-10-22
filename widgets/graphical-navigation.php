@@ -77,7 +77,7 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
       case 'story_next':
       case 'next':
 				$link = get_permalink($target->ID);
-				if (($which == 'next') && ($instance['nextgohome'] == 'on')) { $link = get_bloginfo('url'); }
+				if (($which == 'last') && ($instance['nextgohome'] == 'on')) { $link = get_bloginfo('url'); }
 				if ($ok) {
 				  ?><a href="<?php echo $link; ?>"
 					  	 class="navi navi-<?php echo $which ; ?>"
@@ -301,7 +301,7 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 												 value="<?php echo attribute_escape($instance['archive_path']); ?>" />
 								</div>
 							<?php break;
-							case "next": ?>
+							case "last": ?>
 								<div>
 									<label>
 									  <input id="<?php echo $this->get_field_id('nextgohome'); ?>"
