@@ -33,7 +33,7 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 	 * Get the random link URL.
 	 */
 	function comicpress_get_random_link_url($url = '') {
-		return bloginfo('url') . '/?randomcomic';
+		return get_bloginfo('url') . '/?randomcomic';
 	}
 
 	/**
@@ -73,11 +73,13 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
       case 'first':
       case 'last':
       case 'previous':
-      case 'next':
       case 'story_prev':
       case 'story_next':
+				$link = get_permalink($target);
+      case 'next':
+				if ($instance['nextgohome'] == 'on') { $link = get_bloginfo('url'); }
 				if ($ok) {
-				  ?><a href="<?php echo get_permalink($target) ?>"
+				  ?><a href="<?php echo $link; ?>"
 					  	 class="navi navi-<?php echo $which ; ?>"
 							 title="<?php echo $instance["${which}_title"]; ?>"><?php echo $instance["${which}_title"]; ?></a><?php
 				} else {
@@ -209,7 +211,7 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 	function update($new_instance, $old_instance) {
 		$instance = array();
 
-    $all_fields = explode(' ', 'first last story_prev story_next previous random archives comments next buyprint comictitle');
+    $all_fields = explode(' ', 'first last story_prev story_next previous random archives comments next buyprint comictitle nextgohome');
 
     foreach ($all_fields as $field) {
       $instance[$field] = (isset($new_instance[$field])) ? 'on' : 'off';
@@ -236,7 +238,8 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 			'next' => 'on',
 			'archive_path' => '',
 			'buyprint' => 'off',
-			'comictitle' => 'off'
+			'comictitle' => 'off',
+			'nextgohome' => 'off'
 		);
 
 		$title_defaults = array(
@@ -265,7 +268,7 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 			'archives' => __('Archives', 'comicpress'),
 			'comments' => __('Comments', 'comicpress'),
 			'random' => __('Random', 'comicpress'),
-			'buyprint' => __('Buy Print', 'comicpress'),
+			'buyprint' => __('Buy Print', 'comicpress')
 		) as $field => $label) {
 		  $title_field = "${field}_title"; ?>
 			<div class="comicpress-field-holder">
@@ -296,6 +299,16 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 												 name="<?php echo $this->get_field_name('archive_path'); ?>"
 												 type="text"
 												 value="<?php echo attribute_escape($instance['archive_path']); ?>" />
+								</div>
+							<?php break;
+							case "next": ?>
+								<div>
+									<label>
+									  <input id="<?php echo $this->get_field_id('nextgohome'); ?>"
+													 name="<?php echo $this->get_field_name('nextgohome'); ?>"
+													 type="checkbox" class="comicpress-field" value="yes"<?php if ($instance['nextgohome'] == "on") { echo ' checked="checked"'; } ?> />
+										<strong><?php _e('...go Home instead of Last', 'comicpress'); ?><strong>
+									</label>
 								</div>
 							<?php break;
 						}
