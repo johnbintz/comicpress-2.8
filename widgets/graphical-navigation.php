@@ -67,7 +67,7 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 				$ok = !empty($instance['archive_path']);
 				break;
 		}
-
+		
 		ob_start();
 		switch ($which) {
       case 'first':
@@ -75,9 +75,9 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
       case 'previous':
       case 'story_prev':
       case 'story_next':
+				$link = get_permalink($target);
       case 'next':
-				$link = get_permalink($target->ID);
-				if (($which == 'next') && ($instance['nextgohome'] == 'on')) { $link = get_bloginfo('url'); }
+				if ($instance['nextgohome'] == 'on') { $link = get_bloginfo('url'); }
 				if ($ok) {
 				  ?><a href="<?php echo $link; ?>"
 					  	 class="navi navi-<?php echo $which ; ?>"
@@ -183,8 +183,8 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 			$post_nav = $navigation->get_post_nav($post);
 
 			$storyline_to_nav_mapping = array(
-				'story_prev' => 'storyline-chapter-previous',
-				'story_next' => 'storyline-chapter-next'
+				'story_prev' => 'storyline-previous',
+				'story_next' => 'storyline-next'
 			);
 
 			$nav_links = array();
