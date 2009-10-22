@@ -30,13 +30,16 @@ class ComicPressDBInterface {
    * Find the terminal post in a specific category.
    */
   function get_terminal_post_in_category($category_id, $first = true) {
+    $temp = $wp_query; $wp_query = null;
     $sort_order = $first ? "asc" : "desc";
     $terminal_comic_query = new WP_Query();
     $terminal_comic_query->query("showposts=1&order=${sort_order}&cat=${category_id}&status=publish");
+    $post = false;
     if ($terminal_comic_query->have_posts()) {
-      return reset($terminal_comic_query->posts);
+      $post = reset($terminal_comic_query->posts);
     }
-    return false;
+    $wp_query = null; $wp_query = $temp;
+    return $post;
   }
   
   /**
