@@ -17,10 +17,10 @@ body {
 	margin: 0;
 	font-family: 'Arial', sans-serif;
 	color: #ddd;
-	background: #000 url('background.jpg') fixed repeat;
+	background: #000 url('background.jpg') fixed top center repeat-x;
 }
 
-a { color: #fff000; }
+a { color: #dfc786; }
 
 a:hover { color: #fff; }
 
@@ -64,6 +64,14 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 }
 
 .button { float: right; }
+
+.post-author-gravatar img {
+	border: solid 1px #000;
+}
+
+.nav {
+	display: none;
+}
 
 /* THE MENU */
 
@@ -226,13 +234,17 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 }
 
 .narrowcolumn { 
-	width: 558px;
+	width: 538px;
 	background: #111;
 	-moz-border-radius: 10px;
 	-khtml-border-radius: 10px;
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
 	border: solid 1px #333;
+}
+
+.layout-standard .narrowcolumn, .layout-v .narrowcolumn {
+	width: 548px;
 }
 
 	.button {

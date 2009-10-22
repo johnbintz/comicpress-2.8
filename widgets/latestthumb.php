@@ -25,9 +25,16 @@ class widget_comicpress_latest_thumbnail extends WP_Widget {
 			$title = empty($instance['title']) ? __('Latest Comic','comicpress') : apply_filters('widget_title', $instance['title']); 
 			if ( !empty( $title ) ) { echo $before_title . $title . $after_title; }; 
 			$latestcomics = get_posts('numberposts=1&category='.get_all_comic_categories_as_cat_string());
-			foreach($latestcomics as $post) : ?>
+			$archive_image = null;
+
+			foreach($latestcomics as $post) : 
+			foreach (array("archive", "rss", "mini", "comic") as $type) {
+				if (($requested_archive_image = get_comic_url($type, $post)) !== false) {
+					$archive_image = $requested_archive_image; break;
+				}
+			} ?>
 				<center>
-				<a href="<?php the_permalink(); ?>"><img src="<?php the_comic_mini() ?>" alt="<?php the_title() ?> - <?php the_date(); ?>" title="<?php the_hovertext() ?>" /></a><br />
+				<a href="<?php the_permalink(); ?>"><img src="<?php echo $archive_image ?>" alt="<?php the_title() ?> - <?php the_date(); ?>" title="<?php the_hovertext() ?>" /></a><br />
 				<span class="latest_thumbnail_date"><?php the_date(); ?></span>
 				</center>
 				<?php endforeach; 
