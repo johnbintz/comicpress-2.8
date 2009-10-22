@@ -20,7 +20,7 @@ class ComicPressStoryline {
 
 		if (is_string($structure)) {
 			$structure = explode(',', $structure);
-		
+		}
 
     if (is_array($structure)) {
       $is_valid = true;
