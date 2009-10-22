@@ -183,8 +183,8 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 			$post_nav = $navigation->get_post_nav($post);
 
 			$storyline_to_nav_mapping = array(
-				'story_prev' => 'storyline-previous',
-				'story_next' => 'storyline-next'
+				'story_prev' => 'storyline-chapter-previous',
+				'story_next' => 'storyline-chapter-next'
 			);
 
 			$nav_links = array();
