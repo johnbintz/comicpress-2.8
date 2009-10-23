@@ -13,7 +13,7 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 	
 	function widget_comicpress_graphical_navigation() {
 		$widget_ops = array('classname' => 'widget_comicpress_graphical_navigation', 'description' => __('Displays Graphical Navigation Buttons. (used in comic sidebars)','comicpress') );
-		$this->WP_Widget('graphicalnavigation', __('Comic Navigation','comicpress'), $widget_ops);
+		$this->WP_Widget('graphicalnavigation', __('Comic Navigation (orig)','comicpress'), $widget_ops);
 	}
 	
 	function widget($args, $instance) {
