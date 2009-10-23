@@ -30,9 +30,8 @@ class ComicPressDBInterface {
    * Find the terminal post in a specific category.
    */
   function get_terminal_post_in_category($category_id, $first = true) {
-    global $wp_query;
-
-    $temp = $wp_query; $wp_query = null;
+    $this->_prepare_wp_query();
+    
     $sort_order = $first ? "asc" : "desc";
     $terminal_comic_query = new WP_Query();
     $terminal_comic_query->query("showposts=1&order=${sort_order}&cat=${category_id}&status=publish");
@@ -40,7 +39,8 @@ class ComicPressDBInterface {
     if ($terminal_comic_query->have_posts()) {
       $post = reset($terminal_comic_query->posts);
     }
-    $wp_query = null; $wp_query = $temp;
+
+    $this->_reset_wp_query();
     return $post;
   }
   
@@ -63,24 +63,33 @@ class ComicPressDBInterface {
    * Wrapper around get_adjacent_post(). Don't unit test this method.
    */
   function get_adjacent_comic($category, $next = false, $override_post = null) {
-    global $wp_query, $post;
-    $temp_single = $wp_query->is_single;
-    $wp_query->is_single = true;
-    
-    if (!is_null($override_post)) {
-      $temp_post = $post;
-      $post = $override_post; 
-    }
+    global $post;
+
+    $this->_prepare_wp_query();
+    if (!is_null($override_post)) { $temp_post = $post; $post = $override_post; }
     
     $result = get_adjacent_post(false, implode(" and ", $this->_get_categories_to_exclude($category)), !$next);
 
-    $wp_query->is_single = $temp_single;
-    
-    if (!is_null($override_post)) {
-      $post = $temp_post; 
-    }
+    $this->_reset_wp_query();
+    if (!is_null($override_post)) { $post = $temp_post; }
 
     return empty($result) ? false : $result;
+  }
+
+  function _prepare_wp_query() {
+    global $wp_query;
+
+    $this->is_single = $wp_query->is_single;
+    $this->in_the_loop = $wp_query->in_the_loop;
+
+    $wp_query->is_single = $wp_query->in_the_loop = true;
+  }
+
+  function _reset_wp_query() {
+    global $wp_query;
+
+    $wp_query->is_single = $this->is_single;
+    $wp_query->in_the_loop = $this->in_the_loop;
   }
   
   /**
