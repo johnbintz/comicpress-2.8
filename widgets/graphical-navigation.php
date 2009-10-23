@@ -92,7 +92,7 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 					  	 class="navi <?php echo implode(" ", $navi_class_names); ?>"
 							 title="<?php echo $instance["${which}_title"]; ?>"><?php echo $instance["${which}_title"]; ?></a><?php
 				} else {
-				  ?><div class="navi navi-<?php echo implode(" ", $navi_class_names); ?> navi-void"><?php echo $instance["${which}_title"]; ?></div><?php
+				  ?><div class="navi <?php echo implode(" ", $navi_class_names); ?> navi-void"><?php echo $instance["${which}_title"]; ?></div><?php
 				}
 			  break;
 			case 'archives':
