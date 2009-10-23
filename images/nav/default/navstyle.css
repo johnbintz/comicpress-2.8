@@ -42,7 +42,7 @@ Style: Default
 	background: url('first.png') no-repeat;
 }
 
-.navi-prevchap {
+.navi-prevchap, .navi-story_prev {
 	background: url('prevchap.png') no-repeat;
 }
 
@@ -108,7 +108,7 @@ Style: Default
 	background: url('next.png') no-repeat;
 }
 
-.navi-nextchap {
+.navi-nextchap, .navi-story_next {
 	background: url('nextchap.png') no-repeat;
 }
 
