@@ -7,7 +7,7 @@ require_once(dirname(__FILE__) . '/../../widgets/graphical-navigation.php');
 class GraphicalNavigationTest extends PHPUnit_Framework_TestCase {
 	function setUp() {
 		_reset_wp();
-		$this->w = new widget_comicpress_storyline_graphical_navigation();
+		$this->w = new WidgetComicPressGraphicalStorylineNavigation();
 	}
 
 	function testUpdateWidget() {
