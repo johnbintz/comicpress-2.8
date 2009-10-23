@@ -285,7 +285,7 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 				  <input id="<?php echo $this->get_field_id($field); ?>"
 								 name="<?php echo $this->get_field_name($field); ?>"
 								 type="checkbox" class="comicpress-field" value="yes"<?php if ($instance[$field] == "on") { echo ' checked="checked"'; } ?> />
-					<strong><?php echo $label; ?><strong>
+					<strong><?php echo $label; ?></strong>
 				</label>
 
 				<div class="comicpress-field">
@@ -316,7 +316,7 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 									  <input id="<?php echo $this->get_field_id('nextgohome'); ?>"
 													 name="<?php echo $this->get_field_name('nextgohome'); ?>"
 													 type="checkbox" class="comicpress-field" value="yes"<?php if ($instance['nextgohome'] == "on") { echo ' checked="checked"'; } ?> />
-										<strong><?php _e('...go Home instead of Last', 'comicpress'); ?><strong>
+										<strong><?php _e('...go Home instead of Last', 'comicpress'); ?></strong>
 									</label>
 								</div>
 							<?php break;
