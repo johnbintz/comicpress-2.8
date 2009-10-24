@@ -279,6 +279,11 @@ $options = array (
 			"default" => "no",
 			"type" => "comicpress-disable_default_menubar"),
 			
+		array(
+			"id" => "comicpress-disable_blogheader",
+			"default" => "no",
+			"type" => "comicpress-disable_blogheader"),
+			
 		array("type" => "close")
 		);
 ?>

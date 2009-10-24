@@ -63,6 +63,16 @@
 				</tr>
 				
 				<?php break;
+			case "comicpress-disable_blogheader": ?>
+				<tr>
+				<th scope="row"><strong><?php _e('Disable blog header on the index page?','comicpress'); ?></strong><br /><br /><?php _e('Set to &quot;Yes&quot; and the index page/front page of your site will not display the #blogheader','comicpress'); ?><br /></th>
+				<td valign="top">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label><br />
+				</td>
+				</tr>				
+				<?php break;
 		}
 	}
 	?>

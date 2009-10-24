@@ -89,9 +89,9 @@
 		} ?>
 	
 		<?php comments_template('', true); ?>		
-		<?php get_sidebar('underblog'); ?>	
-	<?php else: ?>
 		
+	<?php else: ?>
+	<?php get_sidebar('underblog'); ?>	
 	<div class="<?php comicpress_post_class(); ?>">
 		<div class="post-head"></div>
 		<div class="post">

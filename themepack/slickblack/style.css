@@ -72,13 +72,13 @@ h1, h1 a, h2, h2 a, h3, h3 a {
 }
 
 .narrowcolumn {
-	width: 546px;
+	width: 536px;
 	background: #333;
 	border: solid 1px #000;
 }
 
-.layout-standard .narrowcolumn, .layout-3c2r .narrowcolumn, .layout-v .narrowcolumn {
-	width: 551px;
+.layout-standard .narrowcolumn, .layout-v .narrowcolumn {
+	width: 541px;
 	margin-left: 5px;
 }
 

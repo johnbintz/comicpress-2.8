@@ -100,7 +100,8 @@ if (get_option('upload_path') !== false) {
 				'author_column_one'				=> 'author_column_one',
 				'author_column_two'				=> 'author_column_two',
 				'remove_wptexturize'			=> 'remove_wptexturize',
-				'disable_default_menubar'		=> 'disable_default_menubar' ) as $options => $variable_name) {
+				'disable_default_menubar'		=> 'disable_default_menubar',
+				'disable_blogheader'			=> 'disable_blogheader' ) as $options => $variable_name) {
 		$variables_to_extract[$variable_name] = get_option("comicpress-${options}");
 	}
 	
