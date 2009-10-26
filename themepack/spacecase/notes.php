@@ -1,7 +1,7 @@
 <strong>ThemePack</strong>: spacecase<br />
 <strong>Author</strong>: Philip M. Hofer (Frumph)<br />
-<strong>Layouts</strong>: standard, 3c, gn, v, v3c<br />
+<strong>Version</strong>: 1.0.1<br />
 <br />
 <strong>Installation Notes</strong>:<br />
-SciFi Buttons.
+Use SciFi Buttons.
 <br />

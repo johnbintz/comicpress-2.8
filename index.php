@@ -1,4 +1,4 @@
-<?php get_header();  ?>
+<?php get_header(); ?>
 
 <div id="content-wrapper-top"></div>
 	<div id="content-wrapper">
@@ -61,12 +61,18 @@
 if ($disable_comic_frontpage != 'yes' && $disable_comic_blog_frontpage != 'yes' && !is_paged() )  { ?>
 	<?php while ($comicFrontpage->have_posts()) : $comicFrontpage->the_post();
 		display_comic_post();
+		$comicFrontPage->is_single = true;
+		comments_template(); 
 	endwhile; ?>
 <?php } ?>
 
+<?php if ($disable_blogheader != 'yes') { ?>
 	<div id="blogheader"><!-- This area can be used for a heading above your main page blog posts --></div>
-	
+<?php } ?>
+
 	<?php get_sidebar('blog'); ?>
+	
+
 
 <?php if ($disable_blog_frontpage != 'yes') {
 	global $blog_postcount; ?>
