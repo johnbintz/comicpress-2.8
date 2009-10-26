@@ -33,7 +33,17 @@ $count = $tmp_search->post_count;
 					<?php } ?>
 					<div class="post-text">
 						<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
-						<small> <?php _e('By','comicpress'); ?> <?php the_author_posts_link(); ?> <?php _e('on','comicpress'); ?> <?php the_time('F jS, Y'); ?> <?php edit_post_link(__('Edit Post','comicpress'), ' [ ', ' ] '); ?></small><br />
+						<small>
+              <?php
+                ob_start();
+                the_author_posts_link();
+                $author_link = ob_get_clean();
+                printf(__('By %1$s on %2$s', 'comicpress'), $author_link, get_the_time('F jS, Y'));
+              ?>
+              
+              <?php edit_post_link(__('Edit Post','comicpress'), ' [ ', ' ] '); ?>
+            </small><br />
+            <?php if (function_exists('the_matching_transcript_excerpts')) { the_matching_transcript_excerpts(); } ?>
 					</div>
 					<div class="clear"></div>
 				</div>
