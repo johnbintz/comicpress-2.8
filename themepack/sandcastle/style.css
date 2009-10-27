@@ -1,0 +1,137 @@
+/*
+ThemePack Name: Sandcastle
+ThemePack URI: http://comicpress.org
+Author: ComicPress Developement Team
+Author URI: http://mindfaucet.com/
+Version: 0.1.0
+*/
+
+/* STANDARD TAGS */
+
+body {
+	background: #dfc786 url('background.jpg') repeat;
+}
+
+#page, #page-wide {
+	width: auto;
+}
+
+.layout-v #page {
+	width: 780px;
+	margin: 0 auto;
+}
+
+
+#page #header, #page #menubar, #page #subcontent-wrapper, #page #footer, #page #comic-head, #page #comic-foot {
+	width: 780px;
+	margin: 0 auto;
+}
+
+.layout-gn #page-wide,
+.layout-rgn #page-wide,
+.layout-v3c #page-wide,
+#page-wide #header, 
+#page-wide #menubar, 
+#page-wide #subcontent-wrapper, 
+#page-wide #footer, 
+#page-wide #comic-head,
+#page-wide #comic-foot {
+	width: 980px;
+	margin: 0 auto;
+}
+
+#headerpwad {
+	margin-top: -20px;
+}
+
+#subcontent-wrapper, .layout-gn #content-wrapper, .layout-rgn #content-wrapper, .layout-v #content-wrapper,
+.layout-v3c #content-wrapper {
+	background: url('contentbg.jpg') repeat;
+	border-left: solid 1px #000;
+	border-right: solid 1px #000;
+	border-bottom: solid 1px #000;
+}
+
+.layout-gn #pagewrap-right, .layout-rgn #pagewrap-right {
+	padding-top: 5px;
+	width: 768px;
+}
+
+#comic-foot, #comic-head {
+	background: url('contentbg.jpg') repeat;
+	border-left: solid 1px #000;
+	border-right: solid 1px #000;
+	padding: 0;
+}
+
+.layout-gn #subcontent-wrapper, .layout-gn #comic-head, .layout-gn, #comic-foot, 
+.layout-rgn #subcontent-wrapper, .layout-rgn #comic-head, .layout-rgn, #comic-foot {
+	border: 0;
+}
+
+.layout-gn #page-wide #comic, .layout-gn #page-wide #comic-head, .layout-gn #page-wide #comic-foot {
+	margin-right: 5px;
+}
+
+.layout-gn #page-wide #comic-foot, .layout-gn #page-wide #comic-head,
+.layout-rgn #page-wide #comic-foot, .layout-rgn #page-wide #comic-head,
+.layout-v #page #comic-foot, .layout-v #page #comic-head {
+	width: auto;
+}
+
+.layout-standard #page #menubar {
+	width: 782px;
+}
+
+.layout-3c #page-wide #menubar, .layout-3c2r #page-wide #menubar {
+	width: 982px;
+}
+
+#comic {
+	margin: 0 auto;
+	background: #fff;
+	padding: 5px;
+	border: solid 2px #000;
+	-moz-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.layout-rgn #page-wide #comic, .layout-rgn #page-wide #comic-head, .layout-rgn #page-wide #comic-foot {
+	margin-left: 5px;
+}
+
+.layout-3c #comic, .layout-3c2r #comic {
+	width: 1010px;
+}
+
+.layout-3c #comic-foot, .layout-3c2r #comic-foot,
+.layout-3c2r #comic-head, .layout-3c2r #comic-head,
+.layout-standard #comic-head, .layout-standard #comic-foot {
+	border-left: solid 1px #000;
+	border-right: solid 1px #000;
+}
+
+.layout-standard #comic {
+	width: 820px;
+}
+
+.layout-gn .narrowcolumn, .layout-rgn .narrowcolumn {
+	width: 538px;
+}
+
+.layout-v .narrowcolumn {
+	width: 558px;
+	padding: 5px;
+}
+
+#blogheader {
+	background: url('blogheader.jpg') top center no-repeat;
+	height: 250px;
+	border: 0;
+}
+
+button {
+	float: right;
+}
