@@ -440,7 +440,7 @@ function get_comic_path($folder = 'comic', $override_post = null, $filter = 'def
 		}
 	}
 
-	echo $comic_pathfinding_errors[] = sprintf(__("Unable to find the file in the <strong>%s</strong> folder that matched the pattern <strong>%s</strong>. Check your WordPress and ComicPress settings.", 'comicpress'), $folder_to_use, $filter_with_date);
+	$comic_pathfinding_errors[] = sprintf(__("Unable to find the file in the <strong>%s</strong> folder that matched the pattern <strong>%s</strong>. Check your WordPress and ComicPress settings.", 'comicpress'), $folder_to_use, $filter_with_date);
 	return false;
 }
 
@@ -705,8 +705,14 @@ function the_transcript($displaymode = 'raw') {
 }
 
 //Insert the comic image into the RSS feed
-function comic_feed() { ?>
-	<p><a href="<?php the_permalink() ?>"><img src="<?php the_comic_rss() ?>" border="0" alt="<?php the_title() ?>" title="<?php the_hovertext() ?>" /></a></p><?php
+function comic_feed() {
+	foreach (array("rss", "archive", "mini", "comic") as $type) {
+		if (($requested_thumbnail_image = get_comic_url($type, $first_comic_in_category)) !== false) {
+			$thumbnail_image = $requested_thumbnail_image; break;
+		}
+	}
+	?>
+	<p><a href="<?php the_permalink() ?>"><img src="<?php echo $thumbnail_image; ?>" border="0" alt="<?php the_title() ?>" title="<?php the_hovertext() ?>" /></a></p><?php
 }
 
 function insert_comic_feed($content) {
