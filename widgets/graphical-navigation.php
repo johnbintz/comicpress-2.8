@@ -67,6 +67,8 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
       case 'next':
       case 'story_prev':
       case 'story_next':
+      case 'story_prev_in':
+      case 'story_next_in':
 				$ok = !empty($target);
 			  break;
 			case 'archives':
@@ -81,6 +83,8 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
       case 'previous':
       case 'story_prev':
       case 'story_next':
+      case 'story_prev_in':
+      case 'story_next_in':
       case 'next':
         $navi_class_names = array("navi-${which}");
         if (isset($css_name_mapping[$which])) { $navi_class_names[] = "navi-{$css_name_mapping[$which]}"; }
@@ -154,7 +158,7 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 	 */
 	function comicpress_display_navigation_order($order = array()) {
     return array(
-			'first', 'story_prev', 'previous', 'archives', 'random', 'comictitle', 'comments', 'buyprint', 'next', 'story_next', 'last'
+			'first', 'story_prev', 'story_prev_in', 'previous', 'archives', 'random', 'comictitle', 'comments', 'buyprint', 'next', 'story_next_in', 'story_next', 'last'
 		);
 	}
 
@@ -193,7 +197,9 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 
 			$storyline_to_nav_mapping = array(
 				'story_prev' => 'storyline-chapter-previous',
-				'story_next' => 'storyline-chapter-next'
+				'story_next' => 'storyline-chapter-next',
+        'story_prev_in' => 'storyline-previous',
+        'story_next_in' => 'storyline-next'
 			);
 
 			$nav_links = array();
@@ -220,7 +226,7 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 	function update($new_instance, $old_instance) {
 		$instance = array();
 
-    $all_fields = explode(' ', 'first last story_prev story_next previous random archives comments next buyprint comictitle nextgohome');
+    $all_fields = explode(' ', 'first last story_prev story_next story_prev_in story_next_in previous random archives comments next buyprint comictitle nextgohome');
 
     foreach ($all_fields as $field) {
       $instance[$field] = (isset($new_instance[$field])) ? 'on' : 'off';
@@ -239,7 +245,9 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 			'first' => 'on',
 			'last' => 'on',
 			'story_prev' => 'off',
+      'story_prev_in' => 'off',
 			'story_next' => 'off',
+      'story_next_in' => 'off',
 			'previous' => 'on',
 			'random' => 'off',
 			'archives' => 'off',
@@ -256,6 +264,8 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 			'last_title' => __('Latest', 'comicpress'),
 			'story_prev_title' => __('Chapter', 'comicpress'),
 			'story_next_title' => __('Chapter', 'comicpress'),
+      'story_prev_in_title' => __('In Chapter', 'comicpress'),
+      'story_next_in_title' => __('In Chapter', 'comicpress'),
 			'previous_title' => __('Previous', 'comicpress'),
 			'random_title' => __('Random', 'comicpress'),
 			'archives_title' => __('Archives', 'comicpress'),
@@ -273,6 +283,8 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 			'next' => __('Next', 'comicpress'),
 			'story_prev' => __('Previous Chapter', 'comicpress'),
 			'story_next' => __('Next Chapter', 'comicpress'),
+      'story_prev_in' => __('Previous In Chapter', 'comicpress'),
+      'story_next_in' => __('Next In Chapter', 'comicpress'),
 			'comictitle' => __('Comic Title', 'comicpress'),
 			'archives' => __('Archives', 'comicpress'),
 			'comments' => __('Comments', 'comicpress'),
