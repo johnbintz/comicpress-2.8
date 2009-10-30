@@ -48,9 +48,7 @@ Template Name: Blog
 		<div class="clear"></div>
 	</div>
 	<?php } ?>
-		<?php get_sidebar('underblog'); ?>
-		</div>
-	</div>
+<?php get_sidebar('underblog'); ?>
 
 <?php include(get_template_directory() . '/layout-foot.php'); ?>
 <?php get_footer() ?>

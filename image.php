@@ -61,8 +61,6 @@
 		<div class="post-page-foot"></div>
 	</div>
 	<?php endif; ?>
-		</div>
-	</div>
-
+	
 <?php include(get_template_directory() . '/layout-foot.php'); ?>
 <?php get_footer() ?>

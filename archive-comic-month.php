@@ -40,8 +40,6 @@ $posts = query_posts('&show_posts=-1&posts_per_page=-1&cat='.get_all_comic_categ
 	</div>
 	<div class="post-page-foot"></div>
 </div>
-	</div>
-</div>
 	
 <?php include(get_template_directory() . '/layout-foot.php'); ?>
 <?php get_footer() ?>

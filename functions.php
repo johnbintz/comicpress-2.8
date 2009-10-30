@@ -870,4 +870,7 @@ function rss_count_comments(){
 
 add_action('the_title_rss','rss_count_comments');
 
+
+if (comicpress_check_themepack_file('functions') == false) {}
+
 ?>

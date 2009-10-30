@@ -19,8 +19,6 @@
 			comments_template('', true);
 			} ?>
 			<?php endwhile; endif; ?>
-		</div>
-	</div>
 	
 <?php include(get_template_directory() . '/layout-foot.php'); ?>
 <?php get_footer() ?>

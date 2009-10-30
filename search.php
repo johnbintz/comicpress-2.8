@@ -117,9 +117,7 @@ $count = $tmp_search->post_count;
 		</div>
   <?php endif; ?>
 	
-			<?php comicpress_pagination(); ?>
-		</div>
-	</div>
+<?php comicpress_pagination(); ?>
 
 <?php include(get_template_directory() . '/layout-foot.php'); ?>
 <?php get_footer() ?>

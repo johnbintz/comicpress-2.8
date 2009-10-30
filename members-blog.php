@@ -23,8 +23,6 @@ Template Name: Members Only Blog
 			
 	endif; ?>
 		<?php get_sidebar('underblog'); ?>
-		</div>
-	</div>
 
 <?php include(get_template_directory() . '/layout-foot.php'); ?>
 <?php get_footer() ?>

@@ -55,8 +55,6 @@
 				<div class="post-page-foot"></div>
 			</div>
 		<?php } ?>
-		</div>
-	</div>
 
 <?php include(get_template_directory() . '/layout-foot.php'); ?>
 <?php get_footer() ?>

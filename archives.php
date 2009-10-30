@@ -19,8 +19,6 @@ Template Name: Archives
 			</div>
 			<div class="post-page-foot"></div>
 		</div>
-	</div>
-</div>
 
 <?php include(get_template_directory() . '/layout-foot.php'); ?>
 <?php get_footer() ?>

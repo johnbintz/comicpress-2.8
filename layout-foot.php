@@ -1,4 +1,5 @@
-
+	</div>
+</div>
 <?php if (is_cp_theme_layout('3c2r')) {
 	get_sidebar('left');
 } ?>

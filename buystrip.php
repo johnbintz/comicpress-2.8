@@ -110,8 +110,6 @@ Templete Author Email: philip@frumph.net
 		</div>
 	    <?php endwhile; endif; ?>
 	<?php endif; ?>	
-		</div>
-	</div>
 
 <?php include(get_template_directory() . '/layout-foot.php'); ?>
 <?php get_footer() ?>
