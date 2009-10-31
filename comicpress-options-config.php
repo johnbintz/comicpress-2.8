@@ -15,6 +15,11 @@ $options = array (
 			"type" => "comicpress-disable_comic_blog_frontpage"),
 			
 		array(
+			"id" => "comicpress-disable_comic_blog_single",
+			"default" => "no",
+			"type" => "comicpress-disable_comic_blog_single"),
+			
+		array(
 			"id" => "comicpress-disable_blog_frontpage",
 			"default" => "no",
 			"type" => "comicpress-disable_blog_frontpage"),

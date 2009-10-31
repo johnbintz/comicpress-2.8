@@ -51,6 +51,7 @@ if (get_option('upload_path') !== false) {
 	foreach (array(
 				'disable_comic_frontpage'		=> 'disable_comic_frontpage',
 				'disable_comic_blog_frontpage'	=> 'disable_comic_blog_frontpage',
+				'disable_comic_blog_single'		=> 'disable_comic_blog_single',
 				'disable_blog_frontpage'		=> 'disable_blog_frontpage',
 				'buy_print_email'				=> 'buy_print_email',
 				'buy_print_url'					=> 'buy_print_url',

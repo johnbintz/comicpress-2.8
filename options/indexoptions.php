@@ -23,7 +23,7 @@
 				<?php break;
 			case "comicpress-disable_comic_blog_frontpage": ?>
 				<tr>
-				<th scope="row"><strong><?php _e('Disable the comic blog on the index and single pages?','comicpress'); ?></strong><br /><br /><?php _e('Set to &quot;Yes&quot; and the blog portion of the comic will not display on the index page/front page of your site.','comicpress'); ?><br /></th>
+				<th scope="row"><strong><?php _e('Disable the comic blog on the index page?','comicpress'); ?></strong><br /><br /><?php _e('Set to &quot;Yes&quot; and the blog portion of the comic will not display on the index page/front page of your site.','comicpress'); ?><br /></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;
@@ -31,6 +31,19 @@
 				</td>
 				<td valign="top">
 				<?php _e('*Some* people,.. not naming names ..do not like to have a comic post let alone showing on the index page.  You can use the comic blog post widget and place it anywhere around the comic.   IF there is no content in the post it will not display.','comicpress'); ?>
+				</td>
+				</tr>
+				
+				<?php break;
+			case "comicpress-disable_comic_blog_single": ?>
+				<tr>
+				<th scope="row"><strong><?php _e('Disable the comic blog on the single pages?','comicpress'); ?></strong><br /><br /><?php _e('Set to &quot;Yes&quot; and the blog portion of the comic will not display on the single/archive pages of your site.','comicpress'); ?><br /></th>
+				<td valign="top">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label><br />
+				</td>
+				<td valign="top">
 				</td>
 				</tr>
 				

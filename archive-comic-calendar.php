@@ -156,9 +156,8 @@ foreach ( $years as $year ) {
 	</div>
 	<div class="post-page-foot"></div>
 </div>
-<?php if ('open' == $post->comment_status) {
-	comments_template('', true);
-			} ?>
+
+<?php if ('open' == $post->comment_status) { comments_template('', true); } ?>
 
 <?php include(get_template_directory() . '/layout-foot.php'); ?>
 <?php get_footer() ?>

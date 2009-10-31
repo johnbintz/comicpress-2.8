@@ -52,8 +52,8 @@
 	<?php get_sidebar('blog'); ?>	
 <?php if (have_posts()) : while (have_posts()) : the_post();
 		if (in_comic_category()) {
-			global $disable_comic_blog_frontpage;
-			if ($disable_comic_blog_frontpage != 'yes') {
+			global $disable_comic_blog_single;
+			if ($disable_comic_blog_single != 'yes') {
 				display_comic_post();
 				$cur_date = mysql2date('Y-m-j', $post->post_date);
 				$next_comic = get_next_comic();
