@@ -39,7 +39,7 @@ class GraphicalNavigationTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * @dataProvider providerTestIsNavLinkVisible
 	 */
-	function testIsNavLinkVIsible($which, $current_id, $target_id, $expected_result) {
+	function testIsNavLinkVisible($which, $current_id, $target_id, $expected_result) {
 		$current = (object)array('ID' => $current_id);
 		$target  = (object)array('ID' => $target_id);
 

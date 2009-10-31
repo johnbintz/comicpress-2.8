@@ -195,6 +195,10 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 			$navigation->init($storyline);
 			$post_nav = $navigation->get_post_nav($post);
 
+			if ($instance['story_prev_acts_as_prev_in']) {
+				$post_nav['storyline-chapter-previous'] = $post_nav['storyline-previous'];
+			}
+
 			$storyline_to_nav_mapping = array(
 				'story_prev' => 'storyline-chapter-previous',
 				'story_next' => 'storyline-chapter-next',
@@ -226,7 +230,12 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 	function update($new_instance, $old_instance) {
 		$instance = array();
 
-    $all_fields = explode(' ', 'first last story_prev story_next story_prev_in story_next_in previous random archives comments next buyprint comictitle nextgohome');
+    $all_fields = array(
+		  'first', 'last', 'story_prev', 'story_next', 'story_prev_in',
+		  'story_next_in', 'previous', 'random', 'archives', 
+			'comments', 'next', 'buyprint', 'comictitle', 'nextgohome',
+			'story_prev_acts_as_prev_in'
+		);
 
     foreach ($all_fields as $field) {
       $instance[$field] = (isset($new_instance[$field])) ? 'on' : 'off';
@@ -256,7 +265,8 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 			'archive_path' => '',
 			'buyprint' => 'off',
 			'comictitle' => 'off',
-			'nextgohome' => 'off'
+			'nextgohome' => 'off',
+			'story_prev_acts_as_prev_in' => 'on'
 		);
 
 		$title_defaults = array(
@@ -329,6 +339,16 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 													 name="<?php echo $this->get_field_name('nextgohome'); ?>"
 													 type="checkbox" class="comicpress-field" value="yes"<?php if ($instance['nextgohome'] == "on") { echo ' checked="checked"'; } ?> />
 										<strong><?php _e('...go Home instead of Last', 'comicpress'); ?></strong>
+									</label>
+								</div>
+							<?php break;
+							case "story_prev": ?>
+								<div>
+									<label>
+									  <input id="<?php echo $this->get_field_id('story_prev_acts_as_prev_in'); ?>"
+													 name="<?php echo $this->get_field_name('story_prev_acts_as_prev_in'); ?>"
+													 type="checkbox" class="comicpress-field" value="yes"<?php if ($instance['story_prev_acts_as_prev_in'] == "on") { echo ' checked="checked"'; } ?> />
+										<strong><?php _e('...only go prev. chapter if at start', 'comicpress'); ?></strong>
 									</label>
 								</div>
 							<?php break;
