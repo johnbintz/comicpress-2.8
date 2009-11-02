@@ -24,9 +24,8 @@
 	</div><!-- Ends "page/page-wide" -->
 </div><!-- Ends "page-wrap" -->
 <?php } ?>
-<div id="page-bottom"></div>
+<div id="page-foot"></div>
 
 <?php wp_footer() ?>
-
 </body>
 </html>

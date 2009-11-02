@@ -2,7 +2,7 @@
 if ($disable_lrsidebars_frontpage == 'yes' && is_home()) { 
 } else {  ?>
 <div id="sidebar-left">
-	<div class="sidebar-top"></div>
+	<div class="sidebar-head"></div>
 	<div class="sidebar">
 		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Left Sidebar') ) : ?> 
 			<?php $default_image = get_bloginfo('stylesheet_directory').'/images/cal/default.png'; ?>
@@ -19,6 +19,6 @@ if ($disable_lrsidebars_frontpage == 'yes' && is_home()) {
 			</div>
 		<?php endif; ?>
 	</div>
-	<div class="sidebar-bottom"></div>
+	<div class="sidebar-foot"></div>
 </div>
 <?php } ?>

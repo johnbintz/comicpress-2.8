@@ -1,4 +1,4 @@
-<div id="content-wrapper-top"></div>
+<div id="content-wrapper-head"></div>
 	<div id="content-wrapper">
 
 	<?php if (is_cp_theme_layout('gn,v3c')) get_sidebar('left'); ?>
@@ -13,7 +13,7 @@
 	<?php } ?>
 	
 			<?php if (is_cp_theme_layout('3c,standard,3c2r')) {  ?>
-			<div id="subcontent-wrapper-top"></div>
+			<div id="subcontent-wrapper-head"></div>
 				<div id="subcontent-wrapper">
 			<?php } ?>
 	

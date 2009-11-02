@@ -38,7 +38,7 @@ function display_comic() {
 				if ($rascal_says == 'yes' && !empty($hovertext)) { ?>
 					<a href="#" class="tt"><span class="tooltip"><span class="top"></span><span class="middle"><?php the_hovertext() ?></span><span class="bottom"></span></span><img src="<?php the_comic() ?>" alt="<?php the_title() ?>" title="<?php the_title(); ?>" /></a>			
 				<?php } else { ?>
-					<img src="<?php the_comic() ?>" alt="<?php the_title() ?>" title="<?php the_hovertext() ?>" />
+					<img src="<?php the_comic() ?>" alt="<?php the_title() ?>" title="<?php the_hovertext() ?>" class="instant itiltleft icolorFFFCE9 ishadow40 historical" />
 				<?php } 
 		 }
 	} 

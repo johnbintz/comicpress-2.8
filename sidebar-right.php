@@ -2,7 +2,7 @@
 if ($disable_lrsidebars_frontpage == 'yes' && is_home()) { 
 } else {  ?>
 <div id="sidebar-right">
-	<div class="sidebar-top"></div>
+	<div class="sidebar-head"></div>
 		<div class="sidebar">
 			<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Right Sidebar') ) : ?>
 				<?php comicpress_comic_bookmark() ?>
@@ -26,6 +26,6 @@ if ($disable_lrsidebars_frontpage == 'yes' && is_home()) {
 				</div>
 			<?php endif; ?>
 		</div>
-	<div class="sidebar-bottom"></div>
+	<div class="sidebar-foot"></div>
 </div>
 <?php } ?>

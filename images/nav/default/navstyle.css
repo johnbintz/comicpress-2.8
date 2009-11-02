@@ -46,6 +46,10 @@ Style: Default
 	background: url('prevchap.png') no-repeat;
 }
 
+.navi-story_prev_in {
+	background: url('prevchap.png') no-repeat;
+}
+
 .navi-prev, .navi-previous {
 	margin-right: 30px;
 	background: url('prev.png') no-repeat;
@@ -109,6 +113,10 @@ Style: Default
 }
 
 .navi-nextchap, .navi-story_next {
+	background: url('nextchap.png') no-repeat;
+}
+
+.navi-story_next_in {
 	background: url('nextchap.png') no-repeat;
 }
 

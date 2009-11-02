@@ -20,7 +20,7 @@ function comicpress_calendar($instance = null) {
 	}
 	?>
 	<center>
-	<div id="wp-calendar-top"></div>
+	<div id="wp-calendar-head"></div>
 	<div id="wp-calendar-wrap">
 	<?php if (!empty($thumbnail)) { ?>
 		<div class="wp-calendar-download">
@@ -38,7 +38,7 @@ function comicpress_calendar($instance = null) {
 	<?php } ?>
 	<?php get_calendar(); ?>
 	</div>
-	<div id="wp-calendar-bottom"></div>
+	<div id="wp-calendar-foot"></div>
 	</center>
 <?php }
 

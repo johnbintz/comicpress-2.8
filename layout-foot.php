@@ -12,7 +12,7 @@ if (is_cp_theme_layout('3c,v3c,gn,standard,v,3c2r')) {
 <?php if (is_cp_theme_layout('3c,standard,3c2r')) {  ?>
 			<div class="clear"></div>
 		</div>
-		<div id="subcontent-wrapper-bottom"></div>
+		<div id="subcontent-wrapper-foot"></div>
 <?php } ?>
 
 	<?php if (is_cp_theme_layout('gn,rgn')) { ?>
@@ -21,4 +21,4 @@ if (is_cp_theme_layout('3c,v3c,gn,standard,v,3c2r')) {
 	<?php if (is_cp_theme_layout('rgn')) get_sidebar('right'); ?>
 	<div class="clear"></div>
 </div>
-<div id="content-wrapper-bottom"></div>
+<div id="content-wrapper-foot"></div>

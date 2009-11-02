@@ -1,0 +1,86 @@
+/* COMIC NAVIGATION 
+Author: Tyler Martin
+Style: Default
+*/
+#comic_navi_wrapper {
+	padding: 5px 0 10px 0;
+}
+
+#comic_navi {
+	height: 25px;
+	background: black;
+	display: table;
+	border-collapse: collapse;
+	margin: 0 auto;
+
+}
+
+.navi-comictitle {
+	text-align: center;
+}
+
+.navi {
+}
+
+	.navi:hover {
+	}
+
+.navi-first {
+}
+
+.navi-prevchap, .navi-story_prev {
+}
+
+.navi-story_prev_in {
+}
+
+.navi-prev, .navi-previous {
+}
+
+
+.navi-comments, .navi-archive, .navi-random, .navi-buyprint {
+}
+
+.navi-buyprint {
+}
+
+	.navi-buyprint:hover, button .navi-buyprint:hover {
+	}
+
+	.navi-buyprint-form {
+		}
+
+.navi-archive, .navi-archives {
+}
+
+.navi-random {
+}
+
+.navi-comments {
+}
+
+	a.navi-comments span {
+	}
+	
+		a.navi-comments span:hover {
+			}
+	
+.navi-next {
+}
+
+.navi-nextchap, .navi-story_next {
+}
+
+.navi-story_next_in {
+}
+
+.navi-last {
+}
+
+.navi-void, .navi-void:hover {
+}
+
+.comic-left .navi-prev, .comic-right .navi-prev, .comic-left .navi-next, .comic-right .navi-next {
+/*	margin: 0 5px; */
+	}
+

@@ -15,7 +15,7 @@
 			<div class="post-page-head"></div>
 			<div class="post-page">
 					<div class="userpage-avatar">
-						<?php echo str_replace("alt='", "alt='".wp_specialchars($curauth->display_name, 1)."' title='".wp_specialchars($curauth->display_name, 1), get_avatar($curauth->user_email, 64)); ?>
+						<?php echo str_replace("alt='", "alt='".wp_specialchars($curauth->display_name, 1)."' title='".wp_specialchars($curauth->display_name, 1), comicpress_get_avatar($curauth->user_email, 64)); ?>
 					</div>
 					<div class="userpage-info">
 						<div class="userpage-bio">

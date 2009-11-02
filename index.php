@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div id="content-wrapper-top"></div>
+<div id="content-wrapper-head"></div>
 	<div id="content-wrapper">
 
 	<?php if (is_cp_theme_layout('gn,v3c')) get_sidebar('left'); ?>

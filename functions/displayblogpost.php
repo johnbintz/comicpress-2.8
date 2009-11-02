@@ -23,7 +23,7 @@ function display_blog_post() {
 				<div <?php post_class(); ?> id="post-<?php the_ID() ?>">
 				<div class="post-info">
 				<?php if ($enable_post_author_gravatar == 'yes') { ?>
-					<div class="post-author-gravatar"><?php echo str_replace("alt='", "alt='".get_the_author_meta('display_name')."' title='".get_the_author_meta('display_name'),get_avatar(get_the_author_meta('email'), 64)); ?></div>
+					<div class="post-author-gravatar"><?php echo str_replace("alt='", "alt='".get_the_author_meta('display_name')."' title='".get_the_author_meta('display_name'),comicpress_get_avatar(get_the_author_meta('email'), 64)); ?></div>
 				<?php } ?>
 				<?php if (function_exists('comicpress_show_mood_in_post')) comicpress_show_mood_in_post(); ?>
 				<?php if ($enable_post_calendar == 'yes') { ?>
