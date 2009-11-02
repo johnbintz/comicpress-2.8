@@ -270,27 +270,27 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 		);
 
 		$title_defaults = array(
-			'first_title' => __('First', 'comicpress'),
-			'last_title' => __('Latest', 'comicpress'),
+			'first_title' => __('&lsaquo;&lsaquo; First', 'comicpress'),
+			'last_title' => __('Last &rsaquo;&rsaquo;', 'comicpress'),
 			'story_prev_title' => __('Chapter', 'comicpress'),
 			'story_next_title' => __('Chapter', 'comicpress'),
       'story_prev_in_title' => __('In Chapter', 'comicpress'),
       'story_next_in_title' => __('In Chapter', 'comicpress'),
-			'previous_title' => __('Previous', 'comicpress'),
+			'previous_title' => __('&lsaquo; Previous', 'comicpress'),
 			'random_title' => __('Random', 'comicpress'),
 			'archives_title' => __('Archives', 'comicpress'),
 			'comments_title' => __('Comments', 'comicpress'),
-			'next_title' => __('Next', 'comicpress'),
+			'next_title' => __('Next &rsaquo;', 'comicpress'),
 			'buyprint_title' => __('Buy Print', 'comicpress')
 	  );
 
 		$instance = wp_parse_args((array)$instance, array_merge($field_defaults, $title_defaults));
 
 		foreach (array(
-			'first' => __('First', 'comicpress'),
-			'last' => __('Last', 'comicpress'),
-			'previous' => __('Previous', 'comicpress'),
-			'next' => __('Next', 'comicpress'),
+			'first' => __('&lsaquo;&lsaquo; First', 'comicpress'),
+			'last' => __('Last &rsaquo;&rsaquo;', 'comicpress'),
+			'previous' => __('&lsaquo; Previous', 'comicpress'),
+			'next' => __('Next &rsaquo;', 'comicpress'),
 			'story_prev' => __('Previous Chapter', 'comicpress'),
 			'story_next' => __('Next Chapter', 'comicpress'),
       'story_prev_in' => __('Previous In Chapter', 'comicpress'),

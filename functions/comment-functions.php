@@ -37,7 +37,7 @@ function comicpress_avatar() {
 		echo '<a href="' . $url . '" rel="external nofollow" title="' . wp_specialchars(get_comment_author(), 1) . '">';
 	$id_or_email = get_comment_author_email();
 	if (empty($id_or_email)) $id_or_email = get_comment_author();
-	if(function_exists('get_avatar') && $comment_type != 'pingback' && $comment_type != 'trackback' ) { 
+	if(function_exists('comicpress_get_avatar') && $comment_type != 'pingback' && $comment_type != 'trackback' ) { 
 		echo str_replace("alt='", "alt='".wp_specialchars(get_comment_author(), 1)."' title='".wp_specialchars(get_comment_author(), 1), comicpress_get_avatar($id_or_email, 64));
 	} else {
 		if ($comment_type == 'pingback' || $comment_type == 'trackback') {

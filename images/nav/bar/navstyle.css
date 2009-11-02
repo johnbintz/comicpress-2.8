@@ -3,16 +3,18 @@ Author: Tyler Martin
 Style: Default
 */
 #comic_navi_wrapper {
-	padding: 5px 0 10px 0;
+	width: 100%;
+	height: 25px;
+	background: black;
 }
 
 #comic_navi {
-	height: 25px;
-	background: black;
-	display: table;
-	border-collapse: collapse;
-	margin: 0 auto;
-
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	float: left;
+	line-height: 25px;
+	font-size: 13px;
 }
 
 .navi-comictitle {
@@ -22,7 +24,16 @@ Style: Default
 .navi {
 }
 
-	.navi:hover {
+.navi a {
+	padding: 0px 10px 0 10px;
+	display: block;
+	color: #fff;
+	text-decoration: none;
+}
+
+	.navi a:hover {
+		color: #000;
+		background: #f00;
 	}
 
 .navi-first {
