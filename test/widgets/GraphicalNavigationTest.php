@@ -1,6 +1,7 @@
 <?php
 
-require_once('MockPress/mockpress.php');
+//require_once('MockPress/mockpress.php');
+require_once(dirname(__FILE__) . '/../../../mockpress/mockpress.php');
 require_once('PHPUnit/Framework.php');
 require_once(dirname(__FILE__) . '/../../widgets/graphical-navigation.php');
 
@@ -10,6 +11,9 @@ class GraphicalNavigationTest extends PHPUnit_Framework_TestCase {
 		$this->w = new WidgetComicPressGraphicalStorylineNavigation();
 	}
 
+  /**
+   * @covers WidgetComicPressGraphicalStorylineNavigation::update
+   */
 	function testUpdateWidget() {
 		$result = $this->w->update(array(
 			"next" => "<b>test</b>",
@@ -38,6 +42,7 @@ class GraphicalNavigationTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * @dataProvider providerTestIsNavLinkVisible
+   * @covers WidgetComicPressGraphicalStorylineNavigation::_will_display_nav_link
 	 */
 	function testIsNavLinkVisible($which, $current_id, $target_id, $expected_result) {
 		$current = (object)array('ID' => $current_id);
@@ -45,6 +50,44 @@ class GraphicalNavigationTest extends PHPUnit_Framework_TestCase {
 
 		$this->assertEquals($expected_result, $this->w->_will_display_nav_link($which, $current, $target));
 	}
+
+  function providerTestGroupNavigationButtons() {
+    return array(
+      array(array(), array()),
+      array(
+        array('one' => 'will be left'),
+        array(
+          'left' => array('one' => 'will be left')
+        )
+      ),
+      array(
+        array('four' => 'will be right'),
+        array(
+          'right' => array('four' => 'will be right')
+        )
+      ),
+      array(
+        array('seven' => 'will be center'),
+        array(
+          'center' => array('seven' => 'will be center')
+        )
+      ),
+    );
+  }
+
+  /**
+   * @dataProvider providerTestGroupNavigationButtons
+   * @covers WidgetComicPressGraphicalStorylineNavigation::_group_navigation_buttons
+   */
+  function testGroupNavigationButtons($buttons, $expected_grouping) {
+    _set_filter_expectation('comicpress_navigation_grouping_details', array(
+      'left' => array('one', 'two', 'three'),
+      'center' => true,
+      'right' => array('four', 'five', 'six'),
+    ));
+
+    $this->assertEquals($expected_grouping, $this->w->_group_navigation_buttons($buttons, array()));
+  }
 }
 
 ?>

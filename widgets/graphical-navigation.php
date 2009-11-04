@@ -23,6 +23,7 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 		add_filter('comicpress_display_navigation_order', array(&$this, 'comicpress_display_navigation_order'));
 		add_filter('comicpress_display_navigation_link', array(&$this, 'comicpress_display_navigation_link'), 10, 5);
 		add_filter('comicpress_wrap_navigation_buttons', array(&$this, 'comicpress_wrap_navigation_buttons'), 10, 2);
+    add_filter('comicpress_navigation_grouping_details', array(&$this, 'comicpress_navigation_grouping_details'));
 
 		// these two need to be moved one level up
 		add_filter('comicpress_get_random_link_url', array(&$this, 'comicpress_get_random_link_url'));
@@ -162,6 +163,42 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 		);
 	}
 
+  function comicpress_navigation_grouping_details($details = array()) {
+    return array(
+      'comic_navi_left' => array('first', 'previous', 'story_prev_in', 'story_prev'),
+      'comic_navi_center' => true,
+      'comic_navi_right' => array('story_next', 'story_next_in', 'next', 'last')
+    );
+  }
+
+  function _group_navigation_buttons($buttons = array(), $grouped_buttons = array()) {
+    $grouping_hash = array();
+
+    $default_group = null;
+    foreach (apply_filters('comicpress_navigation_grouping_details', array()) as $group => $members) {
+      if ($members === true) {
+        $default_group = $group;
+      } else {
+        foreach ($members as $member) { $grouping_hash[$member] = $group; }
+      }
+    }
+
+    if (is_null($default_group)) {
+      trigger_error('No default group defined for filter comicpress_navigation_grouping_details', E_USER_WARNING);
+    }
+
+    $groups = array();
+    foreach ($buttons as $key => $button) {
+      $group = isset($grouping_hash[$key]) ? $grouping_hash[$key] : $default_group;
+      if (!empty($group)) {
+        if (!isset($groups[$group])) { $groups[$group] = array(); }
+        $groups[$group][$key] = $button;
+      }
+    }
+
+    return $groups;
+  }
+
 	/**
 	 * Wrap navigation buttons in a holder.
 	 * @param string|array $buttons The buttons to wrap.
@@ -169,7 +206,14 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 	 */
 	function comicpress_wrap_navigation_buttons($buttons = '', $content = '') {
 		$buttons_text = $buttons;
-	  if (is_array($buttons)) { $buttons_text = implode('', $buttons); }
+	  if (is_array($buttons)) {
+      $output = array();
+      foreach ($this->_group_navigation_buttons($buttons) as $group => $grouped_buttons) {
+        $output[] = '<div class="' . $group . '">' . implode('', array_values($grouped_buttons)) . '</div>';
+      }
+
+      $buttons_text = implode('', $output);
+    }
 		ob_start(); ?>
 			<div id="comic_navi_wrapper">
 				<div class="comic_navi"><?php echo $buttons_text; ?></div>
@@ -214,7 +258,7 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 					$target_post = null;
 					if (isset($post_nav[$target_post_nav])) { $target_post = $post_nav[$target_post_nav]; }
 
-					$nav_links[] = end(apply_filters('comicpress_display_navigation_link', $order, $post, $target_post, $instance, ''));
+					$nav_links[$order] = end(apply_filters('comicpress_display_navigation_link', $order, $post, $target_post, $instance, ''));
 				}
 			}
 
