@@ -12,7 +12,7 @@ Templete Author Email: philip@frumph.net
 
 	<?php if (!empty($comicnum)): ?>
 		<?php $temppost = $post; ?>
-		<?php $post = & get_post( $comicnum ); var_dump($post);?>
+		<?php $post = & get_post( $comicnum ); ?>
 	<div class="<?php comicpress_post_class(); ?>">
 		<div class="post-page-head"></div>
 		<div class="post-page">

@@ -6,6 +6,20 @@ Style: Default
 	text-align: center;
 }
 
+.comic_navi_left {
+	display: inline-block;
+	float: left;
+}
+
+.comic_navi_center {
+	display: inline-block;
+}
+
+.comic_navi_right {
+	display: inline-block;
+	float: right;
+}
+
 .comic_navi {
 	width: 100%;
 	background: #000;
@@ -19,7 +33,15 @@ Style: Default
 .navi-comictitle {
 	padding: 0px 10px;
 	text-align: center;
+	display: inline-block;
 }
+	.navi-comictitle a {
+		color: #fff;
+	}
+	
+	.navi-comictitle a:hover {
+		color: #f00;
+	}
 
 .navi {
 	padding: 0 10px;
@@ -58,12 +80,15 @@ Style: Default
 }
 
 .navi-buyprint {
+	display: inline-block;
+	color: #000;
 }
 
 	.navi-buyprint:hover, button .navi-buyprint:hover {
 	}
 
 	.navi-buyprint-form {
+		display: inline-block;
 		}
 
 .navi-archive, .navi-archives {

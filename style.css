@@ -16,7 +16,7 @@ http://www.opensource.org/licenses/gpl-3.0.html
 body {
 	margin: 0;
 	font-family: 'Arial', sans-serif;
-	font-size: 11px;
+	font-size: 13px;
 	color: #000;
 }
 
@@ -342,7 +342,6 @@ h3, h3 a {
 }
 
 #comic {
-	padding: 5px 0;
 	text-align: center;
 }
 
@@ -583,9 +582,7 @@ a.navi-comments:hover span {
 
 #comment-wrapper {
 	margin-top: 5px;
-	padding: 0 20px;
 	font-size: 12px;
-	font-family: 'Arial' , sans-serif;
 }
 	.comment {
 		padding: 2px;
@@ -598,8 +595,9 @@ a.navi-comments:hover span {
 
 
 	.comment .avatar {
-		margin: 0 10px 5px 0;
+		margin: 0 5px 5px 0;
 		float: left;
+		display: inline-block;
 	}
 
 	.comment .trackping {
@@ -624,7 +622,7 @@ a.navi-comments:hover span {
 
 .comment-meta-data {
 	background: #eee;
-	border-bottom: solid 1px #000;
+	border-bottom: solid 1px #999;
 	margin: 0;
 	padding: 0;
 }
