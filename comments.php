@@ -78,7 +78,7 @@ if ( post_password_required() ) { ?>
 		<h3><?php comment_form_title( __('Comment &not;','comicpress'), __('Reply to %s &not;','comicpress') ); ?></h3>
 
 		<div class="cancel-comment-reply">
-			<small><?php cancel_comment_reply_link(); ?></small>
+			<p><small><?php cancel_comment_reply_link(); ?></small></p>
 		</div>
 
 		<?php if ( get_option('comment_registration') && !$user_ID ) : ?>
@@ -96,11 +96,11 @@ if ( post_password_required() ) { ?>
 					<label for="url"><small><?php _e('WEBSITE','comicpress'); ?></small></label></p>
 				<?php endif; ?>
 				<?php do_action('comment_form', $post->ID); ?>
-				<p><textarea name="comment" id="comment" cols="50" rows="6" tabindex="4"></textarea></p>
-				<button type="submit"><?php _e('Submit Comment','comicpress'); ?></button>
+				<p><textarea name="comment" id="comment-textarea" cols="60" rows="6" tabindex="4"></textarea></p>
+				<p><button type="submit" class="comment-submit"><?php _e('Submit Comment','comicpress'); ?></button></p>
 				<?php global $disable_comment_note;
 				if ($disable_comment_note != 'yes') { ?>
-					<div class="comment-note"><?php _e('NOTE - You can use these tags:','comicpress'); ?><br /><?php echo allowed_tags(); ?></div>
+					<p><span class="comment-note"><?php _e('NOTE - You can use these tags:','comicpress'); ?><br /><?php echo allowed_tags(); ?></span></p>
 				<?php } ?>
 				<?php comment_id_fields(); ?>
 			</form>	
@@ -111,7 +111,7 @@ if ( post_password_required() ) { ?>
 
 	<?php if ( ! empty($comments_by_type['pings']) ) : ?>
 	
-		<h4 id="comments"><?php _e('Pings & Trackbacks &not;','comicpress'); ?></h4>
+		<h3 id="comments"><?php _e('Pings & Trackbacks &not;','comicpress'); ?></h3>
 		<ol class="commentlist">
 		<ul>
 		<?php 

@@ -38,7 +38,6 @@
 <!--[if lt IE 7]>
    <script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/ie6submenus.js"></script>
 <![endif]-->
-	<?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
 	<?php wp_head(); global $disable_page_restraints; ?>
 </head>
 

@@ -16,7 +16,7 @@ http://www.opensource.org/licenses/gpl-3.0.html
 body {
 	margin: 0;
 	font-family: 'Arial', sans-serif;
-	font-size: 12px;
+	font-size: 11px;
 	color: #000;
 }
 
@@ -68,11 +68,12 @@ blockquote {
 }
 
 cite {
-	display: block;
 	font-family: 'Arial', sans-serif;
-	font-size: 11px;
+	font-size: 14px;
 	font-weight: bold;
 	font-style: normal;
+	margin: 0;
+	padding: 0;
 }
 
 acronym, abbr, span.caps {
@@ -519,7 +520,7 @@ a.navi-comments:hover span {
 
 .entry {
 	line-height: 1.45em;
-	font-size: 13px;
+	font-size: 14px;
 	padding: 3px 0;
 }
 
@@ -583,26 +584,16 @@ a.navi-comments:hover span {
 #comment-wrapper {
 	margin-top: 5px;
 	padding: 0 20px;
+	font-size: 12px;
+	font-family: 'Arial' , sans-serif;
 }
-
-#comment-wrapper h3 {
-	margin: 0;
-	padding: 20px 0 0 0;
-	font-weight: normal;
-	font-size: 20px;
-	clear: both;
-	font-family: 'Georgia' , serif;
-}
-
-.comment {
-	padding: 2px;
-	clear: both;
-	min-height: 64px;
-}
+	.comment {
+		padding: 2px;
+		clear: both;
+	}
 
 	.comment .comment {
 		margin-left: 30px;
-		padding-bottom: 10px;
 	}
 
 
@@ -623,8 +614,23 @@ a.navi-comments:hover span {
 		font-size: smaller;
 	}
 	
+	.comment-text {
+		padding-bottom: 20px;
+	}
+	
 .comment-author {
 	display: inline;
+}
+
+.comment-meta-data {
+	background: #eee;
+	border-bottom: solid 1px #000;
+	margin: 0;
+	padding: 0;
+}
+
+.bypostauthor .comment-meta-data {
+	background: #ccc;
 }
 
 .comment-meta {
@@ -643,31 +649,50 @@ a.navi-comments:hover span {
 	font-size: 11px;
 }
 
-#comment {
-	width: 99%;
+#comment-textarea, #author, #email, #url {
+	padding: 2px;
+	color: #000;
+	font-family: 'Verdana' , sans-serif;
 	font-size: 12px;
-	font-family: 'Arial' , sans-serif;
+	background: #ccc;
+	border: 1px solid #888;
+	-moz-border-radius: 6px;
+	-khtml-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+}
+
+#comment-textarea {
+	width: 99%;
 }
 
 #author, #email, #url {
-	font-size: 12px;
-	font-family: 'Arial' , sans-serif;
+	width: 50%;
+}
+
+#comment-textarea:hover, #author:hover, #email:hover, #url:hover, #comment-textarea:focus, #author:focus, #email:focus, #url:focus {
+	background: #fff;
+}
+
+.comment-submit {
+	float: right;
 }
 
 .commentlist ul {
+	padding: 0;
+	margin: 0;
 	list-style: none;
-	margin-bottom: 30px;
 }
 
 ol.commentlist {
 	margin: 0;
-	padding: 0;
+	padding: 10px 0 30px 0;
 	font-size: 11px;
 	list-style: none;
 }
 
 ol.commentlist p {
-	margin: 10px 0 0 74px;
+	margin: 10px 0 0 24px;
 }
 
 ul.children {
@@ -750,7 +775,7 @@ ul.children {
 	.sidebar h2, .sidebar h2 a {
 		display: block;
 		display: block;
-		font-size: 17px;
+		font-size: 18px;
 		margin: 0;
 		padding: 0;
 	}
@@ -788,18 +813,15 @@ ul.children {
 	margin-bottom: 10px;
 }
 
-.archive-dropdown-wrap {
-	margin: 10px 0;
-}
-
 .archive-dropdown {
 	margin: 0;
 	padding: 0;
 	width: 166px;
 	height: 23px;
-	font-size: 12px;
+	font-size: 14px;
 	font-family: 'Arial' , sans-serif;
 	cursor: pointer;
+	border: solid 1px #555;
 }
 
 /* CALENDAR */

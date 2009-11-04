@@ -19,7 +19,17 @@
 					</div>
 					<div class="userpage-info">
 						<div class="userpage-bio">
-							<h2><?php echo $curauth->display_name; ?></h2>
+	<?php
+		if($curauth->display_name)
+			$authorname = $curauth->display_name;
+		elseif($curauth->user_nickname)
+			$authorname = $curauth->nickname;
+		elseif($curauth->user_nicename)
+			$authorname = $curauth->user_nicename;
+		else
+			$authorname = $curauth->user_login;
+	?>
+							<cite><?php echo $authorname; ?></cite><br />
 							<?php _e('Registered on','comicpress'); ?> <?php echo date('l \\t\h\e jS \o\f M, Y',strtotime($curauth->user_registered)); ?><br />
 							<br />
 							<?php if (!empty($curauth->user_url)) { ?><?php _e('Website:','comicpress'); ?> <a href="<?php echo $curauth->user_url; ?>" target="_blank"><?php echo $curauth->user_url; ?></a><br /><?php } ?>
@@ -36,7 +46,7 @@
 					<div class="clear"></div>
 					<div class="userpage-posts">
 						<?php if (have_posts()) { ?>
-							<h3><?php _e('Posts by','comicpress'); ?> <?php echo $curauth->nickname; ?> (<?php echo get_usernumposts($curauth->ID); ?>) &not;</h3>
+							<h3><?php _e('Posts by','comicpress'); ?> <?php echo $authorname; ?> (<?php echo get_usernumposts($curauth->ID); ?>) &not;</h3>
 							<?php // this area is a loop that shows what posts the person has done. ?>
 							<ol>
 									<table class="month-table">

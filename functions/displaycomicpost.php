@@ -49,7 +49,7 @@ function display_comic_post() {
 					</div>
 				<?php } ?>
 				<?php 
-					if ($post->comment_status == 'open') { 
+					if ($post->comment_status == 'open' && !is_single()) { 
 						if (comicpress_check_themepack_file('commentlink') == false) { ?>
 							<div class="comment-link"><?php comments_popup_link('<span class="comment-balloon comment-balloon-empty">&nbsp;</span> '.__('No Comments ','comicpress'), '<span class="comment-balloon">1</span> '.__('Comment ','comicpress'), '<span class="comment-balloon">%</span> '.__('Comments ','comicpress')); ?></div>
 						<?php }
