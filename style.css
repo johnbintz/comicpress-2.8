@@ -593,7 +593,6 @@ a.navi-comments:hover span {
 		margin-left: 30px;
 	}
 
-
 	.comment .avatar {
 		margin: 0 5px 5px 0;
 		float: left;
@@ -613,7 +612,7 @@ a.navi-comments:hover span {
 	}
 	
 	.comment-text {
-		padding-bottom: 20px;
+		padding-bottom: 5px;
 	}
 	
 .comment-author {
@@ -690,7 +689,7 @@ ol.commentlist {
 }
 
 ol.commentlist p {
-	margin: 10px 0 0 24px;
+	margin-top: 3px;
 }
 
 ul.children {
