@@ -1,15 +1,15 @@
-<?php get_header(); global $category_thumbnail_postcount; ?>
-<?php remove_filter('pre_get_posts','comicpress_members_filter'); ?>
-<?php include(get_template_directory() . '/layout-head.php'); ?>
-
-	<?php
-		global $archive_display_order;
-		if (empty($archive_display_order)) $archive_display_order = 'desc';
-		$tmp_search = new WP_Query($query_string.'&order='.$archive_display_order.'&show_posts=-1&posts_per_page=-1');
-		$count = $tmp_search->post_count;
-	?>
-		<?php if (!$count) $count = "no"; ?>
-		<div class="searchresults">Found <?php echo $count; ?> result<?php if ($count !== 1) { echo "s"; } ?>.</div>
+<?php
+	get_header(); global $category_thumbnail_postcount; 
+	remove_filter('pre_get_posts','comicpress_members_filter');
+	include(get_template_directory() . '/layout-head.php'); 
+	
+	global $archive_display_order;
+	if (empty($archive_display_order)) $archive_display_order = 'desc';
+	$tmp_search = new WP_Query($query_string.'&order='.$archive_display_order.'&show_posts=-1&posts_per_page=-1');
+	$count = $tmp_search->post_count;
+	
+	if (!$count) $count = "no";
+?>
 
 	<?php if (have_posts()) : ?>
 		<?php 
@@ -21,23 +21,25 @@
 	<div class="<?php comicpress_post_class(); ?>">
 		<div class="post-page-head"></div>
 		<div class="post-page">	
-	
+			<div class="content">
 			<?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
 			<?php /* Category Archive */ if (is_category()) { ?>
-				<div class="content"><h2 class="pagetitle"><?php _e('Archive for &#8216;','comicpress'); ?><?php single_cat_title() ?>&#8217;</h2></div>
+				<h2 class="pagetitle"><?php _e('Archive for &#8216;','comicpress'); ?><?php single_cat_title() ?>&#8217;</h2>
 			<?php /* Tag Archive */ } elseif( is_tag() ) { ?>
-				<div class="content"><h2 class="pagetitle"><?php _e('Posts Tagged &#8216;','comicpress'); ?><?php single_tag_title() ?>&#8217;</h2></div>
+				<h2 class="pagetitle"><?php _e('Posts Tagged &#8216;','comicpress'); ?><?php single_tag_title() ?>&#8217;</h2>
 			<?php /* Daily Archive */ } elseif (is_day()) { ?>
-				<div class="content"><h2 class="pagetitle"><?php _e('Archive for','comicpress'); ?> <?php the_time('F jS, Y') ?></h2></div>
+				<h2 class="pagetitle"><?php _e('Archive for','comicpress'); ?> <?php the_time('F jS, Y') ?></h2>
 			<?php /* Monthly Archive */ } elseif (is_month()) { ?>
-				<div class="content"><h2 class="pagetitle"><?php _e('Archive for','comicpress'); ?> <?php the_time('F, Y') ?></h2></div>
+				<h2 class="pagetitle"><?php _e('Archive for','comicpress'); ?> <?php the_time('F, Y') ?></h2>
 			<?php /* Yearly Archive */ } elseif (is_year()) { ?>
-				<div class="content"><h2 class="pagetitle"><?php _e('Archive for','comicpress'); ?> <?php the_time('Y') ?></h2></div>
+				<h2 class="pagetitle"><?php _e('Archive for','comicpress'); ?> <?php the_time('Y') ?></h2>
 			<?php /* Author Archive */ } elseif (is_author()) { ?>
-				<div class="content"><h2 class="pagetitle"><?php _e('Author Archive','comicpress'); ?></h2></div>
+				<h2 class="pagetitle"><?php _e('Author Archive','comicpress'); ?></h2>
 			<?php /* Paged Archive */ } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) { ?>
-				<div class="content"><h2 class="pagetitle"><?php _e('Archives','comicpress'); ?></h2></div>
+				<h2 class="pagetitle"><?php _e('Archives','comicpress'); ?></h2>
 			<?php } ?>
+				<div class="searchresults"><?php printf(__ngettext("%d item.", "%d items.", $count,'comicpress'),$count); ?></div>
+			</div>
 			<br class="clear-margins" />
 		</div>
 		<div class="post-page-foot"></div>

@@ -281,11 +281,6 @@ h1, h1 a, h2, h2 a, h3, h3 a {
 	#searchform button:hover, #searchform-transcript button:-moz-focus-inner {
 		border: 0;
 	}
-
-	.searchresults {
-		float: right;
-		padding: 5px;
-	}
 	
 /* MENUNAV */
 .menunav-rss {

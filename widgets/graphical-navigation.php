@@ -79,13 +79,13 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 		ob_start();
 		switch ($which) {
       case 'first':
-      case 'last':
       case 'previous':
+      case 'next':
+      case 'last':
       case 'story_prev':
       case 'story_next':
       case 'story_prev_in':
       case 'story_next_in':
-      case 'next':
         $navi_class_names = array("navi-${which}");
         if (isset($css_name_mapping[$which])) { $navi_class_names[] = "navi-{$css_name_mapping[$which]}"; }
         
@@ -94,9 +94,9 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 				if ($ok) {
 				  ?><a href="<?php echo $link; ?>"
 					  	 class="navi <?php echo implode(" ", $navi_class_names); ?>"
-							 title="<?php echo $instance["${which}_title"]; ?>"><?php echo $instance["${which}_title"]; ?></a><?php
+					title="<?php echo $instance["${which}_title"]; ?>"><?php echo htmlspecialchars_decode($instance["${which}_title"]); ?></a><?php
 				} else {
-				  ?><div class="navi <?php echo implode(" ", $navi_class_names); ?> navi-void"><?php echo $instance["${which}_title"]; ?></div><?php
+					?><div class="navi <?php echo implode(" ", $navi_class_names); ?> navi-void"><?php echo htmlspecialchars_decode($instance["${which}_title"]); ?></div><?php
 				}
 			  break;
 			case 'archives':
@@ -158,7 +158,7 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 	 */
 	function comicpress_display_navigation_order($order = array()) {
     return array(
-			'first', 'story_prev', 'story_prev_in', 'previous', 'archives', 'random', 'comictitle', 'comments', 'buyprint', 'next', 'story_next_in', 'story_next', 'last'
+			'first', 'previous', 'story_prev_in', 'story_prev', 'archives', 'random', 'comictitle', 'comments', 'buyprint', 'story_next', 'story_next_in', 'next', 'last'
 		);
 	}
 
@@ -172,7 +172,7 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 	  if (is_array($buttons)) { $buttons_text = implode('', $buttons); }
 		ob_start(); ?>
 			<div id="comic_navi_wrapper">
-				<table id="comic_navi" cellpadding="0" cellspacing="0"><tr><td><?php echo $buttons_text; ?></td></tr></table>
+				<div class="comic_navi"><?php echo $buttons_text; ?></div>
 			</div>
 		<?php
 		return array($buttons, $content);
@@ -231,16 +231,16 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 		$instance = array();
 
     $all_fields = array(
-		  'first', 'last', 'story_prev', 'story_next', 'story_prev_in',
+		  'first', 'story_prev', 'story_next', 'story_prev_in',
 		  'story_next_in', 'previous', 'random', 'archives', 
-			'comments', 'next', 'buyprint', 'comictitle', 'nextgohome',
+			'comments', 'next', 'last', 'buyprint', 'comictitle', 'nextgohome',
 			'story_prev_acts_as_prev_in'
 		);
 
     foreach ($all_fields as $field) {
       $instance[$field] = (isset($new_instance[$field])) ? 'on' : 'off';
       if (isset($new_instance["${field}_title"])) {
-        $instance["${field}_title"] = strip_tags($new_instance["${field}_title"]);
+				$instance["${field}_title"] = strip_tags($new_instance["${field}_title"]);
       }
     }
 
@@ -252,7 +252,6 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 	function form($instance) {
 		$field_defaults = array(
 			'first' => 'on',
-			'last' => 'on',
 			'story_prev' => 'off',
       'story_prev_in' => 'off',
 			'story_next' => 'off',
@@ -262,6 +261,7 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 			'archives' => 'off',
 			'comments' => 'off',
 			'next' => 'on',
+			'last' => 'on',
 			'archive_path' => '',
 			'buyprint' => 'off',
 			'comictitle' => 'off',
@@ -271,7 +271,6 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 
 		$title_defaults = array(
 			'first_title' => __('&lsaquo;&lsaquo; First', 'comicpress'),
-			'last_title' => __('Last &rsaquo;&rsaquo;', 'comicpress'),
 			'story_prev_title' => __('Chapter', 'comicpress'),
 			'story_next_title' => __('Chapter', 'comicpress'),
       'story_prev_in_title' => __('In Chapter', 'comicpress'),
@@ -281,6 +280,7 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 			'archives_title' => __('Archives', 'comicpress'),
 			'comments_title' => __('Comments', 'comicpress'),
 			'next_title' => __('Next &rsaquo;', 'comicpress'),
+			'last_title' => __('Last &rsaquo;&rsaquo;', 'comicpress'),
 			'buyprint_title' => __('Buy Print', 'comicpress')
 	  );
 
@@ -288,9 +288,9 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 
 		foreach (array(
 			'first' => __('&lsaquo;&lsaquo; First', 'comicpress'),
-			'last' => __('Last &rsaquo;&rsaquo;', 'comicpress'),
 			'previous' => __('&lsaquo; Previous', 'comicpress'),
 			'next' => __('Next &rsaquo;', 'comicpress'),
+			'last' => __('Last &rsaquo;&rsaquo;', 'comicpress'),
 			'story_prev' => __('Previous Chapter', 'comicpress'),
 			'story_next' => __('Next Chapter', 'comicpress'),
       'story_prev_in' => __('Previous In Chapter', 'comicpress'),
@@ -316,7 +316,7 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 									 id="<?php echo $this->get_field_id($title_field); ?>"
 									 name="<?php echo $this->get_field_name($title_field); ?>"
 									 type="text"
-									 value="<?php echo attribute_escape($instance[$title_field]); ?>" />
+				value="<?php echo htmlspecialchars($instance[$title_field]); ?>" />
 					<?php } ?>
 
 					<?php

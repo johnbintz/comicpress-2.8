@@ -8,9 +8,9 @@ $count = $tmp_search->post_count;
 			?>
 		<?php if (!$count) $count = "no"; ?>
 		
-		<div class="searchresults"><?php printf(__ngettext("Found %d result.", "Found %d results.", $count,'comicpress'),$count); ?></div>
+		
 		<h2 class="pagetitle"><?php _e('Search for &lsquo;','comicpress'); the_search_query(); _e('&rsquo;','comicpress'); ?></h2>
-    
+		<div class="searchresults"><?php printf(__ngettext("%d item.", "%d items.", $count,'comicpress'),$count); ?></div>
   <?php if (have_posts()) : ?>
     
     <?php $posts = query_posts($query_string.'&order=asc');

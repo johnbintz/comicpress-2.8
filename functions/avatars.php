@@ -78,9 +78,9 @@ function comicpress_get_avatar( $id_or_email, $size = '64', $alt = false) {
 		if ( !empty( $rating ) )
 			$out .= "&amp;r={$rating}";
 
-		$avatar = "<img alt='{$safe_alt}' src='{$out}' class='avatar avatar-{$size} photo instant nocorner itxtalt' height='{$size}' width='{$size}' title='{$safe_alt}' />";
+		$avatar = "<img alt='{$safe_alt}' src='{$out}' class='avatar avatar-{$size} photo instant nocorner itxtalt' height='{$size}' width='{$size}' />";
 	} else {
-		$avatar = "<img alt='{$safe_alt}' src='{$default}' class='avatar avatar-{$size} photo avatar-default instant nocorner itxtalt' height='{$size}' width='{$size}' title='{$safe_alt}' />";
+		$avatar = "<img alt='{$safe_alt}' src='{$default}' class='avatar avatar-{$size} photo avatar-default instant nocorner itxtalt' height='{$size}' width='{$size}' />";
 	}
 
 	return apply_filters('comicpress_get_avatar', $avatar, $id_or_email, $size, $default, $alt);

@@ -3,29 +3,30 @@ Author: Tyler Martin
 Style: Default
 */
 #comic_navi_wrapper {
-	width: 100%;
-	height: 25px;
-	background: black;
+	text-align: center;
 }
 
-#comic_navi {
-	padding: 0;
-	margin: 0;
+.comic_navi {
+	width: 100%;
+	background: #000;
+	margin: 0 auto;
 	list-style: none;
-	float: left;
 	line-height: 25px;
 	font-size: 13px;
+	display: inline-block;
 }
 
 .navi-comictitle {
+	padding: 0px 10px;
 	text-align: center;
 }
 
 .navi {
+	padding: 0 10px;
+	color: #fff;
 }
 
 .navi a {
-	padding: 0px 10px 0 10px;
 	display: block;
 	color: #fff;
 	text-decoration: none;
@@ -37,15 +38,19 @@ Style: Default
 	}
 
 .navi-first {
+	float: left;
 }
 
 .navi-prevchap, .navi-story_prev {
+	float: left;
 }
 
 .navi-story_prev_in {
+	float: left;
 }
 
 .navi-prev, .navi-previous {
+	float: left;
 }
 
 
@@ -75,20 +80,29 @@ Style: Default
 	
 		a.navi-comments span:hover {
 			}
+			
+			.navi-comments-count {
+				padding-right: 4px;
+			}
 	
 .navi-next {
+	float: left;
 }
 
 .navi-nextchap, .navi-story_next {
+	float: left;
 }
 
 .navi-story_next_in {
+	float: left;
 }
 
 .navi-last {
+	float: left;
 }
 
 .navi-void, .navi-void:hover {
+	color: #555;
 }
 
 .comic-left .navi-prev, .comic-right .navi-prev, .comic-left .navi-next, .comic-right .navi-next {

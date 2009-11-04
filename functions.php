@@ -16,7 +16,7 @@ if (function_exists('id_get_comment_number')) {
 	remove_filter('comments_number','id_get_comment_number');
 }
 
-$comicpress_version = '2.8.1.33';
+$comicpress_version = '2.8.1.34';
 
 global $wpmu_version;
 if (!empty($wpmu_version)) {
