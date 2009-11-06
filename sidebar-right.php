@@ -1,6 +1,5 @@
 <?php global $disable_lrsidebars_frontpage; 
-	if ($disable_lrsidebars_frontpage == 'yes' && is_home()) { 
-} else {  ?>
+if ($disable_lrsidebars_frontpage != 'yes') { ?>
 <div id="sidebar-right">
 	<div class="sidebar-head"></div>
 		<div class="sidebar">

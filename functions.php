@@ -1,12 +1,5 @@
 <?php
 
-// Run this when a theme is switched to revert the navigation to default
-function comicpress_on_theme_switch() {
-	update_option('comicpress-graphicnav_directory', 'default');
-}
-
-add_action('switch_theme','comicpress_on_theme_switch',1,10);
-
 // Queue up the scripts.
 wp_enqueue_script('comicpress_scroll', get_template_directory_uri() . '/js/scroll.js');
 
@@ -858,9 +851,11 @@ function cp_copyright() {
 
 function comicpress_check_child_file($filename = '') {
 	if (empty($filename)) return false;
-	if (file_exists(get_stylesheet_directory() .'/'. $filename . '.php')) { 
-		@require_once(get_stylesheet_directory() .'/'. $filename . '.php');
-		return true;
+	if (get_stylesheet_directory() != get_template_directory()) {
+		if (file_exists(get_stylesheet_directory() .'/'. $filename . '.php')) { 
+			@require_once(get_stylesheet_directory() .'/'. $filename . '.php');
+			return true;
+		}
 	}
 	return false;
 }

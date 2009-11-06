@@ -1,9 +1,5 @@
 <?php if (comicpress_check_child_file('layout-head') == false) { ?>
 
-<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-	<div id="header-<?php the_ID(); ?>"></div>
-<?php endwhile; endif; ?>
-
 <div id="content-wrapper-head"></div>
 	<div id="content-wrapper">
 
