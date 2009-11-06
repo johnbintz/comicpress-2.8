@@ -1,8 +1,7 @@
-﻿/* COMIC NAVIGATION 
-Author: Philip M. Hofer (Frumph)
-Style: Sci Fi
+/* COMIC NAVIGATION 
+Author: Tyler Martin
+Style: Default
 */
-
 #comic_navi_wrapper {
 	text-align: center;
 }
@@ -26,18 +25,21 @@ Style: Sci Fi
 	display: table;
 	border-collapse: collapse;
 	margin: 0 auto;
+
 }
 
 .navi-comictitle {
 	text-align: center;
 	float: left;
-	display: inline-block;
+	display: block;
 	padding-top: 26px;
+	max-width: 200px;
 }
 
 .navi {
-	width: 60px;
-	padding: 56px 0 0 0;
+	width: 66px;
+	padding: 66px 0 0 0;
+/*	margin: 0 5px; */
 	display: block;
 	float: left;
 	overflow: hidden;
@@ -47,7 +49,7 @@ Style: Sci Fi
 }
 
 	.navi:hover {
-		background-position: -60px 0;
+		background-position: -66px 0;
 	}
 
 .navi-first {
@@ -55,17 +57,22 @@ Style: Sci Fi
 	background: url('first.png') no-repeat;
 }
 
-.navi-story_prev_in {
-	background: url('previnchap.png') no-repeat;
-}
-
 .navi-prevchap, .navi-story_prev {
 	background: url('prevchap.png') no-repeat;
 }
 
-.navi-prev {
-	margin-right: 10px;
+.navi-story_prev_in {
+	background: url('prevchap.png') no-repeat;
+}
+
+.navi-prev, .navi-previous {
+	margin-right: 30px;
 	background: url('prev.png') no-repeat;
+}
+
+
+.navi-comments, .navi-archive, .navi-random, .navi-buyprint {
+	margin: 0 5px;
 }
 
 .navi-buyprint {
@@ -74,12 +81,14 @@ Style: Sci Fi
 	background: url('buyprint.png') no-repeat;
 }
 
-	.navi-buyprint:hover {
+	.navi-buyprint:hover, button .navi-buyprint:hover {
+		background: url('buyprint.png') no-repeat;
+		background-position: -66px 0;
 		color: #f00;
 	}
 
 	.navi-buyprint-form {
-		width: 60px;
+		width: 76px;
 		display: block;
 		float: left;
 		margin: 0;
@@ -100,14 +109,13 @@ Style: Sci Fi
 }
 
 	a.navi-comments span {
-		width: 60px;
-		height: 56px;
-		position: relative;	
+		width: 66px;
+		height: 66px;
 		display: block;
-		font-size: 22px;
+		font-size: 16px;
 		font-weight: bold;
-		line-height: 50px;
-		color: #FFF;
+		line-height: 66px;
+		color: #c5c5c5;
 	}
 	
 		a.navi-comments span:hover {
@@ -115,7 +123,7 @@ Style: Sci Fi
 			}
 	
 .navi-next {
-	margin-left: 10px;
+	margin-left: 30px;
 	background: url('next.png') no-repeat;
 }
 
@@ -124,7 +132,7 @@ Style: Sci Fi
 }
 
 .navi-story_next_in {
-	background: url('nextinchap.png') no-repeat;
+	background: url('nextchap.png') no-repeat;
 }
 
 .navi-last {
@@ -134,8 +142,10 @@ Style: Sci Fi
 
 .navi-void, .navi-void:hover {
 	color: #999;
-	background-position: -120px 0;
+	background-position: -132px 0;
 }
 
 .comic-left .navi-prev, .comic-right .navi-prev, .comic-left .navi-next, .comic-right .navi-next {
+/*	margin: 0 5px; */
 	}
+

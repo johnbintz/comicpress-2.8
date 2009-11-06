@@ -18,7 +18,7 @@ Templete Author Email: philip@frumph.net
 		<div class="post-page">
 			<div style="float:right;">
 				<br />
-				<img src="<?php bloginfo('stylesheet_directory'); ?>/images/paypal.png" alt="<?php _e('Powered by Paypal','comicpress'); ?>" /><br />
+				<img src="<?php echo get_template_directory_uri(); ?>/images/paypal.png" alt="<?php _e('Powered by Paypal','comicpress'); ?>" /><br />
 			</div>
 			<div style="float:left;">
 				<h2 class="pagetitle"><?php _e('Buy Print!','comicpress'); ?></h2>
@@ -57,7 +57,7 @@ Templete Author Email: philip@frumph.net
 						<input type="hidden" name="shipping" value="<?php echo $buy_print_us_ship; ?>">
 						US/Canada<br>
 						$<?php echo $buy_print_us_amount; ?> + $<?php echo $buy_print_us_ship; ?> <?php _e('shipping','comicpress'); ?><br />
-						<input type="image" src="<?php bloginfo('stylesheet_directory'); ?>/images/buynow_paypal.png" name="submit32" alt="<?php _e('Make payments with PayPal - it is fast, free and secure!','comicpress'); ?>" /> 
+						<input type="image" src="<?php echo get_template_directory_uri(); ?>/images/buynow_paypal.png" name="submit32" alt="<?php _e('Make payments with PayPal - it is fast, free and secure!','comicpress'); ?>" /> 
 						</form>
 				</td>
 				<td width="40">
@@ -79,7 +79,7 @@ Templete Author Email: philip@frumph.net
 						<input type="hidden" name="shipping" value="<?php echo $buy_print_int_ship; ?>">
 						International<br>
 						$<?php echo $buy_print_int_amount; ?> + $<?php echo $buy_print_int_ship; ?> <?php _e('shipping','comicpress'); ?><br />
-						<input type="image" src="<?php bloginfo('stylesheet_directory'); ?>/images/buynow_paypal.png" name="submit32" alt="<?php _e('Make payments with PayPal - it is fast, free and secure!','comicpress'); ?>" />
+						<input type="image" src="<?php echo get_template_directory_uri(); ?>/images/buynow_paypal.png" name="submit32" alt="<?php _e('Make payments with PayPal - it is fast, free and secure!','comicpress'); ?>" />
 					</form>
 				</td>
 			</tr>

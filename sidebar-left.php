@@ -5,9 +5,8 @@
 	<div class="sidebar-head"></div>
 	<div class="sidebar">
 		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Left Sidebar') ) : ?> 
-			<?php $default_image = get_template_directory_uri() . '/images/cal/default.png'; ?>
 			<div class="widget">
-				<?php comicpress_calendar(array('thumbnail' => $default_image)) ?>
+				<?php comicpress_calendar() ?>
 			</div>
 			<div class="widget">
 				<?php comicpress_archive_dropdown(); ?>

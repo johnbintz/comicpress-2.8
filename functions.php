@@ -1,5 +1,12 @@
 <?php
 
+// Run this when a theme is switched to revert the navigation to default
+function comicpress_on_theme_switch() {
+	update_option('comicpress-graphicnav_directory', 'default');
+}
+
+add_action('switch_theme','comicpress_on_theme_switch',1,10);
+
 // Queue up the scripts.
 wp_enqueue_script('comicpress_scroll', get_template_directory_uri() . '/js/scroll.js');
 
@@ -19,7 +26,7 @@ if (function_exists('id_get_comment_number')) {
 	remove_filter('comments_number','id_get_comment_number');
 }
 
-$comicpress_version = '2.8.2.2';
+$comicpress_version = '2.8.2.3';
 
 global $wpmu_version;
 if (!empty($wpmu_version)) {
