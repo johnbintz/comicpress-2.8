@@ -11,7 +11,7 @@ Author URI: http://webcomicplanet.com/
 
 
 function comicpress_menubar() {
-global $contact_in_menubar,$enable_search_in_menubar,$enable_rss_in_menubar,$enable_navigation_in_menubar,$disable_dynamic_menubar_links, $themepack_directory;
+global $contact_in_menubar,$enable_search_in_menubar,$enable_rss_in_menubar,$enable_navigation_in_menubar,$disable_dynamic_menubar_links;
 	if (comicpress_check_child_file('menubar') == false) {
 		if (file_exists(get_template_directory() . '/custom-menubar.php')) {
 			include(get_template_directory() . '/custom-menubar.php');

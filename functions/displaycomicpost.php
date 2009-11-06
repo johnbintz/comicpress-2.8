@@ -7,7 +7,7 @@
  */
 
 function display_comic_post() { 
-		global $post, $wp_query, $authordata, $enable_related_comics, $enable_comic_post_author_gravatar, $enable_comic_post_calendar, $themepack_directory, $disable_categories_in_posts, $disable_tags_in_posts;  ?>
+		global $post, $wp_query, $authordata, $enable_related_comics, $enable_comic_post_author_gravatar, $enable_comic_post_calendar, $disable_categories_in_posts, $disable_tags_in_posts;  ?>
 		<div class="<?php comicpress_post_class(); ?>">
 			<div class="post-comic-head"></div>
 				<div <?php post_class(); ?> id="post-comic-<?php the_ID() ?>">

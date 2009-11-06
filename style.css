@@ -4,7 +4,7 @@ Theme URI: http://comicpress.org
 Description: Publish a comic with WordPress.  <a href="http://comicpress.org">Visit the ComicPress Website.</a> This is the ComicPress Core Framework.
 Author: Tyler Martin, John Bintz, Philip M. Hofer
 Author URI: http://mindfaucet.com/
-Version: 2.8.1
+Version: 2.8.2
 .
 The CSS, XHTML and design is released under GPL v3:
 http://www.opensource.org/licenses/gpl-3.0.html
@@ -616,13 +616,23 @@ a.navi-comments:hover span {
 		float: left;
 	}
 	
-.comment-author {
-	display: inline;
-}
+		.comment-author {
+			padding-left: 5px;
+			display: inline;
+		}
+		
+		.comment-time {
+			padding-left: 5px;
+		}
+		
+		li.comment {
+			margin-top: 10px;
+		}
 
 .comment-meta-data {
 	background: #efefef;
 	border-bottom: solid 1px #999;
+	border-right: solid 1px #aaa;
 	margin: 0;
 	padding-left: 5px;
 }

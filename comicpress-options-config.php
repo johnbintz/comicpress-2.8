@@ -215,11 +215,6 @@ $options = array (
 			"type" => "comicpress-disable_footer_text"),
 			
 		array(
-			"id" => "comicpress-themepack_directory",
-			"default" => "silver",
-			"type" => "comicpress-themepack_directory"),
-			
-		array(
 			"id" => "comicpress-avatar_directory",
 			"default" => "default",
 			"type" => "comicpress-avatar_directory"),

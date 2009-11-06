@@ -19,7 +19,7 @@ if (function_exists('id_get_comment_number')) {
 	remove_filter('comments_number','id_get_comment_number');
 }
 
-$comicpress_version = '2.8.2.1';
+$comicpress_version = '2.8.2.2';
 
 global $wpmu_version;
 if (!empty($wpmu_version)) {
@@ -113,7 +113,6 @@ if (get_option('upload_path') !== false) {
 }
 
 if (empty($avatar_directory)) $avatar_directory = 'default';
-if (empty($themepack_directory)) $themepack_directory = 'silver';
 if (empty($graphicnav_directory)) $graphicnav_directory = 'default';
 if (empty($moods_directory)) $moods_directory = 'default';
 if (empty($calendar_directory)) $calendar_directory = 'default';

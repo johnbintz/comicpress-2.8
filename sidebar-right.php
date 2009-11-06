@@ -8,7 +8,7 @@
 				<?php comicpress_comic_bookmark() ?>
 				
 				<?php if (is_cp_theme_layout('standard,v')) { ?>
-				<?php $default_image = get_bloginfo('stylesheet_directory').'/images/cal/default.png'; ?>
+				<?php $default_image = get_template_directory_uri() . '/images/cal/default.png'; ?>
 					<div class="widget">
 						<?php comicpress_calendar(array('thumbnail' => $default_image)) ?>
 					</div>

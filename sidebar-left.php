@@ -5,7 +5,7 @@
 	<div class="sidebar-head"></div>
 	<div class="sidebar">
 		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Left Sidebar') ) : ?> 
-			<?php $default_image = get_bloginfo('stylesheet_directory').'/images/cal/default.png'; ?>
+			<?php $default_image = get_template_directory_uri() . '/images/cal/default.png'; ?>
 			<div class="widget">
 				<?php comicpress_calendar(array('thumbnail' => $default_image)) ?>
 			</div>

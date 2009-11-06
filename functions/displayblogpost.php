@@ -7,7 +7,7 @@
  */
 
 function display_blog_post() { 
-	global $post, $wp_query, $authordata, $enable_related_posts, $enable_post_author_gravatar, $enable_post_calendar, $themepack_directory, $disable_categories_in_posts, $disable_tags_in_posts;  ?>
+	global $post, $wp_query, $authordata, $enable_related_posts, $enable_post_author_gravatar, $enable_post_calendar, $disable_categories_in_posts, $disable_tags_in_posts;  ?>
 	<?php if (is_single()) { ?>
 		<div class="blognav">
 			<div class="nav-single">

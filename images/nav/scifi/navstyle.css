@@ -4,7 +4,23 @@ Style: Sci Fi
 */
 
 #comic_navi_wrapper {
-	padding: 5px 0 5px 0;
+	width: 100%;
+	text-align: center;
+}
+
+.comic_navi_left {
+	display: inline-block;
+	float: left;
+}
+
+.comic_navi_center {
+	margin: 0 auto;
+	display: inline-block;
+}
+
+.comic_navi_right {
+	display: inline-block;
+	float: right;
 }
 
 #comic_navi {
