@@ -9,7 +9,7 @@ function init_language(){
 		define('THEME_TEXTDOMAIN','comicpress');
 		define('THEME_LANGS_FOLDER','/lang');
 	} else {
-	   load_theme_textdomain( 'comicpress', get_template_directory_uri() . '/lang' );
+	   load_theme_textdomain( 'comicpress', get_template_directory() . '/lang' );
 	}
 }
 add_action ('init', 'init_language');
@@ -852,7 +852,7 @@ function cp_copyright() {
 function comicpress_check_child_file($filename = '') {
 	if (empty($filename)) return false;
 	if (file_exists(get_stylesheet_directory() .'/'. $filename . '.php')) { 
-		@include(get_stylesheet_directory() .'/'. $filename . '.php');
+		@require_once(get_stylesheet_directory() .'/'. $filename . '.php');
 		return true;
 	}
 	return false;

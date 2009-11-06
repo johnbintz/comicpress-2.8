@@ -1,8 +1,8 @@
 <?php
 
-include(get_template_directory() . '/comicpress-options-config.php');
+@include(get_template_directory() . '/comicpress-options-config.php');
 
-function comicpress_options() {
+function options() {
 	$pagehook = add_submenu_page('themes.php','comicpress', __('ComicPress Options','comicpress'), 10, 'comicpress-options', 'comicpress_admin');
 	add_action('admin_head-'.$pagehook, 'comicpress_admin_page_head');
 }
@@ -21,7 +21,6 @@ function comicpress_admin_page_head() {
 function comicpress_admin() {
 	global $options, $upload_path, $blogcat, $moods_directory, $calendar_directory, $graphicnav_directory;
 	
-
 	?>
 	<div class="wrap">
 	<h2 class="alignleft"><?php _e('ComicPress Options','comicpress'); ?></h2>
@@ -56,13 +55,14 @@ function comicpress_admin() {
 	}
 	
 	// set default options
+
 	foreach ($options as $default) {
 		if(get_option($default['id'])=="") {
 			update_option($default['id'],$default['default']);
 		}
 	}
 
-	include(get_template_directory() . '/comicpress-config.php');		
+	@require(get_template_directory() . '/comicpress-config.php');		
 	
 	?>
 	<div id="poststuff" class="metabox-holder">
@@ -112,6 +112,6 @@ function comicpress_admin() {
 <?php 
 }
 
-add_action('admin_menu', 'comicpress_options');
+add_action('admin_menu', 'options');
 
 ?>
