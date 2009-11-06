@@ -23,9 +23,11 @@ function comicpress_show_mood_in_post() {
 		if (!empty($mood_file) && $mood_file != '') {
 			$mood = explode(".", $mood);
 			$mood = reset($mood);
-			if ( !empty($mood_file) && file_exists(get_template_directory() . '/images/moods/'.$moods_directory.'/'.$mood_file) ) { ?>
-				<div class="post-mood post-<?php echo $mood; ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/moods/<?php echo $moods_directory; ?>/<?php echo $mood_file; ?>" alt="<?php echo $mood; ?>" title="<?php echo $mood; ?>" /></div>
-			<?php } 
+			if ( !empty($mood_file) && file_exists(get_stylesheet_directory() . '/images/moods/'.$moods_directory.'/'.$mood_file) ) { ?>
+				<div class="post-mood post-<?php echo $mood; ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/moods/<?php echo $moods_directory; ?>/<?php echo $mood_file; ?>" alt="<?php echo $mood; ?>" title="<?php echo $mood; ?>" /></div>
+			<?php } elseif (!empty($mood_file) && file_exists(get_template_directory() . '/images/moods/' .$moods_directory . '/' . $mood_file) ) { ?>
+				<div class="post-mood post-<?php echo $mood; ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/moods/<?php echo $moods_directory; ?>/<?php echo $mood_file; ?>" alt="<?php echo $mood; ?>" title="<?php echo $mood; ?>" /></div>
+			<?php }
 		}
 	}
 }
@@ -48,8 +50,14 @@ function comicpress_showmood_edit_post() {
 			$mood = reset($mood);
 		}
 		
-		$filtered_glob_results = array();
-		$count = count($results = glob(get_template_directory() . '/images/moods/'.$moods_directory.'/*'));
+		$count = 0;
+		$count = count($results = glob(get_stylesheet_directory() . '/images/moods/'.$moods_directory.'/*'));
+		if (!$count) {
+			$count = count($results = glob(get_template_directory() . '/images/moods/'.$moods_directory.'/*'));
+			$moods_uri = get_template_directory_uri();
+		} else {
+			$moods_uri = get_stylesheet_directory_uri();
+		}
 		echo $count .__(' moods are available.','comicpress').'<br />
 				'.__('Using Moods from directory: ','comicpress').$moods_directory.'<br />
 				'.__('Current Mood: ','comicpress').$mood.'<br /><br />';
@@ -67,7 +75,7 @@ function comicpress_showmood_edit_post() {
 				$newmood = $newmood[0]; ?>
 				<div style="float:left; margin-top: 10px; text-align: center; width: 68px; overflow: hidden;"> 
 				<label for="postmood-<?php echo $newmood; ?>" style="cursor:pointer;">
-				<img src="<?php bloginfo('stylesheet_directory'); ?>/images/moods/<?php echo $moods_directory; ?>/<?php echo basename($file); ?>"><br />
+				<img src="<?php echo $moods_uri; ?>/images/moods/<?php echo $moods_directory; ?>/<?php echo basename($file); ?>"><br />
 				<?php echo $newmood; ?>
 				</label>
 				<br />

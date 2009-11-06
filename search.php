@@ -2,9 +2,9 @@
 <?php remove_filter('pre_get_posts','comicpress_members_filter'); ?>
 <?php include(get_template_directory() . '/layout-head.php'); ?>
 
-<?php
-$tmp_search = new WP_Query($query_string.'&order=desc&show_posts=-1&posts_per_page=-1');
-$count = $tmp_search->post_count;
+	<?php
+	$tmp_search = new WP_Query($query_string.'&order=desc&show_posts=-1&posts_per_page=-1');
+	$count = $tmp_search->post_count;
 			?>
 		<?php if (!$count) $count = "no"; ?>
 		
@@ -13,7 +13,7 @@ $count = $tmp_search->post_count;
 		<div class="searchresults"><?php printf(__ngettext("%d item.", "%d items.", $count,'comicpress'),$count); ?></div>
   <?php if (have_posts()) : ?>
     
-    <?php $posts = query_posts($query_string.'&order=asc');
+		<?php $posts = query_posts($query_string.'&order=asc');
     while (have_posts()) : the_post() ?>
       
         <?php global $archive_comic_width; if (in_comic_category()) { ?>
@@ -34,11 +34,11 @@ $count = $tmp_search->post_count;
 					<div class="post-text">
 						<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
 						<small>
-              <?php
-                ob_start();
-                the_author_posts_link();
-                $author_link = ob_get_clean();
-                printf(__('By %1$s on %2$s', 'comicpress'), $author_link, get_the_time('F jS, Y'));
+				<?php
+				ob_start();
+				the_author_posts_link();
+				$author_link = ob_get_clean();
+				printf(__('By %1$s on %2$s', 'comicpress'), $author_link, get_the_time('F jS, Y'));
               ?>
               
               <?php edit_post_link(__('Edit Post','comicpress'), ' [ ', ' ] '); ?>
@@ -84,11 +84,11 @@ $count = $tmp_search->post_count;
 					</div>
 					<div class="clear"></div>
 				</div>
-					<?php global $excerpt_or_content_search; 
-					if ($excerpt_or_content_search != 'excerpt') {
-						the_content(__('&darr; Read the rest of this entry...','comicpress'));
-					} else { 
-						the_excerpt();
+				<?php global $excerpt_or_content_search; 
+				if ($excerpt_or_content_search != 'excerpt') {
+					the_content(__('&darr; Read the rest of this entry...','comicpress'));
+				} else { 
+					the_excerpt();
 					} ?>
 				<br class="clear-margins" />
 				<div class="post-extras">

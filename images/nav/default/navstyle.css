@@ -3,131 +3,140 @@ Author: Tyler Martin
 Style: Default
 */
 #comic_navi_wrapper {
-	padding: 5px 0 10px 0;
+	width: 100%;
+	text-align: center;
 }
 
-#comic_navi {
-	display: table;
-	border-collapse: collapse;
-	margin: 0 auto;
+.comic_navi_left {
+	display: inline-block;
+	float: left;
+}
 
+.comic_navi_center {
+	margin: 0 auto;
+	display: inline-block;
+}
+
+.comic_navi_right {
+	display: inline-block;
+	float: right;
+}
+
+.comic_navi {
+	width: 100%;
+	background: #000;
+	margin: 0 auto;
+	list-style: none;
+	line-height: 25px;
+	font-size: 13px;
+	display: inline-block;
 }
 
 .navi-comictitle {
+	padding: 0px 10px;
 	text-align: center;
-	float: left;
-	display: block;
-	padding-top: 26px;
-	max-width: 200px;
+	display: inline-block;
 }
+	.navi-comictitle a {
+		color: #fff;
+	}
+	
+	.navi-comictitle a:hover {
+		color: #f00;
+	}
 
 .navi {
-	width: 66px;
-	padding: 66px 0 0 0;
-/*	margin: 0 5px; */
-	display: block;
-	float: left;
-	overflow: hidden;
-	font-size: 11px;
-	text-align: center;
-	color: #555;
+	padding: 0 10px;
+	color: #fff;
 }
 
-	.navi:hover {
-		background-position: -66px 0;
+.navi a {
+	display: block;
+	color: #fff;
+	text-decoration: none;
+}
+
+	.navi a:hover {
+		color: #000;
+		background: #f00;
 	}
 
 .navi-first {
-	margin: 0;
-	background: url('first.png') no-repeat;
+	float: left;
 }
 
 .navi-prevchap, .navi-story_prev {
-	background: url('prevchap.png') no-repeat;
+	float: left;
 }
 
 .navi-story_prev_in {
-	background: url('prevchap.png') no-repeat;
+	float: left;
 }
 
 .navi-prev, .navi-previous {
-	margin-right: 30px;
-	background: url('prev.png') no-repeat;
+	float: left;
 }
 
 
 .navi-comments, .navi-archive, .navi-random, .navi-buyprint {
-	margin: 0 5px;
+	display: inline-block;
 }
 
 .navi-buyprint {
-	border: none;
-	cursor: pointer;
-	background: url('buyprint.png') no-repeat;
+	height: 25px;
+	width: 80px;
+	line-height: 15px;
+	color: #000;
+	margin: 0;
+	padding: 0;
 }
 
 	.navi-buyprint:hover, button .navi-buyprint:hover {
-		background: url('buyprint.png') no-repeat;
-		background-position: -66px 0;
-		color: #f00;
 	}
 
 	.navi-buyprint-form {
-		width: 76px;
-		display: block;
-		float: left;
-		margin: 0;
-		padding: 0;
+		display: inline-block;
 		}
 
 .navi-archive, .navi-archives {
-	background: url('archive.png') no-repeat;
+	display: inline-block;
 }
 
 .navi-random {
-	background: url('random.png') no-repeat;
+	display: inline-block;
 }
 
 .navi-comments {
-	padding: 0;
-	background: url('comments.png') no-repeat;
 }
 
 	a.navi-comments span {
-		width: 66px;
-		height: 66px;
-		display: block;
-		font-size: 16px;
-		font-weight: bold;
-		line-height: 66px;
-		color: #c5c5c5;
 	}
 	
 		a.navi-comments span:hover {
-			color: #860b04;
+			}
+			
+			.navi-comments-count {
+				padding-right: 4px;
 			}
 	
 .navi-next {
-	margin-left: 30px;
-	background: url('next.png') no-repeat;
+	float: left;
 }
 
 .navi-nextchap, .navi-story_next {
-	background: url('nextchap.png') no-repeat;
+	float: left;
 }
 
 .navi-story_next_in {
-	background: url('nextchap.png') no-repeat;
+	float: left;
 }
 
 .navi-last {
-	margin: 0;
-	background: url('last.png') no-repeat;
+	float: left;
 }
 
 .navi-void, .navi-void:hover {
-	color: #999;
-	background-position: -132px 0;
+	color: #555;
 }
 
 .comic-left .navi-prev, .comic-right .navi-prev, .comic-left .navi-next, .comic-right .navi-next {

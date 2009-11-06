@@ -24,10 +24,11 @@
 			case "comicpress-moods_directory": 
 				$current_directory = get_option($value['id']);
 				if (empty($current_directory)) $current_directory = 'default';
-					
-				$count = count($results = glob(get_template_directory() . '/images/moods/'.$current_directory.'/*'));
-				$mood_directories = glob(get_template_directory() . '/images/moods/*');
-			?>
+
+				$dirs_to_search = array_unique(array(get_template_directory(),get_stylesheet_directory()));
+				$mood_directories = array();
+				foreach ($dirs_to_search as $dir) { $mood_directories = array_merge($mood_directories,glob("${dir}/images/moods/*")); }
+				?>
 				<tr>
 				<th scope="row"><strong><?php _e('Moods Directory','comicpress'); ?></strong><br /><br /><?php _e('Choose a directory to get the post moods from.','comicpress'); ?><br /><br /><?php _e('Set this to "none" to turn off use.','comicpress'); ?><br /></th>
 				<td valign="top">
@@ -47,8 +48,6 @@
 						</label>
 				</td>
 				<td valign="top">
-					<?php _e('Found:','comicpress'); ?> <?php echo $count; ?> <?php _e('moods in the','comicpress'); ?> "<?php echo $current_directory; ?>" <?php _e('directory.','comicpress'); ?><br />
-					<br />
 			<?php _e('Mood directories are found in your theme directory/images/moods/* to create your own custom moods just create a directory
 					under images/moods/ and place ONLY image files inside of it.  The name of the image file represents what the mood is.','comicpress'); ?>
 				</td>

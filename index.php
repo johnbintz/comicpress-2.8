@@ -18,9 +18,9 @@
 
 	<?php if ($disable_comic_frontpage != 'yes') { ?>
 
-		<?php $wp_query ->in_the_loop = true; $comicFrontpage = new WP_Query(); $comicFrontpage->query('showposts=1&cat='.get_all_comic_categories_as_cat_string());
+			<?php $wp_query ->in_the_loop = true; $comicFrontpage = new WP_Query(); $comicFrontpage->query('showposts=1&cat='.get_all_comic_categories_as_cat_string());
 		while ($comicFrontpage->have_posts()) : $comicFrontpage->the_post() ?>	
-			<?php if (comicpress_check_themepack_file('displaycomic') == false) { ?>
+			<?php if (comicpress_check_child_file('partials/displaycomic') == false) { ?>
 			<div id="comic-wrap">
 				<div id="comic-head"><?php get_sidebar('over'); ?></div>
 				<div class="clear"></div>
@@ -56,15 +56,15 @@
 				<?php the_project_wonderful_ad('blog'); ?>
 				</center>
 			</div>
-<?php }
-
-get_sidebar('blog');
-
+	<?php }
+	
+	get_sidebar('blog');
+	
 if ($disable_comic_frontpage != 'yes' && $disable_comic_blog_frontpage != 'yes' && !is_paged() )  { ?>
-	<?php while ($comicFrontpage->have_posts()) : $comicFrontpage->the_post();
-		display_comic_post();
-		$comicFrontPage->is_single = true;
-		comments_template(); 
+		<?php while ($comicFrontpage->have_posts()) : $comicFrontpage->the_post();
+			display_comic_post();
+			$comicFrontPage->is_single = true;
+			comments_template(); 
 	endwhile; ?>
 <?php } ?>
 
@@ -72,52 +72,52 @@ if ($disable_comic_frontpage != 'yes' && $disable_comic_blog_frontpage != 'yes' 
 	<div id="blogheader"><!-- This area can be used for a heading above your main page blog posts --></div>
 <?php } ?>
 
-<?php if ($disable_blog_frontpage != 'yes') {
+	<?php if ($disable_blog_frontpage != 'yes') {
 	global $blog_postcount; ?>
-	<?php 
-	if ($split_column_in_two != 'yes') {
-		$blog_query = 'showposts='.$blog_postcount.'&cat="-'.exclude_comic_categories().'"&paged='.$paged; 
-		
-		$posts = query_posts($blog_query);
+		<?php 
+		if ($split_column_in_two != 'yes') {
+			$blog_query = 'showposts='.$blog_postcount.'&cat="-'.exclude_comic_categories().'"&paged='.$paged; 
+			
+			$posts = query_posts($blog_query);
 		if (have_posts()) { ?>
 			<div class="blogindex-head"></div>
 			<div class="blogindex">
-			<?php while (have_posts()) : the_post();
+				<?php while (have_posts()) : the_post();
+					
+					display_blog_post();	
 				
-				display_blog_post();	
-			
 			endwhile; ?>
 			</div>
 			<div class="blogindex-foot"></div>
-		<?php }
-		comicpress_pagination();
+			<?php }
+			comicpress_pagination();
 	} else { ?>
 	<div id="dualcolumns">
 		<div class="column_one">
 			<div class="column_one_header"></div>
-		<?php $blog_query = 'showposts='.$blog_postcount.'&cat="-'.exclude_comic_categories().'"&author='.$author_column_one.'&paged='.$paged; 
-		$posts = query_posts($blog_query);
-		if (have_posts()) {
-			while (have_posts()) : the_post();
-				display_blog_post();	
-			endwhile;
+			<?php $blog_query = 'showposts='.$blog_postcount.'&cat="-'.exclude_comic_categories().'"&author='.$author_column_one.'&paged='.$paged; 
+			$posts = query_posts($blog_query);
+			if (have_posts()) {
+				while (have_posts()) : the_post();
+					display_blog_post();	
+				endwhile;
 			} ?>
 			<span class="viewpostsbyone">View all posts by: <?php the_author_posts_link(); ?><span><br />
 		</div>
 		<div class="column_two">
 			<div class="column_two_header"></div>
-		<?php $blog_query = 'showposts='.$blog_postcount.'&cat="-'.exclude_comic_categories().'"&author='.$author_column_two; 
-		$posts = query_posts($blog_query);
-		if (have_posts()) {
-			while (have_posts()) : the_post();
-				display_blog_post();	
-			endwhile;
+			<?php $blog_query = 'showposts='.$blog_postcount.'&cat="-'.exclude_comic_categories().'"&author='.$author_column_two; 
+			$posts = query_posts($blog_query);
+			if (have_posts()) {
+				while (have_posts()) : the_post();
+					display_blog_post();	
+				endwhile;
 			} ?>
 			<span class="viewpostsbytwo">View all posts by: <?php the_author_posts_link(); ?></span><br />
 		</div>
 		<div class="clear"></div>
 	</div>
-	<?php } 
+		<?php } 
 } ?>
 
 <?php get_sidebar('underblog'); ?>

@@ -95,16 +95,16 @@ foreach ( $years as $year ) {
 					<?php if (file_exists(get_template_directory().'/themepack/'.$themepack_directory.'/cal/'.$archive_year)) { ?>
 						<?php if (count($monthfile = glob(get_template_directory().'/themepack/'.$themepack_directory.'/cal/'.$archive_year.'/'.strtolower($month[$i]['month']).'.*')) > 0) { 
 							if (is_array($monthfile)) $monthfile = reset($monthfile); ?>
-							<img class="cpcal-image" src="<?php bloginfo('stylesheet_directory'); ?>/themepack/<?php echo $themepack_directory; ?>/cal/<?php echo $archive_year; ?>/<?php echo basename($monthfile); ?>" alt="<?php echo $month[$i]['month'] ?>" title="<?php echo $month[$i]['month'] ?>" />
+							<img class="cpcal-image" src="<?php echo get_stylesheet_directory_uri(); ?>/themepack/<?php echo $themepack_directory; ?>/cal/<?php echo $archive_year; ?>/<?php echo basename($monthfile); ?>" alt="<?php echo $month[$i]['month'] ?>" title="<?php echo $month[$i]['month'] ?>" />
 						<?php } else { ?>
-							<img class="cpcal-image" src="<?php bloginfo('stylesheet_directory'); ?>/images/cal/default.png" alt="<?php echo $month[$i]['month'] ?>" title="<?php echo $month[$i]['month'] ?>" />
+							<img class="cpcal-image" src="<?php echo get_stylesheet_directory_uri(); ?>/images/cal/default.png" alt="<?php echo $month[$i]['month'] ?>" title="<?php echo $month[$i]['month'] ?>" />
 						<?php } ?>
 					<?php } else { ?>
 						<?php if (count($monthfile = glob(get_template_directory().'/themepack/'.$themepack_directory.'/cal/'.strtolower($month[$i]['month']).'.*')) > 0) { 
 							if (is_array($monthfile)) $monthfile = reset($monthfile); ?>
-							<img class="cpcal-image" src="<?php bloginfo('stylesheet_directory'); ?>/themepack/<?php echo $themepack_directory; ?>/cal/<?php echo basename($monthfile); ?>" alt="<?php echo $month[$i]['month'] ?>" title="<?php echo $month[$i]['month'] ?>" />				
+							<img class="cpcal-image" src="<?php echo get_stylesheet_directory_uri(); ?>/themepack/<?php echo $themepack_directory; ?>/cal/<?php echo basename($monthfile); ?>" alt="<?php echo $month[$i]['month'] ?>" title="<?php echo $month[$i]['month'] ?>" />				
 						<?php } else { ?>
-							<img class="cpcal-image" src="<?php bloginfo('stylesheet_directory'); ?>/images/cal/default.png" alt="<?php echo $month[$i]['month'] ?>" title="<?php echo $month[$i]['month'] ?>" />
+							<img class="cpcal-image" src="<?php echo get_stylesheet_directory_uri(); ?>/images/cal/default.png" alt="<?php echo $month[$i]['month'] ?>" title="<?php echo $month[$i]['month'] ?>" />
 						<?php } ?>
 					<?php } ?>			
 				

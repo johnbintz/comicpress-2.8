@@ -1,12 +1,15 @@
 <?php
 
+// Queue up the scripts.
+wp_enqueue_script('comicpress_scroll', get_template_directory_uri() . '/js/scroll.js');
+
 function init_language(){
 	// xili-language plugin check
 	if (class_exists('xili_language')) {
 		define('THEME_TEXTDOMAIN','comicpress');
 		define('THEME_LANGS_FOLDER','/lang');
 	} else {
-	   load_theme_textdomain( 'comicpress', get_template_directory().'/lang' );
+	   load_theme_textdomain( 'comicpress', get_template_directory_uri() . '/lang' );
 	}
 }
 add_action ('init', 'init_language');
@@ -16,7 +19,7 @@ if (function_exists('id_get_comment_number')) {
 	remove_filter('comments_number','id_get_comment_number');
 }
 
-$comicpress_version = '2.8.1.34';
+$comicpress_version = '2.8.2.1';
 
 global $wpmu_version;
 if (!empty($wpmu_version)) {
@@ -139,14 +142,13 @@ if ($remove_wptexturize == 'yes') {
 }
 
 // WIDGETS WP 2.8 compatible ONLY, no backwards compatibility here.
-foreach (glob(dirname(__FILE__) . '/widgets/*.php') as $__file) { require_once($__file); }
-
-// FUNCTIONS & Extra's
-foreach (glob(dirname(__FILE__) . '/functions/*.php') as $__file) { require_once($__file); }
-
-// widgets in the themepack
-if (file_exists(get_template_directory(). '/themepack/'. $themepack_directory.'/widgets')) {
-	foreach (glob(get_template_directory(). '/themepack/'. $themepack_directory . '/widgets/*.php') as $__file) { require_once($__file); }
+$dirs_to_search = array_unique(array(get_template_directory(),get_stylesheet_directory()));
+foreach ($dirs_to_search as $dir) {
+	// Widgets
+	foreach (glob($dir . '/widgets/*.php') as $__file) { require_once($__file); }
+	
+	// FUNCTIONS & Extra's
+	foreach (glob($dir . '/functions/*.php') as $__file) { require_once($__file); }
 }
 
 // Dashboard Menu Comicpress Options and ComicPress CSS
@@ -848,11 +850,10 @@ function cp_copyright() {
 	return $output;
 }
 
-function comicpress_check_themepack_file($filename = '') {
-	global $themepack_directory;
+function comicpress_check_child_file($filename = '') {
 	if (empty($filename)) return false;
-	if ( ($themepack_directory != 'none' && !empty($themepack_directory) ) && file_exists(get_template_directory() . '/themepack/'.$themepack_directory.'/'.$filename.'.php') ) { 
-		@include(get_template_directory() . '/themepack/' .$themepack_directory. '/'.$filename .'.php');
+	if (file_exists(get_stylesheet_directory() .'/'. $filename . '.php')) { 
+		@include(get_stylesheet_directory() .'/'. $filename . '.php');
 		return true;
 	}
 	return false;
@@ -871,7 +872,15 @@ function rss_count_comments(){
 
 add_action('the_title_rss','rss_count_comments');
 
-
-if (comicpress_check_themepack_file('functions') == false) {}
+function comicpress_gnav_display_css() {
+	global $graphicnav_directory; 
+	if (file_exists(get_stylesheet_directory() . '/images/nav/' . $graphicnav_directory . '/navstyle.css')) { ?>
+<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/images/nav/<?php echo $graphicnav_directory; ?>/navstyle.css" type="text/css" media="screen" />
+<?php } elseif (file_exists(get_template_directory() . '/images/nav/' .$graphicnav_directory. '/navstyle.css')) { ?>
+<link rel="stylesheet" href="<?php echo get_template_directory_uri();  ?>/images/nav/<?php echo $graphicnav_directory; ?>/navstyle.css" type="text/css" media="screen" />
+<?php } 
+}
+	
+if (comicpress_check_child_file('childfunctions') == false) {}
 
 ?>

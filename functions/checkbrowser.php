@@ -1,7 +1,0 @@
-<?php
-/**
- * Check Browser
- * Depreciated
- * 
- */
-?>

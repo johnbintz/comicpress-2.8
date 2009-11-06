@@ -7,9 +7,9 @@ Template Name: Links
 <?php include(get_template_directory() . '/layout-head.php'); ?>
 
 	<?php 
-			$bookmarks = wp_list_bookmarks('echo=0');
-			$bookmarks = preg_replace('#<li ([^>]*)>#', '<li>', $bookmarks);
-			$bookmarks = preg_replace('#<ul ([^>]*)>#', '<ul>', $bookmarks);
+	$bookmarks = wp_list_bookmarks('echo=0');
+	$bookmarks = preg_replace('#<li ([^>]*)>#', '<li>', $bookmarks);
+	$bookmarks = preg_replace('#<ul ([^>]*)>#', '<ul>', $bookmarks);
 	 ?>
 	
 	<?php while (have_posts()) : the_post() ?>

@@ -4,7 +4,7 @@
 		{
 		if (!document.images) 
 		return
-		document.getElementById(pic).src = '<?php echo get_bloginfo('stylesheet_directory'); ?>/images/options/'+sel.options[sel.selectedIndex].value+'.png'
+		document.getElementById(pic).src = '<?php echo get_template_directory_uri(); ?>/images/options/'+sel.options[sel.selectedIndex].value+'.png'
 		}
 	</script>
 	
@@ -33,7 +33,7 @@
 						</label>
 					</td>
 					<td valign="top">
-						<img id="cpthemestyle" src="<?php echo get_bloginfo('stylesheet_directory'); ?>/images/options/<?php echo get_option($value['id']); ?>.png" alt="ComicPress Theme Style" />
+						<img id="cpthemestyle" src="<?php echo get_template_directory_uri(); ?>/images/options/<?php echo get_option($value['id']); ?>.png" alt="ComicPress Theme Style" />
 					</td>
 					<td valign="top">
 						Standard and Vertical themes are 780px, 3 Column, Graphic Novel and Vertical 3 Column are 980px wide.
@@ -41,59 +41,6 @@
 				</tr>
 				
 				<?php break;
-			case "comicpress-themepack_directory": 
-				$current_themepack_directory = get_option($value['id']);
-				if (empty($current_themepack_directory)) $current_themepack_directory = 'silver';
-					
-				$count = count($results = glob(get_template_directory() . '/themepack/'.$current_themepack_directory.'/*'));
-				$themepack_directories = glob(get_template_directory() . '/themepack/*');
-				
-			?>
-				<tr>
-				<th scope="row"><strong><?php _e('Themepack','comicpress'); ?></strong><br /><br /><?php _e('Choose a Themepack to use.','comicpress'); ?><br /></th>
-				<td valign="top">
-					<label>
-						<select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
-							<option class="level-0" value="none" <?php if ($current_themepack_directory == "none") { ?>selected="selected"<?php } ?>>none</option>
-				<?php
-					foreach ($themepack_directories as $themepack_dirs) {
-						if (is_dir($themepack_dirs)) { 
-							$themepack_dir_name = basename($themepack_dirs); ?>
-							<option class="level-0" value="<?php echo $themepack_dir_name; ?>" <?php if ($current_themepack_directory == $themepack_dir_name) { ?>selected="selected"<?php } ?>><?php echo $themepack_dir_name; ?></option>
-					<?php }
-					}
-				?>
-						</select>
-					</label>
-				</td>
-				</tr>
-				<tr>
-				<td></td>
-				<td valign="top" colspan="5">
-				<?php 
-					foreach ($themepack_directories as $themepack_dirs) {
-						if (is_dir($themepack_dirs)) { 
-							$themepack_dir_name = basename($themepack_dirs); ?>
-							<div style="width: 100%; padding: 2px;">
-								<div style="width: 180px; float: left;">
-							<?php if (file_exists(get_template_directory() .'/themepack/'.$themepack_dir_name.'/screenshot.png')) { ?>
-									<img src="<?php bloginfo('stylesheet_directory'); ?>/themepack/<?php echo $themepack_dir_name; ?>/screenshot.png" width="180" alt="<?php echo $themepack_dir_name; ?>" />
-							<?php }	?>
-								</div>
-							<?php if (file_exists(get_template_directory() .'/themepack/'.$themepack_dir_name.'/notes.php')) { ?>
-								<div style="float: left; margin-left: 10px;">
-									<?php include(get_template_directory() . '/themepack/'.$themepack_dir_name.'/notes.php'); ?>
-								</div>
-								<?php } ?>
-								<div style="clear:both;"></div>
-							</div>
-					<?php }
-					}
-				?>		
-				</td>
-				</tr>
-				
-			<?php break;
 		}
 	}
 	?>

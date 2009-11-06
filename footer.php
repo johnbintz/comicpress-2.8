@@ -1,4 +1,3 @@
-<?php if (comicpress_check_themepack_file('footer') == false) { ?>
 <div id="footer">
 	<?php if (function_exists('the_project_wonderful_ad')) { ?>
 		<div class="footerpwad">
@@ -18,7 +17,6 @@
 		</p>
 	<?php } ?>
 </div>
-<?php } ?>
  
 <?php global $disable_page_restraints; if ($disable_page_restraints == 'no') { ?>
 	</div><!-- Ends "page/page-wide" -->

@@ -16,7 +16,7 @@
 
 	<?php while (have_posts()) : the_post(); 
 		if (in_comic_category()) { ?>
-			<?php if (comicpress_check_themepack_file('displaycomic') == false) { ?>
+			<?php if (comicpress_check_child_file('partials/displaycomic') == false) { ?>
 			<div id="comic-wrap">
 				<div id="comic-head"><?php get_sidebar('over'); ?></div>
 				<div class="clear"></div>
@@ -50,42 +50,42 @@
 		</div>
 	<?php } ?>
 	<?php get_sidebar('blog'); ?>	
-<?php if (have_posts()) : while (have_posts()) : the_post();
-		if (in_comic_category()) {
-			global $disable_comic_blog_single;
-			if ($disable_comic_blog_single != 'yes') {
-				display_comic_post();
-				$cur_date = mysql2date('Y-m-j', $post->post_date);
-				$next_comic = get_next_comic();
-				$next_comic = (array)$next_comic;
-				$next_date = mysql2date('Y-m-j', $next_comic['post_date']);
-				$blog_query = 'showposts='.$blog_postcount.'&order=asc&cat=-'.exclude_comic_categories();
-			}
-		} else { 
-			display_blog_post();			
-		} 
-	endwhile; 
-	
+	<?php if (have_posts()) : while (have_posts()) : the_post();
+			if (in_comic_category()) {
+				global $disable_comic_blog_single;
+				if ($disable_comic_blog_single != 'yes') {
+					display_comic_post();
+					$cur_date = mysql2date('Y-m-j', $post->post_date);
+					$next_comic = get_next_comic();
+					$next_comic = (array)$next_comic;
+					$next_date = mysql2date('Y-m-j', $next_comic['post_date']);
+					$blog_query = 'showposts='.$blog_postcount.'&order=asc&cat=-'.exclude_comic_categories();
+				}
+			} else { 
+				display_blog_post();			
+			} 
+		endwhile; 
+		
 		global $blogposts_with_comic;
 		
-	if ($blogposts_with_comic == 'yes') {
-		
-		$temppost = $post;
-		$temp_query = $wp_query;		
-		
-		if (in_comic_category() && !empty($blog_query)) {
-			function filter_where($where = '') {
-				global $cur_date, $next_date;
-				$where .= " AND post_date >= '".$cur_date."' AND post_date < '".$next_date."'";
-				return $where;
-			}
-			add_filter('posts_where', 'filter_where');
-			$posts = query_posts($blog_query);
-			if (have_posts()) { while (have_posts()) : the_post();
-					display_blog_post();
-			endwhile; }
-		} 
-		$post = $temppost; $wp_query = $temp_query; $temppost = null; $temp_query = null;
+		if ($blogposts_with_comic == 'yes') {
+			
+			$temppost = $post;
+			$temp_query = $wp_query;		
+			
+			if (in_comic_category() && !empty($blog_query)) {
+				function filter_where($where = '') {
+					global $cur_date, $next_date;
+					$where .= " AND post_date >= '".$cur_date."' AND post_date < '".$next_date."'";
+					return $where;
+				}
+				add_filter('posts_where', 'filter_where');
+				$posts = query_posts($blog_query);
+				if (have_posts()) { while (have_posts()) : the_post();
+						display_blog_post();
+				endwhile; }
+			} 
+			$post = $temppost; $wp_query = $temp_query; $temppost = null; $temp_query = null;
 		} ?>
 	
 		<?php comments_template('', true); ?>		

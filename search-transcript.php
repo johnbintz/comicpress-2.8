@@ -101,4 +101,3 @@ $count = $tmp_search->post_count;
 <?php comicpress_pagination(); ?>
 
 <?php include(get_template_directory() . '/layout-foot.php'); ?>
-<?php get_footer() ?>

@@ -216,7 +216,10 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
     }
 		ob_start(); ?>
 			<div id="comic_navi_wrapper">
-				<div class="comic_navi"><?php echo $buttons_text; ?></div>
+				<div class="comic_navi">
+					<?php echo $buttons_text; ?>
+					<div class="clear"></div>
+				</div>
 			</div>
 		<?php
 		return array($buttons, $content);

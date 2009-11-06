@@ -1,3 +1,4 @@
+<?php if (comicpress_check_child_file('layout-head') == false) { ?>
 <div id="content-wrapper-head"></div>
 	<div id="content-wrapper">
 
@@ -24,4 +25,5 @@
 		<div id="content" class="narrowcolumn">
 			<div class="column">	
 	<?php } ?>
+<?php } ?>
 	
