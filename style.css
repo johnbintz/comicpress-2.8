@@ -366,6 +366,38 @@ a.navi-comments:hover span {
 	color:#860b04;
 }
 
+.nav,.blognav {
+	float: right;
+	font-size: 12px;
+	font-weight: bold;
+	margin-right: 10px;
+	padding: 8px 5px 5px 5px;
+}
+
+	.nav-first {
+		padding: 0 5px 0 0;
+		float: left;
+	}
+
+	.nav-previous {
+		padding: 0 5px;
+		float: left;
+	}
+
+	.nav-next {
+		padding: 0 5px;
+		float: left;
+	}
+
+	.nav-last {
+		padding: 0 0 0 5px;
+		float: left;
+	}
+
+a.navi-comments:hover span {
+	color:#860b04;
+}
+
 .pagenav, .commentnav {
 	height: 25px;
 	color: #000;
@@ -1473,3 +1505,5 @@ li.pingback div p, li.trackback div p {
 		margin: 0;
 		padding: 0;
 	}
+
+.nav { display: none; }
