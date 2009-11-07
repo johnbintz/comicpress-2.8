@@ -3,33 +3,36 @@ Author: Tyler Martin
 Style: Default
 */
 #comic_navi_wrapper {
-	width: 100%;
 	text-align: center;
 }
 
 .comic_navi_left {
+	height: 25px;
 	display: inline-block;
 	float: left;
 }
 
 .comic_navi_center {
+	height: 25px;
+	margin-bottom: 10px;
 	margin: 0 auto;
 	display: inline-block;
 }
 
 .comic_navi_right {
+	height: 25px;
 	display: inline-block;
 	float: right;
 }
 
 .comic_navi {
-	width: 100%;
 	background: #000;
+	height: 25px;
+	line-height: 24px;
+	display: table;
+	border-collapse: collapse;
 	margin: 0 auto;
-	list-style: none;
-	line-height: 25px;
-	font-size: 13px;
-	display: inline-block;
+
 }
 
 .navi-comictitle {
@@ -95,15 +98,12 @@ Style: Default
 	}
 
 	.navi-buyprint-form {
-		display: inline-block;
 		}
 
 .navi-archive, .navi-archives {
-	display: inline-block;
 }
 
 .navi-random {
-	display: inline-block;
 }
 
 .navi-comments {
