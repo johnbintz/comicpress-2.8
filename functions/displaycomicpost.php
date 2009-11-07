@@ -10,7 +10,7 @@ function display_comic_post() {
 		global $post, $wp_query, $authordata, $enable_related_comics, $enable_comic_post_author_gravatar, $enable_comic_post_calendar, $disable_categories_in_posts, $disable_tags_in_posts;  ?>
 		<div class="<?php comicpress_post_class(); ?>">
 			<div class="post-comic-head"></div>
-				<div <?php post_class(); ?> id="post-comic-<?php the_ID() ?>">
+				<div class="post-comic" id="post-comic-<?php the_ID() ?>">
 					<div class="post-comic-info">
 					<?php if ($enable_comic_post_author_gravatar == 'yes') { ?>
 						<div class="post-comic-author-gravatar"><?php echo str_replace("alt='", "alt='".get_the_author_meta('display_name')."' title='".get_the_author_meta('display_name'),comicpress_get_avatar(get_the_author_meta('email'), 64)); ?></div>

@@ -81,7 +81,7 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 			<?php } 	
 			if ($instance['next'] == 'on') {
 				if (!empty($next_comic)) {
-					if (($next_comic == $latest_comic) && $instance['nextgohome'] == 'on') { ?>
+					if (($next_comic == $latest_comic) && $instance['lastgohome'] == 'on') { ?>
 						<a href="/" class="navi navi-next" title="<?php echo $instance['next_title']; ?>"><?php echo $instance['next_title']; ?></a>
 					<?php } else { ?>
 						<a href="<?php echo $next_comic; ?>" class="navi navi-next" title="<?php echo $instance['next_title']; ?>"><?php echo $instance['next_title']; ?></a>					
@@ -99,7 +99,7 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 			}
 			if ($instance['last'] == 'on') {
 				if (!empty($last_comic) && ($last_comic != $this_permalink)) {
-					if ($instance['nextgohome'] == 'on') { ?>
+					if ($instance['lastgohome'] == 'on') { ?>
 						<a href="/" class="navi navi-last" title="<?php echo $instance['last_title']; ?>"><?php echo $instance['last_title']; ?></a>
 					<?php } else { ?>
 						<a href="<?php echo $last_comic; ?>" class="navi navi-last" title="<?php echo $instance['last_title']; ?>"><?php echo $instance['last_title']; ?></a>						
@@ -130,7 +130,7 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 		$instance['archive_path'] = strip_tags($new_instance['archive_path']);
 		$instance['buyprint'] = $new_instance['buyprint'];
 		$instance['comictitle'] = $new_instance['comictitle'];
-		$instance['nextgohome'] = $new_instance['nextgohome'];
+		$instance['lastgohome'] = $new_instance['lastgohome'];
 		
 		$instance['first_title'] = strip_tags($new_instance['first_title']);
 		$instance['last_title'] = strip_tags($new_instance['last_title']);
@@ -169,7 +169,7 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 					'next_title' => 'Next', 
 					'buyprint_title' => 'Buy Print',
 					'comictitle' => 'off',
-					'nextgohome' => 'off',
+					'lastgohome' => 'off',
 		 ) );
 		$first = $instance['first']; if (empty($first)) $first = 'on';
 		$last = $instance['last']; if (empty($last)) $last = 'on';
@@ -183,7 +183,7 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 		$next = $instance['next']; if (empty($next)) $next = 'on';
 		$buyprint = $instance['buyprint']; if (empty($buyprint)) $buyprint = 'off';
 		$comictitle = $instance['comictitle']; if (empty($comictitle)) $comictitle = 'off';
-		$nextgohome = $instance['nextgohome']; if (empty($nextgohome)) $nextgohome = 'off';
+		$lastgohome = $instance['lastgohome']; if (empty($lastgohome)) $lastgohome = 'off';
 		
 				
 		$first_title = $instance['first_title']; 
@@ -268,7 +268,7 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 		<input class="widefat" id="<?php echo $this->get_field_id('buyprint_title'); ?>" name="<?php echo $this->get_field_name('buyprint_title'); ?>" type="text" value="<?php echo attribute_escape($buyprint_title); ?>" /></label><br />
 		<hr>
 			<?php _e('Next to Last, and latest Button goes home?','comicpress'); ?><br />
-			<input id="<?php echo $this->get_field_id('nextgohome'); ?>" name="<?php echo $this->get_field_name('nextgohome'); ?>" type="radio" value="on"<?php if ( $nextgohome == "on") { echo " checked"; } ?> />On</label>&nbsp;<input id="<?php echo $this->get_field_id('nextgohome'); ?>" name="<?php echo $this->get_field_name('nextgohome'); ?>" type="radio" value="off"<?php if ( $nextgohome == "off") { echo " checked"; } ?> />Off</label><br />
+			<input id="<?php echo $this->get_field_id('lastgohome'); ?>" name="<?php echo $this->get_field_name('lastgohome'); ?>" type="radio" value="on"<?php if ( $lastgohome == "on") { echo " checked"; } ?> />On</label>&nbsp;<input id="<?php echo $this->get_field_id('lastgohome'); ?>" name="<?php echo $this->get_field_name('lastgohome'); ?>" type="radio" value="off"<?php if ( $lastgohome == "off") { echo " checked"; } ?> />Off</label><br />
 
 		<?php
 	}

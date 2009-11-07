@@ -91,7 +91,7 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
         if (isset($css_name_mapping[$which])) { $navi_class_names[] = "navi-{$css_name_mapping[$which]}"; }
         
 				$link = get_permalink($target->ID);
-				if (($which == 'next') && ($instance['nextgohome'] == 'on')) { $link = get_bloginfo('url'); }
+				if (($which == 'last') && ($instance['lastgohome'] == 'on')) { $link = get_bloginfo('url'); }
 				if ($ok) {
 				  ?><a href="<?php echo $link; ?>"
 					  	 class="navi <?php echo implode(" ", $navi_class_names); ?>"
@@ -280,7 +280,7 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
     $all_fields = array(
 		  'first', 'story_prev', 'story_next', 'story_prev_in',
 		  'story_next_in', 'previous', 'random', 'archives', 
-			'comments', 'next', 'last', 'buyprint', 'comictitle', 'nextgohome',
+			'comments', 'next', 'last', 'buyprint', 'comictitle', 'lastgohome',
 			'story_prev_acts_as_prev_in'
 		);
 
@@ -312,7 +312,7 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 			'archive_path' => '',
 			'buyprint' => 'off',
 			'comictitle' => 'off',
-			'nextgohome' => 'off',
+			'lastgohome' => 'off',
 			'story_prev_acts_as_prev_in' => 'on'
 		);
 
@@ -379,12 +379,12 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 												 value="<?php echo attribute_escape($instance['archive_path']); ?>" />
 								</div>
 							<?php break;
-							case "next": ?>
+							case "last": ?>
 								<div>
 									<label>
-									  <input id="<?php echo $this->get_field_id('nextgohome'); ?>"
-													 name="<?php echo $this->get_field_name('nextgohome'); ?>"
-													 type="checkbox" class="comicpress-field" value="yes"<?php if ($instance['nextgohome'] == "on") { echo ' checked="checked"'; } ?> />
+									  <input id="<?php echo $this->get_field_id('lastgohome'); ?>"
+													 name="<?php echo $this->get_field_name('lastgohome'); ?>"
+													 type="checkbox" class="comicpress-field" value="yes"<?php if ($instance['lastgohome'] == "on") { echo ' checked="checked"'; } ?> />
 										<strong><?php _e('...go Home instead of Last', 'comicpress'); ?></strong>
 									</label>
 								</div>
