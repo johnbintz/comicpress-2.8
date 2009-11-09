@@ -41,9 +41,9 @@ function comicpress_avatar() {
 		echo str_replace("alt='", "alt='".wp_specialchars(get_comment_author(), 1)."' title='".wp_specialchars(get_comment_author(), 1), comicpress_get_avatar($id_or_email, 64));
 	} else {
 		if ($comment_type == 'pingback' || $comment_type == 'trackback') {
-			echo '<img src="'.get_bloginfo('stylesheet_directory').$avatar.'" class="photo trackping" />';
+			echo '<img src="'.get_template_directory_uri().'/'.$avatar.'" class="photo trackping" />';
 		} else {
-			echo '<img src="'.get_bloginfo('stylesheet_directory').$avatar.'" class="avatar photo" />';
+			echo '<img src="'.get_template_directory_uri().'/'.$avatar.'" class="avatar photo" />';
 		}
 	}
 	

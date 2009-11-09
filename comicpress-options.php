@@ -25,7 +25,7 @@ function comicpress_admin() {
 	<div class="wrap">
 	<h2 class="alignleft"><?php _e('ComicPress Options','comicpress'); ?></h2>
 	 
-	<a class="alignright" style="margin: 20px;" href="http://comicpress.org/"><img src="<?php echo get_bloginfo('stylesheet_directory'); ?>/images/options/comicpress_logo.png" alt="ComicPress" /></a>
+	<a class="alignright" style="margin: 20px;" href="http://comicpress.org/"><img src="<?php echo get_template_directory_uri(); ?>/images/options/comicpress_logo.png" alt="ComicPress" /></a>
 
 
 	<br clear="all" />		

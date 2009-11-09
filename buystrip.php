@@ -46,11 +46,11 @@ Templete Author Email: philip@frumph.net
 						<input type="hidden" name="cmd" value="_cart">
 						<input type="hidden" name="shipping2" value="<?php echo $buy_print_us_amount; ?>">
 						<input type="hidden" name="cn" value="<?php _e('Special Instructions (optional)','comicpress'); ?>">
-						<input type="hidden" name="cancel_return" value="<?php echo get_bloginfo('url'); ?>">
+						<input type="hidden" name="cancel_return" value="<?php echo get_bloginfo('wpurl'); ?>">
 						<input type="hidden" name="item_name" value="<?php _e('Print','comicpress'); ?>">
-						<input type="hidden" name="notify_url" value="<?php echo get_bloginfo('url'); ?>">
+						<input type="hidden" name="notify_url" value="<?php echo get_bloginfo('wpurl'); ?>">
 						<input type="hidden" name="page_style" value="">
-						<input type="hidden" name="return" value="<?php echo bloginfo('url'); ?>">
+						<input type="hidden" name="return" value="<?php echo bloginfo('wpurl'); ?>">
 						<input type="hidden" name="amount" value="<?php echo $buy_print_us_amount; ?>">
 						<input type="hidden" name="item_number" value="<?php _e('Comic ID','comicpress'); ?> (<?php echo $comicnum; ?>) - <?php echo the_title(); ?>">
 						<input type="hidden" name="business" value="<?php echo $buy_print_email; ?>">
@@ -68,11 +68,11 @@ Templete Author Email: philip@frumph.net
 						<input type="hidden" name="cmd" value="_cart">
 						<input type="hidden" name="shipping2" value="<?php echo $buy_print_int_amount; ?>">
 						<input type="hidden" name="cn" value="<?php _e('Special Instructions (optional)','comicpress'); ?>">
-						<input type="hidden" name="cancel_return" value="<?php echo get_bloginfo('url'); ?>">
+						<input type="hidden" name="cancel_return" value="<?php echo get_bloginfo('wpurl'); ?>">
 						<input type="hidden" name="item_name" value="<?php _e('Print','comicpress'); ?>">
-						<input type="hidden" name="notify_url" value="<?php echo get_bloginfo('url'); ?>">
+						<input type="hidden" name="notify_url" value="<?php echo get_bloginfo('wpurl'); ?>">
 						<input type="hidden" name="page_style" value="">
-						<input type="hidden" name="return" value="<?php echo bloginfo('url'); ?>">
+						<input type="hidden" name="return" value="<?php echo bloginfo('wpurl'); ?>">
 						<input type="hidden" name="amount" value="<?php echo $buy_print_int_amount; ?>">
 						<input type="hidden" name="item_number" value="<?php _e('Comic ID','comicpress'); ?> (<?php echo $comicnum; ?>) - <?php echo the_title(); ?>">
 						<input type="hidden" name="business" value="<?php echo $buy_print_email; ?>">
