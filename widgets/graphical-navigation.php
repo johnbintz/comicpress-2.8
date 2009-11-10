@@ -101,7 +101,7 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 					  	 class="navi <?php echo implode(" ", $navi_class_names); ?>"
 					title="<?php echo $instance["${which}_title"]; ?>"><?php echo htmlspecialchars_decode($instance["${which}_title"]); ?></a><?php
 				} else {
-					?><div class="navi <?php echo implode(" ", $navi_class_names); ?> navi-void"><?php echo htmlspecialchars_decode($instance["${which}_title"]); ?></div><?php
+					?><span class="navi <?php echo implode(" ", $navi_class_names); ?> navi-void"><?php echo htmlspecialchars_decode($instance["${which}_title"]); ?></span><?php
 				}
 			  break;
 			case 'archives':
@@ -115,7 +115,7 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 						 title="<?php echo $instance['random_title']; ?>"><?php echo $instance['random_title']; ?></a><?php
 				break;
 			case 'comictitle':
-			  ?><div class="navi-comictitle"><a href="<?php echo get_permalink($current) ?>"><?php echo get_the_title($current->ID); ?></a></div><?php
+			  ?><span class="navi-comictitle"><a href="<?php echo get_permalink($current) ?>"><?php echo get_the_title($current->ID); ?></a></span><?php
 				break;
 			case 'comments':
 				$temp_id = $id;
@@ -213,7 +213,7 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 	  if (is_array($buttons)) {
       $output = array();
       foreach ($this->_group_navigation_buttons($buttons) as $group => $grouped_buttons) {
-        $output[] = '<div class="' . $group . '">' . implode('', array_values($grouped_buttons)) . '</div>';
+        $output[] = '<span class="' . $group . '">' . implode('', array_values($grouped_buttons)) . '</span>';
       }
 
       $buttons_text = implode('', $output);

@@ -4,42 +4,36 @@ Style: Sci Fi
 */
 
 #comic_navi_wrapper {
+	display: table;
+	border-collapse: collapse;
 	text-align: center;
+	margin: 0 auto;
 }
 
 .comic_navi_left {
-	display: inline-block;
-	float: left;
 }
 
 .comic_navi_center {
-	margin: 0 auto;
-	display: inline-block;
 }
 
 .comic_navi_right {
-	display: inline-block;
-	float: right;
 }
 
 .comic_navi {
-	display: table;
-	border-collapse: collapse;
-	margin: 0 auto;
+
 }
 
 .navi-comictitle {
 	text-align: center;
-	float: left;
-	display: inline-block;
 	padding-top: 26px;
+	max-width: 100px;
 }
 
 .navi {
 	width: 60px;
-	padding: 56px 0 0 0;
-	display: block;
-	float: left;
+	padding: 60px 0 0 0;
+/*	margin: 0 5px; */
+	display: inline-block;
 	overflow: hidden;
 	font-size: 11px;
 	text-align: center;
@@ -101,7 +95,7 @@ Style: Sci Fi
 
 	a.navi-comments span {
 		width: 60px;
-		height: 56px;
+		height: 60px;
 		position: relative;	
 		display: block;
 		font-size: 22px;

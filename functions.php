@@ -19,7 +19,7 @@ if (function_exists('id_get_comment_number')) {
 	remove_filter('comments_number','id_get_comment_number');
 }
 
-$comicpress_version = '2.8.2.4';
+$comicpress_version = '2.8.2.5';
 
 global $wpmu_version;
 if (!empty($wpmu_version)) {
@@ -853,7 +853,7 @@ function comicpress_check_child_file($filename = '') {
 	if (empty($filename)) return false;
 	if (get_stylesheet_directory() != get_template_directory()) {
 		if (file_exists(get_stylesheet_directory() .'/'. $filename . '.php')) { 
-			@require_once(get_stylesheet_directory() .'/'. $filename . '.php');
+			@include(get_stylesheet_directory() .'/'. $filename . '.php');
 			return true;
 		}
 	}

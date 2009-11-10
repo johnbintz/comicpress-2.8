@@ -3,45 +3,36 @@ Author: Tyler Martin
 Style: Default
 */
 #comic_navi_wrapper {
+	display: table;
+	border-collapse: collapse;
 	text-align: center;
+	margin: 0 auto;
 }
 
 .comic_navi_left {
-	display: inline-block;
-	float: left;
 }
 
 .comic_navi_center {
-	margin: 0 auto;
-	display: inline-block;
 }
 
 .comic_navi_right {
-	display: inline-block;
-	float: right;
 }
 
 .comic_navi {
-	display: table;
-	border-collapse: collapse;
-	margin: 0 auto;
 
 }
 
 .navi-comictitle {
 	text-align: center;
-	float: left;
-	display: block;
 	padding-top: 26px;
-	max-width: 200px;
+	max-width: 100px;
 }
 
 .navi {
 	width: 66px;
 	padding: 66px 0 0 0;
 /*	margin: 0 5px; */
-	display: block;
-	float: left;
+	display: inline-block;
 	overflow: hidden;
 	font-size: 11px;
 	text-align: center;
@@ -53,7 +44,6 @@ Style: Default
 	}
 
 .navi-first {
-	margin: 0;
 	background: url('first.png') no-repeat;
 }
 
@@ -66,7 +56,7 @@ Style: Default
 }
 
 .navi-prev, .navi-previous {
-	margin-right: 30px;
+	margin-right: 10px;
 	background: url('prev.png') no-repeat;
 }
 
@@ -89,8 +79,7 @@ Style: Default
 
 	.navi-buyprint-form {
 		width: 76px;
-		display: block;
-		float: left;
+		display: inline-block;
 		margin: 0;
 		padding: 0;
 		}
@@ -109,9 +98,10 @@ Style: Default
 }
 
 	a.navi-comments span {
+		display: inline-block;
 		width: 66px;
 		height: 66px;
-		display: block;
+		display: inline-block;
 		font-size: 16px;
 		font-weight: bold;
 		line-height: 66px;
@@ -123,7 +113,7 @@ Style: Default
 			}
 	
 .navi-next {
-	margin-left: 30px;
+	margin-left: 10px;
 	background: url('next.png') no-repeat;
 }
 
@@ -136,7 +126,6 @@ Style: Default
 }
 
 .navi-last {
-	margin: 0;
 	background: url('last.png') no-repeat;
 }
 
