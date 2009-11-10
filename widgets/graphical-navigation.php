@@ -57,7 +57,7 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
       'previous'   => 'prev',
       'story_next' => 'nextchap'
     );
-    
+
 		$ok = true;
 		switch ($which) {
       case 'first':
@@ -89,7 +89,7 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
       case 'story_next_in':
         $navi_class_names = array("navi-${which}");
         if (isset($css_name_mapping[$which])) { $navi_class_names[] = "navi-{$css_name_mapping[$which]}"; }
-        
+
 				$link = get_permalink($target->ID);
 				if (($which == 'last') && ($instance['lastgohome'] == 'on')) { $link = get_bloginfo('url'); }
 				if ($ok) {
@@ -243,7 +243,9 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 			$post_nav = $navigation->get_post_nav($post);
 
 			if ($instance['story_prev_acts_as_prev_in']) {
-				$post_nav['storyline-chapter-previous'] = $post_nav['storyline-previous'];
+				if ($post_nav['storyline-previous'] !== false) {
+					$post_nav['storyline-chapter-previous'] = $post_nav['storyline-previous'];
+				}
 			}
 
 			$storyline_to_nav_mapping = array(
@@ -279,7 +281,7 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 
     $all_fields = array(
 		  'first', 'story_prev', 'story_next', 'story_prev_in',
-		  'story_next_in', 'previous', 'random', 'archives', 
+		  'story_next_in', 'previous', 'random', 'archives',
 			'comments', 'next', 'last', 'buyprint', 'comictitle', 'lastgohome',
 			'story_prev_acts_as_prev_in'
 		);
@@ -414,7 +416,7 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 					}
 				}
 			};
-			
+
 			jQuery('.comicpress-field-holder').each(function(fh) {
 				jQuery('.comicpress-field[type=checkbox]', this).bind('click', _get_comicpress_show_hide_text(this, false));
 				_get_comicpress_show_hide_text(this, true)();
