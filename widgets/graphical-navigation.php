@@ -246,7 +246,7 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 			$navigation->init($storyline);
 			$post_nav = $navigation->get_post_nav($post);
 
-			if ($instance['story_prev_acts_as_prev_in']) {
+			if ($instance['story_prev_acts_as_prev_in'] == 'on') {
 				if ($post_nav['storyline-previous'] !== false) {
 					$post_nav['storyline-chapter-previous'] = $post_nav['storyline-previous'];
 				}
