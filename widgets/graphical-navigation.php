@@ -87,11 +87,15 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
       case 'story_next':
       case 'story_prev_in':
       case 'story_next_in':
-        $navi_class_names = array("navi-${which}");
-        if (isset($css_name_mapping[$which])) { $navi_class_names[] = "navi-{$css_name_mapping[$which]}"; }
+      	$ok = false;
+	      $navi_class_names = array("navi-${which}");
+      	if (is_object($target)) {
+      		$ok = true;
+	        if (isset($css_name_mapping[$which])) { $navi_class_names[] = "navi-{$css_name_mapping[$which]}"; }
 
-				$link = get_permalink($target->ID);
-				if (($which == 'last') && ($instance['lastgohome'] == 'on')) { $link = get_bloginfo('url'); }
+					$link = get_permalink($target->ID);
+					if (($which == 'last') && ($instance['lastgohome'] == 'on')) { $link = get_bloginfo('url'); }
+				}
 				if ($ok) {
 				  ?><a href="<?php echo $link; ?>"
 					  	 class="navi <?php echo implode(" ", $navi_class_names); ?>"
