@@ -70,8 +70,7 @@ class widget_comicpress_calendar extends WP_Widget {
 	}
 	
 	function form($instance) {
-		$default_image = get_template_directory_uri() . '/images/cal/default.png';
-		$instance = wp_parse_args( (array) $instance, array( 'thumbnail' => $default_image, 'small' => '', 'medium' => '', 'large' => '', 'link' => '') );
+		$instance = wp_parse_args( (array) $instance, array( 'thumbnail' => '', 'small' => '', 'medium' => '', 'large' => '', 'link' => '') );
 		$thumbnail = strip_tags($instance['thumbnail']);
 		$small = strip_tags($instance['small']);
 		$medium = strip_tags($instance['medium']);
