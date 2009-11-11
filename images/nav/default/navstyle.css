@@ -3,7 +3,6 @@ Author: Tyler Martin
 Style: Default
 */
 #comic_navi_wrapper {
-	width: 100%;
 	display: table;
 	border-collapse: collapse;
 	text-align: center;
@@ -22,13 +21,14 @@ Style: Default
 }
 
 .comic_navi {
-	background: #555;
+	background: #222;
 	padding: 2px;
-	border: solid 1px #333;
-	-moz-border-radius: 8px;
-	-khtml-border-radius: 8px;
-	-webkit-border-radius: 8px;
-	border-radius: 8px;
+	border: solid 1px #000;
+	border-top: 0;
+	-moz-border-radius: 0 0 8px 8px;
+	-khtml-border-radius: 0 0 8px 8px;
+	-webkit-border-radius: 0 0 8px 8px;
+	border-radius: 0 0 8px 8px;
 }
 
 
