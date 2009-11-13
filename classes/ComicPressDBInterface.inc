@@ -1,7 +1,7 @@
 <?php
 
 class ComicPressDBInterface {
-	var $_non_comic_categories, $_all_categories;
+	var $_non_comic_categories = array(), $_all_categories = array();
 
 	function ComicPressDBInterface() {}
 
