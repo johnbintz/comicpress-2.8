@@ -23,7 +23,12 @@ class ComicPressDBInterface {
   }
 
   function _get_categories_to_exclude($category = null) {
-    return (is_null($category)) ? $this->_non_comic_categories : array_values(array_diff($this->_all_categories, array($category)));
+  	$result = array_diff($this->_all_categories, array($category));
+  	if (is_array($result)) {
+    	return (is_null($category)) ? $this->_non_comic_categories : array_values($result);
+  	} else {
+  		return $this->_non_comic_categories;
+  	}
   }
   
   /**
