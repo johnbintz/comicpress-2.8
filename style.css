@@ -833,7 +833,7 @@ ul.children {
 			padding: 0;
 		}
 
-	.widget {
+	.sidebar .widget {
 		margin-bottom: 10px;
 	}
 	
@@ -849,7 +849,7 @@ ul.children {
 	background: #000;
 }
 
-.comic-bookmark {
+.sidebar .comic-bookmark {
 	width: 185px;
 	margin: 0 auto;
 	margin-bottom: 10px;

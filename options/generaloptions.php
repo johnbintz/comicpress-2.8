@@ -8,20 +8,20 @@
 		switch ( $value['type'] ) {
 			case "comicpress-enable_widgetarea_use_sidebar_css": ?>
 				<tr>
-				<th scope="row"><strong><?php _e('Enable Sidebar CSS in non-left/right sidebars?','comicpress'); ?></strong><br /><br /><?php _e('Enabling this will use the standard CSS styling of the sidebars for all the sidebar areas.','comicpress'); ?><br /><br /></th>
+				<th scope="row"><strong><?php _e('Enable Sidebar CSS in non-left/right sidebars?','comicpress'); ?></strong><br /></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label>
 				</td>
 				<td valign="top">
-					<?php _e('If not enabled it will use the .customwidgetarea user made styling only and only the Sidebar-left and Sidebar-right will use sidebar styling.','comicpress'); ?><br />
+					<?php _e('If enabled, all #sidebars will use .sidebar css','comicpress'); ?><br />
 				</td>
 				</tr>
 				<?php break;
 			case "comicpress-enable_numbered_pagination": ?>
 				<tr>
-				<th scope="row"><strong><?php _e('Enable numbered pagination?','comicpress'); ?></strong><br /><br /><?php _e('Setting to &quot;Yes&quot; will make the Previous Entries and Next Entries turn into numbered pages to click on.','comicpress'); ?></th>
+				<th scope="row"><strong><?php _e('Enable numbered pagination?','comicpress'); ?></strong><br /></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;
@@ -35,17 +35,14 @@
 				<?php break;
 			case "comicpress-disable_page_restraints": ?>
 				<tr>
-				<th scope="row"><strong><?php _e('Disable the #page / #page-wide restraints?','comicpress'); ?></strong><br />
-				<br />
-				<?php _e('Turning this option to Yes will make it so that the divs for #page and #page-wide will not load.','comicpress'); ?><br />
-				<br />
+				<th scope="row"><strong><?php _e('Disable the #page / #page-wide restraints?','comicpress'); ?></strong><br /></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label>
 				</td>
 				<td valign="top">
-					<?php _e('What you can do with this is use the entire browser for your canvas instead of the 780px/980px that the two elements keep you in.','comicpress'); ?></th>
+					<?php _e('What you can do with this is use the entire browser for your canvas instead of the 780px/980px that the two elements keep you in.  Not recommended enabling this option unless your an expert in CSS','comicpress'); ?></th>
 				</td>
 				</tr>
 				
@@ -53,14 +50,14 @@
 
 			case "comicpress-comic_clicks_next": ?>
 				<tr>
-				<th scope="row"><strong><?php _e('Make the comic an Href that goes to next comic?','comicpress'); ?></strong><br /><br /><?php _e('In doing this if someone clicks the comic it will go to the next comic (if possible)','comicpress'); ?><br /></th>
+				<th scope="row"><strong><?php _e('Make the comic an Href that goes to next comic?','comicpress'); ?></strong><br /></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label>
 				</td>
 				<td valign="top">
-				<?php _e('When a user or yourself puts their mouse cursor over the comic that is displayed on either the index or single page the action that happens next is the first step in the larger, bigger, more astonishing consequence of actually having any the other things you place your mouse cursor over and click.  You click, it goes to the next comic.','comicpress'); ?>
+				<?php _e('In doing this if someone clicks the comic it will go to the next comic (if possible)','comicpress'); ?>
 				</td>
 				</tr>
 				
@@ -81,7 +78,7 @@
 				<?php break;
 			case "comicpress-disable_footer_text": ?>
 				<tr>
-				<th scope="row"><strong><?php _e('Disable the default text in the footer?','comicpress'); ?></strong><br /><br /><?php _e('Set to &quot;Yes&quot; and the text in the footer will not show.','comicpress'); ?><br /><br /></th>
+				<th scope="row"><strong><?php _e('Disable the default text in the footer?','comicpress'); ?></strong><br /></th>
 				<td valign="top" width="100">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;
@@ -193,6 +190,10 @@
 				?>
 						</select>
 					</label>
+				</td>
+				<td valign="top">
+				<?php _e('To not use the comicpress avatar graphics, set this as "none".','comicpress'); ?><br />
+					<br />
 				</td>
 				</tr>
 			<?php break;

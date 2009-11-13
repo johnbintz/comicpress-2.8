@@ -60,6 +60,7 @@ if (get_option('upload_path') !== false) {
 				'buy_print_url'					=> 'buy_print_url',
 				'buy_print_us_amount'			=> 'buy_print_us_amount',
 				'buy_print_int_amount'			=> 'buy_print_int_amount',
+				'buy_print_add_shipping'		=> 'buy_print_add_shipping',
 				'buy_print_us_ship'				=> 'buy_print_us_ship',
 				'buy_print_int_ship'			=> 'buy_print_int_ship',
 				'cp_theme_layout'				=> 'cp_theme_layout',

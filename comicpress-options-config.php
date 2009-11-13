@@ -55,6 +55,11 @@ $options = array (
 			"type" => "comicpress-buy_print_int_amount"),
 			
 		array(
+			"id" => "comicpress-buy_print_add_shipping",
+			"default" => "yes",
+			"type" => "comicpress-buy_print_add_shipping"),
+			
+		array(
 			"id" => "comicpress-buy_print_us_ship",
 			"default" => "4.95",
 			"type" => "comicpress-buy_print_us_ship"),

@@ -9,6 +9,17 @@ Author URI: http://webcomicplanet.com/
 
 */
 
+/*
+function comicpress_archive_dropdown_storyline() {
+	$storyline = new ComicPressStoryline(); 
+	$storyline->create_structure(get_option('comicpress-storyline-category-order')); 
+	$categories =  array_keys($storyline->_structure);
+	foreach ($categories as $id) { 
+		$post = ComicPressDBInterface::get_instance()->get_first_comic($id);
+	}
+}
+*/
+
 function comicpress_archive_dropdown() { ?>
 	<div class="archive-dropdown-wrap">
 		<select name="archive-dropdown" class="archive-dropdown" onchange='document.location.href=this.options[this.selectedIndex].value;'> 
