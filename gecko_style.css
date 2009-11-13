@@ -1,0 +1,29 @@
+/* ComicPress Custom CSS over-rides for [ gecko ]: ComicPress - 2.8 */
+
+html { overflow-y: scroll; } 
+
+a:focus { outline: 0; }
+
+.comicarchiveframe {
+	-moz-opacity: 0.99;       /* mozilla, netscape */
+	opacity:0.99; /* firefox, opera, safari, chrome */
+}
+
+	.comicarchiveframe:hover {
+		-moz-opacity: 0.7;       /* mozilla, netscape */
+		opacity:0.70; /* firefox, opera, safari, chrome */
+		}
+		
+	.imagenav-link img {
+		-moz-opacity: 0.5;       /* mozilla, netscape, gecko */
+		opacity:0.5; /* firefox, opera, safari, chrome */
+		}
+
+			.imagenav-link img:hover {
+				-moz-opacity: 0;       /* mozilla, netscape */
+				opacity:0.5; /* firefox, opera, safari, chrome */
+				}
+
+::-moz-selection {
+    background: #a1c0d9; /* Firefox */
+}

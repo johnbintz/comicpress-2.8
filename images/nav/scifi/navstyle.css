@@ -1,0 +1,134 @@
+﻿/* COMIC NAVIGATION 
+Author: Philip M. Hofer (Frumph)
+Style: Sci Fi
+*/
+
+#comic_navi_wrapper {
+	display: table;
+	border-collapse: collapse;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.comic_navi_left {
+}
+
+.comic_navi_center {
+}
+
+.comic_navi_right {
+}
+
+.comic_navi {
+
+}
+
+.navi-comictitle {
+	text-align: center;
+	padding-top: 26px;
+	max-width: 100px;
+}
+
+.navi {
+	width: 60px;
+	padding: 60px 0 0 0;
+/*	margin: 0 5px; */
+	display: inline-block;
+	overflow: hidden;
+	font-size: 11px;
+	text-align: center;
+	color: #555;
+}
+
+	.navi:hover {
+		background-position: -60px 0;
+	}
+
+.navi-first {
+	margin: 0;
+	background: url('first.png') no-repeat;
+}
+
+.navi-story_prev_in {
+	background: url('previnchap.png') no-repeat;
+}
+
+.navi-prevchap, .navi-story_prev {
+	background: url('prevchap.png') no-repeat;
+}
+
+.navi-prev {
+	margin-right: 10px;
+	background: url('prev.png') no-repeat;
+}
+
+.navi-buyprint {
+	border: none;
+	cursor: pointer;
+	background: url('buyprint.png') no-repeat;
+}
+
+	.navi-buyprint:hover {
+		color: #f00;
+	}
+
+	.navi-buyprint-form {
+		width: 60px;
+		display: inline-block;
+		margin: 0;
+		padding: 0;
+		}
+
+.navi-archive, .navi-archives {
+	background: url('archive.png') no-repeat;
+}
+
+.navi-random {
+	background: url('random.png') no-repeat;
+}
+
+.navi-comments {
+	padding: 0;
+	background: url('comments.png') no-repeat;
+}
+
+	a.navi-comments span {
+		width: 60px;
+		height: 60px;
+		position: relative;	
+		display: block;
+		font-size: 22px;
+		font-weight: bold;
+		line-height: 50px;
+		color: #FFF;
+	}
+	
+		a.navi-comments span:hover {
+			color: #860b04;
+			}
+	
+.navi-next {
+	margin-left: 10px;
+	background: url('next.png') no-repeat;
+}
+
+.navi-nextchap, .navi-story_next {
+	background: url('nextchap.png') no-repeat;
+}
+
+.navi-story_next_in {
+	background: url('nextinchap.png') no-repeat;
+}
+
+.navi-last {
+	margin: 0;
+	background: url('last.png') no-repeat;
+}
+
+.navi-void, .navi-void:hover {
+	color: #999;
+	background-position: -120px 0;
+}
+
+.comic-left .navi-prev, .comic-right .navi-prev, .comic-left .navi-next, .comic-right .navi-next {
+	}

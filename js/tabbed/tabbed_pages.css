@@ -1,0 +1,63 @@
+#cpadmin {
+	font: 11px verdana,arial,sans-serif;
+	padding: 5px 0 0 0;
+	line-height: 5px;
+	margin: 0 0 -1px 0;
+}
+
+#cpadmin div.off {
+	color: #000;
+	height: 23px;
+	margin: 0 2px -2px 0;
+	line-height: 23px;
+	padding: 0 10px;
+	float: left;
+	background: url(tabs_0.gif) repeat-x left bottom;
+	border-top: 1px solid #ddd;
+	border-left: solid 1px #ddd;
+	border-right: solid 1px #ddd;
+	position: relative;
+	cursor: pointer;
+	z-index: 20;
+}
+#cpadmin div.on {
+	color: #c00;
+	padding: 0 10px;
+	margin: 0 2px -1px 0;
+	float: left;
+	background: url(tabs_2.gif) repeat-x left bottom;
+	border-top: 1px solid #000;
+	border-left: 1px solid #000;
+	border-right: 1px solid #000;
+	border-bottom: 0px;
+	cursor: pointer;
+	height: 23px;
+	line-height: 22px;
+	position: relative;
+	z-index: 100;
+}
+
+div.hide {
+	display: none;
+	width: 0;
+	overflow: hidden;
+}
+div.show {
+	clear: left;
+	display: run-in;
+	background: #fff;
+	border: 1px solid #000;
+	padding: 20px;
+	z-index: 50;
+	margin-top: -2px;
+	position: relative;
+	font: 11px verdana, arial, sans-serif;
+	line-height: 18px;
+}
+div.show img {
+	float: left;
+	margin: 0 10px 10px 0;
+}
+.clear {
+	clear: both;
+}
