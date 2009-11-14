@@ -4,7 +4,7 @@
  * function function comicpress_body_class
  * 
  * Author: Philip M. Hofer (Frumph)
- * Author URI: http://webcomicplanet.com/ http://frumph.net/
+ * Author URI: http://frumph.net/ http://frumph.net/
  * Version: 1.0.6
  * 
  * This function adds the browser type as a class

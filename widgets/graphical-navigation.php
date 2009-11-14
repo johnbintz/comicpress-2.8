@@ -5,7 +5,7 @@ Widget URI: http://comicpress.org/
 Description: This widget places graphical navigation buttons on your comic. For ComicPress 2.8
 Author: Philip M. Hofer (Frumph) &amp; John Bintz
 Version: 1.2
-Author URI: http://webcomicplanet.com/
+Author URI: http://frumph.net/
 */
 
 require_once(dirname(__FILE__) . '/../classes/ComicPressNavigation.inc');

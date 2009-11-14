@@ -5,7 +5,7 @@ Widget URI: http://comicpress.org/
 Description: 
 Author: Philip M. Hofer (Frumph)
 Version: 1.04
-Author URI: http://webcomicplanet.com/
+Author URI: http://frumph.net/
 
 */
 

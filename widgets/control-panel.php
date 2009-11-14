@@ -5,7 +5,7 @@ Widget URI: http://comicpress.org/
 Description: Display an area for login and logout, forgot password and register.
 Author: Philip M. Hofer (Frumph)
 Version: 1.02
-Author URI: http://webcomicplanet.com/
+Author URI: http://frumph.net/
 
 */
 

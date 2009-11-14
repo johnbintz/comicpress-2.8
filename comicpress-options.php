@@ -93,7 +93,7 @@ function comicpress_admin() {
 
 	</div>
 	<div style="margin-top: 10px; text-align:center;padding: 5px; background: #eee; -moz-border-radius: 10px;-khtml-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: solid 1px #000;">
-	<a href="http://comicpress.org/">ComicPress 2.8 (<?php global $comicpress_version; echo $comicpress_version; ?>)</a>, <?php _e('created by','comicpress'); ?> <a href="http://mindfaucet.com/">Tyler Martin</a>, <?php _e('with','comicpress'); ?> <a href="http://www.coswellproductions.com/">John Bintz</a> <?php _e('and','comicpress'); ?> <a href="http://webcomicplanet.com/">Philip M. Hofer</a> (<a href="http://frumph.net/">Frumph</a>)<br />
+	<a href="http://comicpress.org/">ComicPress 2.8 (<?php global $comicpress_version; echo $comicpress_version; ?>)</a>, <?php _e('created by','comicpress'); ?> <a href="http://mindfaucet.com/">Tyler Martin</a>, <?php _e('with','comicpress'); ?> <a href="http://www.coswellproductions.com/">John Bintz</a> <?php _e('and','comicpress'); ?> <a href="http://frumph.net/">Philip M. Hofer (Frumph)</a><br />
 	<?php _e('If you like the ComicPress theme, please donate.  It will help in creating new versions.','comicpress'); ?><br />
 		<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 			<input type="hidden" name="cmd" value="_s-xclick">

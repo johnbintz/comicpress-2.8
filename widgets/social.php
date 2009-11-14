@@ -5,7 +5,7 @@ Widget URI: http://comicpress.org/
 Description: Translates a user's URL line into a social widget, associating it to images.
 Author: Philip M. Hofer (Frumph)
 Version: 1.01
-Author URI: http://webcomicplanet.com/
+Author URI: http://frumph.net/
 
 */
 

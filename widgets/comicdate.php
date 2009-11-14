@@ -5,7 +5,7 @@ Widget URI: http://comicpress.org/
 Description: Display's the date of post of the comic.
 Author: Philip M. Hofer (Frumph)
 Version: 1.01
-Author URI: http://webcomicplanet.com/
+Author URI: http://frumph.net/
 
 */	
 	

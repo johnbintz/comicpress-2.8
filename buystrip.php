@@ -2,7 +2,7 @@
 /*
 Template Name: Buy Print
 Template Author: Philip M. Hofer (Frumph)
-Template URL: http://webcomicplanet.com/forum/
+Template URL: http://frumph.net/forum/
 Template Author Email: philip@frumph.net
 Template Version: 2.14
 */
