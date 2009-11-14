@@ -106,18 +106,13 @@ $options = array (
 		
 		array(
 			"id" => "comicpress-enable_numbered_pagination",
-			"default" => "no",
+			"default" => "yes",
 			"type" => "comicpress-enable_numbered_pagination"),
 			
 		array(
 			"id" => "comicpress-disable_page_restraints",
 			"default" => "no",
 			"type" => "comicpress-disable_page_restraints"),
-			
-		array(
-			"id" => "comicpress-enable_dropdown_sidebar",
-			"default" => "no",
-			"type" => "comicpress-enable_dropdown_sidebar"), 
 		
 		array(
 			"id" => "comicpress-enable_related_comics",
