@@ -29,7 +29,7 @@
 			<?php } ?>
 	<?php } endwhile; ?>
 	
-<?php if (is_cp_theme_layout('3c,standard')) {  ?>
+<?php if (is_cp_theme_layout('3c,standard,3c2r')) {  ?>
 	<div id="subcontent-wrapper-head"></div>
 		<div id="subcontent-wrapper">
 <?php } ?>
