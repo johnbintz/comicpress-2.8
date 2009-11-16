@@ -5,6 +5,9 @@
 	<div class="<?php comicpress_post_class(); ?>">
 		<div class="post-page-head"></div>
 		<div class="post-page" id="post-<?php the_ID() ?>">
+			<div class="post-page-image">
+				<?php if (function_exists('the_post_image')) the_post_image(); ?>
+			</div>
 			<h2 class="pagetitle"><?php the_title() ?></h2>
 			<div class="entry">
 				<?php the_content() ?>

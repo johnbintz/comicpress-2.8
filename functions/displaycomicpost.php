@@ -19,6 +19,13 @@ function display_comic_post() {
 		<div class="<?php comicpress_post_class(); ?>">
 			<div class="post-comic-head"></div>
 				<div class="post-comic" id="post-comic-<?php the_ID() ?>">
+					<?php if (function_exists('the_post_image')) {
+						if ( has_post_image() ) { ?>
+							<div class="post-image">
+							<?php the_post_image(); ?>
+							</div>
+						<?php } ?>
+					<?php } ?>
 					<div class="post-comic-info">
 					<?php if ($enable_comic_post_author_gravatar == 'yes') { ?>
 						<div class="post-comic-author-gravatar"><?php echo str_replace("alt='", "alt='".get_the_author_meta('display_name')."' title='".get_the_author_meta('display_name'),comicpress_get_avatar(get_the_author_meta('email'), 64)); ?></div>

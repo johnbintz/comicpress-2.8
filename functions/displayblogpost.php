@@ -20,6 +20,13 @@ function display_blog_post() {
 	<div class="<?php comicpress_post_class(); ?>">
 		<div class="post-head"></div>
 			<div class="post" id="post-<?php the_ID() ?>">
+				<?php if (function_exists('the_post_image')) {
+					if ( has_post_image() ) { ?>
+						<div class="post-image">
+						<?php the_post_image(); ?>
+						</div>
+					<?php } ?>
+				<?php } ?>
 				<div class="post-info">
 				<?php if ($enable_post_author_gravatar == 'yes') { ?>
 					<div class="post-author-gravatar"><?php echo str_replace("alt='", "alt='".get_the_author_meta('display_name')."' title='".get_the_author_meta('display_name'),comicpress_get_avatar(get_the_author_meta('email'), 64)); ?></div>

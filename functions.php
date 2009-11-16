@@ -1,5 +1,13 @@
 <?php
 
+
+// the_post_image('thumbnail/medium/full'); 
+if (function_exists('add_theme_support')) {
+	add_theme_support( 'post-thumbnails' );
+}
+
+
+
 // Queue up the scripts.
 wp_enqueue_script('comicpress_scroll', get_template_directory_uri() . '/js/scroll.js');
 
@@ -92,7 +100,6 @@ if (get_option('upload_path') !== false) {
 				'contact_in_menubar'			=> 'contact_in_menubar',
 				'disable_dynamic_menubar_links'	=> 'disable_dynamic_menubar_links',
 				'disable_footer_text'			=> 'disable_footer_text',
-				'themepack_directory'			=> 'themepack_directory',
 				'avatar_directory'				=> 'avatar_directory',
 				'archive_display_order'			=> 'archive_display_order',
 				'disable_comment_note'			=> 'disable_comment_note',
