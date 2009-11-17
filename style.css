@@ -1329,8 +1329,12 @@ li.pingback div p, li.trackback div p {
 	line-height: 25px;
 }
 
+	#paginav .paginav-pages {
+		padding-right: 10px;
+	}
+
 	#paginav a {
-		padding: 0px 10px 0 10px;
+		padding: 0px 10px;
 		display: block;
 	}
 
@@ -1349,13 +1353,8 @@ li.pingback div p, li.trackback div p {
 	}
 
 	#paginav .paginav-current, #paginav .current {
-		padding: 0px 10px 0 10px;
-		font-size: larger;
+		padding: 0px 10px;
 		font-weight: bold;
-	}
-
-	#paginav li:hover a {
-		color: #ff0000; 
 	}
 
 /* Tool Tips */
