@@ -28,11 +28,9 @@ Template Name: Comic Archive
 			</table>
 	<?php } } ?>
 
-			<br class="clear-margins" />
-		
-		</div>
-		<div class="post-page-foot"></div>
 	</div>
+	<div class="post-page-foot"></div>
+</div>
 
 
 <?php include(get_template_directory() . '/layout-foot.php'); ?>
