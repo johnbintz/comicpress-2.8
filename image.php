@@ -5,9 +5,18 @@
 	<div class="<?php comicpress_post_class(); ?>">
 		<div class="post-page-head"></div>
 		<div class="post-page" id="post-<?php the_ID() ?>">
-			<h2 class="pagetitle">
-				<a href="<?php echo get_permalink($post->post_parent) ?>" rev="attachment"><?php echo get_the_title($post->post_parent) ?></a>
-			</h2>
+			<?php if (function_exists('the_post_image')) {
+				if ( has_post_image() ) { ?>
+					<div class="post-page-image">
+					<?php the_post_image('full'); ?>
+					</div>
+				<?php } else { ?>
+					<h2 class="pagetitle"><?php the_title() ?></h2>
+				<?php } ?>
+			<?php } else { ?>
+				<h2 class="pagetitle"><?php the_title() ?></h2>
+			<?php } ?>
+			<br class="clear-margins" />
 			<div class="gallery-image">
 				<a href="<?php echo wp_get_attachment_url($post->ID) ?>" target="_blank" title="<?php _e('Click for full size.','comicpress'); ?>" ><img src="<?php echo wp_get_attachment_url($post->ID) ?>" alt="<?php the_title() ?>" /></a>
 			</div>

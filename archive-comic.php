@@ -10,8 +10,19 @@ Template Name: Comic Archive
 	<div class="post-page-head"></div>
 	<div class="post-page">
 	<?php while (have_posts()) : the_post() ?>
+			<?php if (function_exists('the_post_image')) {
+				if ( has_post_image() ) { ?>
+					<div class="post-page-image">
+					<?php the_post_image('full'); ?>
+					</div>
+				<?php } else { ?>
+					<h2 class="pagetitle"><?php the_title() ?></h2>
+				<?php } ?>
+			<?php } else { ?>
+				<h2 class="pagetitle"><?php the_title() ?></h2>
+			<?php } ?>
+			<br class="clear-margins" />
 		<div class="entry">
-			<h2 class="pagetitle"><?php the_title() ?></h2>
 			<?php the_content(); ?>
 		</div>
 	<?php endwhile; ?>
