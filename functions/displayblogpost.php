@@ -12,7 +12,7 @@ function display_blog_post() {
 		<div class="blognav">
 			<div class="nav-single">
 				<?php previous_post_link('%link',__(' &lsaquo; Previous ','comicpress'), TRUE); ?>
-				<?php next_post_link('%link',__(' Next &rsaquo; ','comicpress'), TRUE); ?>
+				<?php next_post_link('%link',__('| Next &rsaquo; ','comicpress'), TRUE); ?>
 			</div>
 		</div>
 	<?php } ?>
@@ -39,11 +39,10 @@ function display_blog_post() {
 				<?php } ?>
 				<div class="post-text">
 					<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
-					<div class="post-author"> By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?></div>
+					<div class="post-author"> By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?> <?php edit_post_link(__('Edit Post','comicpress'), ' [ ', ' ] '); ?></div>
 					<?php if ($disable_categories_in_posts != 'yes') { ?>
 						<div class="post-cat"><?php _e('Posted In:','comicpress'); ?> <?php the_category(','); ?></div>
 					<?php } ?>
-					<div class="post-edit"><?php edit_post_link(__('Edit Post','comicpress'), ' [ ', ' ] '); ?></div>
 					<?php if(function_exists('the_ratings')) { the_ratings(); } ?>
 				</div>
 				<div class="clear"></div>
@@ -52,8 +51,8 @@ function display_blog_post() {
 				<?php if (!is_single()) { global $more; $more = 0; } ?>
 				<?php the_content(__('&darr; Read the rest of this entry...','comicpress')); ?>
 				<?php if (is_single()) wp_link_pages(array('before' => '<div class="linkpages"><span class="linkpages-pagetext">Pages:</span> ', 'after' => '</div>', 'next_or_number' => 'number'));  ?>
+				<div class="clear"></div>
 			</div>
-			<br class="clear-margins" />
 			<div class="post-extras">
 			<?php if ($disable_tags_in_posts != 'yes') { ?>
 				<div class="post-tags">
@@ -63,14 +62,13 @@ function display_blog_post() {
 			<?php 
 				if ('open' == $post->comment_status) { 
 					if (comicpress_check_child_file('partials/commentlink') == false) { ?>
-						<div class="comment-link"><?php comments_popup_link('<span class="comment-balloon comment-balloon-empty">&nbsp;</span> '.__('No Comments ','comicpress'), '<span class="comment-balloon">1</span> '.__('Comment ','comicpress'), '<span class="comment-balloon">%</span> '.__('Comments ','comicpress')); ?></div>
+						<div class="comment-link"><?php comments_popup_link('<span class="comment-balloon comment-balloon-empty">&nbsp;</span> '.__('Comments ','comicpress'), '<span class="comment-balloon">1</span> '.__('Comment ','comicpress'), '<span class="comment-balloon">%</span> '.__('Comments ','comicpress')); ?></div>
 					<?php }
 				}
 			?>
 			<div class="clear"></div>
 			<?php if ($enable_related_posts == 'yes') echo related_posts_shortcode(); ?>
 		</div>
-		<br class="clear-margins" />
 	</div>
 	<div class="post-foot"></div>
 	</div>
