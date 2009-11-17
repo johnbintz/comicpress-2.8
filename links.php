@@ -33,7 +33,7 @@ Template Name: Links
 				<?php echo $bookmarks; ?>
 			</ul>
 			</div>
-			<br class="clear-margins" />
+			<div class="clear"></div>
 		</div>
 		<div class="post-page-foot"></div>
 	</div>

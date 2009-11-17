@@ -41,9 +41,8 @@ $count = $tmp_search->post_count;
 					<div class="clear"></div>
 				</div>
 				<div class="comicarchiveframe" style="width:<?php echo $archive_comic_width; ?>px;">
-					<a href="<?php the_permalink() ?>"><img src="<?php the_comic_archive() ?>" alt="<?php the_title() ?>" title="Click for full size." width="<?php echo $archive_comic_width ?>" /></a><br />
+					<a href="<?php the_permalink() ?>"><img src="<?php the_comic_archive() ?>" alt="<?php the_title() ?>" title="Click for full size." width="<?php echo $archive_comic_width ?>" /></a>
 				</div>
-				<br class="clear-margins" />
 			</div>
 			<div class="post-comic-foot"></div>
 		</div>
@@ -77,7 +76,7 @@ $count = $tmp_search->post_count;
 				<div class="clear"></div>
 			</div>
             <?php the_excerpt() ?>
-            <br class="clear-margins" />
+            <div class="clear"></div>
           </div>
           <div class="post-foot"></div>
 		</div>
@@ -92,7 +91,6 @@ $count = $tmp_search->post_count;
       <h3><?php _e('No transcripts found.','comicpress'); ?></h3>
       <p><?php _e('Try another search?','comicpress'); ?></p>
       <p><?php include(get_template_directory() . '/searchform-transcript.php') ?></p>
-      <br class="clear-margins" />
     </div>
     <div class="post-page-foot"></div>
 </div>
