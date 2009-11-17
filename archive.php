@@ -122,7 +122,7 @@
 						} ?>
 						<div class="post-extras">
 							<div class="tags">
-								<?php the_tags(__('&#9492; Tags:','comicpress'),'','','<br />'); ?>
+								<?php the_tags(__('&#9492; Tags:','comicpress'),', ','<br />'); ?>
 							</div>
 							<div class="clear"></div>
 						</div>
