@@ -352,24 +352,33 @@ h3, h3 a {
 	padding: 5px 0;
 }
 
-	.nav-first {
+	.nav-first{
 		float: left;
 	}
 
 	.nav-previous {
-		padding-left: 10px;
 		float: left;
 	}
 
+		.nav-previous a {
+			padding-left: 10px;
+		}
+		
 	.nav-next {
-		padding-left: 10px;
 		float: left;
 	}
 
+		.nav-next a {
+			padding-left: 10px;
+		}
+	
 	.nav-last {
-		padding-left: 10px;
 		float: left;
 	}
+	
+		.nav-last a {
+			padding-left: 10px;
+		}
 
 .pagenav, .commentnav {
 	height: 25px;
