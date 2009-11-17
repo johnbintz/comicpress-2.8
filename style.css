@@ -457,6 +457,9 @@ h3, h3 a {
 	margin-bottom: 40px;
 }
 
+.post-image, .post-comic-image, .post-page-image {
+}
+
 .post-info, .post-comic-info {
 	padding-bottom: 5px;
 	font-size: 10px;
