@@ -7,49 +7,47 @@ function options() {
 	add_action('admin_head-'.$pagehook, 'comicpress_admin_page_head');
 }
 
-function comicpress_admin_page_head() { 
-	global $is_IE; 
-	if ($is_IE) { ?>
-		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/js/tabbed/tabbed_pages_ie.css" type="text/css" media="screen" />
-	<?php } else { ?>
+function comicpress_admin_page_head() { ?>
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/js/tabbed/tabbed_pages.css" type="text/css" media="screen" />
-	<?php } ?>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/tabbed/tabbed_pages.js"></script>
+<!--[if lt ie 8]>
+	<style>
+		div.show {
+			position: static;
+			margin-top: 1px;
+		}
+		#cpadmin div.off {
+			height: 22px;
+		}		
+	</style>
+<![endif]-->
+
 <?php }
 
-
 function comicpress_admin() {
-	global $options, $upload_path, $blogcat, $moods_directory, $calendar_directory, $graphicnav_directory;
+	global $options, $upload_path, $blogcat, $moods_directory, $calendar_directory, $graphicnav_directory; ?>
 	
-	?>
-	<div class="wrap">
+<div class="wrap">
+	
+	<div id="cpadmin-headericon" style="background: url('<?php echo get_template_directory_uri(); ?>/images/options/comicpress_icon.png') no-repeat;"></div>
 	<h2 class="alignleft"><?php _e('ComicPress Options','comicpress'); ?></h2>
-	 
-	<a class="alignright" style="margin: 20px;" href="http://comicpress.org/"><img src="<?php echo get_template_directory_uri(); ?>/images/options/comicpress_logo.png" alt="ComicPress" /></a>
-
-
-	<br clear="all" />		
-	<div style="float: right">
-		<form method="post" id="myForm" name="template" enctype="multipart/form-data">
-		<input name="comicpress_reset" type="submit" class="button-primary" value="Reset Settings" />
-		<input type="hidden" name="action" value="comicpress_reset" />	
-		</form>
-	</div>
-	<br clear="all" />
+	<div class="clear"></div>	
 	<?php 
 	if ( wp_verify_nonce($_POST['_wpnonce'], 'update-options') ) {
 		
-		if ('comicpress_save'== $_REQUEST['action']) {
+		if ('comicpress_save' == $_REQUEST['action']) {
 			foreach ($options as $value) {
 			if( !isset( $_REQUEST[ $value['id'] ] ) ) {  } else { update_option( $value['id'], stripslashes($_REQUEST[ $value['id']])); } } ?>
-			<div id="message" class="updated fade"><p><strong><?php _e('Options/Settings SAVED!','comicpress'); ?></strong></p></div>
+			<div id="message" class="updated fade"><p><strong><?php _e('ComicPress Settings SAVED!','comicpress'); ?></strong></p></div>
+			<script>function hidemessage() { document.getElementById('message').style.display = 'none'; }</script>
 		<?php }
 		
-		if ('comicpress_reset' == $_REQUEST['action'] ) {
+		if ('comicpress_reset' == $_REQUEST['action']) {
 			foreach ($options as $default) {
 				delete_option($default['id'],$default['default']);
 			} ?>
-			<div id="message" class="updated fade"><p><strong><?php _e('Options/Settings RESET!','comicpress'); ?></strong></p></div>
+			<div id="message" class="updated fade"><p><strong><?php _e('ComicPress Settings RESET!','comicpress'); ?></strong></p></div>
+			<script>function hidemessage() { document.getElementById('message').style.display = 'none'; }</script>
 		<?php
 		}
 	}
@@ -65,11 +63,11 @@ function comicpress_admin() {
 	@require(get_template_directory() . '/comicpress-config.php');		
 	
 	?>
+	
 	<div id="poststuff" class="metabox-holder">
 
-
-	<div id="cpadmin">
-	<div class="on" title="themestyle"><span><?php _e('Theme Style','comicpress'); ?></span></div>
+	<div id="cpadmin" onclick="hidemessage();">
+	<div class="on" title="themestyle"><span><?php _e('Layout','comicpress'); ?></span></div>
 	<div class="off" title="generaloptions"><span><?php _e('General','comicpress'); ?></span></div>
 	<div class="off" title="indexoptions"><span><?php _e('Index Page','comicpress'); ?></span></div>
 	<div class="off" title="postoptions"><span><?php _e('Post','comicpress'); ?></span></div>
@@ -79,7 +77,6 @@ function comicpress_admin() {
 	<div class="off" title="buyprintoptions"><span><?php _e('Buy Print','comicpress'); ?></span></div>
 	<div class="off" title="membersoptions"><span><?php _e('Members','comicpress'); ?></span></div>
 	</div>
-
 	<?php include(get_template_directory() . '/options/themestyle.php'); ?>
 	<?php include(get_template_directory() . '/options/generaloptions.php'); ?>
 	<?php include(get_template_directory() . '/options/indexoptions.php'); ?>
@@ -90,12 +87,10 @@ function comicpress_admin() {
 	<?php include(get_template_directory() . '/options/buyprintoptions.php'); ?>
 	<?php include(get_template_directory() . '/options/membersoptions.php'); ?>
 
-
 	</div>
-	<div style="margin-top: 10px; text-align:center;padding: 5px; background: #eee; -moz-border-radius: 10px;-khtml-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: solid 1px #000;">
-	<a href="http://comicpress.org/">ComicPress 2.8 (<?php global $comicpress_version; echo $comicpress_version; ?>)</a>, <?php _e('created by','comicpress'); ?> <a href="http://mindfaucet.com/">Tyler Martin</a>, <?php _e('with','comicpress'); ?> <a href="http://www.coswellproductions.com/">John Bintz</a> <?php _e('and','comicpress'); ?> <a href="http://frumph.net/">Philip M. Hofer (Frumph)</a><br />
-	<?php _e('If you like the ComicPress theme, please donate.  It will help in creating new versions.','comicpress'); ?><br />
-		<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+
+	<div class="cpadmin-footer">
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" class="cpadmin-donate">
 			<input type="hidden" name="cmd" value="_s-xclick">
 			<input type="hidden" name="hosted_button_id" value="7827910">
 			<input type="image"
@@ -106,6 +101,15 @@ function comicpress_admin() {
 			src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1"
 			height="1">
 		</form>
+		<a href="http://comicpress.org/"><strong>ComicPress 2.9</strong> <small>[ <?php global $comicpress_version; echo $comicpress_version; ?> ]</small></a>. <?php _e('Created by','comicpress'); ?> <a href="http://mindfaucet.com/">Tyler Martin</a> <?php _e('with','comicpress'); ?> <a href="http://www.coswellproductions.com/">John Bintz</a> <?php _e('and','comicpress'); ?> <a href="http://webcomicplanet.com/">Philip M. Hofer</a> <small>(<a href="http://frumph.net/">Frumph</a>)</small>.<br />
+		<?php _e('If you like the ComicPress theme, please donate.  It will help in creating new versions.','comicpress'); ?>
+		<br />
+		<br />
+		<form method="post" id="myForm" name="template" enctype="multipart/form-data">
+			<input name="comicpress_reset" type="submit" class="button" value="Reset All Settings" />
+			<input type="hidden" name="action" value="comicpress_reset" />	
+		</form>
+		<div class="clear"></div>
 	</div>
 </div>
 
