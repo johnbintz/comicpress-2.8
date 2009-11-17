@@ -345,6 +345,41 @@ h3, h3 a {
 
 /* NAVIGATION */
 
+.nav,.blognav {
+	float: right;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 5px 0;
+}
+
+	.nav-first{
+		float: left;
+	}
+
+	.nav-previous {
+		float: left;
+	}
+
+		.nav-previous a {
+			padding-left: 10px;
+		}
+		
+	.nav-next {
+		float: left;
+	}
+
+		.nav-next a {
+			padding-left: 10px;
+		}
+	
+	.nav-last {
+		float: left;
+	}
+	
+		.nav-last a {
+			padding-left: 10px;
+		}
+
 .pagenav, .commentnav {
 	height: 25px;
 	color: #000;

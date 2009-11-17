@@ -10,8 +10,8 @@ Template Name: Month at a glance
 	<div class="post-page-head"></div>
 	<div class="post-page">
 	<?php while (have_posts()) : the_post() ?>
+		<h2 class="pagetitle"><?php the_title() ?></h2>
 		<div class="entry">
-			<h2 class="pagetitle"><?php the_title() ?></h2>
 			<?php the_content(); ?>
 		</div>
 	<?php endwhile; ?>

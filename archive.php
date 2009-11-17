@@ -51,7 +51,7 @@
 
 				<div class="comicthumbwrap">
 					<div class="comicarchiveframe" style="width: <?php echo $mini_comic_width; ?>px">
-						<a href="<?php the_permalink() ?>"><img src="<?php the_comic_mini() ?>" alt="<?php the_title() ?>" title="<?php the_title() ?>" /></a>
+						<a href="<?php the_permalink() ?>"><img src="<?php the_comic_mini() ?>" alt="<?php the_title() ?>" title="<?php the_title() ?>"  /></a>
 					</div>
 				</div>
 
@@ -84,8 +84,8 @@
 							</div>
 							<div class="clear"></div>
 						</div>
-						<div class="comicarchiveframe" style="width:<?php echo $archive_comic_width; ?>px;">
-							<a href="<?php the_permalink() ?>"><img src="<?php the_comic_archive() ?>" alt="<?php the_title() ?>" title="Click for full size." width="<?php echo $archive_comic_width ?>" /></a>
+						<div class="comicarchiveframe" style="max-width:<?php echo $archive_comic_width; ?>px;">
+							<a href="<?php the_permalink() ?>"><img src="<?php the_comic_archive() ?>" alt="<?php the_title() ?>" title="Click for full size." style="max-width: <?php echo $archive_comic_width ?>px" /></a>
 						</div>
 					</div>
 					<div class="post-comic-foot"></div>

@@ -90,6 +90,20 @@
 				</tr>
 				
 				<?php break;
+			case "comicpress-disable_page_titles": ?>
+				<tr>
+				<th scope="row"><strong><?php _e('Disable the titles on pages?','comicpress'); ?></strong><br /></th>
+				<td valign="top" width="100">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label><br />
+				</td>
+				<td valign="top">
+				<?php _e('If you disable the titles no pages you can add a post-page-image in the page editor.','comicpress'); ?>
+				</td>
+				</tr>
+				
+				<?php break;
 			case "comicpress-disable_comment_note": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Disable the comment notes?','comicpress'); ?></strong><br /><br /><?php _e('Disabling this will remove the note text that displays with more options for adding to comments (html).','comicpress'); ?><br /><br /></th>

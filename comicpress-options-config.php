@@ -284,6 +284,11 @@ $options = array (
 			"default" => "no",
 			"type" => "comicpress-disable_blogheader"),
 			
+		array(
+			"id" => "comicpress-disable_page_titles",
+			"default" => "no",
+			"type" => "comicpress-disable_page_titles"),
+			
 		array("type" => "close")
 		);
 ?>
