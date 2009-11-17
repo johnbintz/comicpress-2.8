@@ -31,8 +31,6 @@ function display_blog_post() {
 					</div>
 				<?php } ?>
 				<div class="post-text">
-					<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
-					<div class="post-author"> By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?> <?php edit_post_link(__('Edit Post','comicpress'), ' [ ', ' ] '); ?></div>
 					<?php if (function_exists('the_post_image')) {
 						if ( has_post_image() ) { ?>
 							<div class="post-image">
@@ -44,7 +42,7 @@ function display_blog_post() {
 					<?php } else { ?>
 						<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
 					<?php } ?>
-					<div class="post-author"> By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?></div>
+					<div class="post-author"> By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?></div> <?php edit_post_link(__('Edit Post','comicpress'), ' [ ', ' ] '); ?></div>
 					<?php if ($disable_categories_in_posts != 'yes') { ?>
 						<div class="post-cat"><?php _e('Posted In:','comicpress'); ?> <?php the_category(','); ?></div>
 					<?php } ?>
