@@ -42,7 +42,7 @@ function display_blog_post() {
 					<?php } else { ?>
 						<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
 					<?php } ?>
-					<div class="post-author"> By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?></div> <?php edit_post_link(__('Edit Post','comicpress'), ' [ ', ' ] '); ?></div>
+					<div class="post-author"> <?php the_time('F jS, Y'); ?> <span class="pipe">|</span> by <?php the_author_posts_link(); ?> <?php edit_post_link(__('Edit Post','comicpress'), ' [ ', ' ] '); ?></div>
 					<?php if ($disable_categories_in_posts != 'yes') { ?>
 						<div class="post-cat"><?php _e('Posted In:','comicpress'); ?> <?php the_category(','); ?></div>
 					<?php } ?>
