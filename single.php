@@ -96,7 +96,7 @@
 		<div class="post-head"></div>
 		<div class="post">
 			<p><?php _e('Sorry, no posts matched your criteria.','comicpress'); ?></p>
-			<br class="clear-margins" />
+			<div class="clear"></div>
 		</div>
 		<div class="post-foot"></div>
 	</div>
