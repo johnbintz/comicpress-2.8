@@ -106,6 +106,7 @@ function comicpress_admin() {
 		<br />
 		<br />
 		<form method="post" id="myForm" name="template" enctype="multipart/form-data">
+			<?php wp_nonce_field('update-options') ?>		
 			<input name="comicpress_reset" type="submit" class="button" value="Reset All Settings" />
 			<input type="hidden" name="action" value="comicpress_reset" />	
 		</form>
