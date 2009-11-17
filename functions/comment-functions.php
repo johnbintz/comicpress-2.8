@@ -38,7 +38,7 @@ function comicpress_avatar() {
 	$id_or_email = get_comment_author_email();
 	if (empty($id_or_email)) $id_or_email = get_comment_author();
 	if(function_exists('comicpress_get_avatar') && $comment_type != 'pingback' && $comment_type != 'trackback' ) { 
-		echo str_replace("alt='", "alt='".wp_specialchars(get_comment_author(), 1)."' title='".wp_specialchars(get_comment_author(), 1), comicpress_get_avatar($id_or_email, 64));
+		echo str_replace("alt='", "alt='".wp_specialchars(get_comment_author(), 1)."' title='".wp_specialchars(get_comment_author(), 1), comicpress_get_avatar($id_or_email, 72));
 	} else {
 		if ($comment_type == 'pingback' || $comment_type == 'trackback') {
 			echo '<img src="'.get_template_directory_uri().'/'.$avatar.'" class="photo trackping" />';
@@ -121,48 +121,53 @@ function comicpress_comments_callback($comment, $args, $depth) {
 	$GLOBALS['comment_depth'] = $depth;
 	?>
 	
-	<li id="comment-<?php comment_ID(); ?>" class="<?php comicpress_comment_class(); ?>">
+	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
 	
-		<?php comicpress_avatar(); // Avatar filter ?>
-	
-		<div class="comment-meta-data">
-			
-			<div class="comment-author vcard">
-				<?php comicpress_comment_author(); ?><br />
-			</div>
-	
-			<span class="comment-time" title="<?php comment_date(__('l, F jS, Y, g:i a','comicpress')); ?>">
-				<?php printf(__('%1$s at %2$s','comicpress'), get_comment_date(), get_comment_time()); ?>
-			</span> 
-	
-			<span class="separator">|</span> <a class="permalink" href="#comment-<?php echo str_replace('&', '&amp;', get_comment_ID()); ?>" title="<?php _e('Permalink to comment','comicpress'); ?>"><?php _e('Permalink','comicpress'); ?></a>
-	<?php
-	if((get_option('thread_comments')) && ($args['type'] == 'all' || get_comment_type() == 'comment')) :
-		$max_depth = get_option('thread_comments_depth');
-		echo comment_reply_link(array(
-					'reply_text' => __('Reply','comicpress'), 
-					'login_text' => __('Log in to reply.','comicpress'),
-					'depth' => $depth,
-					'max_depth' => $max_depth, 
-					'before' => '<span class="separator">|</span> <span class="comment-reply-link">', 
-					'after' => '</span>'
-					));
-	endif;
-	?>
-	<?php edit_comment_link('<span class="edit">'.__('Edit','comicpress').'</span>',' <span class="separator">|</span> ',''); ?> 
-	
-	<?php if($comment->comment_approved == '0') : ?>
-		<div class="comment-moderated"><em><?php _e('Your comment is awaiting moderation.','comicpress'); ?></em></div>
-		<?php endif; ?>
-	
-	</div>
-
-	<?php if (get_comment_type() == 'comment') { ?>
-		<div class="comment-text">
-			<?php comment_text(); ?>
+		<div class="comment-avatar">
+			<?php comicpress_avatar(); // Avatar filter ?>
 		</div>
-	<?php } ?>
-		<div class="clear"></div>
+		
+		<div class="comment-content">
+	
+			<div class="comment-meta-data">
+				
+				<div class="comment-author vcard">
+					<?php comicpress_comment_author(); ?><br />
+				</div>
+		
+				<span class="comment-time" title="<?php comment_date(__('l, F jS, Y, g:i a','comicpress')); ?>">
+					<?php printf(__('%1$s at %2$s','comicpress'), get_comment_date(), get_comment_time()); ?>
+				</span> 
+		
+				<span class="separator">|</span> <a class="permalink" href="#comment-<?php echo str_replace('&', '&amp;', get_comment_ID()); ?>" title="<?php _e('Permalink to comment','comicpress'); ?>"><?php _e('Permalink','comicpress'); ?></a>
+		<?php
+		if((get_option('thread_comments')) && ($args['type'] == 'all' || get_comment_type() == 'comment')) :
+			$max_depth = get_option('thread_comments_depth');
+			echo comment_reply_link(array(
+						'reply_text' => __('Reply','comicpress'), 
+						'login_text' => __('Log in to reply.','comicpress'),
+						'depth' => $depth,
+						'max_depth' => $max_depth, 
+						'before' => '<span class="separator">|</span> <span class="comment-reply-link">', 
+						'after' => '</span>'
+						));
+		endif;
+		?>
+		<?php edit_comment_link('<span class="edit">'.__('Edit','comicpress').'</span>',' <span class="separator">|</span> ',''); ?> 
+		
+		<?php if($comment->comment_approved == '0') : ?>
+			<div class="comment-moderated"><em><?php _e('Your comment is awaiting moderation.','comicpress'); ?></em></div>
+			<?php endif; ?>
+		
+		</div>
+
+		<?php if (get_comment_type() == 'comment') { ?>
+			<div class="comment-text">
+				<?php comment_text(); ?>
+			</div>
+		<?php } ?>
+			<div class="clear"></div>
+		</div>
 <?php }
 
 /**
@@ -175,51 +180,6 @@ function comicpress_comments_callback($comment, $args, $depth) {
 */
 function comicpress_comments_end_callback() {
 	echo '</li>';
-}
-
-/**
-* Sets a class for each comment
-* Sets alt, odd/even, and author/user classes
-* Adds author, user, and reader classes
-*
-* @since 0.2
-*/
-function comicpress_comment_class() {
-	global $comment;
-	static $comment_alt;
-	$classes = array();
-	
-	if(function_exists('get_comment_class'))
-		$classes = get_comment_class();
-	
-	$classes[] = get_comment_type();;
-	
-	/*
-	* User classes
-	*/
-	if($comment->user_id > 0 && $user = get_userdata($comment->user_id)) :
-		
-		$classes[] = 'user user-' . $user->user_nicename;
-		
-		if($post = get_post($post_id)) :
-			if($comment->user_id === $post->post_author)
-				$classes[] = 'author author-' . $user->user_nicename;
-		endif;
-	else :
-		$classes[] = 'reader';
-	endif;
-	
-	/*
-	* http://microid.org
-	*/
-	$email = get_comment_author_email();
-	$url = get_comment_author_url();
-	if(!empty($email) && !empty($url)) {
-		$microid = 'microid-mailto+http:sha1:' . sha1(sha1('mailto:'.$email).sha1($url));
-		$classes[] = $microid;
-	}
-	$classes = join(' ', $classes);
-	echo $classes;
 }
 
 function list_pings($comment, $args, $depth) {       

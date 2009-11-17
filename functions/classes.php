@@ -135,4 +135,20 @@ function comicpress_post_class($class = '') {
 	echo apply_filters( 'comicpress_post_class', $class );
 }
 
+add_filter('comment_class','comicpress_comment_class');
+
+function comicpress_comment_class($classes = '') {
+	
+	/*
+	* http://microid.org
+	*/
+	$email = get_comment_author_email();
+	$url = get_comment_author_url();
+	if(!empty($email) && !empty($url)) {
+		$microid = 'microid-mailto+http:sha1:' . sha1(sha1('mailto:'.$email).sha1($url));
+		$classes[] = $microid;
+	}
+	return $classes;
+}
+
 ?>
