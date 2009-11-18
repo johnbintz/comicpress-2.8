@@ -35,7 +35,7 @@ $count = $tmp_search->post_count;
 			<div class="clear"></div>
 		</div>
 				<div class="post-extras">
-					<div class="tags">
+					<div class="post-tags">
 						<?php the_tags(__('&#9492; Tags:','comicpress'),', ','<br />'); ?>
 					</div>
 					<div class="clear"></div>

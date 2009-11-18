@@ -90,7 +90,7 @@
 					the_excerpt();
 					} ?>
 				<div class="post-extras">
-					<div class="tags">
+					<div class="post-tags">
 						<?php the_tags(__('&#9492; Tags:','comicpress'),', ','<br />'); ?>
 					</div>
 					<div class="clear"></div>
