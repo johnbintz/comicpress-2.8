@@ -10,8 +10,17 @@ Template Name: Comic Storyline with Thumbs
 	<div class="post-page-head"></div>
 	<div class="post-page">
 	<?php while (have_posts()) : the_post() ?>
-		<div class="entry">
+		<?php if (function_exists('the_post_image')) {
+			if ( has_post_image() ) { ?>
+				<div class="post-page-image">
+				<?php the_post_image('full'); ?>
+				</div>
+			<?php } ?>
+		<?php } ?>
+		<?php if ($disable_page_titles != 'yes') { ?>
 			<h2 class="pagetitle"><?php the_title() ?></h2>
+		<?php } ?>
+		<div class="entry">
 			<?php the_content(); ?>
 		</div>
 	<?php endwhile; ?>
