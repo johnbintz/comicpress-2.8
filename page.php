@@ -4,17 +4,16 @@
 	<?php if (have_posts()) : while (have_posts()) : the_post() ?>
 	<div class="<?php comicpress_post_class(); ?>">
 		<div class="post-page-head"></div>
-		<div class="post-page" id="post-<?php the_ID() ?>">
+			<div class="post-page" id="post-<?php the_ID() ?>">
+			<?php if ($disable_page_titles != 'yes') { ?>
+				<h2 class="pagetitle"><?php the_title() ?></h2>
+			<?php } ?>
 			<?php if (function_exists('the_post_image')) {
 				if ( has_post_image() ) { ?>
 					<div class="post-page-image">
 					<?php the_post_image('full'); ?>
 					</div>
-				<?php } else { ?>
-					<h2 class="pagetitle"><?php the_title() ?></h2>
 				<?php } ?>
-			<?php } else { ?>
-				<h2 class="pagetitle"><?php the_title() ?></h2>
 			<?php } ?>
 			<div class="entry">
 				<?php the_content() ?>

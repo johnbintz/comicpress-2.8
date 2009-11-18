@@ -71,10 +71,20 @@ $month['12'] = array('month' => __('December','comicpress'), 'days' => '31');
 	<div class="post-page-head"></div>
 	<div class="post-page">
 	<?php while (have_posts()) : the_post() ?>
-		<div class="entry">
+		<?php if ($disable_page_titles != 'yes') { ?>
 			<h2 class="pagetitle"><?php the_title() ?> <span class="page-archive-year"> <?php echo $archive_year; ?></span></h2>
+		<?php } ?>
+		<?php if (function_exists('the_post_image')) {
+			if ( has_post_image() ) { ?>
+				<div class="post-page-image">
+				<?php the_post_image('full'); ?>
+				</div>
+			<?php } ?>
+		<?php } ?>
+		<div class="entry">	
 			<?php the_content(); ?>
 		</div>
+		<?php edit_post_link(__('Edit this page.','comicpress'), '<p>', '</p>') ?>
 	<?php endwhile; ?>
 
 		<div class="archive-yearlist">| 
