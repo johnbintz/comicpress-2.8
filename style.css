@@ -830,10 +830,8 @@ ul.children {
 }
 
 .archive-dropdown {
-	width: 192px;
 	margin-left: 4px;
-	padding: 2px;
-}
+	padding: 2px;}
 
 .widget_search #s-search, .widget_comicpress_search_transcripts #s-transcript {
 	width: 155px;
@@ -1363,8 +1361,7 @@ li.pingback div p, li.trackback div p {
 		font-weight: bold;
 	}
 
-/* Tool Tips */
-
+/* Tool Tips (ComicPress Rascal) */
 .tt a {
 	position: relative;
 	z-index: 1000;
