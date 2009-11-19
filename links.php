@@ -21,13 +21,11 @@ Template Name: Links
 					<div class="post-page-image">
 					<?php the_post_image('full'); ?>
 					</div>
-				<?php } else { ?>
-					<h2 class="pagetitle"><?php the_title() ?></h2>
 				<?php } ?>
-			<?php } else { ?>
+			<?php } ?>
+			<?php if ($disable_page_titles != 'yes') { ?>
 				<h2 class="pagetitle"><?php the_title() ?></h2>
 			<?php } ?>
-			<br class="clear-margins" />
 			<div id="linkspage">
 			<ul>
 				<?php echo $bookmarks; ?>

@@ -21,18 +21,16 @@ Template Version: 2.14
 				<br />
 				<img src="<?php echo get_template_directory_uri(); ?>/images/paypal.png" alt="<?php _e('Powered by Paypal','comicpress'); ?>" /><br />
 			</div>
-			<?php if (function_exists('the_post_image')) {
+						<?php if (function_exists('the_post_image')) {
 				if ( has_post_image() ) { ?>
 					<div class="post-page-image">
 					<?php the_post_image('full'); ?>
 					</div>
-				<?php } else { ?>
-					<h2 class="pagetitle"><?php the_title() ?></h2>
 				<?php } ?>
-			<?php } else { ?>
+			<?php } ?>
+			<?php if ($disable_page_titles != 'yes') { ?>
 				<h2 class="pagetitle"><?php the_title() ?></h2>
 			<?php } ?>
-			<br class="clear-margins" />
 			<?php _e('Comic ID','comicpress'); ?> - #<?php echo $comicnum; ?><br />
 			<?php _e('Title:','comicpress'); ?>	<?php echo the_title(); ?><br />
 			<br />

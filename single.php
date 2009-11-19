@@ -86,9 +86,10 @@
 				endwhile; }
 			} 
 			$post = $temppost; $wp_query = $temp_query; $temppost = null; $temp_query = null;
+		}
+		if ('open' == $post->comment_status) {
+			comments_template('', true);
 		} ?>
-	
-		<?php comments_template('', true); ?>		
 		
 	<?php else: ?>
 	<?php get_sidebar('underblog'); ?>	
