@@ -80,7 +80,6 @@ if (get_option('upload_path') !== false) {
 				'enable_related_posts'			=> 'enable_related_posts',
 				'comic_clicks_next'				=> 'comic_clicks_next',
 				'rascal_says'					=> 'rascal_says',
-				'disable_css_style_editor'		=> 'disable_css_style_editor',
 				'enable_post_calendar'			=> 'enable_post_calendar',
 				'enable_post_author_gravatar'	=> 'enable_post_author_gravatar',
 				'enable_comic_post_calendar'	=> 'enable_comic_post_calendar',
@@ -111,7 +110,8 @@ if (get_option('upload_path') !== false) {
 				'remove_wptexturize'			=> 'remove_wptexturize',
 				'disable_default_menubar'		=> 'disable_default_menubar',
 				'disable_blogheader'			=> 'disable_blogheader',
-				'disable_page_titles'			=> 'disable_page_titles' ) as $options => $variable_name) {
+				'disable_page_titles'			=> 'disable_page_titles',
+				'static_blog'					=> 'static_blog' ) as $options => $variable_name) {
 		$variables_to_extract[$variable_name] = get_option("comicpress-${options}");
 	}
 	

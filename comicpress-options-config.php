@@ -178,6 +178,11 @@ $options = array (
 			"type" => "comicpress-blogposts_with_comic"),
 			
 		array(
+			"id" => "comicpress-static_blog",
+			"default" => "no",
+			"type" => "comicpress-static_blog"),
+			
+		array(
 			"id" => "comicpress-disable_page_titles",
 			"default" => "no",
 			"type" => "comicpress-disable_page_titles"),

@@ -10,9 +10,7 @@
 	global $split_column_in_two, $author_column_one, $author_column_two;
 	foreach ($options as $value) {
 		switch ( $value['type'] ) {
-case "comicpress-transcript_in_posts": ?>
-			
-			
+			case "comicpress-transcript_in_posts": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Show transcript in post area?','comicpress'); ?></strong><br /><br /><?php _e('When enabled, if the comic has a transcript, the transcript will be displayed inside the comic post.','comicpress'); ?></th>
 				<td valign="top" width="100">
@@ -66,16 +64,8 @@ case "comicpress-transcript_in_posts": ?>
 				<?php _e('Generally, you want to leave the WordPress formatting enabled, but it some special cases you may prefer to preserve non-WP formatting.','comicpress'); ?>
 				</td>
 				</tr>
-
-
-
-
-
-<tr><td><h2>- Authors/Avatars -</h2></td></tr>
-
-
-
-
+				
+<tr><td><h2>- Authors/Avatars/Moods -</h2></td></tr>
 
 				<?php break;
 			case "comicpress-split_column_in_two": ?>
@@ -155,12 +145,6 @@ case "comicpress-transcript_in_posts": ?>
 					<?php _e('Gravatars are associated by your email address and you can create them at','comicpress'); ?> <a href="http://gravatar.com/">http://gravatar.com</a>.  <?php _e('They are pictures of you, your cat of whatever you want to be your representation on your posts and comments.','comicpress'); ?>
 				</td>
 				</tr>
-				
-				
-
-
-
-
 
 			<?php break;
 			case "comicpress-avatar_directory": 
@@ -192,17 +176,6 @@ case "comicpress-transcript_in_posts": ?>
 					<br />
 				</td>
 				</tr>
-
-
-
-
-
-
-
-
-
-
-
 				<?php break;
 			case "comicpress-moods_directory": 
 				$current_directory = get_option($value['id']);
@@ -233,9 +206,7 @@ case "comicpress-transcript_in_posts": ?>
 			<?php _e('Select "none" to turn off. Mood directories are found in your theme directory/images/moods/* to create your own custom moods just create a directory under images/moods/ and place ONLY image files inside of it. The name of the image file represents what the mood is.','comicpress'); ?>
 				</td>
 				</tr>
-
-
-
+				
 <tr><td><h2>- Calendar -</h2></td></tr>
 
 
@@ -271,13 +242,6 @@ case "comicpress-transcript_in_posts": ?>
 			<?php _e('To not have calendar graphics, select "none". Calendar directories are found in your theme directory/images/cal/* to create your own custom archive calendar images just create a directory under images/cal/ and place your image files inside of it.','comicpress'); ?>
 				</td>
 				</tr>
-
-
-
-
-
-
-
 			<?php break;
 			case "comicpress-enable_comic_post_calendar": ?>
 				<tr>
@@ -291,9 +255,6 @@ case "comicpress-transcript_in_posts": ?>
 					<?php _e('The graphic calendar is an image that has the date of the comic blog post overlayed on top of it.','comicpress'); ?>
 				</td>
 				</tr>
-
-
-
 				<?php break;
 			case "comicpress-enable_post_calendar": ?>
 				<tr>
@@ -308,15 +269,9 @@ case "comicpress-transcript_in_posts": ?>
 				</td>
 				</tr>
 
-
-
-
 <tr><td><h2>- Tags/Categories -</h2></td></tr>
 
-
-
-				<?php break;
-				
+				<?php break;				
 			case "comicpress-disable_tags_in_posts": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Disable display of tags in posts?','comicpress'); ?></strong><br /><br /><?php _e('Tags are "descriptive keywords" of content in a post.','comicpress'); ?></th>
@@ -329,10 +284,6 @@ case "comicpress-transcript_in_posts": ?>
 				<?php _e('Tags != Categories','comicpress'); ?>
 				</td>
 				</tr>
-
-
-
-
 
 				<?php break;
 			case "comicpress-disable_categories_in_posts": ?>
@@ -348,11 +299,7 @@ case "comicpress-transcript_in_posts": ?>
 				</td>
 				</tr>
 
-
-
-
-<tr><td><h2>- Pages -</h2></td></tr>
-
+<tr><td><h2>- Pages & Blog Loop -</h2></td></tr>
 
 				<?php break;
 			case "comicpress-blogposts_with_comic": ?>
@@ -367,11 +314,22 @@ case "comicpress-transcript_in_posts": ?>
 				<?php _e('All the blog posts that are on the same day and greater to the next comic post on the comic your viewing will appear.','comicpress'); ?>
 				</td>
 				</tr>
-
-
-
-
 				<?php break;
+				
+			case "comicpress-static_blog": ?>
+				<tr>
+				<th scope="row"><strong><?php _e('Blog loop stays with all the single pages?','comicpress'); ?></strong><br /></th>
+				<td valign="top">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label>
+				</td>
+				<td valign="top">
+				<?php _e('Blog will stay with the single pages, good to use with comments disabled in the settings.','comicpress'); ?>
+				</td>
+				</tr>
+				<?php break;
+				
 			case "comicpress-disable_page_titles": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Disable the titles on pages?','comicpress'); ?></strong><br /><br /></th>
@@ -384,11 +342,6 @@ case "comicpress-transcript_in_posts": ?>
 				<?php _e('If you disable the titles no pages you can add a post-page-image in the page editor.','comicpress'); ?>
 				</td>
 				</tr>
-
-
-
-
-
 				<?php break;
 		}
 	}
