@@ -179,9 +179,7 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
     $grouping_hash = array();
 
     $default_group = null;
-    var_dump(apply_filters('comicpress_navigation_grouping_details', array()));
     foreach (apply_filters('comicpress_navigation_grouping_details', array()) as $group => $members) {
-      var_dump($members);
       if ($members === true) {
         $default_group = $group;
       } else {
