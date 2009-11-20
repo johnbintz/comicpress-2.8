@@ -42,14 +42,7 @@
 			<div class="column">	
 	<?php } ?>
 
-	<?php if (function_exists('the_project_wonderful_ad')) { ?>
-		<div class="blogpwad">
-			<center>
-			<?php the_project_wonderful_ad('blog'); ?>
-			</center>
-		</div>
-	<?php } ?>
-	<?php get_sidebar('blog'); ?>	
+	
 	<?php if (have_posts()) : while (have_posts()) : the_post();
 			if (in_comic_category()) {
 				global $disable_comic_blog_single;
@@ -65,6 +58,45 @@
 				display_blog_post();			
 			} 
 		endwhile; 
+	?>
+	<?php if (function_exists('the_project_wonderful_ad')) { ?>
+		<div class="blogpwad">
+			<center>
+			<?php the_project_wonderful_ad('blog'); ?>
+			</center>
+		</div>
+	<?php } ?>
+	<?php get_sidebar('blog'); ?>
+	
+	<?php 
+	global $static_blog;
+	if ($static_blog == 'yes' && in_comic_category()) {
+		global $blog_postcount; 
+		if ($split_column_in_two != 'yes') {
+			$blog_query = 'showposts='.$blog_postcount.'&cat="-'.exclude_comic_categories().'"&paged='.$paged; 
+			
+			$posts = query_posts($blog_query);
+		if (have_posts()) { ?>
+		
+			<?php if ($disable_blogheader != 'yes') { ?>
+				<div id="blogheader"><!-- This area can be used for a heading above your main page blog posts --></div>
+			<?php } ?>
+			
+			<div class="blogindex-head"></div>
+			<div class="blogindex">
+				<?php while (have_posts()) : the_post();
+					
+					display_blog_post();	
+				
+			endwhile; ?>
+			</div>
+			<div class="blogindex-foot"></div>
+			<?php }
+			comicpress_pagination();
+		} else {
+			comicpress_dual_columns();
+		}
+	} else {
 		
 		global $blogposts_with_comic;
 		
@@ -87,9 +119,11 @@
 			} 
 			$post = $temppost; $wp_query = $temp_query; $temppost = null; $temp_query = null;
 		}
-		if ('open' == $post->comment_status) {
-			comments_template('', true);
-		} ?>
+	} 
+	if ('open' == $post->comment_status) {
+		comments_template('', true);
+	} 
+	?>
 		
 	<?php else: ?>
 	<?php get_sidebar('underblog'); ?>	

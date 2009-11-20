@@ -73,11 +73,7 @@
 				<?php _e('Numbered pagination appears on the Home page, the author(s) page, the blog template, and comments/single when there are more then the set number of comments per page. Uses the same styling as the Menubar.','comicpress'); ?>
 				</td>
 				</tr>
-
-
-
 				<?php break;
-
 			case "comicpress-comic_clicks_next": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Click comic to go next?','comicpress'); ?></strong><br /><?php _e('Allows users to click the comic itself to go to the next comic (unless on the latest comic).','comicpress'); ?><br /></th>
@@ -91,9 +87,19 @@
 				</td>
 				</tr>
 
-
-
-
+				<?php break;
+			case "comicpress-disable_default_comic_nav": ?>
+				<tr>
+				<th scope="row"><strong><?php _e('Disable the default comic post navigation?','comicpress'); ?></strong><br /><?php _e('Previous Entries and Next Entries buttons are replaced by a bar of numbered pages.','comicpress'); ?><br /></th>
+				<td valign="top">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label>
+				</td>
+				<td valign="top">
+				<?php _e('The default comic post navigation is above each comic blog post.','comicpress'); ?>
+				</td>
+				</tr>
 				<?php break;
 			case "comicpress-graphicnav_directory": 
 				$current_gnav_directory = get_option($value['id']);

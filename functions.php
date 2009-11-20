@@ -111,7 +111,8 @@ if (get_option('upload_path') !== false) {
 				'disable_default_menubar'		=> 'disable_default_menubar',
 				'disable_blogheader'			=> 'disable_blogheader',
 				'disable_page_titles'			=> 'disable_page_titles',
-				'static_blog'					=> 'static_blog' ) as $options => $variable_name) {
+				'static_blog'					=> 'static_blog',
+				'disable_default_comic_nav'		=> 'disable_default_comic_nav' ) as $options => $variable_name) {
 		$variables_to_extract[$variable_name] = get_option("comicpress-${options}");
 	}
 	
@@ -859,8 +860,7 @@ function comicpress_check_child_file($filename = '') {
 	if (empty($filename)) return false;
 	if (get_stylesheet_directory() != get_template_directory()) {
 		if (file_exists(get_stylesheet_directory() .'/'. $filename . '.php')) { 
-			@include(get_stylesheet_directory() .'/'. $filename . '.php');
-			return true;
+			return include(get_stylesheet_directory() .'/'. $filename . '.php');
 		}
 	}
 	return false;

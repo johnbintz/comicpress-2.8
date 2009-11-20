@@ -55,6 +55,11 @@ $options = array (
 			"type" => "comicpress-graphicnav_directory"),
 			
 		array(
+			"id" => "comicpress-disable_default_comic_nav",
+			"default" => "no",
+			"type" => "comicpress-disable_default_comic_nav"),
+			
+		array(
 			"id" => "comicpress-disable_lrsidebars_frontpage",
 			"default" => "no",
 			"type" => "comicpress-disable_lrsidebars_frontpage"),

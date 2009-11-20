@@ -21,15 +21,16 @@ Style: Default
 }
 
 .comic_navi {
-	background: #222;
 	padding: 2px;
-	border: solid 1px #000;
-	border-top: 0;
-	-moz-border-radius: 0 0 8px 8px;
-	-khtml-border-radius: 0 0 8px 8px;
-	-webkit-border-radius: 0 0 8px 8px;
-	border-radius: 0 0 8px 8px;
 }
+
+	.comic_navi a {
+		color: #000;
+	}
+
+	.comic_navi a:hover {
+		color: #b00;
+	}
 
 
 .navi-comictitle {
