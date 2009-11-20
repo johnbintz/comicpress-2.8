@@ -92,7 +92,7 @@ if ($disable_comic_frontpage != 'yes' && $disable_comic_blog_frontpage != 'yes' 
 			<?php }
 			comicpress_pagination();
 	} else {
-    include('partials/dual-columns.inc');
+		comicpress_dual_columns();
   }
 } ?>
 

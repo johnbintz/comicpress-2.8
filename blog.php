@@ -22,7 +22,7 @@ Template Name: Blog
 		}
 		comicpress_pagination();
 	} else {
-    include('partials/dual-columns.inc');
+		comicpress_dual_columns();
 	} ?>
 <?php get_sidebar('underblog'); ?>
 

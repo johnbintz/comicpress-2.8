@@ -1,3 +1,7 @@
+<?php 
+
+function comicpress_dual_columns() { 
+	global $author_column_one, $author_column_two, $blog_postcount; ?>
 <div id="dualcolumns">
   <div class="column_one">
     <div class="column_one_header"></div>
@@ -23,3 +27,6 @@
   </div>
   <div class="clear"></div>
 </div>
+<?php }
+
+?>
