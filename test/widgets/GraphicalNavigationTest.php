@@ -79,11 +79,11 @@ class GraphicalNavigationTest extends PHPUnit_Framework_TestCase {
    * @covers WidgetComicPressGraphicalStorylineNavigation::_group_navigation_buttons
    */
   function testGroupNavigationButtons($buttons, $expected_grouping) {
-    _set_filter_expectation('comicpress_navigation_grouping_details', array(
+    _set_filter_expectation('comicpress_navigation_grouping_details', array(array(
       'left' => array('one', 'two', 'three'),
       'center' => true,
       'right' => array('four', 'five', 'six'),
-    ));
+    )));
 
     $this->assertEquals($expected_grouping, $this->w->_group_navigation_buttons($buttons, array()));
   }
