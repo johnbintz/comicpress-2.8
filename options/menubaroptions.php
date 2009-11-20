@@ -50,7 +50,7 @@
 				<?php break;
 			case "comicpress-enable_navigation_in_menubar": ?>
 				<tr>
-				<th scope="row"><strong><?Php _e('Enable mini navigation','comicpress'); ?></strong><br /><br /></th>
+				<th scope="row"><strong><?Php _e('Enable mini navigation','comicpress'); ?></strong><br /></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;

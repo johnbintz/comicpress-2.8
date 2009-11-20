@@ -8,15 +8,14 @@
 		switch ( $value['type'] ) {
 			case "comicpress-disable_comic_frontpage": ?>
 				<tr>
-				<th scope="row"><strong><?php _e('Disable Comic On Frontpage?','comicpress'); ?></strong><br /><br /><?php _e('Set to &quot;Yes&quot; and the comic will not display on the index page/front page of your site.','comicpress'); ?></th>
+				<th scope="row"><strong><?php _e('Disable comic on Home page?','comicpress'); ?></strong><br /><br /><?php _e('Set to <b>Yes</b> and the comic will not display on the home page of your site.','comicpress'); ?></th>
 				<td valign="top" width="100">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label><br />
 				</td>
 				<td valign="top" width="400">
-			<?php _e('Note: You can use the Latest Thumbnail widget to display your comic in a sidebar.  Make sure you set the archive-thumbnail size to under 200px.
-					Turning this off and using the GN style turns ComicPress into a Blog.','comicpress'); ?>
+			<?php _e('You can use the Latest Thumbnail widget to display your comic in a sidebar. Make sure you set the archive-thumbnail size to under 200px. Note: Turning this off and using the Graphic Novel style turns ComicPress into a blog only.','comicpress'); ?>
 				</td>
 				</tr>
 
@@ -28,14 +27,14 @@
 				<?php break;
 			case "comicpress-disable_comic_blog_frontpage": ?>
 				<tr>
-				<th scope="row"><strong><?php _e('Disable the comic blog on the index page?','comicpress'); ?></strong><br /><br /><?php _e('Set to &quot;Yes&quot; and the blog portion of the comic will not display on the index page/front page of your site.','comicpress'); ?><br /></th>
+				<th scope="row"><strong><?php _e('Disable the comic blog on Home page?','comicpress'); ?></strong><br /><br /><?php _e('Select <b>Yes</b> and the comic blog will not display on the Home Page.','comicpress'); ?><br /></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label><br />
 				</td>
 				<td valign="top">
-				<?php _e('*Some* people,.. not naming names ..do not like to have a comic post let alone showing on the index page.  You can use the comic blog post widget and place it anywhere around the comic.   IF there is no content in the post it will not display.','comicpress'); ?>
+				<?php _e('Enabling this allows you to either not have a comic blog at all, or you can place it where you want using the comic blog post widget. If there is no content in the post it will not display regardless.','comicpress'); ?>
 				</td>
 				</tr>
 
@@ -48,7 +47,7 @@
 				<?php break;
 			case "comicpress-disable_comic_blog_single": ?>
 				<tr>
-				<th scope="row"><strong><?php _e('Disable the comic blog on the single pages?','comicpress'); ?></strong><br /><br /><?php _e('Set to &quot;Yes&quot; and the blog portion of the comic will not display on the single/archive pages of your site.','comicpress'); ?><br /></th>
+				<th scope="row"><strong><?php _e('Disable the comic blog on the single pages?','comicpress'); ?></strong><br /><br /><?php _e('Select <b>Yes</b> and the blog portion of the comic will not display on the single/archive pages of your site.','comicpress'); ?><br /></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;
@@ -67,14 +66,14 @@
 				<?php break;
 			case "comicpress-disable_blog_frontpage": ?>
 				<tr>
-				<th scope="row"><strong><?php _e('Disable the blog on the index page?','comicpress'); ?></strong><br /><br /><?php _e('Set to &quot;Yes&quot; and the blog area will not display on the index page/front page of your site.','comicpress'); ?><br /></th>
+				<th scope="row"><strong><?php _e('Disable the blog on the Home page?','comicpress'); ?></strong><br /><br /><?php _e('Select <b>Yes</b> and the blog will not display on the Home page of your site. ','comicpress'); ?><br /></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label><br />
 				</td>
 				<td valign="top">
-				<?php _e('This feature is quite handy actually.  If you disable this you can add a page to your menubar and associate it to the "blog" template, still keeping your blog, .. just not on the index page.','comicpress'); ?>
+				<?php _e('The features allows to either not have a blog at all, or, if you place a menu link to your blog page, you can maintain your blog within the same site without readers having to see it when they are just trying to read your comic.','comicpress'); ?>
 				</td>
 				</tr>
 
@@ -89,7 +88,7 @@
 				<?php break;
 			case "comicpress-disable_blogheader": ?>
 				<tr>
-				<th scope="row"><strong><?php _e('Disable blog header on the index page?','comicpress'); ?></strong><br /><br /><?php _e('Set to &quot;Yes&quot; and the index page/front page of your site will not display the #blogheader','comicpress'); ?><br /></th>
+				<th scope="row"><strong><?php _e('Disable blog header on the Home page?','comicpress'); ?></strong><br /><br /><?php _e('Select <b>Yes</b> and the home page of your site will not display the contents of #blogheader.','comicpress'); ?><br /></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;

@@ -4,26 +4,21 @@
 $options = array (
 		array("type" => "open"),
 		
-		
-		
 		array(
 			"id" => "comicpress-cp_theme_layout",
 			"default" => "standard",
 			"type" => "comicpress-cp_theme_layout"),
 			
-array(
-"id" => "comicpress-general_main",
-"default" => "default",
-"type" => "comicpress-general_main"),
-			
 		array(
 			"id" => "comicpress-disable_page_restraints",
 			"default" => "no",
 			"type" => "comicpress-disable_page_restraints"),
+			
 		array(
 			"id" => "comicpress-rascal_says",
 			"default" => "no",
 			"type" => "comicpress-rascal_says"),
+			
 		array(
 			"id" => "comicpress-disable_comment_note",
 			"default" => "no",
@@ -44,28 +39,21 @@ array(
 			"default" => "no",
 			"type" => "comicpress-disable_extended_comments"),
 			
-array(
-"id" => "comicpress-general_navigation",
-"default" => "default",
-"type" => "comicpress-general_navigation"),
 		array(
 			"id" => "comicpress-enable_numbered_pagination",
 			"default" => "yes",
 			"type" => "comicpress-enable_numbered_pagination"),
+			
 		array(
 			"id" => "comicpress-comic_clicks_next",
 			"default" => "no",
 			"type" => "comicpress-comic_clicks_next"),
+			
 		array(
 			"id" => "comicpress-graphicnav_directory",
 			"default" => "default",
 			"type" => "comicpress-graphicnav_directory"),
 			
-array(
-"id" => "comicpress-general_sidebars",
-"default" => "default",
-"type" => "comicpress-general_sidebars"),
-
 		array(
 			"id" => "comicpress-disable_lrsidebars_frontpage",
 			"default" => "no",
@@ -74,18 +62,12 @@ array(
 			"id" => "comicpress-enable_widgetarea_use_sidebar_css",
 			"default" => "no",
 			"type" => "comicpress-enable_widgetarea_use_sidebar_css"),
-
-array(
-"id" => "comicpress-general_footerheading",
-"default" => "default",
-"type" => "comicpress-general_footerheading"),
-
+			
 		array(
 			"id" => "comicpress-disable_footer_text",
 			"default" => "no",
 			"type" => "comicpress-disable_footer_text"),
-
-
+			
 		array(
 			"id" => "comicpress-disable_comic_frontpage",
 			"default" => "no",
@@ -109,13 +91,7 @@ array(
 			"id" => "comicpress-disable_blogheader",
 			"default" => "no",
 			"type" => "comicpress-disable_blogheader"),
-
-
-array(
-"id" => "comicpress-posts_heading_main",
-"default" => "default",
-"type" => "comicpress-posts_heading_main"),
-
+			
 		array(
 			"id" => "comicpress-transcript_in_posts",
 			"default" => "no",
@@ -135,11 +111,7 @@ array(
 			"id" => "comicpress-remove_wptexturize",
 			"default" => "no",
 			"type" => "comicpress-remove_wptexturize"),
-
-array(
-"id" => "comicpress-posts_heading_authorsavatars",
-"default" => "default",
-"type" => "comicpress-posts_heading_authorsavatars"),
+			
 		array(
 			"id" => "comicpress-split_column_in_two",
 			"default" => "no",
@@ -170,17 +142,11 @@ array(
 			"default" => "default",
 			"type" => "comicpress-avatar_directory"),
 			
-			
 		array(
 			"id" => "comicpress-moods_directory",
 			"default" => "default",
 			"type" => "comicpress-moods_directory"),
 			
-array(
-"id" => "comicpress-posts_heading_calendar",
-"default" => "default",
-"type" => "comicpress-posts_heading_calendar"),
-
 		array(
 			"id" => "comicpress-calendar_directory",
 			"default" => "default",
@@ -195,12 +161,7 @@ array(
 			"id" => "comicpress-enable_post_calendar",
 			"default" => "no",
 			"type" => "comicpress-enable_post_calendar"),
-
-array(
-"id" => "comicpress-posts_heading_tagscategories",
-"default" => "default",
-"type" => "comicpress-posts_heading_tagscategories"),
-
+			
 		array(
 			"id" => "comicpress-disable_tags_in_posts",
 			"default" => "no",
@@ -210,12 +171,7 @@ array(
 			"id" => "comicpress-disable_categories_in_posts",
 			"default" => "no",
 			"type" => "comicpress-disable_categories_in_posts"),
-
-array(
-"id" => "comicpress-posts_heading_pages",
-"default" => "default",
-"type" => "comicpress-posts_heading_pages"),
-
+			
 		array(
 			"id" => "comicpress-blogposts_with_comic",
 			"default" => "no",
@@ -244,8 +200,7 @@ array(
 		array(
 			"id" => "comicpress-category_thumbnail_postcount",
 			"default" => "30",
-			"type" => "comicpress-category_thumbnail_postcount"),
-			
+			"type" => "comicpress-category_thumbnail_postcount"),	
 			
 		array(
 			"id" => "comicpress-contact_in_menubar",
@@ -292,8 +247,7 @@ array(
 			"id" => "comicpress-custom_image_header_height",
 			"default" => "120",
 			"type" => "comicpress-custom_image_header_height"),
-		
-		
+			
 		array(
 			"id" => "comicpress-buy_print_email",
 			"default" => "youremail@youremail.com",
@@ -328,7 +282,6 @@ array(
 			"id" => "comicpress-buy_print_int_ship",
 			"default" => "9.95",
 			"type" => "comicpress-buy_print_int_ship"),
-			
 			
 		array(
 			"id" => "comicpress-members_post_category",

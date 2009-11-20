@@ -4,83 +4,74 @@
 	<?php wp_nonce_field('update-options') ?>
 	<table class="form-table" style="width: auto">
 
+<tr><td><h2>- Main -</h2></td></tr>
+
 	<?php
 	global $split_column_in_two, $author_column_one, $author_column_two;
 	foreach ($options as $value) {
 		switch ( $value['type'] ) {
-		case "comicpress-posts_heading_main": ?>
-<tr>
-<th scope="row"><span style="font-size: 1.5em; font-weight: bold;">- Main -</span>
-</th>
-</tr>
-
-<?php break; case "comicpress-transcript_in_posts": ?>
+case "comicpress-transcript_in_posts": ?>
 			
 			
 				<tr>
-				<th scope="row"><strong><?php _e('Show transcript in post area?','comicpress'); ?></strong><br /><br /><?php _e('When enabled, if the comic has a transcript, the transcript will be displayed inside the post for the comic.','comicpress'); ?></th>
+				<th scope="row"><strong><?php _e('Show transcript in post area?','comicpress'); ?></strong><br /><br /><?php _e('When enabled, if the comic has a transcript, the transcript will be displayed inside the comic post.','comicpress'); ?></th>
 				<td valign="top" width="100">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label>
 				</td>
 				<td valign="top">
-				<?php _e('The transcript is text that that you can have of your comics speech.   When you add a transcript of the comic to the post-edit or when you upload your comic you can enable this and a transcript box will appear *in* that comics post area, alternatively you can set the transcript widget and have it placed anywhere *in* the same area of the comic.','comicpress'); ?>
+				<?php _e('The transcript is text that that you can have of the dialog in your comic.','comicpress'); ?>
 				</td>
 				</tr>
 
 				<?php break;
 			case "comicpress-enable_related_comics": ?>
 				<tr>
-				<th scope="row"><strong><?php _e('Put Related Comics in comic posts?','comicpress'); ?></strong><br /><br /><?php _e('Related comics on the list will be related by "tags" that you create for each comic post.','comicpress'); ?></th>
+				<th scope="row"><strong><?php _e('Put Related Comics in comic posts?','comicpress'); ?></strong><br /><br /><?php _e('Comics will be related by "tags" that you create for each comic post.','comicpress'); ?></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label>
 				</td>
 				<td valign="top">
-				<?php _e('When creating tags for your comics, include *only* the subject material and possibly cast.   Do not use tags that can relate to the entire archive or storyline the post is on.','comicpress'); ?>
+				<?php _e('When creating tags for your comics, include *only* the subject material and possibly cast. Do not use tags that can relate to the entire archive or storyline the post is in.','comicpress'); ?>
 				</td>
 				</tr>
 
 				<?php break;
 			case "comicpress-enable_related_posts": ?>
 				<tr>
-				<th scope="row"><strong><?php _e('Put Related Posts in blog posts?','comicpress'); ?></strong><br /><br /></th>
+				<th scope="row"><strong><?php _e('Put Related Posts in blog posts?','comicpress'); ?></strong><br /><?php _e('Blog posts will be related by "tags" that you create for each blog post.','comicpress'); ?><br /></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label>
 				</td>
 				<td valign="top">
-				<?php _e('Like the related posts for comics, the related posts for blog post checked with other blog posts comparing the tags.  Do no use tags that relate to a massive amount of other things, make sure you stick to only using 1-5 tags total, the less the better.','comicpress'); ?>
+				<?php _e('Like the related posts for comics, the related posts for blog post checks with other blog posts comparing the tags. Try to only use 1-5 tags total; the less the better.','comicpress'); ?>
 				</td>
 				</tr>
 
 				<?php break;
 			case "comicpress-remove_wptexturize": ?>
 				<tr>
-				<th scope="row"><strong><?php _e('Remove WPs texturization from the content area?','comicpress'); ?></strong><br /></th>
+				<th scope="row"><strong><?php _e('Disable WordPress default content formatting?','comicpress'); ?></strong><br /><?php _e('Prevents WordPress from reformatting any specially formatted content you may add.','comicpress'); ?><br /></th>
 				<td valign="top" width="100">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label>
 				</td>
 				<td valign="top">
+				<?php _e('Generally, you want to leave the WordPress formatting enabled, but it some special cases you may prefer to preserve non-WP formatting.','comicpress'); ?>
 				</td>
 				</tr>
 
 
 
 
-<?php break; case "comicpress-posts_heading_authorsavatars": ?>
-<tr>
-<th scope="row"><span style="font-size: 1.5em; font-weight: bold;">- Authors/Avatars -</span>
-</th>
-</tr>
 
-
-
+<tr><td><h2>- Authors/Avatars -</h2></td></tr>
 
 
 
@@ -89,14 +80,13 @@
 				<?php break;
 			case "comicpress-split_column_in_two": ?>
 				<tr>
-				<th scope="row"><strong><?php _e('Split the column in two to have 2 author post columns?','comicpress'); ?></strong><br /><br /></th>
+				<th scope="row"><strong><?php _e('Two author blog? ','comicpress'); ?></strong><br /><?php _e('When enabled, it will make 2 seperate columns to have two seperate columns available to two different post authors.','comicpress'); ?><br /></th>
 				<td valign="top" width="100">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label>
 				</td>
 				<td valign="top">
-					<?php _e('When enabled, it will make 2 seperate columns to have two seperate columns available to two different post authors.','comicpress'); ?>
 				</td>
 				</tr>
 
@@ -141,28 +131,28 @@
 				<?php break;
 			case "comicpress-enable_comic_post_author_gravatar": ?>
 				<tr>
-				<th scope="row"><strong><?php _e('Display a gravatar of the post author on comic posts?','comicpress'); ?></strong><br /><br /><?php _e('Enabling this option will show a gravatar of the post author based on the authors email.','comicpress'); ?></th>
+				<th scope="row"><strong><?php _e('Comic post author Gravatar?','comicpress'); ?></strong><br /><br /><?php _e('Enabling this option will show a gravatar of the post author based on the author email address.','comicpress'); ?></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label>
 				</td>
 				<td valign="top">
-					<?php _e('Gravatars are associated by your email address and you can create them at','comicpress'); ?> <a href="http://gravatar.com/">http://gravatar.com</a>.  <?php _e('They are pictures of you, your cat of whatever you want to represent yourself.','comicpress'); ?>
+					<?php _e('Gravatars are associated by your email address and you can create them at','comicpress'); ?> <a href="http://gravatar.com/">http://gravatar.com</a>.  <?php _e('They are pictures of you, your cat of whatever you want to be your representation on your posts and comments.','comicpress'); ?>
 				</td>
 				</tr>
 
 				<?php break;
 			case "comicpress-enable_post_author_gravatar": ?>
 				<tr>
-				<th scope="row"><strong><?php _e('Display a gravatar of the post author on blog posts?','comicpress'); ?></strong><br /><br /><?php _e('Enabling this option will show a gravatar of the post author based on the authors email.','comicpress'); ?></th>
+				<th scope="row"><strong><?php _e('Blog post author Gravatar?','comicpress'); ?></strong><br /><br /><?php _e('Enabling this option will show a gravatar of the post author based on the author email address.','comicpress'); ?></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label>
 				</td>
 				<td valign="top">
-					<?php _e('Gravatars are associated by your email address and you can create them at','comicpress'); ?> <a href="http://gravatar.com/">http://gravatar.com</a>.  <?php _e('They are pictures of you, your cat of whatever you want to represent yourself.','comicpress'); ?>
+					<?php _e('Gravatars are associated by your email address and you can create them at','comicpress'); ?> <a href="http://gravatar.com/">http://gravatar.com</a>.  <?php _e('They are pictures of you, your cat of whatever you want to be your representation on your posts and comments.','comicpress'); ?>
 				</td>
 				</tr>
 				
@@ -181,7 +171,7 @@
 				foreach ($dirs_to_search as $dir) { $avatar_directories = array_merge($avatar_directories,glob("${dir}/images/avatars/*")); }
 				?>
 				<tr>
-				<th scope="row"><strong><?php _e('Avatar (no Gravatar) Directory','comicpress'); ?></strong><br /><br /><?php _e('Choose a directory to get the avatars for default gravatars if someone doesnt have one.','comicpress'); ?><br /></th>
+				<th scope="row"><strong><?php _e('Avatar (no Gravatar) Directory','comicpress'); ?></strong><br /><br /><?php _e('Choose a directory to get the avatars for default gravatars if someone does not have one. ','comicpress'); ?><br /></th>
 				<td valign="top">
 					<label>
 						<select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
@@ -198,7 +188,7 @@
 					</label>
 				</td>
 				<td valign="top">
-				<?php _e('To not use the comicpress avatar graphics, set this as "none".','comicpress'); ?><br />
+				<?php _e('Choose directory for avatars to display with non-Gravatar users. You will have to make these images yourself, or download them from avatar providers. Then make a new directory on your site server to upload them to and select that directory here.','comicpress'); ?><br />
 					<br />
 				</td>
 				</tr>
@@ -240,24 +230,13 @@
 						</label>
 				</td>
 				<td valign="top">
-			<?php _e('Mood directories are found in your theme directory/images/moods/* to create your own custom moods just create a directory
-					under images/moods/ and place ONLY image files inside of it.  The name of the image file represents what the mood is.','comicpress'); ?>
+			<?php _e('Select "none" to turn off. Mood directories are found in your theme directory/images/moods/* to create your own custom moods just create a directory under images/moods/ and place ONLY image files inside of it. The name of the image file represents what the mood is.','comicpress'); ?>
 				</td>
 				</tr>
 
 
 
-
-
-
-
-<?php break; case "comicpress-posts_heading_calendar": ?>
-<tr>
-<th scope="row"><span style="font-size: 1.5em; font-weight: bold;">- Calendar -</span>
-</th>
-</tr>
-
-
+<tr><td><h2>- Calendar -</h2></td></tr>
 
 
 			<?php break;
@@ -289,8 +268,7 @@
 				<td valign="top">
 					<?php _e('To not have calendar graphics, set this as "none".','comicpress'); ?><br />
 					<br />
-			<?php _e('Calendar directories are found in your theme directory/images/cal/* to create your own custom archive calendar images just create a directory
-					under images/cal/ and place your image files inside of it.','comicpress'); ?>
+			<?php _e('To not have calendar graphics, select "none". Calendar directories are found in your theme directory/images/cal/* to create your own custom archive calendar images just create a directory under images/cal/ and place your image files inside of it.','comicpress'); ?>
 				</td>
 				</tr>
 
@@ -303,14 +281,14 @@
 			<?php break;
 			case "comicpress-enable_comic_post_calendar": ?>
 				<tr>
-				<th scope="row"><strong><?php _e('Add graphic calendar to comic posts?','comicpress'); ?></strong><br /><br /><?php _e('Enabling this option will display a calendar image on your posts.','comicpress'); ?></th>
+				<th scope="row"><strong><?php _e('Add graphic calendar to comic posts?','comicpress'); ?></strong><br /><br /><?php _e('Enabling this option will display a calendar image on your comic posts.','comicpress'); ?></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label>
 				</td>
 				<td valign="top">
-					<?php _e('The graphic calendar is an image that has the date of the post overlayed on top of it.  This option is for the comic posts, and yes this was cut and pasted from the other one just the word "blog" was changed to "comic".','comicpress'); ?>
+					<?php _e('The graphic calendar is an image that has the date of the comic blog post overlayed on top of it.','comicpress'); ?>
 				</td>
 				</tr>
 
@@ -319,35 +297,29 @@
 				<?php break;
 			case "comicpress-enable_post_calendar": ?>
 				<tr>
-				<th scope="row"><strong><?php _e('Add graphic calendar to blog posts?','comicpress'); ?></strong><br /><br /><?php _e('Enabling this option will display a calendar image on your posts.','comicpress'); ?></th>
+				<th scope="row"><strong><?php _e('Add graphic calendar to blog posts?','comicpress'); ?></strong><br /><br /><?php _e('Enabling this option will display a calendar image on your blog posts.','comicpress'); ?></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label>
 				</td>
 				<td valign="top">
-				<?php _e('The graphic calendar is an image that has the date of the post overlayed on top of it.  This option is for the blog posts.','comicpress'); ?>
+				<?php _e('The graphic calendar is an image that has the date of the blog post overlayed on top of it.','comicpress'); ?>
 				</td>
 				</tr>
 
 
 
 
+<tr><td><h2>- Tags/Categories -</h2></td></tr>
 
-
-
-<?php break; case "comicpress-posts_heading_tagscategories": ?>
-<tr>
-<th scope="row"><span style="font-size: 1.5em; font-weight: bold;">- Tags/Categories -</span>
-</th>
-</tr>
 
 
 				<?php break;
 				
 			case "comicpress-disable_tags_in_posts": ?>
 				<tr>
-				<th scope="row"><strong><?php _e('Disable showing tags in posts?','comicpress'); ?></strong><br /><br /><?php _e('Tags are "descriptive keywords" describing the content of the post.','comicpress'); ?></th>
+				<th scope="row"><strong><?php _e('Disable display of tags in posts?','comicpress'); ?></strong><br /><br /><?php _e('Tags are "descriptive keywords" of content in a post.','comicpress'); ?></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;
@@ -365,31 +337,21 @@
 				<?php break;
 			case "comicpress-disable_categories_in_posts": ?>
 				<tr>
-				<th scope="row"><strong><?php _e('Disable showing categories in posts?','comicpress'); ?></strong><br /><br /><?php _e('The categories that are shown by default are the ones the post in set to.','comicpress'); ?></th>
+				<th scope="row"><strong><?php _e('Disable display of categories in posts?','comicpress'); ?></strong><br /><br /><?php _e('The categories that are shown by default are the ones the post in set to.','comicpress'); ?></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label>
 				</td>
 				<td valign="top">
-				<?php _e('Categores != Tags','comicpress'); ?>
+				<?php _e('Categories != Tags','comicpress'); ?>
 				</td>
 				</tr>
 
 
 
 
-
-
-
-<?php break; case "comicpress-posts_heading_pages": ?>
-<tr>
-<th scope="row"><span style="font-size: 1.5em; font-weight: bold;">- Pages -</span>
-</th>
-</tr>
-
-
-
+<tr><td><h2>- Pages -</h2></td></tr>
 
 
 				<?php break;
