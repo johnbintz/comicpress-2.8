@@ -5,8 +5,19 @@ Widget URI: http://comicpress.org/
 Description: 
 Author: Philip M. Hofer (Frumph)
 Version: 1.04
-Author URI: http://webcomicplanet.com/
+Author URI: http://frumph.net/
 
+*/
+
+/*
+function comicpress_archive_dropdown_storyline() {
+	$storyline = new ComicPressStoryline(); 
+	$storyline->create_structure(get_option('comicpress-storyline-category-order')); 
+	$categories =  array_keys($storyline->_structure);
+	foreach ($categories as $id) { 
+		$post = ComicPressDBInterface::get_instance()->get_first_comic($id);
+	}
+}
 */
 
 function comicpress_archive_dropdown() { ?>

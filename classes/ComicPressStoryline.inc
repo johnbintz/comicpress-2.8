@@ -534,7 +534,8 @@ class ComicPressStoryline {
   function build_from_restrictions($restrictions = null) {
   	global $post;
 
-		$this->read_from_options()->exclude_all();
+		$this->read_from_options();
+		$this->exclude_all();
 
 		$include_all = true;
 		if (is_array($restrictions)) {

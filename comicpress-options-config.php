@@ -55,6 +55,11 @@ $options = array (
 			"type" => "comicpress-buy_print_int_amount"),
 			
 		array(
+			"id" => "comicpress-buy_print_add_shipping",
+			"default" => "yes",
+			"type" => "comicpress-buy_print_add_shipping"),
+			
+		array(
 			"id" => "comicpress-buy_print_us_ship",
 			"default" => "4.95",
 			"type" => "comicpress-buy_print_us_ship"),
@@ -101,18 +106,13 @@ $options = array (
 		
 		array(
 			"id" => "comicpress-enable_numbered_pagination",
-			"default" => "no",
+			"default" => "yes",
 			"type" => "comicpress-enable_numbered_pagination"),
 			
 		array(
 			"id" => "comicpress-disable_page_restraints",
 			"default" => "no",
 			"type" => "comicpress-disable_page_restraints"),
-			
-		array(
-			"id" => "comicpress-enable_dropdown_sidebar",
-			"default" => "no",
-			"type" => "comicpress-enable_dropdown_sidebar"), 
 		
 		array(
 			"id" => "comicpress-enable_related_comics",
@@ -283,6 +283,11 @@ $options = array (
 			"id" => "comicpress-disable_blogheader",
 			"default" => "no",
 			"type" => "comicpress-disable_blogheader"),
+			
+		array(
+			"id" => "comicpress-disable_page_titles",
+			"default" => "no",
+			"type" => "comicpress-disable_page_titles"),
 			
 		array("type" => "close")
 		);

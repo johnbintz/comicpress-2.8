@@ -10,12 +10,12 @@ Template Name: Archives
 			<div class="post-page-head"></div>
 			<div class="post-page">
 				<div id="archivepage">
-					<h2><?php _e('Archives by Month:','comicpress'); ?></h2>
+				<h2 class="pagetitle"><?php the_title() ?></h2>
 					<ul><?php wp_get_archives('type=monthly') ?></ul>
 					<h2><?php _e('Archives by Subject:','comicpress'); ?></h2>
 					<ul><?php wp_list_categories() ?></ul>
-					<br class="clear-margins" />
 				</div>
+				<div class="clear"></div>
 			</div>
 			<div class="post-page-foot"></div>
 		</div>

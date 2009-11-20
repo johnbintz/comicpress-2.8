@@ -36,6 +36,20 @@
 					</tr>
 					
 					<?php break;
+			case "comicpress-buy_print_add_shipping": ?>
+				<tr>
+				<th scope="row"><strong><?php _e('Add shipping to each item?','comicpress'); ?></strong><br /></th>
+				<td valign="top" width="100">
+				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
+				&nbsp;&nbsp;
+				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label>
+				</td>
+				<td valign="top">
+				<?php _e('Enabling this option will make it so that shipping costs will be added to each item purchased.','comicpress'); ?>
+				</td>
+				</tr>
+				
+				<?php break;
 				case "comicpress-buy_print_us_amount": ?>
 					<tr>
 					<th scope="row"><b><?php _e('Print Cost (US/Canada)','comicpress'); ?></b><br /><br /><?php _e('How much does a print cost for people in the United State and Canada?','comicpress'); ?></th>

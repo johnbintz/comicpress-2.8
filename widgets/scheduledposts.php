@@ -5,7 +5,7 @@ Widget URI: http://comicpress.org/
 Description: Display a list of posts that are due to be scheduled.
 Author: Philip M. Hofer (Frumph)
 Version: 1.01
-Author URI: http://webcomicplanet.com/
+Author URI: http://frumph.net/
 
 */
 

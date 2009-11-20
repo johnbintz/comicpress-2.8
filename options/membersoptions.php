@@ -25,9 +25,6 @@
 		}
 		?>
 		</table>
-		<input name="comicpress_save" type="submit" class="button-primary" value="Save Settings" />
-	<input type="hidden" name="action" value="comicpress_save" />
-	</form>
 	</div>
 	<div class="inside">
 	Usage:<br />
@@ -41,4 +38,7 @@
 	<br />
 	This will make it so that that category is only seen as blogposts inside that area and not anywhere else on the site unless the user has the members flag.<br />
 	</div>
+	<input name="comicpress_save" type="submit" class="button-primary" value="Save Settings" />
+	<input type="hidden" name="action" value="comicpress_save" />
+	</form>
 </div>

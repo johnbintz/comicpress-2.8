@@ -30,8 +30,18 @@ function display_comic_post() {
 						</div>
 					<?php } ?>
 					<div class="post-comic-text">
-						<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
-						<div class="post-comic-author"> By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?></div>
+						<?php if (function_exists('the_post_image')) {
+							if ( has_post_image() ) { ?>
+								<div class="post-comic-image">
+									<a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_post_image('full'); ?></a>
+								</div>
+							<?php } else {?>
+								<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
+							<?php } ?>
+						<?php } else { ?>
+							<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
+						<?php } ?>
+						<div class="post-comic-author"> <?php the_time('F jS, Y'); ?> <span class="pipe">|</span> by <?php the_author_posts_link(); ?> <?php edit_post_link(__('Edit Post','comicpress'), ' [ ', ' ] '); ?></div>
 						<?php if (get_option('comicpress-enable-storyline-support') == 1) { ?>
 							<ul class="storyline-cats"><li class="storyline-root"><?php the_category(' &raquo; </li><li>', multiple) ?></li></ul>
 						<?php } else { ?>
@@ -39,15 +49,14 @@ function display_comic_post() {
 								<div class="post-comic-cat"><?php _e('Posted In:','comicpress'); ?> <?php the_category(','); ?></div>
 							<?php } ?>
 						<?php } ?>
-						<div class="post-comic-edit"><?php edit_post_link(__('Edit Post','comicpress'), ' [ ', ' ] '); ?></div>
 						<?php if(function_exists('the_ratings')) { the_ratings(); } ?>
 					</div>
-					<br class="clear-margins" />
 				</div>
 				<div class="entry">
 					<?php if (!is_single()) { global $more; $more = 0; } ?>
 					<?php the_content(__('&darr; Read the rest of this entry...','comicpress')); ?>
 					<?php if (is_single()) wp_link_pages(array('before' => '<div class="linkpages"><span class="linkpages-pagetext">Pages:</span> ', 'after' => '</div>', 'next_or_number' => 'number'));  ?>
+					<div class="clear"></div>
 				</div>
 				<div class="post-comic-extras">
 				<?php if ($disable_tags_in_posts != 'yes') { ?>
@@ -58,14 +67,13 @@ function display_comic_post() {
 				<?php 
 					if ('open' == $post->comment_status) { 
 						if (comicpress_check_child_file('partials/commentlink') == false) { ?>
-							<div class="comment-link"><?php comments_popup_link('<span class="comment-balloon comment-balloon-empty">&nbsp;</span> '.__('No Comments ','comicpress'), '<span class="comment-balloon">1</span> '.__('Comment ','comicpress'), '<span class="comment-balloon">%</span> '.__('Comments ','comicpress')); ?></div>
+							<div class="comment-link"><?php comments_popup_link('<span class="comment-balloon comment-balloon-empty">&nbsp;</span> '.__('Comments ','comicpress'), '<span class="comment-balloon">1</span> '.__('Comment ','comicpress'), '<span class="comment-balloon">%</span> '.__('Comments ','comicpress')); ?></div>
 						<?php }
 					}
 				?>
 				<div class="clear"></div>
 				<?php if ($enable_related_comics == 'yes') echo related_comics_shortcode(); ?>
 			</div>
-			<br class="clear-margins" />
 		</div>
 		<div class="post-comic-foot"></div>
 		</div>

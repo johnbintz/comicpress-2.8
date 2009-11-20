@@ -5,7 +5,7 @@ Widget URI: http://comicpress.org/
 Description: Show the stylized transcription in a widget area.
 Author: Philip M. Hofer (Frumph)
 Version: 1.01
-Author URI: http://webcomicplanet.com/
+Author URI: http://frumph.net/
 
 */
 

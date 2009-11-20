@@ -29,7 +29,7 @@
 			<?php } ?>
 	<?php } endwhile; ?>
 	
-<?php if (is_cp_theme_layout('3c,standard')) {  ?>
+<?php if (is_cp_theme_layout('3c,standard,3c2r')) {  ?>
 	<div id="subcontent-wrapper-head"></div>
 		<div id="subcontent-wrapper">
 <?php } ?>
@@ -86,9 +86,10 @@
 				endwhile; }
 			} 
 			$post = $temppost; $wp_query = $temp_query; $temppost = null; $temp_query = null;
+		}
+		if ('open' == $post->comment_status) {
+			comments_template('', true);
 		} ?>
-	
-		<?php comments_template('', true); ?>		
 		
 	<?php else: ?>
 	<?php get_sidebar('underblog'); ?>	
@@ -96,7 +97,7 @@
 		<div class="post-head"></div>
 		<div class="post">
 			<p><?php _e('Sorry, no posts matched your criteria.','comicpress'); ?></p>
-			<br class="clear-margins" />
+			<div class="clear"></div>
 		</div>
 		<div class="post-foot"></div>
 	</div>

@@ -5,7 +5,7 @@ Widget URI: http://comicpress.org/
 Description: This widget places graphical navigation buttons on your comic. For ComicPress 2.8
 Author: Philip M. Hofer (Frumph) &amp; John Bintz
 Version: 1.2
-Author URI: http://webcomicplanet.com/
+Author URI: http://frumph.net/
 */
 
 require_once(dirname(__FILE__) . '/../classes/ComicPressNavigation.inc');
@@ -120,7 +120,7 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 			case 'comments':
 				$temp_id = $id;
 				$id = $current->ID;
-			  ?><a href="<?php echo get_permalink($current); ?>#comment"
+			  ?><a href="<?php echo get_permalink($current); ?>#comments"
 						 class="navi navi-comments"
 						 title="<?php echo $instance['comments_title']; ?>"><span class="navi-comments-count"><?php comments_number('0', '1', '%'); ?></span><?php echo $instance['comments_title']; ?></a><?php
 				$id = $temp_id;

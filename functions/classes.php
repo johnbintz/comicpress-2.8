@@ -4,7 +4,7 @@
  * function function comicpress_body_class
  * 
  * Author: Philip M. Hofer (Frumph)
- * Author URI: http://webcomicplanet.com/ http://frumph.net/
+ * Author URI: http://frumph.net/ http://frumph.net/
  * Version: 1.0.6
  * 
  * This function adds the browser type as a class
@@ -133,6 +133,22 @@ function comicpress_post_class($class = '') {
 	$class = join( ' ', $classes );
 
 	echo apply_filters( 'comicpress_post_class', $class );
+}
+
+add_filter('comment_class','comicpress_comment_class');
+
+function comicpress_comment_class($classes = '') {
+	
+	/*
+	* http://microid.org
+	*/
+	$email = get_comment_author_email();
+	$url = get_comment_author_url();
+	if(!empty($email) && !empty($url)) {
+		$microid = 'microid-mailto+http:sha1:' . sha1(sha1('mailto:'.$email).sha1($url));
+		$classes[] = $microid;
+	}
+	return $classes;
 }
 
 ?>

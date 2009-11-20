@@ -5,7 +5,7 @@ Widget URI: http://comicpress.org/
 Description: Adds a bookmark set of icons to save the page your own.
 Author: Tyler Martin
 Version: 1.01
-Author URI: http://webcomicplanet.com/
+Author URI: http://frumph.net/
 
 */
 

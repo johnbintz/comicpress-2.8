@@ -2,7 +2,7 @@
 /**
  * Members Only
  * by Philip M. Hofer (Frumph)
- * http://webcomicplanet.com/
+ * http://frumph.net/
  * 
  * Displays content that only registered users that are marked members can see.
  * 

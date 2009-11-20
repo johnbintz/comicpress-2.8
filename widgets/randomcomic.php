@@ -5,7 +5,7 @@ Widget URI: http://comicpress.org/
 Description: Display a link to click on to go to a random comic.
 Author: Philip M. Hofer (Frumph)
 Version: 1.01
-Author URI: http://webcomicplanet.com/
+Author URI: http://frumph.net/
 
 */	
 	

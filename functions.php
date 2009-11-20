@@ -1,5 +1,10 @@
 <?php
 
+// the_post_image('thumbnail/medium/full'); 
+if (function_exists('add_theme_support')) {
+	add_theme_support( 'post-thumbnails' );
+}
+
 // Queue up the scripts.
 wp_enqueue_script('comicpress_scroll', get_template_directory_uri() . '/js/scroll.js');
 
@@ -19,7 +24,7 @@ if (function_exists('id_get_comment_number')) {
 	remove_filter('comments_number','id_get_comment_number');
 }
 
-$comicpress_version = '2.8.2.5';
+$comicpress_version = '2.9.0.0';
 
 global $wpmu_version;
 if (!empty($wpmu_version)) {
@@ -60,6 +65,7 @@ if (get_option('upload_path') !== false) {
 				'buy_print_url'					=> 'buy_print_url',
 				'buy_print_us_amount'			=> 'buy_print_us_amount',
 				'buy_print_int_amount'			=> 'buy_print_int_amount',
+				'buy_print_add_shipping'		=> 'buy_print_add_shipping',
 				'buy_print_us_ship'				=> 'buy_print_us_ship',
 				'buy_print_int_ship'			=> 'buy_print_int_ship',
 				'cp_theme_layout'				=> 'cp_theme_layout',
@@ -91,7 +97,6 @@ if (get_option('upload_path') !== false) {
 				'contact_in_menubar'			=> 'contact_in_menubar',
 				'disable_dynamic_menubar_links'	=> 'disable_dynamic_menubar_links',
 				'disable_footer_text'			=> 'disable_footer_text',
-				'themepack_directory'			=> 'themepack_directory',
 				'avatar_directory'				=> 'avatar_directory',
 				'archive_display_order'			=> 'archive_display_order',
 				'disable_comment_note'			=> 'disable_comment_note',
@@ -105,7 +110,8 @@ if (get_option('upload_path') !== false) {
 				'author_column_two'				=> 'author_column_two',
 				'remove_wptexturize'			=> 'remove_wptexturize',
 				'disable_default_menubar'		=> 'disable_default_menubar',
-				'disable_blogheader'			=> 'disable_blogheader' ) as $options => $variable_name) {
+				'disable_blogheader'			=> 'disable_blogheader',
+				'disable_page_titles'			=> 'disable_page_titles' ) as $options => $variable_name) {
 		$variables_to_extract[$variable_name] = get_option("comicpress-${options}");
 	}
 	

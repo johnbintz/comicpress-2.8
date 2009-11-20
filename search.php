@@ -48,9 +48,8 @@
 					<div class="clear"></div>
 				</div>
 				<div class="comicarchiveframe" style="width:<?php echo $archive_comic_width; ?>px;">
-					<a href="<?php the_permalink() ?>"><img src="<?php the_comic_archive() ?>" alt="<?php the_title() ?>" title="Click for full size." width="<?php echo $archive_comic_width ?>" /></a><br />
+					<a href="<?php the_permalink() ?>"><img src="<?php the_comic_archive() ?>" alt="<?php the_title() ?>" title="Click for full size." width="<?php echo $archive_comic_width ?>" /></a>
 				</div>
-				<br class="clear-margins" />
 			</div>
 			<div class="post-comic-foot"></div>
 		</div>
@@ -75,7 +74,7 @@
 						<small> <?php _e('By','comicpress'); ?> <?php the_author_posts_link(); ?> <?php _e('on','comicpress'); ?> <?php the_time('F jS, Y'); ?> <?php edit_post_link(__('Edit Post','comicpress'), ' [ ', ' ] '); ?></small><br />
 						<?php if ($disable_categories_in_posts != 'yes') { ?>
 							<?php if ($post->post_type == 'page') { ?>
-								<small><?php _e('This is a page.','comicpress'); ?></small><break />
+								<small><?php _e('This is a page.','comicpress'); ?></small><br />
 							<?php } else { ?>
 								<small><?php _e('Posted In:','comicpress'); ?> <?php the_category(','); ?></small><br />
 							<?php } ?>
@@ -90,9 +89,8 @@
 				} else { 
 					the_excerpt();
 					} ?>
-				<br class="clear-margins" />
 				<div class="post-extras">
-					<div class="tags">
+					<div class="post-tags">
 						<?php the_tags(__('&#9492; Tags:','comicpress'),', ','<br />'); ?>
 					</div>
 					<div class="clear"></div>
@@ -111,7 +109,6 @@
 				<h3><?php _e('No entries found.','comicpress'); ?></h3>
 				<p><?php _e('Try another search?','comicpress'); ?></p>
 				<p><?php include (get_template_directory() . '/searchform.php') ?></p>
-				<br class="clear-margins" />
 			</div>
 			<div class="post-page-foot"></div>
 		</div>

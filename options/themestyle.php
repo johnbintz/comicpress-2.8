@@ -45,7 +45,7 @@
 	}
 	?>
 	</table>
-	<input name="comicpress_save" type="submit" class="button-primary" value="Save Style" />
+	<input name="comicpress_save" type="submit" class="button-primary" value="Save Layout" />
 	<input type="hidden" name="action" value="comicpress_save" />
 	</form>
 	</div>

@@ -40,7 +40,6 @@
 			<?php } ?>
 				<div class="searchresults"><?php printf(__ngettext("%d item.", "%d items.", $count,'comicpress'),$count); ?></div>
 			</div>
-			<br class="clear-margins" />
 		</div>
 		<div class="post-page-foot"></div>
 	</div>
@@ -52,7 +51,7 @@
 
 				<div class="comicthumbwrap">
 					<div class="comicarchiveframe" style="width: <?php echo $mini_comic_width; ?>px">
-						<a href="<?php the_permalink() ?>"><img src="<?php the_comic_mini() ?>" alt="<?php the_title() ?>" title="<?php the_title() ?>" /></a>
+						<a href="<?php the_permalink() ?>"><img src="<?php the_comic_mini() ?>" alt="<?php the_title() ?>" title="<?php the_title() ?>"  /></a>
 					</div>
 				</div>
 
@@ -85,10 +84,9 @@
 							</div>
 							<div class="clear"></div>
 						</div>
-						<div class="comicarchiveframe" style="width:<?php echo $archive_comic_width; ?>px;">
-							<a href="<?php the_permalink() ?>"><img src="<?php the_comic_archive() ?>" alt="<?php the_title() ?>" title="Click for full size." width="<?php echo $archive_comic_width ?>" /></a><br />
+						<div class="comicarchiveframe" style="max-width:<?php echo $archive_comic_width; ?>px;">
+							<a href="<?php the_permalink() ?>"><img src="<?php the_comic_archive() ?>" alt="<?php the_title() ?>" title="Click for full size." style="max-width: <?php echo $archive_comic_width ?>px" /></a>
 						</div>
-						<br class="clear-margins" />
 					</div>
 					<div class="post-comic-foot"></div>
 				</div>
@@ -122,10 +120,9 @@
 				} else { 
 					the_excerpt();
 						} ?>
-						<br class="clear-margins" />
 						<div class="post-extras">
-							<div class="tags">
-								<?php the_tags(__('&#9492; Tags:','comicpress'),'','','<br />'); ?>
+							<div class="post-tags">
+								<?php the_tags(__('&#9492; Tags:','comicpress'),', ','<br />'); ?>
 							</div>
 							<div class="clear"></div>
 						</div>
@@ -143,7 +140,6 @@
 			<h3><?php _e('No posts found.','comicpress'); ?></h3>
 			<p><?php _e('Try another search?','comicpress'); ?></p>
 			<p><?php include(get_template_directory() . '/searchform.php') ?></p>
-			<br class="clear-margins" />
 		</div>
 		<div class="post-foot"></div>
 	</div>

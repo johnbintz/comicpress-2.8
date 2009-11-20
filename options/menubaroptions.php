@@ -8,7 +8,7 @@
 		switch ( $value['type'] ) {
 			case "comicpress-disable_default_menubar": ?>
 				<tr>
-				<th scope="row"><strong><?php _e('Disable the default menubar?','comicpress'); ?></strong><br /><br /></th>
+				<th scope="row"><strong><?php _e('Disable default Menubar?','comicpress'); ?></strong><br /><br /></th>
 				<td valign="top" width="100">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;
@@ -22,7 +22,7 @@
 				<?php break;
 			case "comicpress-enable_search_in_menubar": ?>
 				<tr>
-				<th scope="row"><strong><?php _e('Enable Search Form in Menubar?','comicpress'); ?></strong><br /><br /></th>
+				<th scope="row"><strong><?php _e('Enable Search Form?','comicpress'); ?></strong><br /><br /></th>
 				<td valign="top" width="100">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;
@@ -36,7 +36,7 @@
 				<?php break;
 			case "comicpress-enable_rss_in_menubar": ?>
 				<tr>
-				<th scope="row"><strong><?php _e('Enable RSS Link in Menubar?','comicpress'); ?></strong><br /><br /></th>
+				<th scope="row"><strong><?php _e('Enable RSS Link?','comicpress'); ?></strong><br /><br /></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;
@@ -50,7 +50,7 @@
 				<?php break;
 			case "comicpress-enable_navigation_in_menubar": ?>
 				<tr>
-				<th scope="row"><strong><?Php _e('Enable mini navigation buttons in the Menubar?','comicpress'); ?></strong><br /><br /></th>
+				<th scope="row"><strong><?Php _e('Enable mini navigation','comicpress'); ?></strong><br /><br /></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;
@@ -64,7 +64,7 @@
 				<?php break;
 			case "comicpress-contact_in_menubar": ?>
 				<tr>
-				<th scope="row"><strong><?php _e('Contact Link in Menubar','comicpress'); ?></strong><br /><br /><?php _e('Setting to &quot;Yes&quot will put [&nbsp;CONTACT&nbsp;] in the menubar and associate it with your admin email.','comicpress'); ?></th>
+				<th scope="row"><strong><?php _e('Contact Link?','comicpress'); ?></strong><br /><br /><?php _e('Setting to &quot;Yes&quot will put [&nbsp;CONTACT&nbsp;] in the menubar and associate it with your admin email.','comicpress'); ?></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;
@@ -78,7 +78,7 @@
 				<?php break;
 			case "comicpress-disable_dynamic_menubar_links": ?>
 				<tr>
-				<th scope="row"><strong><?php _e('Disable the dynamically generated wordpress links?','comicpress'); ?></strong><br /><br /><?php _e('Setting this to Yes will turn off the dynamic links in your menubar.','comicpress'); ?><br /><br /></th>
+				<th scope="row"><strong><?php _e('Disable auto-generated wordpress links?','comicpress'); ?></strong><br /><br /><?php _e('Setting this to Yes will turn off the dynamic links in your menubar.','comicpress'); ?><br /><br /></th>
 				<td valign="top">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;

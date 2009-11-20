@@ -16,13 +16,22 @@ Template Name: Links
 	<div class="<?php comicpress_post_class(); ?>">
 		<div class="post-page-head"></div>
 		<div class="post-page">
-			<h2 class="pagetitle"><?php the_title() ?></h2>
+			<?php if (function_exists('the_post_image')) {
+				if ( has_post_image() ) { ?>
+					<div class="post-page-image">
+					<?php the_post_image('full'); ?>
+					</div>
+				<?php } ?>
+			<?php } ?>
+			<?php if ($disable_page_titles != 'yes') { ?>
+				<h2 class="pagetitle"><?php the_title() ?></h2>
+			<?php } ?>
 			<div id="linkspage">
 			<ul>
 				<?php echo $bookmarks; ?>
 			</ul>
 			</div>
-			<br class="clear-margins" />
+			<div class="clear"></div>
 		</div>
 		<div class="post-page-foot"></div>
 	</div>
