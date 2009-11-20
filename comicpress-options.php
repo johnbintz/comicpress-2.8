@@ -69,8 +69,8 @@ function comicpress_admin() {
 	<div id="cpadmin" onclick="hidemessage();">
 	<div class="on" title="themestyle"><span><?php _e('Layout','comicpress'); ?></span></div>
 	<div class="off" title="generaloptions"><span><?php _e('General','comicpress'); ?></span></div>
-	<div class="off" title="indexoptions"><span><?php _e('Index Page','comicpress'); ?></span></div>
-	<div class="off" title="postoptions"><span><?php _e('Post','comicpress'); ?></span></div>
+	<div class="off" title="indexoptions"><span><?php _e('Home Page','comicpress'); ?></span></div>
+	<div class="off" title="postoptions"><span><?php _e('Posts &amp; Pages','comicpress'); ?></span></div>
 	<div class="off" title="archivesearch"><span><?php _e('Archive &amp; Search','comicpress'); ?></span></div>
 	<div class="off" title="menubaroptions"><span><?php _e('Menubar','comicpress'); ?></span></div>
 	<div class="off" title="customheader"><span><?php _e('Custom Header','comicpress'); ?></span></div>
@@ -101,7 +101,7 @@ function comicpress_admin() {
 			src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1"
 			height="1">
 		</form>
-		<a href="http://comicpress.org/"><strong>ComicPress 2.9</strong> <small>[ <?php global $comicpress_version; echo $comicpress_version; ?> ]</small></a>. <?php _e('Created by','comicpress'); ?> <a href="http://mindfaucet.com/">Tyler Martin</a> <?php _e('with','comicpress'); ?> <a href="http://www.coswellproductions.com/">John Bintz</a> <?php _e('and','comicpress'); ?> <a href="http://webcomicplanet.com/">Philip M. Hofer</a> <small>(<a href="http://frumph.net/">Frumph</a>)</small>.<br />
+		<a href="http://comicpress.org/"><strong>ComicPress 2.9</strong> <small>[ <?php global $comicpress_version; echo $comicpress_version; ?> ]</small></a>. <?php _e('Created by','comicpress'); ?> <a href="http://mindfaucet.com/">Tyler Martin</a> <?php _e('with','comicpress'); ?> <a href="http://www.coswellproductions.com/">John Bintz</a><?php _e(',','comicpress'); ?> <a href="http://webcomicplanet.com/">Philip M. Hofer</a> <small>(<a href="http://frumph.net/">Frumph</a>)</small> <?php _e('and','comicpress'); ?> <a href="http://www.oycomics.com/">Danny Burleson</a>.<br />
 		<?php _e('If you like the ComicPress theme, please donate.  It will help in creating new versions.','comicpress'); ?>
 		<br />
 		<br />

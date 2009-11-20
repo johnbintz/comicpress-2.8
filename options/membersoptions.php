@@ -27,16 +27,16 @@
 		</table>
 	</div>
 	<div class="inside">
-	Usage:<br />
+	Usage:<p>Edit the user with <b>Dashboard -> Users -> Authors & Users</b> and flag the user you want to be a member with the option at the bottom.</p>
+<p>
+Inside posts, add [members] content you only want members to see [/members]</p>
+<p>
+When setting a 'members' category, you *cannot* use an existing comic category, uncategorized, or blog category!</p>
+<p>
+You MUST create a whole new category and called it "members", then you select that category here and create a page called "Members" or something equivelant and associate the Member's Only template to it.</p>
+<p>
+This will make it so that that category is only seen as blogposts inside that area and not anywhere else on the site unless the user has the members flag.</p>
 	<br />
-	Edit the user with dashboard -> users -> author & users and flag the user you want to be a member with the option at the bottom.<br />
-	<br />
-	Inside posts, add [members]   content you only want members to see  [/members]<br />
-	<br />
-	Setting a 'members' category is a bit tricky.  You *cannot* use a comic category, uncategorized or blog posts category, create a whole new category and called it "members",
-	then you set that category here and create a page called "Members" or something equivelant and associate the Member's Only template to it.<br />
-	<br />
-	This will make it so that that category is only seen as blogposts inside that area and not anywhere else on the site unless the user has the members flag.<br />
 	</div>
 	<input name="comicpress_save" type="submit" class="button-primary" value="Save Settings" />
 	<input type="hidden" name="action" value="comicpress_save" />

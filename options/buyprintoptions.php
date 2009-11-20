@@ -38,22 +38,21 @@
 					<?php break;
 			case "comicpress-buy_print_add_shipping": ?>
 				<tr>
-				<th scope="row"><strong><?php _e('Add shipping to each item?','comicpress'); ?></strong><br /></th>
+				<th scope="row"><strong><?php _e('Add shipping to each item?','comicpress'); ?></strong><br /><br /><?php _e('Enabling this option will make it so that shipping costs will be added to each item purchased.','comicpress'); ?></th>
 				<td valign="top" width="100">
 				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
 				&nbsp;&nbsp;
 				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label>
 				</td>
 				<td valign="top">
-				<?php _e('Enabling this option will make it so that shipping costs will be added to each item purchased.','comicpress'); ?>
 				</td>
 				</tr>
 				
 				<?php break;
 				case "comicpress-buy_print_us_amount": ?>
 					<tr>
-					<th scope="row"><b><?php _e('Print Cost (US/Canada)','comicpress'); ?></b><br /><br /><?php _e('How much does a print cost for people in the United State and Canada?','comicpress'); ?></th>
-					<td valign="top">
+					<th scope="row"><b><?php _e('Print Cost (US/Canada)','comicpress'); ?></b><br /><br /><?php _e('How much does a print cost for people in the United States and Canada?','comicpress'); ?></th>
+					<td valign="top">$
 					<label>
 					<input type="text" size="7" name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" value="<?php print get_option($value['id']); ?>" />
 					</label>
@@ -64,7 +63,7 @@
 				case "comicpress-buy_print_us_ship": ?>
 					<tr>
 					<th scope="row"><b><?php _e('Shipping Cost (US/Canada)','comicpress'); ?></b><br /><br /></th>
-					<td valign="top">
+					<td valign="top">$
 					<label>
 					<input type="text" size="7" name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" value="<?php print get_option($value['id']); ?>" />
 					</label>
@@ -74,8 +73,8 @@
 					<?php break;
 				case "comicpress-buy_print_int_amount": ?>
 					<tr>
-					<th scope="row"><b><?php _e('Print Cost (International)','comicpress'); ?></b><br /><br /><?php _e('How much does a print cost for people *NOT* in the United States and Canda (International)','comicpress'); ?></th>
-					<td valign="top">
+					<th scope="row"><b><?php _e('Print Cost (International)','comicpress'); ?></b><br /><br /><?php _e('How much does a print cost for people *NOT* in the United States and Canada (International)','comicpress'); ?></th>
+					<td valign="top">$
 					<label>
 					<input type="text" size="7" name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" value="<?php print get_option($value['id']); ?>" />
 					</label>
@@ -86,7 +85,7 @@
 				case "comicpress-buy_print_int_ship": ?>
 					<tr>
 					<th scope="row"><b><?php _e('Shipping Cost (International)','comicpress'); ?></b><br /><br /></th>
-					<td valign="top">
+					<td valign="top">$
 					<label>
 					<input type="text" size="7" name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" value="<?php print get_option($value['id']); ?>" />
 					</label>
