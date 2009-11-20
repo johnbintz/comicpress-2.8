@@ -22,11 +22,11 @@
 					<td valign="top">
 						<label>
 							<select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" class="code" onchange="showimage(this,'cpthemestyle')">
-								<option class="level-0" value="standard" <?php if (get_option($value['id'])=='standard') { ?>selected="selected" <?php } ?>><?php _e('Comic Strip - 2 Column','comicpress'); ?></option>
-								<option class="level-0" value="3c" <?php if (get_option($value['id'])=='3c') { ?>selected="selected" <?php } ?>><?php _e('Comic Strip - 3 Column ','comicpress'); ?></option>
-								<option class="level-0" value="3c2r" <?php if (get_option($value['id'])=='3c2r') { ?>selected="selected" <?php } ?>><?php _e('Comic Strip - 3 Column: Sidebars Right','comicpress'); ?></option>
-								<option class="level-0" value="v" <?php if (get_option($value['id'])=='v') { ?>selected="selected" <?php } ?>><?php _e('Single Panel - 2 Column','comicpress'); ?></option>
-								<option class="level-0" value="v3c" <?php if (get_option($value['id'])=='v3c') { ?>selected="selected" <?php } ?>><?php _e('Single Panel - 3 Column','comicpress'); ?></option>	
+								<option class="level-0" value="standard" <?php if (get_option($value['id'])=='standard') { ?>selected="selected" <?php } ?>><?php _e('2 Column (Standard)','comicpress'); ?></option>
+								<option class="level-0" value="3c" <?php if (get_option($value['id'])=='3c') { ?>selected="selected" <?php } ?>><?php _e('3 Column ','comicpress'); ?></option>
+								<option class="level-0" value="3c2r" <?php if (get_option($value['id'])=='3c2r') { ?>selected="selected" <?php } ?>><?php _e('3 Column: Sidebars Right','comicpress'); ?></option>
+								<option class="level-0" value="v" <?php if (get_option($value['id'])=='v') { ?>selected="selected" <?php } ?>><?php _e('Single Panel (Vertical)','comicpress'); ?></option>
+								<option class="level-0" value="v3c" <?php if (get_option($value['id'])=='v3c') { ?>selected="selected" <?php } ?>><?php _e('Single Panel (Vertical) 3 Column','comicpress'); ?></option>	
 								<option class="level-0" value="gn" <?php if (get_option($value['id'])=='gn') { ?>selected="selected" <?php } ?>><?php _e('Graphic Novel: Sidebar Left','comicpress'); ?></option>
 								<option class="level-0" value="rgn" <?php if (get_option($value['id'])=='rgn') { ?>selected="selected" <?php } ?>><?php _e('Graphic Novel: Sidebar Right','comicpress'); ?></option>
 							</select>
