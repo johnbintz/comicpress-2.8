@@ -241,9 +241,6 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 			$storyline = new ComicPressStoryline();
 			$storyline->create_structure(get_option('comicpress-storyline-category-order'));
 
-			$dbi = ComicPressDBInterface::get_instance();
-			$dbi->set_comic_categories($storyline->get_comic_categories());
-
 			$navigation = new ComicPressNavigation();
 			$navigation->init($storyline);
 			$post_nav = $navigation->get_post_nav($post);

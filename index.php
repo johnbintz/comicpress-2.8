@@ -13,13 +13,12 @@
 		<div id="content" class="narrowcolumn">
 			<div class="column">
 	<?php } ?>
-	
+
 <?php if (!(is_paged())) { ?>
 
 	<?php if ($disable_comic_frontpage != 'yes') { ?>
-
 			<?php $wp_query ->in_the_loop = true; $comicFrontpage = new WP_Query(); $comicFrontpage->query('showposts=1&cat='.get_all_comic_categories_as_cat_string());
-		while ($comicFrontpage->have_posts()) : $comicFrontpage->the_post() ?>	
+		while ($comicFrontpage->have_posts()) : $comicFrontpage->the_post() ?>
 			<?php if (comicpress_check_child_file('partials/displaycomic') == false) { ?>
 			<div id="comic-wrap">
 				<div id="comic-head"><?php get_sidebar('over'); ?></div>
@@ -32,9 +31,9 @@
 			</div>
 			<?php } ?>
 		<?php endwhile; ?>
-		
+
 	<?php } ?>
-	
+
 <?php } ?>
 
 <?php if (is_cp_theme_layout('3c,standard,3c2r')) {  ?>
@@ -57,14 +56,14 @@
 				</center>
 			</div>
 	<?php }
-	
+
 	get_sidebar('blog');
-	
+
 if ($disable_comic_frontpage != 'yes' && $disable_comic_blog_frontpage != 'yes' && !is_paged() )  { ?>
 		<?php while ($comicFrontpage->have_posts()) : $comicFrontpage->the_post();
 			display_comic_post();
 			$comicFrontPage->is_single = true;
-			comments_template(); 
+			comments_template();
 	endwhile; ?>
 <?php } ?>
 
@@ -74,18 +73,18 @@ if ($disable_comic_frontpage != 'yes' && $disable_comic_blog_frontpage != 'yes' 
 
 	<?php if ($disable_blog_frontpage != 'yes') {
 	global $blog_postcount; ?>
-		<?php 
+		<?php
 		if ($split_column_in_two != 'yes') {
-			$blog_query = 'showposts='.$blog_postcount.'&cat="-'.exclude_comic_categories().'"&paged='.$paged; 
-			
+			$blog_query = 'showposts='.$blog_postcount.'&cat="-'.exclude_comic_categories().'"&paged='.$paged;
+
 			$posts = query_posts($blog_query);
 		if (have_posts()) { ?>
 			<div class="blogindex-head"></div>
 			<div class="blogindex">
 				<?php while (have_posts()) : the_post();
-					
-					display_blog_post();	
-				
+
+					display_blog_post();
+
 			endwhile; ?>
 			</div>
 			<div class="blogindex-foot"></div>

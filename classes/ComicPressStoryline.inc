@@ -15,9 +15,13 @@ class ComicPressStoryline {
    * Get the flattened storyline from options.
    */
 	function get_flattened_storyline() {
-		$comicpress = &ComicPress::get_instance();
-		if (isset($comicpress->comicpress_options['storyline_order'])) {
-			return $comicpress->comicpress_options['storyline_order'];
+		if (class_exists('ComicPress')) {
+			$comicpress = &ComicPress::get_instance();
+			if (isset($comicpress->comicpress_options['storyline_order'])) {
+				return $comicpress->comicpress_options['storyline_order'];
+			}
+		} else {
+			return get_option("comicpress-storyline-category-order");
 		}
 		return false;
 	}
