@@ -64,7 +64,7 @@
 				<?php _e('Generally, you want to leave the WordPress formatting enabled, but it some special cases you may prefer to preserve non-WP formatting.','comicpress'); ?>
 				</td>
 				</tr>
-				
+
 <tr><td><h2>- Authors/Avatars/Moods -</h2></td></tr>
 
 				<?php break;
@@ -86,11 +86,11 @@
 				<th scope="row"><strong><?php _e('Author for Column one?','comicpress'); ?></strong><br /><br /><?php _e('If column is split in two.','comicpress'); ?></th>
 				<td valign="top" width="100">
 					<label>
-					<?php 
+					<?php
 						$args = array('echo' => '0', 'show' => 'display_name', 'selected' => $author_column_one);
 						$selected = wp_dropdown_users($args);
 						$selected = preg_replace('#<select([^>]*)>#', '<select name="'.$value['id'].'" id="'.$value['id'].'">', $selected);
-						
+
 						echo $selected;
 					?>
 					</label>
@@ -105,11 +105,11 @@
 				<th scope="row"><strong><?php _e('Author for Column two?','comicpress'); ?></strong><br /><br /><?php _e('If column is split in two.','comicpress'); ?></th>
 				<td valign="top" width="100">
 					<label>
-			<?php 
+			<?php
 			$args = array('echo' => '0', 'show' => 'display_name', 'selected' => $author_column_two);
 			$selected = wp_dropdown_users($args);
 			$selected = preg_replace('#<select([^>]*)>#', '<select name="'.$value['id'].'" id="'.$value['id'].'">', $selected);
-			
+
 			echo $selected;
 							?>
 					</label>
@@ -119,35 +119,29 @@
 				</tr>
 
 				<?php break;
-			case "comicpress-enable_comic_post_author_gravatar": ?>
-				<tr>
-				<th scope="row"><strong><?php _e('Comic post author Gravatar?','comicpress'); ?></strong><br /><br /><?php _e('Enabling this option will show a gravatar of the post author based on the author email address.','comicpress'); ?></th>
-				<td valign="top">
-				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
-				&nbsp;&nbsp;
-				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label>
-				</td>
-				<td valign="top">
-					<?php _e('Gravatars are associated by your email address and you can create them at','comicpress'); ?> <a href="http://gravatar.com/">http://gravatar.com</a>.  <?php _e('They are pictures of you, your cat of whatever you want to be your representation on your posts and comments.','comicpress'); ?>
-				</td>
-				</tr>
-
-				<?php break;
-			case "comicpress-enable_post_author_gravatar": ?>
-				<tr>
-				<th scope="row"><strong><?php _e('Blog post author Gravatar?','comicpress'); ?></strong><br /><br /><?php _e('Enabling this option will show a gravatar of the post author based on the author email address.','comicpress'); ?></th>
-				<td valign="top">
-				<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
-				&nbsp;&nbsp;
-				<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label>
-				</td>
-				<td valign="top">
-					<?php _e('Gravatars are associated by your email address and you can create them at','comicpress'); ?> <a href="http://gravatar.com/">http://gravatar.com</a>.  <?php _e('They are pictures of you, your cat of whatever you want to be your representation on your posts and comments.','comicpress'); ?>
-				</td>
-				</tr>
-
-			<?php break;
-			case "comicpress-avatar_directory": 
+			case "comicpress-enable_comic_post_author_gravatar":
+			case "comicpress-enable_post_author_gravatar":
+				switch ($value['type']) {
+					case "comicpress-enable_comic_post_author_gravatar":
+						$label = __('Comic post author Gravatar?','comicpress');
+						break;
+					case "comicpress-enable_post_author_gravatar":
+						$label = __('Blog post author Gravatar?','comicpress');
+						break;
+				} ?>
+					<tr>
+					<th scope="row"><strong><?php echo esc_html($label); ?></strong><br /><br /><?php _e('Enabling this option will show a gravatar of the post author based on the author email address.','comicpress'); ?></th>
+					<td valign="top">
+					<label><input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-yes" type="radio" value="yes"<?php if ( get_option( $value['id'] ) == "yes") { echo " checked"; } ?> /><?php _e('Yes','comicpress'); ?></label>
+					&nbsp;&nbsp;
+					<label><input  name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>-no" type="radio" value="no"<?php if ( get_option( $value['id'] ) == "no") { echo " checked"; } ?> /><?php _e('No','comicpress'); ?></label>
+					</td>
+					<td valign="top">
+						<?php _e('Gravatars are associated by your email address and you can create them at','comicpress'); ?> <a href="http://gravatar.com/">http://gravatar.com</a>.  <?php _e('They are pictures of you, your cat of whatever you want to be your representation on your posts and comments.','comicpress'); ?>
+					</td>
+					</tr><?php
+				break;
+			case "comicpress-avatar_directory":
 				$current_avatar_directory = get_option($value['id']);
 				if (empty($current_avatar_directory)) $current_avatar_directory = 'default';
 				$dirs_to_search = array_unique(array(get_template_directory(),get_stylesheet_directory()));
@@ -162,7 +156,7 @@
 							<option class="level-0" value="none" <?php if ($current_cal_directory == "none") { ?>selected="selected"<?php } ?>>none</option>
 				<?php
 					foreach ($avatar_directories as $avatar_dirs) {
-						if (is_dir($avatar_dirs)) { 
+						if (is_dir($avatar_dirs)) {
 							$avatar_dir_name = basename($avatar_dirs); ?>
 							<option class="level-0" value="<?php echo $avatar_dir_name; ?>" <?php if ($current_avatar_directory == $avatar_dir_name) { ?>selected="selected"<?php } ?>><?php echo $avatar_dir_name; ?></option>
 					<?php }
@@ -177,7 +171,7 @@
 				</td>
 				</tr>
 				<?php break;
-			case "comicpress-moods_directory": 
+			case "comicpress-moods_directory":
 				$current_directory = get_option($value['id']);
 				if (empty($current_directory)) $current_directory = 'default';
 
@@ -193,7 +187,7 @@
 							<option class="level-0" value="none" <?php if ($current_directory == "none") { ?>selected="selected"<?php } ?>>none</option>
 				<?php
 					foreach ($mood_directories as $mood_dirs) {
-						if (is_dir($mood_dirs)) { 
+						if (is_dir($mood_dirs)) {
 							$mood_dir_name = basename($mood_dirs); ?>
 							<option class="level-0" value="<?php echo $mood_dir_name; ?>" <?php if ($current_directory == $mood_dir_name) { ?>selected="selected"<?php } ?>><?php echo $mood_dir_name; ?></option>
 					<?php }
@@ -206,15 +200,15 @@
 			<?php _e('Select "none" to turn off. Mood directories are found in your theme directory/images/moods/* to create your own custom moods just create a directory under images/moods/ and place ONLY image files inside of it. The name of the image file represents what the mood is.','comicpress'); ?>
 				</td>
 				</tr>
-				
+
 <tr><td><h2>- Calendar -</h2></td></tr>
 
 
 			<?php break;
-			case "comicpress-calendar_directory": 
+			case "comicpress-calendar_directory":
 				$current_cal_directory = get_option($value['id']);
 				if (empty($current_cal_directory)) $current_cal_directory = 'default';
-				
+
 				$dirs_to_search = array_unique(array(get_template_directory(),get_stylesheet_directory()));
 				$cal_directories = array();
 				foreach ($dirs_to_search as $dir) { $cal_directories = array_merge($cal_directories,glob("${dir}/images/cal/*")); }
@@ -227,7 +221,7 @@
 						<option class="level-0" value="none" <?php if ($current_cal_directory == "none") { ?>selected="selected"<?php } ?>>none</option>
 				<?php
 					foreach ($cal_directories as $cal_dirs) {
-						if (is_dir($cal_dirs)) { 
+						if (is_dir($cal_dirs)) {
 							$cal_dir_name = basename($cal_dirs); ?>
 							<option class="level-0" value="<?php echo $cal_dir_name; ?>" <?php if ($current_cal_directory == $cal_dir_name) { ?>selected="selected"<?php } ?>><?php echo $cal_dir_name; ?></option>
 					<?php }
@@ -271,7 +265,7 @@
 
 <tr><td><h2>- Tags/Categories -</h2></td></tr>
 
-				<?php break;				
+				<?php break;
 			case "comicpress-disable_tags_in_posts": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Disable display of tags in posts?','comicpress'); ?></strong><br /><br /><?php _e('Tags are "descriptive keywords" of content in a post.','comicpress'); ?></th>
@@ -315,7 +309,7 @@
 				</td>
 				</tr>
 				<?php break;
-				
+
 			case "comicpress-static_blog": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Blog loop stays with all the single pages?','comicpress'); ?></strong><br /></th>
@@ -329,7 +323,7 @@
 				</td>
 				</tr>
 				<?php break;
-				
+
 			case "comicpress-disable_page_titles": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Disable the titles on pages?','comicpress'); ?></strong><br /><br /></th>
@@ -348,7 +342,7 @@
 	?>
 	</table>
 	<input name="comicpress_save" type="submit" class="button-primary" value="Save Settings" />
-	<input type="hidden" name="action" value="comicpress_save" />	
+	<input type="hidden" name="action" value="comicpress_save" />
 	</form>
 	</div>
-	</div>	
+	</div>
