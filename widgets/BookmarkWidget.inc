@@ -24,9 +24,7 @@ class BookmarkWidget extends WP_Widget {
   function widget() {
     ?>
     <div id="comic-bookmark-holder">
-      <a href="#" class="tag-page"><img src="<?php echo get_template_directory_uri()  ?>/images/1.gif" /></a>
-      <a href="#" class="goto-tag"><img /></a>
-      <a href="#" class="clear-tag"><img /></a>
+      <a href="#" class="tag-page"><img src="<?php echo get_template_directory_uri()  ?>/images/1.gif" /></a><a href="#" class="goto-tag"><img /></a><a href="#" class="clear-tag"><img /></a>
     </div>
     <?php
   }
