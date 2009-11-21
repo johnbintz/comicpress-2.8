@@ -10,7 +10,7 @@
 	<?php global $disable_footer_text, $wpmu_version; if ($disable_footer_text != 'yes') { ?>
 		<p>
 			<span class="footer-copyright">
-				<?php echo cp_copyright(); ?>
+				<?php echo comicpress_copyright(); ?>
 				<?php if (empty($wpmu_version)) {
 					$authorfirstname = get_the_author_meta('firstname',1);
 					$authorlastname = get_the_author_meta('lastname',1);
