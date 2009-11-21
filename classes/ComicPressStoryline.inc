@@ -30,9 +30,11 @@ class ComicPressStoryline {
    * Set the global storyline as a flattened storyline.
    */
 	function set_flattened_storyline($storyline) {
-		$comicpress = &ComicPress::get_instance();
-		$comicpress->comicpress_options['storyline_order'] = $storyline;
-		$comicpress->save();
+		if (class_exists('ComicPress')) {
+			$comicpress = &ComicPress::get_instance();
+			$comicpress->comicpress_options['storyline_order'] = $storyline;
+			$comicpress->save();
+		}
 	}
 
   /**

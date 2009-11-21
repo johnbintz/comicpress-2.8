@@ -239,7 +239,7 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 
 		if (is_home() || is_single()) {
 			$storyline = new ComicPressStoryline();
-			$storyline->create_structure(get_option('comicpress-storyline-category-order'));
+			$storyline->set_order_via_flattened_storyline(get_option('comicpress-storyline-category-order'));
 
 			$navigation = new ComicPressNavigation();
 			$navigation->init($storyline);
