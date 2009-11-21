@@ -16,7 +16,10 @@ class ComicPressStoryline {
    */
 	function get_flattened_storyline() {
 		$comicpress = &ComicPress::get_instance();
-	  return $comicpress->comicpress_options['storyline_order'];
+		if (isset($comicpress->comicpress_options['storyline_order'])) {
+			return $comicpress->comicpress_options['storyline_order'];
+		}
+		return false;
 	}
 
   /**
@@ -46,28 +49,37 @@ class ComicPressStoryline {
 		}
 	}
 
+	function _create_structure_key($input) {
+		$key = 'storyline-structure-';
+		if (is_string($input)) { return $key . $input;	}
+		if (is_array($input))  {
+			$fixed_parts = array();
+			foreach ($input as $i) { if (is_string($i)) { $fixed_parts[] = $i; } }
+			if (!empty($fixed_parts)) {	return $key . implode(',', $fixed_parts); }
+		}
+		return false;
+	}
+
   /**
    * Create a searchable structure from a node list.
    * @param array $structure The structure to process.
    * @return boolean True if the structure was valid.
    */
   function create_structure($structure) {
-    $key = null;
-    if (is_string($structure)) {
-      $key = $structure;
-      $structure = explode(',', $structure);
-    } else {
-      if (is_array($structure)) {
-      	$fixed_structure = array();
-      	foreach ($structure as $s) {
-      		if (!is_array($s)) { $fixed_structure[] = $s; }
-      	}
-        $key = implode(',', $fixed_structure);
-      }
-    }
+    $key = $this->_create_structure_key($structure);
 
-    if (!is_null($key)) {
-      $key = "storyline-structure-${key}";
+    if ($key !== false) {
+	    if (is_string($structure)) {
+	      $structure = explode(',', $structure);
+	    } else {
+	      if (is_array($structure)) {
+	      	$fixed_structure = array();
+	      	foreach ($structure as $s) {
+	      		if (!is_array($s)) { $fixed_structure[] = $s; }
+	      	}
+	      	$structure = $fixed_structure;
+	      }
+	    }
 
       if (($result = wp_cache_get($key, 'comicpress')) !== false) {
         $this->_structure = $result;
@@ -133,6 +145,7 @@ class ComicPressStoryline {
 
   function _get_field($field, $id) {
     if (isset($this->_structure)) {
+    	$id = $this->_ensure_numeric_category($id);
       if (isset($this->_structure[$id])) {
         if (isset($this->_structure[$id][$field])) {
           return $this->_structure[$id][$field];
@@ -142,11 +155,15 @@ class ComicPressStoryline {
     return false;
   }
 
+  // @codeCoverageIgnoreStart
   function parent($id)   { return $this->_get_field('parent', $id); }
   function previous($id) { return $this->_get_field('previous', $id); }
   function next($id)     { return $this->_get_field('next', $id); }
-  function valid($id)    {
-    if (isset($this->_structure[$id])) {
+  // @codeCoverageIgnoreEnd
+
+  function valid($id) {
+    $id = $this->_ensure_numeric_category($id);
+  	if (isset($this->_structure[$id])) {
       return array_keys($this->_structure[$id]);
     }
     return false;
@@ -156,16 +173,21 @@ class ComicPressStoryline {
   	if (isset($this->_structure[$id])) {
   		$all_adjacent = array();
   		do {
-        $new_id = $this->_structure[$id][$direction];
-        
         $has_adjacent = false;
-        if (!in_array($new_id, $all_adjacent)) {
-          if ($has_adjacent = isset($this->_structure[$id][$direction])) {
-            $all_adjacent[] = $new_id;
-            $id = $new_id;
+
+        if (isset($this->_structure[$id][$direction])) {
+          $new_id = $this->_structure[$id][$direction];
+
+          if (!in_array($new_id, $all_adjacent)) {
+            if ($has_adjacent = isset($this->_structure[$id][$direction])) {
+              $all_adjacent[] = $new_id;
+              $id = $new_id;
+            }
           }
         }
+      // @codeCoverageIgnoreStart
   		} while ($has_adjacent);
+      // @codeCoverageIgnoreEnd
   		return $all_adjacent;
   	}
   	return false;
@@ -196,14 +218,6 @@ class ComicPressStoryline {
     }
     return $result;
   }
-
-  /**
-   * Get all comic categories.
-   * @deprecated
-   */
-	function get_comic_categories() {
-		return array_keys($this->_structure);
-	}
 
   /**
    * Get a simple storyline.
@@ -248,9 +262,11 @@ class ComicPressStoryline {
   /**
    * Get a flattened category node list.
    */
+	// @codeCoverageIgnoreStart
 	function get_category_flattened($parent = null) {
 		return $this->flatten_simple_storyline($this->get_category_simple_structure($parent));
 	}
+	// @codeCoverageIgnoreEnd
 
   /**
    * Merge a flat simple storyline into a tree.
@@ -290,7 +306,6 @@ class ComicPressStoryline {
 	 * Integrates a bunch of other things.
 	 */
 	function normalize($flattened_storyline = null, $set = true) {
-		$comicpress = ComicPress::get_instance();
 		if (is_null($flattened_storyline)) {
 			$flattened_storyline = $this->get_flattened_storyline();
 		}
@@ -400,7 +415,7 @@ class ComicPressStoryline {
     return $this;
   }
 
-  function _find_children($parent) {
+  function _ensure_numeric_category($parent) {
   	if (!is_numeric($parent)) {
   		foreach (get_all_category_ids() as $id) {
   			$category = get_category($id);
@@ -409,21 +424,30 @@ class ComicPressStoryline {
   			}
   		}
   	}
+  	return $parent;
+  }
+
+  function _find_children($parent) {
+  	$parent = $this->_ensure_numeric_category($parent);
   	if (is_numeric($parent)) {
 	    $children = array($parent);
 	    do {
 	      $found_children = false;
-	      foreach ($this->_structure as $category_id => $info) {
-	        if (!in_array($category_id, $children)) {
-	        	if (isset($info['parent'])) {
-		          if (in_array($info['parent'], $children)) {
-		            $children[] = $category_id;
-		            $found_children = true;
-		          }
-	        	}
-	        }
+	      if (is_array($this->_structure)) {
+		      foreach ($this->_structure as $category_id => $info) {
+		        if (!in_array($category_id, $children)) {
+		        	if (isset($info['parent'])) {
+			          if (in_array($info['parent'], $children)) {
+			            $children[] = $category_id;
+			            $found_children = true;
+			          }
+		        	}
+		        }
+		      }
 	      }
+	    // @codeCoverageIgnoreStart
 	    } while ($found_children);
+	    // @codeCoverageIgnoreEnd
 
 	    return $children;
   	}
@@ -545,38 +569,50 @@ class ComicPressStoryline {
 		}
 
 		if (!$include_all) {
-			foreach ($restrictions as $type => $list) {
-				if (substr($type, 0, 1) == "!") {
-				  $method_root = 'exclude';
-					$method_type = substr($type, 1);
+			foreach ($restrictions as $_type => $_list) {
+				if (!is_string($_type) && is_array($_list)) {
+					$all_checks = array($_list);
 				} else {
-					$method_root = 'include';
-					$method_type = $type;
+					$all_checks = array(
+						array($_type, $_list)
+					);
 				}
 
-				if (!is_array($list)) { $list = array($list); }
+				foreach ($all_checks as $info) {
+					list($type, $list) = $info;
 
-				foreach ($list as $restriction) {
-					$method = '';
-					$args = array($restriction);
-					switch ($method_type) {
-						case 'child_of': $method = 'children'; break;
-						case 'root_of': $method = 'post_root'; break;
-						case 'from_post': $method = 'post_category'; break;
-						case 'previous':
-							$method = 'adjacent';
-							$args[] = false;
-							break;
-						case 'next':
-							$method = 'adjacent';
-							$args[] = true;
-							break;
-						default:
-							$method = $method_type; break;
+					if (substr($type, 0, 1) == "!") {
+					  $method_root = 'exclude';
+						$method_type = substr($type, 1);
+					} else {
+						$method_root = 'include';
+						$method_type = $type;
 					}
-					if (!empty($method)) {
-						array_unshift($args, "_find_${method}");
-						call_user_func_array(array($this, "_${method_root}"), $args);
+
+					if (!is_array($list)) { $list = array($list); }
+
+					foreach ($list as $restriction) {
+						$method = '';
+						$args = array($restriction);
+						switch ($method_type) {
+							case 'child_of': $method = 'children'; break;
+							case 'root_of': $method = 'post_root'; break;
+							case 'from_post': $method = 'post_category'; break;
+							case 'previous':
+								$method = 'adjacent';
+								$args[] = false;
+								break;
+							case 'next':
+								$method = 'adjacent';
+								$args[] = true;
+								break;
+							default:
+								$method = $method_type; break;
+						}
+						if (!empty($method)) {
+							array_unshift($args, "_find_${method}");
+							call_user_func_array(array($this, "_${method_root}"), $args);
+						}
 					}
 				}
 			}

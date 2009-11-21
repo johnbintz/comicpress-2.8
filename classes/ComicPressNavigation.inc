@@ -4,12 +4,14 @@ require_once('ComicPressStoryline.inc');
 require_once('ComicPressDBInterface.inc');
 
 class ComicPressNavigation {
+  // @codeCoverageIgnoreStart
   function init($storyline) {
     $this->_storyline = $storyline;
     $this->_dbi       = ComicPressDBInterface::get_instance();
   }
+  // @codeCoverageIgnoreEnd
 
-  function get_post_nav($post) {
+  function get_post_nav($post, $restrictions = null) {
     $nav = array();
     if (is_object($post)) {
 	    if (isset($post->ID)) {
@@ -17,18 +19,21 @@ class ComicPressNavigation {
 
 		    if (($result = wp_cache_get($cache_key, 'comicpress')) !== false) {
 		    	 foreach ($result as $key => $post_id) {
-		    	 	 $nev[$key] = get_post($post_id);
+		    	 	 $nav[$key] = get_post($post_id);
 		    	 }
+		    	 return $nav;
 		    }
+
+		    $categories = $this->_storyline->build_from_restrictions($restrictions);
 
 		    // global previous/next
 		    foreach (array('previous', 'next') as $field) {
-		      $nav[$field] = $this->_dbi->{"get_${field}_comic"}(null, $post);
+		      $nav[$field] = $this->_dbi->{"get_${field}_comic"}($categories, $post);
 		    }
 
 		    // global first/last
 		    foreach (array('first', 'last') as $field) {
-		      $nav[$field] = $this->_dbi->{"get_${field}_comic"}(null);
+		      $nav[$field] = $this->_dbi->{"get_${field}_comic"}($categories);
 		    }
 
 		    if ($category = $this->_storyline->get_valid_post_category($post->ID)) {
@@ -54,7 +59,6 @@ class ComicPressNavigation {
 		    $cache_data = array();
 		    foreach ($nav as $key => $output_post) {
 		    	if (!empty($output_post)) { $cache_data[$key] = $output_post->ID; }
-		    	if ($output_post->ID == $post->ID) { $nav[$key] = false; }
 		    }
 
 		    wp_cache_set($cache_key, $cache_data, 'comicpress');
@@ -62,6 +66,7 @@ class ComicPressNavigation {
 				return $nav;
 			}
 		}
+    return false;
   }
 }
 
