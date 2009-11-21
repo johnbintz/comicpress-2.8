@@ -11,6 +11,7 @@ function __comicpress_widgets_init() {
 			if (strpos($file, '.inc') !== false) {
 				$class_name = preg_replace('#\..*$#', '', $file);
 				require_once(dirname(__FILE__) . '/widgets/' . $file);
+				register_widget($class_name);
 				$widget = new $class_name();
 				if (method_exists($widget, 'init')) { $widget->init(); }
 			}
