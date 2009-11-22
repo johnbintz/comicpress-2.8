@@ -64,5 +64,4 @@
 	<input name="comicpress_save_archivesearch" type="submit" class="button-primary" value="Save Settings" />
 	<input type="hidden" name="action" value="comicpress_save_archivesearch" />
 	</form>
-	</div>
 </div>

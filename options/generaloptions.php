@@ -36,6 +36,17 @@
 				<?php _e('Disabling this will remove the note text that displays with more options for adding to comments (html).','comicpress'); ?>
 			</td>
 		</tr>
+		
+		<tr>
+			<th scope="row"><?php _e('Disable blog header?','comicpress'); ?></th>
+			<td valign="top">
+				<input name="disable_blogheader" type="checkbox" value="1" <?php checked(true, $comicpress_options['disable_blogheader']); ?> />		
+			</td>
+			<td valign="top">
+				<?php _e('Checkmark this and your site will not display the contents of #blogheader.','comicpress'); ?>
+			</td>
+		</tr>			
+		
 		</table>
 	</div>
 	
@@ -128,9 +139,11 @@
 			<td valign="top">
 				<?php _e('Your home page will not display the default left/right sidebars. Minimalists dream. WARNING: Not recommended for use with Graphic Novel layouts.','comicpress'); ?>
 			</td>
-		</tr>
+		</tr>		
+		
 		</table>
 	</div>
+
 
 	<div class="stuffbox" style="background: #edffeb;">
 		<h3>Footer</h3>
@@ -152,6 +165,5 @@
 	<input name="comicpress_save_general" type="submit" class="button-primary" value="Save Settings" />
 	<input type="hidden" name="action" value="comicpress_save_general" />
 	</form>
-	</div>
 </div>
 	
