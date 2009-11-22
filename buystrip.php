@@ -28,7 +28,7 @@ Template Version: 2.14
 					</div>
 				<?php } ?>
 			<?php } ?>
-			<?php if ($disable_page_titles != 'yes') { ?>
+			<?php if (!$comicpress_options['disable_page_titles']) { ?>
 				<h2 class="pagetitle"><?php the_title() ?></h2>
 			<?php } ?>
 			<?php _e('Comic ID','comicpress'); ?> - #<?php echo $comicnum; ?><br />
@@ -53,16 +53,16 @@ Template Version: 2.14
 						<input type="hidden" name="cmd" value="_cart">
 						<input type="hidden" name="item_name" value="<?php _e('Print','comicpress'); ?>">
 						<input type="hidden" name="return" value="<?php echo bloginfo('wpurl'); ?>">
-						<input type="hidden" name="amount" value="<?php echo $buy_print_us_amount; ?>">
+						<input type="hidden" name="amount" value="<?php echo $comicpress_options['buy_print_us_amount']; ?>">
 						<input type="hidden" name="item_number" value="<?php _e('Comic ID','comicpress'); ?> (<?php echo $comicnum; ?>) - <?php echo the_title(); ?>">
-						<input type="hidden" name="business" value="<?php echo $buy_print_email; ?>">
-					<?php if ($buy_print_add_shipping == 'yes') { ?>
-						<input type="hidden" name="shipping" value="<?php echo $buy_print_us_ship; ?>">
+						<input type="hidden" name="business" value="<?php echo $comicpress_options['buy_print_email']; ?>">
+					<?php if ($comicpress_options['buy_print_add_shipping']) { ?>
+						<input type="hidden" name="shipping" value="<?php echo $comicpress_options['buy_print_us_ship']; ?>">
 						US/Canada<br>
-						$<?php echo $buy_print_us_amount; ?> + $<?php echo $buy_print_us_ship; ?> <?php _e('shipping','comicpress'); ?><br />
+						$<?php echo $comicpress_options['buy_print_us_amount']; ?> + $<?php echo $comicpress_options['buy_print_us_ship']; ?> <?php _e('shipping','comicpress'); ?><br />
 					<?php } else { ?>
 						US/Canada<br>
-						$<?php echo $buy_print_us_amount; ?><br />
+						$<?php echo $comicpress_options['buy_print_us_amount']; ?><br />
 					<?php } ?>					
 						<input type="image" src="<?php echo get_template_directory_uri(); ?>/images/buynow_paypal.png" name="submit32" alt="<?php _e('Make payments with PayPal - it is fast, free and secure!','comicpress'); ?>" /> 
 						</form>
@@ -75,16 +75,16 @@ Template Version: 2.14
 						<input type="hidden" name="cmd" value="_cart">
 						<input type="hidden" name="item_name" value="<?php _e('Print','comicpress'); ?>">
 						<input type="hidden" name="return" value="<?php echo bloginfo('wpurl'); ?>">
-						<input type="hidden" name="amount" value="<?php echo $buy_print_int_amount; ?>">
+						<input type="hidden" name="amount" value="<?php echo $comicpress_options['buy_print_int_amount']; ?>">
 						<input type="hidden" name="item_number" value="<?php _e('Comic ID','comicpress'); ?> (<?php echo $comicnum; ?>) - <?php echo the_title(); ?>">
-						<input type="hidden" name="business" value="<?php echo $buy_print_email; ?>">
-					<?php if ($buy_print_add_shipping == 'yes') { ?>
+						<input type="hidden" name="business" value="<?php echo $comicpress_options['buy_print_email']; ?>">
+					<?php if ($comicpress_options['buy_print_add_shipping']) { ?>
 						<input type="hidden" name="shipping" value="<?php echo $buy_print_int_ship; ?>">
 						International<br>
-						$<?php echo $buy_print_int_amount; ?> + $<?php echo $buy_print_int_ship; ?> <?php _e('shipping','comicpress'); ?><br />
+						$<?php echo $comicpress_options['buy_print_int_amount']; ?> + $<?php echo $comicpress_options['buy_print_int_ship']; ?> <?php _e('shipping','comicpress'); ?><br />
 					<?php } else { ?>
 						International<br>
-						$<?php echo $buy_print_int_amount; ?><br />
+						$<?php echo $comicpress_options['buy_print_int_amount']; ?><br />
 					<?php } ?>
 						<input type="image" src="<?php echo get_template_directory_uri(); ?>/images/buynow_paypal.png" name="submit32" alt="<?php _e('Make payments with PayPal - it is fast, free and secure!','comicpress'); ?>" />
 					</form>

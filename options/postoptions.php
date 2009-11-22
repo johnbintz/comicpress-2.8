@@ -7,10 +7,9 @@
 <tr><td><h2>- Main -</h2></td></tr>
 
 	<?php
-	global $split_column_in_two, $author_column_one, $author_column_two;
-	foreach ($options as $value) {
+	foreach ($comicpress_options as $value) {
 		switch ( $value['type'] ) {
-			case "comicpress-transcript_in_posts": ?>
+			case "transcript_in_posts": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Show transcript in post area?','comicpress'); ?></strong><br /><br /><?php _e('When enabled, if the comic has a transcript, the transcript will be displayed inside the comic post.','comicpress'); ?></th>
 				<td valign="top" width="100">
@@ -24,7 +23,7 @@
 				</tr>
 
 				<?php break;
-			case "comicpress-enable_related_comics": ?>
+			case "enable_related_comics": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Put Related Comics in comic posts?','comicpress'); ?></strong><br /><br /><?php _e('Comics will be related by "tags" that you create for each comic post.','comicpress'); ?></th>
 				<td valign="top">
@@ -38,7 +37,7 @@
 				</tr>
 
 				<?php break;
-			case "comicpress-enable_related_posts": ?>
+			case "enable_related_posts": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Put Related Posts in blog posts?','comicpress'); ?></strong><br /><?php _e('Blog posts will be related by "tags" that you create for each blog post.','comicpress'); ?><br /></th>
 				<td valign="top">
@@ -52,7 +51,7 @@
 				</tr>
 
 				<?php break;
-			case "comicpress-remove_wptexturize": ?>
+			case "remove_wptexturize": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Disable WordPress default content formatting?','comicpress'); ?></strong><br /><?php _e('Prevents WordPress from reformatting any specially formatted content you may add.','comicpress'); ?><br /></th>
 				<td valign="top" width="100">
@@ -68,7 +67,7 @@
 <tr><td><h2>- Authors/Avatars/Moods -</h2></td></tr>
 
 				<?php break;
-			case "comicpress-split_column_in_two": ?>
+			case "split_column_in_two": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Two author blog? ','comicpress'); ?></strong><br /><?php _e('When enabled, it will make 2 seperate columns to have two seperate columns available to two different post authors.','comicpress'); ?><br /></th>
 				<td valign="top" width="100">
@@ -81,7 +80,7 @@
 				</tr>
 
 				<?php break;
-			case "comicpress-author_column_one": ?>
+			case "author_column_one": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Author for Column one?','comicpress'); ?></strong><br /><br /><?php _e('If column is split in two.','comicpress'); ?></th>
 				<td valign="top" width="100">
@@ -100,7 +99,7 @@
 				</tr>
 
 				<?php break;
-			case "comicpress-author_column_two": ?>
+			case "author_column_two": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Author for Column two?','comicpress'); ?></strong><br /><br /><?php _e('If column is split in two.','comicpress'); ?></th>
 				<td valign="top" width="100">
@@ -119,13 +118,13 @@
 				</tr>
 
 				<?php break;
-			case "comicpress-enable_comic_post_author_gravatar":
-			case "comicpress-enable_post_author_gravatar":
+			case "enable_comic_post_author_gravatar":
+			case "enable_post_author_gravatar":
 				switch ($value['type']) {
-					case "comicpress-enable_comic_post_author_gravatar":
+					case "enable_comic_post_author_gravatar":
 						$label = __('Comic post author Gravatar?','comicpress');
 						break;
-					case "comicpress-enable_post_author_gravatar":
+					case "enable_post_author_gravatar":
 						$label = __('Blog post author Gravatar?','comicpress');
 						break;
 				} ?>
@@ -141,7 +140,7 @@
 					</td>
 					</tr><?php
 				break;
-			case "comicpress-avatar_directory":
+			case "avatar_directory":
 				$current_avatar_directory = get_option($value['id']);
 				if (empty($current_avatar_directory)) $current_avatar_directory = 'default';
 				$dirs_to_search = array_unique(array(get_template_directory(),get_stylesheet_directory()));
@@ -171,7 +170,7 @@
 				</td>
 				</tr>
 				<?php break;
-			case "comicpress-moods_directory":
+			case "moods_directory":
 				$current_directory = get_option($value['id']);
 				if (empty($current_directory)) $current_directory = 'default';
 
@@ -205,7 +204,7 @@
 
 
 			<?php break;
-			case "comicpress-calendar_directory":
+			case "calendar_directory":
 				$current_cal_directory = get_option($value['id']);
 				if (empty($current_cal_directory)) $current_cal_directory = 'default';
 
@@ -237,7 +236,7 @@
 				</td>
 				</tr>
 			<?php break;
-			case "comicpress-enable_comic_post_calendar": ?>
+			case "enable_comic_post_calendar": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Add graphic calendar to comic posts?','comicpress'); ?></strong><br /><br /><?php _e('Enabling this option will display a calendar image on your comic posts.','comicpress'); ?></th>
 				<td valign="top">
@@ -250,7 +249,7 @@
 				</td>
 				</tr>
 				<?php break;
-			case "comicpress-enable_post_calendar": ?>
+			case "enable_post_calendar": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Add graphic calendar to blog posts?','comicpress'); ?></strong><br /><br /><?php _e('Enabling this option will display a calendar image on your blog posts.','comicpress'); ?></th>
 				<td valign="top">
@@ -266,7 +265,7 @@
 <tr><td><h2>- Tags/Categories -</h2></td></tr>
 
 				<?php break;
-			case "comicpress-disable_tags_in_posts": ?>
+			case "disable_tags_in_posts": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Disable display of tags in posts?','comicpress'); ?></strong><br /><br /><?php _e('Tags are "descriptive keywords" of content in a post.','comicpress'); ?></th>
 				<td valign="top">
@@ -280,7 +279,7 @@
 				</tr>
 
 				<?php break;
-			case "comicpress-disable_categories_in_posts": ?>
+			case "disable_categories_in_posts": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Disable display of categories in posts?','comicpress'); ?></strong><br /><br /><?php _e('The categories that are shown by default are the ones the post in set to.','comicpress'); ?></th>
 				<td valign="top">
@@ -296,7 +295,7 @@
 <tr><td><h2>- Pages & Blog Loop -</h2></td></tr>
 
 				<?php break;
-			case "comicpress-blogposts_with_comic": ?>
+			case "blogposts_with_comic": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Show all blog posts up until the next comic post on single pages?','comicpress'); ?></strong><br /></th>
 				<td valign="top">
@@ -310,7 +309,7 @@
 				</tr>
 				<?php break;
 
-			case "comicpress-static_blog": ?>
+			case "static_blog": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Blog loop stays with all the single pages?','comicpress'); ?></strong><br /></th>
 				<td valign="top">
@@ -324,7 +323,7 @@
 				</tr>
 				<?php break;
 
-			case "comicpress-disable_page_titles": ?>
+			case "disable_page_titles": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Disable the titles on pages?','comicpress'); ?></strong><br /><br /></th>
 				<td valign="top" width="100">

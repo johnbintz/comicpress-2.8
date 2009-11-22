@@ -5,9 +5,9 @@
 	<table class="form-table" style="width: auto">
 
 		<?php
-		foreach ($options as $value) {
+		foreach ($comicpress_options as $value) {
 			switch ( $value['type'] ) {
-				case "comicpress-buy_print_email": ?>
+				case "buy_print_email": ?>
 					<tr>
 					<th scope="row"><b><?php _e('Paypal Email Address','comicpress'); ?></b><span style="color: #ff0000;">*</span><br /><br /><?php _e('The Email address you registered with Paypal and that your store is associated with.','comicpress'); ?></th>
 					<td valign="top">
@@ -19,7 +19,7 @@
 					</tr>
 					
 					<?php break;
-				case "comicpress-buy_print_url": ?>
+				case "buy_print_url": ?>
 					<tr>
 					<th scope="row"><b><?php _e('Url Page of the Template','comicpress'); ?></b><span style="color: #ff0000;">*</span><br /><br /><?php _e('The URL address to which you associated the buy print template.','comicpress'); ?></th>
 					<td valign="top">
@@ -36,7 +36,7 @@
 					</tr>
 					
 					<?php break;
-			case "comicpress-buy_print_add_shipping": ?>
+			case "buy_print_add_shipping": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Add shipping to each item?','comicpress'); ?></strong><br /><br /><?php _e('Enabling this option will make it so that shipping costs will be added to each item purchased.','comicpress'); ?></th>
 				<td valign="top" width="100">
@@ -49,7 +49,7 @@
 				</tr>
 				
 				<?php break;
-				case "comicpress-buy_print_us_amount": ?>
+				case "buy_print_us_amount": ?>
 					<tr>
 					<th scope="row"><b><?php _e('Print Cost (US/Canada)','comicpress'); ?></b><br /><br /><?php _e('How much does a print cost for people in the United States and Canada?','comicpress'); ?></th>
 					<td valign="top">$
@@ -60,7 +60,7 @@
 					</tr>
 					
 					<?php break;
-				case "comicpress-buy_print_us_ship": ?>
+				case "buy_print_us_ship": ?>
 					<tr>
 					<th scope="row"><b><?php _e('Shipping Cost (US/Canada)','comicpress'); ?></b><br /><br /></th>
 					<td valign="top">$
@@ -71,7 +71,7 @@
 					</tr>
 				
 					<?php break;
-				case "comicpress-buy_print_int_amount": ?>
+				case "buy_print_int_amount": ?>
 					<tr>
 					<th scope="row"><b><?php _e('Print Cost (International)','comicpress'); ?></b><br /><br /><?php _e('How much does a print cost for people *NOT* in the United States and Canada (International)','comicpress'); ?></th>
 					<td valign="top">$
@@ -82,7 +82,7 @@
 					</tr>
 					
 					<?php break;
-				case "comicpress-buy_print_int_ship": ?>
+				case "buy_print_int_ship": ?>
 					<tr>
 					<th scope="row"><b><?php _e('Shipping Cost (International)','comicpress'); ?></b><br /><br /></th>
 					<td valign="top">$

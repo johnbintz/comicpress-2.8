@@ -1,3 +1,4 @@
+<?php global $comicpress_options; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>> 
 <head>
@@ -21,11 +22,11 @@
 	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name') ?> RSS2 Feed" href="<?php bloginfo('rss2_url') ?>" />
 	<link rel="alternate" type="application/atom+xml" title="<?php bloginfo('name') ?> Atom Feed" href="<?php bloginfo('atom_url') ?>" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url') ?>" />
-	<meta name="ComicPress" content="<?php global $comicpress_version; echo $comicpress_version; ?>" />
+	<meta name="ComicPress" content="<?php echo $comicpress_options['comicpress_version']; ?>" />
 <!--[if lt IE 7]>
    <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/ie6submenus.js"></script>
 <![endif]-->
-	<?php wp_head(); global $disable_page_restraints; ?>
+	<?php wp_head(); ?>
 </head>
 
 <body <?php if (function_exists('body_class')) { body_class(); } ?>>
@@ -35,7 +36,7 @@
 
 <div id="page-head"></div>
 
-	<?php if ($disable_page_restraints != 'yes') {
+	<?php if (!$comicpress_options['disable_page_restraints']) {
 	if (is_cp_theme_layout('standard,v')) { ?>
 	<div id="page-wrap"><!-- Wraps outside the site width -->
 		<div id="page"><!-- Defines entire site width - Ends in Footer -->

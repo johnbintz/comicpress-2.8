@@ -4,9 +4,9 @@
 	<?php wp_nonce_field('update-options') ?>
 	<table class="form-table" style="width: auto">
 	<?php
-	foreach ($options as $value) {
+	foreach ($comicpress_options as $value) {
 		switch ( $value['type'] ) {
-			case "comicpress-disable_default_menubar": ?>
+			case "disable_default_menubar": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Disable default Menubar?','comicpress'); ?></strong><br /><br /></th>
 				<td valign="top" width="100">
@@ -20,7 +20,7 @@
 				</tr>
 				
 				<?php break;
-			case "comicpress-enable_search_in_menubar": ?>
+			case "enable_search_in_menubar": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Enable Search Form?','comicpress'); ?></strong><br /></th>
 				<td valign="top" width="100">
@@ -34,7 +34,7 @@
 				</tr>
 				
 				<?php break;
-			case "comicpress-enable_rss_in_menubar": ?>
+			case "enable_rss_in_menubar": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Enable RSS Link?','comicpress'); ?></strong><br /></th>
 				<td valign="top">
@@ -48,7 +48,7 @@
 				</tr>
 				
 				<?php break;
-			case "comicpress-enable_navigation_in_menubar": ?>
+			case "enable_navigation_in_menubar": ?>
 				<tr>
 				<th scope="row"><strong><?Php _e('Enable mini navigation','comicpress'); ?></strong><br /></th>
 				<td valign="top">
@@ -62,7 +62,7 @@
 				</tr>
 				
 				<?php break;
-			case "comicpress-contact_in_menubar": ?>
+			case "contact_in_menubar": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Enable Contact/custom links?','comicpress'); ?></strong><br /><br /></th>
 				<td valign="top">
@@ -76,7 +76,7 @@
 				</tr>
 				
 				<?php break;
-			case "comicpress-disable_dynamic_menubar_links": ?>
+			case "disable_dynamic_menubar_links": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Disable auto-generated WordPress links?','comicpress'); ?></strong><br /><br /></th>
 				<td valign="top">

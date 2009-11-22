@@ -16,8 +16,8 @@
  */
 
 function comicpress_show_mood_in_post() {
-	global $post;
-	$moods_directory = get_option('comicpress-moods_directory');
+	global $post, $comicpress_options;
+	$moods_directory = $comicpress_options['moods_directory'];
 	if (!empty($moods_directory) && $moods_directory != 'none') {
 		$mood_file = get_post_meta( get_the_ID(), "mood", true );
 		if (!empty($mood_file) && $mood_file != '') {
@@ -33,8 +33,8 @@ function comicpress_show_mood_in_post() {
 }
 
 function comicpress_showmood_edit_post() { 
-	global $post;
-	$moods_directory = get_option('comicpress-moods_directory');
+	global $post, $comicpress_options;
+	$moods_directory = $comicpress_options['moods_directory'];
 	if (!empty($moods_directory) && $moods_directory != 'none') { ?>
 		<div class="inside" style="overflow: hidden">
 		<?php _e('Available Moods, you can set which mood images to use in the comicpress Options.','comicpress'); ?><br />
@@ -89,7 +89,8 @@ function comicpress_showmood_edit_post() {
 
 
 function comicpress_handle_edit_post_mood_save($post_id) {
-	$moods_directory = get_option('comicpress-moods_directory');
+	global $comicpress_options;
+	$moods_directory = $comicpress_options['moods_directory'];
 	if (!empty($moods_directory) && $moods_directory != 'none') {
 		if (empty($_POST['postmood']) || $_POST['postmood'] == 'none') {
 			$postmood = 'none';

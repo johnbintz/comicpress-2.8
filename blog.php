@@ -7,7 +7,7 @@ Template Name: Blog
 <?php include(get_template_directory() . '/layout-head.php'); ?>
 	
 	<?php global $blog_postcount;
-	if ($split_column_in_two != 'yes') {
+	if (!$comicpress['split_column_in_two']) {
 		$blog_query = 'showposts='.$blog_postcount.'&cat="-'.exclude_comic_categories().'"&paged='.$paged; 
 		
 		$posts = query_posts($blog_query);

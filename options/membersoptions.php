@@ -4,9 +4,9 @@
 	<?php wp_nonce_field('update-options') ?>
 	<table class="form-table" style="width: auto">
 		<?php
-		foreach ($options as $value) {
+		foreach ($comicpress_options as $value) {
 			switch ( $value['type'] ) {
-				case "comicpress-members_post_category": ?>
+				case "members_post_category": ?>
 					<tr>	
 					<th scope="row"><strong>Members Category</strong><br /><br />The category that is designated to show members only content.<br /><br /></th>
 					<td valign="top">

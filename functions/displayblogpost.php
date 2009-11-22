@@ -7,7 +7,7 @@
  */
 
 function display_blog_post() { 
-	global $post, $wp_query, $authordata, $enable_related_posts, $enable_post_author_gravatar, $enable_post_calendar, $disable_categories_in_posts, $disable_tags_in_posts;  ?>
+	global $post, $wp_query, $authordata, $comicpress_options; ?>
 	<?php if (is_single()) { ?>
 		<div class="blognav">
 			<div class="nav-single">
@@ -21,11 +21,11 @@ function display_blog_post() {
 		<div class="post-head"></div>
 			<div class="post" id="post-<?php the_ID() ?>">
 				<div class="post-info">
-				<?php if ($enable_post_author_gravatar == 'yes') { ?>
+				<?php if ($comicpress_options['enable_post_author_gravatar']) { ?>
 					<div class="post-author-gravatar"><?php echo str_replace("alt='", "alt='".get_the_author_meta('display_name')."' title='".get_the_author_meta('display_name'),comicpress_get_avatar(get_the_author_meta('email'), 64)); ?></div>
 				<?php } ?>
 				<?php if (function_exists('comicpress_show_mood_in_post')) comicpress_show_mood_in_post(); ?>
-				<?php if ($enable_post_calendar == 'yes') { ?>
+				<?php if ($comicpress_options['enable_post_calendar']) { ?>
 					<div class="post-date">
 						<div class="date"><span><?php the_time('M') ?></span> <?php the_time('d') ?></div>
 					</div>
@@ -43,7 +43,7 @@ function display_blog_post() {
 						<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
 					<?php } ?>
 					<div class="post-author"> <?php the_time('F jS, Y'); ?> <span class="pipe">|</span> by <?php the_author_posts_link(); ?> <?php edit_post_link(__('Edit Post','comicpress'), ' [ ', ' ] '); ?></div>
-					<?php if ($disable_categories_in_posts != 'yes') { ?>
+					<?php if (!$comicpress_options['disable_categories_in_posts']) { ?>
 						<div class="post-cat"><?php _e('Posted In:','comicpress'); ?> <?php the_category(','); ?></div>
 					<?php } ?>
 					<?php if(function_exists('the_ratings')) { the_ratings(); } ?>
@@ -57,7 +57,7 @@ function display_blog_post() {
 				<div class="clear"></div>
 			</div>
 			<div class="post-extras">
-			<?php if ($disable_tags_in_posts != 'yes') { ?>
+			<?php if (!$comicpress_options['disable_tags_in_posts']) { ?>
 				<div class="post-tags">
 				<?php the_tags(__('&#9492; Tags: ','comicpress'), ', ', '<br />'); ?>
 				</div>
@@ -70,7 +70,7 @@ function display_blog_post() {
 				}
 			?>
 			<div class="clear"></div>
-			<?php if ($enable_related_posts == 'yes') echo related_posts_shortcode(); ?>
+			<?php if ($comicpress_options['enable_related_posts']) echo related_posts_shortcode(); ?>
 		</div>
 	</div>
 	<div class="post-foot"></div>

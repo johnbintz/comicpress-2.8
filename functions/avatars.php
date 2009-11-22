@@ -11,7 +11,7 @@
  * @return string <img> tag for the user's avatar
 */
 function comicpress_get_avatar( $id_or_email, $size = '64', $alt = false) {
-	global $avatar_directory;
+	global $comicpress_options;
 	if ( ! get_option('show_avatars') )
 		return false;
 
@@ -45,7 +45,7 @@ function comicpress_get_avatar( $id_or_email, $size = '64', $alt = false) {
 		$email = $id_or_email;
 	}
 	
-	if ($avatar_directory != 'none' || empty($default)) $default = comicpress_random_default_avatar((string)$id_or_email);
+	if ($comicpress_options['avatar_directory'] != 'none' || empty($default)) $default = comicpress_random_default_avatar((string)$id_or_email);
 		
 	if ( empty($default) ) {
 		$avatar_default = get_option('avatar_default');
@@ -87,7 +87,8 @@ function comicpress_get_avatar( $id_or_email, $size = '64', $alt = false) {
 }
 
 function comicpress_random_default_avatar($id_or_email = '') {
-	$current_avatar_directory = get_option('comicpress-avatar_directory');
+	global $comicpress_options;
+	$current_avatar_directory = $comicpress_options['avatar_directory'];
 	
 	if (empty($current_avatar_directory)) $current_avatar_directory = 'default';
 	if (file_exists(get_stylesheet_directory() . '/images/avatars/' . $current_avatar_directory)) {

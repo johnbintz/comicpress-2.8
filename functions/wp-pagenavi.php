@@ -26,8 +26,8 @@ Author URI: http://lesterchan.net
     along with this program; if not, write to the Free Software
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
-global $enable_numbered_pagination;
-if ($enable_numbered_pagination == 'yes') {
+global $comicpress_options;
+if ($comicpress_options['enable_numbered_pagination']) {
 	
 	### Function: Page Navigation: Boxed Style Paging
 	function wp_pagenavi($before = '', $after = '') {

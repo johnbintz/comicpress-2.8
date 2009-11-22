@@ -78,7 +78,7 @@ $month['12'] = array('month' => __('December','comicpress'), 'days' => '31');
 				</div>
 			<?php } ?>
 		<?php } ?>
-		<?php if ($disable_page_titles != 'yes') { ?>
+		<?php if (!$comicpress_options['disable_page_titles']) { ?>
 			<h2 class="pagetitle"><?php the_title() ?> <span class="page-archive-year"> <?php echo $archive_year; ?></span></h2>
 		<?php } ?>
 		<div class="entry">
@@ -95,7 +95,7 @@ foreach ( $years as $year ) {
 		</div>
 		<div class="cpcal-cals">
 		<?php $i=1; while($i<=12) { 
-			$calendar_directory = get_option('comicpress-calendar_directory');
+			$calendar_directory = $comicpress_calendar['calendar_directory'];
 			if (!empty($calendar_directory) && $calendar_directory != 'none') { ?>
 				<div class="cpcal-month" style="height: 257px;" id="<?php echo $month[$i]['month'] ?>">
 				<?php if (file_exists(get_stylesheet_directory() . '/images/cal') && $calendar_directory != 'default') { ?>

@@ -18,7 +18,7 @@
 add_filter('body_class','comicpress_body_class');
 
 function comicpress_body_class($classes = '') {
-	global  $current_user, $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone, $post, $wp_query, $cp_theme_layout;
+	global  $current_user, $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone, $post, $wp_query, $comicpress_options;
 
 	if (!empty($current_user)) {
 		$user_login = addslashes($current_user->user_login);
@@ -86,7 +86,7 @@ function comicpress_body_class($classes = '') {
 		endforeach;
 	}
 
-	$classes[] = 'layout-'.$cp_theme_layout;
+	$classes[] = 'layout-'.$comicpress_options['cp_theme_layout'];
 
 	return $classes;
 }

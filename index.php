@@ -1,5 +1,4 @@
 <?php get_header(); ?>
-
 <div id="content-wrapper-head"></div>
 	<div id="content-wrapper">
 
@@ -16,7 +15,7 @@
 
 <?php if (!(is_paged())) { ?>
 
-	<?php if ($disable_comic_frontpage != 'yes') { ?>
+	<?php if (!$comicpress_options['disable_comic_frontpage']) { ?>
 			<?php $wp_query ->in_the_loop = true; $comicFrontpage = new WP_Query(); $comicFrontpage->query('showposts=1&cat='.get_all_comic_categories_as_cat_string());
 		while ($comicFrontpage->have_posts()) : $comicFrontpage->the_post() ?>
 			<?php if (comicpress_check_child_file('partials/displaycomic') == false) { ?>
@@ -59,7 +58,7 @@
 
 	get_sidebar('blog');
 
-if ($disable_comic_frontpage != 'yes' && $disable_comic_blog_frontpage != 'yes' && !is_paged() )  { ?>
+if (!$comicpress_options['disable_comic_frontpage'] && !$comicpress_options['disable_comic_blog_frontpage'] && !is_paged() )  { ?>
 		<?php while ($comicFrontpage->have_posts()) : $comicFrontpage->the_post();
 			display_comic_post();
 			$comicFrontPage->is_single = true;
@@ -67,18 +66,17 @@ if ($disable_comic_frontpage != 'yes' && $disable_comic_blog_frontpage != 'yes' 
 	endwhile; ?>
 <?php } ?>
 
-<?php if ($disable_blogheader != 'yes') { ?>
+<?php if (!$comicpress_options['disable_blogheader']) { ?>
 	<div id="blogheader"><!-- This area can be used for a heading above your main page blog posts --></div>
 <?php } ?>
 
-	<?php if ($disable_blog_frontpage != 'yes') {
-	global $blog_postcount; ?>
-		<?php
-		if ($split_column_in_two != 'yes') {
+<?php if (!$comicpress_options[disable_blog_frontpage]) {
+	global $blog_postcount; 
+		if (!$comicpress_options['split_column_in_two']) {
 			$blog_query = 'showposts='.$blog_postcount.'&cat="-'.exclude_comic_categories().'"&paged='.$paged;
 
 			$posts = query_posts($blog_query);
-		if (have_posts()) { ?>
+			if (have_posts()) { ?>
 			<div class="blogindex-head"></div>
 			<div class="blogindex">
 				<?php while (have_posts()) : the_post();

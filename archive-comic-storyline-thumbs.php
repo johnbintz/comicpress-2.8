@@ -17,7 +17,7 @@ Template Name: Comic Storyline with Thumbs
 				</div>
 			<?php } ?>
 		<?php } ?>
-		<?php if ($disable_page_titles != 'yes') { ?>
+		<?php if (!$comicpress_options['disable_page_titles']) { ?>
 			<h2 class="pagetitle"><?php the_title() ?></h2>
 		<?php } ?>
 		<div class="entry">

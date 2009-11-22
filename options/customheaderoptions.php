@@ -4,9 +4,9 @@
 	<?php wp_nonce_field('update-options') ?>
 	<table class="form-table" style="width: auto">
 		<?php
-		foreach ($options as $value) {
+		foreach ($comicpress_options as $value) {
 			switch ( $value['type'] ) {
-			case "comicpress-enable_custom_image_header": ?>
+			case "enable_custom_image_header": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Use Custom Header?','comicpress'); ?></strong><br /><?php _e('Adds Custom Header option under Dashboard -> Appearance.','comicpress'); ?><br /></th>
 				<td valign="top" width="100">
@@ -20,7 +20,7 @@
 				</tr>
 					
 					<?php break;
-				case "comicpress-custom_image_header_width": ?>
+				case "custom_image_header_width": ?>
 					<tr>
 					<th scope="row"><b><?php _e('Width','comicpress'); ?></b><br /><?php _e('Sets the <b>width</b> of the image you want to use for Custom Header.','comicpress'); ?><br /></th>
 					<td valign="top">
@@ -34,7 +34,7 @@
 					</tr>
 					
 				<?php break;
-				case "comicpress-custom_image_header_height": ?>
+				case "custom_image_header_height": ?>
 					<tr>
 					<th scope="row"><b><?php _e('Height','comicpress'); ?></b><br /><?php _e('Sets the <b>height</b> of the image you want to use for Custom Header.','comicpress'); ?><br /><br /></th>
 					<td valign="top">

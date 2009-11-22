@@ -24,7 +24,8 @@ add_action('profile_update', 'comicpress_profile_members_only_save');
 add_filter('pre_get_posts','comicpress_members_filter');
 
 function comicpress_members_filter($query) {
-	global $members_post_category, $current_user;
+	global $comicpress_options, $current_user;
+	$members_post_category = $comicpress_options['members_post_category'];
 	if ($members_post_category != 'none' && !empty($members_post_category) && !$query->is_search && !$query->is_page && !$query->is_archive) {
 		$oldset = $query->get('cat');
 		$is_member = '';
@@ -100,8 +101,8 @@ function comicpress_profile_members_only_save() {
  * Return true if the current post is in the members category.
  */
 function in_members_category() {
-	global $post, $category_tree, $members_post_category;
-
+	global $post, $category_tree, $comicpress_options;
+	$members_post_category = $comicpress_options['members_post_category'];
 	$members_post_category_array = array();
 	$members_post_category_array = explode($members_post_category);
 

@@ -7,9 +7,9 @@
 <tr><td><h2>- Main -</h2></td></tr>	
 	
 	<?php
-	foreach ($options as $value) {
+	foreach ($comicpress_options as $value) {
 		switch ( $value['type'] ) {
-			case "comicpress-disable_page_restraints": ?>
+			case "disable_page_restraints": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Dynamic or Fixed width site?','comicpress'); ?></strong><br /><?php _e('Allows the width of your site to either be <b>Dynamic</b> (fills browser window) or <b>Fixed</b> (width is specified, e.g., 980px, 780px, etc.)','comicpress'); ?><br /></th>
 				<td valign="top">
@@ -26,7 +26,7 @@
 
 
 				<?php break;
-			case "comicpress-rascal_says": ?>
+			case "rascal_says": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Enable Rascal the ComicPress Mascot?','comicpress'); ?></strong><br /><?php _e('Enable this option to make a comic bubble appear over the comic and write out what you put in the hovertext, along with a friendly face.','comicpress'); ?><br /></th>
 				<td valign="top">
@@ -43,7 +43,7 @@
 
 
 				<?php break;
-			case "comicpress-disable_comment_note": ?>
+			case "disable_comment_note": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Disable the comment notes?','comicpress'); ?></strong><br /><?php _e('Disabling this will remove the note text that displays with more options for adding to comments (html).','comicpress'); ?><br /></th>
 				<td valign="top">
@@ -61,7 +61,7 @@
 
 
 				<?php break;
-			case "comicpress-enable_numbered_pagination": ?>
+			case "enable_numbered_pagination": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Enable numbered pagination?','comicpress'); ?></strong><br /><?php _e('Previous Entries and Next Entries buttons are replaced by a bar of numbered pages.','comicpress'); ?><br /></th>
 				<td valign="top">
@@ -74,7 +74,7 @@
 				</td>
 				</tr>
 				<?php break;
-			case "comicpress-comic_clicks_next": ?>
+			case "comic_clicks_next": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Click comic to go next?','comicpress'); ?></strong><br /><?php _e('Allows users to click the comic itself to go to the next comic (unless on the latest comic).','comicpress'); ?><br /></th>
 				<td valign="top">
@@ -88,7 +88,7 @@
 				</tr>
 
 				<?php break;
-			case "comicpress-disable_default_comic_nav": ?>
+			case "disable_default_comic_nav": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Disable the default comic post navigation?','comicpress'); ?></strong><br /><?php _e('Previous Entries and Next Entries buttons are replaced by a bar of numbered pages.','comicpress'); ?><br /></th>
 				<td valign="top">
@@ -101,7 +101,7 @@
 				</td>
 				</tr>
 				<?php break;
-			case "comicpress-graphicnav_directory": 
+			case "graphicnav_directory": 
 				$current_gnav_directory = get_option($value['id']);
 				if (empty($current_gnav_directory)) $current_gnav_directory = 'default';
 				$dirs_to_search = array_unique(array(get_template_directory(),get_stylesheet_directory()));
@@ -139,7 +139,7 @@
 
 
 		<?php break; 
-			case "comicpress-enable_widgetarea_use_sidebar_css": ?>
+			case "enable_widgetarea_use_sidebar_css": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Enable main Sidebar CSS for all sidebars?','comicpress'); ?></strong><br /><?php _e('Uses default CSS styling of the sidebars for all sidebar areas.','comicpress'); ?><br /></th>
 				<td valign="top">
@@ -154,7 +154,7 @@
 
 
 				<?php break;
-			case "comicpress-disable_lrsidebars_frontpage": ?>
+			case "disable_lrsidebars_frontpage": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Disable home page sidebars?','comicpress'); ?></strong><br /><?php _e('Your home page will not display the default left/right sidebars.','comicpress'); ?><br /></th>
 				<td valign="top">
@@ -172,7 +172,7 @@
 
 				
 				<?php break;
-			case "comicpress-disable_footer_text": ?>
+			case "disable_footer_text": ?>
 				<tr>
 				<th scope="row"><strong><?php _e('Disable the default text in the footer?','comicpress'); ?></strong><br /><?php _e('Default text in the footer will not display.','comicpress'); ?><br /><br /></th>
 				<td valign="top" width="100">

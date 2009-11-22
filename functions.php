@@ -21,6 +21,9 @@ function __comicpress_widgets_init() {
 }
 
 function __comicpress_init() {
+	global $comicpress_options;
+	// Check if the $comicpress_options exist, if not set defaults
+	$comicpress_options = comicpress_load_options();
 	// xili-language plugin check
 	if (class_exists('xili_language')) {
 		define('THEME_TEXTDOMAIN','comicpress');
@@ -40,8 +43,6 @@ function __comicpress_init() {
 
 add_action('widgets_init', '__comicpress_widgets_init');
 add_action('init', '__comicpress_init');
-
-$comicpress_version = '2.9.0.0';
 
 global $wpmu_version;
 if (!empty($wpmu_version)) {
@@ -70,6 +71,89 @@ if (!empty($wpmu_version)) {
 	require(get_template_directory() . '/comicpress-config.php');
 }
 
+function comicpress_load_options() {
+	global $comicpress_options;
+	$comicpress_options = get_option('comicpress_options');
+	if (empty($comicpress_options)) {
+		$comicpress_options['comicpress_version'] = '2.9.0.1';
+		
+		$comicpress_options['disable_comic_frontpage'] = false;
+		$comicpress_options['disable_comic_blog_frontpage'] = false;
+		$comicpress_options['disable_comic_blog_single'] = false;
+		$comicpress_options['disable_blog_frontpage'] = false;
+		$comicpress_options['disable_lrsidebars_frontpage'] = false;
+		$comicpress_options['disable_footer_text'] = false;
+		$comicpress_options['disable_blogheader'] = false;
+		$comicpress_options['disable_page_titles'] = false;
+		$comicpress_options['static_blog'] = false;
+		$comicpress_options['disable_default_comic_nav'] = false;
+		
+		$comicpress_options['cp_theme_layout'] = 'standard';
+		$comicpress_options['transcript_in_posts'] = false;
+		$comicpress_options['enable_widgetarea_use_sidebar_css'] = false;
+		
+		$comicpress_options['enable_custom_image_header'] = false;
+		$comicpress_options['custom_image_header_width'] = '980';
+		$comicpress_options['custom_image_header_height'] = '120';
+		
+		$comicpress_options['enable_numbered_pagination'] = false;
+		$comicpress_options['disable_page_restraints'] = false;
+		
+		$comicpress_options['enable_related_comics'] = false;
+		$comicpress_options['enable_related_posts'] = false;
+		
+		$comicpress_options['comic_clicks_next'] = false;
+		$comicpress_options['rascal_says'] = false;
+		
+		$comicpress_options['enable_post_calendar'] = false;
+		$comicpress_options['enable_post_author_gravatar'] = false;
+		$comicpress_options['enable_comic_post_calendar'] = false;
+		$comicpress_options['enable_comic_post_author_gravatar'] = false;
+		$comicpress_options['disable_tags_in_posts'] = false;
+		$comicpress_options['disable_categories_in_posts'] = false;
+		$comicpress_options['disable_comment_note'] = false;
+		$comicpress_options['blogposts_with_comic'] = false;
+		$comicpress_options['remove_wptexturize'] = false;
+		
+		$comicpress_options['moods_directory'] = 'default';
+		$comicpress_options['graphicnav_directory'] = 'default';
+		$comicpress_options['calendar_directory'] = 'none';
+		$comicpress_options['avatar_directory'] = 'none';
+		
+		$comicpress_options['enable_search_in_menubar'] = false;
+		$comicpress_options['enable_rss_in_menubar'] = true;
+		$comicpress_options['enable_navigation_in_menubar'] = true;
+		$comicpress_options['contact_in_menubar'] = false;
+		$comicpress_options['disable_dynamic_menubar_links'] = false;
+		$comicpress_options['disable_default_menubar'] = false;
+		
+		$comicpress_options['archive_display_order'] = 'desc';
+		$comicpress_options['excerpt_or_content_archive'] = 'content';
+		$comicpress_options['excerpt_or_content_search'] = 'excerpt';
+		$comicpress_options['category_thumbnail_postcount'] = '-1';
+		
+		$comicpress_options['members_post_category'] = '';
+		
+		$comicpress_options['split_column_in_two'] = false;
+		$comicpress_options['author_column_one'] = '';
+		$comicpress_options['author_column_two'] = '';
+		
+		$comicpress_options['buy_print_email'] = 'philip@frumph.net';
+		$comicpress_options['buy_print_url'] = '/shop/';
+		$comicpress_options['buy_print_us_amount'] = '24.95';
+		$comicpress_options['buy_print_int_amount'] = '29.95';
+		$comicpress_options['buy_print_add_shipping'] = false;
+		$comicpress_options['buy_print_us_ship'] = '4.95';
+		$comicpress_options['buy_print_int_ship'] = '9.95';
+		
+		add_option('comicpress_options', $comicpress_options, '', 'yes');
+		// update_option('comicpress_options', $comicpress_options);
+	}
+	$comicpress_options['comicpress_version'] = '2.9.0.1';
+	update_option('comicpress_options', $comicpress_options);
+	return $comicpress_options;
+}
+
 if (get_option('upload_path') !== false) {
 	$variables_to_extract = array();
 
@@ -78,6 +162,7 @@ if (get_option('upload_path') !== false) {
 				'disable_comic_blog_frontpage'	=> 'disable_comic_blog_frontpage',
 				'disable_comic_blog_single'		=> 'disable_comic_blog_single',
 				'disable_blog_frontpage'		=> 'disable_blog_frontpage',
+				
 				'buy_print_email'				=> 'buy_print_email',
 				'buy_print_url'					=> 'buy_print_url',
 				'buy_print_us_amount'			=> 'buy_print_us_amount',
@@ -85,6 +170,7 @@ if (get_option('upload_path') !== false) {
 				'buy_print_add_shipping'		=> 'buy_print_add_shipping',
 				'buy_print_us_ship'				=> 'buy_print_us_ship',
 				'buy_print_int_ship'			=> 'buy_print_int_ship',
+				
 				'cp_theme_layout'				=> 'cp_theme_layout',
 				'transcript_in_posts'			=> 'transcript_in_posts',
 				'enable_widgetarea_use_sidebar_css'	=> 'enable_widgetarea_use_sidebar_css',
@@ -119,6 +205,7 @@ if (get_option('upload_path') !== false) {
 				'excerpt_or_content_archive'	=> 'excerpt_or_content_archive',
 				'excerpt_or_content_search'		=> 'excerpt_or_content_search',
 				'category_thumbnail_postcount'	=> 'category_thumbnail_postcount',
+				
 				'members_post_category'			=> 'members_post_category',
 				'blogposts_with_comic'			=> 'blogposts_with_comic',
 				'split_column_in_two'			=> 'split_column_in_two',
@@ -143,12 +230,11 @@ if (empty($calendar_directory)) $calendar_directory = 'default';
 if (empty($cp_theme_layout)) $cp_theme_layout='standard';
 
 function is_cp_theme_layout($choices) {
-global $cp_theme_layout;
-	if (empty($cp_theme_layout)) $cp_theme_layout='standard';
+global $comicpress_options;
 	$choices = explode(",", $choices);
 	foreach ($choices as $choice) {
 
-		if ($choice == $cp_theme_layout) {
+		if ($choice == $comicpress_options['cp_theme_layout']) {
 			return true;
 		}
 	}
@@ -897,11 +983,11 @@ function rss_count_comments(){
 add_action('the_title_rss','rss_count_comments');
 
 function comicpress_gnav_display_css() {
-	global $graphicnav_directory;
-	if (file_exists(get_stylesheet_directory() . '/images/nav/' . $graphicnav_directory . '/navstyle.css')) { ?>
-<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/images/nav/<?php echo $graphicnav_directory; ?>/navstyle.css" type="text/css" media="screen" />
-<?php } elseif (file_exists(get_template_directory() . '/images/nav/' .$graphicnav_directory. '/navstyle.css')) { ?>
-<link rel="stylesheet" href="<?php echo get_template_directory_uri();  ?>/images/nav/<?php echo $graphicnav_directory; ?>/navstyle.css" type="text/css" media="screen" />
+	global $comicpress_options;
+	if (file_exists(get_stylesheet_directory() . '/images/nav/' . $comicpress_options['graphicnav_directory'] . '/navstyle.css')) { ?>
+<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/images/nav/<?php echo $comicpress_options['graphicnav_directory']; ?>/navstyle.css" type="text/css" media="screen" />
+<?php } elseif (file_exists(get_template_directory() . '/images/nav/' .$comicpress_options['graphicnav_directory']. '/navstyle.css')) { ?>
+<link rel="stylesheet" href="<?php echo get_template_directory_uri();  ?>/images/nav/<?php echo $comicpress_options['graphicnav_directory']; ?>/navstyle.css" type="text/css" media="screen" />
 <?php }
 }
 

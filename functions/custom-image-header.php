@@ -1,13 +1,13 @@
 <?php 
 
-global $enable_custom_image_header;
-if ($enable_custom_image_header == 'yes') {
+global $comicpress_options;
+if ($comicpress_options['enable_custom_image_header'] == 'yes') {
 	
 	// Custom Image Header
 	define('HEADER_TEXTCOLOR', '000');
 	define('HEADER_IMAGE', '%s/images/header-blank.png'); // %s is theme dir
-	define('HEADER_IMAGE_WIDTH', $custom_image_header_width);
-	define('HEADER_IMAGE_HEIGHT', $custom_image_header_height);
+	define('HEADER_IMAGE_WIDTH', $comicpress_options['custom_image_header_width']);
+	define('HEADER_IMAGE_HEIGHT', $comicpress_options['custom_image_header_height']);
 	
 	function theme_admin_header_style() {
 		?>
