@@ -45,8 +45,7 @@
 	
 	<?php if (have_posts()) : while (have_posts()) : the_post();
 			if (in_comic_category()) {
-				global $disable_comic_blog_single;
-				if ($disable_comic_blog_single != 'yes') {
+				if (!$comicpress_options['disable_comic_blog_single']) {
 					display_comic_post();
 					$cur_date = mysql2date('Y-m-j', $post->post_date);
 					$next_comic = get_next_comic();
@@ -69,16 +68,15 @@
 	<?php get_sidebar('blog'); ?>
 	
 	<?php 
-	global $static_blog;
-	if ($static_blog == 'yes' && in_comic_category()) {
+	if ($comicpress_options['static_blog'] && in_comic_category()) {
 		global $blog_postcount; 
-		if ($split_column_in_two != 'yes') {
+		if (!$comicpress_options['split_column_in_two']) {
 			$blog_query = 'showposts='.$blog_postcount.'&cat="-'.exclude_comic_categories().'"&paged='.$paged; 
 			
 			$posts = query_posts($blog_query);
 		if (have_posts()) { ?>
 		
-			<?php if ($disable_blogheader != 'yes') { ?>
+			<?php if (!$comicpress_options['disable_blogheader']) { ?>
 				<div id="blogheader"><!-- This area can be used for a heading above your main page blog posts --></div>
 			<?php } ?>
 			
@@ -98,9 +96,7 @@
 		}
 	} else {
 		
-		global $blogposts_with_comic;
-		
-		if ($blogposts_with_comic == 'yes') {
+		if ($comicpress_options['blogposts_with_comic']) {
 			
 			$temppost = $post;
 			$temp_query = $wp_query;		
