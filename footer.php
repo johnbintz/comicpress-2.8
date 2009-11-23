@@ -7,7 +7,7 @@
 		</div>
 	<?php } ?>
 	<?php get_sidebar('footer'); ?>
-	<?php global $disable_footer_text, $wpmu_version; if ($disable_footer_text != 'yes') { ?>
+	<?php global $wpmu_version; if (!$comicpress_options['disable_footer_text']) { ?>
 		<p>
 			<span class="footer-copyright">
 				<?php echo comicpress_copyright(); ?>

@@ -11,7 +11,7 @@ Author URI: http://frumph.net/
 
 
 function comicpress_menubar() {
-global $contact_in_menubar,$enable_search_in_menubar,$enable_rss_in_menubar,$enable_navigation_in_menubar,$disable_dynamic_menubar_links;
+	global $comicpress_options;
 	if (comicpress_check_child_file('menubar') == false) {
 		if (file_exists(get_template_directory() . '/custom-menubar.php')) {
 			include(get_template_directory() . '/custom-menubar.php');
@@ -19,13 +19,13 @@ global $contact_in_menubar,$enable_search_in_menubar,$enable_rss_in_menubar,$ena
 		<div id="menubar">
 			
 			<div id="menunav">
-			<?php if ($enable_search_in_menubar == 'yes') { ?>
+			<?php if ($comicpress_options['enable_search_in_menubar']) { ?>
 				<div class="menunav-search"><?php include(get_template_directory() . '/searchform.php'); ?></div>
 			<?php } ?>
-			<?php if ($enable_rss_in_menubar == 'yes') { ?>
+			<?php if ($comicpress_options['enable_rss_in_menubar']) { ?>
 				<a href="<?php bloginfo('rss2_url') ?>" title="RSS Feed" class="menunav-rss">RSS</a>
 			<?php } ?>
-			<?php if ($enable_navigation_in_menubar == 'yes') { ?>
+			<?php if ($comicpress_options['enable_navigation_in_menubar']) { ?>
 				<?php if (is_home()) {
 					$comicFrontpage = new WP_Query(); $comicFrontpage->query('showposts=1&cat='.get_all_comic_categories_as_cat_string());
 					while ($comicFrontpage->have_posts()) : $comicFrontpage->the_post();
@@ -56,7 +56,7 @@ global $contact_in_menubar,$enable_search_in_menubar,$enable_rss_in_menubar,$ena
 			$bookmarks = preg_replace('#<li ([^>]*)>#', '<li class="page-item link">', $bookmarks);
 			$bookmarks = preg_replace('#<ul ([^>]*)>#', '<ul>', $bookmarks); 
 			$listpages = '';
-			if ($disable_dynamic_menubar_links != 'yes') {
+			if (!$comicpress_options['disable_dynamic_menubar_links']) {
 				$listpages = wp_list_pages('echo=0&sort_column=menu_order&depth=4&title_li=');
 			}
 			if (!empty($bookmarks)) {
@@ -77,7 +77,7 @@ global $contact_in_menubar,$enable_search_in_menubar,$enable_rss_in_menubar,$ena
 			<ul id="menu">
 			<li class="page_item page-item-home<?php if (is_home()) { ?> current_page_item<?php } ?>"><a href="<?php bloginfo('url'); ?>">Home</a></li>
 			<?php echo $listpages; ?>
-			<?php if ($contact_in_menubar == 'yes') { ?>
+			<?php if ($comicpress_options['contact_in_menubar']) { ?>
 				<li class="page_item page-item-contact"><a href="mailto:<?php bloginfo('admin_email'); ?>">Contact</a></li>
 			<?php } ?>
 			</ul>

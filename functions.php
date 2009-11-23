@@ -149,88 +149,13 @@ function comicpress_load_options() {
 		add_option('comicpress_options', $comicpress_options, '', 'yes');
 		// update_option('comicpress_options', $comicpress_options);
 	}
-	$comicpress_options['comicpress_version'] = '2.9.0.1';
+	$comicpress_options['comicpress_version'] = '2.9.0.2';
 	update_option('comicpress_options', $comicpress_options);
 	return $comicpress_options;
 }
 
-if (get_option('upload_path') !== false) {
-	$variables_to_extract = array();
-
-	foreach (array(
-				'disable_comic_frontpage'		=> 'disable_comic_frontpage',
-				'disable_comic_blog_frontpage'	=> 'disable_comic_blog_frontpage',
-				'disable_comic_blog_single'		=> 'disable_comic_blog_single',
-				'disable_blog_frontpage'		=> 'disable_blog_frontpage',
-				
-				'buy_print_email'				=> 'buy_print_email',
-				'buy_print_url'					=> 'buy_print_url',
-				'buy_print_us_amount'			=> 'buy_print_us_amount',
-				'buy_print_int_amount'			=> 'buy_print_int_amount',
-				'buy_print_add_shipping'		=> 'buy_print_add_shipping',
-				'buy_print_us_ship'				=> 'buy_print_us_ship',
-				'buy_print_int_ship'			=> 'buy_print_int_ship',
-				
-				'cp_theme_layout'				=> 'cp_theme_layout',
-				'transcript_in_posts'			=> 'transcript_in_posts',
-				'enable_widgetarea_use_sidebar_css'	=> 'enable_widgetarea_use_sidebar_css',
-				'enable_custom_image_header'	=> 'enable_custom_image_header',
-				'custom_image_header_width'		=> 'custom_image_header_width',
-				'custom_image_header_height'	=> 'custom_image_header_height',
-				'enable_numbered_pagination'	=> 'enable_numbered_pagination',
-				'disable_page_restraints'		=> 'disable_page_restraints',
-				'enable_related_comics'			=> 'enable_related_comics',
-				'enable_related_posts'			=> 'enable_related_posts',
-				'comic_clicks_next'				=> 'comic_clicks_next',
-				'rascal_says'					=> 'rascal_says',
-				'enable_post_calendar'			=> 'enable_post_calendar',
-				'enable_post_author_gravatar'	=> 'enable_post_author_gravatar',
-				'enable_comic_post_calendar'	=> 'enable_comic_post_calendar',
-				'enable_comic_post_author_gravatar'	=> 'enable_comic_post_author_gravatar',
-				'disable_tags_in_posts'			=> 'disable_tags_in_posts',
-				'disable_categories_in_posts'	=> 'disable_categories_in_posts',
-				'moods_directory'				=> 'moods_directory',
-				'graphicnav_directory'			=> 'graphicnav_directory',
-				'enable_search_in_menubar'		=> 'enable_search_in_menubar',
-				'enable_rss_in_menubar'			=> 'enable_rss_in_menubar',
-				'enable_navigation_in_menubar'	=> 'enable_navigation_in_menubar',
-				'disable_lrsidebars_frontpage'	=> 'disable_lrsidebars_frontpage',
-				'calendar_directory'			=> 'calendar_directory',
-				'contact_in_menubar'			=> 'contact_in_menubar',
-				'disable_dynamic_menubar_links'	=> 'disable_dynamic_menubar_links',
-				'disable_footer_text'			=> 'disable_footer_text',
-				'avatar_directory'				=> 'avatar_directory',
-				'archive_display_order'			=> 'archive_display_order',
-				'disable_comment_note'			=> 'disable_comment_note',
-				'excerpt_or_content_archive'	=> 'excerpt_or_content_archive',
-				'excerpt_or_content_search'		=> 'excerpt_or_content_search',
-				'category_thumbnail_postcount'	=> 'category_thumbnail_postcount',
-				
-				'members_post_category'			=> 'members_post_category',
-				'blogposts_with_comic'			=> 'blogposts_with_comic',
-				'split_column_in_two'			=> 'split_column_in_two',
-				'author_column_one'				=> 'author_column_one',
-				'author_column_two'				=> 'author_column_two',
-				'remove_wptexturize'			=> 'remove_wptexturize',
-				'disable_default_menubar'		=> 'disable_default_menubar',
-				'disable_blogheader'			=> 'disable_blogheader',
-				'disable_page_titles'			=> 'disable_page_titles',
-				'static_blog'					=> 'static_blog',
-				'disable_default_comic_nav'		=> 'disable_default_comic_nav' ) as $options => $variable_name) {
-		$variables_to_extract[$variable_name] = get_option("comicpress-${options}");
-	}
-
-	extract($variables_to_extract);
-}
-
-if (empty($avatar_directory)) $avatar_directory = 'default';
-if (empty($graphicnav_directory)) $graphicnav_directory = 'default';
-if (empty($moods_directory)) $moods_directory = 'default';
-if (empty($calendar_directory)) $calendar_directory = 'default';
-if (empty($cp_theme_layout)) $cp_theme_layout='standard';
-
 function is_cp_theme_layout($choices) {
-global $comicpress_options;
+	global $comicpress_options;
 	$choices = explode(",", $choices);
 	foreach ($choices as $choice) {
 
@@ -241,7 +166,7 @@ global $comicpress_options;
 	return false;
 }
 
-if ($remove_wptexturize == 'yes') {
+if ($comicpress_options['remove_wptexturize']) {
 	// Remove the wptexturizer from changing the quotes and squotes.
 	// remove_filter('the_content', 'wpautop');
 	// remove_filter('the_title', 'wptexturize');
