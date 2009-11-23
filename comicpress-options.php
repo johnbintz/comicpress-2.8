@@ -147,7 +147,10 @@ function comicpress_admin() {
 			<script>function hidemessage() { document.getElementById('message').style.display = 'none'; }</script>
 		<?php }  
 		}
-		if ('comicpress_reset' == $_REQUEST['action']) { ?>
+		if ($_REQUEST['action'] == 'comicpress_reset') {
+			delete_option('comicpress_options');
+			$comicpress_options = comicpress_load_options();
+		?>
 			<div id="message" class="updated fade"><p><strong><?php _e('ComicPress Settings RESET!','comicpress'); ?></strong></p></div>
 			<script>function hidemessage() { document.getElementById('message').style.display = 'none'; }</script>
 		<?php
@@ -158,15 +161,15 @@ function comicpress_admin() {
 	<div id="poststuff" class="metabox-holder">
 
 	<div id="cpadmin" onclick="hidemessage();">
-	<div class="<?php if ($tab == 'themestyle' || empty($tab)) { ?>on<?php } else { ?>off<?php } ?>" title="themestyle"><span><?php _e('Layout','comicpress'); ?></span></div>
-	<div class="<?php if ($tab == 'general') { ?>on<?php } else { ?>off<?php } ?>" title="generaloptions"><span><?php _e('General','comicpress'); ?></span></div>
-	<div class="<?php if ($tab == 'index') { ?>on<?php } else { ?>off<?php } ?>" title="indexoptions"><span><?php _e('Home Page','comicpress'); ?></span></div>
-	<div class="<?php if ($tab == 'post') { ?>on<?php } else { ?>off<?php } ?>" title="postoptions"><span><?php _e('Posts &amp; Pages','comicpress'); ?></span></div>
-	<div class="<?php if ($tab == 'archivesearch') { ?>on<?php } else { ?>off<?php } ?>" title="archivesearch"><span><?php _e('Archive &amp; Search','comicpress'); ?></span></div>
-	<div class="<?php if ($tab == 'menubar') { ?>on<?php } else { ?>off<?php } ?>" title="menubaroptions"><span><?php _e('Menubar','comicpress'); ?></span></div>
-	<div class="<?php if ($tab == 'customheader') { ?>on<?php } else { ?>off<?php } ?>" title="customheader"><span><?php _e('Custom Header','comicpress'); ?></span></div>
-	<div class="<?php if ($tab == 'buyprint') { ?>on<?php } else { ?>off<?php } ?>" title="buyprintoptions"><span><?php _e('Buy Print','comicpress'); ?></span></div>
-	<div class="<?php if ($tab == 'members') { ?>on<?php } else { ?>off<?php } ?>" title="membersoptions"><span><?php _e('Members','comicpress'); ?></span></div>
+		<div class="<?php if ($tab == 'themestyle' || empty($tab)) { ?>on<?php } else { ?>off<?php } ?>" title="themestyle"><span><?php _e('Layout','comicpress'); ?></span></div>
+		<div class="<?php if ($tab == 'general') { ?>on<?php } else { ?>off<?php } ?>" title="generaloptions"><span><?php _e('General','comicpress'); ?></span></div>
+		<div class="<?php if ($tab == 'index') { ?>on<?php } else { ?>off<?php } ?>" title="indexoptions"><span><?php _e('Home Page','comicpress'); ?></span></div>
+		<div class="<?php if ($tab == 'post') { ?>on<?php } else { ?>off<?php } ?>" title="postoptions"><span><?php _e('Posts &amp; Pages','comicpress'); ?></span></div>
+		<div class="<?php if ($tab == 'archivesearch') { ?>on<?php } else { ?>off<?php } ?>" title="archivesearch"><span><?php _e('Archive &amp; Search','comicpress'); ?></span></div>
+		<div class="<?php if ($tab == 'menubar') { ?>on<?php } else { ?>off<?php } ?>" title="menubaroptions"><span><?php _e('Menubar','comicpress'); ?></span></div>
+		<div class="<?php if ($tab == 'customheader') { ?>on<?php } else { ?>off<?php } ?>" title="customheader"><span><?php _e('Custom Header','comicpress'); ?></span></div>
+		<div class="<?php if ($tab == 'buyprint') { ?>on<?php } else { ?>off<?php } ?>" title="buyprintoptions"><span><?php _e('Buy Print','comicpress'); ?></span></div>
+		<div class="<?php if ($tab == 'members') { ?>on<?php } else { ?>off<?php } ?>" title="membersoptions"><span><?php _e('Members','comicpress'); ?></span></div>
 	</div>
 	<?php include(get_template_directory() . '/options/themestyle.php'); ?>
 	<?php include(get_template_directory() . '/options/generaloptions.php'); ?>
