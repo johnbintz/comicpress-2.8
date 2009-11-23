@@ -412,7 +412,9 @@ class ComicPressStoryline {
 	}
 
   function &include_all() {
-    $this->_category_search = array_keys($this->_structure);
+  	if (is_array($this->_structure)) {
+    	$this->_category_search = array_keys($this->_structure);
+  	}
     return $this;
   }
 
