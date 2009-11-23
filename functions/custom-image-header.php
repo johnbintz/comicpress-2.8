@@ -1,7 +1,7 @@
 <?php 
 
-global $comicpress_options;
-if ($comicpress_options['enable_custom_image_header'] == 'yes') {
+$comicpress_options = comicpress_load_options();
+if ($comicpress_options['enable_custom_image_header']) {
 	
 	// Custom Image Header
 	define('HEADER_TEXTCOLOR', '000');

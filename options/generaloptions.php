@@ -1,4 +1,4 @@
-<div id="generaloptions" class="hide">
+<div id="generaloptions" class="<?php if ($tab == 'general') { ?>show<?php } else { ?>hide<?php } ?>">
 
 	<form method="post" id="myForm" name="template" enctype="multipart/form-data">
 	<?php wp_nonce_field('update-options') ?>
