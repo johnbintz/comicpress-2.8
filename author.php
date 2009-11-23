@@ -1,4 +1,4 @@
-<?php get_header();  ?>
+<?php get_header(); global $comicpress_options; ?>
 <?php include(get_template_directory() . '/layout-head.php'); ?>
 	
 <?php 

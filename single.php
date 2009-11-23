@@ -1,4 +1,4 @@
-<?php get_header();  ?>
+<?php get_header(); global $comicpress_options; ?>
 
 <div id="content-wrapper-head"></div>
 	<div id="content-wrapper">
