@@ -11,6 +11,7 @@ class ComicPressDBInterface {
 	}
 
 	function _get_categories_to_exclude($categories = null) {
+		if (is_numeric($categories)) { $categories = array($categories); }
 		if (is_array($categories)) {
 			return array_values(array_diff(get_all_category_ids(), $categories));
 		} else {
