@@ -1,4 +1,5 @@
 <?php
+global $comicpress_options;
 if (!empty($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME']))
   die (__('Please do not load this page directly. Thanks!','comicpress'));
 
