@@ -8,7 +8,10 @@ class BookmarkWidget extends WP_Widget {
 
   function init() {
     add_action('wp_head', array(&$this, 'wp_head'));
+		add_action('template_redirect', array(&$this, 'template_redirect'));
+  }
 
+  function template_redirect() {
     wp_enqueue_script('prototype');
     wp_enqueue_script('cookiejar', get_template_directory_uri() . '/js/cookiejar.js', array('prototype'));
     wp_enqueue_script('bookmark', get_template_directory_uri() . '/js/bookmark.js', array('prototype', 'cookiejar'));
