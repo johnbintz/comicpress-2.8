@@ -21,7 +21,7 @@
 		</table>
 	</div>
 	
-	<div class="stuffbox" style="background: #ebf8ff;">
+	<div class="stuffbox" style="background: #edffeb;">
 		<h3>Comic</h3>
 		<table class="form-table" style="width: auto;">
 
