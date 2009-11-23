@@ -1,4 +1,4 @@
-<?php 
+<?php global $comicpress_options;
 	if (!$comicpress_options['disable_default_menubar']) {
 		comicpress_menubar();
 	} 
