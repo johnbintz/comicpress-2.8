@@ -7,7 +7,7 @@
 		</div>
 	<?php } ?>
 	<?php get_sidebar('footer'); ?>
-	<?php global $disable_footer_text, $wpmu_version; if ($disable_footer_text != 'yes') { ?>
+	<?php global $wpmu_version, $comicpress_options; if (!$comicpress_options['disable_footer_text']) { ?>
 		<p>
 			<span class="footer-copyright">
 				<?php echo comicpress_copyright(); ?>
@@ -39,7 +39,7 @@
 	<?php } ?>
 </div>
  
-<?php global $disable_page_restraints; if ($disable_page_restraints == 'no') { ?>
+<?php if (!$comicpress_options['disable_page_restraints']) { ?>
 	</div><!-- Ends "page/page-wide" -->
 </div><!-- Ends "page-wrap" -->
 <?php } ?>

@@ -1,4 +1,5 @@
 <?php
+global $comicpress_options;
 if (!empty($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME']))
   die (__('Please do not load this page directly. Thanks!','comicpress'));
 
@@ -35,7 +36,7 @@ if ( post_password_required() ) { ?>
 		</ol>
 	<?php endif; ?>
 	
-		<?php global $enable_numbered_pagination; if ($enable_numbered_pagination == 'yes') { ?>
+		<?php if ($comicpress_options['enable_numbered_pagination']) { ?>
 		<?php 
 			$pagelinks = paginate_comments_links(array('echo' => 0)); 
 			if (!empty($pagelinks)) {
@@ -98,8 +99,8 @@ if ( post_password_required() ) { ?>
 				<?php do_action('comment_form', $post->ID); ?>
 				<p><textarea name="comment" id="comment-textarea" cols="60" rows="6" tabindex="4"></textarea></p>
 				<p><button type="submit" class="comment-submit"><?php _e('Submit Comment','comicpress'); ?></button></p>
-				<?php global $disable_comment_note;
-				if ($disable_comment_note != 'yes') { ?>
+				<?php 
+				if (!$comicpress_options['disable_comment_note']) { ?>
 					<p><span class="comment-note"><?php _e('NOTE - You can use these tags:','comicpress'); ?><br /><?php echo allowed_tags(); ?></span></p>
 				<?php } ?>
 				<?php comment_id_fields(); ?>

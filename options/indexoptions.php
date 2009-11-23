@@ -1,4 +1,4 @@
-<div id="indexoptions" class="hide">
+<div id="indexoptions" class="<?php if ($tab == 'index') { ?>show<?php } else { ?>hide<?php } ?>">
 
 	<form method="post" id="myForm" name="template" enctype="multipart/form-data">
 	<?php wp_nonce_field('update-options') ?>
@@ -21,7 +21,7 @@
 		</table>
 	</div>
 	
-	<div class="stuffbox" style="background: #ebf8ff;">
+	<div class="stuffbox" style="background: #edffeb;">
 		<h3>Comic</h3>
 		<table class="form-table" style="width: auto;">
 
@@ -59,7 +59,7 @@
 
 		</table>
 	</div>
-	<input name="comicpress_save" type="submit" class="button-primary" value="Save Settings" />
-	<input type="hidden" name="action" value="comicpress_save" />	
+	<input name="comicpress_save_index" type="submit" class="button-primary" value="Save Settings" />
+	<input type="hidden" name="action" value="comicpress_save_index" />
 	</form>
 </div>		

@@ -1,4 +1,4 @@
-<div id="archivesearch" class="hide">
+<div id="archivesearch" class="<?php if ($tab == 'archivesearch') { ?>show<?php } else { ?>hide<?php } ?>">
 
 	<form method="post" id="myForm" name="template" enctype="multipart/form-data">
 	<?php wp_nonce_field('update-options') ?>
