@@ -235,21 +235,8 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 	 * Render the widget.
 	 */
 	function widget($args, $instance) {
-		global $post;
-
 		if (is_home() || is_single()) {
-			$storyline = new ComicPressStoryline();
-			$storyline->set_order_via_flattened_storyline(get_option('comicpress-storyline-category-order'));
-
-			$navigation = new ComicPressNavigation();
-			$navigation->init($storyline);
-			$post_nav = $navigation->get_post_nav($post);
-
-			if ($instance['story_prev_acts_as_prev_in'] == 'on') {
-				if ($post_nav['storyline-previous'] !== false) {
-					$post_nav['storyline-chapter-previous'] = $post_nav['storyline-previous'];
-				}
-			}
+			$post_nav = $this->set_up_post_nav($instance);
 
 			$storyline_to_nav_mapping = array(
 				'story_prev' => 'storyline-chapter-previous',
@@ -272,6 +259,28 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 
 			echo end(apply_filters('comicpress_wrap_navigation_buttons', $nav_links, ''));
 		}
+	}
+
+	function _new_comicpress_storyline() { return new ComicPressStoryline(); }
+	function _new_comicpress_navigation() { return new ComicPressNavigation(); }
+
+	function set_up_post_nav($instance) {
+		global $post;
+
+		$storyline = $this->_new_comicpress_storyline();
+		$storyline->set_order_via_flattened_storyline(get_option('comicpress-storyline-category-order'));
+
+		$navigation = $this->_new_comicpress_navigation();
+		$navigation->init($storyline);
+		$post_nav = $navigation->get_post_nav($post);
+
+		if ($instance['story_prev_acts_as_prev_in'] == 'on') {
+			if ($post_nav['storyline-previous'] !== false) {
+				$post_nav['storyline-chapter-previous'] = $post_nav['storyline-previous'];
+			}
+		}
+
+		return $post_nav;
 	}
 
   /**
