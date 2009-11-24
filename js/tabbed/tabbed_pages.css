@@ -66,7 +66,9 @@ div.show {
 	clear: left;
 	display: run-in;
 	background: #fff;
-	border: 1px solid #dfdfdf;
+	border-width: 1px 1px 0 1px;
+	border-style: solid;
+	border-color: #dfdfdf;
 	padding: 10px;
 	z-index: 50;
 	margin-top: -2px;
@@ -92,7 +94,8 @@ div.show img {
 
 .cpadmin-footer {
 	padding: 10px;
-	background: #ededed;
+	color: #777;
+	background: #fff;
 	border-width: 0 1px 1px 1px;
 	border-style: solid;
 	border-color: #dfdfdf;
@@ -111,4 +114,21 @@ div.show img {
 }
 .cpadmin-footer a {
 	text-decoration: none;
+}
+
+#comicpress-options  table.widefat thead tr th {
+font-size: 14px;
+padding-top: 10px;
+}
+
+#comicpress-options  table.widefat label {
+display: block;
+text-align: right;
+}
+#comicpress-options  table.widefat label select {
+width: 100%;
+}
+
+#comicpress-options  table.widefat .button-primary {
+padding: 1px 5px;
 }
