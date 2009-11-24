@@ -7,7 +7,7 @@
 
 			<thead>
 				<tr>
-					<th colspan="4">Main</th>
+					<th colspan="3">Main</th>
 				</tr>
 			</thead>
 			<tr class="alternate">
@@ -49,7 +49,7 @@
 		
 			<thead>
 				<tr>
-					<th colspan="4">Navigation</th>
+					<th colspan="3">Navigation</th>
 				</tr>
 			</thead>
 			<tr class="alternate">
@@ -108,7 +108,7 @@
 			
 			<thead>
 				<tr>
-					<th colspan="4">Sidebars</th>
+					<th colspan="3">Sidebars</th>
 				</tr>
 			</thead>
 			<tr class="alternate">
@@ -133,7 +133,7 @@
 			
 			<thead>
 				<tr>
-					<th colspan="4">Footer</th>
+					<th colspan="3">Footer</th>
 				</tr>
 			</thead>
 			<tr class="alternate">
@@ -151,7 +151,7 @@
 					<th colspan="3">
 						<input name="comicpress_save_general" type="submit" class="button-primary" value="Save Settings" />
 						<input type="hidden" name="action" value="comicpress_save_general" />
-					</td>
+					</th>
 				</tr>
 			</tfoot>
 			
