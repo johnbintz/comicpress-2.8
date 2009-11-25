@@ -235,6 +235,8 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 	 * Render the widget.
 	 */
 	function widget($args, $instance) {
+		global $post;
+
 		if (is_home() || is_single()) {
 			$post_nav = $this->set_up_post_nav($instance);
 
