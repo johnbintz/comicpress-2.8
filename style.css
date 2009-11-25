@@ -823,8 +823,10 @@ ul.children {
 	background: #000;
 }
 
-.sidebar .comic-bookmark-holder {
+.sidebar #comic-bookmark-holder {
+	width: 152px;
 	margin: 0 auto;
+	margin-bottom: 10px;
 }
 
 .archive-dropdown {

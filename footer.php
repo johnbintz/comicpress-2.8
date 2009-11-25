@@ -1,3 +1,4 @@
+<?php global $wpmu_version, $comicpress_options; ?>
 <div id="footer">
 	<?php if (function_exists('the_project_wonderful_ad')) { ?>
 		<div class="footerpwad">
@@ -7,7 +8,7 @@
 		</div>
 	<?php } ?>
 	<?php get_sidebar('footer'); ?>
-	<?php global $wpmu_version, $comicpress_options; if (!$comicpress_options['disable_footer_text']) { ?>
+	<?php if (!$comicpress_options['disable_footer_text']) { ?>
 		<p>
 			<span class="footer-copyright">
 				<?php echo comicpress_copyright(); ?>
