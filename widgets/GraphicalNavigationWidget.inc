@@ -25,6 +25,8 @@ class GraphicalNavigationWidget extends WP_Widget {
 		add_filter('comicpress_wrap_navigation_buttons', array(&$this, 'comicpress_wrap_navigation_buttons'), 10, 2);
     add_filter('comicpress_navigation_grouping_details', array(&$this, 'comicpress_navigation_grouping_details'));
 
+    add_filter('comicpress_set_up_post_nav', array(&$this, 'comicpress_set_up_post_nav'), 10, 2);
+
 		// these two need to be moved one level up
 		add_filter('comicpress_get_random_link_url', array(&$this, 'comicpress_get_random_link_url'));
 		add_filter('comicpress_get_buy_print_url', array(&$this, 'comicpress_get_buy_print_url'));
@@ -276,13 +278,21 @@ class GraphicalNavigationWidget extends WP_Widget {
 		$navigation->init($storyline);
 		$post_nav = $navigation->get_post_nav($post);
 
+		$result = apply_filters('comicpress_set_up_post_nav', $post_nav, $instance);
+		if (is_array($result)) {
+			return array_shift($result);
+		} else {
+			return $post_nav;
+		}
+	}
+
+	function comicpress_set_up_post_nav($post_nav, $instance) {
 		if ($instance['story_prev_acts_as_prev_in'] == 'on') {
 			if ($post_nav['storyline-previous'] !== false) {
 				$post_nav['storyline-chapter-previous'] = $post_nav['storyline-previous'];
 			}
 		}
-
-		return $post_nav;
+		return array($post_nav, $instance);
 	}
 
   /**

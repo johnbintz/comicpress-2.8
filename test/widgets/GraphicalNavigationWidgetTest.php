@@ -116,7 +116,11 @@ class GraphicalNavigationWidgetTest extends PHPUnit_Framework_TestCase {
   /**
    * @dataProvider providerTestSetUpPostNav
    */
-  function testSetUpPostNav($instance, $post_nav, $expected_post_nav) {
+  function testComicPressSetUpPostNavFilter($instance, $post_nav, $expected_post_nav) {
+		$this->assertEquals($expected_post_nav, array_shift($this->w->comicpress_set_up_post_nav($post_nav, $instance)));
+  }
+
+  function testSetUpPostNav() {
   	global $post;
 
   	$post = 'post';
@@ -132,11 +136,11 @@ class GraphicalNavigationWidgetTest extends PHPUnit_Framework_TestCase {
 
   	$navigation = $this->getMock('ComicPressNavigation', array('init', 'get_post_nav'));
   	$navigation->expects($this->once())->method('init');
-  	$navigation->expects($this->once())->method('get_post_nav')->with($post)->will($this->returnValue($post_nav));
+  	$navigation->expects($this->once())->method('get_post_nav')->with($post)->will($this->returnValue('true'));
 
   	$css->expects($this->once())->method('_new_comicpress_navigation')->will($this->returnValue($navigation));
 
-  	$this->assertEquals($expected_post_nav, $css->set_up_post_nav($instance));
+  	$css->set_up_post_nav(array());
   }
 }
 
