@@ -91,6 +91,7 @@ class GraphicalNavigationWidget extends WP_Widget {
       case 'story_next_in':
       	$obj_ok = false;
 	      $navi_class_names = array("navi-${which}");
+	      $link = false;
       	if (is_object($target)) {
       		$obj_ok = true;
 	        if (isset($css_name_mapping[$which])) { $navi_class_names[] = "navi-{$css_name_mapping[$which]}"; }
@@ -98,6 +99,12 @@ class GraphicalNavigationWidget extends WP_Widget {
 					$link = get_permalink($target->ID);
 					if (($which == 'last') && ($instance['lastgohome'] == 'on')) { $link = get_bloginfo('url'); }
 				}
+
+				if (($filter_link = array_shift(apply_filters('comicpress_display_navigation_link', $link, $which, $current, $target, $instance))) !== false) {
+					$link = $filter_link;
+					$obj_ok = true;
+				}
+
 				if ($ok && $obj_ok) {
 				  ?><a href="<?php echo $link; ?>"
 					  	 class="navi <?php echo implode(" ", $navi_class_names); ?>"
@@ -151,13 +158,19 @@ class GraphicalNavigationWidget extends WP_Widget {
 	 * @return boolean True if this link should be visible.
 	 */
 	function _will_display_nav_link($which, $current, $target) {
+		$return = true;
+
 		switch ($which) {
 			case 'first':
 			case 'last':
-				return ($target->ID != $current->ID);
+				$return = ($target->ID != $current->ID);
+				break;
 			default:
-				return true;
+				$return = true;
+				break;
 		}
+
+		return apply_filters('comicpress_graphical_navigation_will_display_nav_link', $return, $which, $current, $target);
 	}
 
 	/**
