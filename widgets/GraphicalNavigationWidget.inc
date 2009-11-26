@@ -10,8 +10,8 @@ Author URI: http://frumph.net/
 
 require_once(dirname(__FILE__) . '/../classes/ComicPressNavigation.inc');
 
-class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
-	function WidgetComicPressGraphicalStorylineNavigation() {
+class GraphicalNavigationWidget extends WP_Widget {
+	function GraphicalNavigationWidget() {
 		$widget_ops = array('classname' => 'WidgetComicPressGraphicalStorylineNavigation', 'description' => __('Displays Graphical Navigation Buttons. (used in comic sidebars)','comicpress') );
 		$this->WP_Widget('graphicalstorylinenavigation', __('Comic Navigation','comicpress'), $widget_ops);
 	}
@@ -445,19 +445,3 @@ class WidgetComicPressGraphicalStorylineNavigation extends WP_Widget {
 		<?php
 	}
 }
-register_widget('WidgetComicPressGraphicalStorylineNavigation');
-
-/**
- * Handle pre-init stuff.
- * In this case, instantiate a copy of the widget and hook up its filters.
- * The original will hang around due to the callback references. Don't use any
- * object properties in those filters!
- */
-function WidgetComicPressGraphicalStorylineNavigation_init() {
-	$a = new WidgetComicPressGraphicalStorylineNavigation();
-	$a->init();
-}
-
-add_action('widgets_init', 'WidgetComicPressGraphicalStorylineNavigation_init');
-
-?>

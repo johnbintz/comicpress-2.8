@@ -2,12 +2,12 @@
 
 require_once('MockPress/mockpress.php');
 require_once('PHPUnit/Framework.php');
-require_once(dirname(__FILE__) . '/../../widgets/graphical-navigation.php');
+require_once(dirname(__FILE__) . '/../../widgets/GraphicalNavigationWidget.inc');
 
-class GraphicalNavigationTest extends PHPUnit_Framework_TestCase {
+class GraphicalNavigationWidgetTest extends PHPUnit_Framework_TestCase {
 	function setUp() {
 		_reset_wp();
-		$this->w = new WidgetComicPressGraphicalStorylineNavigation();
+		$this->w = new GraphicalNavigationWidget();
 	}
 
   /**
@@ -121,7 +121,7 @@ class GraphicalNavigationTest extends PHPUnit_Framework_TestCase {
 
   	$post = 'post';
 
-  	$css = $this->getMock('WidgetComicPressGraphicalStorylineNavigation', array('_new_comicpress_storyline', '_new_comicpress_navigation'));
+  	$css = $this->getMock('GraphicalNavigationWidget', array('_new_comicpress_storyline', '_new_comicpress_navigation'));
 
   	update_option('comicpress-storyline-category-order', 'test');
 
