@@ -1,6 +1,7 @@
 <?php
 
 class ComicPressDBInterface {
+	var $is_single, $in_the_loop;
 	function ComicPressDBInterface() {}
 
 	function get_instance() {
