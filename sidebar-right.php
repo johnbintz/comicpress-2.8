@@ -4,6 +4,9 @@ if (!$comicpress_options['disable_lrsidebars_frontpage']) { ?>
 	<div class="sidebar-head"></div>
 		<div class="sidebar">
 			<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Right Sidebar') ) : ?>
+				<?php
+					comicpress_comic_bookmark()
+				?>
 				<?php if (is_cp_theme_layout('standard,v')) { ?>
 					<div class="widget">
 						<?php comicpress_calendar(); ?>
