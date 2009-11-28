@@ -117,14 +117,77 @@ class GraphicalNavigationWidgetTest extends PHPUnit_Framework_TestCase {
    * @dataProvider providerTestSetUpPostNavStoryPrev
    */
   function testComicPressSetUpPostNavFilterStoryPrev($instance, $post_nav, $expected_post_nav) {
-		$this->assertEquals($expected_post_nav, array_shift($this->w->_comicpress_set_up_post_nav_story_prev($post_nav, $instance)));
+		$this->assertEquals($expected_post_nav, array_shift($this->w->_comicpress_set_up_post_nav_story_prev($post_nav, null, $instance)));
   }
 
-  /*function testComicPressSetUpPostNavFilterMultiPageSupport($instance, $post_nav, $_page, $_numpages, $expected_post_nav) {
+  function providerTestComicPressSetUpPostNavFilterMultiPageSupport() {
+  	return array(
+  		array(
+  			array('enable_multipage_support' => 'off'),
+  			array('previous' => 'prev-post', 'next' => 'next-post'),
+  			1, 4,
+  			array('previous' => 'prev-post', 'next' => 'next-post')
+  		),
+  		array(
+  			array('enable_multipage_support' => 'on'),
+  			array('previous' => 'prev-post', 'next' => 'next-post'),
+  			1, 1,
+  			array('previous' => 'prev-post', 'next' => 'next-post')
+  		),
+  		array(
+  			array('enable_multipage_support' => 'on'),
+  			array('previous' => 'prev-post', 'next' => 'next-post'),
+  			1, 2,
+  			array(
+  			  'previous' => 'prev-post',
+  			  'next' => 'current-post/2/',
+  			  'storyline-next' => 'current-post/2/',
+  			)
+  		),
+  		array(
+  			array('enable_multipage_support' => 'on'),
+  			array('previous' => 'prev-post', 'next' => 'next-post'),
+  			2, 2,
+  			array(
+  			  'previous' => 'current-post/1/',
+  			  'storyline-previous' => 'current-post/1/',
+  				'next' => 'next-post'
+  			)
+  		),
+  		array(
+  			array('enable_multipage_support' => 'on'),
+  			array(
+  			  'previous' => 'prev-post',
+  			  'next' => 'next-post',
+  			  'storyline-previous' => 'prev-post',
+  			  'storyline-next' => 'next-post',
+  			),
+  			2, 3,
+  			array(
+  			  'previous' => 'current-post/1/',
+  			  'next' => 'current-post/3/',
+  			  'storyline-previous' => 'current-post/1/',
+  			  'storyline-next' => 'current-post/3/',
+  			)
+  		),
+  	);
+  }
+
+  /**
+   * @dataProvider providerTestComicPressSetUpPostNavFilterMultiPageSupport
+   * @return unknown_type
+   */
+  function testComicPressSetUpPostNavFilterMultiPageSupport($instance, $post_nav, $_page, $_numpages, $expected_post_nav) {
 		global $post, $page, $numpages;
 
-		$post = (object)array('ID' => 1);
-  }*/
+		update_option('permalink_structure', '/test/');
+
+		$post = (object)array('ID' => 1, 'guid' => 'current-post', 'post_status' => 'publish');
+		$page = $_page;
+		$numpages = $_numpages;
+
+		$this->assertEquals($expected_post_nav, array_shift($this->w->_comicpress_set_up_post_nav_multi_page_support($post_nav, $post, $instance)));
+  }
 
   function providerTestBuildInPostPageLink() {
   	return array(
