@@ -48,23 +48,23 @@
 			<div class="column">
 	<?php } ?>
 
-	<?php if (function_exists('the_project_wonderful_ad')) { ?>
-			<div class="blogpwad">
-				<center>
-				<?php the_project_wonderful_ad('blog'); ?>
-				</center>
-			</div>
-	<?php }
-
-	get_sidebar('blog');
-
-if (!$comicpress_options['disable_comic_frontpage'] && !$comicpress_options['disable_comic_blog_frontpage'] && !is_paged() )  { ?>
+<?php if (!$comicpress_options['disable_comic_frontpage'] && !$comicpress_options['disable_comic_blog_frontpage'] && !is_paged() )  { ?>
 		<?php while ($comicFrontpage->have_posts()) : $comicFrontpage->the_post();
 			display_comic_post();
 			$comicFrontPage->is_single = true;
 			comments_template();
 	endwhile; ?>
 <?php } ?>
+
+	<?php if (function_exists('the_project_wonderful_ad')) { ?>
+			<div class="blogpwad">
+				<center>
+				<?php the_project_wonderful_ad('blog'); ?>
+				</center>
+			</div>
+	<?php } ?>
+
+	<?php get_sidebar('blog'); ?>
 
 <?php if (!$comicpress_options['disable_blogheader']) { ?>
 	<div id="blogheader"><!-- This area can be used for a heading above your main page blog posts --></div>

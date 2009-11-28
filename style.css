@@ -229,6 +229,7 @@ h3, h3 a {
 	}
 
 #menu {
+	text-transform: capitalize;
 	padding: 0;
 	margin: 0;
 	list-style: none;
