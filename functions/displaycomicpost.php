@@ -54,7 +54,7 @@ function display_comic_post() {
 					</div>
 				</div>
 				<div class="entry">
-					<?php if (!comicpress_check_file_file('partials/displaycomicpost-entry')) { ?>
+					<?php if (!comicpress_check_child_file('partials/displaycomicpost-entry')) { ?>
 						<?php if (!is_single()) { global $more; $more = 0; } ?>
 						<?php the_content(__('&darr; Read the rest of this entry...','comicpress')); ?>
 						<?php if (is_single()) wp_link_pages(array('before' => '<div class="linkpages"><span class="linkpages-pagetext">Pages:</span> ', 'after' => '</div>', 'next_or_number' => 'number'));  ?>
