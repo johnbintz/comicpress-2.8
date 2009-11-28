@@ -158,10 +158,6 @@ class GraphicalNavigationWidget extends WP_Widget {
 			}
 		}
 
-		if (($filter_link = apply_filters('comicpress_display_navigation_link', $link, $which, $current, $target, $instance)) !== false) {
-			$link = $filter_link;
-		}
-
 		return compact('link', 'navi_class_names');
 	}
 
@@ -298,8 +294,10 @@ class GraphicalNavigationWidget extends WP_Widget {
 		}
 	}
 
+	// @codeCoverageIgnoreStart
 	function _new_comicpress_storyline() { return new ComicPressStoryline(); }
 	function _new_comicpress_navigation() { return new ComicPressNavigation(); }
+	// @codeCoverageIgnoreEnd
 
 	function set_up_post_nav($instance) {
 		global $post;
@@ -313,7 +311,7 @@ class GraphicalNavigationWidget extends WP_Widget {
 
 		$result = apply_filters('comicpress_set_up_post_nav', $post_nav, $post, $instance);
 		if (is_array($result)) {
-			return array_shift($result);
+			return array_shift(array_shift($result));
 		} else {
 			return $post_nav;
 		}

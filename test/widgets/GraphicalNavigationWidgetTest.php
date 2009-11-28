@@ -91,6 +91,16 @@ class GraphicalNavigationWidgetTest extends PHPUnit_Framework_TestCase {
   	$this->w->_group_navigation_buttons(array(), array());
   }
 
+  function testSetUpPostNavFilterReturnsData() {
+    _set_filter_expectation('comicpress_set_up_post_nav', array(array(array('test'))));
+
+    $w = $this->getMock('GraphicalNavigationWidget', array('_new_comicpress_storyline', '_new_comicpress_navigation'));
+    $w->expects($this->once())->method('_new_comicpress_storyline')->will($this->returnValue($this->getMock('Storyline', array('set_order_via_flattened_storyline'))));
+    $w->expects($this->once())->method('_new_comicpress_navigation')->will($this->returnValue($this->getMock('Navigation', array('init', 'get_post_nav'))));
+
+    $this->assertEquals('test', $w->set_up_post_nav(array()));
+  }
+
   function providerTestSetUpPostNavStoryPrev() {
   	return array(
   		array(

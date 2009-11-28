@@ -1,10 +1,10 @@
 <?php
 
 //COMIC CATEGORY -the WordPress ID # of your comic category (default "3")
-$comiccat = "58";
+$comiccat = "55";
 
 //BLOG CATEGORY - the WordPress ID of your blog category (default "1")
-$blogcat = "55";
+$blogcat = "58";
 
 //COMIC FOLDER - the folder your comics files are located in (default "comics")
 $comic_folder = "comics";
