@@ -10,9 +10,6 @@ class GraphicalNavigationWidgetTest extends PHPUnit_Framework_TestCase {
 		$this->w = new GraphicalNavigationWidget();
 	}
 
-  /**
-   * @covers WidgetComicPressGraphicalStorylineNavigation::update
-   */
 	function testUpdateWidget() {
 		$result = $this->w->update(array(
 			"next" => "<b>test</b>",
@@ -41,7 +38,6 @@ class GraphicalNavigationWidgetTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * @dataProvider providerTestIsNavLinkVisible
-   * @covers WidgetComicPressGraphicalStorylineNavigation::_will_display_nav_link
 	 */
 	function testIsNavLinkVisible($which, $current_id, $target_id, $expected_result) {
 		$current = (object)array('ID' => $current_id);
@@ -76,7 +72,6 @@ class GraphicalNavigationWidgetTest extends PHPUnit_Framework_TestCase {
 
   /**
    * @dataProvider providerTestGroupNavigationButtons
-   * @covers WidgetComicPressGraphicalStorylineNavigation::_group_navigation_buttons
    */
   function testGroupNavigationButtons($buttons, $expected_grouping) {
     _set_filter_expectation('comicpress_navigation_grouping_details', array(array(
@@ -86,6 +81,14 @@ class GraphicalNavigationWidgetTest extends PHPUnit_Framework_TestCase {
     )));
 
     $this->assertEquals($expected_grouping, $this->w->_group_navigation_buttons($buttons, array()));
+  }
+
+  /**
+   * @expectedException PHPUnit_Framework_Error
+   */
+  function testGroupNavigationButtonsNoDefaultGroup() {
+    _set_filter_expectation('comicpress_navigation_grouping_details', array(array()));
+  	$this->w->_group_navigation_buttons(array(), array());
   }
 
   function providerTestSetUpPostNavStoryPrev() {
@@ -229,6 +232,43 @@ class GraphicalNavigationWidgetTest extends PHPUnit_Framework_TestCase {
   	$css->expects($this->once())->method('_new_comicpress_navigation')->will($this->returnValue($navigation));
 
   	$css->set_up_post_nav(array());
+  }
+
+  function providerTestGetLinkNaviClassNames() {
+  	return array(
+  		array(
+  			'previous', (object)array('guid' => 'previous'), array(), array(
+					'link' => 'previous',
+  				'navi_class_names' => array('navi-previous', 'navi-prev')
+  			)
+  		),
+  		array(
+  			'last', (object)array('guid' => 'last'), array('lastgohome' => 'off'), array(
+					'link' => 'last',
+  				'navi_class_names' => array('navi-last')
+  			)
+  		),
+  		array(
+  			'last', (object)array('guid' => 'last'), array('lastgohome' => 'on'), array(
+					'link' => 'home',
+  				'navi_class_names' => array('navi-last')
+  			)
+  		),
+  		array(
+  			'next', 'next', array(), array(
+					'link' => 'next',
+  				'navi_class_names' => array('navi-next')
+  			)
+  		),
+  	);
+  }
+
+  /**
+   * @dataProvider providerTestGetLinkNaviClassNames
+   */
+  function testGetLinkNaviClassNames($which, $target, $instance, $expected_results) {
+  	_set_bloginfo('url', 'home');
+		$this->assertEquals($expected_results, $this->w->_get_link_navi_class_names($which, null, $target, $instance));
   }
 }
 
