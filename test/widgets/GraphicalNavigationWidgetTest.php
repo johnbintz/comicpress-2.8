@@ -143,16 +143,22 @@ class GraphicalNavigationWidgetTest extends PHPUnit_Framework_TestCase {
   		),
   		array(
   			array('enable_multipage_support' => 'on'),
-  			array('previous' => 'prev-post', 'next' => 'next-post'),
+  			array('previous' => (object)array('post_content' => 'test', 'guid' => 'prev-post', 'post_status' => 'publish'), 'next' => 'next-post'),
   			1, 1,
-  			array('previous' => 'prev-post', 'next' => 'next-post')
+  			array('previous' => (object)array('post_content' => 'test', 'guid' => 'prev-post', 'post_status' => 'publish'), 'next' => 'next-post')
   		),
   		array(
   			array('enable_multipage_support' => 'on'),
-  			array('previous' => 'prev-post', 'next' => 'next-post'),
+  			array('previous' => (object)array('post_content' => 'test<!--nextpage-->test2', 'guid' => 'prev-post', 'post_status' => 'publish'), 'next' => 'next-post'),
+  			1, 1,
+  			array('previous' => 'prev-post/2/', 'next' => 'next-post')
+  		),
+  		array(
+  			array('enable_multipage_support' => 'on'),
+  			array('previous' => (object)array('post_content' => 'test', 'guid' => 'prev-post', 'post_status' => 'publish'), 'next' => 'next-post'),
   			1, 2,
   			array(
-  			  'previous' => 'prev-post',
+  			  'previous' => (object)array('post_content' => 'test', 'guid' => 'prev-post', 'post_status' => 'publish'),
   			  'next' => 'current-post/2/',
   			  'storyline-next' => 'current-post/2/',
   			)

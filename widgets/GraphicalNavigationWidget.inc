@@ -344,6 +344,16 @@ class GraphicalNavigationWidget extends WP_Widget {
 			if ($page != 1 && $numpages > 1) {
 				$post_nav['previous'] = $post_nav['storyline-previous'] = $this->_build_in_post_page_link($post, $page - 1);
 			}
+			if ($page == 1) {
+				foreach (array('previous', 'previous_storyline') as $which) {
+					if (isset($post_nav[$which])) {
+						$count = preg_match_all('#<!--nextpage-->#', $post_nav[$which]->post_content, $matches);
+						if (!empty($count)) {
+							$post_nav[$which] = $this->_build_in_post_page_link($post_nav[$which], $count + 1);
+						}
+					}
+				}
+			}
 		}
 
 		return array($post_nav, $post, $instance);
