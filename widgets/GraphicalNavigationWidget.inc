@@ -63,7 +63,7 @@ class GraphicalNavigationWidget extends WP_Widget {
 		switch ($which) {
 			case 'first':
 			case 'last':
-				$ok = $this->_will_display_nav_link($which, $current, $target);
+				$ok = $this->_will_display_nav_link($which, $current, $target, $instance);
 				break;
 			case 'previous':
 			case 'next':
@@ -169,16 +169,18 @@ class GraphicalNavigationWidget extends WP_Widget {
 	 * @param object $target The target post to comare to.
 	 * @return boolean True if this link should be visible.
 	 */
-	function _will_display_nav_link($which, $current, $target) {
+	function _will_display_nav_link($which, $current, $target, $instance) {
 		global $page, $numpages;
 
 		$return = true;
 
 		switch ($which) {
 			case 'first':
-				if ($page != 1 && $numpages > 1) {
-					$return = true;
-					break;
+				if ($instance['enable_multipage_support'] == 'on') {
+					if ($page != 1 && $numpages > 1) {
+						$return = true;
+						break;
+					}
 				}
 			case 'last':
 				$return = ($target->ID != $current->ID);

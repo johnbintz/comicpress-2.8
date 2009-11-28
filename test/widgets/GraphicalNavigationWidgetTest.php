@@ -28,20 +28,21 @@ class GraphicalNavigationWidgetTest extends PHPUnit_Framework_TestCase {
 
 	function providerTestIsNavLinkVisible() {
 		return array(
-			array('first', 1, 2, 1, 1, true),
-			array('first', 1, 1, 1, 1, false),
-			array('last', 1, 2, 1, 1, true),
-			array('last', 1, 1, 1, 1, false),
-			array('prev', 1, 2, 1, 1, true),
-			array('first', 1, 1, 2, 2, true),
-			array('first', 1, 1, 1, 2, false),
+			array('first', 1, 2, 1, 1, 'on', true),
+			array('first', 1, 1, 1, 1, 'on', false),
+			array('last', 1, 2, 1, 1, 'on', true),
+			array('last', 1, 1, 1, 1, 'on', false),
+			array('prev', 1, 2, 1, 1, 'on', true),
+			array('first', 1, 1, 2, 2, 'on', true),
+			array('first', 1, 1, 1, 2, 'on', false),
+			array('first', 1, 1, 2, 2, 'off', false),
 		);
 	}
 
 	/**
 	 * @dataProvider providerTestIsNavLinkVisible
 	 */
-	function testIsNavLinkVisible($which, $current_id, $target_id, $_page, $_numpages, $expected_result) {
+	function testIsNavLinkVisible($which, $current_id, $target_id, $_page, $_numpages, $multi_page_support, $expected_result) {
 		global $page, $numpages;
 		$page = $_page;
 		$numpages = $_numpages;
@@ -49,7 +50,7 @@ class GraphicalNavigationWidgetTest extends PHPUnit_Framework_TestCase {
 		$current = (object)array('ID' => $current_id);
 		$target  = (object)array('ID' => $target_id);
 
-		$this->assertEquals($expected_result, $this->w->_will_display_nav_link($which, $current, $target));
+		$this->assertEquals($expected_result, $this->w->_will_display_nav_link($which, $current, $target, array('enable_multipage_support' => $multi_page_support)));
 	}
 
   function providerTestGroupNavigationButtons() {
