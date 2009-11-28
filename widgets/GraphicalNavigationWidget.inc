@@ -309,9 +309,9 @@ class GraphicalNavigationWidget extends WP_Widget {
 		$navigation->init($storyline);
 		$post_nav = $navigation->get_post_nav($post);
 
-		$result = apply_filters('comicpress_set_up_post_nav', $post_nav, $post, $instance);
+		$result = apply_filters('comicpress_set_up_post_nav', array($post_nav, $post, $instance));
 		if (is_array($result)) {
-			return array_shift(array_shift($result));
+			return array_shift($result);
 		} else {
 			return $post_nav;
 		}
@@ -325,7 +325,8 @@ class GraphicalNavigationWidget extends WP_Widget {
 		}
 	}
 
-	function _comicpress_set_up_post_nav_story_prev($post_nav, $post, $instance) {
+	function _comicpress_set_up_post_nav_story_prev($info) {
+		list($post_nav, $post, $instance) = $info;
 		if ($instance['story_prev_acts_as_prev_in'] == 'on') {
 			if ($post_nav['storyline-previous'] !== false) {
 				$post_nav['storyline-chapter-previous'] = $post_nav['storyline-previous'];
@@ -334,8 +335,9 @@ class GraphicalNavigationWidget extends WP_Widget {
 		return array($post_nav, $post, $instance);
 	}
 
-	function _comicpress_set_up_post_nav_multi_page_support($post_nav, $post, $instance) {
+	function _comicpress_set_up_post_nav_multi_page_support($info) {
 		global $page, $numpages;
+		list($post_nav, $post, $instance) = $info;
 
 		if ($instance['enable_multipage_support'] == 'on') {
 			if ($page < $numpages && $numpages != 1) {
@@ -371,7 +373,7 @@ class GraphicalNavigationWidget extends WP_Widget {
 			'first', 'story_prev', 'story_next', 'story_prev_in',
 			'story_next_in', 'previous', 'random', 'archives',
 			'comments', 'next', 'last', 'buyprint', 'comictitle', 'lastgohome',
-			'story_prev_acts_as_prev_in'
+			'story_prev_acts_as_prev_in', 'enable_multipage_support'
 		);
 
 		foreach ($all_fields as $field) {
@@ -403,7 +405,8 @@ class GraphicalNavigationWidget extends WP_Widget {
 			'buyprint' => 'off',
 			'comictitle' => 'off',
 			'lastgohome' => 'off',
-			'story_prev_acts_as_prev_in' => 'on'
+			'story_prev_acts_as_prev_in' => 'on',
+			'enable_multipage_support' => 'off',
 		);
 
 		$title_defaults = array(
@@ -436,7 +439,8 @@ class GraphicalNavigationWidget extends WP_Widget {
 			'archives' => __('Archives', 'comicpress'),
 			'comments' => __('Comments', 'comicpress'),
 			'random' => __('Random', 'comicpress'),
-			'buyprint' => __('Buy Print', 'comicpress')
+			'buyprint' => __('Buy Print', 'comicpress'),
+			'enable_multipage_support' => __('Enable multi-page support', 'comicpress'),
 		) as $field => $label) {
 			$title_field = "${field}_title"; ?>
 			<div class="comicpress-field-holder">
@@ -479,6 +483,15 @@ class GraphicalNavigationWidget extends WP_Widget {
 									</label>
 								</div>
 							<?php break;
+							case "enable_multipage_support": ?>
+								<div>
+									<p>
+										<em>
+											<?php _e('If using posts with multiple pages, previous/next navigation will link to pages if available.', 'comicpress') ?>
+										</em>
+									</p>
+								</div>
+							<?php break;
 							case "story_prev": ?>
 								<div>
 									<label>
@@ -486,12 +499,12 @@ class GraphicalNavigationWidget extends WP_Widget {
 													name="<?php echo $this->get_field_name('story_prev_acts_as_prev_in'); ?>"
 													type="checkbox" class="comicpress-field" value="yes"<?php if ($instance['story_prev_acts_as_prev_in'] == "on") { echo ' checked="checked"'; } ?> />
 										<strong><?php _e('Enable alternate behavior', 'comicpress'); ?></strong>
-										<p>
-											<em>
-												<?php _e('If the current post is not at the start of a chapter, the button will act the same as &quot;Previous In Chapter&quot;.', 'comicpress') ?>
-											</em>
-										</p>
 									</label>
+									<p>
+										<em>
+											<?php _e('If the current post is not at the start of a chapter, the button will act the same as &quot;Previous In Chapter&quot;.', 'comicpress') ?>
+										</em>
+									</p>
 								</div>
 							<?php break;
 						}

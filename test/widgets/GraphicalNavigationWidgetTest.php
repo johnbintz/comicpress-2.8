@@ -98,7 +98,7 @@ class GraphicalNavigationWidgetTest extends PHPUnit_Framework_TestCase {
     $w->expects($this->once())->method('_new_comicpress_storyline')->will($this->returnValue($this->getMock('Storyline', array('set_order_via_flattened_storyline'))));
     $w->expects($this->once())->method('_new_comicpress_navigation')->will($this->returnValue($this->getMock('Navigation', array('init', 'get_post_nav'))));
 
-    $this->assertEquals('test', $w->set_up_post_nav(array()));
+    $this->assertEquals('test', array_shift($w->set_up_post_nav(array())));
   }
 
   function providerTestSetUpPostNavStoryPrev() {
@@ -130,7 +130,7 @@ class GraphicalNavigationWidgetTest extends PHPUnit_Framework_TestCase {
    * @dataProvider providerTestSetUpPostNavStoryPrev
    */
   function testComicPressSetUpPostNavFilterStoryPrev($instance, $post_nav, $expected_post_nav) {
-		$this->assertEquals($expected_post_nav, array_shift($this->w->_comicpress_set_up_post_nav_story_prev($post_nav, null, $instance)));
+		$this->assertEquals($expected_post_nav, array_shift($this->w->_comicpress_set_up_post_nav_story_prev(array($post_nav, null, $instance))));
   }
 
   function providerTestComicPressSetUpPostNavFilterMultiPageSupport() {
@@ -205,7 +205,7 @@ class GraphicalNavigationWidgetTest extends PHPUnit_Framework_TestCase {
 		$page = $_page;
 		$numpages = $_numpages;
 
-		$this->assertEquals($expected_post_nav, array_shift($this->w->_comicpress_set_up_post_nav_multi_page_support($post_nav, $post, $instance)));
+		$this->assertEquals($expected_post_nav, array_shift($this->w->_comicpress_set_up_post_nav_multi_page_support(array($post_nav, $post, $instance))));
   }
 
   function providerTestBuildInPostPageLink() {
