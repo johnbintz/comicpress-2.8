@@ -92,13 +92,27 @@ class GraphicalNavigationWidgetTest extends PHPUnit_Framework_TestCase {
   }
 
   function testSetUpPostNavFilterReturnsData() {
-    _set_filter_expectation('comicpress_set_up_post_nav', array(array(array('test'))));
+    _set_filter_expectation('comicpress_set_up_post_nav', array(array('test')));
 
     $w = $this->getMock('GraphicalNavigationWidget', array('_new_comicpress_storyline', '_new_comicpress_navigation'));
     $w->expects($this->once())->method('_new_comicpress_storyline')->will($this->returnValue($this->getMock('Storyline', array('set_order_via_flattened_storyline'))));
     $w->expects($this->once())->method('_new_comicpress_navigation')->will($this->returnValue($this->getMock('Navigation', array('init', 'get_post_nav'))));
 
-    $this->assertEquals('test', array_shift($w->set_up_post_nav(array())));
+    $this->assertEquals('test', $w->set_up_post_nav(array()));
+  }
+
+  function testSetUpPostNavFilterReturnsFalse() {
+    _set_filter_expectation('comicpress_set_up_post_nav', false);
+
+    $w = $this->getMock('GraphicalNavigationWidget', array('_new_comicpress_storyline', '_new_comicpress_navigation'));
+    $w->expects($this->once())->method('_new_comicpress_storyline')->will($this->returnValue($this->getMock('Storyline', array('set_order_via_flattened_storyline'))));
+
+    $n = $this->getMock('Navigation', array('init', 'get_post_nav'));
+    $n->expects($this->once())->method('get_post_nav')->will($this->returnValue('test'));
+
+    $w->expects($this->once())->method('_new_comicpress_navigation')->will($this->returnValue($n));
+
+    $this->assertEquals('test', $w->set_up_post_nav(array()));
   }
 
   function providerTestSetUpPostNavStoryPrev() {
