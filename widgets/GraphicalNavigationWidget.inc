@@ -25,7 +25,11 @@ class GraphicalNavigationWidget extends WP_Widget {
 		add_filter('comicpress_wrap_navigation_buttons', array(&$this, 'comicpress_wrap_navigation_buttons'), 10, 2);
     add_filter('comicpress_navigation_grouping_details', array(&$this, 'comicpress_navigation_grouping_details'));
 
-    add_filter('comicpress_set_up_post_nav', array(&$this, 'comicpress_set_up_post_nav'), 10, 2);
+    foreach (get_class_methods($this) as $method) {
+    	if (strpos($method, '_comicpress_set_up_post_nav') === 0) {
+    		add_filter('comicpress_set_up_post_nav', array(&$this, $method), 10, 2);
+    	}
+    }
 
 		// these two need to be moved one level up
 		add_filter('comicpress_get_random_link_url', array(&$this, 'comicpress_get_random_link_url'));
@@ -299,7 +303,15 @@ class GraphicalNavigationWidget extends WP_Widget {
 		}
 	}
 
-	function comicpress_set_up_post_nav($post_nav, $instance) {
+	function _build_in_post_page_link($post, $page) {
+		if (!get_option('permalink_structure') || in_array($post->post_status, array('draft', 'pending'))) {
+			return get_permalink($post) . "&amp;page=${page}";
+		} else {
+			return trailingslashit(get_permalink($post)) . user_trailingslashit($page, 'single_paged');
+		}
+	}
+
+	function _comicpress_set_up_post_nav_story_prev($post_nav, $instance) {
 		if ($instance['story_prev_acts_as_prev_in'] == 'on') {
 			if ($post_nav['storyline-previous'] !== false) {
 				$post_nav['storyline-chapter-previous'] = $post_nav['storyline-previous'];

@@ -88,7 +88,7 @@ class GraphicalNavigationWidgetTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals($expected_grouping, $this->w->_group_navigation_buttons($buttons, array()));
   }
 
-  function providerTestSetUpPostNav() {
+  function providerTestSetUpPostNavStoryPrev() {
   	return array(
   		array(
   		  array('story_prev_acts_as_prev_in' => 'off'),
@@ -114,10 +114,35 @@ class GraphicalNavigationWidgetTest extends PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @dataProvider providerTestSetUpPostNav
+   * @dataProvider providerTestSetUpPostNavStoryPrev
    */
-  function testComicPressSetUpPostNavFilter($instance, $post_nav, $expected_post_nav) {
-		$this->assertEquals($expected_post_nav, array_shift($this->w->comicpress_set_up_post_nav($post_nav, $instance)));
+  function testComicPressSetUpPostNavFilterStoryPrev($instance, $post_nav, $expected_post_nav) {
+		$this->assertEquals($expected_post_nav, array_shift($this->w->_comicpress_set_up_post_nav_story_prev($post_nav, $instance)));
+  }
+
+  /*function testComicPressSetUpPostNavFilterMultiPageSupport($instance, $post_nav, $_page, $_numpages, $expected_post_nav) {
+		global $post, $page, $numpages;
+
+		$post = (object)array('ID' => 1);
+  }*/
+
+  function providerTestBuildInPostPageLink() {
+  	return array(
+  		array('', 'publish', 'post-guid&amp;page=2'),
+  		array('test', 'publish', 'post-guid/2'),
+  		array('test/', 'publish', 'post-guid/2/'),
+  		array('test/', 'draft', 'post-guid&amp;page=2'),
+  	);
+  }
+
+  /**
+   * @dataProvider providerTestBuildInPostPageLink
+   */
+  function testBuildInPostPageLink($permalink_structure, $post_status, $expected_link) {
+  	update_option('permalink_structure', $permalink_structure);
+		$post = (object)array('guid' => 'post-guid', 'post_status' => $post_status);
+
+		$this->assertEquals($expected_link, $this->w->_build_in_post_page_link($post, 2));
   }
 
   function testSetUpPostNav() {
