@@ -12,7 +12,7 @@
 					</tr>
 				</thead>
 				<tr class="alternate">
-					<th class="scope"><label for="disable_page_restraints"><?php _e('Disable page restraints?','comicpress'); ?></label></th>
+					<th scope="row"><label for="disable_page_restraints"><?php _e('Disable page restraints?','comicpress'); ?></label></th>
 					<td>
 						<input id="disable_page_restraints" name="disable_page_restraints" type="checkbox" value="1" <?php checked(true, $comicpress_options['disable_page_restraints']); ?> />
 					</td>
@@ -21,7 +21,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th class="scope"><label for="rascal_says"><?php _e('Enable Rascal the ComicPress Mascot?','comicpress'); ?></label></th>
+					<th scope="row"><label for="rascal_says"><?php _e('Enable Rascal the ComicPress Mascot?','comicpress'); ?></label></th>
 					<td>
 						<input id="rascal_says" name="rascal_says" type="checkbox" value="1" <?php checked(true, $comicpress_options['rascal_says']); ?> />
 					</td>
@@ -30,7 +30,7 @@
 					</td>
 				</tr>
 				<tr class="alternate">
-					<th class="scope"><label for="disable_comment_note"><?php _e('Disable the comment notes?','comicpress'); ?></label></th>
+					<th scope="row"><label for="disable_comment_note"><?php _e('Disable the comment notes?','comicpress'); ?></label></th>
 					<td>
 						<input id="disable_comment_note" name="disable_comment_note" type="checkbox" value="1" <?php checked(true, $comicpress_options['disable_comment_note']); ?> />
 					</td>
@@ -39,7 +39,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th class="scope"><label for="disable_blogheader"><?php _e('Disable blog header?','comicpress'); ?></label></th>
+					<th scope="row"><label for="disable_blogheader"><?php _e('Disable blog header?','comicpress'); ?></label></th>
 					<td>
 						<input id="disable_blogheader" name="disable_blogheader" type="checkbox" value="1" <?php checked(true, $comicpress_options['disable_blogheader']); ?> />		
 					</td>
@@ -56,7 +56,7 @@
 					</tr>
 				</thead>
 				<tr class="alternate">
-					<th class="scope"><label for="enable_numbered_pagination"><?php _e('Enable numbered pagination?','comicpress'); ?></label></th>
+					<th scope="row"><label for="enable_numbered_pagination"><?php _e('Enable numbered pagination?','comicpress'); ?></label></th>
 					<td>
 						<input id="enable_numbered_pagination" name="enable_numbered_pagination" type="checkbox" value="1" <?php checked(true, $comicpress_options['enable_numbered_pagination']); ?> />
 					</td>
@@ -65,7 +65,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th class="scope"><label for="comic_clicks_next"><?php _e('Click comic to go next?','comicpress'); ?></label></th>
+					<th scope="row"><label for="comic_clicks_next"><?php _e('Click comic to go next?','comicpress'); ?></label></th>
 					<td>
 						<input id="comic_clicks_next" name="comic_clicks_next" type="checkbox" value="1" <?php checked(true, $comicpress_options['comic_clicks_next']); ?> />
 					</td>
@@ -74,7 +74,7 @@
 					</td>
 				</tr>
 				<tr class="alternate">
-					<th class="scope"><label for="disable_default_comic_nav"><?php _e('Disable the default comic post navigation?','comicpress'); ?></label></th>
+					<th scope="row"><label for="disable_default_comic_nav"><?php _e('Disable the default comic post navigation?','comicpress'); ?></label></th>
 					<td>
 						<input id="disable_default_comic_nav" name="disable_default_comic_nav" type="checkbox" value="1" <?php checked(true, $comicpress_options['disable_default_comic_nav']); ?> />
 					</td>
@@ -90,7 +90,7 @@
 					foreach ($dirs_to_search as $dir) { $gnav_directories = array_merge($gnav_directories,glob("${dir}/images/nav/*")); }
 				?>	
 				<tr>
-					<th class="scope" colspan="2"><label for="graphicnav_directory" style="text-align:left"><?php _e('Graphic Navigation Directory','comicpress'); ?></label>	
+					<th scope="row" colspan="2"><label for="graphicnav_directory"><?php _e('Graphic Navigation Directory','comicpress'); ?></label>	
 						
 							<select name="graphicnav_directory" id="graphicnav_directory">
 								<?php
@@ -117,7 +117,7 @@
 					</tr>
 				</thead>
 				<tr class="alternate">
-					<th class="scope"><label for="enable_widgetarea_use_sidebar_css"><?php _e('Enable main Sidebar CSS for all sidebars?','comicpress'); ?></label></th>
+					<th scope="row"><label for="enable_widgetarea_use_sidebar_css"><?php _e('Enable main Sidebar CSS for all sidebars?','comicpress'); ?></label></th>
 					<td>
 						<input id="enable_widgetarea_use_sidebar_css" name="enable_widgetarea_use_sidebar_css" type="checkbox" value="1" <?php checked(true, $comicpress_options['enable_widgetarea_use_sidebar_css']); ?> />
 					</td>
@@ -126,7 +126,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th class="scope"><label for="disable_lrsidebars_frontpage"><?php _e('Disable home page sidebars?','comicpress'); ?></label></th>
+					<th scope="row"><label for="disable_lrsidebars_frontpage"><?php _e('Disable home page sidebars?','comicpress'); ?></label></th>
 					<td>
 						<input id="disable_lrsidebars_frontpage" name="disable_lrsidebars_frontpage" type="checkbox" value="1" <?php checked(true, $comicpress_options['disable_lrsidebars_frontpage']); ?> />
 					</td>
@@ -143,7 +143,7 @@
 					</tr>
 				</thead>
 				<tr class="alternate">
-					<th class="scope"><label for="disable_footer_text"><?php _e('Disable the default text in the footer?','comicpress'); ?></label></th>
+					<th scope="row"><label for="disable_footer_text"><?php _e('Disable the default text in the footer?','comicpress'); ?></label></th>
 					<td>
 						<input id="disable_footer_text" name="disable_footer_text" type="checkbox" value="1" <?php checked(true, $comicpress_options['disable_footer_text']); ?> />
 					</td>
