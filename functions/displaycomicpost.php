@@ -2,11 +2,11 @@
 /**
  * Display comic post
  * Displays the post info for the comic
- * 
- * 
+ *
+ *
  */
 
-function display_comic_post() { 
+function display_comic_post() {
 	global $post, $wp_query, $authordata, $comicpress_options;
 	$first_comic = get_first_comic_permalink(); $last_comic = get_last_comic_permalink();
 	if (!$comicpress_options['disable_default_comic_nav']) { ?>
@@ -54,9 +54,11 @@ function display_comic_post() {
 					</div>
 				</div>
 				<div class="entry">
-					<?php if (!is_single()) { global $more; $more = 0; } ?>
-					<?php the_content(__('&darr; Read the rest of this entry...','comicpress')); ?>
-					<?php if (is_single()) wp_link_pages(array('before' => '<div class="linkpages"><span class="linkpages-pagetext">Pages:</span> ', 'after' => '</div>', 'next_or_number' => 'number'));  ?>
+					<?php if (!comicpress_check_file_file('partials/displaycomicpost-entry')) { ?>
+						<?php if (!is_single()) { global $more; $more = 0; } ?>
+						<?php the_content(__('&darr; Read the rest of this entry...','comicpress')); ?>
+						<?php if (is_single()) wp_link_pages(array('before' => '<div class="linkpages"><span class="linkpages-pagetext">Pages:</span> ', 'after' => '</div>', 'next_or_number' => 'number'));  ?>
+					<?php } ?>
 					<div class="clear"></div>
 				</div>
 				<div class="post-comic-extras">
@@ -65,8 +67,8 @@ function display_comic_post() {
 					<?php the_tags(__('&#9492; Tags: ','comicpress'), ', ', '<br />'); ?>
 					</div>
 				<?php } ?>
-				<?php 
-					if ('open' == $post->comment_status) { 
+				<?php
+					if ('open' == $post->comment_status) {
 						if (comicpress_check_child_file('partials/commentlink') == false) { ?>
 							<div class="comment-link"><?php comments_popup_link('<span class="comment-balloon comment-balloon-empty">&nbsp;</span> '.__('Comments ','comicpress'), '<span class="comment-balloon">1</span> '.__('Comment ','comicpress'), '<span class="comment-balloon">%</span> '.__('Comments ','comicpress')); ?></div>
 						<?php }
@@ -78,6 +80,6 @@ function display_comic_post() {
 		</div>
 		<div class="post-comic-foot"></div>
 		</div>
-		<?php 
+		<?php
 	}
 ?>
