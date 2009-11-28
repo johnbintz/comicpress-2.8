@@ -4,9 +4,8 @@
 $comiccat = "3";
 
 //BLOG CATEGORY - the WordPress ID of your blog category (default "1")
-<<<<<<< .mine$blogcat = "4";
-=======$blogcat = "1";
->>>>>>> .theirs
+$blogcat = "1";
+
 //COMIC FOLDER - the folder your comics files are located in (default "comics")
 $comic_folder = "comics";
 
