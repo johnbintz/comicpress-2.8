@@ -170,10 +170,16 @@ class GraphicalNavigationWidget extends WP_Widget {
 	 * @return boolean True if this link should be visible.
 	 */
 	function _will_display_nav_link($which, $current, $target) {
+		global $page, $numpages;
+
 		$return = true;
 
 		switch ($which) {
 			case 'first':
+				if ($page != 1 && $numpages > 1) {
+					$return = true;
+					break;
+				}
 			case 'last':
 				$return = ($target->ID != $current->ID);
 				break;
@@ -335,6 +341,10 @@ class GraphicalNavigationWidget extends WP_Widget {
 		return array($post_nav, $post, $instance);
 	}
 
+	function _get_page_count($post) {
+		return preg_match_all('#<!--nextpage-->#', $post->post_content, $matches);
+	}
+
 	function _comicpress_set_up_post_nav_multi_page_support($info) {
 		global $page, $numpages;
 		list($post_nav, $post, $instance) = $info;
@@ -349,7 +359,7 @@ class GraphicalNavigationWidget extends WP_Widget {
 			if ($page == 1) {
 				foreach (array('previous', 'previous_storyline') as $which) {
 					if (isset($post_nav[$which])) {
-						$count = preg_match_all('#<!--nextpage-->#', $post_nav[$which]->post_content, $matches);
+						$count = $this->_get_page_count($post_nav[$which]);
 						if (!empty($count)) {
 							$post_nav[$which] = $this->_build_in_post_page_link($post_nav[$which], $count + 1);
 						}

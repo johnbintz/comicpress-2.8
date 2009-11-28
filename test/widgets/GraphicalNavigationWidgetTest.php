@@ -28,18 +28,24 @@ class GraphicalNavigationWidgetTest extends PHPUnit_Framework_TestCase {
 
 	function providerTestIsNavLinkVisible() {
 		return array(
-			array('first', 1, 2, true),
-			array('first', 1, 1, false),
-			array('last', 1, 2, true),
-			array('last', 1, 1, false),
-			array('prev', 1, 2, true),
+			array('first', 1, 2, 1, 1, true),
+			array('first', 1, 1, 1, 1, false),
+			array('last', 1, 2, 1, 1, true),
+			array('last', 1, 1, 1, 1, false),
+			array('prev', 1, 2, 1, 1, true),
+			array('first', 1, 1, 2, 2, true),
+			array('first', 1, 1, 1, 2, false),
 		);
 	}
 
 	/**
 	 * @dataProvider providerTestIsNavLinkVisible
 	 */
-	function testIsNavLinkVisible($which, $current_id, $target_id, $expected_result) {
+	function testIsNavLinkVisible($which, $current_id, $target_id, $_page, $_numpages, $expected_result) {
+		global $page, $numpages;
+		$page = $_page;
+		$numpages = $_numpages;
+
 		$current = (object)array('ID' => $current_id);
 		$target  = (object)array('ID' => $target_id);
 
