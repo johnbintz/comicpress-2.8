@@ -6,19 +6,9 @@ function options() {
 }
 
 function comicpress_admin_page_head() { ?>
-<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/js/tabbed/tabbed_pages.css" type="text/css" media="screen" />
-<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/tabbed/tabbed_pages.js"></script>
-<!--[if lt ie 8]>
-	<style>
-		div.show {
-			position: static;
-			margin-top: 1px;
-		}
-		#cpadmin div.off {
-			height: 22px;
-		}		
-	</style>
-<![endif]-->
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/options/options.css" type="text/css" media="screen" />
+<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/tabbed_pages.js"></script>
+<!--[if lt ie 8]> <style> div.show { position: static; margin-top: 1px; } #cpadmin div.off { height: 22px; } </style> <![endif]-->
 
 <?php }
 
@@ -182,42 +172,7 @@ function comicpress_admin() {
 		<?php include(get_template_directory() . '/options/membersoptions.php'); ?>
 	</div>
 	
-	<div class="cpadmin-footer">
-		<a href="http://comicpress.org/"><strong>ComicPress 2.9</strong> <small>[ <?php echo $comicpress_options['comicpress_version']; ?> ]</small></a>. <?php _e('Created by','comicpress'); ?> <a href="http://mindfaucet.com/">Tyler Martin</a> <?php _e('with','comicpress'); ?> <a href="http://www.coswellproductions.com/">John Bintz</a><?php _e(',','comicpress'); ?> <a href="http://frumph.net/">Philip M. Hofer</a> <small>(<a href="http://frumph.net/">Frumph</a>)</small> <?php _e('and','comicpress'); ?> <a href="http://www.oycomics.com/">Danny Burleson</a>.<br />
-		<?php _e('If you like the ComicPress theme, please donate.  It will help in creating new versions.','comicpress'); ?>
-		<table style="margin:0 auto;">
-			<tr>
-				<td style="width:200px;">
-					<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-						<input type="hidden" name="cmd" value="_s-xclick">
-						<input type="hidden" name="hosted_button_id" value="7827910">
-						<input type="image"
-						src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif"
-						border="0" name="submit" alt="PayPal - The safer, easier way to pay
-						online!">
-						<img alt="" border="0"
-						src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1"
-						height="1">
-					</form>
-				</td>
-				<td style="width:200px;">
-					<a href="http://comicpress.org/"><img src="<?php echo get_template_directory_uri(); ?>/images/cal/default.png" /></a>
-				</td>
-				<td style="width:200px;">
-					<form method="post" id="myForm" name="template" enctype="multipart/form-data">
-						<?php wp_nonce_field('update-options') ?>		
-						<input name="comicpress_reset" type="submit" class="button" value="Reset All Settings" />
-						<input type="hidden" name="action" value="comicpress_reset" />	
-					</form>
-				</td>
-			</td>
-		</table>
-	</div>
-	
-	
 </div>
-
-
 
 <?php 
 }

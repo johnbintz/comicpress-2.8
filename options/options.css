@@ -137,6 +137,11 @@ font-size: 14px;
 display: block;
 text-align: right;
 }
+
+#comicpress-options  table.widefat label.inline-label {
+display: inline;
+}
+
 #comicpress-options  table.widefat select {
 width: 100%;
 }
@@ -146,14 +151,35 @@ margin-bottom: 10px;
 border-bottom: none;
 }
 
-#comicpress-options table.widefat th.scope {
+#comicpress-options table.widefat th {
 width: 200px;
 }
 
-#comicpress-options table.widefat th.scope label {
+#comicpress-options table.widefat th label {
 color: #21759b;
+text-align: left;
 }
 
-#comicpress-options table.widefat th.scope label:hover {
+#comicpress-options table.widefat th label:hover {
 color: #d54e21;
+}
+
+#comicpress-options table.widefat th, #comicpress-options table.widefat td {
+vertical-align: middle;
+}
+#comicpress-version-title {
+font-family: 'Georgia', serif;
+font-size: 48px;
+letter-spacing: -2px;
+margin: 0;
+padding: 30px 0 5px 0;
+font-variant: small-caps;
+}
+
+	#comicpress-version-title  a {
+		color: #333;
+	}
+	
+div.show .cpadmin-footer img{
+	float: none;
 }
