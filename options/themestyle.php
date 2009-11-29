@@ -17,7 +17,7 @@
 			<table class="widefat" cellspacing="0">
 				<thead>
 					<tr>
-						<th colspan="4">Layout</th>
+						<th colspan="4"><?php _e('Layout','comicpress'); ?></th>
 					</tr>
 				</thead>
 				<tr class="alternate">
@@ -63,7 +63,7 @@
 
 	<div class="cpadmin-footer">
 		<div id="comicpress-version-title"><a href="http://comicpress.org/">ComicPress 2.9</a></div>
-		[ <?php echo $comicpress_options['comicpress_version']; ?> ]<br />
+		<div id="comicpress-version-number">[<?php echo $comicpress_options['comicpress_version']; ?>]</div>
 		<?php _e('Created by','comicpress'); ?> <a href="http://mindfaucet.com/">Tyler Martin</a> <?php _e('with','comicpress'); ?> <a href="http://www.coswellproductions.com/">John Bintz</a><?php _e(',','comicpress'); ?> <a href="http://frumph.net/">Philip M. Hofer</a> <small>(<a href="http://frumph.net/">Frumph</a>)</small> <?php _e('and','comicpress'); ?> <a href="http://www.oycomics.com/">Danny Burleson</a>.<br />
 		<?php _e('If you like the ComicPress theme, please donate.  It will help in creating new versions.','comicpress'); ?>
 		<table style="margin:0 auto;">
@@ -96,4 +96,3 @@
 	</div>
 	
 </div>
-

@@ -8,7 +8,7 @@
 			<table class="widefat">
 				<thead>
 					<tr>
-						<th colspan="3">Main</th>
+						<th colspan="3"><?php _e('Main','comicpress'); ?></th>
 					</tr>
 				</thead>
 				<tr class="alternate">
@@ -17,7 +17,7 @@
 						<input id="disable_page_restraints" name="disable_page_restraints" type="checkbox" value="1" <?php checked(true, $comicpress_options['disable_page_restraints']); ?> />
 					</td>
 					<td>
-						<?php _e('Allows the width of your site to either be <b>Dynamic</b> (fills browser window) or <b>Fixed</b> (width is specified, e.g., 980px, 780px, etc.)  If <b>Dynamic</b> is enabled #page and #page-wide will not load. This allow you to use the entire browser for your canvas instead of the 780px/980px that the two elements limit you to by default.','comicpress'); ?></th>
+						<?php _e('Allows the width of your site to either be Dynamic (fills browser window) or Fixed (width is specified, e.g., 980px, 780px, etc.)  If Dynamic is enabled #page and #page-wide will not load. This allow you to use the entire browser for your canvas instead of the 780px/980px that the two elements limit you to by default.','comicpress'); ?></th>
 					</td>
 				</tr>
 				<tr>
@@ -52,7 +52,7 @@
 			<table class="widefat">
 				<thead>
 					<tr>
-						<th colspan="3">Navigation</th>
+						<th colspan="3"><?php _e('Navigation','comicpress'); ?></th>
 					</tr>
 				</thead>
 				<tr class="alternate">
@@ -113,7 +113,7 @@
 			<table class="widefat">
 				<thead>
 					<tr>
-						<th colspan="3">Sidebars</th>
+						<th colspan="3"><?php _e('Sidebars','comicpress'); ?></th>
 					</tr>
 				</thead>
 				<tr class="alternate">
@@ -139,7 +139,7 @@
 			<table class="widefat">
 				<thead>
 					<tr>
-						<th colspan="3">Footer</th>
+						<th colspan="3"><?php _e('Footer','comicpress'); ?></th>
 					</tr>
 				</thead>
 				<tr class="alternate">

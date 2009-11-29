@@ -116,6 +116,7 @@ div.show img {
 }
 
 #comicpress-options-save {
+	margin-bottom: 15px;
 	border-width: 0 1px 1px 1px;
 	border-style: solid;
 	border-color: #dfdfdf;
@@ -130,56 +131,79 @@ div.show img {
 }
 
 #comicpress-options  table.widefat thead tr th {
-font-size: 14px;
+	font-size: 14px;
 }
 
 #comicpress-options  table.widefat label {
-display: block;
-text-align: right;
+	display: block;
+	text-align: right;
 }
 
 #comicpress-options  table.widefat label.inline-label {
-display: inline;
+	display: inline;
 }
 
 #comicpress-options  table.widefat select {
-width: 100%;
+	width: 100%;
 }
 
 #comicpress-options table.widefat {
-margin-bottom: 10px;
-border-bottom: none;
+	margin-bottom: 10px;
+	border-bottom: none;
 }
 
 #comicpress-options table.widefat th {
-width: 200px;
+	width: 200px;
+}
+
+#comicpress-options table.widefat th input{
+margin: 1px;
+padding: 3px;
+width: 100%;
+}
+
+#comicpress-options table.widefat th .radio input{
+margin: 0;
+padding: 0;
+width: auto;
 }
 
 #comicpress-options table.widefat th label {
-color: #21759b;
-text-align: left;
+	color: #21759b;
+	text-align: left;
 }
 
 #comicpress-options table.widefat th label:hover {
-color: #d54e21;
+	color: #d54e21;
 }
 
 #comicpress-options table.widefat th, #comicpress-options table.widefat td {
-vertical-align: middle;
+	vertical-align: middle;
 }
 #comicpress-version-title {
-font-family: 'Georgia', serif;
-font-size: 48px;
-letter-spacing: -2px;
-margin: 0;
-padding: 30px 0 5px 0;
-font-variant: small-caps;
+	font-family: 'Georgia', serif;
+	font-size: 48px;
+	letter-spacing: -2px;
+	margin: 0;
+	padding: 30px 0 5px 0;
+	font-variant: small-caps;
 }
 
 	#comicpress-version-title  a {
 		color: #333;
 	}
 	
+#comicpress-version-number {	
+	font-family: monospace;
+	font-size: 16px;
+	letter-spacing: 8px;
+}
+
+#comicpress-options .radio {
+	padding-top: 5px;
+	text-align: right;
+}
+
 div.show .cpadmin-footer img{
 	float: none;
 }
