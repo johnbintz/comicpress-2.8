@@ -7,7 +7,9 @@ Template Name: Links
 <?php include(get_template_directory() . '/layout-head.php'); ?>
 
 	<?php 
-	$bookmarks = wp_list_bookmarks('echo=0');
+	$linkcatid = get_term_by('name','menubar','link_category');
+	$linkcatid = $linkcatid->term_id;
+	$bookmarks = wp_list_bookmarks('echo=0&categorize=1&exclude_category='.$linkcatid); 
 	$bookmarks = preg_replace('#<li ([^>]*)>#', '<li>', $bookmarks);
 	$bookmarks = preg_replace('#<ul ([^>]*)>#', '<ul>', $bookmarks);
 	 ?>
@@ -26,6 +28,11 @@ Template Name: Links
 			<?php if (!$comicpress_options['disable_page_titles']) { ?>
 				<h2 class="pagetitle"><?php the_title() ?></h2>
 			<?php } ?>
+			<div class="entry">
+				<?php the_content(); ?>
+			</div>
+			<br class="clear-margins" />
+			<?php edit_post_link(__('Edit this page.','comicpress'), '<p>', '</p>') ?>
 			<div id="linkspage">
 			<ul>
 				<?php echo $bookmarks; ?>

@@ -34,6 +34,8 @@ if (empty($archive_year) || $archive_year == '') $archive_year = date('Y');
 		<div class="entry">
 			<?php the_content(); ?>
 		</div>
+		<br class="clear-margins" />
+		<?php edit_post_link(__('Edit this page.','comicpress'), '<p>', '</p>') ?>
 	<?php endwhile; ?>
 		<div class="archive-yearlist">| 
 			<?php $years = $wpdb->get_col("SELECT DISTINCT YEAR(post_date) FROM $wpdb->posts WHERE post_status = 'publish' ORDER BY post_date ASC");

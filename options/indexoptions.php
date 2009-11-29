@@ -8,11 +8,11 @@
 			<table class="widefat">
 				<thead>
 					<tr>
-						<th colspan="3">Post</th>
+						<th colspan="3">Blog</th>
 					</tr>
 				</thead>
 				<tr class="alternate">
-					<th class="scope"><label for="disable_blog_frontpage"><?php _e('Disable the blog on the Home page?','comicpress'); ?></label></th>
+					<th scope="row"><label for="disable_blog_frontpage"><?php _e('Disable the blog on the Home page?','comicpress'); ?></label></th>
 					<td>
 						<input id="disable_blog_frontpage" name="disable_blog_frontpage" type="checkbox" value="1" <?php checked(true, $comicpress_options['disable_blog_frontpage']); ?> />					
 					</td>
@@ -29,7 +29,7 @@
 					</tr>
 				</thead>
 				<tr class="alternate">
-					<th class="scope"><label for="disable_comic_frontpage"><?php _e('Disable comic on Home page?','comicpress'); ?></label></th>
+					<th scope="row"><label for="disable_comic_frontpage"><?php _e('Disable comic on Home page?','comicpress'); ?></label></th>
 					<td>
 						<input id="disable_comic_frontpage" name="disable_comic_frontpage" type="checkbox" value="1" <?php checked(true, $comicpress_options['disable_comic_frontpage']); ?> />					
 					</td>
@@ -38,7 +38,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th class="scope"><label for="disable_comic_blog_frontpage"><?php _e('Disable the comic blog on Home page?','comicpress'); ?></label></th>
+					<th scope="row"><label for="disable_comic_blog_frontpage"><?php _e('Disable the comic blog on Home page?','comicpress'); ?></label></th>
 					<td>
 						<input id="disable_comic_blog_frontpage" name="disable_comic_blog_frontpage" type="checkbox" value="1" <?php checked(true, $comicpress_options['disable_comic_blog_frontpage']); ?> />					
 					</td>
@@ -47,7 +47,7 @@
 					</td>
 				</tr>
 				<tr class="alternate">
-					<th class="scope"><label for="disable_comic_blog_single"><?php _e('Disable the comic blog on the single pages?','comicpress'); ?></lable></th>
+					<th scope="row"><label for="disable_comic_blog_single"><?php _e('Disable the comic blog on the single pages?','comicpress'); ?></lable></th>
 					<td>
 						<input id="disable_comic_blog_single" name="disable_comic_blog_single" type="checkbox" value="1" <?php checked(true, $comicpress_options['disable_comic_blog_single']); ?> />					
 					</td>
@@ -71,4 +71,4 @@
 	
 	</form>
 	
-</div>		
+</div>

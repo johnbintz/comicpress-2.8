@@ -7,57 +7,92 @@
 </script>
 	
 <div id="themestyle" class="<?php if ($tab == 'themestyle' || empty($tab)) { ?>show<?php } else { ?>hide<?php } ?>">
-		<form method="post" id="myForm" name="template" enctype="multipart/form-data">
-		<?php wp_nonce_field('update-options') ?>
+	
+	<form method="post" id="myForm" name="template" enctype="multipart/form-data">
+	
+	<?php wp_nonce_field('update-options') ?>
 		
-
-			<div id="comicpress-options">
-				
-				<table class="widefat" cellspacing="0">
-					<thead>
-						<tr>
-							<th colspan="4">Layout</th>
-						</tr>
-					</thead>
-					<tr class="alternate">
-						<th class="scope" style="width:250px"><br /><label for="cp_theme_layout" style="text-align:left"><?php _e('Choose Your Website Layout','comicpress'); ?></label>
-							<select name="cp_theme_layout" id="cp_theme_layout" onchange="showimage(this,'cpthemestyle')">
-								<option class="level-0" value="standard" <?php if ($comicpress_options['cp_theme_layout'] == 'standard') { ?>selected="selected" <?php } ?>><?php _e('2 Column (Standard)','comicpress'); ?></option>
-								<option class="level-0" value="3c" <?php if ($comicpress_options['cp_theme_layout'] =='3c') { ?>selected="selected" <?php } ?>><?php _e('3 Column ','comicpress'); ?></option>
-								<option class="level-0" value="3c2r" <?php if ($comicpress_options['cp_theme_layout'] =='3c2r') { ?>selected="selected" <?php } ?>><?php _e('3 Column: Sidebars Right','comicpress'); ?></option>
-								<option class="level-0" value="v" <?php if ($comicpress_options['cp_theme_layout'] =='v') { ?>selected="selected" <?php } ?>><?php _e('Single Panel (Vertical)','comicpress'); ?></option>
-								<option class="level-0" value="v3c" <?php if ($comicpress_options['cp_theme_layout'] =='v3c') { ?>selected="selected" <?php } ?>><?php _e('Single Panel (Vertical) 3 Column','comicpress'); ?></option>	
-								<option class="level-0" value="gn" <?php if ($comicpress_options['cp_theme_layout'] =='gn') { ?>selected="selected" <?php } ?>><?php _e('Graphic Novel: Sidebar Left','comicpress'); ?></option>
-								<option class="level-0" value="rgn" <?php if ($comicpress_options['cp_theme_layout'] =='rgn') { ?>selected="selected" <?php } ?>><?php _e('Graphic Novel: Sidebar Right','comicpress'); ?></option>
-							</select>
-						</th>
-						<td>
-							<img id="cpthemestyle" src="<?php echo get_template_directory_uri(); ?>/images/options/<?php echo $comicpress_options['cp_theme_layout']; ?>.png" alt="ComicPress Theme Style" />
-						</td>
-						<td style="vertical-align:middle">
-							<i>Comic Strip - 2 Column</i> and <i>Single Panel - 2 Column</i> themes default width: <b>780px</b>.
-							<br/><br/>
-							<i>Comic Strip - 3 Column</i>, <i>Single Panel - 3 Column</i>, and <i>Graphic Novel</i> themes default width: <b>980px</b>.
-						</td>
-					</tr>
-				</table>
-				
-				<div class="clear"></div>
-				
-			</div>
+		<div id="comicpress-options">
 			
-			<div id="comicpress-options-save">
-				<div id="major-publishing-actions">
-					<div id="publishing-action">
-						<input name="comicpress_save_layout" type="submit" class="button-primary" value="Save Layout" />
-						<input type="hidden" name="action" value="comicpress_save_layout" />
-					</div>
-					<div class="clear"></div>
-				</div>
-			</div>
-
-		</form>
-
-		<div class="clear"></div>
+			<table class="widefat" cellspacing="0">
+				<thead>
+					<tr>
+						<th colspan="4"><?php _e('Layout','comicpress'); ?></th>
+					</tr>
+				</thead>
+				<tr class="alternate">
+					<th scope="row" style="width:250px"><label for="cp_theme_layout" style="text-align:left"><?php _e('Choose Your Website Layout','comicpress'); ?></label>
+						<select name="cp_theme_layout" id="cp_theme_layout" onchange="showimage(this,'cpthemestyle')">
+							<option class="level-0" value="standard" <?php if ($comicpress_options['cp_theme_layout'] == 'standard') { ?>selected="selected" <?php } ?>><?php _e('2 Column (Standard)','comicpress'); ?></option>
+							<option class="level-0" value="3c" <?php if ($comicpress_options['cp_theme_layout'] =='3c') { ?>selected="selected" <?php } ?>><?php _e('3 Column ','comicpress'); ?></option>
+							<option class="level-0" value="3c2r" <?php if ($comicpress_options['cp_theme_layout'] =='3c2r') { ?>selected="selected" <?php } ?>><?php _e('3 Column: Sidebars Right','comicpress'); ?></option>
+							<option class="level-0" value="v" <?php if ($comicpress_options['cp_theme_layout'] =='v') { ?>selected="selected" <?php } ?>><?php _e('Single Panel (Vertical)','comicpress'); ?></option>
+							<option class="level-0" value="v3c" <?php if ($comicpress_options['cp_theme_layout'] =='v3c') { ?>selected="selected" <?php } ?>><?php _e('Single Panel (Vertical) 3 Column','comicpress'); ?></option>	
+							<option class="level-0" value="gn" <?php if ($comicpress_options['cp_theme_layout'] =='gn') { ?>selected="selected" <?php } ?>><?php _e('Graphic Novel: Sidebar Left','comicpress'); ?></option>
+							<option class="level-0" value="rgn" <?php if ($comicpress_options['cp_theme_layout'] =='rgn') { ?>selected="selected" <?php } ?>><?php _e('Graphic Novel: Sidebar Right','comicpress'); ?></option>
+						</select>
+					</th>
+					<td>
+						<img id="cpthemestyle" src="<?php echo get_template_directory_uri(); ?>/images/options/<?php echo $comicpress_options['cp_theme_layout']; ?>.png" alt="ComicPress Theme Style" />
+					</td>
+					<td style="vertical-align:middle">
+						<i>Comic Strip - 2 Column</i> and <i>Single Panel - 2 Column</i> themes default width: <b>780px</b>.
+						<br/><br/>
+						<i>Comic Strip - 3 Column</i>, <i>Single Panel - 3 Column</i>, and <i>Graphic Novel</i> themes default width: <b>980px</b>.
+					</td>
+				</tr>
+			</table>
+			
+			<div class="clear"></div>
+			
+		</div>
 		
+		<div id="comicpress-options-save">
+			<div id="major-publishing-actions">
+				<div id="publishing-action">
+					<input name="comicpress_save_layout" type="submit" class="button-primary" value="Save Layout" />
+					<input type="hidden" name="action" value="comicpress_save_layout" />
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		
+	</form>
+	
+	<div class="clear"></div>
+
+	<div class="cpadmin-footer">
+		<div id="comicpress-version-title"><a href="http://comicpress.org/">ComicPress 2.9</a></div>
+		<div id="comicpress-version-number">[<?php echo $comicpress_options['comicpress_version']; ?>]</div>
+		<?php _e('Created by','comicpress'); ?> <a href="http://mindfaucet.com/">Tyler Martin</a> <?php _e('with','comicpress'); ?> <a href="http://www.coswellproductions.com/">John Bintz</a><?php _e(',','comicpress'); ?> <a href="http://frumph.net/">Philip M. Hofer</a> <small>(<a href="http://frumph.net/">Frumph</a>)</small> <?php _e('and','comicpress'); ?> <a href="http://www.oycomics.com/">Danny Burleson</a>.<br />
+		<?php _e('If you like the ComicPress theme, please donate.  It will help in creating new versions.','comicpress'); ?>
+		<table style="margin:0 auto;">
+			<tr>
+				<td style="width:200px;">
+					<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+						<input type="hidden" name="cmd" value="_s-xclick">
+						<input type="hidden" name="hosted_button_id" value="7827910">
+						<input type="image"
+						src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif"
+						border="0" name="submit" alt="PayPal - The safer, easier way to pay
+						online!">
+						<img alt="" border="0"
+						src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1"
+						height="1">
+					</form>
+				</td>
+				<td style="width:200px;">
+					<a href="http://comicpress.org/"><img src="<?php echo get_template_directory_uri(); ?>/images/cal/default.png" /></a>
+				</td>
+				<td style="width:200px;">
+					<form method="post" id="myForm" name="template" enctype="multipart/form-data">
+						<?php wp_nonce_field('update-options') ?>		
+						<input name="comicpress_reset" type="submit" class="button" value="Reset All Settings" />
+						<input type="hidden" name="action" value="comicpress_reset" />	
+					</form>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
 </div>
