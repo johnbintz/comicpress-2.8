@@ -110,8 +110,8 @@ Template Version: 2.14
 				    <?php the_content() ?>
 				    <?php wp_link_pages(array('before' => '<p><strong>'.__('Pages:','comicpress').'</strong> ', 'after' => '</p>', 'next_or_number' => 'number')) ?>
 			    </div>
+				<br class="clear-margins" />
 			    <?php edit_post_link(__('Edit this page.','comicpress'), '<p>', '</p>') ?>
-			    <br class="clear-margins" />
 		    </div>
 		    <div class="post-page-foot"></div>
 		</div>

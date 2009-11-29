@@ -36,7 +36,8 @@ Template Name: Comic Archive
 				<?php endwhile; ?>
 			</table>
 	<?php } } ?>
-
+		<?php edit_post_link(__('Edit this page.','comicpress'), '<p>', '</p>') ?>
+		<br class="clear-margins" />
 	</div>
 	<div class="post-page-foot"></div>
 </div>

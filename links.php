@@ -28,6 +28,11 @@ Template Name: Links
 			<?php if (!$comicpress_options['disable_page_titles']) { ?>
 				<h2 class="pagetitle"><?php the_title() ?></h2>
 			<?php } ?>
+			<div class="entry">
+				<?php the_content(); ?>
+			</div>
+			<br class="clear-margins" />
+			<?php edit_post_link(__('Edit this page.','comicpress'), '<p>', '</p>') ?>
 			<div id="linkspage">
 			<ul>
 				<?php echo $bookmarks; ?>
