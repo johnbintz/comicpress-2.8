@@ -178,15 +178,15 @@ class GraphicalNavigationWidget extends WP_Widget {
 	 */
 	function comicpress_display_navigation_order($order = array()) {
     return array(
-			'first', 'previous', 'story_prev_in', 'story_prev', 'archives', 'random', 'comictitle', 'comments', 'buyprint', 'story_next', 'story_next_in', 'next', 'last'
+			'first', 'story_prev', 'story_prev_in', 'previous', 'archives', 'random', 'comictitle', 'comments', 'buyprint', 'next', 'story_next_in', 'story_next', 'last'
 		);
 	}
 
   function comicpress_navigation_grouping_details($details = array()) {
     return array(
-      'comic_navi_left' => array('first', 'previous', 'story_prev_in', 'story_prev'),
+      'comic_navi_left' => array('first', 'story_prev', 'story_prev_in', 'previous'),
       'comic_navi_center' => true,
-      'comic_navi_right' => array('story_next', 'story_next_in', 'next', 'last')
+      'comic_navi_right' => array('next', 'story_next_in', 'story_next', 'last')
     );
   }
 
