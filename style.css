@@ -599,16 +599,16 @@ h3, h3 a {
 }
 
 	.comment .comment {
-		margin: 10px 0 0 90px;
+		margin: 10px 0 0 70px;
 	}
 
 	.comment .comment .comment {
-		margin-left: 45px;
+		margin-left: 20px;
 	}
 
 .comment-avatar {
-	width: 80px;
-	height: 80px;
+	width: 64px;
+	height: 64px;
 	float: left;
 	overflow: hidden;
 }
@@ -624,7 +624,7 @@ h3, h3 a {
 		}
 
 .comment-content {
-	margin-left: 90px;
+	margin-left: 70px;
 }
 
 	.comment .comment .comment-content {
