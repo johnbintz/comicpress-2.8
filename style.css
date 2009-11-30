@@ -48,7 +48,7 @@ img {
 }
 
 small {
-	font-size: 10px;
+	font-size: 11px;
 }
 
 hr {
@@ -68,12 +68,11 @@ blockquote {
 	border-color: #000;
 }
 
-cite {
+blockquote cite {
 	margin: 5px 0 0;
 	display: block;
 	font-weight: bold;
 	font-family: 'Arial', sans-serif;
-	font-style: normal;	
 	font-size: 12px;
 }
 
@@ -472,7 +471,7 @@ h3, h3 a {
 
 .post-info, .post-comic-info {
 	padding-bottom: 5px;
-	font-size: 10px;
+	font-size: 11px;
 }
 
 .post-text, .post-comic-text {
@@ -594,88 +593,90 @@ h3, h3 a {
 
 /* COMMENTS */
 
-#comment-wrapper {
-	margin-top: 5px;
+.comment {
+	display: block;
+	margin-top: 20px;
 }
-	.comment {
-		padding: 2px;
-		clear: both;
-	}
 
 	.comment .comment {
-		margin-left: 30px;
+		margin: 10px 0 0 90px;
 	}
 
-	.comment .avatar {
-		margin: 0;
-		padding: 0;
-		float: left;
+	.comment .comment .comment {
+		margin-left: 45px;
 	}
 	
-	.comment .comment .avatar {
-		width: 48px;
-		height: 48px;
-	}
-
-	.comment .trackping {
-		float: left;
-	}
-
-	#comment-wrapper #respond {
-		padding: 5px;
-	}
-
-	.comment-note {
-		width: 400px;
-		display: block;
-		font-size: 11px;
-	}
-	
-	.comment-text {
-		font-size: 13px;
-		padding: 10px 5px 5px;
-		float: left;
-	}
-	
-		.comment-author {
-			padding-left: 5px;
-			display: inline;
-		}
-		
-			.comment-author cite {
-				padding: 0;
-				margin: 0;
-				font-size: 16px;
-				display: inline;
-			}
-			
-			.comment .comment .comment-author cite {
-				font-size: 14px;
-			}
-		
-		.comment-time {
-			padding-left: 5px;
-		}
-		
-		.comment-moderated em {
-			color: #f00;
-			padding-left: 5px;
-		}
-		
-		li.comment {
-			margin-top: 10px;
-		}
-
-.comment-meta-data {
+.comment-avatar {
+	width: 80px;
+	height: 80px;
+	float: left;
+	overflow: hidden;
 }
 
+	.comment .comment .comment-avatar {
+		width: 40px;
+		height: 40px;
+	}
+
+		.comment .comment .avatar {
+			width: 40px;
+			height: 40px;
+		}
+	
+.comment-author cite {
+	font-weight: bold;
+	font-style: normal;
+	font-size: 16px;
+}
+
+	.comment .comment .comment-author cite {
+		font-size: 14px;
+	}
+
+	.comment .comment .comment-author {
+		display: inline;
+	}
+
+.comment-meta-data {
+	font-size: 11px;
+}
+
+	.comment .comment .comment-meta-data {
+		display: inline;
+	}
+
+	.comment .comment .comment-permalink {
+		display: none;
+	}
+
+.comment-moderated {
+	font-style: italic;
+	font-size: 15px;
+}
+
+.comment-content {
+	margin-left: 90px;
+}
+
+	.comment .comment .comment-content {
+		margin-left: 45px;
+	}
+
+.comment-text p {
+	padding: 5px 0 0 0;
+	margin: 0;
+	font-size: 12px;
+}
+
+.comment-note {
+	width: 400px;
+	display: block;
+	font-size: 11px;
+}
+		
 .comment-meta {
 	display: inline;
 	border-left: 1px solid #000;
-}
-
-.says {
-	display: none;
 }
 
 .commentsrsslink {
@@ -704,7 +705,6 @@ h3, h3 a {
 ol.commentlist {
 	margin: 0;
 	padding: 10px 0 30px 0;
-	font-size: 11px;
 	list-style: none;
 }
 
@@ -863,7 +863,7 @@ ul.children {
 	}
 
 	#wp-calendar th {
-		font-size: 10px;
+		font-size: 11px;
 		font-weight: normal;
 		text-align: center;
 	}
@@ -1201,7 +1201,7 @@ li.pingback div p, li.trackback div p {
 	display: block;
 	float: left;
 	text-align: center;
-	font-size: 10px;
+	font-size: 11px;
 	line-height: 13px;
 }
 
@@ -1212,7 +1212,7 @@ li.pingback div p, li.trackback div p {
 	display: block;
 	float: left;
 	text-align: center;
-	font-size: 10px;
+	font-size: 11px;
 	line-height: 13px;
 	border: 1px solid #999;
 }

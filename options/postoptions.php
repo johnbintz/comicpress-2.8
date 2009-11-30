@@ -250,7 +250,7 @@
 					</tr>
 				</thead>
 				<tr class="alternate">
-					<th scope="row"><label for="blogposts_with_comic"><?php _e('Show all blog posts up until the next comic post on single pages?','comicpress'); ?></label></th>
+					<th scope="row"><label for="blogposts_with_comic"><?php _e('Show all blog posts up until the next comic post on single pages','comicpress'); ?></label></th>
 					<td>
 						<input id="blogposts_with_comic" name="blogposts_with_comic" type="checkbox" value="1" <?php checked(true, $comicpress_options['blogposts_with_comic']); ?> />					
 					</td>
