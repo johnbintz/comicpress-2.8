@@ -614,13 +614,13 @@ h3, h3 a {
 }
 
 	.comment .comment .comment-avatar {
-		width: 40px;
-		height: 40px;
+		width: 48px;
+		height: 48px;
 	}
 
 		.comment .comment .avatar {
-			width: 40px;
-			height: 40px;
+			width: 48px;
+			height: 48px;
 		}
 
 .comment-content {
@@ -628,7 +628,7 @@ h3, h3 a {
 }
 
 	.comment .comment .comment-content {
-		margin-left: 45px;
+		margin-left: 52px;
 	}
 
 	.pingback .comment-content {
@@ -663,8 +663,7 @@ h3, h3 a {
 }
 
 .comment-text p {
-	padding: 5px 0 0 0;
-	margin: 0;
+	margin: 5px 0 0 0;
 	font-size: 12px;
 }
 
