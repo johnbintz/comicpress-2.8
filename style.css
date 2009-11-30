@@ -605,7 +605,7 @@ h3, h3 a {
 	.comment .comment .comment {
 		margin-left: 45px;
 	}
-	
+
 .comment-avatar {
 	width: 80px;
 	height: 80px;
@@ -622,7 +622,23 @@ h3, h3 a {
 			width: 40px;
 			height: 40px;
 		}
+
+.comment-content {
+	margin-left: 90px;
+}
+
+	.comment .comment .comment-content {
+		margin-left: 45px;
+	}
+
+	.pingback .comment-content {
+		margin-left: 0;
+	}
 	
+	.trackback .comment-content {
+		margin-left: 0;
+	}
+		
 .comment-author cite {
 	font-weight: bold;
 	font-style: normal;
@@ -653,14 +669,6 @@ h3, h3 a {
 	font-style: italic;
 	font-size: 15px;
 }
-
-.comment-content {
-	margin-left: 90px;
-}
-
-	.comment .comment .comment-content {
-		margin-left: 45px;
-	}
 
 .comment-text p {
 	padding: 5px 0 0 0;
