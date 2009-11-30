@@ -8,11 +8,11 @@
 			<table class="widefat">
 				<thead>
 					<tr>
-						<th colspan="3">Post</th>
+						<th colspan="3"><?php _e('Post','comicpress'); ?></th>
 					</tr>
 				</thead>
 				<tr class="alternate">
-					<th scope="row"><label for="transcript_in_posts"><?php _e('Show transcript in post area?','comicpress'); ?></label></th>
+					<th scope="row"><label for="transcript_in_posts"><?php _e('Show transcript in post area','comicpress'); ?></label></th>
 					<td>
 						<input id="transcript_in_posts" name="transcript_in_posts" type="checkbox" value="1" <?php checked(true, $comicpress_options['transcript_in_posts']); ?> />					
 					</td>
@@ -21,7 +21,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><label for="enable_related_comics"><?php _e('Put Related Comics in comic posts?','comicpress'); ?></label></th>
+					<th scope="row"><label for="enable_related_comics"><?php _e('Put Related Comics in comic posts','comicpress'); ?></label></th>
 					<td>
 						<input id="enable_related_comics" name="enable_related_comics" type="checkbox" value="1" <?php checked(true, $comicpress_options['enable_related_comics']); ?> />					
 					</td>
@@ -30,7 +30,7 @@
 					</td>
 				</tr>
 				<tr class="alternate">
-					<th scope="row"><label for="enable_related_posts"><?php _e('Put Related Posts in blog posts?','comicpress'); ?></label></th>
+					<th scope="row"><label for="enable_related_posts"><?php _e('Put Related Posts in blog posts','comicpress'); ?></label></th>
 					<td>
 						<input id="enable_related_posts" name="enable_related_posts" type="checkbox" value="1" <?php checked(true, $comicpress_options['enable_related_posts']); ?> />					
 					</td>
@@ -39,7 +39,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><label for="remove_wptexturize"><?php _e('Disable WordPress default content formatting?','comicpress'); ?></label></th>
+					<th scope="row"><label for="remove_wptexturize"><?php _e('Disable WordPress default content formatting','comicpress'); ?></label></th>
 					<td>
 						<input id="remove_wptexturize" name="remove_wptexturize" type="checkbox" value="1" <?php checked(true, $comicpress_options['remove_wptexturize']); ?> />					
 					</td>
@@ -52,11 +52,11 @@
 			<table class="widefat">
 				<thead>
 					<tr>
-						<th colspan="3">Authors/Avatars/Moods</th>
+						<th colspan="3"><?php _e('Authors/Avatars/Moods','comicpress'); ?></th>
 					</tr>
 				</thead>
 				<tr class="alternate">
-					<th scope="row"><label for="split_column_in_two"><?php _e('Two author blog? ','comicpress'); ?></label></th>
+					<th scope="row"><label for="split_column_in_two"><?php _e('Two author blog','comicpress'); ?></label></th>
 					<td>
 						<input id="split_column_in_two" name="split_column_in_two" type="checkbox" value="1" <?php checked(true, $comicpress_options['split_column_in_two']); ?> />					
 					</td>
@@ -66,7 +66,7 @@
 				</tr>
 				<tr>
 					<th scope="row" colspan="2">
-						<label for="author_column_one"><?php _e('Author for column one?','comicpress'); ?></label>
+						<label for="author_column_one"><?php _e('Author for column one','comicpress'); ?></label>
 						<?php
 							$args = array('echo' => '0', 'show' => 'display_name', 'selected' => $comicpress_options['author_column_one']);
 							$selected = wp_dropdown_users($args);
@@ -81,7 +81,7 @@
 				</tr>
 				<tr class="alternate">
 					<th scope="row" colspan="2">
-						<label for="author_column_two"><?php _e('Author for column two?','comicpress'); ?></label>
+						<label for="author_column_two"><?php _e('Author for column two','comicpress'); ?></label>
 						<?php
 							$args = array('echo' => '0', 'show' => 'display_name', 'selected' => $comicpress_options['author_column_two']);
 							$selected = wp_dropdown_users($args);
@@ -94,7 +94,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><label for="enable_comic_post_author_gravatar"><?php _e('Comic post author Gravatar?','comicpress'); ?></label></th>
+					<th scope="row"><label for="enable_comic_post_author_gravatar"><?php _e('Comic post author Gravatar','comicpress'); ?></label></th>
 					<td>
 						<input id="enable_comic_post_author_gravatar" name="enable_comic_post_author_gravatar" type="checkbox" value="1" <?php checked(true, $comicpress_options['enable_comic_post_author_gravatar']); ?> />					
 					</td>
@@ -103,7 +103,7 @@
 					</td>
 				</tr>
 				<tr class="alternate">
-					<th scope="row"><label for="enable_post_author_gravatar"><?php _e('Blog post author Gravatar?','comicpress'); ?></label></th>
+					<th scope="row"><label for="enable_post_author_gravatar"><?php _e('Blog post author Gravatar','comicpress'); ?></label></th>
 					<td>
 						<input id="enable_post_author_gravatar" name="enable_post_author_gravatar" type="checkbox" value="1" <?php checked(true, $comicpress_options['enable_post_author_gravatar']); ?> />					
 					</td>
@@ -168,7 +168,7 @@
 			<table class="widefat">
 				<thead>
 					<tr>
-						<th colspan="3">Calendar</th>
+						<th colspan="3"><?php _e('Calendar','comicpress'); ?></th>
 					</tr>
 				</thead>
 				<?php
@@ -198,7 +198,7 @@
 					</td>
 				</tr>	
 				<tr>
-					<th scope="row"><label for="enable_comic_post_calendar"><?php _e('Add graphic calendar to comic posts?','comicpress'); ?></label></th>
+					<th scope="row"><label for="enable_comic_post_calendar"><?php _e('Add graphic calendar to comic posts','comicpress'); ?></label></th>
 					<td>
 						<input id="enable_comic_post_calendar" name="enable_comic_post_calendar" type="checkbox" value="1" <?php checked(true, $comicpress_options['enable_comic_post_calendar']); ?> />					
 					</td>
@@ -207,7 +207,7 @@
 					</td>
 				</tr>
 				<tr class="alternate">
-					<th scope="row"><label for="enable_post_calendar"><?php _e('Add graphic calendar to blog posts?','comicpress'); ?></label></th>
+					<th scope="row"><label for="enable_post_calendar"><?php _e('Add graphic calendar to blog posts','comicpress'); ?></label></th>
 					<td>
 						<input id="enable_post_calendar" name="enable_post_calendar" type="checkbox" value="1" <?php checked(true, $comicpress_options['enable_post_calendar']); ?> />					
 					</td>
@@ -220,11 +220,11 @@
 			<table class="widefat">
 				<thead>
 					<tr>
-						<th colspan="3">Tags/Categories</th>
+						<th colspan="3"><?php _e('Tags/Categories','comicpress'); ?></th>
 					</tr>
 				</thead>
 				<tr class="alternate">
-					<th scope="row"><label for="disable_tags_in_posts"><?php _e('Disable display of tags in posts?','comicpress'); ?></label></th>
+					<th scope="row"><label for="disable_tags_in_posts"><?php _e('Disable display of tags in posts','comicpress'); ?></label></th>
 					<td>
 						<input id="disable_tags_in_posts" name="disable_tags_in_posts" type="checkbox" value="1" <?php checked(true, $comicpress_options['disable_tags_in_posts']); ?> />					
 					</td>
@@ -233,7 +233,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><label for="disable_categories_in_posts"><?php _e('Disable display of categories in posts?','comicpress'); ?></label></th>
+					<th scope="row"><label for="disable_categories_in_posts"><?php _e('Disable display of categories in posts','comicpress'); ?></label></th>
 					<td>
 						<input id="disable_categories_in_posts" name="disable_categories_in_posts" type="checkbox" value="1" <?php checked(true, $comicpress_options['disable_categories_in_posts']); ?> />					
 					</td>
@@ -259,7 +259,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><label for="static_blog"><?php _e('Blog loop stays with all the single pages?','comicpress'); ?></label></th>
+					<th scope="row"><label for="static_blog"><?php _e('Blog loop stays with all the single pages','comicpress'); ?></label></th>
 					<td>
 						<input id="static_blog" name="static_blog" type="checkbox" value="1" <?php checked(true, $comicpress_options['static_blog']); ?> />					
 					</td>
@@ -268,7 +268,7 @@
 					</td>
 				</tr>
 				<tr class="alternate">
-					<th scope="row"><label for="disable_page_titles"><?php _e('Disable the titles on pages?','comicpress'); ?></label></th>
+					<th scope="row"><label for="disable_page_titles"><?php _e('Disable the titles on pages','comicpress'); ?></label></th>
 					<td>
 						<input id="disable_page_titles" name="disable_page_titles" type="checkbox" value="1" <?php checked(true, $comicpress_options['disable_page_titles']); ?> />					
 					</td>

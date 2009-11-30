@@ -8,7 +8,7 @@
 			<table class="widefat">
 				<thead>
 					<tr>
-						<th colspan="3">Archive &amp; Search Results</th>
+						<th colspan="3"><?php _e('Archive & Search Results','comicpress'); ?></th>
 					</tr>
 				</thead>
 				<tr class="alternate">
@@ -20,7 +20,7 @@
 						</div>
 					</th>
 					<td>
-						<?php _e('Would you like to have users see the <b>full content</b> or just an <b>excerpt</b> when viewing the archives?','comicpress'); ?>
+						<?php _e('Would you like to have users see the full content or just an excerpt when viewing the archives?','comicpress'); ?>
 					</td>
 				</tr>
 				<tr>
@@ -32,7 +32,7 @@
 						</div>
 					</th>
 					<td>
-						<?php _e('Would you like to have users see the <b>full content</b> or just an <b>excerpt</b> when searching?','comicpress'); ?>
+						<?php _e('Would you like to have users see the full content or just an excerpt when searching?','comicpress'); ?>
 					</td>
 				</tr>
 				<tr class="alternate">
@@ -44,7 +44,7 @@
 						</select>
 					</th>
 					<td>
-						<?php _e('Sets the display order of your archives. <b>Newest to Oldest</b> will display your posts starting with the most recent. <b>Oldest to Newest</b> will start with the first entry in the category, tag, or date range (e.g., Selecting May 20XX will start with May 1, not May 31st.)','comicpress'); ?>
+						<?php _e('Sets the display order of your archives. Newest to Oldest will display your posts starting with the most recent. Oldest to Newest will start with the first entry in the category, tag, or date range (e.g., Selecting May 20XX will start with May 1, not May 31st.)','comicpress'); ?>
 					</td>
 				</tr>
 				<tr>

@@ -8,11 +8,11 @@
 			<table class="widefat">
 				<thead>
 					<tr>
-						<th colspan="3">Menubar</th>
+						<th colspan="3"><?php _e('Menubar','comicpress'); ?></th>
 					</tr>
 				</thead>
 				<tr class="alternate">
-					<th scope="row"><label for="disable_default_menubar"><?php _e('Disable default Menubar?','comicpress'); ?></label></th>
+					<th scope="row"><label for="disable_default_menubar"><?php _e('Disable default Menubar','comicpress'); ?></label></th>
 					<td>
 						<input id="disable_default_menubar" name="disable_default_menubar" type="checkbox" value="1" <?php checked(true, $comicpress_options['disable_default_menubar']); ?> />
 					</td>
@@ -21,7 +21,7 @@
 					</td>
 				</tr>		
 				<tr>
-					<th scope="row"><label for="enable_search_in_menubar"><?php _e('Enable Search Form?','comicpress'); ?></label></th>
+					<th scope="row"><label for="enable_search_in_menubar"><?php _e('Enable Search Form','comicpress'); ?></label></th>
 					<td>
 						<input id="enable_search_in_menubar" name="enable_search_in_menubar" type="checkbox" value="1" <?php checked(true, $comicpress_options['enable_search_in_menubar']); ?> />
 					</td>
@@ -30,7 +30,7 @@
 					</td>
 				</tr>		
 				<tr class="alternate">
-					<th scope="row"><label for="enable_rss_in_menubar"><?php _e('Enable RSS Link?','comicpress'); ?></label></th>
+					<th scope="row"><label for="enable_rss_in_menubar"><?php _e('Enable RSS Link','comicpress'); ?></label></th>
 					<td>
 						<input id="enable_rss_in_menubar" name="enable_rss_in_menubar" type="checkbox" value="1" <?php checked(true, $comicpress_options['enable_rss_in_menubar']); ?> />
 					</td>
@@ -48,16 +48,16 @@
 					</td>
 				</tr>		
 				<tr class="alternate">
-					<th scope="row"><label for="contact_in_menubar"><?php _e('Enable Contact/custom links?','comicpress'); ?></label></th>
+					<th scope="row"><label for="contact_in_menubar"><?php _e('Enable Contact/custom links','comicpress'); ?></label></th>
 					<td>
 						<input id="contact_in_menubar" name="contact_in_menubar" type="checkbox" value="1" <?php checked(true, $comicpress_options['contact_in_menubar']); ?> />
 					</td>
 					<td>
-					<?php _e('Adds a <b>Contact</b> button to the Menubar associated with your admin email. You can also create a links category called <i>Menubar</i> and whatever links you add to that will appear in the Menubar.','comicpress'); ?>
+					<?php _e('Adds a Contact button to the Menubar associated with your admin email.  You can also create a links category called <i>Menubar</i> and whatever links you add to that will appear in the Menubar.','comicpress'); ?>
 					</td>
 				</tr>		
 				<tr>
-					<th scope="row"><label for="disable_dynamic_menubar_links"><?php _e('Disable auto-generated WordPress links?','comicpress'); ?></label></th>
+					<th scope="row"><label for="disable_dynamic_menubar_links"><?php _e('Disable auto-generated WordPress links','comicpress'); ?></label></th>
 					<td>
 						<input id="disable_dynamic_menubar_links" name="disable_dynamic_menubar_links" type="checkbox" value="1" <?php checked(true, $comicpress_options['disable_dynamic_menubar_links']); ?> />
 					</td>
