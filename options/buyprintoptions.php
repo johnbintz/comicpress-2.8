@@ -29,11 +29,13 @@
 					<td>
 						<span style="color: #d54e21;"><?php _e('* This must be correct, the form needs some place to go.','comicpress'); ?></span><br />
 						<?php _e('The URL address to which you associated the buy print template.','comicpress'); ?><br />
-						<?php _e('Examples:','comicpress'); ?><br />
-						http://yourdomain.com/?p=233<br />
-						http://yourdomain.com/shop/<br />
-						/?p=233<br />
-						/shop/
+						<em>
+							<?php _e('Examples:','comicpress'); ?>			
+							"http://yourdomain.com/?p=233",
+							"http://yourdomain.com/shop/",
+							"/?p=233",
+							"/shop/".
+						</em>					
 					</td>
 				</tr>
 				<tr>
