@@ -649,17 +649,9 @@ h3, h3 a {
 		font-size: 14px;
 	}
 
-	.comment .comment .comment-author {
-		display: inline;
-	}
-
 .comment-meta-data {
 	font-size: 11px;
 }
-
-	.comment .comment .comment-meta-data {
-		display: inline;
-	}
 
 	.comment .comment .comment-permalink {
 		display: none;
