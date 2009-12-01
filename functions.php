@@ -883,7 +883,7 @@ if (comicpress_check_child_file('childfunctions') == false) {}
 /**
  * Render the ComicPress calendar widget.
  */
-function comicpress_calendar() {
+function comicpress_calendar_embed() {
 	$calendar = new CalendarWidget();
 
 	$instance = array();
@@ -897,7 +897,7 @@ function comicpress_calendar() {
 /**
  * Render the ComicPress bookmark widget.
  */
-function comicpress_comic_bookmark() {
+function comicpress_comic_bookmark_embed() {
 	$bookmark = new BookmarkWidget();
 	$bookmark->init();
 	$bookmark->widget(array(), array());
