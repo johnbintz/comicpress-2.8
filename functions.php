@@ -453,7 +453,7 @@ function get_comic_path($folder = 'comic', $override_post = null, $filter = 'def
 
 	$filter_with_date = str_replace('{date}', $post_date, $filter_to_use);
 
-	$cwd = get_stylesheet_directory();
+	$cwd = get_template_directory();
 	if ($cwd !== false) {
 		// Strip the wp-admin part and just get to the root.
 		$root_path = preg_replace('#[\\/]wp-(admin|content).*#', '', $cwd);
