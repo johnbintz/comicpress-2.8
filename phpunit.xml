@@ -2,4 +2,11 @@
 	<php>
 		<ini name="error_reporting" value="30719" />
 	</php>
+	<filter>
+		<blacklist>
+			<file>classes/ComicPressDBInterface.inc</file>
+			<file>classes/ComicPressNavigation.inc</file>
+			<file>classes/ComicPressStoryline.inc</file>
+		</blacklist>
+	</filter>
 </phpunit>
