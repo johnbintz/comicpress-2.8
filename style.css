@@ -614,13 +614,13 @@ h3, h3 a {
 }
 
 	.comment .comment .comment-avatar {
-		width: 48px;
-		height: 48px;
+		width: 40px;
+		height: 40px;
 	}
 
 		.comment .comment .avatar {
-			width: 48px;
-			height: 48px;
+			width: 40px;
+			height: 40px;
 		}
 
 .comment-content {
@@ -628,7 +628,7 @@ h3, h3 a {
 }
 
 	.comment .comment .comment-content {
-		margin-left: 52px;
+		margin-left: 45px;
 	}
 
 	.pingback .comment-content {
@@ -662,10 +662,15 @@ h3, h3 a {
 	font-size: 15px;
 }
 
-.comment-text p {
-	margin: 5px 0 0 0;
+.comment-text  {
+	padding: 5px;
 	font-size: 12px;
 }
+
+	.comment-text p {
+		padding: 5px 5px;
+		margin: 0;
+	}
 
 .comment-note {
 	width: 400px;

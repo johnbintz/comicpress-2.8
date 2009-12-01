@@ -27,23 +27,22 @@ function comicpress_avatar() {
 	endif;
 
 //	$avatar = apply_filters('comicpress_avatar', $avatar);
-	if($url == true && $url != 'http://')
-		echo '<a href="' . $url . '" rel="external nofollow" title="' . wp_specialchars(get_comment_author(), 1) . '">';
-	$id_or_email = get_comment_author_email();
-	if (empty($id_or_email)) $id_or_email = get_comment_author();
-	if(function_exists('comicpress_get_avatar') && $comment_type != 'pingback' && $comment_type != 'trackback' ) { 
-		echo str_replace("alt='", "alt='".wp_specialchars(get_comment_author(), 1)."' title='".wp_specialchars(get_comment_author(), 1), comicpress_get_avatar($id_or_email, 64));
-	} else {
-		if ($comment_type == 'pingback' || $comment_type == 'trackback') {
-			if ($comment_type == 'pingback') echo '<div class="pingback"></div>';
-			if ($comment_type == 'trackback') echo '<div class="trackback"></div>';
+	if ($comment_type != 'pingback' && $comment_type != 'trackback') {
+		echo '<div class="comment-avatar">';
+		if($url == true && $url != 'http://')
+			echo '<a href="' . $url . '" rel="external nofollow" title="' . wp_specialchars(get_comment_author(), 1) . '">';
+		$id_or_email = get_comment_author_email();
+		if (empty($id_or_email)) $id_or_email = get_comment_author();
+		if(function_exists('comicpress_get_avatar') && $comment_type != 'pingback' && $comment_type != 'trackback' ) { 
+			echo str_replace("alt='", "alt='".wp_specialchars(get_comment_author(), 1)."' title='".wp_specialchars(get_comment_author(), 1), comicpress_get_avatar($id_or_email, 64));
 		} else {
 			echo '<img src="'.get_template_directory_uri().'/'.$avatar.'" class="avatar photo" />';
 		}
+		if($url == true && $url != 'http://')
+			echo '</a>';
+		echo '</div>';
 	}
 	
-	if($url == true && $url != 'http://')
-		echo '</a>';
 }
 
 /**
@@ -118,9 +117,7 @@ function comicpress_comments_callback($comment, $args, $depth) {
 	
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
 	
-		<div class="comment-avatar">
-			<?php comicpress_avatar(); // Avatar filter ?>
-		</div>
+		<?php comicpress_avatar(); // Avatar filter ?>
 		
 		<div class="comment-content">
 		
@@ -131,7 +128,7 @@ function comicpress_comments_callback($comment, $args, $depth) {
 			<div class="comment-meta-data">
 						
 				<span class="comment-time" title="<?php comment_date(__('l, F jS, Y, g:i a','comicpress')); ?>">
-					<?php printf(__('%1$s |	%2$s','comicpress'), get_comment_date(), get_comment_time()); ?>
+					<?php printf(__('%1$s at %2$s','comicpress'), get_comment_date(), get_comment_time()); ?>
 				</span> 
 		
 				<span class="comment-permalink">
