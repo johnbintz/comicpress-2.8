@@ -8,7 +8,7 @@ var button_images = {
 };
 
 var BookmarkInfo = Class.create({
-  'default': {
+  'def': {
     'permalink': false
   },
   'initialize': function() {
@@ -21,7 +21,7 @@ var BookmarkInfo = Class.create({
     var bookmark_info = this.jar.get('bookmark-info');
 
     if ((typeof(bookmark_info) != 'object') || (bookmark_info == null)) {
-      bookmark_info = this.default;
+      bookmark_info = this.def;
     }
 
     return bookmark_info;
