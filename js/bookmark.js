@@ -8,7 +8,7 @@ var button_images = {
 };
 
 var BookmarkInfo = Class.create({
-  'default': {
+  'def': {
     'permalink': false
   },
   'initialize': function() {
@@ -21,7 +21,7 @@ var BookmarkInfo = Class.create({
     var bookmark_info = this.jar.get('bookmark-info');
 
     if ((typeof(bookmark_info) != 'object') || (bookmark_info == null)) {
-      bookmark_info = this.default;
+      bookmark_info = this.def;
     }
 
     return bookmark_info;
@@ -36,35 +36,37 @@ Event.observe(window, 'load', function() {
   var bookmark_info = new BookmarkInfo();
   var info = bookmark_info.read();
 
-  var hrefs = {};
-  $$('#comic-bookmark-holder a').each(function(a) {
-    var name = $w(a.className).shift();
-    hrefs[name] = a;
-  });
+  if ($('comic-bookmark-holder')) {
+	  var hrefs = {};
+	  $$('#comic-bookmark-holder a').each(function(a) {
+	    var name = $w(a.className).shift();
+	    hrefs[name] = a;
+	  });
 
-  var set_goto_tag = function(i) {
-    hrefs['goto-tag'].href = (i.permalink ? i.permalink : "#");
-    [ 'goto-tag','clear-tag' ].each(function(which) {
-      hrefs[which].select('img')[0].src = image_root + button_images[which][i.permalink ? "on" : "off"];
-    });
-  };
+	  var set_goto_tag = function(i) {
+	    hrefs['goto-tag'].href = (i.permalink ? i.permalink : "#");
+	    [ 'goto-tag','clear-tag' ].each(function(which) {
+	      hrefs[which].select('img')[0].src = image_root + button_images[which][i.permalink ? "on" : "off"];
+	    });
+	  };
 
-  bookmark_info.onWrite = function(i) { set_goto_tag(i); }
-  set_goto_tag(info);
+	  bookmark_info.onWrite = function(i) { set_goto_tag(i); }
+	  set_goto_tag(info);
 
-  Event.observe(hrefs['tag-page'], 'click', function(e) {
-    Event.stop(e);
-    info.permalink = permalink;
-    bookmark_info.write(info);
-  });
+	  Event.observe(hrefs['tag-page'], 'click', function(e) {
+	    Event.stop(e);
+	    info.permalink = permalink;
+	    bookmark_info.write(info);
+	  });
 
-  Event.observe(hrefs['clear-tag'], 'click', function(e) {
-    Event.stop(e);
-    info.permalink = false;
-    bookmark_info.write(info);
-  });
+	  Event.observe(hrefs['clear-tag'], 'click', function(e) {
+	    Event.stop(e);
+	    info.permalink = false;
+	    bookmark_info.write(info);
+	  });
 
-  Event.observe(hrefs['goto-tag'], 'click', function(e) {
-    if (hrefs['goto-tag'].href == "#") { Event.stop(e); }
-  });
+	  Event.observe(hrefs['goto-tag'], 'click', function(e) {
+	    if (hrefs['goto-tag'].href == "#") { Event.stop(e); }
+	  });
+  }
 });

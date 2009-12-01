@@ -32,5 +32,3 @@ class BookmarkWidget extends WP_Widget {
     <?php
   }
 }
-
-?>
