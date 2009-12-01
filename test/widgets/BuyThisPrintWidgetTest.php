@@ -33,4 +33,26 @@ class BuyThisPrintWidgetTest extends PHPUnit_Framework_TestCase {
 	function testUpdate($input, $expected_output) {
 		$this->assertEquals($expected_output, $this->w->update($input));
 	}
+
+	function testBuyThisPrintStructure() {
+		global $post, $buy_print_url;
+
+		$buy_print_url = 'buy print url';
+		$post = (object)array('ID' => 10);
+
+		$result = $this->w->buy_print_structure();
+
+		$this->assertTag(array(
+			'tag' => 'form',
+			'attributes' => array('action' => $buy_print_url)
+		), $result);
+
+		$this->assertTag(array(
+			'tag' => 'input',
+			'attributes' => array(
+				'name' => 'comic',
+				'value' => 10
+			)
+		), $result);
+	}
 }
