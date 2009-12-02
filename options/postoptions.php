@@ -264,7 +264,7 @@
 						<input id="static_blog" name="static_blog" type="checkbox" value="1" <?php checked(true, $comicpress_options['static_blog']); ?> />					
 					</td>
 					<td>
-						<?php _e('Blog will stay with the single pages, good to use with comments disabled in the settings.','comicpress'); ?>
+						<?php _e('Blog will stay with the single pages, this will automatically disable any commenting ability for comic blog posts. ','comicpress'); ?>
 					</td>
 				</tr>
 				<tr class="alternate">
