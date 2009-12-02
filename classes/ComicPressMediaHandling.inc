@@ -58,13 +58,19 @@ class ComicPressMediaHandling {
 		return $result;
 	}
 
-	function _abspath() { return ABSPATH; }
+	function _abspath() {
+		return ABSPATH;
+	}
 
 	function _expand_filter_callback($matches) {
 		$value = '';
 		switch (strtolower($matches[1])) {
 			case 'wordpress':
-				$value = $this->_abspath();
+				if ($path = get_option('upload_path')) {
+					$value = $path;
+				} else {
+					$value = $this->_abspath();
+				}
 				break;
 			case 'type-folder':
 				$value = $this->type_filter;

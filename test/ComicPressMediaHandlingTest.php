@@ -85,15 +85,20 @@ class ComicPressMediaHandlingTest extends PHPUnit_Framework_TestCase {
 			array('%wordpress%/%type-folder%', vfsStream::url('root') . '/comic'),
 			array('%date-Y%', '2009'),
 			array('%wordpress%/%type-folder%/%date-Y-m-d%*.*', vfsStream::url('root') . '/comic/2009-01-01.*\..*'),
+			array('%wordpress%/%type-folder%/%date-Y-m-d%*.*', '/wpmupath/comic/2009-01-01.*\..*', '/wpmupath'),
 		);
 	}
 
 	/**
 	 * @dataProvider providerTestExpandFilter
 	 */
-	function testExpandFilter($filter, $expected_result) {
+	function testExpandFilter($filter, $expected_result, $use_option_path = false) {
 		$cpmh = $this->getMock('ComicPressMediaHandling', array('_abspath'));
 		$cpmh->expects($this->any())->method('_abspath')->will($this->returnValue(vfsStream::url('root')));
+
+		if ($use_option_path !== false) {
+			update_option('upload_path', $use_option_path);
+		}
 
 		$this->assertEquals($expected_result, $cpmh->_expand_filter($filter, 'comic', (object)array('ID' => 1, 'post_date' => '2009-01-01 15:00:00')));
 	}
