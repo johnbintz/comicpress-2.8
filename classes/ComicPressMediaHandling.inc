@@ -60,7 +60,7 @@ class ComicPressMediaHandling {
 
 	// @codeCoverageIgnoreStart
 	function _abspath() {
-		return ABSPATH;
+		return realpath(ABSPATH);
 	}
 	// @codeCoverageIgnoreEnd
 
@@ -94,21 +94,30 @@ class ComicPressMediaHandling {
 				while (($file = readdir($dh)) !== false) {
 					$target = $dirname . '/' . $file;
 					if (is_file($target)) {
-						if (preg_match("#${filename_pattern}#", $file) > 0) {
+						if (preg_match("#^${filename_pattern}$#", $file) > 0) {
 							$results[] = $target;
 						}
 					}
 				}
+				closedir($dh);
 			}
 		}
 		return $results;
 	}
 
+	/**
+	 * Get the comic path.
+	 * @param string $type The type to retrieve.
+	 * @param object $override_post The post to use in place of the Loop post.
+	 * @param string $filter The filter to use.
+	 * @param boolean $multi If true, return all matching files.
+	 * @return string|array|boolean A single comic URI relative to the WordPress base, multiple comic URIs, or false if an error occurred.
+	 */
 	function get_comic_path($type = 'comic', $override_post = null, $filter = 'default', $multi = false) {
 		global $post;
 		$post_to_use = !is_null($override_post) ? $override_post : $post;
 
-		$filter = $this->get_filter($filter);
+		$filter = $this->_get_filter($filter);
 		$globals = $this->_bundle_global_variables();
 
 		if (isset($globals[$type])) {
@@ -118,7 +127,19 @@ class ComicPressMediaHandling {
 				if (($pre_handle = apply_filters('comicpress_pre_handle_comic_path_results', false, $results, $type, $post_to_use)) !== false) {
 					return $pre_handle;
 				}
+
+				$new_results = array();
+				foreach ($results as $result) {
+					$new_results[] = str_replace($this->_abspath(), '', $result);
+				}
+
+				if ($multi) {
+					return $new_results;
+				} else {
+					return reset($new_results);
+				}
 			}
 		}
+		return false;
 	}
 }

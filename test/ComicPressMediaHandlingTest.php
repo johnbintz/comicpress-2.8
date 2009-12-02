@@ -101,17 +101,21 @@ class ComicPressMediaHandlingTest extends PHPUnit_Framework_TestCase {
 
 	function providerTestExpandFilterWPMUCallback() {
 		return array(
-			array('', 'original'),
-			array('new', 'new')
+			array('', '', 'original'),
+			array('', 'new', 'original'),
+			array('1', 'new', 'new'),
 		);
 	}
 
 	/**
 	 * @dataProvider providerTestExpandFilterWPMUCallback
 	 */
-	function testExpandFilterWPMUCallback($option_value, $expected_result) {
+	function testExpandFilterWPMUCallback($_wpmu_version, $option_value, $expected_result) {
+		global $wpmu_version;
+		$wpmu_version = $_wpmu_version;
+
 		update_option('upload_path', $option_value);
-		$this->assertEquals($expected_result, _comicpress_expand_filter_callback('original', array()));
+		$this->assertEquals($expected_result, _comicpress_expand_filter_callback('original', array('all', 'wordpress')));
 	}
 
 	function providerTestReadDirectory() {
