@@ -102,4 +102,27 @@ class ComicPressMediaHandlingTest extends PHPUnit_Framework_TestCase {
 
 		$this->assertEquals($expected_result, $cpmh->_expand_filter($filter, 'comic', (object)array('ID' => 1, 'post_date' => '2009-01-01 15:00:00')));
 	}
+
+	function providerTestReadDirectory() {
+		return array(
+			array(vfsStream::url('root2/.*'), false),
+			array(vfsStream::url('root/.*'), array('2009-01-01.jpg', '2009-01-02.jpg', '2009-02-02-two.jpg', '2008-01-01.jpg')),
+			array(vfsStream::url('root/2009.*'), array('2009-01-01.jpg', '2009-01-02.jpg', '2009-02-02-two.jpg')),
+			array(vfsStream::url('root/2009-01.*'), array('2009-01-01.jpg', '2009-01-02.jpg')),
+			array(vfsStream::url('root/2009-01-01.*'), array('2009-01-01.jpg')),
+		);
+	}
+
+	/**
+	 * @dataProvider providerTestReadDirectory
+	 */
+	function testReadDirectory($pattern, $expected_results) {
+		foreach (array('2009-01-01.jpg', '2009-01-02.jpg', '2009-02-02-two.jpg', '2008-01-01.jpg') as $file) {
+			file_put_contents(vfsStream::url("root/${file}"), 'file');
+		}
+		if (is_array($expected_results)) {
+			foreach ($expected_results as &$result) { $result = vfsStream::url("root/${result}"); }
+		}
+	 	$this->assertEquals($expected_results, $this->cpmh->_read_directory($pattern));
+	}
 }

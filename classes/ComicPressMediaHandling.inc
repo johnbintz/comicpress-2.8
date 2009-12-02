@@ -43,17 +43,17 @@ class ComicPressMediaHandling {
 		return $old;
 	}
 
-	function _expand_filter($filter, $type_filter, $override_post = null) {
+	function _expand_filter($filter, $type_folder, $override_post = null) {
 		global $post;
 		$this->post_to_use = !is_null($override_post) ? $override_post : $post;
-		$this->type_filter = $type_filter;
+		$this->type_folder = $type_folder;
 
 		$result = preg_replace_callback('#%([a-z0-9-]+)%#i', array(&$this, '_expand_filter_callback'), $filter);
 		$result = str_replace('.', '\.', $result);
 		$result = str_replace('*', '.*', $result);
 
 		unset($this->post_to_use);
-		unset($this->type_filter);
+		unset($this->type_folder);
 
 		return $result;
 	}
@@ -73,7 +73,7 @@ class ComicPressMediaHandling {
 				}
 				break;
 			case 'type-folder':
-				$value = $this->type_filter;
+				$value = $this->type_folder;
 				break;
 			default:
 				if (preg_match('#^date-(.*)$#', $matches[1], $date_matches) > 0) {
@@ -83,10 +83,38 @@ class ComicPressMediaHandling {
 				$value = $matches[0];
 				break;
 		}
-		return $value;
+		return apply_filters('comicpress_expand_filter_callback', $value, $matches);
+	}
+
+	function _read_directory($pattern) {
+		$dirname = dirname($pattern);
+		$results = false;
+		if (is_dir($dirname)) {
+			$results = array();
+			if (($dh = opendir($dirname)) !== false) {
+				$filename_pattern = str_replace('#', '\#', basename($pattern));
+				while (($file = readdir($dh)) !== false) {
+					$target = $dirname . '/' . $file;
+					if (is_file($target)) {
+						if (preg_match("#${filename_pattern}#", $file) > 0) {
+							$results[] = $target;
+						}
+					}
+				}
+			}
+		}
+		return $results;
 	}
 
 	function get_comic_path($type = 'comic', $override_post = null, $filter = 'default', $multi = false) {
+		global $post;
+		$post_to_use = !is_null($override_post) ? $override_post : $post;
+
 		$filter = $this->get_filter($filter);
+		$globals = $this->_bundle_global_variables();
+
+		if (isset($globals[$type])) {
+			$filter = $this->_expand_filter($filter, $globals[$type], $post_to_use);
+		}
 	}
 }
