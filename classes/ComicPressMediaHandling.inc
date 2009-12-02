@@ -58,19 +58,17 @@ class ComicPressMediaHandling {
 		return $result;
 	}
 
+	// @codeCoverageIgnoreStart
 	function _abspath() {
 		return ABSPATH;
 	}
+	// @codeCoverageIgnoreEnd
 
 	function _expand_filter_callback($matches) {
 		$value = '';
 		switch (strtolower($matches[1])) {
 			case 'wordpress':
-				if ($path = get_option('upload_path')) {
-					$value = $path;
-				} else {
-					$value = $this->_abspath();
-				}
+				$value = $this->_abspath();
 				break;
 			case 'type-folder':
 				$value = $this->type_folder;
@@ -115,6 +113,12 @@ class ComicPressMediaHandling {
 
 		if (isset($globals[$type])) {
 			$filter = $this->_expand_filter($filter, $globals[$type], $post_to_use);
+
+			if (is_array($results = $this->_read_directory($filter))) {
+				if (($pre_handle = apply_filters('comicpress_pre_handle_comic_path_results', false, $results, $type, $post_to_use)) !== false) {
+					return $pre_handle;
+				}
+			}
 		}
 	}
 }

@@ -4,6 +4,7 @@ require_once('PHPUnit/Framework.php');
 require_once('MockPress/mockpress.php');
 require_once('vfsStream/vfsStream.php');
 require_once(dirname(__FILE__) . '/../classes/ComicPressMediaHandling.inc');
+require_once(dirname(__FILE__) . '/../functions/wpmu.php');
 
 class ComicPressMediaHandlingTest extends PHPUnit_Framework_TestCase {
 	function setUp() {
@@ -84,23 +85,33 @@ class ComicPressMediaHandlingTest extends PHPUnit_Framework_TestCase {
 			array('%test test%', '%test test%'),
 			array('%wordpress%/%type-folder%', vfsStream::url('root') . '/comic'),
 			array('%date-Y%', '2009'),
-			array('%wordpress%/%type-folder%/%date-Y-m-d%*.*', vfsStream::url('root') . '/comic/2009-01-01.*\..*'),
-			array('%wordpress%/%type-folder%/%date-Y-m-d%*.*', '/wpmupath/comic/2009-01-01.*\..*', '/wpmupath'),
+			array('%wordpress%/%type-folder%/%date-Y-m-d%*.*', vfsStream::url('root') . '/comic/2009-01-01.*\..*')
 		);
 	}
 
 	/**
 	 * @dataProvider providerTestExpandFilter
 	 */
-	function testExpandFilter($filter, $expected_result, $use_option_path = false) {
+	function testExpandFilter($filter, $expected_result) {
 		$cpmh = $this->getMock('ComicPressMediaHandling', array('_abspath'));
 		$cpmh->expects($this->any())->method('_abspath')->will($this->returnValue(vfsStream::url('root')));
 
-		if ($use_option_path !== false) {
-			update_option('upload_path', $use_option_path);
-		}
-
 		$this->assertEquals($expected_result, $cpmh->_expand_filter($filter, 'comic', (object)array('ID' => 1, 'post_date' => '2009-01-01 15:00:00')));
+	}
+
+	function providerTestExpandFilterWPMUCallback() {
+		return array(
+			array('', 'original'),
+			array('new', 'new')
+		);
+	}
+
+	/**
+	 * @dataProvider providerTestExpandFilterWPMUCallback
+	 */
+	function testExpandFilterWPMUCallback($option_value, $expected_result) {
+		update_option('upload_path', $option_value);
+		$this->assertEquals($expected_result, _comicpress_expand_filter_callback('original', array()));
 	}
 
 	function providerTestReadDirectory() {
@@ -124,5 +135,26 @@ class ComicPressMediaHandlingTest extends PHPUnit_Framework_TestCase {
 			foreach ($expected_results as &$result) { $result = vfsStream::url("root/${result}"); }
 		}
 	 	$this->assertEquals($expected_results, $this->cpmh->_read_directory($pattern));
+	}
+
+	function providerTestPreHandleComicPathResults() {
+		return array(
+			array('', '', false),
+			array('1', '', 'comic/one'),
+			array('1', 'comic', 'files/one'),
+		);
+	}
+
+	/**
+	 * @dataProvider providerTestPreHandleComicPathResults
+	 */
+	function testPreHandleComicPathResults($_wpmu_version, $upload_path, $expected_result) {
+		global $wpmu_version, $comic_folder;
+		$wpmu_version = $_wpmu_version;
+		$comic_folder = 'comic';
+
+		update_option('upload_path', $upload_path);
+
+		$this->assertEquals($expected_result, _comicpress_pre_handle_comic_path_results(false, array('one/one', 'two/two', 'three/three'), 'comic', (object)array('ID' => 1)));
 	}
 }
