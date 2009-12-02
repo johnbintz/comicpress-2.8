@@ -26,4 +26,24 @@ class ComicPressMediaHandlingTest extends PHPUnit_Framework_TestCase {
 			'mini'    => 'mini'
 		), $this->cpmh->_bundle_global_variables());
 	}
+
+	function providerTestGetFilter() {
+		return array(
+			array(null, '%wordpress%/%type-folder%/%date-Y-m-d%*.*'),
+			array('fail', '%wordpress%/%type-folder%/%date-Y-m-d%*.*'),
+			array(array(), '%wordpress%/%type-folder%/%date-Y-m-d%*.*'),
+			array('test', 'test')
+		);
+	}
+
+	/**
+	 * @dataProvider providerTestGetFilter
+	 */
+	function testGetFilter($filter_to_use, $expected_result) {
+		global $comic_filename_filters;
+
+		$comic_filename_filters['test'] = 'test';
+
+		$this->assertEquals($expected_result, $this->cpmh->_get_filter($filter_to_use));
+	}
 }

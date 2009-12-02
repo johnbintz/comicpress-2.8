@@ -10,9 +10,6 @@ class GraphicalNavigationWidgetTest extends PHPUnit_Framework_TestCase {
 		$this->w = new GraphicalNavigationWidget();
 	}
 
-  /**
-   * @covers WidgetComicPressGraphicalStorylineNavigation::update
-   */
 	function testUpdateWidget() {
 		$result = $this->w->update(array(
 			"next" => "<b>test</b>",
@@ -41,7 +38,6 @@ class GraphicalNavigationWidgetTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * @dataProvider providerTestIsNavLinkVisible
-   * @covers WidgetComicPressGraphicalStorylineNavigation::_will_display_nav_link
 	 */
 	function testIsNavLinkVisible($which, $current_id, $target_id, $expected_result) {
 		$current = (object)array('ID' => $current_id);
@@ -76,7 +72,6 @@ class GraphicalNavigationWidgetTest extends PHPUnit_Framework_TestCase {
 
   /**
    * @dataProvider providerTestGroupNavigationButtons
-   * @covers WidgetComicPressGraphicalStorylineNavigation::_group_navigation_buttons
    */
   function testGroupNavigationButtons($buttons, $expected_grouping) {
     _set_filter_expectation('comicpress_navigation_grouping_details', array(array(
