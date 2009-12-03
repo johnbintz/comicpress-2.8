@@ -60,6 +60,7 @@ class ComicPressMediaHandling {
 
 	function _resolve_regex_path($input) {
 		$input = str_replace('\.', '.', $input);
+		$input = str_replace('\\', '/', $input);
 		return $input;
 	}
 

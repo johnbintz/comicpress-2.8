@@ -144,7 +144,8 @@ class ComicPressMediaHandlingTest extends PHPUnit_Framework_TestCase {
 	function providerTestResolveRegexPath() {
 		return array(
 			array('test', 'test'),
-			array('te\.st', 'te.st')
+			array('te\.st', 'te.st'),
+			array('te\st', 'te/st'),
 		);
 	}
 
