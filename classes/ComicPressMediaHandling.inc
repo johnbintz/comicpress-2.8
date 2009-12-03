@@ -80,8 +80,10 @@ class ComicPressMediaHandling {
 				break;
 			default:
 				if (preg_match('#^date-(.*)$#', $matches[1], $date_matches) > 0) {
-					$value = date($date_matches[1], strtotime($this->post_to_use->post_date));
-					break;
+					if (isset($this->post_to_use)) {
+						$value = date($date_matches[1], strtotime($this->post_to_use->post_date));
+						break;
+					}
 				}
 				$value = $matches[0];
 				break;
@@ -110,6 +112,54 @@ class ComicPressMediaHandling {
 		return $results;
 	}
 
+	function _check_post_meta_data($post_to_use, $type) {
+		if ($result = get_post_meta($post_to_use->ID, "backend_url_${type}", true)) {
+			if (is_string($result)) {
+				return $result;
+			}
+		}
+
+		if ($result = get_post_meta($post_to_use->ID, "backend_url_images", true)) {
+			if (is_string($result)) {
+				parse_str($result, $types);
+				if (isset($types[$type])) {
+					return $types[$type];
+				}
+			}
+		}
+
+		if ($result = get_post_meta($post_to_use->ID, "backend_url", true)) {
+			if (is_string($result)) {
+				return $result;
+			}
+		}
+		return false;
+	}
+
+	function _ensure_valid_uri($uri, $type) {
+		if (!empty($uri)) {
+			if (substr($uri, 0, 1) == '/') {
+				return $uri;
+			} else {
+				if (preg_match('#^[a-z]+://#', $uri) > 0) {
+					return $uri;
+				} else {
+					$bundle = $this->_bundle_global_variables();
+					if (isset($bundle[$type])) {
+						$this->type_folder = $bundle[$type];
+					} else {
+						$this->type_folder = '';
+					}
+
+					$uri = preg_replace_callback('#%([a-z0-9-]+)%#i', array(&$this, '_expand_filter_callback'), $uri);
+
+					return trailingslashit(get_bloginfo('url')) . $uri;
+				}
+			}
+		}
+		return false;
+	}
+
 	/**
 	 * Get the comic path.
 	 * @param string $type The type to retrieve.
@@ -121,6 +171,12 @@ class ComicPressMediaHandling {
 	function get_comic_path($type = 'comic', $override_post = null, $filter = 'default', $multi = false) {
 		global $post;
 		$post_to_use = !is_null($override_post) ? $override_post : $post;
+
+		if ($uri = $this->_check_post_meta($post_to_use, $type)) {
+			if ($result = $this->_ensure_valid_url($uri, $type)) {
+				return $result;
+			}
+		}
 
 		$filter = $this->_get_filter($filter);
 		$globals = $this->_bundle_global_variables();

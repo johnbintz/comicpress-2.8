@@ -175,4 +175,47 @@ class ComicPressMediaHandlingTest extends PHPUnit_Framework_TestCase {
 
 		$this->assertEquals($expected_result, _comicpress_pre_handle_comic_path_results(false, array('one/one', 'two/two', 'three/three'), 'comic', (object)array('ID' => 1)));
 	}
+
+	function providerTestCheckPostMetaData() {
+		return array(
+			array('comic', array(), false),
+			array('comic', array('backend_url_comic' => '/test'), '/test'),
+			array('comic', array('backend_url_images' => 'test=/test'), false),
+			array('comic', array('backend_url_images' => 'comic=/test'), '/test'),
+			array('comic', array('backend_url' => '/test'), '/test'),
+		);
+	}
+
+	/**
+	 * @dataProvider providerTestCheckPostMetaData
+	 */
+	function testCheckPostMetaData($type, $metadata, $expected_result) {
+		foreach ($metadata as $key => $value) {
+			update_post_meta(1, $key, $value);
+		}
+
+    $this->assertEquals($expected_result, $this->cpmh->_check_post_meta_data((object)array('ID' => 1), $type));
+	}
+
+	function providerTestEnsureValidURI() {
+		return array(
+			array('', false),
+			array('test', 'wordpress/test'),
+			array('%type-folder%/test', 'wordpress/comic-dir/test'),
+			array('/test', '/test'),
+			array('http://file', 'http://file'),
+		);
+	}
+
+	/**
+	 * @dataProvider providerTestEnsureValidURI
+	 */
+	function testEnsureValidURI($uri, $expected_result) {
+		_set_bloginfo('url', 'wordpress');
+
+		$cpmh = $this->getMock('ComicPressMediaHandling', array('_bundle_global_variables'));
+		$cpmh->expects($this->any())->method('_bundle_global_variables')->will($this->returnValue(array('comic' => 'comic-dir')));
+
+		$this->assertEquals($expected_result, $cpmh->_ensure_valid_uri($uri, 'comic'));
+	}
 }
