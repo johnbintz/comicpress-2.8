@@ -99,6 +99,10 @@ class ComicPressMediaHandlingTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($expected_result, $cpmh->_expand_filter($filter, 'comic', (object)array('ID' => 1, 'post_date' => '2009-01-01 15:00:00')));
 	}
 
+	function testExpandFilterNoPostDateRequested() {
+		$this->assertEquals('%date-Y%', $this->cpmh->_expand_filter('%date-Y%', 'comic', null));
+	}
+
 	function providerTestExpandFilterWPMUCallback() {
 		return array(
 			array('', '', 'original'),
@@ -181,10 +185,12 @@ class ComicPressMediaHandlingTest extends PHPUnit_Framework_TestCase {
 		return array(
 			array('comic', array(), false),
 			array('comic', array('backend_url_comic' => '/test'), '/test'),
+			array('comic', array('backend_url_comic' => array('test')), false),
 			array('comic', array('backend_url_images' => 'test=/test'), false),
 			array('comic', array('backend_url_images' => 'comic=/test'), '/test'),
 			array('comic', array('backend_url_images' => array('comic' => '/test')), '/test'),
 			array('comic', array('backend_url' => '/test'), '/test'),
+			array('comic', array('backend_url' => array('test')), false),
 		);
 	}
 
@@ -219,5 +225,14 @@ class ComicPressMediaHandlingTest extends PHPUnit_Framework_TestCase {
 		$cpmh->expects($this->any())->method('_bundle_global_variables')->will($this->returnValue(array('comic' => 'comic-dir')));
 
 		$this->assertEquals($expected_result, $cpmh->_ensure_valid_uri($uri, 'comic'));
+	}
+
+	function testEnsureValidURIInvalidType() {
+		_set_bloginfo('url', 'wordpress');
+
+		$cpmh = $this->getMock('ComicPressMediaHandling', array('_bundle_global_variables'));
+		$cpmh->expects($this->any())->method('_bundle_global_variables')->will($this->returnValue(array('comic' => 'comic-dir')));
+
+		$this->assertEquals('wordpress/', $cpmh->_ensure_valid_uri('%type-folder%', 'test'));
 	}
 }
