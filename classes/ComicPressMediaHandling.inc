@@ -58,6 +58,11 @@ class ComicPressMediaHandling {
 		return $result;
 	}
 
+	function _resolve_regex_path($input) {
+		$input = str_replace('\.', '.', $input);
+		return $input;
+	}
+
 	// @codeCoverageIgnoreStart
 	function _abspath() {
 		return realpath(ABSPATH);
@@ -85,7 +90,7 @@ class ComicPressMediaHandling {
 	}
 
 	function _read_directory($pattern) {
-		$dirname = dirname($pattern);
+		$dirname = $this->_resolve_regex_path(dirname($pattern));
 		$results = false;
 		if (is_dir($dirname)) {
 			$results = array();
