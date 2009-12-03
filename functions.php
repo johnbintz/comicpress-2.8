@@ -75,7 +75,7 @@ function comicpress_load_options() {
 	global $comicpress_options;
 	$comicpress_options = get_option('comicpress_options');
 	if (empty($comicpress_options)) {
-		$comicpress_options['comicpress_version'] = '2.9.0.4'; 
+		$comicpress_options['comicpress_version'] = '2.9.0.4';
 		foreach (array(
 			'disable_comic_frontpage' => false,
 			'disable_comic_blog_frontpage' => false,
@@ -181,11 +181,9 @@ if ($comicpress_options['remove_wptexturize']) {
 // WIDGETS WP 2.8 compatible ONLY, no backwards compatibility here.
 $dirs_to_search = array_unique(array(get_template_directory(),get_stylesheet_directory()));
 foreach ($dirs_to_search as $dir) {
-	// Widgets
-	foreach (glob($dir . '/widgets/*.php') as $__file) { require_once($__file); }
-
-	// FUNCTIONS & Extra's
-	foreach (glob($dir . '/functions/*.php') as $__file) { require_once($__file); }
+	foreach (array('widgets' => 'php', 'functions' => 'php', 'classes' => 'inc') as $folder => $extension) {
+		foreach (glob($dir . "/${folder}/*.${extension}") as $__file) { require_once($__file); }
+	}
 }
 
 // Dashboard Menu Comicpress Options and ComicPress CSS
@@ -217,7 +215,6 @@ if (defined("CPM_DATE_FORMAT")) {
 // Note that it's quite possible to slurp up the wrong file if your expressions are too broad.
 
 $comic_filename_filters = array();
-$comic_filename_filters['default'] = "{date}*.*";
 
 // load all of the comic & non-comic category information
 add_action('init', 'get_all_comic_categories');
@@ -427,61 +424,8 @@ function get_adjacent_storyline_category_id($next = false) {
 */
 
 function get_comic_path($folder = 'comic', $override_post = null, $filter = 'default', $multi = null) {
-	global $post, $comic_filename_filters, $comic_folder, $archive_comic_folder, $rss_comic_folder, $mini_comic_folder, $comic_pathfinding_errors, $wpmu_version;
-
-	if (isset($comic_filename_filters[$filter])) {
-		$filter_to_use = $comic_filename_filters[$filter];
-	} else {
-		$filter_to_use = '{date}*.*';
-	}
-
-	switch ($folder) {
-		case "rss": $folder_to_use = $rss_comic_folder; break;
-		case "archive": $folder_to_use = $archive_comic_folder; break;
-		case "mini": $folder_to_use = $mini_comic_folder; break;
-		case "comic": default: $folder_to_use = $comic_folder; break;
-	}
-
-	if (!empty($wpmu_version)) {
-		if (($wpmu_path = get_option('upload_path')) !== false) {
-			$folder_to_use = $wpmu_path . '/' . $folder_to_use;
-		}
-	}
-
-	$post_to_use = (is_object($override_post)) ? $override_post : $post;
-	$post_date = mysql2date(CP_DATE_FORMAT, $post_to_use->post_date);
-
-	$filter_with_date = str_replace('{date}', $post_date, $filter_to_use);
-
-	$cwd = get_template_directory();
-	if ($cwd !== false) {
-		// Strip the wp-admin part and just get to the root.
-		$root_path = preg_replace('#[\\/]wp-(admin|content).*#', '', $cwd);
-	}
-
-	$results = array();
-	/* have to use root_path to get subdirectory installation directories */
-	if (count($results = glob("${root_path}/${folder_to_use}/${filter_with_date}")) > 0) {
-
-		if (!empty($wpmu_version)) {
-			$comic = reset($results);
-			$comic = $folder_to_use . '/'. basename($comic);
-			if ($wpmu_path !== false) { $comic = str_replace($wpmu_path, "files", $comic); }
-			return $comic;
-		}
-
-		if (!empty($multi)) {
-			return $results;
-		} else {
-			/* clear the root path */
-			$comic = reset($results);
-			$comic = $folder_to_use .'/'. basename($comic);
-			return $comic;
-		}
-	}
-
-	$comic_pathfinding_errors[] = sprintf(__("Unable to find the file in the <strong>%s</strong> folder that matched the pattern <strong>%s</strong>. Check your WordPress and ComicPress settings.", 'comicpress'), $folder_to_use, $filter_with_date);
-	return false;
+	$mh = new ComicPressMediaHandling();
+	return $mh->get_comic_path($folder, $override_post, $filter, $multi);
 }
 
 
