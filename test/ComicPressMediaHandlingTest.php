@@ -183,6 +183,7 @@ class ComicPressMediaHandlingTest extends PHPUnit_Framework_TestCase {
 			array('comic', array('backend_url_comic' => '/test'), '/test'),
 			array('comic', array('backend_url_images' => 'test=/test'), false),
 			array('comic', array('backend_url_images' => 'comic=/test'), '/test'),
+			array('comic', array('backend_url_images' => array('comic' => '/test')), '/test'),
 			array('comic', array('backend_url' => '/test'), '/test'),
 		);
 	}

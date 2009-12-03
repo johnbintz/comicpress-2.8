@@ -121,8 +121,14 @@ class ComicPressMediaHandling {
 		}
 
 		if ($result = get_post_meta($post_to_use->ID, "backend_url_images", true)) {
+			$types = false;
 			if (is_string($result)) {
 				parse_str($result, $types);
+			}
+			if (is_array($result)) {
+				$types = $result;
+			}
+			if (is_array($types)) {
 				if (isset($types[$type])) {
 					return $types[$type];
 				}
