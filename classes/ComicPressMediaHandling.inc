@@ -179,7 +179,7 @@ class ComicPressMediaHandling {
 		global $post;
 		$post_to_use = !is_null($override_post) ? $override_post : $post;
 
-		if ($uri = $this->_check_post_meta($post_to_use, $type)) {
+		if ($uri = $this->_check_post_meta_data($post_to_use, $type)) {
 			if ($result = $this->_ensure_valid_url($uri, $type)) {
 				return $result;
 			}
