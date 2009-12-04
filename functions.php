@@ -18,6 +18,18 @@ function __comicpress_widgets_init() {
 		}
 		closedir($dh);
 	}
+
+	if (isset($_REQUEST['cp'])) {
+		if (is_array($_REQUEST['cp'])) {
+			if (isset($_REQUEST['cp']['post_id'])) {
+				if (($_REQUEST['cp']['post_id'] <= 0) && ($_POST['post_ID'] > 0)) {
+					$_REQUEST['cp']['post_id'] = $_POST['post_ID'];
+				}
+			}
+		}
+	}
+
+	do_action('comicpress_init');
 }
 
 function __comicpress_init() {
@@ -39,6 +51,11 @@ function __comicpress_init() {
 	if (function_exists('id_get_comment_number')) {
 		remove_filter('comments_number','id_get_comment_number');
 	}
+
+		if (($_REQUEST['cp']['post_id'] <= 0) && ($_POST['post_ID'] > 0)) {
+			$_REQUEST['cp']['post_id'] = $_POST['post_ID'];
+		}
+
 }
 
 add_action('widgets_init', '__comicpress_widgets_init');
@@ -179,10 +196,18 @@ if ($comicpress_options['remove_wptexturize']) {
 }
 
 // WIDGETS WP 2.8 compatible ONLY, no backwards compatibility here.
-$dirs_to_search = array_unique(array(get_template_directory(),get_stylesheet_directory()));
+$dirs_to_search = array_unique(array(get_template_directory(), get_stylesheet_directory()));
 foreach ($dirs_to_search as $dir) {
 	foreach (array('widgets' => 'php', 'functions' => 'php', 'classes' => 'inc') as $folder => $extension) {
-		foreach (glob($dir . "/${folder}/*.${extension}") as $__file) { require_once($__file); }
+		foreach (glob($dir . "/${folder}/*.${extension}") as $__file) {
+			require_once($__file);
+			$__class_name = preg_replace('#\..*$#', '', basename($__file));
+			if (class_exists($__class_name)) {
+				if (method_exists($__class_name, '__comicpress_init')) {
+					add_action('comicpress_init', array($__class_name, '__comicpress_init'));
+				}
+			}
+		}
 	}
 }
 
