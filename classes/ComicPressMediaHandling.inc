@@ -92,6 +92,7 @@ class ComicPressMediaHandling {
 		return apply_filters('comicpress_expand_filter_callback', $value, $matches);
 	}
 
+	// TODO: Fix Pattern Escaping
 	function _read_directory($pattern) {
 		$resolved_pattern = $this->_resolve_regex_path($pattern);
 		$dirname = dirname($resolved_pattern);
