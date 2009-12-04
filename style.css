@@ -631,13 +631,6 @@ h3, h3 a {
 		margin-left: 45px;
 	}
 
-	.pingback .comment-content {
-		margin-left: 0;
-	}
-	
-	.trackback .comment-content {
-		margin-left: 0;
-	}
 		
 .comment-author cite {
 	font-weight: bold;
@@ -684,7 +677,6 @@ h3, h3 a {
 }
 
 .commentsrsslink {
-	float: right;
 	font-size: 11px;
 }
 
@@ -722,10 +714,26 @@ ul.children {
 	list-style: none;
 }
 
-.reply {
-	padding: 10px 0 0 0;
-	text-align: right;
+#respond {
+	padding: 20px 0 0 0;
 }
+
+/* Pingbacks and Trackbacks */
+
+#pingtrackback {
+	font-size: 16px;
+}
+
+.pingback .comment-content, .trackback .comment-content {
+	margin-left: 0;
+}
+
+.trackback .comment-author cite, .pingback .comment-author cite {
+	font-weight: bold;
+	font-style: normal;
+	font-size: 13px;
+}
+
 
 /* ARCHIVE */
 /* For the built-in WordPress archive pages (by month or category) as well as search result pages */
@@ -1096,11 +1104,6 @@ ul.children {
 	overflow: hidden;
 }
 
-/* Pingbacks and Trackbacks */
-
-li.pingback div p, li.trackback div p {
-	margin-left: 0;
-}
 
 /* STORYLINES */
 
