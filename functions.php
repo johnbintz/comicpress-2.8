@@ -33,7 +33,7 @@ function __comicpress_widgets_init() {
 }
 
 function __comicpress_init() {
-	global $comicpress_options;
+	global $comicpress_options, $__comicpress_handlable_classes;
 	// Check if the $comicpress_options exist, if not set defaults
 	$comicpress_options = comicpress_load_options();
 	// xili-language plugin check
@@ -52,10 +52,30 @@ function __comicpress_init() {
 		remove_filter('comments_number','id_get_comment_number');
 	}
 
-		if (($_REQUEST['cp']['post_id'] <= 0) && ($_POST['post_ID'] > 0)) {
-			$_REQUEST['cp']['post_id'] = $_POST['post_ID'];
-		}
+	if (isset($_REQUEST['cp'])) {
+		if (is_array($_REQUEST['cp'])) {
+			if (($_REQUEST['cp']['post_id'] <= 0) && ($_POST['post_ID'] > 0)) {
+				$_REQUEST['cp']['post_id'] = $_POST['post_ID'];
+			}
 
+			if (isset($_REQUEST['cp']['_nonce'])) {
+				if (wp_verify_nonce('comicpress', $_REQUEST['cp']['_nonce'])) {
+					if (isset($_REQUEST['cp']['action'])) {
+						if (isset($_REQUEST['cp']['_action_nonce'])) {
+							if (wp_verify_nonce('comicpress-' . $_REQUEST['cp']['action'], $_REQUEST['cp']['_action_nonce'])) {
+								$method_name = 'handle_' . str_replace('-', '_', $_REQUEST['cp']['_action_nonce']);
+								foreach ($__comicpress_handlable_classes as $class_name) {
+									if (method_exists($class_name, $method_name)) {
+										$class_name->{$method_name}($_REQUEST['cp']);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 add_action('widgets_init', '__comicpress_widgets_init');
@@ -197,6 +217,7 @@ if ($comicpress_options['remove_wptexturize']) {
 
 // WIDGETS WP 2.8 compatible ONLY, no backwards compatibility here.
 $dirs_to_search = array_unique(array(get_template_directory(), get_stylesheet_directory()));
+$__comicpress_handlable_classes = array();
 foreach ($dirs_to_search as $dir) {
 	foreach (array('widgets' => 'php', 'functions' => 'php', 'classes' => 'inc') as $folder => $extension) {
 		foreach (glob($dir . "/${folder}/*.${extension}") as $__file) {
@@ -205,6 +226,10 @@ foreach ($dirs_to_search as $dir) {
 			if (class_exists($__class_name)) {
 				if (method_exists($__class_name, '__comicpress_init')) {
 					add_action('comicpress_init', array($__class_name, '__comicpress_init'));
+				}
+
+				if (method_exists($__class_name, 'handle_update')) {
+					$__comicpress_handlable_classes[] = $__class_name;
 				}
 			}
 		}
