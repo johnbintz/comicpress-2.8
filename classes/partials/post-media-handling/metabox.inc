@@ -1,5 +1,6 @@
 <input type="hidden" name="cp[_nonce]" value="<?php echo esc_attr($nonce) ?>" />
 <input type="hidden" name="cp[action]" value="post-media-update" />
+<input type="hidden" name="cp[post_id]" value="<?php echo $post->ID ?>" />
 <input type="hidden" name="cp[_action_nonce]" value="<?php echo esc_attr($action_nonce) ?>" />
 <p>
 	<em>Enter in relative or absolute URLs to the images you want to use for this post. This will override file system searches.</em>
