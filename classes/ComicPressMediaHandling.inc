@@ -2,7 +2,8 @@
 
 class ComicPressMediaHandling {
 	var $root_filter    = '%wordpress%/%type-folder%/';
-	var $default_filter = '%wordpress%/%type-folder%/%date-Y-m-d%*.*';
+	var $default_filter = '%wordpress%/%type-folder%/{date}*.*';
+	var $default_filename_filter = '%date-Y-m-d%';
 
 	function _bundle_global_variables() {
 		global $comic_folder, $archive_comic_folder, $rss_comic_folder, $mini_comic_folder;
@@ -32,7 +33,14 @@ class ComicPressMediaHandling {
 			}
 		}
 
-		return $this->default_filter;
+		$filter = $this->default_filter;
+		if ($result = get_option('comicpress-manager-cpm-date-format')) {
+			$filter = str_replace('{date}', "%date-${result}%", $filter);
+		} else {
+			$filter = str_replace('{date}', $this->default_filename_filter, $filter);
+		}
+
+		return $filter;
 	}
 
 	function _convert_to_percent_filter($old) {
