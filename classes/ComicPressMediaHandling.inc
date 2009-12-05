@@ -103,7 +103,6 @@ class ComicPressMediaHandling {
 				$filename_pattern = str_replace('#', '\#', basename($resolved_pattern));
 				while (($file = readdir($dh)) !== false) {
 					$target = $dirname . '/' . $file;
-//					echo "<br />TARGET:<br />"; var_dump($target); echo "<br /><br />";
 					if (is_file($target)) {
 						if (preg_match("#^${filename_pattern}$#", $file) > 0) {
 							$results[] = $target;
@@ -194,18 +193,14 @@ class ComicPressMediaHandling {
 
 		if (isset($globals[$type])) {
 			$filter = $this->_expand_filter($filter, $globals[$type], $post_to_use);
-//			var_dump($filter);
 			if (is_array($results = $this->_read_directory($filter))) {
 				if (($pre_handle = apply_filters('comicpress_pre_handle_comic_path_results', false, $results, $type, $post_to_use)) !== false) {
 					return $pre_handle;
 				}
-//				echo "<br />RESULTS: <br />";var_dump($results); echo "<br /><br />";
 				$new_results = array();
-//				echo "<br />ABSPATH: <br />"; var_dump($this->_abspath()); echo "<br /><br />";
 				foreach ($results as $result) {
 					$new_results[] = str_replace($this->_abspath(), '', $result);
 				}
-//				echo "<br />NEW RESULTS: <br />";var_dump($new_results); echo "<br /><br />";
 				if ($multi) {
 					return $new_results;
 				} else {
@@ -216,3 +211,4 @@ class ComicPressMediaHandling {
 		return false;
 	}
 }
+
