@@ -64,7 +64,7 @@ function display_blog_post() {
 			<?php } ?>
 			<?php 
 				if ('open' == $post->comment_status) { 
-					if (comicpress_check_child_file('partials/commentlink') == false) { ?>
+					if (comicpress_check_child_file('partials/commentlink') == false && !(is_single())) { ?>
 						<div class="comment-link"><?php comments_popup_link('<span class="comment-balloon comment-balloon-empty">&nbsp;</span> '.__('Comments ','comicpress'), '<span class="comment-balloon">1</span> '.__('Comment ','comicpress'), '<span class="comment-balloon">%</span> '.__('Comments ','comicpress')); ?></div>
 					<?php }
 				}

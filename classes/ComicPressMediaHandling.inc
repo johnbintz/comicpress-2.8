@@ -58,6 +58,15 @@ class ComicPressMediaHandling {
 		return $result;
 	}
 
+	function _get_regex_dirname($input) {
+		return dirname($this->_resolve_regex_path($input));
+	}
+
+	function _get_regex_filename($input) {
+		$input = preg_replace('#\\\(?![.])#', '/', $input);
+		return basename($input);
+	}
+
 	function _resolve_regex_path($input) {
 		$input = str_replace('\.', '.', $input);
 		$input = str_replace('\\', '/', $input);
@@ -66,7 +75,7 @@ class ComicPressMediaHandling {
 
 	// @codeCoverageIgnoreStart
 	function _abspath() {
-		return realpath(ABSPATH);
+		return trailingslashit($this->_resolve_regex_path(realpath(ABSPATH)));
 	}
 	// @codeCoverageIgnoreEnd
 
@@ -74,7 +83,7 @@ class ComicPressMediaHandling {
 		$value = '';
 		switch (strtolower($matches[1])) {
 			case 'wordpress':
-				$value = $this->_abspath();
+				$value = untrailingslashit($this->_abspath());
 				break;
 			case 'type-folder':
 				$value = $this->type_folder;
@@ -93,12 +102,12 @@ class ComicPressMediaHandling {
 	}
 
 	function _read_directory($pattern) {
-		$dirname = $this->_resolve_regex_path(dirname($pattern));
+		$dirname = $this->_get_regex_dirname($pattern);
 		$results = false;
 		if (is_dir($dirname)) {
 			$results = array();
 			if (($dh = opendir($dirname)) !== false) {
-				$filename_pattern = str_replace('#', '\#', basename($pattern));
+				$filename_pattern = str_replace('#', '\#', $this->_get_regex_filename($pattern));
 				while (($file = readdir($dh)) !== false) {
 					$target = $dirname . '/' . $file;
 					if (is_file($target)) {
@@ -167,6 +176,7 @@ class ComicPressMediaHandling {
 		return false;
 	}
 
+
 	/**
 	 * Get the comic path.
 	 * @param string $type The type to retrieve.
@@ -190,17 +200,14 @@ class ComicPressMediaHandling {
 
 		if (isset($globals[$type])) {
 			$filter = $this->_expand_filter($filter, $globals[$type], $post_to_use);
-
 			if (is_array($results = $this->_read_directory($filter))) {
 				if (($pre_handle = apply_filters('comicpress_pre_handle_comic_path_results', false, $results, $type, $post_to_use)) !== false) {
 					return $pre_handle;
 				}
-
 				$new_results = array();
 				foreach ($results as $result) {
 					$new_results[] = str_replace($this->_abspath(), '', $result);
 				}
-
 				if ($multi) {
 					return $new_results;
 				} else {
@@ -211,3 +218,4 @@ class ComicPressMediaHandling {
 		return false;
 	}
 }
+

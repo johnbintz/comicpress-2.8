@@ -16,24 +16,45 @@ if ( post_password_required() ) { ?>
 
 
 	<?php if ( ! empty($comments_by_type['comment']) ) : ?>
-		<div class="commentsrsslink">[ <?php comments_rss_link('Comments RSS'); ?> ]</div>
+		
 		<h3 id="comments"><?php comments_number(__('Discussion &not;','comicpress'), __('Discussion &not;','comicpress'), __('Discussion (%) &not;','comicpress') );?></h3>
-
+		<div class="commentsrsslink">[ <?php comments_rss_link('Comments RSS'); ?> ]</div>
 		<ol class="commentlist">
-		<?php 
-		if (function_exists('comicpress_comments_callback')) { 
-			wp_list_comments(array(
-						'type' => 'comment',
-						'reply_text' => __('Reply to %s&not;','comicpress'), 
-						'callback' => 'comicpress_comments_callback',
-						'end-callback' => 'comicpress_comments_end_callback',
-						'avatar_size'=>64
-						)
-					); 
-		} else {
-			wp_list_comments(array('type' => 'comment', 'avatar_size'=>64));
+			<?php if (function_exists('comicpress_comments_callback')) { 
+				wp_list_comments(array(
+							'type' => 'comment',
+							'reply_text' => __('Reply to %s&not;','comicpress'), 
+							'callback' => 'comicpress_comments_callback',
+							'end-callback' => 'comicpress_comments_end_callback',
+							'avatar_size'=>64
+							)
+						); 
+			} else {
+				wp_list_comments(array('type' => 'comment', 'avatar_size'=>64));
 			}?>	
 		</ol>
+		
+		<?php if ( ! empty($comments_by_type['pings']) ) : ?>
+			<div id="pingtrackback-wrap">
+				<h3 id="pingtrackback"><?php _e('Pings & Trackbacks &not;','comicpress'); ?></h3>
+				<ol class="commentlist">
+					<ul>
+						<?php if (function_exists('comicpress_comments_callback')) { 
+							wp_list_comments(array(
+										'type' => 'pings',
+										'callback' => 'comicpress_comments_callback',
+										'end-callback' => 'comicpress_comments_end_callback',
+										'avatar_size'=>32
+										)
+									); 
+						} else {
+							wp_list_comments(array('type' => 'pings', 'avatar_size'=>64));
+						}?>	
+					</ul>
+				</ol>
+			</div>
+		<?php endif; ?>
+		
 	<?php endif; ?>
 	
 		<?php if ($comicpress_options['enable_numbered_pagination']) { ?>
@@ -110,26 +131,7 @@ if ( post_password_required() ) { ?>
 
 <?php endif; ?>
 
-	<?php if ( ! empty($comments_by_type['pings']) ) : ?>
-	
-		<h3 id="comments"><?php _e('Pings & Trackbacks &not;','comicpress'); ?></h3>
-		<ol class="commentlist">
-		<ul>
-		<?php 
-		if (function_exists('comicpress_comments_callback')) { 
-			wp_list_comments(array(
-						'type' => 'pings',
-						'callback' => 'comicpress_comments_callback',
-						'end-callback' => 'comicpress_comments_end_callback',
-						'avatar_size'=>32
-						)
-					); 
-		} else {
-			wp_list_comments(array('type' => 'pings', 'avatar_size'=>64));
-			}?>	
-			</ul>
-		</ol>
-	<?php endif; ?>
+
 	
 </div>
 <div id="comment-wrapper-foot"></div>

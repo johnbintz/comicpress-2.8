@@ -160,6 +160,35 @@ class ComicPressMediaHandlingTest extends PHPUnit_Framework_TestCase {
 	  $this->assertEquals($expected_output, $this->cpmh->_resolve_regex_path($input));
 	}
 
+	function providerTestGetRegexDirname() {
+		return array(
+			array('/test/test2', '/test')
+		);
+	}
+
+	/**
+	 * @dataProvider providerTestGetRegexDirname
+	 */
+	function testGetRegexDirname($input, $expected_output) {
+		$this->assertEquals($expected_output, $this->cpmh->_get_regex_dirname($input));
+	}
+
+	function providerTestGetRegexFilename() {
+		return array(
+			array('/test/test2', 'test2'),
+			array('c:\test\test2', 'test2'),
+			array('/test/test2\.cat', 'test2\.cat'),
+			array('c:\test\test2\.cat', 'test2\.cat'),
+		);
+	}
+
+	/**
+	 * @dataProvider providerTestGetRegexFilename
+	 */
+	function testGetRegexFilename($input, $expected_output) {
+		$this->assertEquals($expected_output, $this->cpmh->_get_regex_filename($input));
+	}
+
 	function providerTestPreHandleComicPathResults() {
 		return array(
 			array('', '', false),
