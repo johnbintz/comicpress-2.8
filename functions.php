@@ -235,9 +235,6 @@ foreach ($dirs_to_search as $dir) {
 // Dashboard Menu Comicpress Options and ComicPress CSS
 require_once(get_template_directory() . '/comicpress-options.php');
 
-// If any errors occur while searching for a comic file, the error messages will be pushed into here.
-$comic_pathfinding_errors = array();
-
 // If ComicPress Manager is installed, use the date format defined there. If not, default to
 // Y-m-d.. It's best to use CPM's date definition for improved operability between theme and plugin.
 
