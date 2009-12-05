@@ -189,6 +189,7 @@ class ComicPressMediaHandlingTest extends PHPUnit_Framework_TestCase {
 			array('c:\test\test2', 'test2'),
 			array('/test/test2\.cat', 'test2\.cat'),
 			array('c:\test\test2\.cat', 'test2\.cat'),
+			array('C:/inetpub/a\.windows\.directory/comics/2009-11-24.*\..*', '2009-11-24.*\..*')
 		);
 	}
 

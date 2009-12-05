@@ -72,7 +72,7 @@ class ComicPressMediaHandling {
 
 	function _get_regex_filename($input) {
 		$input = preg_replace('#\\\(?![.])#', '/', $input);
-		return basename($input);
+		return preg_replace('#^.*\/([^\/]+)$#', '$1', $input);
 	}
 
 	function _resolve_regex_path($input) {
