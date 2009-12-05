@@ -196,10 +196,14 @@ function is_cp_theme_layout($choices) {
 	return false;
 }
 
+/**
+ * Remove of wordpress auto-texturizer.
+ * Dependant on the need remove the commented out areas of this code.
+ * Ex. Russian Language users will need to uncomment all of these to handle the character set dependant on
+ * if they utilize the language translation pack.
+ **/
 if ($comicpress_options['remove_wptexturize']) {
-	// Remove the wptexturizer from changing the quotes and squotes.
 	remove_filter('the_content', 'wptexturize');
-	// These are left here so they dont have to be looked up every single time.
 	// remove_filter('the_content', 'wpautop');
 	// remove_filter('the_title', 'wptexturize');
 	// remove_filter('the_excerpt', 'wptexturize');
