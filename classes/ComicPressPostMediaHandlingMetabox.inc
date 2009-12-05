@@ -1,11 +1,13 @@
 <?php
 
 class ComicPressPostMediaHandlingMetabox {
+	// @codeCoverageIgnoreStart
 	function __comicpress_init() {
 		add_action('admin_menu', array('ComicPressPostMediaHandlingMetabox', 'admin_menu'));
 	}
 
 	function handle_update() {}
+	// @codeCoverageIgnoreEnd
 
 	function _get_valid_types() {
 		return array_keys(ComicPressMediaHandling::_bundle_global_variables());
@@ -30,9 +32,11 @@ class ComicPressPostMediaHandlingMetabox {
 		}
 	}
 
+	// @codeCoverageIgnoreStart
 	function admin_menu() {
 		add_meta_box('comicpress-post-media-handling', __('ComicPress Post Media', 'comicpress'), array('ComicPressPostMediaHandlingMetabox', 'metabox'), 'post', 'normal', 'low');
 	}
+	// @codeCoverageIgnoreEnd
 
 	function metabox() {
 		global $post;
