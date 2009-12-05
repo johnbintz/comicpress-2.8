@@ -247,8 +247,8 @@ class ComicPressMediaHandlingTest extends PHPUnit_Framework_TestCase {
 	function providerTestEnsureValidURI() {
 		return array(
 			array('', false),
-			array('test', 'wordpress/test'),
-			array('%type-folder%/test', 'wordpress/comic-dir/test'),
+			array('test', 'test'),
+			array('%type-folder%/test', 'comic-dir/test'),
 			array('/test', '/test'),
 			array('http://file', 'http://file'),
 		);
@@ -272,6 +272,6 @@ class ComicPressMediaHandlingTest extends PHPUnit_Framework_TestCase {
 		$cpmh = $this->getMock('ComicPressMediaHandling', array('_bundle_global_variables'));
 		$cpmh->expects($this->any())->method('_bundle_global_variables')->will($this->returnValue(array('comic' => 'comic-dir')));
 
-		$this->assertEquals('wordpress/', $cpmh->_ensure_valid_uri('%type-folder%', 'test'));
+		$this->assertEquals('', $cpmh->_ensure_valid_uri('%type-folder%', 'test'));
 	}
 }

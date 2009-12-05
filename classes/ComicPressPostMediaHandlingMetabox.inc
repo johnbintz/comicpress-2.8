@@ -17,7 +17,7 @@ class ComicPressPostMediaHandlingMetabox {
 				$result = array();
 				if (isset($info['urls'])) {
 					if (is_array($info['urls'])) {
-						$valid_types = $this->_get_valid_types();
+						$valid_types = ComicPressPostMediaHandlingMetabox::_get_valid_types();
 						foreach ($info['urls'] as $field => $value) {
 							if (in_array($field, $valid_types)) {
 								$result[$field] = strip_tags($value);

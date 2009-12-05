@@ -49,14 +49,14 @@ function __comicpress_init() {
 			}
 
 			if (isset($_REQUEST['cp']['_nonce'])) {
-				if (wp_verify_nonce('comicpress', $_REQUEST['cp']['_nonce'])) {
+				if (wp_verify_nonce($_REQUEST['cp']['_nonce'], 'comicpress')) {
 					if (isset($_REQUEST['cp']['action'])) {
 						if (isset($_REQUEST['cp']['_action_nonce'])) {
-							if (wp_verify_nonce('comicpress-' . $_REQUEST['cp']['action'], $_REQUEST['cp']['_action_nonce'])) {
-								$method_name = 'handle_' . str_replace('-', '_', $_REQUEST['cp']['_action_nonce']);
+							if (wp_verify_nonce($_REQUEST['cp']['_action_nonce'], 'comicpress-' . $_REQUEST['cp']['action'])) {
+								$method_name = 'handle_' . str_replace('-', '_', $_REQUEST['cp']['action']);
 								foreach ($__comicpress_handlable_classes as $class_name) {
 									if (method_exists($class_name, $method_name)) {
-										$class_name->{$method_name}($_REQUEST['cp']);
+										call_user_func(array($class_name, $method_name), $_REQUEST['cp']);
 									}
 								}
 							}
@@ -460,16 +460,13 @@ function get_comic_path($folder = 'comic', $override_post = null, $filter = 'def
 * @param string $filter The $comic_filename_filters to use.
 * @return string The absolute URL to the comic file, or false if not found.
 */
-function get_comic_url($folder = 'comic', $override_post = null, $filter = 'default') {
-	if (($result = get_comic_path($folder, $override_post, $filter)) !== false) {
-		return get_bloginfo('wpurl') . '/' . $result;
-	} else {
-		if (($result = get_comic_path('comic', $override_post, $filter)) !== false) {
-			$basecomic = basename($result);
-			return get_bloginfo('wpurl') .  '/' . $result;
+function get_comic_url($type = 'comic', $override_post = null, $filter = 'default') {
+	foreach (array_unique(array($type, 'comic')) as $which_type) {
+		if (($result = get_comic_path($which_type, $override_post, $filter)) !== false) {
+			return trailingslashit(get_bloginfo('url')) . $result;
 		}
 	}
-	return $result;
+	return false;
 }
 
 /**

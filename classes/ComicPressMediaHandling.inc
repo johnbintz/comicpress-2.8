@@ -177,7 +177,7 @@ class ComicPressMediaHandling {
 
 					$uri = preg_replace_callback('#%([a-z0-9-]+)%#i', array(&$this, '_expand_filter_callback'), $uri);
 
-					return trailingslashit(get_bloginfo('url')) . $uri;
+					return $uri;
 				}
 			}
 		}
@@ -198,8 +198,8 @@ class ComicPressMediaHandling {
 		$post_to_use = !is_null($override_post) ? $override_post : $post;
 
 		if ($uri = $this->_check_post_meta_data($post_to_use, $type)) {
-			if ($result = $this->_ensure_valid_url($uri, $type)) {
-				return $result;
+			if ($result = $this->_ensure_valid_uri($uri, $type)) {
+				return preg_replace('#^/#', '', $result);
 			}
 		}
 

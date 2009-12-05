@@ -1,10 +1,10 @@
 <?php
 
 //COMIC CATEGORY -the WordPress ID # of your comic category (default "3")
-$comiccat = "3";
+$comiccat = "55";
 
 //BLOG CATEGORY - the WordPress ID of your blog category (default "1")
-$blogcat = "1";
+$blogcat = "58";
 
 //COMIC FOLDER - the folder your comics files are located in (default "comics")
 $comic_folder = "comics";
@@ -29,5 +29,3 @@ $mini_comic_width = "80";
 
 //Minithumb Comic Folder - The folder for your your mini thumbs (default "comics-mini")
 $mini_comic_folder = "comics-mini";
-
-?>
