@@ -18,18 +18,6 @@ function __comicpress_widgets_init() {
 		}
 		closedir($dh);
 	}
-
-	if (isset($_REQUEST['cp'])) {
-		if (is_array($_REQUEST['cp'])) {
-			if (isset($_REQUEST['cp']['post_id'])) {
-				if (($_REQUEST['cp']['post_id'] <= 0) && ($_POST['post_ID'] > 0)) {
-					$_REQUEST['cp']['post_id'] = $_POST['post_ID'];
-				}
-			}
-		}
-	}
-
-	do_action('comicpress_init');
 }
 
 function __comicpress_init() {
@@ -51,6 +39,8 @@ function __comicpress_init() {
 	if (function_exists('id_get_comment_number')) {
 		remove_filter('comments_number','id_get_comment_number');
 	}
+
+	do_action('comicpress_init');
 
 	if (isset($_REQUEST['cp'])) {
 		if (is_array($_REQUEST['cp'])) {
