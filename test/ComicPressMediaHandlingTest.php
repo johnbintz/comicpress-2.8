@@ -35,10 +35,12 @@ class ComicPressMediaHandlingTest extends PHPUnit_Framework_TestCase {
 	function providerTestGetFilter() {
 		$cpmh = new ComicPressMediaHandling();
 
+		$default = str_replace('{date}', $cpmh->default_filename_filter, $cpmh->default_filter);
+
 		return array(
-			array(null, $cpmh->default_filter),
-			array('fail', $cpmh->default_filter),
-			array(array(), $cpmh->default_filter),
+			array(null, $default),
+			array('fail', $default),
+			array(array(), $default),
 			array('test', 'test')
 		);
 	}
@@ -51,14 +53,22 @@ class ComicPressMediaHandlingTest extends PHPUnit_Framework_TestCase {
 
 		$comic_filename_filters['test'] = 'test';
 
+		$default = str_replace('{date}', $this->cpmh->default_filename_filter, $this->cpmh->default_filter);
+
 		$cpmh = $this->getMock('ComicPressMediaHandling', array('_convert_to_percent_filter'));
-		if ($expected_result !== $cpmh->default_filter) {
+		if ($expected_result !== $default) {
 			$cpmh->expects($this->once())->method('_convert_to_percent_filter')->with($expected_result)->will($this->returnValue($expected_result));
 		} else {
 			$cpmh->expects($this->never())->method('_convert_to_percent_filter');
 		}
 
 		$this->assertEquals($expected_result, $cpmh->_get_filter($filter_to_use));
+	}
+
+	function testGetFilterCPMOption() {
+		update_option('comicpress-manager-cpm-date-format', 'test');
+
+		$this->assertEquals(str_replace('{date}', '%date-test%', $this->cpmh->default_filter), $this->cpmh->_get_filter());
 	}
 
 	function providerTestConvertToPercentFilter() {
