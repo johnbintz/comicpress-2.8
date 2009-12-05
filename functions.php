@@ -235,15 +235,6 @@ foreach ($dirs_to_search as $dir) {
 // Dashboard Menu Comicpress Options and ComicPress CSS
 require_once(get_template_directory() . '/comicpress-options.php');
 
-// If ComicPress Manager is installed, use the date format defined there. If not, default to
-// Y-m-d.. It's best to use CPM's date definition for improved operability between theme and plugin.
-
-if (defined("CPM_DATE_FORMAT")) {
- define("CP_DATE_FORMAT", CPM_DATE_FORMAT);
-} else {
- define("CP_DATE_FORMAT", "Y-m-d");
-}
-
 // If you want to run multiple comics on a single day, define your additional filters here.
 // Example: you want to run an additional comic with the filename 2008-01-01-a-my-new-years-comic.jpg.
 // Define an additional filter in the list below:
