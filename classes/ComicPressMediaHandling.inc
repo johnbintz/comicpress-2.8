@@ -58,6 +58,15 @@ class ComicPressMediaHandling {
 		return $result;
 	}
 
+	function _get_regex_dirname($input) {
+		return dirname($this->_resolve_regex_path($input));
+	}
+
+	function _get_regex_filename($input) {
+		$input = preg_replace('#\\\(?![.])#', '/', $input);
+		return basename($input);
+	}
+
 	function _resolve_regex_path($input) {
 		$input = str_replace('\.', '.', $input);
 		$input = str_replace('\\', '/', $input);
@@ -92,15 +101,13 @@ class ComicPressMediaHandling {
 		return apply_filters('comicpress_expand_filter_callback', $value, $matches);
 	}
 
-	// TODO: Fix Pattern Escaping
 	function _read_directory($pattern) {
-		$resolved_pattern = $this->_resolve_regex_path($pattern);
-		$dirname = dirname($resolved_pattern);
+		$dirname = $this->_get_regex_dirname($pattern);
 		$results = false;
 		if (is_dir($dirname)) {
 			$results = array();
 			if (($dh = opendir($dirname)) !== false) {
-				$filename_pattern = str_replace('#', '\#', basename($resolved_pattern));
+				$filename_pattern = str_replace('#', '\#', $this->_get_regex_filename($pattern));
 				while (($file = readdir($dh)) !== false) {
 					$target = $dirname . '/' . $file;
 					if (is_file($target)) {
