@@ -615,22 +615,10 @@ function in_comic_category() {
 // ComicPress Template Functions
 
 function the_comic_filename($filter = 'default') { return get_comic_filename('comic',null, $filter); }
-
 function the_comic($filter = 'default') { echo get_comic_url('comic', null, $filter); }
-	//The following is deprecated...
-	function comic_display($filter = 'default') { echo get_comic_url('comic', null, $filter); }
-
 function the_comic_archive($filter = 'default') { echo get_comic_url('archive', null, $filter); }
-	//The following is deprecated...
-	function comic_archive($filter = 'default') { echo get_comic_url('archive', null, $filter); }
-
 function the_comic_rss($filter = 'default') { echo get_comic_url('rss', null, $filter); }
-	//The following is deprecated...
-	function comic_rss($filter = 'default') { echo get_comic_url('rss', null, $filter); }
-
 function the_comic_mini($filter = 'default') { echo get_comic_url('mini', null, $filter); }
-	//The following is deprecated...
-	function comic_mini($filter = 'default') { echo get_comic_url('mini', null, $filter); }
 
 /**
  * Display the list of Storyline categories.
