@@ -44,8 +44,8 @@ class GraphicalNavigationWidget extends WP_Widget {
 	 * Handles hitting the global namespace for you.
 	 */
 	function comicpress_get_buy_print_url($url = '') {
-		global $buy_print_url;
-		return $buy_print_url;
+		$comicpress_options = comicpress_load_options();
+		return $comicpress_options['buy_print_url'];
 	}
 
 	/**
@@ -135,10 +135,9 @@ class GraphicalNavigationWidget extends WP_Widget {
 				$id = $temp_id;
 				break;
 			case 'buyprint':
-				$comicpress_options = comicpress_load_options();
 				?><form method="post"
 								title="<?php echo $instance['buyprint_title']; ?>"
-								action="<?php echo $comicpress_options['buy_print_url']; ?>"
+								action="<?php echo apply_filters('comicpress_get_buy_print_url', ''); ?>"
 								class="navi-buyprint-form">
 						<input type="hidden" name="comic" value="<?php echo $current->ID; ?>" />
 						<button class="navi navi-buyprint"
