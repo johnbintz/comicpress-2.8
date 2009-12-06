@@ -35,7 +35,6 @@
 <?php get_sidebar('above'); ?> 
 
 <div id="page-head"></div>
-
 	<?php if (!$comicpress_options['disable_page_restraints']) {
 	if (is_cp_theme_layout('standard,v')) { ?>
 	<div id="page-wrap"><!-- Wraps outside the site width -->

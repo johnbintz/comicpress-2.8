@@ -413,6 +413,13 @@ h3, h3 a {
 	overflow: hidden;	
 }
 
+#pagewrap-left {
+	width: 560px;
+	float: left;
+	overflow: hidden;
+}
+
+
 #subcontent-wrapper {
 	clear: both;
 }
