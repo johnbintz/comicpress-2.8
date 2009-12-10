@@ -5,8 +5,10 @@ class ComicPressPostMediaHandlingMetabox {
 		return array_keys(ComicPressMediaHandling::_bundle_global_variables());
 	}
 
+	function _verify_nonce() { return __comicpress_verify_nonce(); }
+
 	function save_post($post_id) {
-		if (__comicpress_verify_nonce() == 'post-media-update') {
+		if ($this->_verify_nonce() == 'post-media-update') {
 			$info = $_REQUEST['cp'];
 			$result = array();
 			if (isset($info['urls'])) {
