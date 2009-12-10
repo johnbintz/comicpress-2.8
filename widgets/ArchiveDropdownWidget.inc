@@ -3,8 +3,8 @@
 Widget Name: comicpress archive dropdown
 Widget URI: http://comicpress.org/
 Description:
-Author: Philip M. Hofer (Frumph)
-Version: 1.04
+Author: Philip M. Hofer (Frumph) & John Bintz
+Version: 1.1
 Author URI: http://frumph.net/
 
 */
@@ -24,7 +24,7 @@ function comicpress_archive_dropdown() { ?>
 	<div class="archive-dropdown-wrap">
 		<select name="archive-dropdown" class="archive-dropdown" onchange='document.location.href=this.options[this.selectedIndex].value;'>
 		<option value=""><?php echo attribute_escape(__('Archives...','comicpress')); ?></option>
-			<?php wp_get_archives('type=monthly&format=option&show_post_count=-1'); ?>
+			<?php ; ?>
 		</select>
 	</div>
 <?php }
@@ -65,6 +65,7 @@ class ArchiveDropdownWidget extends WP_Widget {
 	function build_dropdown($entries) {
 		if (is_string($entries) || is_array($entries)) {
 			$id = 'archive-dropdown-' . md5(rand());
+			$button_id = 'archive-dropdown-submit-' . md5(rand());
 
 			$nonce = wp_create_nonce('comicpress');
 			$action_nonce = wp_create_nonce('comicpress-follow-archive-dropdown');
@@ -88,15 +89,32 @@ class ArchiveDropdownWidget extends WP_Widget {
 							  }
 							?>
 						</select>
-						<input type="submit" value="<?php echo esc_attr(apply_filters('comicpress_archive_dropdown_submit_button', __('Go', 'comicpress'))) ?>" />
+						<input id="<?php echo esc_attr($button_id) ?>" type="submit" value="<?php echo esc_attr(apply_filters('comicpress_archive_dropdown_submit_button', __('Go', 'comicpress'))) ?>" />
 					</form>
 				</div>
 				<script type="text/javascript">
-
+					document.getElementById('<?php echo esc_js($button_id) ?>').style.display = 'none';
+					document.getElementById('<?php echo esc_js($id) ?>').onchange = function(e) {
+						document.location.href = e.target.options[e.target.selectedIndex].value;
+					};
 				</script>
 			<?php return ob_get_clean();
 		}
 		return '';
+	}
+
+	function build_monthly_archive_dropdown() {
+		return $this->build_dropdown(wp_get_archives('type=monthly&format=option&show_post_count=-1&echo=0'));
+	}
+
+	function _new_comicpressstoryline() { return new ComicPressStoryline(); }
+	function _new_comicpressdbinterface() { return new ComicPressDBInterface(); }
+
+	function build_comic_archive_dropdown() {
+		$storyline = $this->_new_comicpressstoryline();
+		$storyline->read_from_options();
+
+
 	}
 
 	function widget($args, $instance) {
