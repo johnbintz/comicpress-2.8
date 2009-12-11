@@ -233,6 +233,7 @@ foreach ($dirs_to_search as $dir) {
 
 // Dashboard Menu Comicpress Options and ComicPress CSS
 require_once(get_template_directory() . '/comicpress-options.php');
+require_once(get_template_directory() . '/comicpress-debug.php');
 
 // If you want to run multiple comics on a single day, define your additional filters here.
 // Example: you want to run an additional comic with the filename 2008-01-01-a-my-new-years-comic.jpg.
