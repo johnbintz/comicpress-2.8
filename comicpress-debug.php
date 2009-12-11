@@ -2,42 +2,49 @@
 
 function comicpress_notice_debug() {
 	global $current_user, $comiccat, $blogcat;
-	if( strpos( $_SERVER[ 'PHP_SELF' ], -'/wp-admin/index.php' ) === false )
+
+	if( substr( $_SERVER[ 'PHP_SELF' ], -19 ) != '/wp-admin/index.php' )
 		return;
-	
-	$error = array();
 
 	$comicpress_options = comicpress_load_options();
+	
+	$error = array();
+	$post_cat_link = get_bloginfo('wpurl') . '/wp-admin/categories.php';
+	
 	if ($comiccat == $blogcat) {
-		$error[] = array('header', 'The $comiccat is the same as $blogcat.');
-		$error[] = 'Installation instructions on how to set the comicpress-options.php settings and comicpress manager settings here, not to mention the __( for language pack.';
-	}
+		$error[] = array('header', __('Primary Comic and Blog categories are not configured properly.','comicpress'));
+		$error[] = __('ComicPress requires 2 categories to be added to the ','comicpress') . '<a href="'.$post_cat_link.'">' . __('post categories.','comicpress') . '</a>' . 
+			__(' It is necessary to have 2 more categories in addition to the uncategorized category, a Blog and Comic primary categories.  These two additional categories will be the root categories that seperate the difference between the comic and blog posts.  When you post a new comic you will be posting it into the comic category or heirarchal children of the comic category.   When posting a new blog post you need to set it into the blog category or child of the blog category.   Uncategorized will act as a blog post category (do not rename uncategorized).','comicpress');
+	}	
 	
 	if (!empty($error)) {
 	?>
 	<div class="error">
-  	<h2>ComicPress Installation Problems Detected</h2>
-	  <p>ComicPress doesn't seem to be fully installed at this time, check out these messages:</p>
-	  <?php
-	  	foreach ($error as $info) {
-	  	  unset($text);
-	  	  if (is_array($info)) {
-	  	  	list($type, $text) = $info;
-	  	  } else {
-	  	  	if (is_string($info)) {
-		  	  	$text = $info;
-		  	  	$type = 'paragraph';
-		  	  }
-	  	  }
-	  	  if (!empty($text) && !empty($type)) {
-	  	  	switch ($type) {
-	  	  		case 'header': echo "<h3>${text}</h3>"; break;
-	  	  		case 'raw': echo $text; break;
-	  	  		default: echo "<p>${text}</p>"; break;
-	  	  	}
-	  	  }	  	  
+		<h2>ComicPress Debug</h2>
+		ComicPress doesn't seem to be fully installed at this time, check out these messages.<br />
+		<br />
+		<?php
+			foreach ($error as $info) {
+				unset($text);
+				if (is_array($info)) {
+					list($type, $text) = $info;
+				} else {
+					if (is_string($info)) {
+						$text = $info;
+						$type = 'paragraph';
+					}
+				}
+				if (!empty($text) && !empty($type)) {
+					switch ($type) {
+						case 'header': echo "<h3>${text}</h3>"; break;
+						case 'raw': echo $text; break;
+						default: echo "<p>${text}</p>"; break;
+					}
+				}	  	  
 			}
 		?>
+		<br />
+		<br />
 	</div>
 <?php 
 	}
@@ -45,3 +52,4 @@ function comicpress_notice_debug() {
 
 add_action( 'admin_notices', 'comicpress_notice_debug' );
 
+?>

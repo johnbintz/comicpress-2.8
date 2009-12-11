@@ -102,7 +102,7 @@ function comicpress_load_options() {
 	global $comicpress_options;
 	$comicpress_options = get_option('comicpress_options');
 	if (empty($comicpress_options)) {
-		$comicpress_options['comicpress_version'] = '2.9.0.4';
+		$comicpress_options['comicpress_version'] = '2.9.0.5';
 		foreach (array(
 			'disable_comic_frontpage' => false,
 			'disable_comic_blog_frontpage' => false,
@@ -179,7 +179,7 @@ function comicpress_load_options() {
 		add_option('comicpress_options', $comicpress_options, '', 'yes');
 		// update_option('comicpress_options', $comicpress_options);
 	}
-	$comicpress_options['comicpress_version'] = '2.9.0.4';
+	$comicpress_options['comicpress_version'] = '2.9.0.5';
 	update_option('comicpress_options', $comicpress_options);
 	return $comicpress_options;
 }
