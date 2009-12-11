@@ -58,4 +58,32 @@ class ArchiveDropdownWidgetTest extends PHPUnit_Framework_TestCase {
 
   	$this->assertTrue(empty($html));
   }
+
+  function testBuildComicArchiveDropdown() {
+  	$w = $this->getMock('ArchiveDropdownWidget', array('_new_comicpressstoryline', '_new_wp_query', 'build_dropdown'));
+
+  	$storyline = $this->getMock('ComicPressStoryline', array('read_from_options', 'build_from_restrictions'));
+  	$storyline->expects($this->once())->method('read_from_options');
+  	$storyline->expects($this->once())->method('build_from_restrictions')->will($this->returnValue(array(1,2,3)));
+
+  	$w->expects($this->once())->method('_new_comicpressstoryline')->will($this->returnValue($storyline));
+
+  	$query = $this->getMock('WP_Query', array('query', 'has_posts', 'next_post'));
+  	$query->expects($this->once())->method('query')->with(array(
+  		'showposts' => -1,
+  		'category__in' => array(1,2,3)
+  	));
+
+  	wp_insert_post((object)array('ID' => 1, 'guid' => 'guid', 'post_title' => 'title'));
+
+  	$query->expects($this->at(1))->method('has_posts')->will($this->returnValue(true));
+  	$query->expects($this->at(2))->method('next_post')->will($this->returnValue((object)array('ID' => 1, 'guid' => 'guid', 'post_title' => 'title')));
+  	$query->expects($this->at(3))->method('has_posts')->will($this->returnValue(false));
+
+  	$w->expects($this->once())->method('_new_wp_query')->will($this->returnValue($query));
+
+  	$w->expects($this->once())->method('build_dropdown')->with(array('guid' => 'title'));
+
+  	$w->build_comic_archive_dropdown();
+  }
 }

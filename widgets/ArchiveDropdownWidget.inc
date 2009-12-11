@@ -20,15 +20,6 @@ function comicpress_archive_dropdown_storyline() {
 }
 */
 
-function comicpress_archive_dropdown() { ?>
-	<div class="archive-dropdown-wrap">
-		<select name="archive-dropdown" class="archive-dropdown" onchange='document.location.href=this.options[this.selectedIndex].value;'>
-		<option value=""><?php echo attribute_escape(__('Archives...','comicpress')); ?></option>
-			<?php ; ?>
-		</select>
-	</div>
-<?php }
-
 function comicpress_archive_dropdown_comics() {
 	global $post, $wp_query;
 	$temp_post = $post;
@@ -109,12 +100,25 @@ class ArchiveDropdownWidget extends WP_Widget {
 
 	function _new_comicpressstoryline() { return new ComicPressStoryline(); }
 	function _new_comicpressdbinterface() { return new ComicPressDBInterface(); }
+	function _new_wp_query() { return new WP_Query(); }
 
 	function build_comic_archive_dropdown() {
 		$storyline = $this->_new_comicpressstoryline();
 		$storyline->read_from_options();
 
+		$query = $this->_new_wp_query();
+		$query->query(array(
+			'showposts' => -1,
+			'category__in' => $storyline->build_from_restrictions()
+		));
 
+		$results = array();
+		while($query->has_posts()) {
+			$post = $query->next_post();
+			$results[get_permalink($post)] = get_the_title($post);
+		}
+
+		return $this->build_dropdown($results);
 	}
 
 	function widget($args, $instance) {
