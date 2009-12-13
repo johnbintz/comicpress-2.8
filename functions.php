@@ -102,7 +102,7 @@ function comicpress_load_options() {
 	global $comicpress_options;
 	$comicpress_options = get_option('comicpress_options');
 	if (empty($comicpress_options)) {
-		$comicpress_options['comicpress_version'] = '2.9.0.4';
+		$comicpress_options['comicpress_version'] = '2.9.0.5';
 		foreach (array(
 			'disable_comic_frontpage' => false,
 			'disable_comic_blog_frontpage' => false,
@@ -179,7 +179,7 @@ function comicpress_load_options() {
 		add_option('comicpress_options', $comicpress_options, '', 'yes');
 		// update_option('comicpress_options', $comicpress_options);
 	}
-	$comicpress_options['comicpress_version'] = '2.9.0.4';
+	$comicpress_options['comicpress_version'] = '2.9.0.5';
 	update_option('comicpress_options', $comicpress_options);
 	return $comicpress_options;
 }
@@ -233,6 +233,7 @@ foreach ($dirs_to_search as $dir) {
 
 // Dashboard Menu Comicpress Options and ComicPress CSS
 require_once(get_template_directory() . '/comicpress-options.php');
+require_once(get_template_directory() . '/comicpress-debug.php');
 
 // If you want to run multiple comics on a single day, define your additional filters here.
 // Example: you want to run an additional comic with the filename 2008-01-01-a-my-new-years-comic.jpg.
