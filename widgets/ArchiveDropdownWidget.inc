@@ -26,8 +26,8 @@ class ArchiveDropdownWidget extends WP_Widget {
 	function _verify_nonce() { return __comicpress_verify_nonce(); }
 
 	function template_redirect() {
-		if ($this->_verify_nonce() == 'follow-archive-dropdown') {
-
+		if (ArchiveDropdownWidget::_verify_nonce() == 'follow-archive-dropdown') {
+			wp_redirect($_GET['cp']['urls']);
 		}
 	}
 
@@ -199,3 +199,5 @@ class ArchiveDropdownWidget extends WP_Widget {
 		<?php }
 	}
 }
+
+add_action('template_redirect', array('ArchiveDropdownWidget', 'template_redirect'));
