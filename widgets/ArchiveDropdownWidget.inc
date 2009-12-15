@@ -9,36 +9,6 @@ Author URI: http://frumph.net/
 
 */
 
-/*
-function comicpress_archive_dropdown_storyline() {
-	$storyline = new ComicPressStoryline();
-	$storyline->create_structure(get_option('comicpress-storyline-category-order'));
-	$categories =  array_keys($storyline->_structure);
-	foreach ($categories as $id) {
-		$post = ComicPressDBInterface::get_instance()->get_first_comic($id);
-	}
-}
-*/
-
-function comicpress_archive_dropdown_comics() {
-	global $post, $wp_query;
-	$temp_post = $post;
-	$temp_query = $wp_query;
-?>
-	<div class="archive-dropdown-wrap">
-		<select name="archive-dropdown" class="archive-dropdown" onchange='document.location.href=this.options[this.selectedIndex].value;'>
-		<option value=""><?php echo attribute_escape(__('Archives...','comicpress')); ?></option>
-				<?php $comicArchive = new WP_Query(); $comicArchive->query('showposts=-1&cat='.get_all_comic_categories_as_cat_string());
-				while ($comicArchive->have_posts()) : $comicArchive->the_post() ?>
-					<option value="<?php echo get_permalink($post->ID) ?>"><?php the_title() ?></option>
-				<?php endwhile; ?>
-		</select>
-	</div>
-	<?php
-	$post = $temp_post; $temp_post = null;
-	$wp_query = $temp_query; $temp_query = null;
-}
-
 class ArchiveDropdownWidget extends WP_Widget {
 	var $modes;
 
