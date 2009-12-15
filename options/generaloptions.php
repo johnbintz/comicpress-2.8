@@ -79,7 +79,7 @@
 						<input id="disable_default_comic_nav" name="disable_default_comic_nav" type="checkbox" value="1" <?php checked(true, $comicpress_options['disable_default_comic_nav']); ?> />
 					</td>
 					<td>
-						<?php _e('Previous Entries and Next Entries buttons are replaced by a bar of numbered pages. The default comic post navigation is above each comic blog post.','comicpress'); ?>
+						<?php _e('The default comic post navigation is above each comic blog post.','comicpress'); ?>
 					</td>
 				</tr>
 				<?php 

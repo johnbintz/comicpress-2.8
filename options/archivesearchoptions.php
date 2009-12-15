@@ -55,7 +55,7 @@
 						</label>
 					</td>
 					<td>
-						<?php _e('How many images in the comic category would you like to see in the archive page?','comicpress'); ?>
+						<?php _e('How many images in the comic category would you like to see in the archive page (-1 will display all available).','comicpress'); ?>
 					</td>
 				</tr>
 			</table>
