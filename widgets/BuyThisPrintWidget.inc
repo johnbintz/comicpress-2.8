@@ -25,7 +25,9 @@ class BuyThisPrintWidget extends WP_Widget {
 		extract($args, EXTR_SKIP);
 
 		echo $before_widget;
-		$title = apply_filters('widget_title', $instance['title']);
+		if (isset($instance['title'])) {
+			$title = apply_filters('widget_title', $instance['title']);
+		}
 		if ( !empty( $title ) ) { echo $before_title . $title . $after_title; };
 
 		if ( get_post_meta( get_the_ID(), "buythiscomic", true ) !== 'sold' ) {
@@ -60,7 +62,7 @@ class BuyThisPrintWidget extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '' ) );
 		$title = strip_tags($instance['title']);
 		?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:','comicpress'); ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:','comicpress'); ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></label></p>
 		<?php
 	}
 }
