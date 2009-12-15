@@ -35,16 +35,18 @@ class BuyThisPrintWidgetTest extends PHPUnit_Framework_TestCase {
 	}
 
 	function testBuyThisPrintStructure() {
-		global $post, $buy_print_url;
+		global $post;
 
-		$buy_print_url = 'buy print url';
+		$w = $this->getMock('BuyThisPrintWidget', array('_load_options'));
+		$w->expects($this->once())->method('_load_options')->will($this->returnValue(array('buy_print_url' => 'buy_print_url_value')));
+
 		$post = (object)array('ID' => 10);
 
-		$result = $this->w->buy_print_structure();
+		$result = $w->buy_print_structure();
 
 		$this->assertTag(array(
 			'tag' => 'form',
-			'attributes' => array('action' => $buy_print_url)
+			'attributes' => array('action' => 'buy_print_url_value')
 		), $result);
 
 		$this->assertTag(array(

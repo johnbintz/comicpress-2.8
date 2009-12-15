@@ -35,8 +35,11 @@ class BuyThisPrintWidget extends WP_Widget {
 		echo $after_widget;
 	}
 
+	function _load_options() { return comicpress_load_options(); }
+
 	function buy_print_structure($content = '') {
-		$comicpress_options = comicpress_load_options(); ?>
+		$comicpress_options = $this->_load_options();
+		ob_start(); ?>
 			<div class="buythis"><form method="post" action="<?php echo $comicpress_options['buy_print_url']; ?>">
 			<input type="hidden" name="comic" value="<?php echo get_the_ID(); ?>" />
 			<button class="buythisbutton" type="submit" value="submit" name="submit"></button></form></div>
