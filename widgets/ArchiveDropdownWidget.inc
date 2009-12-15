@@ -90,7 +90,7 @@ class ArchiveDropdownWidget extends WP_Widget {
 		));
 
 		$results = array();
-		while($query->has_posts()) {
+		while($query->have_posts()) {
 			$post = $query->next_post();
 			$results[get_permalink($post)] = get_the_title($post);
 		}
@@ -103,12 +103,12 @@ class ArchiveDropdownWidget extends WP_Widget {
 
 		echo $before_widget;
 		$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
-		if ( !empty( $title ) ) { echo $before_title . $title . $after_title; };
-		if ($instance['showcomicposts'] == 'on') {
-			comicpress_archive_dropdown_comics();
-		} else {
-			comicpress_archive_dropdown();
+		if (!empty($title)) { echo $before_title . $title . $after_title; };
+
+		if (method_exists($this, "build_{$instance['mode']}_dropdown")) {
+			echo $this->{"build_{$instance['mode']}_dropdown"}();
 		}
+
 		echo $after_widget;
 	}
 

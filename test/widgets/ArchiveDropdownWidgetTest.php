@@ -68,7 +68,7 @@ class ArchiveDropdownWidgetTest extends PHPUnit_Framework_TestCase {
 
   	$w->expects($this->once())->method('_new_comicpressstoryline')->will($this->returnValue($storyline));
 
-  	$query = $this->getMock('WP_Query', array('query', 'has_posts', 'next_post'));
+  	$query = $this->getMock('WP_Query', array('query', 'have_posts', 'next_post'));
   	$query->expects($this->once())->method('query')->with(array(
   		'showposts' => -1,
   		'category__in' => array(1,2,3)
@@ -76,9 +76,9 @@ class ArchiveDropdownWidgetTest extends PHPUnit_Framework_TestCase {
 
   	wp_insert_post((object)array('ID' => 1, 'guid' => 'guid', 'post_title' => 'title'));
 
-  	$query->expects($this->at(1))->method('has_posts')->will($this->returnValue(true));
+  	$query->expects($this->at(1))->method('have_posts')->will($this->returnValue(true));
   	$query->expects($this->at(2))->method('next_post')->will($this->returnValue((object)array('ID' => 1, 'guid' => 'guid', 'post_title' => 'title')));
-  	$query->expects($this->at(3))->method('has_posts')->will($this->returnValue(false));
+  	$query->expects($this->at(3))->method('have_posts')->will($this->returnValue(false));
 
   	$w->expects($this->once())->method('_new_wp_query')->will($this->returnValue($query));
 
