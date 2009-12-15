@@ -58,4 +58,60 @@ class ArchiveDropdownWidgetTest extends PHPUnit_Framework_TestCase {
 
   	$this->assertTrue(empty($html));
   }
+
+  function testBuildComicArchiveDropdown() {
+  	$w = $this->getMock('ArchiveDropdownWidget', array('_new_comicpressstoryline', '_new_wp_query', 'build_dropdown'));
+
+  	$storyline = $this->getMock('ComicPressStoryline', array('read_from_options', 'build_from_restrictions'));
+  	$storyline->expects($this->once())->method('read_from_options');
+  	$storyline->expects($this->once())->method('build_from_restrictions')->will($this->returnValue(array(1,2,3)));
+
+  	$w->expects($this->once())->method('_new_comicpressstoryline')->will($this->returnValue($storyline));
+
+  	$query = $this->getMock('WP_Query', array('query', 'have_posts', 'next_post'));
+  	$query->expects($this->once())->method('query')->with(array(
+  		'showposts' => -1,
+  		'category__in' => array(1,2,3)
+  	));
+
+  	wp_insert_post((object)array('ID' => 1, 'guid' => 'guid', 'post_title' => 'title'));
+
+  	$query->expects($this->at(1))->method('have_posts')->will($this->returnValue(true));
+  	$query->expects($this->at(2))->method('next_post')->will($this->returnValue((object)array('ID' => 1, 'guid' => 'guid', 'post_title' => 'title')));
+  	$query->expects($this->at(3))->method('have_posts')->will($this->returnValue(false));
+
+  	$w->expects($this->once())->method('_new_wp_query')->will($this->returnValue($query));
+
+  	$w->expects($this->once())->method('build_dropdown')->with(array('guid' => 'title'));
+
+  	$w->build_comic_archive_dropdown();
+  }
+
+  function providerTestUpdate() {
+  	$w = new ArchiveDropdownWidget();
+  	$valid_mode = array_shift(array_keys($w->modes));
+
+  	return array(
+  		array(array(), array()),
+  		array(
+  			array('title' => '<b>test</b>'),
+  			array('title' => 'test'),
+  		),
+  		array(
+  			array('mode' => 'bad'),
+  			array()
+  		),
+  		array(
+  			array('mode' => $valid_mode),
+  			array('mode' => $valid_mode)
+  		)
+  	);
+  }
+
+  /**
+   * @dataProvider providerTestUpdate
+   */
+  function testUpdate($input, $expected_output) {
+  	$this->assertEquals($expected_output, $this->w->update($input, array()));
+  }
 }
