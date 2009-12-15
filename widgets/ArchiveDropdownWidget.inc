@@ -18,7 +18,8 @@ class ArchiveDropdownWidget extends WP_Widget {
 
 		$this->modes = array(
 			'monthly_archive' => __('Monthly archive', 'comicpress'),
-		  'comic_archive'   => __('Comic archive', 'comicpress')
+		  'comic_archive'   => __('Comic archive', 'comicpress'),
+		  'storyline_order'   => __('Storyline order', 'comicpress'),
 		);
 	}
 
@@ -30,6 +31,9 @@ class ArchiveDropdownWidget extends WP_Widget {
 		}
 	}
 
+	/**
+	 * Build a dropdown geared toward quick links to posts.
+	 */
 	function build_dropdown($entries) {
 		if (is_string($entries) || is_array($entries)) {
 			$id = 'archive-dropdown-' . md5(rand());
@@ -71,6 +75,9 @@ class ArchiveDropdownWidget extends WP_Widget {
 		return '';
 	}
 
+	/**
+	 * Build the monthly archive dropdown.
+	 */
 	function build_monthly_archive_dropdown() {
 		return $this->build_dropdown(wp_get_archives('type=monthly&format=option&show_post_count=-1&echo=0'));
 	}
@@ -79,6 +86,9 @@ class ArchiveDropdownWidget extends WP_Widget {
 	function _new_comicpressdbinterface() { return new ComicPressDBInterface(); }
 	function _new_wp_query() { return new WP_Query(); }
 
+	/**
+	 * Build the comic archive dropdown.
+	 */
 	function build_comic_archive_dropdown() {
 		$storyline = $this->_new_comicpressstoryline();
 		$storyline->read_from_options();
@@ -98,6 +108,29 @@ class ArchiveDropdownWidget extends WP_Widget {
 		return $this->build_dropdown($results);
 	}
 
+	/**
+	 * Build dropdown based on storyline order.
+	 */
+	function build_storyline_order_dropdown() {
+		$storyline = $this->_new_comicpressstoryline();
+		$storyline->read_from_options();
+
+		$results = array();
+		if (!empty($storyline->_structure)) {
+			foreach ($storyline->_structure as $id => $info) {
+				$category = get_category($id);
+				if (!empty($category)) {
+					$results[get_category_link($id)] = str_repeat('&nbsp;', ($info['level'] - 1) * 3) . $category->name;
+				}
+			}
+		}
+
+		return $this->build_dropdown($results);
+	}
+
+	/**
+	 * Render the widget.
+	 */
 	function widget($args, $instance) {
 		extract($args, EXTR_SKIP);
 
@@ -112,6 +145,9 @@ class ArchiveDropdownWidget extends WP_Widget {
 		echo $after_widget;
 	}
 
+	/**
+	 * Update widget parameters.
+	 */
 	function update($new_instance, $old_instance) {
 		$instance = array();
 
@@ -133,6 +169,9 @@ class ArchiveDropdownWidget extends WP_Widget {
 		return $instance;
 	}
 
+	/**
+	 * Show the widget editor.
+	 */
 	function form($instance) {
 		$valid_mode = array_shift(array_keys($this->modes));
 		$instance = wp_parse_args((array)$instance, array('title' => '', 'mode' => $valid_mode));
