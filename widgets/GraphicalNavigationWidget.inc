@@ -49,8 +49,8 @@ class GraphicalNavigationWidget extends WP_Widget {
 	 * Handles hitting the global namespace for you.
 	 */
 	function comicpress_get_buy_print_url($url = '') {
-		global $buy_print_url;
-		return $buy_print_url;
+		$comicpress_options = comicpress_load_options();
+		return $comicpress_options['buy_print_url'];
 	}
 
 	/**
@@ -422,17 +422,17 @@ class GraphicalNavigationWidget extends WP_Widget {
 		);
 
 		$title_defaults = array(
-			'first_title' => __('&lsaquo;&lsaquo; First', 'comicpress'),
+			'first_title' => __('First', 'comicpress'),
 			'story_prev_title' => __('Chapter', 'comicpress'),
 			'story_next_title' => __('Chapter', 'comicpress'),
 			'story_prev_in_title' => __('In Chapter', 'comicpress'),
 			'story_next_in_title' => __('In Chapter', 'comicpress'),
-			'previous_title' => __('&lsaquo; Previous', 'comicpress'),
+			'previous_title' => __('Previous', 'comicpress'),
 			'random_title' => __('Random', 'comicpress'),
 			'archives_title' => __('Archives', 'comicpress'),
 			'comments_title' => __('Comments', 'comicpress'),
-			'next_title' => __('Next &rsaquo;', 'comicpress'),
-			'last_title' => __('Last &rsaquo;&rsaquo;', 'comicpress'),
+			'next_title' => __('Next', 'comicpress'),
+			'last_title' => __('Last', 'comicpress'),
 			'buyprint_title' => __('Buy Print', 'comicpress')
 		);
 

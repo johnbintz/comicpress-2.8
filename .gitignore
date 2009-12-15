@@ -4,3 +4,4 @@
 .settings/
 .DS_Store
 coverage/
+comicpress-config.php

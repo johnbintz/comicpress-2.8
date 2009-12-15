@@ -1,5 +1,4 @@
 <?php get_header(); global $comicpress_options; ?>
-
 <div id="content-wrapper-head"></div>
 	<div id="content-wrapper">
 
@@ -9,9 +8,13 @@
 		<div id="pagewrap-right">
 	<?php } ?>
 
+	<?php if (is_cp_theme_layout('v3cr')) { ?>
+		<div id="pagewrap-left">
+	<?php } ?>
+
 	<?php if (is_cp_theme_layout('v3c,v')) { ?>
 		<div id="content" class="narrowcolumn">
-			<div class="column">	
+			<div class="column">
 	<?php } ?>
 
 	<?php while (have_posts()) : the_post(); 
@@ -30,18 +33,22 @@
 	<?php } endwhile; ?>
 	
 <?php if (is_cp_theme_layout('3c,standard,3c2r')) {  ?>
-	<div id="subcontent-wrapper-head"></div>
-		<div id="subcontent-wrapper">
+<div id="subcontent-wrapper-head"></div>
+	<div id="subcontent-wrapper">
 <?php } ?>
 
 	<?php get_sidebar('overblog'); ?>
 	<?php if (is_cp_theme_layout('3c,rgn')) get_sidebar('left'); ?>
 
+<?php if (is_cp_theme_layout('v3cr')) {  ?>
+<div id="subcontent-wrapper-head"></div>
+	<div id="subcontent-wrapper">
+<?php } ?>
+
 	<?php if (!is_cp_theme_layout('v3c,v')) { ?>
 		<div id="content" class="narrowcolumn">
-			<div class="column">	
+			<div class="column">
 	<?php } ?>
-
 	
 	<?php if (have_posts()) : while (have_posts()) : the_post();
 			if (in_comic_category()) {
@@ -116,9 +123,9 @@
 			$post = $temppost; $wp_query = $temp_query; $temppost = null; $temp_query = null;
 		}
 	} 
-	if ('open' == $post->comment_status) {
-		comments_template('', true);
-	} 
+	
+	comments_template('', true);
+	 
 	?>
 		
 	<?php else: ?>

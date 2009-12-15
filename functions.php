@@ -21,7 +21,7 @@ function __comicpress_widgets_init() {
 }
 
 function __comicpress_init() {
-	global $comicpress_options;
+	global $comicpress_options, $__comicpress_handlable_classes;
 	// Check if the $comicpress_options exist, if not set defaults
 	$comicpress_options = comicpress_load_options();
 	// xili-language plugin check
@@ -39,6 +39,31 @@ function __comicpress_init() {
 	if (function_exists('id_get_comment_number')) {
 		remove_filter('comments_number','id_get_comment_number');
 	}
+
+	do_action('comicpress_init');
+
+	if ($verified_nonce = __comicpress_verify_nonce()) {
+		do_action("comicpress_init-${verified_nonce}");
+	}
+}
+
+function __comicpress_verify_nonce() {
+	if (isset($_REQUEST['cp'])) {
+		if (is_array($_REQUEST['cp'])) {
+			if (isset($_REQUEST['cp']['_nonce'])) {
+				if (wp_verify_nonce($_REQUEST['cp']['_nonce'], 'comicpress')) {
+					if (isset($_REQUEST['cp']['action'])) {
+						if (isset($_REQUEST['cp']['_action_nonce'])) {
+							if (wp_verify_nonce($_REQUEST['cp']['_action_nonce'], 'comicpress-' . $_REQUEST['cp']['action'])) {
+								return $_REQUEST['cp']['action'];
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	return false;
 }
 
 add_action('widgets_init', '__comicpress_widgets_init');
@@ -75,8 +100,7 @@ function comicpress_load_options() {
 	global $comicpress_options;
 	$comicpress_options = get_option('comicpress_options');
 	if (empty($comicpress_options)) {
-		$comicpress_options['comicpress_version'] = '2.9.0.3';
-
+		$comicpress_options['comicpress_version'] = '2.9.0.5';
 		foreach (array(
 			'disable_comic_frontpage' => false,
 			'disable_comic_blog_frontpage' => false,
@@ -153,7 +177,7 @@ function comicpress_load_options() {
 		add_option('comicpress_options', $comicpress_options, '', 'yes');
 		// update_option('comicpress_options', $comicpress_options);
 	}
-	$comicpress_options['comicpress_version'] = '2.9.0.3';
+	$comicpress_options['comicpress_version'] = '2.9.0.5';
 	update_option('comicpress_options', $comicpress_options);
 	return $comicpress_options;
 }
@@ -170,39 +194,44 @@ function is_cp_theme_layout($choices) {
 	return false;
 }
 
+/**
+ * Remove of wordpress auto-texturizer.
+ * Dependant on the need remove the commented out areas of this code.
+ * Ex. Russian Language users will need to uncomment all of these to handle the character set dependant on
+ * if they utilize the language translation pack.
+ **/
 if ($comicpress_options['remove_wptexturize']) {
-	// Remove the wptexturizer from changing the quotes and squotes.
+	remove_filter('the_content', 'wptexturize');
 	// remove_filter('the_content', 'wpautop');
 	// remove_filter('the_title', 'wptexturize');
-	remove_filter('the_content', 'wptexturize');
 	// remove_filter('the_excerpt', 'wptexturize');
 	// remove_filter('comment_text', 'wptexturize');
 }
 
 // WIDGETS WP 2.8 compatible ONLY, no backwards compatibility here.
-$dirs_to_search = array_unique(array(get_template_directory(),get_stylesheet_directory()));
+$dirs_to_search = array_unique(array(get_template_directory(), get_stylesheet_directory()));
+$__comicpress_handlable_classes = array();
 foreach ($dirs_to_search as $dir) {
-	// Widgets
-	foreach (glob($dir . '/widgets/*.php') as $__file) { require_once($__file); }
+	foreach (array('widgets' => 'php', 'functions' => 'php', 'classes' => 'inc') as $folder => $extension) {
+		foreach (glob($dir . "/${folder}/*.${extension}") as $__file) {
+			require_once($__file);
+			$__class_name = preg_replace('#\..*$#', '', basename($__file));
+			if (class_exists($__class_name)) {
+				if (method_exists($__class_name, '__comicpress_init')) {
+					add_action('comicpress_init', array($__class_name, '__comicpress_init'));
+				}
 
-	// FUNCTIONS & Extra's
-	foreach (glob($dir . '/functions/*.php') as $__file) { require_once($__file); }
+				if (method_exists($__class_name, 'handle_update')) {
+					$__comicpress_handlable_classes[] = $__class_name;
+				}
+			}
+		}
+	}
 }
 
 // Dashboard Menu Comicpress Options and ComicPress CSS
 require_once(get_template_directory() . '/comicpress-options.php');
-
-// If any errors occur while searching for a comic file, the error messages will be pushed into here.
-$comic_pathfinding_errors = array();
-
-// If ComicPress Manager is installed, use the date format defined there. If not, default to
-// Y-m-d.. It's best to use CPM's date definition for improved operability between theme and plugin.
-
-if (defined("CPM_DATE_FORMAT")) {
- define("CP_DATE_FORMAT", CPM_DATE_FORMAT);
-} else {
- define("CP_DATE_FORMAT", "Y-m-d");
-}
+require_once(get_template_directory() . '/comicpress-debug.php');
 
 // If you want to run multiple comics on a single day, define your additional filters here.
 // Example: you want to run an additional comic with the filename 2008-01-01-a-my-new-years-comic.jpg.
@@ -218,7 +247,6 @@ if (defined("CPM_DATE_FORMAT")) {
 // Note that it's quite possible to slurp up the wrong file if your expressions are too broad.
 
 $comic_filename_filters = array();
-$comic_filename_filters['default'] = "{date}*.*";
 
 // load all of the comic & non-comic category information
 add_action('init', 'get_all_comic_categories');
@@ -428,61 +456,8 @@ function get_adjacent_storyline_category_id($next = false) {
 */
 
 function get_comic_path($folder = 'comic', $override_post = null, $filter = 'default', $multi = null) {
-	global $post, $comic_filename_filters, $comic_folder, $archive_comic_folder, $rss_comic_folder, $mini_comic_folder, $comic_pathfinding_errors, $wpmu_version;
-
-	if (isset($comic_filename_filters[$filter])) {
-		$filter_to_use = $comic_filename_filters[$filter];
-	} else {
-		$filter_to_use = '{date}*.*';
-	}
-
-	switch ($folder) {
-		case "rss": $folder_to_use = $rss_comic_folder; break;
-		case "archive": $folder_to_use = $archive_comic_folder; break;
-		case "mini": $folder_to_use = $mini_comic_folder; break;
-		case "comic": default: $folder_to_use = $comic_folder; break;
-	}
-
-	if (!empty($wpmu_version)) {
-		if (($wpmu_path = get_option('upload_path')) !== false) {
-			$folder_to_use = $wpmu_path . '/' . $folder_to_use;
-		}
-	}
-
-	$post_to_use = (is_object($override_post)) ? $override_post : $post;
-	$post_date = mysql2date(CP_DATE_FORMAT, $post_to_use->post_date);
-
-	$filter_with_date = str_replace('{date}', $post_date, $filter_to_use);
-
-	$cwd = get_stylesheet_directory();
-	if ($cwd !== false) {
-		// Strip the wp-admin part and just get to the root.
-		$root_path = preg_replace('#[\\/]wp-(admin|content).*#', '', $cwd);
-	}
-
-	$results = array();
-	/* have to use root_path to get subdirectory installation directories */
-	if (count($results = glob("${root_path}/${folder_to_use}/${filter_with_date}")) > 0) {
-
-		if (!empty($wpmu_version)) {
-			$comic = reset($results);
-			$comic = $folder_to_use . '/'. basename($comic);
-			if ($wpmu_path !== false) { $comic = str_replace($wpmu_path, "files", $comic); }
-			return $comic;
-		}
-
-		if (!empty($multi)) {
-			return $results;
-		} else {
-			/* clear the root path */
-			$comic = reset($results);
-			$comic = $folder_to_use .'/'. basename($comic);
-			return $comic;
-		}
-	}
-
-	$comic_pathfinding_errors[] = sprintf(__("Unable to find the file in the <strong>%s</strong> folder that matched the pattern <strong>%s</strong>. Check your WordPress and ComicPress settings.", 'comicpress'), $folder_to_use, $filter_with_date);
-	return false;
+	$mh = new ComicPressMediaHandling();
+	return $mh->get_comic_path($folder, $override_post, $filter, $multi);
 }
 
 
@@ -493,16 +468,13 @@ function get_comic_path($folder = 'comic', $override_post = null, $filter = 'def
 * @param string $filter The $comic_filename_filters to use.
 * @return string The absolute URL to the comic file, or false if not found.
 */
-function get_comic_url($folder = 'comic', $override_post = null, $filter = 'default') {
-	if (($result = get_comic_path($folder, $override_post, $filter)) !== false) {
-		return get_bloginfo('wpurl') . '/' . $result;
-	} else {
-		if (($result = get_comic_path('comic', $override_post, $filter)) !== false) {
-			$basecomic = basename($result);
-			return get_bloginfo('wpurl') .  '/' . $result;
+function get_comic_url($type = 'comic', $override_post = null, $filter = 'default') {
+	foreach (array_unique(array($type, 'comic')) as $which_type) {
+		if (($result = get_comic_path($which_type, $override_post, $filter)) !== false) {
+			return trailingslashit(get_bloginfo('url')) . $result;
 		}
 	}
-	return $result;
+	return false;
 }
 
 /**
@@ -638,22 +610,10 @@ function in_comic_category() {
 // ComicPress Template Functions
 
 function the_comic_filename($filter = 'default') { return get_comic_filename('comic',null, $filter); }
-
 function the_comic($filter = 'default') { echo get_comic_url('comic', null, $filter); }
-	//The following is deprecated...
-	function comic_display($filter = 'default') { echo get_comic_url('comic', null, $filter); }
-
 function the_comic_archive($filter = 'default') { echo get_comic_url('archive', null, $filter); }
-	//The following is deprecated...
-	function comic_archive($filter = 'default') { echo get_comic_url('archive', null, $filter); }
-
 function the_comic_rss($filter = 'default') { echo get_comic_url('rss', null, $filter); }
-	//The following is deprecated...
-	function comic_rss($filter = 'default') { echo get_comic_url('rss', null, $filter); }
-
 function the_comic_mini($filter = 'default') { echo get_comic_url('mini', null, $filter); }
-	//The following is deprecated...
-	function comic_mini($filter = 'default') { echo get_comic_url('mini', null, $filter); }
 
 /**
  * Display the list of Storyline categories.
@@ -879,26 +839,3 @@ function comicpress_gnav_display_css() {
 }
 
 if (comicpress_check_child_file('childfunctions') == false) {}
-
-/**
- * Render the ComicPress calendar widget.
- */
-function comicpress_calendar() {
-	$calendar = new CalendarWidget();
-
-	$instance = array();
-	foreach (array('before_widget', 'after_widget', 'thumbnail', 'link', 'small', 'medium', 'large') as $field) {
-		$instance[$field] = '';
-	}
-
-	$calendar->widget($instance, array());
-}
-
-/**
- * Render the ComicPress bookmark widget.
- */
-function comicpress_comic_bookmark() {
-	$bookmark = new BookmarkWidget();
-	$bookmark->init();
-	$bookmark->widget(array(), array());
-}

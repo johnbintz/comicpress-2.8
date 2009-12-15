@@ -250,7 +250,7 @@
 					</tr>
 				</thead>
 				<tr class="alternate">
-					<th scope="row"><label for="blogposts_with_comic"><?php _e('Show all blog posts up until the next comic post on single pages?','comicpress'); ?></label></th>
+					<th scope="row"><label for="blogposts_with_comic"><?php _e('Show all blog posts up until the next comic post on single pages','comicpress'); ?></label></th>
 					<td>
 						<input id="blogposts_with_comic" name="blogposts_with_comic" type="checkbox" value="1" <?php checked(true, $comicpress_options['blogposts_with_comic']); ?> />					
 					</td>
@@ -264,7 +264,7 @@
 						<input id="static_blog" name="static_blog" type="checkbox" value="1" <?php checked(true, $comicpress_options['static_blog']); ?> />					
 					</td>
 					<td>
-						<?php _e('Blog will stay with the single pages, good to use with comments disabled in the settings.','comicpress'); ?>
+						<?php _e('Blog will stay with the single pages, this will automatically disable any commenting ability for comic blog posts. ','comicpress'); ?>
 					</td>
 				</tr>
 				<tr class="alternate">

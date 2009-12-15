@@ -28,6 +28,7 @@
 							<option class="level-0" value="3c" <?php if ($comicpress_options['cp_theme_layout'] =='3c') { ?>selected="selected" <?php } ?>><?php _e('3 Column - Standard ','comicpress'); ?></option>
 							<option class="level-0" value="3c2r" <?php if ($comicpress_options['cp_theme_layout'] =='3c2r') { ?>selected="selected" <?php } ?>><?php _e('3 Column - Double Right Sidebar','comicpress'); ?></option>							
 							<option class="level-0" value="v3c" <?php if ($comicpress_options['cp_theme_layout'] =='v3c') { ?>selected="selected" <?php } ?>><?php _e('3 Column - Vertical','comicpress'); ?></option>	
+							<option class="level-0" value="v3cr" <?php if ($comicpress_options['cp_theme_layout'] =='v3c') { ?>selected="selected" <?php } ?>><?php _e('3 Column - Vertical Double Right Sidebar','comicpress'); ?></option>	
 							<option class="level-0" value="gn" <?php if ($comicpress_options['cp_theme_layout'] =='gn') { ?>selected="selected" <?php } ?>><?php _e('Graphic Novel - Left Sidebar','comicpress'); ?></option>
 							<option class="level-0" value="rgn" <?php if ($comicpress_options['cp_theme_layout'] =='rgn') { ?>selected="selected" <?php } ?>><?php _e('Graphic Novel - Right Sidebar','comicpress'); ?></option>
 						</select>

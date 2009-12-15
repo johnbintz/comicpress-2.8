@@ -6,7 +6,7 @@
 	<div class="sidebar">
 		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Left Sidebar') ) : ?> 
 			<div class="widget">
-				<?php comicpress_calendar() ?>
+				<?php comicpress_calendar_embed() ?>
 			</div>
 			<div class="widget">
 				<?php comicpress_archive_dropdown(); ?>

@@ -29,5 +29,3 @@ $mini_comic_width = "80";
 
 //Minithumb Comic Folder - The folder for your your mini thumbs (default "comics-mini")
 $mini_comic_folder = "comics-mini";
-
-?>

@@ -13,6 +13,8 @@ http://www.opensource.org/licenses/gpl-3.0.html
 
 /* STANDARD TAGS */
 
+html { overflow-y: scroll; } 
+
 body {
 	margin: 0;
 	font-family: 'Arial', sans-serif;
@@ -48,7 +50,7 @@ img {
 }
 
 small {
-	font-size: 10px;
+	font-size: 11px;
 }
 
 hr {
@@ -68,12 +70,11 @@ blockquote {
 	border-color: #000;
 }
 
-cite {
+blockquote cite {
 	margin: 5px 0 0;
 	display: block;
 	font-weight: bold;
 	font-family: 'Arial', sans-serif;
-	font-style: normal;	
 	font-size: 12px;
 }
 
@@ -167,6 +168,10 @@ h3, h3 a {
 	text-align: left;
 	list-style: none;
 }
+
+.ie #menubar {
+	zoom: 1; /* IE fix, allows for variable height menu  */
+	}
 
 #menunav {
 	float: right;
@@ -414,6 +419,13 @@ h3, h3 a {
 	overflow: hidden;	
 }
 
+#pagewrap-left {
+	width: 560px;
+	float: left;
+	overflow: hidden;
+}
+
+
 #subcontent-wrapper {
 	clear: both;
 }
@@ -472,7 +484,7 @@ h3, h3 a {
 
 .post-info, .post-comic-info {
 	padding-bottom: 5px;
-	font-size: 10px;
+	font-size: 11px;
 }
 
 .post-text, .post-comic-text {
@@ -594,92 +606,90 @@ h3, h3 a {
 
 /* COMMENTS */
 
-#comment-wrapper {
-	margin-top: 5px;
+.comment {
+	display: block;
+	margin-top: 20px;
 }
-	.comment {
-		padding: 2px;
-		clear: both;
-	}
 
 	.comment .comment {
-		margin-left: 30px;
+		margin: 10px 0 0 70px;
 	}
 
-	.comment .avatar {
-		margin: 0;
-		padding: 0;
-		float: left;
-	}
-	
-	.comment .comment .avatar {
-		width: 48px;
-		height: 48px;
+	.comment .comment .comment {
+		margin-left: 20px;
 	}
 
-	.comment .trackping {
-		float: left;
-	}
-
-	#comment-wrapper #respond {
-		padding: 5px;
-	}
-
-	.comment-note {
-		width: 400px;
-		display: block;
-		font-size: 11px;
-	}
-	
-	.comment-text {
-		font-size: 13px;
-		padding: 10px 5px 5px;
-		float: left;
-	}
-	
-		.comment-author {
-			padding-left: 5px;
-			display: inline;
-		}
-		
-			.comment-author cite {
-				padding: 0;
-				margin: 0;
-				font-size: 16px;
-				display: inline;
-			}
-			
-			.comment .comment .comment-author cite {
-				font-size: 14px;
-			}
-		
-		.comment-time {
-			padding-left: 5px;
-		}
-		
-		.comment-moderated em {
-			color: #f00;
-			padding-left: 5px;
-		}
-		
-		li.comment {
-			margin-top: 10px;
-		}
-
-.comment-meta-data {
+.comment-avatar {
+	width: 64px;
+	height: 64px;
+	float: left;
+	overflow: hidden;
 }
 
+	.comment .comment .comment-avatar {
+		width: 40px;
+		height: 40px;
+	}
+
+		.comment .comment .avatar {
+			width: 40px;
+			height: 40px;
+		}
+
+.comment-content {
+	margin-left: 70px;
+}
+
+	.comment .comment .comment-content {
+		margin-left: 45px;
+	}
+
+		
+.comment-author cite {
+	font-weight: bold;
+	font-style: normal;
+	font-size: 16px;
+}
+
+	.comment .comment .comment-author cite {
+		font-size: 14px;
+	}
+
+.comment-meta-data {
+	font-size: 11px;
+}
+
+	.comment .comment .comment-permalink {
+		display: none;
+	}
+
+.comment-moderated {
+	font-style: italic;
+	font-size: 15px;
+}
+
+.comment-text  {
+	padding: 5px;
+	font-size: 12px;
+}
+
+	.comment-text p {
+		padding: 5px 5px;
+		margin: 0;
+	}
+
+.comment-note {
+	width: 400px;
+	display: block;
+	font-size: 11px;
+}
+		
 .comment-meta {
 	display: inline;
 	border-left: 1px solid #000;
 }
 
-.says {
-	display: none;
-}
-
 .commentsrsslink {
-	float: right;
 	font-size: 11px;
 }
 
@@ -704,7 +714,6 @@ h3, h3 a {
 ol.commentlist {
 	margin: 0;
 	padding: 10px 0 30px 0;
-	font-size: 11px;
 	list-style: none;
 }
 
@@ -718,10 +727,26 @@ ul.children {
 	list-style: none;
 }
 
-.reply {
-	padding: 10px 0 0 0;
-	text-align: right;
+#respond {
+	padding: 20px 0 0 0;
 }
+
+/* Pingbacks and Trackbacks */
+
+#pingtrackback {
+	font-size: 16px;
+}
+
+.pingback .comment-content, .trackback .comment-content {
+	margin-left: 0;
+}
+
+.trackback .comment-author cite, .pingback .comment-author cite {
+	font-weight: bold;
+	font-style: normal;
+	font-size: 13px;
+}
+
 
 /* ARCHIVE */
 /* For the built-in WordPress archive pages (by month or category) as well as search result pages */
@@ -731,11 +756,34 @@ ul.children {
 	padding: 2px 2px 6px 2px;
 }
 
-.comicarchiveframe img {
-	border: 1px solid #000;
+.comicarchiveframe 
+{
+	-moz-opacity: 0.99;       /* mozilla, netscape */
+	opacity:0.99; /* firefox, opera, safari, chrome */
+	-khtml-opacity: 0.99;      /* khtml, old safari */
 }
 
-.comicarchiveframe:hover {
+	.comicarchiveframe:hover {
+		-moz-opacity: 0.7;       /* mozilla, netscape */
+		opacity:0.70; /* firefox, opera, safari, chrome */
+		-khtml-opacity: 0.7;      /* khtml, old safari */
+
+		}
+		
+	.imagenav-link img {
+		-moz-opacity: 0.5;       /* mozilla, netscape, gecko */
+		opacity:0.5; /* firefox, opera, safari, chrome */
+		-khtml-opacity: 0.5;      /* khtml, old safari */
+		}
+
+			.imagenav-link img:hover {
+				-moz-opacity: 0;       /* mozilla, netscape */
+				opacity:0.5; /* firefox, opera, safari, chrome */
+				-khtml-opacity: 0.5;      /* khtml, old safari */
+				}
+
+.comicarchiveframe img {
+	border: 1px solid #000;
 }
 
 .comicarchiveframe h3 {
@@ -863,7 +911,7 @@ ul.children {
 	}
 
 	#wp-calendar th {
-		font-size: 10px;
+		font-size: 11px;
 		font-weight: normal;
 		text-align: center;
 	}
@@ -1092,11 +1140,6 @@ ul.children {
 	overflow: hidden;
 }
 
-/* Pingbacks and Trackbacks */
-
-li.pingback div p, li.trackback div p {
-	margin-left: 0;
-}
 
 /* STORYLINES */
 
@@ -1201,7 +1244,7 @@ li.pingback div p, li.trackback div p {
 	display: block;
 	float: left;
 	text-align: center;
-	font-size: 10px;
+	font-size: 11px;
 	line-height: 13px;
 }
 
@@ -1212,7 +1255,7 @@ li.pingback div p, li.trackback div p {
 	display: block;
 	float: left;
 	text-align: center;
-	font-size: 10px;
+	font-size: 11px;
 	line-height: 13px;
 	border: 1px solid #999;
 }
@@ -1418,6 +1461,11 @@ li.pingback div p, li.trackback div p {
 		background: url('images/bubble.png') 0 -35px no-repeat;
 		z-index: 1000;
 	}
+	
+	.ie .tt a:hover {
+		z-index:1000; color: #aaaaff; 
+		background-color: Transparent;
+	}
 
 /* User Pages */
 
@@ -1458,3 +1506,18 @@ li.pingback div p, li.trackback div p {
 		margin: 0;
 		padding: 0;
 	}
+
+/* Non-IE browser additions */
+
+::-moz-selection {
+    background: #a1c0d9; /* Firefox */
+}
+
+textarea {
+      resize: none;
+}
+
+/* selection colors */
+::selection {
+    background: #ffb7b7; /* Safari */
+}
