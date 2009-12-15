@@ -164,13 +164,29 @@ class ArchiveDropdownWidget extends WP_Widget {
 	}
 
 	function form($instance) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'showcomicposts' => 'off' ) );
-		$title = strip_tags($instance['title']);
-		$showcomicposts = $instance['showcomicposts']; if (empty($showcomicposts)) $showcomicposts = 'off';
-		?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:','comicpress'); ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
-		<p><label for="<?php echo $this->get_field_id('showcomicposts'); ?>"><strong><?php _e('Show individual comic posts?','comicpress'); ?></strong><br />
-		<input id="<?php echo $this->get_field_id('showcomicposts'); ?>" name="<?php echo $this->get_field_name('showcomicposts'); ?>" type="radio" value="on"<?php if ( $showcomicposts == "on") { echo " checked"; } ?> />On</label>&nbsp;<input id="<?php echo $this->get_field_id('showcomicposts'); ?>" name="<?php echo $this->get_field_name('showcomicposts'); ?>" type="radio" value="off"<?php if ( $showcomicposts == "off") { echo " checked"; } ?> />Off</label></p>
-		<?php
+		$valid_mode = array_shift(array_keys($this->modes));
+		$instance = wp_parse_args((array)$instance, array('title' => '', 'mode' => $valid_mode));
+
+		foreach (array(
+			'title' => __('Title:', 'comicpress'),
+			'mode' => __('Show in widget:', 'comicpress')
+		) as $field => $label) { ?>
+			<p>
+				<?php switch ($field) {
+					case 'mode': ?>
+						<?php echo $label ?><br />
+						<?php	foreach ($this->modes as $mode => $label) { ?>
+							<label><input type="radio" name="<?php echo $this->get_field_name($field); ?>" value="<?php echo $mode ?>" <?php echo ($mode == $instance['mode']) ? 'checked="checked"' : '' ?> /> <?php echo $label ?></label><br />
+						<?php }
+						break;
+						default: ?>
+							<label for="<?php echo $this->get_field_id($field); ?>"><?php echo $label ?>
+								<input class="widefat" id="<?php echo $this->get_field_id($field); ?>" name="<?php echo $this->get_field_name($field); ?>" type="text" value="<?php echo esc_attr($instance[$field]) ?>" />
+							</label>
+							<br />
+							<?php break;
+				} ?>
+			</p>
+		<?php }
 	}
 }
