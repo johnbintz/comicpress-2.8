@@ -86,4 +86,32 @@ class ArchiveDropdownWidgetTest extends PHPUnit_Framework_TestCase {
 
   	$w->build_comic_archive_dropdown();
   }
+
+  function providerTestUpdate() {
+  	$w = new ArchiveDropdownWidget();
+  	$valid_mode = array_shift(array_keys($w->modes));
+
+  	return array(
+  		array(array(), array()),
+  		array(
+  			array('title' => '<b>test</b>'),
+  			array('title' => 'test'),
+  		),
+  		array(
+  			array('mode' => 'bad'),
+  			array()
+  		),
+  		array(
+  			array('mode' => $valid_mode),
+  			array('mode' => $valid_mode)
+  		)
+  	);
+  }
+
+  /**
+   * @dataProvider providerTestUpdate
+   */
+  function testUpdate($input, $expected_output) {
+  	$this->assertEquals($expected_output, $this->w->update($input, array()));
+  }
 }
