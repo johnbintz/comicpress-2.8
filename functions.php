@@ -839,26 +839,3 @@ function comicpress_gnav_display_css() {
 }
 
 if (comicpress_check_child_file('childfunctions') == false) {}
-
-/**
- * Render the ComicPress calendar widget.
- */
-function comicpress_calendar_embed() {
-	$calendar = new CalendarWidget();
-
-	$instance = array();
-	foreach (array('before_widget', 'after_widget', 'thumbnail', 'link', 'small', 'medium', 'large') as $field) {
-		$instance[$field] = '';
-	}
-
-	$calendar->widget($instance, array());
-}
-
-/**
- * Render the ComicPress bookmark widget.
- */
-function comicpress_comic_bookmark_embed() {
-	$bookmark = new BookmarkWidget();
-	$bookmark->init();
-	$bookmark->widget(array(), array());
-}
