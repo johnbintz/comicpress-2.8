@@ -7,29 +7,31 @@ require_once(dirname(__FILE__) . '/../classes/ComicPressPostMediaHandlingMetabox
 class ComicPressPostMediaHandlingMetaboxTest extends PHPUnit_Framework_TestCase {
 	function setUp() {
 		_reset_wp();
+		$_REQUEST = array();
 		$this->pmh = new ComicPressPostMediaHandlingMetabox();
 	}
 
-	function providerTestPostMediaUpdate() {
+	function providerTestSavePost() {
 		return array(
-			array(array(), ''),
-			array(array('post_id' => 'test'), ''),
-			array(array('post_id' => 1), array()),
-			array(array('post_id' => 1, 'urls' => false), array()),
-			array(array('post_id' => 1, 'urls' => array()), array()),
-			array(array('post_id' => 1, 'urls' => array('test' => 'test')), array()),
-			array(array('post_id' => 1, 'urls' => array('comic' => 'test')), array('comic' => 'test')),
+			array(array(), array()),
+			array(array('urls' => false), array()),
+			array(array('urls' => array()), array()),
+			array(array('urls' => array('test' => 'test')), array()),
+			array(array('urls' => array('comic' => 'test')), array('comic' => 'test')),
 		);
 	}
 
 	/**
-	 * @dataProvider providerTestPostMediaUpdate
+	 * @dataProvider providerTestSavePost
 	 */
-	function testPostMediaUpdate($input, $expected_post_metadata) {
-		$pmh = $this->getMock('ComicPressPostMediaHandlingMetabox', array('_get_valid_types'));
+	function testSavePost($input, $expected_post_metadata) {
+		$pmh = $this->getMock('ComicPressPostMediaHandlingMetabox', array('_get_valid_types', '_verify_nonce'));
+		$pmh->expects($this->once())->method('_verify_nonce')->will($this->returnValue(true));
 		$pmh->expects($this->any())->method('_get_valid_types')->will($this->returnValue(array('comic')));
 
-		$this->pmh->handle_post_media_update($input);
+		$_REQUEST = array('cp' => $input);
+
+		$pmh->save_post(1);
 		$this->assertEquals($expected_post_metadata, get_post_meta(1, 'backend_url_images', true));
 	}
 }

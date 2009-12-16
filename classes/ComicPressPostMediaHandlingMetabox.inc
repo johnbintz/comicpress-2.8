@@ -1,34 +1,27 @@
 <?php
 
 class ComicPressPostMediaHandlingMetabox {
-	// @codeCoverageIgnoreStart
-	function __comicpress_init() {
-		add_action('admin_menu', array('ComicPressPostMediaHandlingMetabox', 'admin_menu'));
-	}
-
-	function handle_update() {}
-	// @codeCoverageIgnoreEnd
-
 	function _get_valid_types() {
 		return array_keys(ComicPressMediaHandling::_bundle_global_variables());
 	}
 
-	function handle_post_media_update($info) {
-		if (isset($info['post_id'])) {
-			if (is_numeric($info['post_id'])) {
-				$result = array();
-				if (isset($info['urls'])) {
-					if (is_array($info['urls'])) {
-						$valid_types = ComicPressPostMediaHandlingMetabox::_get_valid_types();
-						foreach ($info['urls'] as $field => $value) {
-							if (in_array($field, $valid_types)) {
-								$result[$field] = strip_tags($value);
-							}
+	function _verify_nonce() { return __comicpress_verify_nonce(); }
+
+	function save_post($post_id) {
+		if ($this->_verify_nonce() == 'post-media-update') {
+			$info = $_REQUEST['cp'];
+			$result = array();
+			if (isset($info['urls'])) {
+				if (is_array($info['urls'])) {
+					$valid_types = ComicPressPostMediaHandlingMetabox::_get_valid_types();
+					foreach ($info['urls'] as $field => $value) {
+						if (in_array($field, $valid_types)) {
+							$result[$field] = strip_tags($value);
 						}
 					}
 				}
-				update_post_meta($info['post_id'], 'backend_url_images', $result);
 			}
+			update_post_meta($post_id, 'backend_url_images', $result);
 		}
 	}
 
@@ -51,3 +44,6 @@ class ComicPressPostMediaHandlingMetabox {
 		include('partials/post-media-handling/metabox.inc');
 	}
 }
+
+add_action('admin_menu', array('ComicPressPostMediaHandlingMetabox', 'admin_menu'));
+add_action('save_post', array('ComicPressPostMediaHandlingMetabox', 'save_post'));
