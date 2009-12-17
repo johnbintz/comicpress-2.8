@@ -16,7 +16,7 @@ class CalendarWidget extends WP_Widget {
 	}
 
 	function widget($args, $instance) {
-		global $post;
+		global $post, $wp_query;
 		extract($args, EXTR_SKIP);
 
 		echo $before_widget;

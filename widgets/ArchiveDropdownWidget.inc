@@ -18,8 +18,8 @@ class ArchiveDropdownWidget extends WP_Widget {
 
 		$this->modes = array(
 			'monthly_archive' => __('Monthly archive', 'comicpress'),
-		  'comic_archive'   => __('Comic archive', 'comicpress'),
-		  'storyline_order'   => __('Storyline order', 'comicpress'),
+			'comic_archive'   => __('Comic archive', 'comicpress'),
+			'storyline_order'   => __('Storyline order', 'comicpress'),
 		);
 	}
 
@@ -43,13 +43,14 @@ class ArchiveDropdownWidget extends WP_Widget {
 			$action_nonce = wp_create_nonce('comicpress-follow-archive-dropdown');
 
 			ob_start(); ?>
-				<div class="archive-dropdown-wrap" id="<?php echo esc_attr($id) ?>">
+			<ul>
+				<li class="archive-dropdown-wrap" id="<?php echo esc_attr($id) ?>">
 					<form action="" method="get">
 						<input type="hidden" name="cp[_nonce]" value="<?php echo esc_attr($nonce) ?>" />
 						<input type="hidden" name="cp[action]" value="follow-archive-dropdown" />
 						<input type="hidden" name="cp[_action_nonce]" value="<?php echo esc_attr($action_nonce) ?>" />
 
-						<select name="cp[urls]">
+						<select name="cp[urls]" class="archive-dropdown">
 							<option value=""><?php echo esc_html(apply_filters('comicpress_archive_dropdown_default_entry', __('Archives...', 'comicpress'))) ?></option>
 							<?php
 							  if (is_string($entries)) {
@@ -63,7 +64,8 @@ class ArchiveDropdownWidget extends WP_Widget {
 						</select>
 						<input id="<?php echo esc_attr($button_id) ?>" type="submit" value="<?php echo esc_attr(apply_filters('comicpress_archive_dropdown_submit_button', __('Go', 'comicpress'))) ?>" />
 					</form>
-				</div>
+				</li>
+			</ul>
 				<script type="text/javascript">
 					document.getElementById('<?php echo esc_js($button_id) ?>').style.display = 'none';
 					document.getElementById('<?php echo esc_js($id) ?>').onchange = function(e) {
