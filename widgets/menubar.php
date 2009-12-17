@@ -13,8 +13,8 @@ Author URI: http://frumph.net/
 function comicpress_menubar() {
 	global $comicpress_options;
 	if (comicpress_check_child_file('menubar') == false) {
-		if (file_exists(get_template_directory() . '/custom-menubar.php')) {
-			include(get_template_directory() . '/custom-menubar.php');
+		if (file_exists(get_stylesheet_directory() . '/custom-menubar.php')) {
+			include(get_stylesheet_directory() . '/custom-menubar.php');
 		} else { ?>
 		<div id="menubar">
 			
