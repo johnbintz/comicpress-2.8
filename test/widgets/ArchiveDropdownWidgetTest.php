@@ -37,7 +37,7 @@ class ArchiveDropdownWidgetTest extends PHPUnit_Framework_TestCase {
 	  	$html = $this->w->build_dropdown($entries);
 
 	  	foreach (array(
-	  		array('tag' => 'div', 'attributes' => array('class' => 'archive-dropdown-wrap')),
+	  		array('tag' => 'li', 'attributes' => array('class' => 'archive-dropdown-wrap')),
 	  		array('tag' => 'form', 'attributes' => array('action' => '', 'method' => 'get')),
 	  		array('tag' => 'select', 'attributes' => array('name' => 'cp[urls]')),
 	  		array('tag' => 'input', 'attributes' => array('name' => 'cp[_nonce]')),
@@ -48,7 +48,7 @@ class ArchiveDropdownWidgetTest extends PHPUnit_Framework_TestCase {
 	  		array('tag' => 'option', 'attributes' => array('value' => 'test'), 'content' => 'Test'),
 	  		array('tag' => 'option', 'attributes' => array('value' => 'test2'), 'content' => 'Test2'),
 	  	) as $matcher) {
-	  		$this->assertTag($matcher, $html);
+	  		$this->assertTag($matcher, $html, print_r($matcher, true));
 	  	}
   	}
   }

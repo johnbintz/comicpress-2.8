@@ -25,6 +25,11 @@ class ComicPressPostMediaHandlingMetabox {
 		}
 	}
 
+	function _save_post($post_id) {
+		$mb = new ComicPressPostMediaHandlingMetabox();
+		$mb->save_post($post_id);
+	}
+
 	// @codeCoverageIgnoreStart
 	function admin_menu() {
 		add_meta_box('comicpress-post-media-handling', __('ComicPress Post Media', 'comicpress'), array('ComicPressPostMediaHandlingMetabox', 'metabox'), 'post', 'normal', 'low');
@@ -46,4 +51,4 @@ class ComicPressPostMediaHandlingMetabox {
 }
 
 add_action('admin_menu', array('ComicPressPostMediaHandlingMetabox', 'admin_menu'));
-add_action('save_post', array('ComicPressPostMediaHandlingMetabox', 'save_post'));
+add_action('save_post', array('ComicPressPostMediaHandlingMetabox', '_save_post'));
