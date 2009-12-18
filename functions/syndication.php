@@ -10,8 +10,8 @@ function cp_add_to_feed_count_rss() {
 	$feedcount = get_option('comicpress_feed_count_rss');
 	if (!empty($feedcount)) {
 		$feedcount = $feedcount + 1;
-		update_option('comicpress_feed_count_rss', $feedcount);  
-	} else {    
+		update_option('comicpress_feed_count_rss', $feedcount);
+	} else {
 		add_option('comicpress_feed_count_rss', 1, ' ', 'yes');
 	}
 }
@@ -23,8 +23,8 @@ function cp_add_to_feed_count_rdf() {
 	$feedcount = get_option('comicpress_feed_count_rdf');
 	if (!empty($feedcount)) {
 		$feedcount = $feedcount + 1;
-		update_option('comicpress_feed_count_rdf', $feedcount);  
-	} else {    
+		update_option('comicpress_feed_count_rdf', $feedcount);
+	} else {
 		add_option('comicpress_feed_count_rdf', 1, ' ', 'yes');
 	}
 }
@@ -36,8 +36,8 @@ function cp_add_to_feed_count_atom() {
 	$feedcount = get_option('comicpress_feed_count_atom');
 	if (!empty($feedcount)) {
 		$feedcount = $feedcount + 1;
-		update_option('comicpress_feed_count_atom', $feedcount);  
-	} else {    
+		update_option('comicpress_feed_count_atom', $feedcount);
+	} else {
 		add_option('comicpress_feed_count_atom', 1, ' ', 'yes');
 	}
 }

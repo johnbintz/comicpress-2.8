@@ -170,10 +170,10 @@ function comicpress_load_options() {
 			'buy_print_add_shipping' => false,
 			'buy_print_us_ship' => '4.95',
 			'buy_print_int_ship' => '9.95',
-			
+
 			'enable_comicpress_debug' => true,
 			'enable_full_post_check' => false
-			
+
 		) as $field => $value) {
 			$comicpress_options[$field] = $value;
 		}
