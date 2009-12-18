@@ -1,9 +1,9 @@
 <?php
 
 function comicpress_notice_debug() {
-	global $current_user, $comiccat, $blogcat, $comic_folder, $wpdb, $category_tree;
+	global $current_user, $comiccat, $blogcat, $comic_folder, $wpdb, $category_tree, $non_comic_categories, $comicpress_options;
 
-	if( substr( $_SERVER[ 'PHP_SELF' ], -19 ) != '/wp-admin/index.php' )
+	if( substr( $_SERVER[ 'PHP_SELF' ], -19 ) != '/wp-admin/index.php' || !$comicpress_options['enable_comicpress_debug'])
 		return;
 
 	$comicpress_options = comicpress_load_options();
@@ -34,28 +34,27 @@ function comicpress_notice_debug() {
 		}
 	}
 	
-	if (empty($error)) {
-		$founderror = FALSE;
-		$blog_query = '&show_posts=-1&posts_per_page=-1&cat="-'.exclude_comic_categories().'"';
+	if (empty($error) && $comicpress_options['enable_full_post_check']) {
+		// Check to make sure posts are not in blogcat and comiccat both
+		$founderror = false;
+		$non_comic_categories = str_replace(' and ', ',', $non_comic_categories);
+		$blog_query = '&show_posts=-1&posts_per_page=-1&cat='.$non_comic_categories;
 
-		$comic_categories = array();
 		$founderrorpost = array();
-		foreach ($category_tree as $node) {
-			$comic_categories[] = end(explode("/", $node));
-		}
 		query_posts($blog_query);
 		if (have_posts()) {
 			while (have_posts()) : the_post();
-				$founderrorpost[] = wp_get_post_categories($post->ID);
-				if (count(array_intersect($comic_categories, wp_get_post_categories($post->ID))) > 0) {
-					$founderror = TRUE;
+				if (in_comic_category()) {
+					$founderrorpostlist .= '<a href="'.get_bloginfo('wpurl').'/wp-admin/post.php?action=edit&post='.get_the_ID().'">'.get_the_title().'</a><br />';
+					$founderror = true;
 				}
 			endwhile;
 		}
-//		if ($founderror) {
-			$error[] = array('header', __('A post is in both a comic category and blog category.','comicpress'));
-			$error[] = __('*duel category error message and fix*','comicpress');
-//		}
+		if ($founderror) {
+			$error[] = array('header', __('Post\'s are in both a comic category and blog category.','comicpress'));
+			$error[] = __('The following posts are set both in a comic category and a blog category, with ComicPress the designations of categories is very important.  The rule of thumb is to make sure that all posts are only in a single category.   If a post is in both the comic category and blog category there will be issues with both navigation and execution of the ComicPress code.','comicpress');
+			$error[] = $founderrorpostlist;
+		}
 	}
 	
 	if (!empty($error)) {
@@ -65,8 +64,6 @@ function comicpress_notice_debug() {
 		ComicPress doesn't seem to be fully installed at this time, check out these messages.<br />
 		<br />
 		<?php
-		var_dump($founderrorpost);
-//		var_dump($comic_categories);
 			foreach ($error as $info) {
 				unset($text);
 				if (is_array($info)) {
