@@ -27,7 +27,7 @@ if (!$zip_file = tempnam('', 'comicpress')) {
 $zip_file .= '.zip';
 
 $ignore_filters = array(
-	'#~$#', '#^\.#', '#^test$#', '#^build$#', '#^Makefile$', '#^phpunit.xml$#'
+	'#~$#', '#^\.#', '#^test$#', '#^build$#', '#^Makefile$#', '#^phpunit.xml$#'
 );
 
 $renames = array(
