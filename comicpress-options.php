@@ -43,6 +43,8 @@ function comicpress_admin() {
 			$comicpress_options['disable_lrsidebars_frontpage'] = (bool)($_REQUEST['disable_lrsidebars_frontpage'] == 1 ? true : false );
 			$comicpress_options['disable_footer_text'] = (bool)($_REQUEST['disable_footer_text'] == 1 ? true : false );
 			$comicpress_options['disable_blogheader'] = (bool)($_REQUEST['disable_blogheader'] == 1 ? true : false );		
+			$comicpress_options['enable_comicpress_debug'] = (bool)($_REQUEST['enable_comicpress_debug'] == 1 ? true : false );
+			$comicpress_options['enable_full_post_check'] = (bool)($_REQUEST['enable_full_post_check'] == 1 ? true : false );
 			$tab = 'general';
 			update_option('comicpress_options',$comicpress_options);
 		}
