@@ -36,7 +36,7 @@ function comicpress_notice_debug() {
 	
 	if (empty($error)) {
 		$founderror = FALSE;
-		$blog_query = '&show_posts=-1&posts_per_page=-1';
+		$blog_query = '&show_posts=-1&posts_per_page=-1&cat="-'.exclude_comic_categories().'"';
 
 		$comic_categories = array();
 		$founderrorpost = array();
