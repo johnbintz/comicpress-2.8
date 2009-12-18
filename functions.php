@@ -820,21 +820,6 @@ function comicpress_check_child_file($filename = '') {
 	return false;
 }
 
-/*
-function rss_count_comments(){
-	global $wpdb,$post;
-	$args = func_get_args();
-	$comments = get_comments_number();
-	echo $args[0];
-	if ($comments == 0) $comment_text = " (No Comments)";
-	if ($comments == 1) $comment_text = " (1 Comment)";
-	if ($comments > 1) $comment_text = " (". $comments . " Comments)";
-	if ($comments>0) echo $comment_text;
-}
-
-add_action('the_title_rss','rss_count_comments');
-*/
-
 function comicpress_gnav_display_css() {
 	global $comicpress_options;
 	if (file_exists(get_stylesheet_directory() . '/images/nav/' . $comicpress_options['graphicnav_directory'] . '/navstyle.css')) { ?>
