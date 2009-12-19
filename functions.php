@@ -1,6 +1,6 @@
 <?php
 
-// the_post_image('thumbnail/medium/full');
+// the_post_thumbnail('thumbnail/medium/full');
 if (function_exists('add_theme_support')) {
 	add_theme_support( 'post-thumbnails' );
 }
