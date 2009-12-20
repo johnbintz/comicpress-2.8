@@ -62,7 +62,16 @@
 						<input id="disable_dynamic_menubar_links" name="disable_dynamic_menubar_links" type="checkbox" value="1" <?php checked(true, $comicpress_options['disable_dynamic_menubar_links']); ?> />
 					</td>
 					<td>
-						<?php _e('Allows you to use the links category <i>menubar</i> (you will need to create this category if it does not already exist) to create custom links on the Menubar (mostly used for making graphic images as links). Otherwise, ALL published pages will appear automatically.','comicpress'); ?>
+						<?php _e('Disable creation of the pages from the wordpress core.','comicpress'); ?>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="enable_blogroll_off_links"><?php _e('Enable the blogroll to appear as a dropdown off the Links page','comicpress'); ?></label></th>
+					<td>
+						<input id="enable_blogroll_off_links" name="enable_blogroll_off_links" type="checkbox" value="1" <?php checked(true, $comicpress_options['enable_blogroll_off_links']); ?> />
+					</td>
+					<td>
+						<?php _e('Allows you to show a dropdown of your blogroll off the page created Links.  When creating the links page, the name must be a capital-L lowercase inks for it to work.','comicpress'); ?>
 					</td>
 				</tr>
 			</table>

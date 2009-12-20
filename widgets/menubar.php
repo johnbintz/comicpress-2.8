@@ -52,27 +52,24 @@ function comicpress_menubar() {
 			$menulinks = preg_replace('#<li ([^>]*)>#', '<li class="page-item link">', $menulinks);
 			$menulinks = preg_replace('#<ul ([^>]*)>#', '', $menulinks);
 			$menulinks = str_replace('</ul>', '', $menulinks);
-			$bookmarks = wp_list_bookmarks('echo=0&title_li=&categorize=1&title_before=&title_after=&exclude_category='.$linkcatid); 
-			$bookmarks = preg_replace('#<li ([^>]*)>#', '<li class="page-item link">', $bookmarks);
-			$bookmarks = preg_replace('#<ul ([^>]*)>#', '<ul>', $bookmarks); 
+			if ($comicpress_options['enable_blogroll_off_links']) {
+				$bookmarks = wp_list_bookmarks('echo=0&title_li=&categorize=1&title_before=&title_after=&exclude_category='.$linkcatid); 
+				$bookmarks = preg_replace('#<li ([^>]*)>#', '<li class="page-item link">', $bookmarks);
+				$bookmarks = preg_replace('#<ul ([^>]*)>#', '<ul>', $bookmarks); 
+			}
 			$listpages = '';
 			if (!$comicpress_options['disable_dynamic_menubar_links']) {
 				$listpages = wp_list_pages('echo=0&sort_column=menu_order&depth=4&title_li=');
 			}
-			if (!empty($bookmarks)) {
+			if (!empty($bookmarks) && $comicpress_options['enable_blogroll_off_links'])  {
 				$listpages = str_replace('Links</a></li>', 'Links</a>
 							<ul>
 							'.$bookmarks.'
 							</ul>
 							</li>
 							', $listpages);
-				$listpages .= $menulinks;
-			} else { 
-				$listpages = str_replace('Links</a></li>', 'Links</a>
-							</li>
-							', $listpages);
-				$listpages .= $menulinks;			
-			} 
+			}
+			$listpages .= $menulinks;
 			?>
 			<ul id="menu">
 			<li class="page_item page-item-home<?php if (is_home()) { ?> current_page_item<?php } ?>"><a href="<?php bloginfo('url'); ?>">Home</a></li>

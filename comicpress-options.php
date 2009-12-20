@@ -103,7 +103,8 @@ function comicpress_admin() {
 			$comicpress_options['enable_navigation_in_menubar'] = (bool)($_REQUEST['enable_navigation_in_menubar'] == 1 ? true : false );
 			$comicpress_options['contact_in_menubar'] = (bool)($_REQUEST['contact_in_menubar'] == 1 ? true : false );
 			$comicpress_options['disable_dynamic_menubar_links'] = (bool)($_REQUEST['disable_dynamic_menubar_links'] == 1 ? true : false );
-			$comicpress_options['disable_default_menubar'] = (bool)($_REQUEST['disable_default_menubar'] == 1 ? true : false );			
+			$comicpress_options['disable_default_menubar'] = (bool)($_REQUEST['disable_default_menubar'] == 1 ? true : false );
+			$comicpress_options['enable_blogroll_off_links'] = (bool)($_REQUEST['enable_blogroll_off_links'] == 1 ? true : false );			
 			$tab = 'menubar';
 			update_option('comicpress_options',$comicpress_options);
 		}

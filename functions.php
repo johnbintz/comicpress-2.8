@@ -172,7 +172,9 @@ function comicpress_load_options() {
 			'buy_print_int_ship' => '9.95',
 
 			'enable_comicpress_debug' => true,
-			'enable_full_post_check' => false
+			'enable_full_post_check' => false,
+			
+			'enable_blogroll_off_links' => false
 
 		) as $field => $value) {
 			$comicpress_options[$field] = $value;
