@@ -273,13 +273,13 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 		<?php
 	}
 }
-register_widget('widget_comicpress_graphical_navigation');
+// register_widget('widget_comicpress_graphical_navigation');
 
 
 function widget_comicpress_graphical_navigation_init() {    
 	new widget_comicpress_graphical_navigation(); 
 } 
 
-add_action('widgets_init', 'widget_comicpress_graphical_navigation_init');
+// add_action('widgets_init', 'widget_comicpress_graphical_navigation_init');
 
 ?>
