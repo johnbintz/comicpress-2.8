@@ -6,17 +6,35 @@ if (function_exists('add_theme_support')) {
 }
 
 function __comicpress_widgets_init() {
+	$available_widgets = array();
+
 	if (($dh = opendir(dirname(__FILE__) . '/widgets')) !== false) {
 		while (($file = readdir($dh)) !== false) {
 			if (strpos($file, '.inc') !== false) {
 				$class_name = preg_replace('#\..*$#', '', $file);
 				require_once(dirname(__FILE__) . '/widgets/' . $file);
 				register_widget($class_name);
-				$widget = new $class_name();
-				if (method_exists($widget, 'init')) { $widget->init(); }
+				$widget = new $class_name(true);
+				if (method_exists($widget, 'init')) {
+					$widget->init();
+				}
+
+				$available_widgets[strtolower($class_name)] = $widget;
 			}
 		}
 		closedir($dh);
+	}
+
+	foreach (wp_get_sidebars_widgets() as $type => $widgets) {
+		if ($type != 'wp_inactive_widgets') {
+			foreach ($widgets as $widget_id) {
+				foreach ($available_widgets as $key => $widget) {
+					if (strpos(strtolower($widget_id), $key) === 0) {
+						$widget->is_active();
+					}
+				}
+			}
+		}
 	}
 }
 

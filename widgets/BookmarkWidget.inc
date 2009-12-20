@@ -1,13 +1,18 @@
 <?php
 
 class BookmarkWidget extends WP_Widget {
-	function BookmarkWidget() {
-		$widget_ops = array('classname' => __CLASS__, 'description' => __('Allow the user to bookmark a page and then jump to it upon return.','comicpress') );
-		$this->WP_Widget('comicpress-bookmark', __('ComicPress Bookmark','comicpress'), $widget_ops);
+	function BookmarkWidget($skip_widget_init = false) {
+		if (!$skip_widget_init) {
+			$widget_ops = array('classname' => __CLASS__, 'description' => __('Allow the user to bookmark a page and then jump to it upon return.','comicpress') );
+			$this->WP_Widget(__CLASS__, __('ComicPress Bookmark','comicpress'), $widget_ops);
+		}
 	}
 
   function init() {
     add_action('wp_head', array(&$this, 'wp_head'));
+  }
+
+  function is_active() {
 		add_action('template_redirect', array(&$this, 'template_redirect'));
   }
 

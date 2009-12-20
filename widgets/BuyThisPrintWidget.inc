@@ -10,9 +10,11 @@ Author URI: http://frumph.net/
 */
 
 class BuyThisPrintWidget extends WP_Widget {
-	function BuyThisPrintWidget() {
-		$widget_ops = array('classname' => 'ComicPressBuyThisPrint', 'description' => __('Adds a button that goes to the buy print template page.','comicpress') );
-		$this->WP_Widget('comicpress_buyprint', __('Buy This Print','comicpress'), $widget_ops);
+	function BuyThisPrintWidget($skip_widget_init = false) {
+		if (!$skip_widget_init) {
+			$widget_ops = array('classname' => __CLASS__, 'description' => __('Adds a button that goes to the buy print template page.','comicpress') );
+			$this->WP_Widget(__CLASS__, __('Buy This Print','comicpress'), $widget_ops);
+		}
 	}
 
 	function init() {
@@ -21,7 +23,7 @@ class BuyThisPrintWidget extends WP_Widget {
 
 	function widget($args, $instance) {
 		extract($args, EXTR_SKIP);
-		
+
 		echo $before_widget;
 		$title = apply_filters('widget_title', $instance['title']);
 		if ( !empty( $title ) ) { echo $before_title . $title . $after_title; };
