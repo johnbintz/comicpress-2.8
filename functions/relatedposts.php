@@ -6,15 +6,14 @@
  * Usage:  [related_posts]
  *
  */
-/*
 
 function related_posts_shortcode( $atts = '' ) {
 	extract(shortcode_atts(array(
 					'limit' => '5',
 					), $atts));
-
+	
 	global $wpdb, $post, $table_prefix, $category_tree;
-
+	
 	if ($post->ID) {
 		// Get tags
 		$tags = wp_get_post_tags($post->ID);
@@ -33,9 +32,9 @@ function related_posts_shortcode( $atts = '' ) {
 				GROUP BY tr.object_id
 				ORDER BY count DESC, p.post_date_gmt DESC
 				LIMIT $limit;";
-
+		
 		$related = $wpdb->get_results($q);
-
+		
 		if ( $related ) {
 			$retval = '
 					<div class="related_posts">
@@ -54,23 +53,22 @@ function related_posts_shortcode( $atts = '' ) {
 				if (count(array_intersect($comic_categories, wp_get_post_categories($r->ID))) == 0)
 					$retval .= '
 							<tr><td class="archive-date" align="right">'.date('M j, Y',strtotime($r->post_date)).'</td><td class="archive-title"><a title="'.wptexturize($r->post_title).'" href="'.get_permalink($r->ID).'">'.wptexturize($r->post_title).'</a></td></tr>';
-			endforeach;
+				endforeach;
 			$retval .= '
 					</table>';
 		} else {
 			$retval .= '
-		<li>'.__('No related posts found','comicpress').'</li>';
+					<li>'.__('No related posts found','comicpress').'</li>';
 		}
 		$retval .= '
-	</li></ul>';
+				</li></ul>';
 		$retval .= '
-</div>';
+				</div>';
 		return $retval;
 	}
 	return;
 }
 
-add_shortcode('related_posts', 'related_posts_shortcode');
+// add_shortcode('related_posts', 'related_posts_shortcode');
 
 ?>
-*/
