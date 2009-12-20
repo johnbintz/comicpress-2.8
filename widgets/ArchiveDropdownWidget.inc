@@ -19,7 +19,8 @@ class ArchiveDropdownWidget extends WP_Widget {
 		$this->modes = array(
 			'monthly_archive' => __('Monthly archive', 'comicpress'),
 			'comic_archive'   => __('Comic archive', 'comicpress'),
-			'storyline_order'   => __('Storyline order', 'comicpress'),
+			'storyline_order'   => __('Storyline archive pages', 'comicpress'),
+			'storyline_order_post_link'   => __('Storyline posts', 'comicpress'),
 		);
 	}
 
@@ -123,6 +124,31 @@ class ArchiveDropdownWidget extends WP_Widget {
 				$category = get_category($id);
 				if (!empty($category)) {
 					$results[get_category_link($id)] = str_repeat('&nbsp;', ($info['level'] - 1) * 3) . $category->name;
+				}
+			}
+		}
+
+		return $this->build_dropdown($results);
+	}
+
+	/**
+	 * Build dropdown based on storyline order, linking to the first post in each category.
+	 */
+	function build_storyline_order_post_link_dropdown() {
+		$storyline = $this->_new_comicpressstoryline();
+		$storyline->read_from_options();
+
+		$dbi = $this->_new_comicpressdbinterface();
+
+		$results = array();
+		if (!empty($storyline->_structure)) {
+			foreach ($storyline->_structure as $id => $info) {
+				$category = get_category($id);
+				if (!empty($category)) {
+					$post = $dbi->get_first_post($id);
+					if (!empty($post)) {
+						$results[get_permalink($post)] = str_repeat('&nbsp;', ($info['level'] - 1) * 3) . $category->name;
+					}
 				}
 			}
 		}
