@@ -9,7 +9,7 @@ class ComicPressRelatedPosts {
 		$rp = new ComicPressRelatedPosts();
 		return $rp->_handle_shortcode(
 		  extract(ComicPressRelatedPosts::_handle_shortcode_attrs($attrs)),
-		  __('Related Comics', 'comicpress'), true
+		  __('Related Comics &not;', 'comicpress'), true
 		);
 	}
 
@@ -17,7 +17,7 @@ class ComicPressRelatedPosts {
 		$rp = new ComicPressRelatedPosts();
 		return $rp->_handle_shortcode(
 		  extract(ComicPressRelatedPosts::_handle_shortcode_attrs($attrs)),
-		  __('Related Posts', 'comicpress'), false
+		  __('Related Posts &not;', 'comicpress'), false
 		);
 	}
 
@@ -66,14 +66,14 @@ class ComicPressRelatedPosts {
 		if (!empty($posts)) {
 			$output[] = '<div class="related_posts">';
 				$output[] = '<span class="related_posts_title">' . $title . '</span>';
-				$output[] = '<table class="month-table">';
+				$output[] = '<ul><li><table class="month-table">';
 				foreach ($posts as $post) {
 					if (array_intersect($this->related_categories, wp_get_post_categories($post->ID))) {
 						$output[] = '<tr><td class="archive-date" align="right">' . date('M j, Y', strtotime($post->post_date)) . '</td>';
 						$output[] = '<td class="archive-title"><a title="' . esc_attr(get_the_title($post)) . '" href="' . esc_attr(get_permalink($post)) . '">' . esc_html(get_the_title($post)) . '</a></td></tr>';
 					}
 				}
-				$output[] = '</table>';
+				$output[] = '</table></li></ul>';
 			$output[] = '</div>';
 		}
 		return implode('', $output);
