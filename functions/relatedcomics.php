@@ -6,7 +6,7 @@
  * Usage:  [related_comics]
  *
  */
-/*
+
 function related_comics_shortcode( $atts = '' ) {
 	extract(shortcode_atts(array(
 					'limit' => '5',
@@ -68,5 +68,4 @@ function related_comics_shortcode( $atts = '' ) {
 }
 add_shortcode('related_comics', 'related_comics_shortcode');
 
-
-?>*/
+?>
