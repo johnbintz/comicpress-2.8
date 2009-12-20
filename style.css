@@ -568,6 +568,10 @@ h3, h3 a {
 	font-weight: 700;
 }
 
+.related_posts_title {
+	font-size: 14px;
+}
+
 .related_posts ul {
 	list-style: none;
 	font-weight: normal;
@@ -881,8 +885,8 @@ ul.children {
 }
 
 .archive-dropdown {
-	width: 192px;
-	margin-left: 4px;
+	width: 160px;
+	margin: 0 auto;
 	padding: 2px;
 }
 

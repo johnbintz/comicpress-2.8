@@ -65,7 +65,7 @@ class ComicPressRelatedPosts {
 		$output = array();
 		if (!empty($posts)) {
 			$output[] = '<div class="related_posts">';
-				$output[] = '<span>' . $title . '</span>';
+				$output[] = '<span class="related_posts_title">' . $title . '</span>';
 				$output[] = '<table class="month-table">';
 				foreach ($posts as $post) {
 					if (array_intersect($this->related_categories, wp_get_post_categories($post->ID))) {
