@@ -11,23 +11,14 @@ Template Version: 2.14
 <?php get_header();  ?>
 <?php include(get_template_directory() . '/layout-head.php'); ?>
 
-	<?php if (!empty($comicnum)): ?>
-		<?php $temppost = $post; ?>
-		<?php $post = & get_post( $comicnum ); ?>
+<?php 
+	if (!empty($comicnum)):
+	$temppost = $post;
+	$post = & get_post( $comicnum ); 
+?>
 	<div class="<?php comicpress_post_class(); ?>">
 		<div class="post-page-head"></div>
 		<div class="post-page">
-			<div style="float:right;">
-				<br />
-				<img src="<?php echo get_template_directory_uri(); ?>/images/paypal.png" alt="<?php _e('Powered by Paypal','comicpress'); ?>" /><br />
-			</div>
-						<?php if (function_exists('the_post_thumbnail')) {
-				if ( has_post_thumbnail() ) { ?>
-					<div class="post-page-image">
-					<?php the_post_thumbnail('full'); ?>
-					</div>
-				<?php } ?>
-			<?php } ?>
 			<?php if (!$comicpress_options['disable_page_titles']) { ?>
 				<h2 class="pagetitle"><?php the_title() ?></h2>
 			<?php } ?>
@@ -96,27 +87,42 @@ Template Version: 2.14
 			</center>
 			<br />
 			<?php $post = $temppost; ?>
-			<div class="clear"></div>
+			<br class="clear-margins" />
 		</div>
 		<div class="post-page-foot"></div>
 	</div>
-	<?php else: ?>
-	    <?php if (have_posts()) : while (have_posts()) : the_post() ?>
+	
+<?php else: ?>
+	
+		<?php while (have_posts()) : the_post() ?>
+
 		<div class="<?php comicpress_post_class(); ?>">
-		    <div class="post-page-head"></div>
-		    <div class="post-page" id="post-<?php the_ID() ?>">
-			    <h2 class="pagetitle"><?php the_title() ?></h2>
-			    <div class="entry">
-				    <?php the_content() ?>
-				    <?php wp_link_pages(array('before' => '<p><strong>'.__('Pages:','comicpress').'</strong> ', 'after' => '</p>', 'next_or_number' => 'number')) ?>
-			    </div>
+			<?php if (function_exists('has_post_thumbnail')) {
+				if ( has_post_thumbnail() ) { ?>
+					<div class="post-page-image">
+						<a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_post_thumbnail('full'); ?></a>
+					</div>
+				<?php }
+			} ?>
+			<div class="post-page-head"></div>
+			<div class="post-page">
+				<?php if (!$comicpress_options['disable_page_titles']) { ?>
+					<h2 class="pagetitle"><?php the_title() ?></h2>
+				<?php } ?>
+				<div class="entry">
+					<?php the_content(); ?>
+				</div>
 				<br class="clear-margins" />
-			    <?php edit_post_link(__('Edit this page.','comicpress'), '<p>', '</p>') ?>
-		    </div>
-		    <div class="post-page-foot"></div>
+				<?php edit_post_link(__('Edit this page.','comicpress'), '<p>', '</p>') ?>
+			</div>
+			<div class="post-page-foot"></div>
 		</div>
-	    <?php endwhile; endif; ?>
-	<?php endif; ?>	
+
+		<?php endwhile; ?>
+
+		<?php if ('open' == $post->comment_status) { comments_template('', true); } ?>
+		
+<?php endif; ?>	
 
 <?php include(get_template_directory() . '/layout-foot.php'); ?>
 <?php get_footer() ?>

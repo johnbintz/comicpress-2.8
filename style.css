@@ -125,8 +125,9 @@ h2, h2 a {
 	h2.pagetitle, h2.pagetitle a {
 		padding: 0 0 5px 0;
 		margin-top: 10px;
-		font-size: 32px;
+		font-size: 28px;
 		letter-spacing: -2px;
+		font-weight: 500;
 		clear: both;
 	}
 

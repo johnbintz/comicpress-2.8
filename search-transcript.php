@@ -7,9 +7,16 @@ $tmp_search = new WP_Query($query_string.'&order=desc&show_posts=-1&posts_per_pa
 $count = $tmp_search->post_count;
 			?>
 		<?php if (!$count) $count = "no"; ?>
-		<h2 class="pagetitle"><?php _e('Transcript search for &lsquo;','comicpress'); ?><?php the_search_query() ?><?php _e('&rsquo;','comicpress'); ?></h2>
+		
+<div class="<?php comicpress_post_class(); ?>">
+	<div class="post-page-head"></div>
+	<div class="post-page">		
+		<h2 class="pagetitle"><?php _e('Search for &lsquo;','comicpress'); the_search_query(); _e('&rsquo;','comicpress'); ?></h2>
 		<div class="searchresults"><?php printf(__ngettext("%d item.", "%d items.", $count,'comicpress'),$count); ?></div>
-  <?php if (have_posts()) : ?>
+	</div>
+</div>  
+
+<?php if (have_posts()) : ?>
 
     <?php $posts = query_posts($query_string.'&order=asc');
     while (have_posts()) : the_post() ?>

@@ -39,13 +39,20 @@
 			<?php } ?>
 				<div class="searchresults"><?php printf(__ngettext("%d item.", "%d items.", $count,'comicpress'),$count); ?></div>
 			</div>
+			<br class="clear-margins" />
 		</div>
 		<div class="post-page-foot"></div>
 	</div>
+	
+		<?php if (is_category() && in_comic_category()) { ?>
 
-
+		<div class="<?php comicpress_post_class(); ?>">
+			<div class="post-page-head"></div>
+			<div class="post-page">	
+			
+		<?php } ?>
 		<?php while (have_posts()) : the_post() ?>
-		
+
 			<?php if (is_category() && in_comic_category()) { ?>
 
 				<div class="comicthumbwrap">
@@ -53,7 +60,7 @@
 						<a href="<?php the_permalink() ?>"><img src="<?php the_comic_mini() ?>" alt="<?php the_title() ?>" title="<?php the_title() ?>"  /></a>
 					</div>
 				</div>
-
+				
 			<?php } else { ?>
 				<?php global $archive_comic_width; if (in_comic_category()) { ?>
 				<div class="<?php comicpress_post_class(); ?>">
@@ -131,6 +138,16 @@
 				<?php } ?>
 			<?php } ?>
 		<?php endwhile; ?>
+		
+	<?php if (is_category() && in_comic_category()) { ?>
+	
+			<br class="clear-margins" />
+		</div>
+		<div class="post-page-foot"></div>
+	</div>	
+	
+	<?php } ?>
+		
 		<div class="clear"></div>
 	<?php else : ?>
 	<div class="<?php comicpress_post_class(); ?>">
@@ -139,6 +156,7 @@
 			<h3><?php _e('No posts found.','comicpress'); ?></h3>
 			<p><?php _e('Try another search?','comicpress'); ?></p>
 			<p><?php include(get_template_directory() . '/searchform.php') ?></p>
+			<br class="clear-margins" />
 		</div>
 		<div class="post-foot"></div>
 	</div>
