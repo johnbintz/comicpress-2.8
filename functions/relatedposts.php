@@ -2,18 +2,19 @@
 /**
  * Related posts
  * Displays a list of blog links that are related to this current one using shortcode.
- * 
+ *
  * Usage:  [related_posts]
- * 
+ *
  */
 
+/*
 function related_posts_shortcode( $atts = '' ) {
 	extract(shortcode_atts(array(
 					'limit' => '5',
 					), $atts));
-	
+
 	global $wpdb, $post, $table_prefix, $category_tree;
-	
+
 	if ($post->ID) {
 		// Get tags
 		$tags = wp_get_post_tags($post->ID);
@@ -32,7 +33,7 @@ function related_posts_shortcode( $atts = '' ) {
 				GROUP BY tr.object_id
 				ORDER BY count DESC, p.post_date_gmt DESC
 				LIMIT $limit;";
-		
+
 		$related = $wpdb->get_results($q);
 
 		if ( $related ) {
@@ -72,3 +73,4 @@ function related_posts_shortcode( $atts = '' ) {
 add_shortcode('related_posts', 'related_posts_shortcode');
 
 ?>
+*/
