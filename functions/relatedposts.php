@@ -7,7 +7,7 @@
  *
  */
 
-/*
+
 function related_posts_shortcode( $atts = '' ) {
 	extract(shortcode_atts(array(
 					'limit' => '5',
@@ -73,4 +73,3 @@ function related_posts_shortcode( $atts = '' ) {
 add_shortcode('related_posts', 'related_posts_shortcode');
 
 ?>
-*/
