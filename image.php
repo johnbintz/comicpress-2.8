@@ -5,10 +5,10 @@
 	<div class="<?php comicpress_post_class(); ?>">
 		<div class="post-page-head"></div>
 		<div class="post-page" id="post-<?php the_ID() ?>">
-			<?php if (function_exists('the_post_image')) {
-				if ( has_post_image() ) { ?>
+			<?php if (function_exists('the_post_thumbnail')) {
+				if ( has_post_thumbnail() ) { ?>
 					<div class="post-page-image">
-					<?php the_post_image('full'); ?>
+					<?php the_post_thumbnail('full'); ?>
 					</div>
 				<?php } ?>
 			<?php } ?>

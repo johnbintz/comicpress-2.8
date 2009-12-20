@@ -31,10 +31,10 @@ function display_blog_post() {
 					</div>
 				<?php } ?>
 				<div class="post-text">
-					<?php if (function_exists('the_post_image')) {
-						if ( has_post_image() ) { ?>
+					<?php if (function_exists('has_post_thumbnail')) {
+						if ( has_post_thumbnail() ) { ?>
 							<div class="post-image">
-								<a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_post_image('full'); ?></a>
+								<a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_post_thumbnail('full'); ?></a>
 							</div>
 						<?php } else {?>
 							<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
