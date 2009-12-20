@@ -3,6 +3,7 @@ Author: Tyler Martin
 Style: Default
 */
 #comic_navi_wrapper {
+	width: 100%;
 	display: table;
 	border-collapse: collapse;
 	text-align: center;
@@ -39,7 +40,7 @@ Style: Default
 	display: inline-block;
 }
 	.navi-comictitle a {
-		color: #fff;
+		color: #000;
 	}
 	
 	.navi-comictitle a:hover {
@@ -93,9 +94,12 @@ Style: Default
 }
 
 	.navi-buyprint:hover, button .navi-buyprint:hover {
+		display: inline-block;
 	}
 
 	.navi-buyprint-form {
+		display: inline-block;
+		width: 80px;
 		}
 
 .navi-archive, .navi-archives {
