@@ -18,6 +18,13 @@ function display_comic_post() {
 		</div>
 	<?php } ?>
 		<div class="<?php comicpress_post_class(); ?>">
+			<?php if (function_exists('has_post_thumbnail')) {
+				if ( has_post_thumbnail() ) { ?>
+					<div class="post-comic-image">
+						<a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_post_thumbnail('full'); ?></a>
+					</div>
+				<?php }
+			} ?>		
 			<div class="post-comic-head"></div>
 				<div class="post-comic" id="post-comic-<?php the_ID() ?>">
 					<div class="post-comic-info">
@@ -31,17 +38,7 @@ function display_comic_post() {
 						</div>
 					<?php } ?>
 					<div class="post-comic-text">
-						<?php if (function_exists('the_post_thumbnail')) {
-							if ( has_post_thumbnail() ) { ?>
-								<div class="post-comic-image">
-									<a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_post_thumbnail('full'); ?></a>
-								</div>
-							<?php } else {?>
-								<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
-							<?php } ?>
-						<?php } else { ?>
-							<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
-						<?php } ?>
+						<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
 						<div class="post-comic-author"> <?php the_time('F jS, Y'); ?> <span class="pipe">|</span> by <?php the_author_posts_link(); ?> <?php edit_post_link(__('Edit Post','comicpress'), ' [ ', ' ] '); ?></div>
 						<?php if (get_option('comicpress-enable-storyline-support') == 1) { ?>
 							<ul class="storyline-cats"><li class="storyline-root"><?php the_category(' &raquo; </li><li>', multiple) ?></li></ul>
