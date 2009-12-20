@@ -2,11 +2,11 @@
 /**
  * Display comic post
  * Displays the post info for the comic
- * 
- * 
+ *
+ *
  */
 
-function display_comic_post() { 
+function display_comic_post() {
 	global $post, $wp_query, $authordata, $comicpress_options;
 	$first_comic = get_first_comic_permalink(); $last_comic = get_last_comic_permalink();
 	if (!$comicpress_options['disable_default_comic_nav']) { ?>
@@ -24,7 +24,7 @@ function display_comic_post() {
 						<a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_post_thumbnail('full'); ?></a>
 					</div>
 				<?php }
-			} ?>		
+			} ?>
 			<div class="post-comic-head"></div>
 				<div class="post-comic" id="post-comic-<?php the_ID() ?>">
 					<div class="post-comic-info">
@@ -62,19 +62,19 @@ function display_comic_post() {
 					<?php the_tags(__('&#9492; Tags: ','comicpress'), ', ', '<br />'); ?>
 					</div>
 				<?php } ?>
-				<?php 
-					if ('open' == $post->comment_status && !$comicpress_options['static_blog'] && !(is_single())) { 
+				<?php
+					if ('open' == $post->comment_status && !$comicpress_options['static_blog'] && !(is_single())) {
 						if (comicpress_check_child_file('partials/commentlink') == false) { ?>
 							<div class="comment-link"><?php comments_popup_link('<span class="comment-balloon comment-balloon-empty">&nbsp;</span> '.__('Comments ','comicpress'), '<span class="comment-balloon">1</span> '.__('Comment ','comicpress'), '<span class="comment-balloon">%</span> '.__('Comments ','comicpress')); ?></div>
 						<?php }
 					}
 				?>
 				<div class="clear"></div>
-				<?php if ($comicpress_options['enable_related_comics']) echo related_comics_shortcode(); ?>
+				<?php if ($comicpress_options['enable_related_comics']) echo ComicPressRelatedPosts::display_related_comics(); ?>
 			</div>
 		</div>
 		<div class="post-comic-foot"></div>
 		</div>
-		<?php 
+		<?php
 	}
 ?>

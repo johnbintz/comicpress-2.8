@@ -2,11 +2,11 @@
 /**
  * Display post
  * Displays the post info
- * 
- * 
+ *
+ *
  */
 
-function display_blog_post() { 
+function display_blog_post() {
 	global $post, $wp_query, $authordata, $comicpress_options; ?>
 	<?php if (is_single()) { ?>
 		<div class="blognav">
@@ -59,19 +59,19 @@ function display_blog_post() {
 				<?php the_tags(__('&#9492; Tags: ','comicpress'), ', ', '<br />'); ?>
 				</div>
 			<?php } ?>
-			<?php 
-				if ('open' == $post->comment_status) { 
+			<?php
+				if ('open' == $post->comment_status) {
 					if (comicpress_check_child_file('partials/commentlink') == false && !(is_single())) { ?>
 						<div class="comment-link"><?php comments_popup_link('<span class="comment-balloon comment-balloon-empty">&nbsp;</span> '.__('Comments ','comicpress'), '<span class="comment-balloon">1</span> '.__('Comment ','comicpress'), '<span class="comment-balloon">%</span> '.__('Comments ','comicpress')); ?></div>
 					<?php }
 				}
 			?>
 			<div class="clear"></div>
-			<?php if ($comicpress_options['enable_related_posts']) echo related_posts_shortcode(); ?>
+			<?php if ($comicpress_options['enable_related_posts']) echo ComicPressRelatedPosts::display_related_posts(); ?>
 		</div>
 	</div>
 	<div class="post-foot"></div>
 	</div>
-<?php 
+<?php
 	}
 ?>

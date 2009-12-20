@@ -5,7 +5,7 @@ require_once('ComicPressStoryline.inc');
 class ComicPressRelatedPosts {
 	var $related_categories;
 
-	function shortcode_related_comics($attrs = '') {
+	function display_related_comics($attrs = '') {
 		$rp = new ComicPressRelatedPosts();
 		return $rp->_handle_shortcode(
 		  extract(ComicPressRelatedPosts::_handle_shortcode_attrs($attrs)),
@@ -13,7 +13,7 @@ class ComicPressRelatedPosts {
 		);
 	}
 
-	function shortcode_related_posts($attrs = '') {
+	function display_related_posts($attrs = '') {
 		$rp = new ComicPressRelatedPosts();
 		return $rp->_handle_shortcode(
 		  extract(ComicPressRelatedPosts::_handle_shortcode_attrs($attrs)),
@@ -121,6 +121,6 @@ class ComicPressRelatedPosts {
 	// @codeCoverageIgnoreEnd
 }
 
-add_shortcode('related_posts', array('ComicPressRelatedPosts', 'shortcode_related_posts'));
-add_shortcode('related_comics', array('ComicPressRelatedPosts', 'shortcode_related_comics'));
+add_shortcode('related_posts', array('ComicPressRelatedPosts', 'display_related_posts'));
+add_shortcode('related_comics', array('ComicPressRelatedPosts', 'display_related_comics'));
 
