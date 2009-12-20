@@ -71,13 +71,7 @@ $month['12'] = array('month' => __('December','comicpress'), 'days' => '31');
 <?php while (have_posts()) : the_post() ?>
 
 <div class="<?php comicpress_post_class(); ?>">
-	<?php if (function_exists('has_post_thumbnail')) {
-		if ( has_post_thumbnail() ) { ?>
-			<div class="post-image">
-			<a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_post_thumbnail('full'); ?></a>
-			</div>
-		<?php }
-	} ?>
+
 	<div class="post-page-head"></div>
 	<div class="post-page">
 		<h2 class="pagetitle"><?php the_title() ?> <span class="page-archive-year"> <?php echo $archive_year; ?></span></h2>
