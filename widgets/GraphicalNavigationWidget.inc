@@ -434,10 +434,10 @@ class GraphicalNavigationWidget extends WP_Widget {
 									  <input id="<?php echo $this->get_field_id('story_prev_acts_as_prev_in'); ?>"
 													 name="<?php echo $this->get_field_name('story_prev_acts_as_prev_in'); ?>"
 													 type="checkbox" class="comicpress-field" value="yes"<?php if ($instance['story_prev_acts_as_prev_in'] == "on") { echo ' checked="checked"'; } ?> />
-										<strong><?php _e('Enable alternate behavior', 'comicpress'); ?></strong>
+										<strong><?php _e('Enable go to start of chapter category.', 'comicpress'); ?></strong>
 										<p>
 											<em>
-												<?php _e('If the current post is not at the start of a chapter, the button will act the same as &quot;Previous In Chapter&quot;.', 'comicpress') ?>
+												<?php _e('If the current post is not at the start of a chapter, the button will bring you back to the beginning of the chapter before going to a previous chapter.', 'comicpress') ?>
 											</em>
 										</p>
 									</label>
