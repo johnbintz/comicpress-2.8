@@ -13,7 +13,7 @@ class widget_comicpress_latest_thumbnail extends WP_Widget {
 	
 	function widget_comicpress_latest_thumbnail() {
 		$widget_ops = array('classname' => 'widget_comicpress_latest_thumbnail', 'description' => __('Display a thumbnail of the latest comic, clickable to go to the comic post.','comicpress') );
-		$this->WP_Widget('latest_thumbnail', __('Latest Comic','comicpress'), $widget_ops);
+		$this->WP_Widget('ComicPress latest_thumbnail', __('ComicPress Latest Thumbnail','comicpress'), $widget_ops);
 	}
 	
 	function widget($args, $instance) {

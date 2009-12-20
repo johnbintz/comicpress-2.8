@@ -48,7 +48,7 @@ class widget_comicpress_show_control_panel extends WP_Widget {
 	
 	function widget_comicpress_show_control_panel() {
 		$widget_ops = array('classname' => 'widget_comicpress_show_control_panel', 'description' => __('Login/Logoff menu with register/lost password links if not logged on. (use only if registrations are enabled.','comicpress') );
-		$this->WP_Widget('control_panel', __('Control Panel','comicpress'), $widget_ops);
+		$this->WP_Widget('comicpress_control_panel', __('ComicPress Control Panel','comicpress'), $widget_ops);
 	}
 	
 	function widget($args, $instance) {

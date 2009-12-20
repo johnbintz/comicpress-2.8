@@ -13,7 +13,7 @@ class widget_comicpress_comments extends WP_Widget {
 	
 	function widget_comicpress_comments() {
 		$widget_ops = array('classname' => 'widget_comicpress_comments', 'description' => __('Displays a comments link. (used in comic sidebars)','comicpress') );
-		$this->WP_Widget('comic_comments', __('Comic Comments','comicpress'), $widget_ops);
+		$this->WP_Widget('comicpress_comic_comments', __('ComicPress Comic Comments','comicpress'), $widget_ops);
 	}
 	
 	function widget($args, $instance) {

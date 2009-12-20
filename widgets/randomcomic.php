@@ -27,7 +27,7 @@ class widget_comicpress_random_comic extends WP_Widget {
 	
 	function widget_comicpress_random_comic() {
 		$widget_ops = array('classname' => 'widget_comicpress_random_comic', 'description' => __('Displays a link to click to trigger a random comic.','comicpress') );
-		$this->WP_Widget('random_comic', __('Random Comic','comicpress'), $widget_ops);
+		$this->WP_Widget('comicpress_random_comic', __('ComicPress Random Comic','comicpress'), $widget_ops);
 	}
 	
 	function widget($args, $instance) {

@@ -13,7 +13,7 @@ class widget_comicpress_social extends WP_Widget {
 	
 	function widget_comicpress_social() {
 		$widget_ops = array('classname' => 'widget_comicpress_social', 'description' => __('Display a user defined social button, with translated URL','comicpress') );
-		$this->WP_Widget('social', __('ComicPress Social','comicpress'), $widget_ops);
+		$this->WP_Widget('comicpress_social', __('ComicPress Social','comicpress'), $widget_ops);
 	}
 	
 	function widget($args, $instance) {

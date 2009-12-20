@@ -14,7 +14,7 @@ class ArchiveDropdownWidget extends WP_Widget {
 
 	function ArchiveDropdownWidget() {
 		$widget_ops = array('classname' => 'ArchiveDropdownWidget', 'description' => __('Display a dropdown list of your archives, styled.','comicpress') );
-		$this->WP_Widget('archive_dropdown', __('ComicPress Archive Dropdown','comicpress'), $widget_ops);
+		$this->WP_Widget('comicpress_archive_dropdown', __('ComicPress Archive Dropdown','comicpress'), $widget_ops);
 
 		$this->modes = array(
 			'monthly_archive'           => __('Monthly archive', 'comicpress'),

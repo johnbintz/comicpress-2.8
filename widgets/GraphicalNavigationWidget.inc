@@ -13,7 +13,7 @@ require_once(dirname(__FILE__) . '/../classes/ComicPressNavigation.inc');
 class GraphicalNavigationWidget extends WP_Widget {
 	function GraphicalNavigationWidget() {
 		$widget_ops = array('classname' => 'WidgetComicPressGraphicalStorylineNavigation', 'description' => __('Displays Graphical Navigation Buttons. (used in comic sidebars)','comicpress') );
-		$this->WP_Widget('graphicalstorylinenavigation', __('Comic Navigation','comicpress'), $widget_ops);
+		$this->WP_Widget('comicpress_graphicalstorylinenavigation', __('ComicPress Comic Navigation','comicpress'), $widget_ops);
 	}
 
 	/**

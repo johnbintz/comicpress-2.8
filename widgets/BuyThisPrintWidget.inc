@@ -12,7 +12,7 @@ Author URI: http://frumph.net/
 class BuyThisPrintWidget extends WP_Widget {
 	function BuyThisPrintWidget() {
 		$widget_ops = array('classname' => 'ComicPressBuyThisPrint', 'description' => __('Adds a button that goes to the buy print template page.','comicpress') );
-		$this->WP_Widget('comicpress_buyprint', __('Buy This Print','comicpress'), $widget_ops);
+		$this->WP_Widget('comicpress_buyprint', __('ComicPress BuyPrint','comicpress'), $widget_ops);
 	}
 
 	function init() {

@@ -13,7 +13,7 @@ class widget_comicpress_show_scheduled_posts extends WP_Widget {
 	
 	function widget_comicpress_show_scheduled_posts() {
 		$widget_ops = array('classname' => 'widget_comicpress_show_scheduled_posts', 'description' => __('Display a list of posts that are scheduled to be published.','comicpress') );
-		$this->WP_Widget('show_scheduled_posts', __('Scheduled Posts','comicpress'), $widget_ops);
+		$this->WP_Widget('comicpress_show_scheduled_posts', __('ComicPress Scheduled Posts','comicpress'), $widget_ops);
 	}
 	
 	function widget($args, $instance) {

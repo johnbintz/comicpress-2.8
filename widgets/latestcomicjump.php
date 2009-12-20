@@ -22,7 +22,7 @@ class widget_comicpress_latest_comic_jump extends WP_Widget {
 	
 	function widget_comicpress_latest_comic_jump() {
 		$widget_ops = array('classname' => 'widget_comicpress_latest_comic_jump', 'description' => __('Displays a link to click to go to the latest comic.','comicpress') );
-		$this->WP_Widget('latest_comic_jump', __('Latest Comic Link','comicpress'), $widget_ops);
+		$this->WP_Widget('comicpress_latest_comic_jump', __('ComicPress Latest Comic Link','comicpress'), $widget_ops);
 	}
 	
 	function widget($args, $instance) {

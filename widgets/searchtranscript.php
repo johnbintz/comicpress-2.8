@@ -13,7 +13,7 @@ class widget_comicpress_search_transcripts extends WP_Widget {
 	
 	function widget_comicpress_search_transcripts() {
 		$widget_ops = array('classname' => 'widget_comicpress_search_transcripts', 'description' => __('Displays a form input box for searching transcripts.','comicpress') );
-		$this->WP_Widget('comicpress_search_transcripts', __('Search Transcripts','comicpress'), $widget_ops);
+		$this->WP_Widget('comicpress_search_transcripts', __('ComicPress Search Transcripts','comicpress'), $widget_ops);
 	}
 	
 	function widget($args, $instance) {

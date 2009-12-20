@@ -13,7 +13,7 @@ class widget_comicpress_comic_blog_post extends WP_Widget {
 	
 	function widget_comicpress_comic_blog_post() {
 		$widget_ops = array('classname' => 'widget_comicpress_comic_blog_post', 'description' => 'Displays the comic blog post, ..used to be around the comic areas.' );
-		$this->WP_Widget('comic_blog_post', 'Comic Blog Post', $widget_ops);
+		$this->WP_Widget('comicpress_comic_blog_post', 'ComicPress Comic Blog Post', $widget_ops);
 	}
 	
 	function widget($args, $instance) {

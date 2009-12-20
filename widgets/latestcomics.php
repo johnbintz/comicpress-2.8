@@ -25,7 +25,7 @@ class widget_comicpress_latest_comics extends WP_Widget {
 	
 	function widget_comicpress_latest_comics() {
 		$widget_ops = array('classname' => 'widget_comicpress_latest_comics', 'description' => __('Display a list of the latest comics available.','comicpress') );
-		$this->WP_Widget('latest_comics', __('Latest Comics','comicpress'), $widget_ops);
+		$this->WP_Widget('comicpress_latest_comics', __('ComicPress Latest Comics','comicpress'), $widget_ops);
 	}
 	
 	function widget($args, $instance) {

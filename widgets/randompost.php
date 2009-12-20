@@ -26,7 +26,7 @@ class widget_comicpress_random_post extends WP_Widget {
 	
 	function widget_comicpress_random_post() {
 		$widget_ops = array('classname' => 'widget_comicpress_random_post', 'description' => __('Displays a link to click to trigger a random blog post.','comicpress') );
-		$this->WP_Widget('random_post', __('Random Post','comicpress'), $widget_ops);
+		$this->WP_Widget('comicpress_random_post', __('ComicPress Random Post','comicpress'), $widget_ops);
 	}
 	
 	function widget($args, $instance) {

@@ -13,7 +13,7 @@ class widget_comicpress_comic_date extends WP_Widget {
 	
 	function widget_comicpress_comic_date() {
 		$widget_ops = array('classname' => 'widget_comicpress_comic_date', 'description' => __('Displays the date of the post of the comic.','comicpress') );
-		$this->WP_Widget('comic_date', __('Comic Date','comicpress'), $widget_ops);
+		$this->WP_Widget('comicpress_comic_date', __('ComicPress Comic Date','comicpress'), $widget_ops);
 	}
 	
 	function widget($args, $instance) {

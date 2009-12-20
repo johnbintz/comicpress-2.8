@@ -13,7 +13,7 @@ class widget_comicpress_permalink extends WP_Widget {
 	
 	function widget_comicpress_permalink() {
 		$widget_ops = array('classname' => 'widget_comicpress_permalink', 'description' => __('Displays a permalink. (used in comic sidebars)','comicpress') );
-		$this->WP_Widget('permalink', __('Permalink','comicpress'), $widget_ops);
+		$this->WP_Widget('comicpress_permalink', __('ComicPress Permalink','comicpress'), $widget_ops);
 	}
 	
 	function widget($args, $instance) {
