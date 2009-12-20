@@ -86,6 +86,8 @@ $month['12'] = array('month' => __('December','comicpress'), 'days' => '31');
 		<div class="entry">
 			<?php the_content(); ?>
 		</div>
+		<br class="clear-margins" />
+		<?php edit_post_link(__('Edit this page.','comicpress'), '<p>', '</p>') ?>
 	</div>
 	<div class="post-page-foot"></div>
 </div>
@@ -170,8 +172,6 @@ foreach ( $years as $year ) {
 			</div>
 		<?php } ?>
 		</div>
-		<div class="clear"></div>
-		<?php edit_post_link(__('Edit this page.','comicpress'), '<p>', '</p>') ?>
 	</div>
 	<div class="post-page-foot"></div>
 </div>
