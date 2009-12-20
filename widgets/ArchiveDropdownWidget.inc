@@ -17,10 +17,16 @@ class ArchiveDropdownWidget extends WP_Widget {
 		$this->WP_Widget('archive_dropdown', __('ComicPress Archive Dropdown','comicpress'), $widget_ops);
 
 		$this->modes = array(
-			'monthly_archive' => __('Monthly archive', 'comicpress'),
-			'comic_archive'   => __('Comic archive', 'comicpress'),
-			'storyline_order'   => __('Storyline archive pages', 'comicpress'),
-			'storyline_order_post_link'   => __('Storyline posts', 'comicpress'),
+			'monthly_archive'           => __('Monthly archive', 'comicpress'),
+			'comic_archive'             => __('Comic archive', 'comicpress'),
+			'storyline_order'           => array(
+				'requires_storyline' => true,
+				'label' => __('Storyline archive pages', 'comicpress'),
+			),
+			'storyline_order_post_link' => array(
+				'requires_storyline' => true,
+				'label' => __('Storyline posts', 'comicpress'),
+			)
 		);
 	}
 
@@ -212,8 +218,14 @@ class ArchiveDropdownWidget extends WP_Widget {
 				<?php switch ($field) {
 					case 'mode': ?>
 						<?php echo $label ?><br />
-						<?php	foreach ($this->modes as $mode => $label) { ?>
-							<label><input type="radio" name="<?php echo $this->get_field_name($field); ?>" value="<?php echo $mode ?>" <?php echo ($mode == $instance['mode']) ? 'checked="checked"' : '' ?> /> <?php echo $label ?></label><br />
+						<?php	foreach ($this->modes as $mode => $label) {
+							$requires_storyline = false;
+							if (is_array($label)) {
+								extract($label);
+							}
+							$is_enabled = ($requires_storyline === false) || ($requires_storyline === (get_option('comicpress-enable-storyline-support') == 1));
+							?>
+							<label><input type="radio" name="<?php echo $this->get_field_name($field); ?>" value="<?php echo $mode ?>" <?php echo $is_enabled ? '' : 'disabled="disabled"' ?> <?php echo ($mode == $instance['mode']) ? 'checked="checked"' : '' ?> /> <?php echo $label ?></label><br />
 						<?php }
 						break;
 						default: ?>
