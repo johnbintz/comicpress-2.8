@@ -42,6 +42,10 @@ ComicBookmark.setup = function(id, mode, url, elements) {
 			    ['goto-tag','clear-tag'].each(function(which) {
 			      hrefs[which].innerHTML = elements[which + '-' + (i.permalink ? "on" : "off")];
 			    });
+
+			    $H(hrefs).each(function(info) {
+			    	info.value[i.permalink ? 'addClassName' : 'removeClassName']('active');
+			    });
 			  };
 
 			  hrefs['tag-page'].innerHTML = elements['tag-page'];
@@ -70,6 +74,7 @@ ComicBookmark.setup = function(id, mode, url, elements) {
 			  var set_goto_tag = function(i) {
 			    hrefs['bookmark-clicker'].href = (i.permalink ? i.permalink : "#");
 		      hrefs['bookmark-clicker'].innerHTML = elements['bookmark-clicker-' + (i.permalink ? "on" : "off")];
+		      hrefs['bookmark-clicker'][i.permalink ? 'addClassName' : 'removeClassName']('active');
 			  };
 			  bookmark_info.onWrite = function(i) { set_goto_tag(i); }
 			  set_goto_tag(info);
