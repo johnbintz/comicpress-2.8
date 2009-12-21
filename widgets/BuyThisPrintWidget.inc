@@ -13,7 +13,7 @@ class BuyThisPrintWidget extends WP_Widget {
 	function BuyThisPrintWidget($skip_widget_init = false) {
 		if (!$skip_widget_init) {
 			$widget_ops = array('classname' => __CLASS__, 'description' => __('Adds a button that goes to the buy print template page.','comicpress') );
-			$this->WP_Widget(__CLASS__, __('Buy This Print','comicpress'), $widget_ops);
+			$this->WP_Widget(__CLASS__, __('ComicPress Buy This Print','comicpress'), $widget_ops);
 		}
 	}
 
