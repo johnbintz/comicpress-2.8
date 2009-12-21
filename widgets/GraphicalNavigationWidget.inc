@@ -131,7 +131,7 @@ class GraphicalNavigationWidget extends WP_Widget {
 			case 'comments':
 				$temp_id = $id;
 				$id = $current->ID;
-			  ?><a href="<?php echo get_permalink($current); ?>#comments"
+			  ?><a href="<?php echo get_permalink($current); ?>#respond"
 						 class="navi navi-comments"
 						 title="<?php echo $instance['comments_title']; ?>"><span class="navi-comments-count"><?php comments_number('0', '1', '%'); ?></span><?php echo $instance['comments_title']; ?></a><?php
 				$id = $temp_id;

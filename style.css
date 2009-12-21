@@ -18,7 +18,7 @@ html { overflow-y: scroll; }
 body {
 	margin: 0;
 	font-family: 'Arial', sans-serif;
-	font-size: 13px;
+	font-size: 14px;
 	color: #000;
 }
 
@@ -50,7 +50,7 @@ img {
 }
 
 small {
-	font-size: 11px;
+	font-size: 12px;
 }
 
 hr {
@@ -141,7 +141,7 @@ h3, h3 a {
 h4, h4 a {
 	padding: 0;
 	margin: 0;
-	font-size: 14px;
+	font-size: 15px;
 	clear: both;
 }
 
@@ -492,7 +492,7 @@ h4, h4 a {
 
 .post-info, .post-comic-info {
 	padding-bottom: 5px;
-	font-size: 11px;
+	font-size: 12px;
 }
 
 .post-text, .post-comic-text {
@@ -544,17 +544,12 @@ h4, h4 a {
 	text-align: center;
 }
 
-.comicdate {
-	font-size: 14px;
-}
-
 .postdate {
 	font-size: 11px;
 }
 
 .entry {
 	line-height: 18px;
-	font-size: 14px;
 	padding: 3px 0;
 }
 
@@ -566,7 +561,7 @@ h4, h4 a {
 }
 
 .post-tags, .post-comic-tags {
-	font-size: 11px;
+	font-size: 12px;
 }
 
 .post .members-only, .post-comic .members-only {
@@ -830,7 +825,7 @@ ul.children {
 /* Sidebar Class */
 
 .sidebar {
-	font-size: 11px;
+	font-size: 12px;
 	overflow: hidden;
 }
 
@@ -1318,7 +1313,7 @@ ul.children {
 }
 
 .storyline-description {
-	font-size: 11px;
+	font-size: 12px;
 }
 
 .storyline-foot {
@@ -1339,7 +1334,7 @@ ul.children {
 
 .archive-date {
 	padding: 0 5px 0 0;
-	font-size: 11px;
+	font-size: 12px;
 	white-space: nowrap;
 }
 
