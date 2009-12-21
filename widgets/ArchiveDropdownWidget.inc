@@ -12,9 +12,11 @@ Author URI: http://frumph.net/
 class ArchiveDropdownWidget extends WP_Widget {
 	var $modes;
 
-	function ArchiveDropdownWidget() {
-		$widget_ops = array('classname' => 'ArchiveDropdownWidget', 'description' => __('Display a dropdown list of your archives, styled.','comicpress') );
-		$this->WP_Widget('comicpress_archive_dropdown', __('ComicPress Archive Dropdown','comicpress'), $widget_ops);
+	function ArchiveDropdownWidget($skip_widget_init = false) {
+		if (!$skip_widget_init) {
+			$widget_ops = array('classname' => __CLASS__, 'description' => __('Display a dropdown list of your archives, styled.','comicpress') );
+			$this->WP_Widget(__CLASS__, __('ComicPress Archive Dropdown','comicpress'), $widget_ops);
+		}
 
 		$this->modes = array(
 			'monthly_archive'           => __('Monthly archive', 'comicpress'),

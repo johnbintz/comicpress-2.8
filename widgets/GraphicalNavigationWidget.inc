@@ -11,16 +11,18 @@ Author URI: http://frumph.net/
 require_once(dirname(__FILE__) . '/../classes/ComicPressNavigation.inc');
 
 class GraphicalNavigationWidget extends WP_Widget {
-	function GraphicalNavigationWidget() {
-		$widget_ops = array('classname' => 'WidgetComicPressGraphicalStorylineNavigation', 'description' => __('Displays Graphical Navigation Buttons. (used in comic sidebars)','comicpress') );
-		$this->WP_Widget('comicpress_graphicalstorylinenavigation', __('ComicPress Comic Navigation','comicpress'), $widget_ops);
+	function GraphicalNavigationWidget($skip_widget_init = false) {
+		if (!$skip_widget_init) {
+			$widget_ops = array('classname' => __CLASS__, 'description' => __('Displays Graphical Navigation Buttons. (used in comic sidebars)','comicpress') );
+			$this->WP_Widget(__CLASS__, __('Comic Navigation','comicpress'), $widget_ops);
+		}
 	}
 
 	/**
 	 * Initialize the widget class.
 	 */
 	function init() {
-		add_filter('comicpress_display_navigation_order', array(&$this, 'comicpress_display_navigation_order'));
+		add_filter('comicpress_display_navigation_order', array($this, 'comicpress_display_navigation_order'));
 		add_filter('comicpress_display_navigation_link', array(&$this, 'comicpress_display_navigation_link'), 10, 5);
 		add_filter('comicpress_wrap_navigation_buttons', array(&$this, 'comicpress_wrap_navigation_buttons'), 10, 2);
     add_filter('comicpress_navigation_grouping_details', array(&$this, 'comicpress_navigation_grouping_details'));
