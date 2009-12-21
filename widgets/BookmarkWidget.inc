@@ -33,11 +33,11 @@ class BookmarkWidget extends WP_Widget {
 				)
 			),
 			'one-button'   => array(
-				'set-bookmark' => array(
+				'bookmark-clicker-off' => array(
 					'label' => __('Set bookmark', 'comicpress'),
 					'default' => __('+Bookmark', 'comicpress')
 				),
-				'use-bookmark' => array(
+				'bookmark-clicker-on' => array(
 					'label' => __('Use bookmark', 'comicpress'),
 					'default' => __('&gt;&gt;Bookmark', 'comicpress')
 				)
@@ -145,11 +145,43 @@ class BookmarkWidget extends WP_Widget {
 		return $instance;
   }
 
-  function widget($instance) {
-    ?>
-    <div id="comic-bookmark-holder">
-      <a href="#" class="tag-page"><img src="<?php echo get_template_directory_uri()  ?>/images/1.gif" /></a><a href="#" class="goto-tag"><img /></a><a href="#" class="clear-tag"><img /></a>
-    </div>
-    <?php
+  function widget($args, $instance) {
+  	global $post;
+  	extract($args, EXTR_SKIP);
+
+		echo $before_widget;
+
+		$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
+		if (!empty($title)) { echo $before_title . $title . $after_title; };
+
+  	$id = 'comic-bookmark-' . md5(rand());
+    switch ($instance['mode']) {
+      case 'three-button': ?>
+		    <div class="bookmark-widget" id="<?php echo $id ?>">
+      		<a href="#" class="tag-page"></a>
+      		<a href="#" class="goto-tag"></a>
+      		<a href="#" class="clear-tag"></a>
+      	</div>
+				<?php break;
+			case 'one-button': ?>
+		    <div class="bookmark-widget" id="<?php echo $id ?>">
+      		<a href="#" class="bookmark-clicker"></a>
+      	</div>
+				<?php break;
+	 	} ?>
+	  <script type="text/javascript">
+			(function() {
+				ComicBookmark.setup('<?php echo $id ?>', '<?php echo $instance['mode'] ?>', '<?php echo get_permalink($post) ?>', {
+					<?php
+						$elements = array();
+						foreach (array_keys($this->text_fields[$instance['mode']]) as $field) {
+							$elements[] = "'{$field}': '{$instance[$field]}'";
+						}
+						echo implode(',', $elements);
+					?>
+				});
+			}());
+	  </script><?php
+		echo $after_widget;
   }
 }

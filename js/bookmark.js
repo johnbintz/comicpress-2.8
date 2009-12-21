@@ -1,72 +1,94 @@
-var button_images = {
-  'clear-tag': {
-    'off': '3a.gif', 'on': '3.gif'
-  },
-  'goto-tag': {
-    'off': '2a.gif', 'on': '2.gif'
-  }
-};
-
 var BookmarkInfo = Class.create({
   'def': {
-    'permalink': false
-  },
-  'initialize': function() {
-    this.jar = new CookieJar({
-      'expires': 60 * 60 * 24 * 31,
-      'path': '/'
-    });
-  },
-  'read': function() {
-    var bookmark_info = this.jar.get('bookmark-info');
+	  'permalink': false
+	},
+	'initialize': function() {
+	  this.jar = new CookieJar({
+	    'expires': 60 * 60 * 24 * 31,
+	    'path': '/'
+	  });
+	},
+	'read': function() {
+	  var bookmark_info = this.jar.get('bookmark-info');
 
-    if ((typeof(bookmark_info) != 'object') || (bookmark_info == null)) {
-      bookmark_info = this.def;
-    }
+	  if ((typeof(bookmark_info) != 'object') || (bookmark_info == null)) {
+	    bookmark_info = this.def;
+	  }
 
-    return bookmark_info;
-  },
-  'write': function(bookmark_info) {
-    this.jar.put('bookmark-info', bookmark_info);
-    if (this.onWrite) { this.onWrite(bookmark_info); }
-  }
+	  return bookmark_info;
+	},
+	'write': function(bookmark_info) {
+	  this.jar.put('bookmark-info', bookmark_info);
+	  if (this.onWrite) { this.onWrite(bookmark_info); }
+	}
 });
 
-Event.observe(window, 'load', function() {
-  var bookmark_info = new BookmarkInfo();
-  var info = bookmark_info.read();
+var ComicBookmark = {};
+ComicBookmark.setup = function(id, mode, url, elements) {
+	var bookmark_info = new BookmarkInfo();
+	var info = bookmark_info.read();
 
-  if ($('comic-bookmark-holder')) {
-	  var hrefs = {};
-	  $$('#comic-bookmark-holder a').each(function(a) {
+	if ($(id)) {
+		var hrefs = {};
+	  $$('#' + id + ' a').each(function(a) {
 	    var name = $w(a.className).shift();
 	    hrefs[name] = a;
 	  });
 
-	  var set_goto_tag = function(i) {
-	    hrefs['goto-tag'].href = (i.permalink ? i.permalink : "#");
-	    [ 'goto-tag','clear-tag' ].each(function(which) {
-	      hrefs[which].select('img')[0].src = image_root + button_images[which][i.permalink ? "on" : "off"];
-	    });
-	  };
+		switch (mode) {
+			case 'three-button':
+			  var set_goto_tag = function(i) {
+			    hrefs['goto-tag'].href = (i.permalink ? i.permalink : "#");
+			    ['goto-tag','clear-tag'].each(function(which) {
+			      hrefs[which].innerHTML = elements[which + '-' + (i.permalink ? "on" : "off")];
+			    });
+			  };
 
-	  bookmark_info.onWrite = function(i) { set_goto_tag(i); }
-	  set_goto_tag(info);
+			  hrefs['tag-page'].innerHTML = elements['tag-page'];
 
-	  Event.observe(hrefs['tag-page'], 'click', function(e) {
-	    Event.stop(e);
-	    info.permalink = permalink;
-	    bookmark_info.write(info);
-	  });
+			  bookmark_info.onWrite = function(i) { set_goto_tag(i); }
+			  set_goto_tag(info);
 
-	  Event.observe(hrefs['clear-tag'], 'click', function(e) {
-	    Event.stop(e);
-	    info.permalink = false;
-	    bookmark_info.write(info);
-	  });
+				hrefs['tag-page'].observe('click', function(e) {
+					Event.stop(e);
+					info.permalink = url;
+					bookmark_info.write(info);
+				});
 
-	  Event.observe(hrefs['goto-tag'], 'click', function(e) {
-	    if (hrefs['goto-tag'].href == "#") { Event.stop(e); }
-	  });
-  }
-});
+				hrefs['goto-tag'].observe('click', function(e) {
+					if (hrefs['goto-tag'].href == "#") { Event.stop(e); }
+				});
+
+			  hrefs['clear-tag'].observe('click', function(e) {
+			    Event.stop(e);
+			    info.permalink = false;
+			    bookmark_info.write(info);
+			  });
+
+				break;
+			case 'one-button':
+			  var set_goto_tag = function(i) {
+			    hrefs['bookmark-clicker'].href = (i.permalink ? i.permalink : "#");
+		      hrefs['bookmark-clicker'].innerHTML = elements['bookmark-clicker-' + (i.permalink ? "on" : "off")];
+			  };
+			  bookmark_info.onWrite = function(i) { set_goto_tag(i); }
+			  set_goto_tag(info);
+
+			  hrefs['bookmark-clicker'].observe('click', function(e) {
+			  	var current_link = info.permalink;
+			    info.permalink = (hrefs['bookmark-clicker'].href.match(/#$/)) ? url : false;
+			    bookmark_info.write(info);
+
+			    if (hrefs['bookmark-clicker'].href.match(/#$/) == null) {
+						hrefs['bookmark-clicker'].href = url;
+						Event.stop(e);
+					} else {
+						document.location.href = current_link;
+						Event.stop(e);
+					}
+			  });
+
+				break;
+		}
+	}
+};
