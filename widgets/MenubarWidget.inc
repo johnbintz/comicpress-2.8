@@ -9,9 +9,9 @@ Author URI: http://frumph.net/
 
 */
 
-class MenubarWidget extends WP_Widget {
+class ComicPressMenubarWidget extends WP_Widget {
 	
-	function MenubarWidget($skip_widget_init = false) {
+	function ComicPressMenubarWidget($skip_widget_init = false) {
 		if (!$skip_widget_init) {
 			$widget_ops = array('classname' => __CLASS__, 'description' => __('Displays a menubar.','comicpress') );
 			$this->WP_Widget(__CLASS__, __('Comicpress Menubar','comicpress'), $widget_ops);

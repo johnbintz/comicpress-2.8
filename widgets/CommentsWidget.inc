@@ -43,13 +43,5 @@ class ComicPressCommentsWidget extends WP_Widget {
 		<?php
 	}
 }
-register_widget('widget_comicpress_comments');
-
-
-function widget_comicpress_comments_init() {    
-	new widget_comicpress_comments(); 
-} 
-
-add_action('widgets_init', 'widget_comicpress_comments_init');
 
 ?>

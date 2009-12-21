@@ -10,8 +10,9 @@ Author URI: http://frumph.net/
 
 require_once(dirname(__FILE__) . '/../classes/ComicPressNavigation.inc');
 
-class GraphicalNavigationWidget extends WP_Widget {
-	function GraphicalNavigationWidget($skip_widget_init = false) {
+class ComicPressGraphicalNavigationWidget extends WP_Widget {
+	
+	function ComicPressGraphicalNavigationWidget($skip_widget_init = false) {
 		if (!$skip_widget_init) {
 			$widget_ops = array('classname' => __CLASS__, 'description' => __('Displays Graphical Navigation Buttons. (used in comic sidebars)','comicpress') );
 			$this->WP_Widget(__CLASS__, __('ComicPress Comic Navigation','comicpress'), $widget_ops);

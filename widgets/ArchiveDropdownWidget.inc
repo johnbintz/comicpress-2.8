@@ -1,6 +1,6 @@
 <?php
 /*
-Widget Name: comicpress archive dropdown
+Widget Name: ArchiveDropDown
 Widget URI: http://comicpress.org/
 Description:
 Author: Philip M. Hofer (Frumph) & John Bintz
@@ -9,10 +9,10 @@ Author URI: http://frumph.net/
 
 */
 
-class ArchiveDropdownWidget extends WP_Widget {
+class ComicPressArchiveDropdownWidget extends WP_Widget {
 	var $modes;
 
-	function ArchiveDropdownWidget($skip_widget_init = false) {
+	function ComicPressArchiveDropdownWidget($skip_widget_init = false) {
 		if (!$skip_widget_init) {
 			$widget_ops = array('classname' => __CLASS__, 'description' => __('Display a dropdown list of your archives, styled.','comicpress') );
 			$this->WP_Widget(__CLASS__, __('ComicPress Archive Dropdown','comicpress'), $widget_ops);

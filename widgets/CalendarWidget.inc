@@ -4,13 +4,14 @@ Widget Name: ComicPress Calendar
 Widget URI: http://comicpress.org/
 Description: Display a calendar of this months posts.
 Author: Philip M. Hofer (Frumph)
-Version: 1.01
+Version: 1.02
 Author URI: http://frumph.net/
 */
 
 
-class CalendarWidget extends WP_Widget {
-	function CalendarWidget($skip_widget_init = false) {
+class ComicPressCalendarWidget extends WP_Widget {
+	
+	function ComicPressCalendarWidget($skip_widget_init = false) {
 		if (!$skip_widget_init) {
 			$widget_ops = array('classname' => __CLASS__, 'description' => __('Display a calendar showing this months posts. (this calendar does not drop lines if there is no title given.)','comicpress') );
 			$this->WP_Widget(__CLASS__, __('ComicPress Calendar','comicpress'), $widget_ops);

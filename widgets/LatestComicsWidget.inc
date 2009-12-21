@@ -8,9 +8,9 @@ Version: 1.02
 
 */
 
-class LatestComicsWidget extends WP_Widget {
+class ComicPressLatestComicsWidget extends WP_Widget {
 	
-	function LatestComicsWidget($skip_widget_init = false) {
+	function ComicPressLatestComicsWidget($skip_widget_init = false) {
 		if (!$skip_widget_init) {
 			$widget_ops = array('classname' => __CLASS__, 'description' => __('Display a list of the latest comics available.','comicpress') );
 			$this->WP_Widget(__CLASS__, __('ComicPress Latest Comics','comicpress'), $widget_ops);
