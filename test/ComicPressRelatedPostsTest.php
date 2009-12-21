@@ -11,6 +11,7 @@ class ComicPressRelatedPostsTest extends PHPUnit_Framework_TestCase {
 	}
 
 	function testBuildPostTable() {
+		$this->markTestIncomplete();
 		$posts = array(
 			(object)array('ID' => 1, 'post_date' => '2009-01-01', 'post_title' => 'Post 1', 'guid' => 'post-1'),
 			(object)array('ID' => 2, 'post_date' => '2009-01-02', 'post_title' => 'Post 2', 'guid' => 'post-2'),
