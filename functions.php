@@ -29,8 +29,10 @@ function __comicpress_widgets_init() {
 		if ($type != 'wp_inactive_widgets') {
 			foreach ($widgets as $widget_id) {
 				foreach ($available_widgets as $key => $widget) {
-					if (strpos(strtolower($widget_id), $key) === 0) {
-						$widget->is_active();
+					if (method_exists($widget, 'is_active')) {
+						if (strpos(strtolower($widget_id), $key) === 0) {
+							$widget->is_active();
+						}
 					}
 				}
 			}
@@ -191,7 +193,7 @@ function comicpress_load_options() {
 
 			'enable_comicpress_debug' => true,
 			'enable_full_post_check' => false,
-			
+
 			'enable_blogroll_off_links' => false
 
 		) as $field => $value) {
