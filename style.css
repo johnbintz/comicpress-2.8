@@ -127,7 +127,6 @@ h2, h2 a {
 		margin-top: 10px;
 		font-size: 28px;
 		letter-spacing: -2px;
-		font-weight: 500;
 		clear: both;
 	}
 
@@ -137,6 +136,13 @@ h3, h3 a {
 	font-size: 20px;
 	clear: both;
 	letter-spacing: -1px;
+}
+
+h4, h4 a {
+	padding: 0;
+	margin: 0;
+	font-size: 14px;
+	clear: both;
 }
 
 /* THE PAGE WRAPPER */
@@ -561,21 +567,6 @@ h3, h3 a {
 
 .post-tags, .post-comic-tags {
 	font-size: 11px;
-}
-
-.related_posts {
-	margin-top: 10px;
-	font-weight: 700;
-}
-
-.related_posts_title {
-	font-size: 14px;
-}
-
-.related_posts ul {
-	list-style: none;
-	font-weight: normal;
-	font-size: 12px;
 }
 
 .post .members-only, .post-comic .members-only {

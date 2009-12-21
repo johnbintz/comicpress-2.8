@@ -65,15 +65,14 @@ class ComicPressRelatedPosts {
 		$output = array();
 		if (!empty($posts)) {
 			$output[] = '<div class="related_posts">';
-				$output[] = '<span class="related_posts_title">' . $title . '</span>';
-				$output[] = '<ul><li><table class="month-table">';
+				$output[] = '<h4>' . $title . '</h4>';
+				$output[] = '<ul>';
 				foreach ($posts as $post) {
 					if (array_intersect($this->related_categories, wp_get_post_categories($post->ID))) {
-						$output[] = '<tr><td class="archive-date" align="right">' . date('M j, Y', strtotime($post->post_date)) . '</td>';
-						$output[] = '<td class="archive-title"><a title="' . esc_attr(get_the_title($post)) . '" href="' . esc_attr(get_permalink($post)) . '">' . esc_html(get_the_title($post)) . '</a></td></tr>';
+						$output[] = '<li><a title="' . esc_attr(get_the_title($post)) . '" href="' . esc_attr(get_permalink($post)) . '">' . esc_html(get_the_title($post)) . '</a></li>';
 					}
 				}
-				$output[] = '</table></li></ul>';
+				$output[] = '</ul>';
 			$output[] = '</div>';
 		}
 		return implode('', $output);
