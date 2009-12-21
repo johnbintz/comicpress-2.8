@@ -35,7 +35,7 @@ class ComicPressArchiveDropdownWidget extends WP_Widget {
 	function _verify_nonce() { return __comicpress_verify_nonce(); }
 
 	function template_redirect() {
-		if (ArchiveDropdownWidget::_verify_nonce() == 'follow-archive-dropdown') {
+		if (ComicPressArchiveDropdownWidget::_verify_nonce() == 'follow-archive-dropdown') {
 			wp_redirect($_GET['cp']['urls']);
 		}
 	}
@@ -242,4 +242,4 @@ class ComicPressArchiveDropdownWidget extends WP_Widget {
 	}
 }
 
-add_action('template_redirect', array('ArchiveDropdownWidget', 'template_redirect'));
+add_action('template_redirect', array('ComicPressArchiveDropdownWidget', 'template_redirect'));
