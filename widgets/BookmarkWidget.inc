@@ -154,6 +154,8 @@ class BookmarkWidget extends WP_Widget {
 		$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
 		if (!empty($title)) { echo $before_title . $title . $after_title; };
 
+		$mode = !isset($this->text_fields[$instance['mode']]) ? array_shift(array_keys($this->text_fields)) : $instance['mode'];
+
 		$link = is_home() ? get_bloginfo('url') : get_permalink($post);
 
   	$id = 'comic-bookmark-' . md5(rand());
@@ -173,10 +175,10 @@ class BookmarkWidget extends WP_Widget {
 	 	} ?>
 	  <script type="text/javascript">
 			(function() {
-				ComicBookmark.setup('<?php echo $id ?>', '<?php echo $instance['mode'] ?>', '<?php echo $link ?>', {
+				ComicBookmark.setup('<?php echo $id ?>', '<?php echo $mode ?>', '<?php echo $link ?>', {
 					<?php
 						$elements = array();
-						foreach (array_keys($this->text_fields[$instance['mode']]) as $field) {
+						foreach (array_keys($this->text_fields[$mode]) as $field) {
 							$elements[] = "'{$field}': '{$instance[$field]}'";
 						}
 						echo implode(',', $elements);
