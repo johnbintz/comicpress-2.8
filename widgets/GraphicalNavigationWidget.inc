@@ -132,9 +132,9 @@ class ComicPressGraphicalNavigationWidget extends WP_Widget {
 			case 'comments':
 				$temp_id = $id;
 				$id = $current->ID;
-			  ?><a href="<?php echo get_permalink($current); ?>#respond"
+			  ?><a href="<?php echo get_permalink($current); ?><?php comments_number('#respond', '#comments', '#comments'); ?>"
 						 class="navi navi-comments"
-						 title="<?php echo $instance['comments_title']; ?>"><span class="navi-comments-count"><?php comments_number('0', '1', '%'); ?></span><?php echo $instance['comments_title']; ?></a><?php
+						 title="<?php echo $instance['comments_title']; ?>"><span class="navi-comments-count"><?php comments_number('', '1', '%'); ?></span><?php echo $instance['comments_title']; ?></a><?php
 				$id = $temp_id;
 				break;
 			case 'buyprint':
