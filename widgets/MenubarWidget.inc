@@ -34,7 +34,7 @@ class ComicPressMenubarWidget extends WP_Widget {
 					<a href="<?php bloginfo('rss2_url') ?>" title="RSS Feed" class="menunav-rss">RSS</a>
 				<?php } ?>
 				<?php if ($comicpress_options['enable_navigation_in_menubar']) { ?>
-					<?php if (is_home()) {
+					<?php if (is_home() && !$comicpress_options['disable_comic_frontpage']) {
 						$comicFrontpage = new WP_Query(); $comicFrontpage->query('showposts=1&cat='.get_all_comic_categories_as_cat_string());
 						while ($comicFrontpage->have_posts()) : $comicFrontpage->the_post();
 							global $wp_query; $wp_query->is_single = true; ?>
@@ -43,7 +43,7 @@ class ComicPressMenubarWidget extends WP_Widget {
 							</div>
 							<?php $wp_query->is_single = false;
 						endwhile; 
-					} elseif (is_single() & in_comic_category()) { ?>
+					} elseif (is_single() && in_comic_category()) { ?>
 						<div class="menunav-prev">
 						<?php previous_comic_link('%link', '&lsaquo;'); ?>
 						</div>
