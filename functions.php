@@ -861,3 +861,29 @@ function latest_comic_jump() {
 	wp_redirect( get_permalink( get_terminal_post_in_category(get_all_comic_categories_as_cat_string(), false) ) );
 	exit;
 }
+
+//Generate a random comic page - to use simply create a URL link to "/?randomcomic"
+function random_comic() {
+	$randomComicQuery = new WP_Query(); $randomComicQuery->query('showposts=1&orderby=rand&cat='.get_all_comic_categories_as_cat_string());
+	while ($randomComicQuery->have_posts()) : $randomComicQuery->the_post();
+		$random_comic_id = get_the_ID();
+	endwhile;
+	wp_redirect( get_permalink( $random_comic_id ) );
+	exit;
+}
+
+if ( isset( $_GET['randomcomic'] ) )
+	add_action( 'template_redirect', 'random_comic' );
+	
+//Generate a random post page - to use simply create a URL link to "/?randompost"
+function random_post() {
+	$randomComicQuery = new WP_Query(); $randomComicQuery->query('showposts=1&orderby=rand&cat=-'.exclude_comic_categories());
+	while ($randomComicQuery->have_posts()) : $randomComicQuery->the_post();
+		$random_comic_id = get_the_ID();
+	endwhile;
+	wp_redirect( get_permalink( $random_comic_id ) );
+	exit;
+}
+
+if ( isset( $_GET['randompost'] ) )
+	add_action( 'template_redirect', 'random_post' );

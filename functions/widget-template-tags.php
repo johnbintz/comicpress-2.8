@@ -27,7 +27,7 @@ function comicpress_comic_bookmark_embed() {
  * Render the monthly archive dropdown widget
  */
 function comicpress_archive_dropdown() {
-	$archive = new ArchiveDropdownWidget();
+	$archive = new ComicPressArchiveDropdownWidget();
 	$archive->widget(array(), array('mode' => 'monthly_archive'));
 }
 
@@ -35,7 +35,7 @@ function comicpress_archive_dropdown() {
  * Render the comic archive dropdown widget
  */
 function comicpress_archive_dropdown_comics() {
-	$archive = new ArchiveDropdownWidget();
+	$archive = new ComicPressArchiveDropdownWidget();
 	$archive->widget(array(), array('mode' => 'comic_archive'));
 }
 
@@ -43,6 +43,6 @@ function comicpress_archive_dropdown_comics() {
  * Render the storyline order dropdown widget
  */
 function comicpress_archive_dropdown_storyline() {
-	$archive = new ArchiveDropdownWidget();
+	$archive = new ComicPressArchiveDropdownWidget();
 	$archive->widget(array(), array('mode' => 'storyline_order'));
 }

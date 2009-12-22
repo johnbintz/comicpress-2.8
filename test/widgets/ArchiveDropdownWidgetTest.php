@@ -8,7 +8,7 @@ class ArchiveDropdownWidgetTest extends PHPUnit_Framework_TestCase {
 	function setUp() {
 		_reset_wp();
 
-		$this->w = new ArchiveDropdownWidget();
+		$this->w = new ComicPressArchiveDropdownWidget();
 	}
 
 	function providerTestBuildDropdown() {
@@ -60,7 +60,7 @@ class ArchiveDropdownWidgetTest extends PHPUnit_Framework_TestCase {
   }
 
   function testBuildComicArchiveDropdown() {
-  	$w = $this->getMock('ArchiveDropdownWidget', array('_new_comicpressstoryline', '_new_wp_query', 'build_dropdown'));
+  	$w = $this->getMock('ComicPressArchiveDropdownWidget', array('_new_comicpressstoryline', '_new_wp_query', 'build_dropdown'));
 
   	$storyline = $this->getMock('ComicPressStoryline', array('read_from_options', 'build_from_restrictions'));
   	$storyline->expects($this->once())->method('read_from_options');
@@ -88,7 +88,7 @@ class ArchiveDropdownWidgetTest extends PHPUnit_Framework_TestCase {
   }
 
   function providerTestUpdate() {
-  	$w = new ArchiveDropdownWidget();
+  	$w = new ComicPressArchiveDropdownWidget();
   	$valid_mode = array_shift(array_keys($w->modes));
 
   	return array(
