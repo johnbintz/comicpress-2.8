@@ -8,7 +8,7 @@
 
 function display_blog_post() {
 	global $post, $wp_query, $authordata, $comicpress_options; ?>
-	<?php if (is_single()) { ?>
+	<?php if (is_single() && !is_archive() && !is_search()) { ?>
 		<div class="blognav">
 			<div class="nav-single">
 				<?php previous_post_link('%link',__(' &lsaquo; Previous ','comicpress'), TRUE); ?>
@@ -48,9 +48,20 @@ function display_blog_post() {
 				<div class="clear"></div>
 			</div>
 			<div class="entry">
-				<?php if (!is_single()) { global $more; $more = 0; } ?>
-				<?php the_content(__('&darr; Read the rest of this entry...','comicpress')); ?>
-				<?php if (is_single()) wp_link_pages(array('before' => '<div class="linkpages"><span class="linkpages-pagetext">Pages:</span> ', 'after' => '</div>', 'next_or_number' => 'number'));  ?>
+			
+<?php 
+	if (is_archive() || is_search()) {
+		if ($comicpress_options['excerpt_or_content_archive'] != 'excerpt') {
+			the_content(__('&darr; Read the rest of this entry...','comicpress'));
+		} else { 
+			the_excerpt();
+		} 				
+	} else {
+		if (!is_single()) { global $more; $more = 0; } 
+		the_content(__('&darr; Read the rest of this entry...','comicpress'));
+		if (is_single()) wp_link_pages(array('before' => '<div class="linkpages"><span class="linkpages-pagetext">Pages:</span> ', 'after' => '</div>', 'next_or_number' => 'number'));
+	}
+?>
 				<div class="clear"></div>
 			</div>
 			<div class="post-extras">
@@ -61,9 +72,9 @@ function display_blog_post() {
 			<?php } ?>
 			<?php
 				if ('open' == $post->comment_status) {
-					if (comicpress_check_child_file('partials/commentlink') == false && !(is_single())) { ?>
+					if (comicpress_check_child_file('partials/commentlink') == false && !is_single()) { ?>
 						<div class="comment-link"><?php comments_popup_link('<span class="comment-balloon comment-balloon-empty">&nbsp;</span> '.__('Comment ','comicpress'), '<span class="comment-balloon">1</span> '.__('Comment ','comicpress'), '<span class="comment-balloon">%</span> '.__('Comments ','comicpress')); ?></div>
-					<?php }
+				<?php }
 				}
 			?>
 			<div class="clear"></div>

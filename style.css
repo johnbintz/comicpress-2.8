@@ -750,6 +750,8 @@ ul.children {
 
 .comicarchiveframe 
 {
+	margin: 0 auto;
+	text-align: center;
 	-moz-opacity: 0.99;       /* mozilla, netscape */
 	opacity:0.99; /* firefox, opera, safari, chrome */
 	-khtml-opacity: 0.99;      /* khtml, old safari */
@@ -877,7 +879,7 @@ ul.children {
 }
 
 .widget_search #s-search, .widget_comicpress_search_transcripts #s-transcript {
-	width: 155px;
+	width: 136px;
 	margin-left: 4px;
 }
 

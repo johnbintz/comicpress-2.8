@@ -10,6 +10,7 @@ if (!$comicpress_options['disable_lrsidebars_frontpage']) { ?>
 				the_widget('ComicPressCalendarWidget');
 				the_widget('ComicpressArchiveDropdownWidget','mode=monthly_archive');
 			}
+			the_widget('WP_Widget_Search');
 			the_widget('WP_Widget_Pages');
 			the_widget('WP_Widget_Categories','hierarchical=1&count=1');
 

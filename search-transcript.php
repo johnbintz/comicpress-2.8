@@ -19,79 +19,26 @@ $count = $tmp_search->post_count;
 <?php if (have_posts()) : ?>
 
     <?php $posts = query_posts($query_string.'&order=asc');
-    while (have_posts()) : the_post() ?>
+	while (have_posts()) : the_post();
 
-        <?php if (in_comic_category()) { ?>
-		<div class="<?php comicpress_post_class(); ?>">
-			<div class="post-comic-head"></div>
-			<div class="post-comic">
-		<div class="post-info">
-			<?php if ($comicpress_options['enable_comic_post_author_gravatar']) { ?>
-				<div class="post-author-gravatar"><?php echo str_replace("alt='", "alt='".get_the_author_meta('display_name')."' title='".get_the_author_meta('display_name'),comicpress_get_avatar(get_the_author_meta('email'), 64)); ?></div>
-			<?php } ?>
-			<?php if (function_exists('comicpress_show_mood_in_post')) comicpress_show_mood_in_post(); ?>
-			<?php if ($comicpress_options['enable_comic_post_calendar']) { ?>
-				<div class="post-date">
-					<div class="date"><span><?php the_time('M') ?></span> <?php the_time('d') ?></div>
-				</div>
-			<?php } ?>
-			<div class="post-text">
-				<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
-				<small> By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?> <?php edit_post_link(__('Edit Post','comicpress'), ' [ ', ' ] '); ?></small><br />
-			</div>
-			<div class="clear"></div>
-		</div>
-				<div class="post-extras">
-					<div class="post-tags">
-						<?php the_tags(__('&#9492; Tags:','comicpress'),', ','<br />'); ?>
+			if (is_category() && in_comic_category()) { ?>
+
+				<div class="comicthumbwrap">
+					<div class="comicarchiveframe" style="width: <?php echo $mini_comic_width; ?>px">
+						<a href="<?php the_permalink() ?>"><img src="<?php the_comic_mini() ?>" alt="<?php the_title() ?>" title="<?php the_title() ?>"  /></a>
 					</div>
-					<div class="clear"></div>
 				</div>
-				<div class="comicarchiveframe" style="width:<?php echo $archive_comic_width; ?>px;">
-					<a href="<?php the_permalink() ?>"><img src="<?php the_comic_archive() ?>" alt="<?php the_title() ?>" title="Click for full size." width="<?php echo $archive_comic_width ?>" /></a>
-				</div>
-			</div>
-			<div class="post-comic-foot"></div>
-		</div>
-        <?php } else { ?>
-		<div class="<?php comicpress_post_class(); ?>">
-          <div class="post-head"></div>
-          <div <?php post_class(); ?>>
-			<div class="post-info">
-					<?php if ($comicpress_options['enable_post_author_gravatar']) { ?>
-						<div class="post-author-gravatar"><?php echo str_replace("alt='", "alt='".get_the_author_meta('display_name')."' title='".get_the_author_meta('display_name'),comicpress_get_avatar(get_the_author_meta('email'), 64)); ?></div>
-					<?php } ?>
-					<?php if (function_exists('comicpress_show_mood_in_post')) comicpress_show_mood_in_post(); ?>
-					<?php if ($comicpress_options['enable_post_calendar']) { ?>
-						<div class="post-date">
-							<div class="date"><span><?php the_time('M') ?></span> <?php the_time('d') ?></div>
-						</div>
-					<?php } ?>
-					<div class="post-text">
-						<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
-						<small> By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?> <?php edit_post_link(__('Edit Post','comicpress'), ' [ ', ' ] '); ?></small><br />
-						<?php if (!$comicpress_options['disable_categories_in_posts']) { ?>
-							<small><?php _e('Posted In:','comicpress'); ?><?php the_category(','); ?></small><br />
-						<?php } ?>
-					</div>
-					<div class="clear"></div>
-				</div>
-			<div class="post-extras">
-				<div class="tags">
-					<?php the_tags(__('&#9492; Tags: ','comicpress'),', ','<br />'); ?>
-				</div>
-				<div class="clear"></div>
-			</div>
-            <?php the_excerpt() ?>
-            <div class="clear"></div>
-          </div>
-          <div class="post-foot"></div>
-		</div>
-        <?php } ?>
+				
+			<?php } else { ?>
+				<?php if (in_comic_category()) {
+					display_comic_post();
+				} else {
+					display_blog_post();
+				}
+			}
+	endwhile;
 
-    <?php endwhile; ?>
-
-  <?php else : ?>
+	else : ?>
 <div class="<?php comicpress_post_class(); ?>">
     <div class="post-page-head"></div>
     <div class="post-page">
