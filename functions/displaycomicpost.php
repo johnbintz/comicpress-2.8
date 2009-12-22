@@ -6,8 +6,8 @@
  *
  */
 
-function display_comic_post() {
-	global $post, $wp_query, $authordata, $comicpress_options, $archive_comic_width;;
+function display_comic_post($frontpage = 0) {
+	global $post, $wp_query, $authordata, $comicpress_options, $archive_comic_width;
 	$first_comic = get_first_comic_permalink(); 
 	$last_comic = get_last_comic_permalink();
 	

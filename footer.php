@@ -35,7 +35,7 @@
 				<span class="footer-pipe">|</span>
 				<a href="#outside" onclick="scrollup(); return false;"><?php _e('Back to Top &uarr;','comicpress'); ?></a>
 			</span>
-			<!-- <?php echo get_num_queries() ?> queries. <?php timer_stop(1) ?> seconds. -->
+			<br /><?php echo get_num_queries() ?> queries. <?php timer_stop(1) ?> seconds.
 		</p>
 	<?php } ?>
 </div>

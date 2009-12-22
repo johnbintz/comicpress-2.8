@@ -19,7 +19,7 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 	function widget($args, $instance) {
 		global $wp_query, $post;
 		
-		if (is_home() || is_single()) {
+//		if (is_home() || is_single()) {
 			
 			$this_permalink = get_permalink();
 			
@@ -113,7 +113,7 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 			</table>
 			</div>
 			
-		<?php } 
+		<?php // } 
 	}
 	
 	function update($new_instance, $old_instance) {
@@ -273,13 +273,13 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 		<?php
 	}
 }
-// register_widget('widget_comicpress_graphical_navigation');
+register_widget('widget_comicpress_graphical_navigation');
 
 
 function widget_comicpress_graphical_navigation_init() {    
 	new widget_comicpress_graphical_navigation(); 
 } 
 
-// add_action('widgets_init', 'widget_comicpress_graphical_navigation_init');
+add_action('widgets_init', 'widget_comicpress_graphical_navigation_init');
 
 ?>

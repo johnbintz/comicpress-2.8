@@ -1,10 +1,19 @@
 <?php
-/**
- * Display Comic
- * Displays the comic.
- * 
- * 
- */
+
+function display_comic_area() {
+	global $comicpress_options;
+	if (comicpress_check_child_file('partials/displaycomic') == false) { ?>
+		<div id="comic-wrap">
+			<div id="comic-head"><?php get_sidebar('over'); ?></div>
+			<div class="clear"></div>
+			<?php get_sidebar('comicleft'); ?>
+			<div id="comic"><?php display_comic(); ?></div>
+			<?php get_sidebar('comicright'); ?>
+			<div class="clear"></div>
+			<div id="comic-foot"><?php get_sidebar('under'); ?></div>
+		</div>
+<?php }	
+}
 
 function display_comic() { 
 	global $post, $wp_query, $rascal_says, $comicpress_options, $comic_filename_filters;

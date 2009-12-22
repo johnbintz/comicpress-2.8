@@ -20,14 +20,13 @@ class ComicPressComicBlogPostWidget extends WP_Widget {
 	
 	function widget($args, $instance) {
 		global $post, $wp_query;
-		if (is_home() || is_single()) {
+		if ((is_home() || is_single()) && in_comic_category()) {
 			extract($args, EXTR_SKIP);
 			if (!empty($post->post_content)) {
 				echo $before_widget;
 				$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
 				if ( !empty( $title ) ) { echo '<div class="heading">'.$title.'</div>'; } 
-				
-				display_comic_post();
+				echo $post->post_content;
 				echo $after_widget;
 			}
 		}
