@@ -7,24 +7,11 @@
  */
 
 function display_blog_post() {
-	global $post, $wp_query, $authordata, $comicpress_options; ?>
-	<?php if (is_single() && !is_archive() && !is_search()) { ?>
-		<div class="blognav">
-			<div class="nav-single">
-				<?php previous_post_link('%link',__(' &lsaquo; Previous ','comicpress'), TRUE); ?>
-				<?php next_post_link('%link',__('| Next &rsaquo; ','comicpress'), TRUE); ?>
-			</div>
-		</div>
-	<?php } ?>
+	global $post, $wp_query, $authordata, $comicpress_options;
+	comicpress_display_blog_navigation(); ?>
 	<div class="clear"></div>
 	<div class="<?php comicpress_post_class(); ?>">
-		<?php if (function_exists('has_post_thumbnail')) {
-			if ( has_post_thumbnail() ) { ?>
-				<div class="post-image">
-				<a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_post_thumbnail('full'); ?></a>
-				</div>
-			<?php }
-		} ?>
+		<?php comicpress_display_post_thumbnail(); ?>
 		<div class="post-head"></div>
 			<div class="post" id="post-<?php the_ID() ?>">
 				<div class="post-info">

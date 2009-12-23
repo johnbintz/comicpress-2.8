@@ -40,12 +40,11 @@ function comicpress_notice_debug() {
 		$non_comic_categories = str_replace(' and ', ',', $non_comic_categories);
 		$blog_query = '&show_posts=-1&posts_per_page=-1&cat='.$non_comic_categories;
 
-		$founderrorpost = array();
-		query_posts($blog_query);
+		$post = query_posts($blog_query);
 		if (have_posts()) {
 			while (have_posts()) : the_post();
 				if (in_comic_category()) {
-					$founderrorpostlist .= '<a href="'.get_bloginfo('wpurl').'/wp-admin/post.php?action=edit&post='.get_the_ID().'">'.get_the_title().'</a><br />';
+					$founderrorpostlist .= '<a href="'.get_bloginfo('wpurl').'/wp-admin/post.php?action=edit&post='.get_the_ID().'">'.get_the_title().'</a> - Error: Category Crossover<br />';
 					$founderror = true;
 				}
 			endwhile;
@@ -56,6 +55,24 @@ function comicpress_notice_debug() {
 			$error[] = $founderrorpostlist;
 		}
 	}
+	
+	if (empty($error) && $comicpress_options['enable_full_post_check']) {
+		$founderror = false;
+		$blog_query = '&show_posts=-1&posts_per_page=-1';
+		$posts = query_posts($blog_query);
+		foreach ($posts as $testpost) {
+			$post_title_slug = $testpost->post_name;
+			if (is_numeric($post_title_slug)) {
+				$founderror = true;
+				$founderrorpostname .= '<a href="'.get_bloginfo('wpurl').'/wp-admin/post.php?action=edit&post='.$testpost->ID.'">'.get_the_title($testpost->ID).'</a> - Error: Post Slug (Permalink) is Numeric<br />';
+			}
+		}
+		if ($founderror) {
+			$error[] = array('header', __('Post\'s slug is a numeric.','comicpress'));
+			$error[] = __('The following posts have a post slug (permalink) that is numeric.  This will cause problems with permalinks.   Post slugs must have at least one alphabetic character in them for Wordpress to handle correctly.','comicpress');
+			$error[] = $founderrorpostname;
+		}
+	}	
 	
 	if (!empty($error)) {
 	?>
