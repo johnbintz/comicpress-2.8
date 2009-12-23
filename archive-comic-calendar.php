@@ -106,7 +106,7 @@ foreach ( $years as $year ) {
 		</div>
 		<div class="cpcal-cals">
 		<?php $i=1; while($i<=12) { 
-			$calendar_directory = $comicpress_calendar['calendar_directory'];
+			$calendar_directory = $comicpress_options['calendar_directory'];
 			if (!empty($calendar_directory) && $calendar_directory != 'none') { ?>
 				<div class="cpcal-month" style="height: 257px;" id="<?php echo $month[$i]['month'] ?>">
 				<?php if (file_exists(get_stylesheet_directory() . '/images/cal') && $calendar_directory != 'default') { ?>
