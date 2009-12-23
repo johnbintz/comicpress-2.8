@@ -3,15 +3,9 @@
 
 	<?php if (have_posts()) : while (have_posts()) : the_post() ?>
 	<div class="<?php comicpress_post_class(); ?>">
+		<?php comicpress_display_post_thumbnail(); ?>
 		<div class="post-page-head"></div>
 		<div class="post-page" id="post-<?php the_ID() ?>">
-			<?php if (function_exists('the_post_thumbnail')) {
-				if ( has_post_thumbnail() ) { ?>
-					<div class="post-page-image">
-					<?php the_post_thumbnail('full'); ?>
-					</div>
-				<?php } ?>
-			<?php } ?>
 			<?php if (!$comicpress_options['disable_page_titles']) { ?>
 				<h2 class="pagetitle"><?php the_title() ?></h2>
 			<?php } ?>
@@ -52,9 +46,7 @@
 				<div class="clear"></div>
 			</div>
 			<?php the_content() ?>
-		<?php if ('open' == $post->comment_status) {
-			comments_template('', true);
-			} ?>
+			<?php if ('open' == $post->comment_status) { comments_template('', true); } ?>
 			<br class="clear-margins" />
 		</div>
 		<div class="post-page-foot"></div>

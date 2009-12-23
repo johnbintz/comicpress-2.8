@@ -40,7 +40,7 @@ function comicpress_notice_debug() {
 		$non_comic_categories = str_replace(' and ', ',', $non_comic_categories);
 		$blog_query = '&show_posts=-1&posts_per_page=-1&cat='.$non_comic_categories;
 
-		$post = query_posts($blog_query);
+		query_posts($blog_query);
 		if (have_posts()) {
 			while (have_posts()) : the_post();
 				if (in_comic_category()) {

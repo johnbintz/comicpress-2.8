@@ -12,6 +12,7 @@
 			<h2><?php _e('No such author.','comicpress'); ?></h2>
 		<?php } else { ?>
 		<div class="<?php comicpress_post_class(); ?>">
+			<?php comicpress_display_post_thumbnail(); ?>
 			<div class="post-page-head"></div>
 			<div class="post-page">
 					<div class="userpage-avatar">

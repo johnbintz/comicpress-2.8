@@ -24,13 +24,7 @@ function display_comic_post($frontpage = 0) {
 	} ?>
 	
 		<div class="<?php comicpress_post_class(); ?>">
-			<?php if (function_exists('has_post_thumbnail')) {
-				if ( has_post_thumbnail() ) { ?>
-					<div class="post-comic-image">
-						<a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_post_thumbnail('full'); ?></a>
-					</div>
-				<?php }
-			} ?>
+			<?php comicpress_display_post_thumbnail(); ?>
 			<div class="post-comic-head"></div>
 				<div class="post-comic" id="post-comic-<?php the_ID() ?>">
 					<div class="post-comic-info">
