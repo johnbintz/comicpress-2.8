@@ -1,12 +1,8 @@
 <?php global $wpmu_version, $comicpress_options; ?>
 <div id="footer">
-	<?php if (function_exists('the_project_wonderful_ad')) { ?>
-		<div class="footerpwad">
-			<center>
-			<?php the_project_wonderful_ad('footer'); ?>
-			</center>
-		</div>
-	<?php } ?>
+	<?php if (function_exists('the_project_wonderful_ad')) {
+		the_project_wonderful_ad('footer');
+	} ?>
 	<?php get_sidebar('footer'); ?>
 	<?php if (!$comicpress_options['disable_footer_text']) { ?>
 		<p>

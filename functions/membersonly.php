@@ -52,7 +52,9 @@ function shortcode_for_comicpress_members_only( $atts, $content = null ) {
 	if ( !empty($current_user->ID) ) {
 		$is_member = get_usermeta($current_user->ID,'comicpress-is-member');
 		if ($is_member == 'yes' || current_user_can('publish_posts')) {
-			$returninfo = '<div class="members-only">'.$content.'</div>';
+			$returninfo = "<div class=\"members-only\">$content</div>\r\n";
+			$returninfo = str_replace('<p>', '', $returninfo);
+			$returninfo = str_replace('</p>', '', $returninfo);
 		}
 	}
 	return $returninfo;
