@@ -16,9 +16,9 @@ Template Version: 2.14
 	$temppost = $post;
 	$post = & get_post( $comicnum ); 
 ?>
-	<div class="<?php comicpress_post_class(); ?>">
+	<div <?php post_class(); ?>>
 		<?php comicpress_display_post_thumbnail(); ?>
-		<div class="post-page-head"></div>
+		<div class="post-head"></div>
 		<div class="post-page">
 			<?php if (!$comicpress_options['disable_page_titles']) { ?>
 				<h2 class="pagetitle"><?php the_title() ?></h2>
@@ -90,16 +90,16 @@ Template Version: 2.14
 			<?php $post = $temppost; ?>
 			<br class="clear-margins" />
 		</div>
-		<div class="post-page-foot"></div>
+		<div class="post-foot"></div>
 	</div>
 	
 <?php else: ?>
 	
 		<?php while (have_posts()) : the_post() ?>
 
-		<div class="<?php comicpress_post_class(); ?>">
+		<div <?php post_class(); ?>>
 			<?php comicpress_display_post_thumbnail(); ?>
-			<div class="post-page-head"></div>
+			<div class="post-head"></div>
 			<div class="post-page">
 				<?php if (!$comicpress_options['disable_page_titles']) { ?>
 					<h2 class="pagetitle"><?php the_title() ?></h2>
@@ -110,7 +110,7 @@ Template Version: 2.14
 				<br class="clear-margins" />
 				<?php edit_post_link(__('Edit this page.','comicpress'), '<p>', '</p>') ?>
 			</div>
-			<div class="post-page-foot"></div>
+			<div class="post-foot"></div>
 		</div>
 
 		<?php endwhile; ?>

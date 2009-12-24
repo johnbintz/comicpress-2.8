@@ -79,7 +79,7 @@ if (have_posts()) : while (have_posts()) : the_post();
 		
 	<?php else: ?>
 	<?php get_sidebar('underblog'); ?>	
-	<div class="<?php comicpress_post_class(); ?>">
+	<div <?php post_class(); ?>>
 		<div class="post-head"></div>
 		<div class="post">
 			<p><?php _e('Sorry, no posts matched your criteria.','comicpress'); ?></p>

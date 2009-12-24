@@ -8,8 +8,8 @@ $count = $tmp_search->post_count;
 			?>
 		<?php if (!$count) $count = "no"; ?>
 		
-<div class="<?php comicpress_post_class(); ?>">
-	<div class="post-page-head"></div>
+<div <?php post_class(); ?>>
+	<div class="post-head"></div>
 	<div class="post-page">		
 		<h2 class="pagetitle"><?php _e('Search for &lsquo;','comicpress'); the_search_query(); _e('&rsquo;','comicpress'); ?></h2>
 		<div class="searchresults"><?php printf(__ngettext("%d item.", "%d items.", $count,'comicpress'),$count); ?></div>
@@ -39,14 +39,14 @@ $count = $tmp_search->post_count;
 	endwhile;
 
 	else : ?>
-<div class="<?php comicpress_post_class(); ?>">
-    <div class="post-page-head"></div>
+<div <?php post_class(); ?>>
+    <div class="post-head"></div>
     <div class="post-page">
       <h3><?php _e('No transcripts found.','comicpress'); ?></h3>
       <p><?php _e('Try another search?','comicpress'); ?></p>
       <p><?php include(get_template_directory() . '/searchform-transcript.php') ?></p>
     </div>
-    <div class="post-page-foot"></div>
+    <div class="post-foot"></div>
 </div>
   <?php endif; ?>
 

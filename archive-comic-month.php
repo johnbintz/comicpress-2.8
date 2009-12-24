@@ -24,8 +24,8 @@ add_filter('posts_where', 'filter_where');
 $posts = query_posts('&show_posts=-1&posts_per_page=-1&cat='.get_all_comic_categories_as_cat_string());
 
 ?>
-<div class="<?php comicpress_post_class(); ?>">
-	<div class="post-page-head"></div>
+<div <?php post_class(); ?>>
+	<div class="post-head"></div>
 	<div class="post-page">
 <?php if (have_posts()) : while (have_posts()) : the_post() ?>
 
@@ -38,7 +38,7 @@ $posts = query_posts('&show_posts=-1&posts_per_page=-1&cat='.get_all_comic_categ
 <?php endwhile; endif; ?>
 		<br class="clear-margins" />
 	</div>
-	<div class="post-page-foot"></div>
+	<div class="post-foot"></div>
 </div>	
 	
 

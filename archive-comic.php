@@ -19,8 +19,8 @@ $years = $wpdb->get_col("SELECT DISTINCT YEAR(post_date) FROM $wpdb->posts WHERE
 foreach ( $years as $year ) { 
 	if ($year != (0) ) {
 ?>
-<div class="<?php comicpress_post_class(); ?>">
-	<div class="post-page-head"></div>
+<div <?php post_class(); ?>>
+	<div class="post-head"></div>
 	<div class="post-page">
 			<h3><?php echo $year ?></h3>
 			<table class="month-table">
@@ -31,7 +31,7 @@ foreach ( $years as $year ) {
 			</table>
 		<br class="clear-margins" />
 	</div>
-	<div class="post-page-foot"></div>
+	<div class="post-foot"></div>
 </div>
 	<?php } 
 } ?>

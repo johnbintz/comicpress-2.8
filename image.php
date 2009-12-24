@@ -2,9 +2,9 @@
 <?php include(get_template_directory() . '/layout-head.php'); ?>
 
 	<?php if (have_posts()) : while (have_posts()) : the_post() ?>
-	<div class="<?php comicpress_post_class(); ?>">
+	<div <?php post_class(); ?>>
 		<?php comicpress_display_post_thumbnail(); ?>
-		<div class="post-page-head"></div>
+		<div class="post-head"></div>
 		<div class="post-page" id="post-<?php the_ID() ?>">
 			<?php if (!$comicpress_options['disable_page_titles']) { ?>
 				<h2 class="pagetitle"><?php the_title() ?></h2>
@@ -49,16 +49,16 @@
 			<?php if ('open' == $post->comment_status) { comments_template('', true); } ?>
 			<br class="clear-margins" />
 		</div>
-		<div class="post-page-foot"></div>
+		<div class="post-foot"></div>
 	</div>
 	<?php endwhile; else: ?>
-	<div class="<?php comicpress_post_class(); ?>">
-		<div class="post-page-head"></div>
+	<div <?php post_class(); ?>>
+		<div class="post-head"></div>
 		<div class="post-page">
 			<p><?php _e('Sorry, no image matched your criteria.','comicpress'); ?></p>
 			<br class="clear-margins" />
 		</div>
-		<div class="post-page-foot"></div>
+		<div class="post-foot"></div>
 	</div>
 	<?php endif; ?>
 	

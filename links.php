@@ -22,8 +22,8 @@ $bookmarks = preg_replace('#<li ([^>]*)>#', '<li>', $bookmarks);
 $bookmarks = preg_replace('#<ul ([^>]*)>#', '<ul>', $bookmarks);
 ?>
 
-<div class="<?php comicpress_post_class(); ?>">
-	<div class="post-page-head"></div>
+<div <?php post_class(); ?>>
+	<div class="post-head"></div>
 	<div class="post-page">
 		<div id="linkspage">
 		<ul>
@@ -32,7 +32,7 @@ $bookmarks = preg_replace('#<ul ([^>]*)>#', '<ul>', $bookmarks);
 		</div>
 		<div class="clear"></div>
 	</div>
-	<div class="post-page-foot"></div>
+	<div class="post-foot"></div>
 </div>
 	
 <?php include(get_template_directory() . '/layout-foot.php'); ?>

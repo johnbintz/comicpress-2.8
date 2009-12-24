@@ -8,8 +8,8 @@
 			?>
 		<?php if (!$count) $count = "no"; ?>
 		
-<div class="<?php comicpress_post_class(); ?>">
-	<div class="post-page-head"></div>
+<div <?php post_class(); ?>>
+	<div class="post-head"></div>
 	<div class="post-page">		
 		<h2 class="pagetitle"><?php _e('Search for &lsquo;','comicpress'); the_search_query(); _e('&rsquo;','comicpress'); ?></h2>
 		<div class="searchresults"><?php printf(__ngettext("%d item.", "%d items.", $count,'comicpress'),$count); ?></div>
@@ -28,24 +28,20 @@
 					</div>
 				</div>
 				
-			<?php } else { ?>
-				<?php if (in_comic_category()) {
+			<?php } else {
 					comicpress_display_post();
-				} else {
-					comicpress_display_post();
-				}
 			}
 	endwhile;
     
 	else : ?>
-		<div class="<?php comicpress_post_class(); ?>">
-			<div class="post-page-head"></div>
+		<div <?php post_class(); ?>>
+			<div class="post-head"></div>
 			<div class="post-page">
 				<h3><?php _e('No entries found.','comicpress'); ?></h3>
 				<p><?php _e('Try another search?','comicpress'); ?></p>
 				<p><?php the_widget('WP_Widget_Search'); ?></p>
 			</div>
-			<div class="post-page-foot"></div>
+			<div class="post-foot"></div>
 		</div>
   <?php endif; ?>
 	

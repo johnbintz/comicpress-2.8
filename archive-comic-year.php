@@ -25,8 +25,8 @@ if (have_posts()) {
 }
 ?>
 
-<div class="<?php comicpress_post_class(); ?>">
-	<div class="post-page-head"></div>
+<div <?php post_class(); ?>>
+	<div class="post-head"></div>
 	<div class="post-page">
 		<div class="archive-yearlist">| 
 			<?php $years = $wpdb->get_col("SELECT DISTINCT YEAR(post_date) FROM $wpdb->posts WHERE post_status = 'publish' ORDER BY post_date ASC");
@@ -44,7 +44,7 @@ if (have_posts()) {
 		</table>
 		<br class="clear-margins" />
 	</div>
-	<div class="post-page-foot"></div>
+	<div class="post-foot"></div>
 </div>
 
 <?php if ('open' == $post->comment_status) { comments_template('', true); } ?>
