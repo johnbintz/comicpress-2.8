@@ -18,13 +18,9 @@ if (have_posts()) : while (have_posts()) : the_post();
 	endwhile; 
 ?>
 	
-	<?php if (function_exists('the_project_wonderful_ad')) { ?>
-		<div class="blogpwad">
-			<center>
-			<?php the_project_wonderful_ad('blog'); ?>
-			</center>
-		</div>
-	<?php } ?>
+	<?php if (function_exists('the_project_wonderful_ad')) {
+		the_project_wonderful_ad('blog');
+	} ?>
 	<?php get_sidebar('blog'); ?>
 	
 	<?php 
