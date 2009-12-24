@@ -48,13 +48,13 @@ function comicpress_members_filter($query) {
 
 function shortcode_for_comicpress_members_only( $atts, $content = null ) {
 	global $post, $userdata, $profileuser, $current_user, $errormsg;
-	$returninfo = '<div class="non-member">'.__('There is Members Only content here.<br />To view this content you need to be a member of this site.','comicpress').'</div>';
+	$returninfo = '<div class="non-member"><p>'.__('There is Members Only content here.<br />To view this content you need to be a member of this site.','comicpress').'</p></div>';
 	if ( !empty($current_user->ID) ) {
 		$is_member = get_usermeta($current_user->ID,'comicpress-is-member');
 		if ($is_member == 'yes' || current_user_can('publish_posts')) {
-			$returninfo = "<div class=\"members-only\">$content</div>\r\n";
-			$returninfo = str_replace('<p>', '', $returninfo);
-			$returninfo = str_replace('</p>', '', $returninfo);
+			$content = str_replace('<p>', '', $content);
+			$content = str_replace('</p>', '', $content);
+			$returninfo = "<div class=\"members-only\">\r\n<p>$content</p>\r\n</div>\r\n";
 		}
 	}
 	return $returninfo;
