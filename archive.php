@@ -17,10 +17,9 @@
 			} else {
 				$posts = query_posts($query_string.'&order='.$archive_display_order);
 			} ?>
-	<div class="<?php comicpress_post_class(); ?>">
-		<div class="post-page-head"></div>
-		<div class="post-page">	
-			<div class="content">
+	<div <?php post_class(); ?>>
+		<div class="post-head"></div>
+		<div class="post-content">	
 			<?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
 			<?php /* Category Archive */ if (is_category()) { ?>
 				<h2 class="pagetitle"><?php _e('Archive for &#8216;','comicpress'); ?><?php single_cat_title() ?>&#8217;</h2>
@@ -37,18 +36,17 @@
 			<?php /* Paged Archive */ } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) { ?>
 				<h2 class="pagetitle"><?php _e('Archives','comicpress'); ?></h2>
 			<?php } ?>
-				<div class="searchresults"><?php printf(__ngettext("%d item.", "%d items.", $count,'comicpress'),$count); ?></div>
-			</div>
+			<div class="searchresults"><?php printf(__ngettext("%d item.", "%d items.", $count,'comicpress'),$count); ?></div>
 			<br class="clear-margins" />
 		</div>
-		<div class="post-page-foot"></div>
+		<div class="post-foot"></div>
 	</div>
 	
 		<?php if (is_category() && in_comic_category()) { ?>
 
-		<div class="<?php comicpress_post_class(); ?>">
-			<div class="post-page-head"></div>
-			<div class="post-page">	
+		<div <?php post_class(); ?>>
+			<div class="post-head"></div>
+			<div class="post-content">	
 			
 		<?php } ?>
 		<?php while (have_posts()) : the_post();
@@ -63,9 +61,9 @@
 				
 			<?php } else { ?>
 				<?php if (in_comic_category()) {
-					display_comic_post();
+					comicpress_display_post();
 				} else {
-					display_blog_post();
+					comicpress_display_post();
 				}
 			}
 			
@@ -75,21 +73,21 @@
 	
 			<br class="clear-margins" />
 		</div>
-		<div class="post-page-foot"></div>
+		<div class="post-foot"></div>
 	</div>	
 	
 	<?php } ?>
 		
 		<div class="clear"></div>
 	<?php else : ?>
-		<div class="<?php comicpress_post_class(); ?>">
-			<div class="post-page-head"></div>
-			<div class="post-page">
+		<div <?php post_class(); ?>>
+			<div class="post-head"></div>
+			<div class="post">
 				<h3><?php _e('No entries found.','comicpress'); ?></h3>
 				<p><?php _e('Try another search?','comicpress'); ?></p>
 				<p><?php the_widget('WP_Widget_Search'); ?></p>
 			</div>
-			<div class="post-page-foot"></div>
+			<div class="post-foot"></div>
 		</div>
 	<?php endif; ?>
 		

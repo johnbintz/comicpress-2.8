@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <?php include(get_template_directory() . '/layout-head.php'); ?>
 	
-<div class="post post-404">
+<div class="post page post-404">
 	<div class="post-head"></div>
 	<div class="post-content">
 		<h2 class="pagetitle"><?php _e('Page Not Found','comicpress'); ?></h2>

@@ -9,7 +9,7 @@ function comicpress_dual_columns() {
     $posts = query_posts($blog_query);
     if (have_posts()) {
       while (have_posts()) : the_post();
-        display_blog_post();
+        comicpress_display_post();
       endwhile;
     } ?>
     <span class="viewpostsbyone">View all posts by: <?php the_author_posts_link(); ?><span><br />
@@ -20,7 +20,7 @@ function comicpress_dual_columns() {
     $posts = query_posts($blog_query);
     if (have_posts()) {
       while (have_posts()) : the_post();
-        display_blog_post();
+        comicpress_display_post();
       endwhile;
     } ?>
     <span class="viewpostsbytwo">View all posts by: <?php the_author_posts_link(); ?></span><br />

@@ -15,7 +15,7 @@ Template Name: Blog
 			
 			while (have_posts()) : the_post();
 				
-				display_blog_post();	
+				comicpress_display_post();	
 			
 			endwhile;
 			

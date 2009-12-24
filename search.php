@@ -30,9 +30,9 @@
 				
 			<?php } else { ?>
 				<?php if (in_comic_category()) {
-					display_comic_post();
+					comicpress_display_post();
 				} else {
-					display_blog_post();
+					comicpress_display_post();
 				}
 			}
 	endwhile;
