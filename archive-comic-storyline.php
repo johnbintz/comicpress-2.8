@@ -16,7 +16,7 @@ if (have_posts()) {
 
 <div <?php post_class(); ?>>
 	<div class="post-head"></div>
-	<div class="post-page">
+	<div class="post-content">
 		<ul id="storyline" class="level-0">
 			<?php if (get_option('comicpress-enable-storyline-support') == 1) {
 				if (($result = get_option("comicpress-storyline-category-order")) !== false) {

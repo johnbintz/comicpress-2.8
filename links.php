@@ -24,7 +24,7 @@ $bookmarks = preg_replace('#<ul ([^>]*)>#', '<ul>', $bookmarks);
 
 <div <?php post_class(); ?>>
 	<div class="post-head"></div>
-	<div class="post-page">
+	<div class="post-content">
 		<div id="linkspage">
 		<ul>
 			<?php echo $bookmarks; ?>

@@ -26,7 +26,7 @@ $posts = query_posts('&show_posts=-1&posts_per_page=-1&cat='.get_all_comic_categ
 ?>
 <div <?php post_class(); ?>>
 	<div class="post-head"></div>
-	<div class="post-page">
+	<div class="post-content">
 <?php if (have_posts()) : while (have_posts()) : the_post() ?>
 
 				<div class="comicthumbwrap">

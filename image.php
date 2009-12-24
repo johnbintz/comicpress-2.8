@@ -5,7 +5,7 @@
 	<div <?php post_class(); ?>>
 		<?php comicpress_display_post_thumbnail(); ?>
 		<div class="post-head"></div>
-		<div class="post-page" id="post-<?php the_ID() ?>">
+		<div class="post-content" id="post-<?php the_ID() ?>">
 			<?php if (!$comicpress_options['disable_page_titles']) { ?>
 				<h2 class="pagetitle"><?php the_title() ?></h2>
 			<?php } ?>
@@ -54,7 +54,7 @@
 	<?php endwhile; else: ?>
 	<div <?php post_class(); ?>>
 		<div class="post-head"></div>
-		<div class="post-page">
+		<div class="post-content">
 			<p><?php _e('Sorry, no image matched your criteria.','comicpress'); ?></p>
 			<br class="clear-margins" />
 		</div>

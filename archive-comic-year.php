@@ -27,7 +27,7 @@ if (have_posts()) {
 
 <div <?php post_class(); ?>>
 	<div class="post-head"></div>
-	<div class="post-page">
+	<div class="post-content">
 		<div class="archive-yearlist">| 
 			<?php $years = $wpdb->get_col("SELECT DISTINCT YEAR(post_date) FROM $wpdb->posts WHERE post_status = 'publish' ORDER BY post_date ASC");
 				foreach ( $years as $year ) {

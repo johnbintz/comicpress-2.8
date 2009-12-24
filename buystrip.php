@@ -19,7 +19,7 @@ Template Version: 2.14
 	<div <?php post_class(); ?>>
 		<?php comicpress_display_post_thumbnail(); ?>
 		<div class="post-head"></div>
-		<div class="post-page">
+		<div class="post-content">
 			<?php if (!$comicpress_options['disable_page_titles']) { ?>
 				<h2 class="pagetitle"><?php the_title() ?></h2>
 			<?php } ?>
@@ -100,7 +100,7 @@ Template Version: 2.14
 		<div <?php post_class(); ?>>
 			<?php comicpress_display_post_thumbnail(); ?>
 			<div class="post-head"></div>
-			<div class="post-page">
+			<div class="post-content">
 				<?php if (!$comicpress_options['disable_page_titles']) { ?>
 					<h2 class="pagetitle"><?php the_title() ?></h2>
 				<?php } ?>

@@ -16,7 +16,7 @@ if (have_posts()) {
 
 <div <?php post_class(); ?>>
 	<div class="post-head"></div>
-	<div class="post-page">
+	<div class="post-content">
 		<div id="archivepage">
 			<h2><?php _e('Archives by Month:','comicpress'); ?></h2>
 			<ul><?php wp_get_archives('type=monthly') ?></ul>
@@ -28,7 +28,7 @@ if (have_posts()) {
 
 <div <?php post_class(); ?>>
 	<div class="post-head"></div>
-	<div class="post-page">
+	<div class="post-content">
 		<div id="archivepage">
 			<h2><?php _e('Archives by Subject:','comicpress'); ?></h2>
 			<ul><?php wp_list_categories() ?></ul>

@@ -14,7 +14,7 @@
 		<div <?php post_class(); ?>>
 			<?php comicpress_display_post_thumbnail(); ?>
 			<div class="post-head"></div>
-			<div class="post-page">
+			<div class="post-content">
 					<div class="userpage-avatar">
 						<?php echo str_replace("alt='", "alt='".wp_specialchars($curauth->display_name, 1)."' title='".wp_specialchars($curauth->display_name, 1), comicpress_get_avatar($curauth->user_email, 64)); ?>
 					</div>

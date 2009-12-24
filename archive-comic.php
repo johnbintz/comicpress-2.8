@@ -21,7 +21,7 @@ foreach ( $years as $year ) {
 ?>
 <div <?php post_class(); ?>>
 	<div class="post-head"></div>
-	<div class="post-page">
+	<div class="post-content">
 			<h3><?php echo $year ?></h3>
 			<table class="month-table">
 		<?php $comicArchive = new WP_Query(); $comicArchive->query('showposts=10000&cat='.get_all_comic_categories_as_cat_string().'&year='.$year);

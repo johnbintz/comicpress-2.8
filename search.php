@@ -10,7 +10,7 @@
 		
 <div <?php post_class(); ?>>
 	<div class="post-head"></div>
-	<div class="post-page">		
+	<div class="post-content">		
 		<h2 class="pagetitle"><?php _e('Search for &lsquo;','comicpress'); the_search_query(); _e('&rsquo;','comicpress'); ?></h2>
 		<div class="searchresults"><?php printf(__ngettext("%d item.", "%d items.", $count,'comicpress'),$count); ?></div>
 	</div>
@@ -36,7 +36,7 @@
 	else : ?>
 		<div <?php post_class(); ?>>
 			<div class="post-head"></div>
-			<div class="post-page">
+			<div class="post-content">
 				<h3><?php _e('No entries found.','comicpress'); ?></h3>
 				<p><?php _e('Try another search?','comicpress'); ?></p>
 				<p><?php the_widget('WP_Widget_Search'); ?></p>
