@@ -273,7 +273,7 @@
 						<input id="disable_page_titles" name="disable_page_titles" type="checkbox" value="1" <?php checked(true, $comicpress_options['disable_page_titles']); ?> />					
 					</td>
 					<td>
-						<?php _e('If you disable the titles no pages you can add a post-page-image in the page editor.','comicpress'); ?>
+						<?php _e('If you disable the titles no pages you can still add a post-image in the page editor.','comicpress'); ?>
 					</td>
 				</tr>
 			</table>

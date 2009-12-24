@@ -1,17 +1,9 @@
 <?php
 /**
- * Body Classes
- * function function comicpress_body_class
  * 
  * Author: Philip M. Hofer (Frumph)
- * Author URI: http://frumph.net/ http://frumph.net/
- * Version: 1.0.6
- * 
- * This function adds the browser type as a class
- * in the <body> tag where you can then do .ie #page and do things specific
- * for each browser type as well as a few other classes that the normal body_class
- * does not yet support.
- * 
+ * Author URI: http://frumph.net/
+ * Version: 1.0.7
  * 
  */
 
@@ -35,10 +27,12 @@ function comicpress_body_class($classes = '') {
 		}
 	}
 	
-	if (in_comic_category()) {
-		$classes[] = 'comic';
-	} else {
-		$classes[] = 'noncomic';
+	if (!is_page()) {
+		if (in_comic_category()) {
+			$classes[] = 'comic';
+		} else {
+			$classes[] = 'noncomic';
+		}
 	}
 
 	if($is_lynx) $classes[] = 'lynx';
