@@ -1,8 +1,12 @@
 <?php
 
 function comicpress_display_post_title() {
-	global $post;
-	$post_title = "<h2 class=\"post-title\"><a href=\"".get_permalink()."\">".get_the_title() ."</a></h2>\r\n";
+	global $post, $wp_query;
+	$post_title = "<h2 class=\"post-title\">";
+	if (is_home() || is_search() || is_archive()) $post_title .= "<a href=\"".get_permalink()."\">";
+	$post_title .= get_the_title();
+	if (is_home() || is_search() || is_archive()) $post_title .= "</a>";
+	$post_title .= "</h2>\r\n";
 	echo apply_filters('comicpress_display_post_title',$post_title);
 }
 
@@ -23,6 +27,20 @@ function comicpress_display_author_gravatar() {
 		$author_gravatar = "<div class=\"post-author-gravatar\">".$author_get_gravatar."</div>";
 		echo apply_filters('comicpress_display_author_gravatar', $author_gravatar);
 	}
+}
+
+function comicpress_display_post_calendar() {
+	global $post, $comicpress_options;
+	if ($comicpress_options['enable_post_calendar']) { 
+		$post_calendar = "<div class=\"post-calendar-date\"><div class=\"calendar-date\"><span>".get_the_time('M')."</span>".get_the_time('d')."</div></div>\r\n";
+		echo apply_filters('comicpress_display_post_calendar',$post_calendar);
+	}
+}
+
+function comicpress_display_post_author() {
+	global $post;
+	$post_author = "<div class=\"post-author\"><span class=\"post-date\">".get_the_time('F jS, Y')."</span> <span class=\"pipe\">|</span> by ".get_the_author_meta('display_name')."</div>";
+	echo apply_filters('comicpress_display_post_author',$post_author);
 }
 
 function comicpress_display_blog_navigation() {

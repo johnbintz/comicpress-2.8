@@ -15,26 +15,21 @@ function display_blog_post() {
 		<div class="post-head"></div>
 			<div class="post" id="post-<?php the_ID() ?>">
 				<div class="post-info">
-				<?php if ($comicpress_options['enable_post_author_gravatar']) { ?>
-					<div class="post-author-gravatar"><?php echo str_replace("alt='", "alt='".get_the_author_meta('display_name')."' title='".get_the_author_meta('display_name'),comicpress_get_avatar(get_the_author_meta('email'), 64)); ?></div>
-				<?php } ?>
-				<?php if (function_exists('comicpress_show_mood_in_post')) comicpress_show_mood_in_post(); ?>
-				<?php if ($comicpress_options['enable_post_calendar']) { ?>
-					<div class="post-date">
-						<div class="date"><span><?php the_time('M') ?></span> <?php the_time('d') ?></div>
+					<?php comicpress_display_author_gravatar(); ?>
+					<?php if (function_exists('comicpress_show_mood_in_post')) comicpress_show_mood_in_post(); ?>
+					<?php comicpress_display_post_calendar(); ?>
+					<div class="post-text">
+						<?php comicpress_display_post_title(); ?>
+						<?php comicpress_display_post_author(); ?>						
+						<?php if (!$comicpress_options['disable_categories_in_posts']) { ?>
+							<div class="post-cat"><?php _e('Posted In:','comicpress'); ?> <?php the_category(','); ?></div>
+						<?php } ?>
+						<?php if(function_exists('the_ratings')) { the_ratings(); } ?>
+						<?php edit_post_link(__('Edit Post','comicpress'), ' [ ', ' ] '); ?>
 					</div>
-				<?php } ?>
-				<div class="post-text">
-					<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
-					<div class="post-author"> <?php the_time('F jS, Y'); ?> <span class="pipe">|</span> by <?php the_author_posts_link(); ?> <?php edit_post_link(__('Edit Post','comicpress'), ' [ ', ' ] '); ?></div>
-					<?php if (!$comicpress_options['disable_categories_in_posts']) { ?>
-						<div class="post-cat"><?php _e('Posted In:','comicpress'); ?> <?php the_category(','); ?></div>
-					<?php } ?>
-					<?php if(function_exists('the_ratings')) { the_ratings(); } ?>
+					<div class="clear"></div>
 				</div>
-				<div class="clear"></div>
-			</div>
-			<div class="entry">
+				<div class="entry">
 			
 <?php 
 	if (is_archive() || is_search()) {

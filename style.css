@@ -509,7 +509,7 @@ h4, h4 a {
 	margin-right: 2px;
 }
 
-.post-date, .post-comic-date {
+.post-calendar-date, .post-comic-calendar-date {
 	color: #777;
 	font-family: 'Georgia' , serif;
 	font-size: 15px;
@@ -518,7 +518,7 @@ h4, h4 a {
 	margin-right: 3px;
 }
 
-.post-date .date, .post-comic-date .date {
+.post-calendar-date .calendar-date, .post-comic-calendar-date .calendar-date {
 	height: 50px;
 	width: 45px;
 	background: url(images/calendar.png) center no-repeat;
@@ -532,7 +532,7 @@ h4, h4 a {
 }
 
 
-.post-date .date span, .post-comic-date .date span {
+.post-calendar-date .calendar-date span, .post-comic-calendar-date .calendar-date span {
 	height: 16px;
 	padding: 1px 0 4px 0;
 	display: block;
