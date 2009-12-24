@@ -35,7 +35,7 @@ function display_blog_post() {
 					<?php comicpress_display_post_tags(); ?>
 					<?php comicpress_display_comment_link(); ?>
 				<div class="clear"></div>
-				<?php if ($comicpress_options['enable_related_posts']) echo ComicPressRelatedPosts::display_related_posts(); ?>
+				<?php comicpress_display_related_posts(); ?>
 			</div>
 		</div>
 		<div class="post-foot"></div>

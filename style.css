@@ -474,33 +474,29 @@ h4, h4 a {
 		padding: 1%; 
 	}
 
-.post, .post-comic, .post-page {
+.post {
 	clear: both;
 	text-align: left;
 }
 
-.post-page-head {
-	padding-top: 5px;
-}
-
-.post-foot, .post-comic-foot {
+.post-foot {
 	margin-bottom: 40px;
 }
 
-.post-image, .post-comic-image, .post-page-image {
+.post-image {
 }
 
-.post-info, .post-comic-info {
+.post-info {
 	padding-bottom: 5px;
 	font-size: 12px;
 }
 
-.post-text, .post-comic-text {
+.post-text {
 	overflow: hidden;
 	display: block;
 }
 
-.post-author-gravatar, .post-comic-author-gravatar {
+.post-author-gravatar {
 	float: right;
 }
 
@@ -509,7 +505,7 @@ h4, h4 a {
 	margin-right: 2px;
 }
 
-.post-calendar-date, .post-comic-calendar-date {
+.post-calendar-date {
 	color: #777;
 	font-family: 'Georgia' , serif;
 	font-size: 15px;
@@ -518,7 +514,7 @@ h4, h4 a {
 	margin-right: 3px;
 }
 
-.post-calendar-date .calendar-date, .post-comic-calendar-date .calendar-date {
+.post-calendar-date .calendar-date {
 	height: 50px;
 	width: 45px;
 	background: url(images/calendar.png) center no-repeat;
@@ -532,7 +528,7 @@ h4, h4 a {
 }
 
 
-.post-calendar-date .calendar-date span, .post-comic-calendar-date .calendar-date span {
+.post-calendar-date .calendar-date span {
 	height: 16px;
 	padding: 1px 0 4px 0;
 	display: block;
@@ -560,17 +556,17 @@ h4, h4 a {
 	clear: both;
 }
 
-.post-tags, .post-comic-tags {
+.post-tags {
 	font-size: 12px;
 }
 
-.post .members-only, .post-comic .members-only {
+.post .members-only {
 	border: 1px dotted #000;
 	background: #fafafa;
 	padding: 3px;
 }
 
-.post .non-member, .post-comic .non-member {
+.post .non-member {
 	border: 1px dotted #000;
 	background: #fafafa;
 	padding: 3px;

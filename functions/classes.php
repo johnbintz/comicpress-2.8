@@ -91,7 +91,9 @@ function comicpress_body_class($classes = '') {
 	return $classes;
 }
 
-function comicpress_post_class($class = '') {
+add_filter('post_class','comicpress_post_class');
+
+function comicpress_post_class($classes = '') {
 	global $post;
 	static $post_alt;
 
@@ -101,6 +103,12 @@ function comicpress_post_class($class = '') {
 
 	/* Microformats. */
 	$classes[] = 'uentry';
+	
+	/* if a comic category */
+	if (in_comic_category()) $classes[] = 'comicpost';
+	if (is_page()) $classes[] = 'pagepost';
+	if (!in_comic_category() && !is_page()) $classes[] = 'blogpost';
+	
 
 	/* Post alt class. */
 	$classes[] = 'postonpage-' . ++$post_alt;
@@ -129,10 +137,7 @@ function comicpress_post_class($class = '') {
 		$classes = array_merge( $classes, $class );
 	endif;
 
-	/* Join all the classes into one string and echo them. */
-	$class = join( ' ', $classes );
-
-	echo apply_filters( 'comicpress_post_class', $class );
+	return $classes;
 }
 
 add_filter('comment_class','comicpress_comment_class');

@@ -8,7 +8,7 @@
 	$wp_query->is_archive = false;
 	if (have_posts()) {
 		while (have_posts()) : the_post();
-			display_comic_post();
+			comicpress_display_post();
 			comments_template();
 		endwhile; 
 	}
@@ -38,7 +38,7 @@
 			<div class="blogindex">
 				<?php while (have_posts()) : the_post();
 
-					display_blog_post();
+					comicpress_display_post();
 
 			endwhile; ?>
 			</div>

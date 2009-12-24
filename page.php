@@ -3,7 +3,7 @@
 
 <?php while (have_posts()) : the_post() ?>
 
-	<?php comicpress_display_page_post(); ?>
+	<?php comicpress_display_post(); ?>
 
 <?php endwhile; ?>
 

@@ -5,7 +5,7 @@
 if (have_posts()) : while (have_posts()) : the_post();
 	if (in_comic_category()) {
 		if (!$comicpress_options['disable_comic_blog_single']) {
-			display_comic_post();
+			comicpress_display_post();
 			$cur_date = mysql2date('Y-m-j', $post->post_date);
 			$next_comic = get_next_comic();
 			$next_comic = (array)$next_comic;
@@ -13,7 +13,7 @@ if (have_posts()) : while (have_posts()) : the_post();
 			$blog_query = 'showposts='.$blog_postcount.'&order=asc&cat=-'.exclude_comic_categories();
 		}
 	} else { 
-		display_blog_post();			
+		comicpress_display_post();			
 	}
 	endwhile; 
 ?>
@@ -40,7 +40,7 @@ if (have_posts()) : while (have_posts()) : the_post();
 			<div class="blogindex">
 				<?php while (have_posts()) : the_post();
 					
-					display_blog_post();	
+					comicpress_display_post();	
 				
 			endwhile; ?>
 			</div>
@@ -66,7 +66,7 @@ if (have_posts()) : while (have_posts()) : the_post();
 				add_filter('posts_where', 'filter_where');
 				$posts = query_posts($blog_query);
 				if (have_posts()) { while (have_posts()) : the_post();
-						display_blog_post();
+						comicpress_display_post();
 				endwhile; }
 			} 
 			$post = $temppost; $wp_query = $temp_query; $temppost = null; $temp_query = null;

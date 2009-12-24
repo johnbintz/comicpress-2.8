@@ -20,7 +20,7 @@ if (empty($archive_year) || $archive_year == '') $archive_year = date('Y');
 <?php 
 if (have_posts()) {
 	while (have_posts()) : the_post();
-		comicpress_display_page_post();
+		comicpress_display_post();
 	endwhile; 
 }
 ?>

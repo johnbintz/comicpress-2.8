@@ -26,7 +26,7 @@ function comicpress_display_post_thumbnail() {
 
 function comicpress_display_author_gravatar() {
 	global $post, $wp_query, $comicpress_options;
-	if ((!in_comic_category() && $comicpress_options['enable_post_author_gravatar']) || (in_comic_category() && $comicpress_options['enable_comic_post_author_gravatar']) && !is_page()) {
+	if (((!in_comic_category() && $comicpress_options['enable_post_author_gravatar']) || (in_comic_category() && $comicpress_options['enable_comic_post_author_gravatar'])) && !is_page()) {
 		$author_get_gravatar = str_replace("alt='", "alt='".get_the_author_meta('display_name')."' title='".get_the_author_meta('display_name'),comicpress_get_avatar(get_the_author_meta('email'), 64));
 		$author_gravatar = "<div class=\"post-author-gravatar\">".$author_get_gravatar."</div>\r\n";
 		echo apply_filters('comicpress_display_author_gravatar', $author_gravatar);
@@ -68,12 +68,22 @@ function comicpress_display_post_tags() {
 }
 
 function comicpress_display_comment_link() {
-	global $post, $comicpress_option;
+	global $post;
 	if ('open' == $post->comment_status) {
 		if (comicpress_check_child_file('partials/commentlink') == false && !is_single()) {
 			$post_comment_link = "<div class=\"comment-link\">".get_comment_reply_link('<span class="comment-balloon comment-balloon-empty">&nbsp;</span> '.__('Comment ','comicpress'), '<span class="comment-balloon">1</span> '.__('Comment ','comicpress'), '<span class="comment-balloon">%</span> '.__('Comments ','comicpress'))."</div>\r\n";
 			apply_filters('comicpress_display_comment_link',$post_comment_link);
 		}
+	}
+}
+
+function comicpress_display_related_posts() {
+	global $post, $comicpress_options;
+	if (in_comic_category() && $comicpress_options['enable_related_comics']) {
+		echo ComicPressRelatedPosts::display_related_comics();
+	} 
+	if (!in_comic_category() && $comicpress_options['enable_related_posts']) {
+		echo ComicPressRelatedPosts::display_related_posts();
 	}
 }
 
@@ -89,6 +99,24 @@ function comicpress_display_blog_navigation() {
 		<div class="clear"></div>
 	<?php }
 }
+
+function comicpress_display_comic_navigation() {
+	global $post, $wp_query;
+	if (!$comicpress_options['disable_default_comic_nav']) { 
+		$first_comic = get_first_comic_permalink(); 
+		$last_comic = get_last_comic_permalink();
+		if (!is_search() && !is_archive() && !is_page() && in_comic_category()) { ?>
+			<div class="nav">
+				<?php if ( get_permalink() != $first_comic ) { ?><div class="nav-first"><a href="<?php echo $first_comic ?>"><?php _e('&lsaquo;&lsaquo; First','comicpress'); ?></a></div><?php } ?>
+				<div class="nav-previous"><?php $temp_query = $wp_query->is_single; $wp_query->is_single = true; previous_comic_link('%link', __('&lsaquo; Previous','comicpress')); $wp_query->is_single = $temp_query;$temp_query = null; ?></div>
+				<div class="nav-next"><?php next_comic_link('%link', __('Next &rsaquo;','comicpress')) ?></div>
+				<?php if ( get_permalink() != $last_comic ) { ?><div class="nav-last"><a href="<?php echo $last_comic ?>"><?php _e('Last &rsaquo;&rsaquo;','comicpress'); ?></a></div><?php } ?>
+			</div>
+			<br class="clear-margins" />
+		<?php }
+	}
+}
+
 
 function comicpress_display_the_content() {
 	global $post, $wp_query, $comicpress_options;
@@ -115,10 +143,12 @@ function comicpress_display_post() {
 	global $post, $wp_query; ?>
 	<div <?php post_class(); ?>>
 		<?php comicpress_display_blog_navigation(); ?>
+		<?php comicpress_display_comic_navigation(); ?>
 		<?php comicpress_display_post_thumbnail(); ?>
 		<div class="post-head"></div>
 			<div class="post-content">
 				<div class="post-info">
+					<?php comicpress_display_author_gravatar(); ?>
 					<?php if (function_exists('comicpress_show_mood_in_post')) comicpress_show_mood_in_post(); ?>
 					<div class="post-text">
 						<?php 
@@ -126,12 +156,12 @@ function comicpress_display_post() {
 						if (!is_page()) {
 							comicpress_display_post_author();
 							comicpress_display_post_category();
-							if (function_exists('the_ratings')) { the_ratings(); }
-							edit_post_link(__('Edit Post','comicpress'), ' [ ', ' ] ');
-						} 
-						?>
+							if (function_exists('the_ratings')) { the_ratings(); } 
+							if (!is_archive() && !is_search()) { ?>
+								<small><?php edit_post_link(__('Edit Post','comicpress'), ' [ ', ' ] '); ?></small>
+							<?php }
+						} ?>
 					</div>
-					<?php comicpress_display_author_gravatar(); ?>
 				</div>
 				<div class="clear"></div>
 				<div class="entry">
@@ -144,31 +174,12 @@ function comicpress_display_post() {
 				<?php comicpress_display_post_tags(); ?>
 				<?php comicpress_display_comment_link(); ?>
 				<div class="clear"></div>
-				<?php if ($comicpress_options['enable_related_posts']) echo ComicPressRelatedPosts::display_related_posts(); ?>
+				<?php comicpress_display_related_posts(); ?>
 			</div>
+			<?php if (is_page()) { edit_post_link(__('Edit this page.','comicpress'), '<p>', '</p>'); } ?>
 		<div class="post-foot"></div>
 	</div>
 	<?php
-}
-
-function comicpress_display_page_post() {
-	global $post, $wp_query, $comicpress_options; ?>
-	<div class="<?php comicpress_post_class(); ?>">
-		<?php comicpress_display_post_thumbnail(); ?>
-		<div class="post-page-head"></div>
-		<div class="post-page">
-			<?php comicpress_display_post_title(); ?>
-			<div class="entry">
-				<?php the_content(); ?>
-			</div>
-			<br class="clear-margins" />
-			<?php wp_link_pages(array('before' => '<div class="linkpages"><span class="linkpages-pagetext">'.__('Pages:','comicpress').'</span> ', 'after' => '</div>', 'next_or_number' => 'number'));  ?>
-			<br class="clear-margins" />
-			<?php edit_post_link(__('Edit this page.','comicpress'), '<p>', '</p>') ?>
-		</div>
-		<div class="post-page-foot"></div>
-	</div>
-<?php 
 }
 
 

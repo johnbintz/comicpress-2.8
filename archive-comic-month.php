@@ -9,7 +9,7 @@ Template Name: This Month of Comics
 <?php 
 if (have_posts()) {
 	while (have_posts()) : the_post();
-		comicpress_display_page_post();
+		comicpress_display_post();
 	endwhile; 
 }
 

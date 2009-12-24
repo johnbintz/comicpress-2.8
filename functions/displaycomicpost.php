@@ -45,8 +45,8 @@ function display_comic_post($frontpage = 0) {
 					<div class="post-comic-extras">
 						<?php comicpress_display_post_tags(); ?>
 						<?php comicpress_display_comment_link(); ?>
-							<div class="clear"></div>
-						<?php if ($comicpress_options['enable_related_comics']) echo ComicPressRelatedPosts::display_related_comics(); ?>
+						<div class="clear"></div>
+						<?php comicpress_display_related_posts(); ?>
 					</div>
 				</div>
 				<div class="post-comic-foot"></div>
