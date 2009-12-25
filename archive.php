@@ -36,7 +36,7 @@
 			<?php /* Paged Archive */ } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) { ?>
 				<h2 class="pagetitle"><?php _e('Archives','comicpress'); ?></h2>
 			<?php } ?>
-			<div class="searchresults"><?php printf(__ngettext("%d item.", "%d items.", $count,'comicpress'),$count); ?></div>
+			<div class="searchresults"><?php printf(_n("%d item.", "%d items.", $count,'comicpress'),$count); ?></div>
 			<br class="clear-margins" />
 		</div>
 		<div class="post-foot"></div>
