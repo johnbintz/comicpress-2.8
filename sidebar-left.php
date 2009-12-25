@@ -9,7 +9,7 @@ if (!$comicpress_options['disable_lrsidebars_frontpage']) { ?>
 					the_widget('ComicPressCalendarWidget');
 					the_widget('ComicPressArchiveDropdownWidget','mode=monthly_archive');
 				}
-//				the_widget('ComicPressLatestComicsWidget');
+				the_widget('ComicPressLatestComicsWidget');
 			endif; 
 		?>
 		</div>
