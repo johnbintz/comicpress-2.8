@@ -14,7 +14,7 @@
 		<div id="pagewrap-left">
 	<?php } ?>
 
-	<?php if (!is_cp_theme_layout('gn,rgn,v3cr')) { ?>
+	<?php if (is_cp_theme_layout('v,v3c')) { ?>
 		<div id="content" class="narrowcolumn">
 			<div class="column">
 	<?php } ?>

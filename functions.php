@@ -1,7 +1,5 @@
 <?php
 
-global $comicpress_options;
-
 // the_post_thumbnail('thumbnail/medium/full');
 if (function_exists('add_theme_support')) {
 	add_theme_support( 'post-thumbnails' );
@@ -44,6 +42,7 @@ function __comicpress_widgets_init() {
 
 function __comicpress_init() {
 	global $comicpress_options, $__comicpress_handlable_classes;
+	$comicpress_options = array();
 	// Check if the $comicpress_options exist, if not set defaults
 	$comicpress_options = comicpress_load_options();
 	// xili-language plugin check
@@ -124,6 +123,8 @@ function comicpress_load_options() {
 	if (empty($comicpress_options)) {
 		$comicpress_options['comicpress_version'] = '2.9.0.7';
 		foreach (array(
+			'cp_theme_layout' => 'standard',
+			
 			'disable_comic_frontpage' => false,
 			'disable_comic_blog_frontpage' => false,
 			'disable_comic_blog_single' => false,
@@ -211,11 +212,10 @@ function comicpress_load_options() {
 }
 
 function is_cp_theme_layout($choices) {
-	global $comicpress_options;
+	$comicpress_options = comicpress_load_options();
 	$choices = explode(",", $choices);
 	foreach ($choices as $choice) {
-
-		if ($choice == $comicpress_options['cp_theme_layout']) {
+		if ($comicpress_options['cp_theme_layout'] == $choice) {
 			return true;
 		}
 	}
