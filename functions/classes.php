@@ -99,35 +99,33 @@ function comicpress_post_class($classes = '') {
 	$classes[] = 'uentry';
 	
 	/* if a comic category */
-	if (in_comic_category()) $classes[] = 'comicpost';
-	if (is_page()) $classes[] = 'pagepost';
-	if (!in_comic_category() && !is_page()) $classes[] = 'blogpost';
+	if (in_comic_category()) $classes[] = 'post-comic';
+	if (is_page()) $classes[] = 'post-page';
+	if (!in_comic_category() && !is_page()) $classes[] = 'post-blog';
 	
 
 	/* Post alt class. */
-	if (!is_page()) {
-		$classes[] = 'postonpage-' . ++$post_alt;
-		
-		if ( $post_alt % 2 )
-			$classes[] = 'odd';
-		else
-			$classes[] = 'even';
-		
-		/* Sticky class (only on home/blog page). */
-		if( is_sticky() && is_home() )
-			$classes[] = 'sticky';
-		
-		/* Author class. */
-		if ( !is_attachment() )
-			$classes[] = 'post-author-' . sanitize_html_class( get_the_author_meta( 'user_nicename' ), get_the_author_meta( 'ID' ) );
-		
-		/* User-created classes. */
-		if ( !empty( $class ) ) :
-			if ( !is_array( $class ) )
-				$class = preg_split( '#\s+#', $class );
-			$classes = array_merge( $classes, $class );
-		endif;
-	}
+	$classes[] = 'postonpage-' . ++$post_alt;
+	
+	if ( $post_alt % 2 )
+		$classes[] = 'odd';
+	else
+		$classes[] = 'even';
+	
+	/* Sticky class (only on home/blog page). */
+	if( is_sticky() && is_home() )
+		$classes[] = 'sticky';
+	
+	/* Author class. */
+	if ( !is_attachment() )
+		$classes[] = 'post-author-' . sanitize_html_class( get_the_author_meta( 'user_nicename' ), get_the_author_meta( 'ID' ) );
+	
+	/* User-created classes. */
+	if ( !empty( $class ) ) :
+		if ( !is_array( $class ) )
+			$class = preg_split( '#\s+#', $class );
+		$classes = array_merge( $classes, $class );
+	endif;
 
 	/* Password-protected posts. */
 	if ( post_password_required() )

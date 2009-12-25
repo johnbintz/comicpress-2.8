@@ -477,10 +477,15 @@ h4, h4 a {
 .post {
 	clear: both;
 	text-align: left;
+	padding: 2px;
+	margin-bottom: 20px;
+}
+
+.post-content {
+	padding: 3px;
 }
 
 .post-foot {
-	margin-bottom: 40px;
 }
 
 .post-image {

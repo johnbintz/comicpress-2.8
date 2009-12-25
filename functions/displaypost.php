@@ -141,9 +141,9 @@ function comicpress_display_the_content() {
 
 function comicpress_display_post() {
 	global $post, $wp_query; ?>
+	<?php comicpress_display_blog_navigation(); ?>
+	<?php comicpress_display_comic_navigation(); ?>
 	<div <?php post_class(); ?>>
-		<?php comicpress_display_blog_navigation(); ?>
-		<?php comicpress_display_comic_navigation(); ?>
 		<?php comicpress_display_post_thumbnail(); ?>
 		<div class="post-head"></div>
 			<div class="post-content">
@@ -169,12 +169,12 @@ function comicpress_display_post() {
 					<br class="clear-margins" />
 				</div>
 				<?php wp_link_pages(array('before' => '<div class="linkpages"><span class="linkpages-pagetext">'.__('Pages:','comicpress').'</span> ', 'after' => '</div>', 'next_or_number' => 'number'));  ?>
-			</div>
-			<div class="post-extras">
-				<?php comicpress_display_post_tags(); ?>
-				<?php comicpress_display_comment_link(); ?>
-				<div class="clear"></div>
-				<?php comicpress_display_related_posts(); ?>
+				<div class="post-extras">
+					<?php comicpress_display_post_tags(); ?>
+					<?php comicpress_display_comment_link(); ?>
+					<div class="clear"></div>
+					<?php comicpress_display_related_posts(); ?>
+				</div>
 			</div>
 			<?php if (is_page()) { edit_post_link(__('Edit this page.','comicpress'), '<p>', '</p>'); } ?>
 		<div class="post-foot"></div>
