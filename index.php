@@ -9,7 +9,6 @@
 	if (have_posts()) {
 		while (have_posts()) : the_post();
 			comicpress_display_post();
-			comments_template();
 		endwhile; 
 	}
 	Restore(); 
@@ -26,7 +25,7 @@
 	<div id="blogheader"><!-- This area can be used for a heading above your main page blog posts --></div>
 <?php } ?>
 
-<?php if (!$comicpress_options[disable_blog_frontpage]) {
+<?php if (!$comicpress_options['disable_blog_frontpage']) {
 	global $blog_postcount; 
 	Protect();
 		if (!$comicpress_options['split_column_in_two']) {
