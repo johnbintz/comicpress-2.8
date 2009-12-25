@@ -152,6 +152,7 @@ foreach ( $years as $year ) {
 			</div>
 		<?php } ?>
 		</div>
+		<div class="clear"></div>
 	</div>
 	<div class="post-foot"></div>
 </div>

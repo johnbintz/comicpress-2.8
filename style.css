@@ -474,7 +474,7 @@ h4, h4 a {
 		padding: 1%; 
 	}
 
-.post {
+.post, .post-page {
 	clear: both;
 	text-align: left;
 	padding: 2px;
