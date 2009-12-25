@@ -149,6 +149,7 @@ function comicpress_display_post() {
 			<div class="post-content">
 				<div class="post-info">
 					<?php comicpress_display_author_gravatar(); ?>
+					<?php comicpress_display_post_calendar(); ?>
 					<?php if (function_exists('comicpress_show_mood_in_post')) comicpress_show_mood_in_post(); ?>
 					<div class="post-text">
 						<?php 
