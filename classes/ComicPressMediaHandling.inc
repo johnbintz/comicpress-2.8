@@ -83,7 +83,7 @@ class ComicPressMediaHandling {
 
 	// @codeCoverageIgnoreStart
 	function _abspath() {
-		return trailingslashit($this->_resolve_regex_path(realpath(ABSPATH)));
+		return trailingslashit($this->_resolve_regex_path(ABSPATH));
 	}
 	// @codeCoverageIgnoreEnd
 

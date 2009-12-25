@@ -20,8 +20,8 @@
 	<?php } ?>
 
 <?php 
-	Protect();
 	if (!$comicpress_options['disable_comic_frontpage'] && is_home()) {
+		Protect();
 		$comic_query = 'showposts=1&cat='.get_all_comic_categories_as_cat_string();
 		$posts = query_posts($comic_query);
 		if (have_posts()) {
@@ -30,9 +30,9 @@
 				display_comic_area();
 			endwhile;
 		}
+		Restore();
+		UnProtect();
 	}
-	Restore();
-	UnProtect();
 	if (is_single() & in_comic_category()) {
 		display_comic_area();
 	}

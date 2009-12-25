@@ -105,6 +105,7 @@ function comicpress_display_comic_navigation() {
 	if (!$comicpress_options['disable_default_comic_nav']) { 
 		$first_comic = get_first_comic_permalink(); 
 		$last_comic = get_last_comic_permalink();
+		$wp_query->is_single = true;
 		if (!is_search() && !is_archive() && !is_page() && in_comic_category()) { ?>
 			<div class="nav">
 				<?php if ( get_permalink() != $first_comic ) { ?><div class="nav-first"><a href="<?php echo $first_comic ?>"><?php _e('&lsaquo;&lsaquo; First','comicpress'); ?></a></div><?php } ?>

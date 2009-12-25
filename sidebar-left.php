@@ -7,7 +7,7 @@ if (!$comicpress_options['disable_lrsidebars_frontpage']) { ?>
 			if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Left Sidebar') ) :
 				if (!is_cp_theme_layout('standard,v')) { 
 					the_widget('ComicPressCalendarWidget');
-					the_widget('ComicPressArchiveDropdownWidget','mode=monthly_archive');
+//					the_widget('ComicPressArchiveDropdownWidget','mode=monthly_archive');
 				}
 				the_widget('ComicPressLatestComicsWidget');
 			endif; 
