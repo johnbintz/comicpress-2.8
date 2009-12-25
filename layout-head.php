@@ -14,6 +14,11 @@
 		<div id="pagewrap-left">
 	<?php } ?>
 
+	<?php if (!is_cp_theme_layout('gn,rgn,v3cr')) { ?>
+		<div id="content" class="narrowcolumn">
+			<div class="column">
+	<?php } ?>
+
 <?php 
 	Protect();
 	if (!$comicpress_options['disable_comic_frontpage'] && is_home()) {

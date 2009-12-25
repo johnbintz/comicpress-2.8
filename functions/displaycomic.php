@@ -1,7 +1,7 @@
 <?php
 
 function display_comic_area() {
-	global $comicpress_options;
+	global $post, $wp_query, $comicpress_options;
 	if (comicpress_check_child_file('partials/displaycomic') == false) { ?>
 		<div id="comic-wrap">
 			<div id="comic-head"><?php get_sidebar('over'); ?></div>
