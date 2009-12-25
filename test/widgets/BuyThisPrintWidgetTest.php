@@ -2,12 +2,12 @@
 
 require_once('PHPUnit/Framework.php');
 require_once('MockPress/mockpress.php');
-require_once(dirname(__FILE__) . '/../../widgets/BuyThisPrintWidget.inc');
+require_once(dirname(__FILE__) . '/../../widgets/BuyPrintWidget.inc');
 
 class BuyThisPrintWidgetTest extends PHPUnit_Framework_TestCase {
 	function setUp() {
 		_reset_wp();
-		$this->w = new BuyThisPrintWidget('id', 'name', array());
+		$this->w = new ComicPressBuyPrintWidget('id', 'name', array());
 	}
 
 	function providerTestUpdate() {

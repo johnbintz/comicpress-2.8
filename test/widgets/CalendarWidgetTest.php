@@ -7,7 +7,7 @@ require_once(dirname(__FILE__) . '/../../widgets/CalendarWidget.inc');
 class CalendarWidgetTest extends PHPUnit_Framework_TestCase {
 	function setUp() {
 		_reset_wp();
-		$this->w = new CalendarWidget('id', 'name', array());
+		$this->w = new ComicPressCalendarWidget('id', 'name', array());
 	}
 
 	function providerTestUpdate() {

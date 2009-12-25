@@ -7,7 +7,7 @@ require_once(dirname(__FILE__) . '/../../widgets/GraphicalNavigationWidget.inc')
 class GraphicalNavigationWidgetTest extends PHPUnit_Framework_TestCase {
 	function setUp() {
 		_reset_wp();
-		$this->w = new GraphicalNavigationWidget();
+		$this->w = new ComicPressGraphicalNavigationWidget();
 	}
 
 	function testUpdateWidget() {
@@ -120,7 +120,7 @@ class GraphicalNavigationWidgetTest extends PHPUnit_Framework_TestCase {
 
   	$post = 'post';
 
-  	$css = $this->getMock('GraphicalNavigationWidget', array('_new_comicpress_storyline', '_new_comicpress_navigation'));
+  	$css = $this->getMock('ComicPressGraphicalNavigationWidget', array('_new_comicpress_storyline', '_new_comicpress_navigation'));
 
   	update_option('comicpress-storyline-category-order', 'test');
 
