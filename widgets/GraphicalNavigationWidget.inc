@@ -11,7 +11,7 @@ Author URI: http://frumph.net/
 require_once(dirname(__FILE__) . '/../classes/ComicPressNavigation.inc');
 
 class ComicPressGraphicalNavigationWidget extends WP_Widget {
-	
+
 	function ComicPressGraphicalNavigationWidget($skip_widget_init = false) {
 		if (!$skip_widget_init) {
 			$widget_ops = array('classname' => __CLASS__, 'description' => __('Displays Graphical Navigation Buttons. (used in comic sidebars)','comicpress') );
@@ -303,10 +303,8 @@ class ComicPressGraphicalNavigationWidget extends WP_Widget {
 	}
 
 	function comicpress_set_up_post_nav($post_nav, $instance) {
-		if ($instance['story_prev_acts_as_prev_in'] == 'on') {
-			if ($post_nav['storyline-previous'] !== false) {
-				$post_nav['storyline-chapter-previous'] = $post_nav['storyline-previous'];
-			}
+		if ($post_nav['storyline-previous'] !== false) {
+			$post_nav['storyline-chapter-previous'] = $post_nav['storyline-previous'];
 		}
 		return array($post_nav, $instance);
 	}
@@ -322,8 +320,7 @@ class ComicPressGraphicalNavigationWidget extends WP_Widget {
     $all_fields = array(
 		  'first', 'story_prev', 'story_next', 'story_prev_in',
 		  'story_next_in', 'previous', 'random', 'archives',
-			'comments', 'next', 'last', 'buyprint', 'comictitle', 'lastgohome',
-			'story_prev_acts_as_prev_in'
+			'comments', 'next', 'last', 'buyprint', 'comictitle', 'lastgohome'
 		);
 
     foreach ($all_fields as $field) {
@@ -354,8 +351,7 @@ class ComicPressGraphicalNavigationWidget extends WP_Widget {
 			'archive_path' => '',
 			'buyprint' => 'off',
 			'comictitle' => 'off',
-			'lastgohome' => 'off',
-			'story_prev_acts_as_prev_in' => 'on'
+			'lastgohome' => 'off'
 		);
 
 		$title_defaults = array(
@@ -428,21 +424,6 @@ class ComicPressGraphicalNavigationWidget extends WP_Widget {
 													 name="<?php echo $this->get_field_name('lastgohome'); ?>"
 													 type="checkbox" class="comicpress-field" value="yes"<?php if ($instance['lastgohome'] == "on") { echo ' checked="checked"'; } ?> />
 										<strong><?php _e('...go Home instead of Last', 'comicpress'); ?></strong>
-									</label>
-								</div>
-							<?php break;
-							case "story_prev": ?>
-								<div>
-									<label>
-									  <input id="<?php echo $this->get_field_id('story_prev_acts_as_prev_in'); ?>"
-													 name="<?php echo $this->get_field_name('story_prev_acts_as_prev_in'); ?>"
-													 type="checkbox" class="comicpress-field" value="yes"<?php if ($instance['story_prev_acts_as_prev_in'] == "on") { echo ' checked="checked"'; } ?> />
-										<strong><?php _e('Enable go to start of chapter category.', 'comicpress'); ?></strong>
-										<p>
-											<em>
-												<?php _e('If the current post is not at the start of a chapter, the button will bring you back to the beginning of the chapter before going to a previous chapter.', 'comicpress') ?>
-											</em>
-										</p>
 									</label>
 								</div>
 							<?php break;
