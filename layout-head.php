@@ -32,6 +32,7 @@
 		}
 		Restore();
 		UnProtect();
+		wp_reset_query();
 	}
 	if (is_single() & in_comic_category()) {
 		display_comic_area();

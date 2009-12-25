@@ -12,7 +12,9 @@
 		endwhile; 
 	}
 	Restore(); 
-	UnProtect(); ?>
+	UnProtect(); 
+	wp_reset_query();
+?>
 <?php } ?>
 
 	<?php if (function_exists('the_project_wonderful_ad')) { 
@@ -49,6 +51,7 @@
 	}
 	Restore();
 	UnProtect();
+	wp_reset_query();
 } ?>
 
 <?php get_sidebar('underblog'); ?>
