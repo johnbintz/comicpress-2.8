@@ -1,5 +1,7 @@
 <?php
 
+global $comicpress_options;
+
 // the_post_thumbnail('thumbnail/medium/full');
 if (function_exists('add_theme_support')) {
 	add_theme_support( 'post-thumbnails' );
@@ -394,7 +396,7 @@ function get_adjacent_comic($category, $previous = false) {
  * Find the terminal post in a specific category.
  */
 function get_terminal_post_in_category($categoryID, $first = true) {
-  global $post;
+  global $post, $wp_query;
 
   $temp = $wp_query; $wp_query = null;
   $sortOrder = $first ? "asc" : "desc";

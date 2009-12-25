@@ -21,7 +21,7 @@ add_action('edit_user_profile', 'comicpress_profile_members_only');
 add_action('profile_update', 'comicpress_profile_members_only_save');
 
 
-add_filter('pre_get_posts','comicpress_members_filter');
+// add_filter('pre_get_posts','comicpress_members_filter');
 
 function comicpress_members_filter($query) {
 	global $comicpress_options, $current_user;

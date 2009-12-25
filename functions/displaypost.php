@@ -51,7 +51,7 @@ function comicpress_display_post_category() {
 	global $post, $wp_query, $comicpress_options;
 	if (!$comicpress_options['disable_categories_in_posts']) {
 		if (get_option('comicpress-enable-storyline-support') == 1 && in_comic_category()) {
-			$post_category = "<ul class=\"storyline-cats\"><li class=\"storyline-root\">". get_the_category_list(' &raquo; </li><li>', multiple)."</li></ul>\r\n";
+			$post_category = "<ul class=\"storyline-cats\"><li class=\"storyline-root\">". get_the_category_list(' &raquo; </li><li>', 'multiple')."</li></ul>\r\n";
 		} else {
 			$post_category = "<div class=\"post-cat\">". __('Posted In: ','comicpress') .get_the_category_list(',')."</div>\r\n";
 		}
@@ -101,7 +101,7 @@ function comicpress_display_blog_navigation() {
 }
 
 function comicpress_display_comic_navigation() {
-	global $post, $wp_query;
+	global $post, $wp_query, $comicpress_options;
 	if (!$comicpress_options['disable_default_comic_nav']) { 
 		$first_comic = get_first_comic_permalink(); 
 		$last_comic = get_last_comic_permalink();

@@ -21,7 +21,7 @@ function comicpress_show_mood_in_post() {
 	if (!empty($moods_directory) && $moods_directory != 'none') {
 		$mood_file = get_post_meta( get_the_ID(), "mood", true );
 		if (!empty($mood_file) && $mood_file != '') {
-			$mood = explode(".", $mood);
+			$mood = explode(".", $mood_file);
 			$mood = reset($mood);
 			if ( !empty($mood_file) && file_exists(get_stylesheet_directory() . '/images/moods/'.$moods_directory.'/'.$mood_file) ) { ?>
 				<div class="post-mood post-<?php echo $mood; ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/moods/<?php echo $moods_directory; ?>/<?php echo $mood_file; ?>" alt="<?php echo $mood; ?>" title="<?php echo $mood; ?>" /></div>

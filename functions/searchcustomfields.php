@@ -16,8 +16,8 @@ Author URI: http://szub.net
 */
 
 function szub_search_custom_join($join) {
-	global $wpdb;
-	if( is_search() && szub_is_search_key() ) {
+	global $wpdb, $wp_query;
+	if( /* is_search() && */ szub_is_search_key() ) {
 		$join = " LEFT JOIN $wpdb->postmeta ON $wpdb->posts.ID = $wpdb->postmeta.post_id ";
 	}
 	return $join;
