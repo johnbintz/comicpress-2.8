@@ -8,12 +8,11 @@ if (!$comicpress_options['disable_lrsidebars_frontpage']) { ?>
 			the_widget('ComicpressBookmarkWidget','mode=three-button');
 			if (is_cp_theme_layout('standard,v')) { 
 				the_widget('ComicPressCalendarWidget');
-				the_widget('ComicpressArchiveDropdownWidget','mode=monthly_archive');
+				the_widget('ComicPressArchiveDropdownWidget', 'mode=storyline_order');
 			}
 			if ($comicpress_options['disable_comic_frontpage']) {
 				the_widget('ComicPressLatestThumbnailWidget');
 			}
-			the_widget('WP_Widget_Search');
 			the_widget('WP_Widget_Pages');
 			the_widget('WP_Widget_Categories','hierarchical=1&count=1');
 

@@ -215,15 +215,12 @@ function comicpress_admin() {
 			<div class="<?php if ($tab == 'buyprint') { ?>on<?php } else { ?>off<?php } ?>" title="buyprintoptions"><span><?php _e('Buy Print','comicpress'); ?></span></div>
 			<div class="<?php if ($tab == 'members') { ?>on<?php } else { ?>off<?php } ?>" title="membersoptions"><span><?php _e('Members','comicpress'); ?></span></div>
 		</div>
-		<?php include(get_template_directory() . '/options/themestyle.php'); ?>
-		<?php include(get_template_directory() . '/options/generaloptions.php'); ?>
-		<?php include(get_template_directory() . '/options/indexoptions.php'); ?>
-		<?php include(get_template_directory() . '/options/postoptions.php'); ?>
-		<?php include(get_template_directory() . '/options/archivesearchoptions.php'); ?>
-		<?php include(get_template_directory() . '/options/menubaroptions.php'); ?>
-		<?php include(get_template_directory() . '/options/customheaderoptions.php'); ?>
-		<?php include(get_template_directory() . '/options/buyprintoptions.php'); ?>
-		<?php include(get_template_directory() . '/options/membersoptions.php'); ?>
+		
+		<?php
+			foreach (glob(get_template_directory() . '/options/*.php') as $file) {
+				include($file);
+			}
+		?>
 	</div>
 	
 </div>
