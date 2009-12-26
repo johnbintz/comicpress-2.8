@@ -10,7 +10,7 @@ if (!$comicpress_options['disable_lrsidebars_frontpage']) { ?>
 				the_widget('ComicPressArchiveDropdownWidget', 'mode=storyline_order');
 			}
 			if ($comicpress_options['disable_comic_frontpage']) {
-				the_widget('ComicPressLatestThumbnailWidget');
+				the_widget('ComicPressLatestThumbnailWidget','title=Latest Comic&onlyhome=true');
 			}
 			the_widget('WP_Widget_Pages');
 			the_widget('WP_Widget_Categories','hierarchical=1&count=1');

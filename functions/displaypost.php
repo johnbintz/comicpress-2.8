@@ -14,9 +14,9 @@ function comicpress_display_post_title($is_comic = false) {
 	echo apply_filters('comicpress_display_post_title',$post_title);
 }
 
-function comicpress_display_post_thumbnail() {
+function comicpress_display_post_thumbnail($is_comic = false) {
 	global $post;
-	if (function_exists('has_post_thumbnail')) {
+	if (function_exists('has_post_thumbnail') && !$is_comic) {
 		if ( has_post_thumbnail() ) {
 			$post_thumbnail = "<div class=\"post-image\"><a href=\"".get_permalink()."\" rel=\"bookmark\" title=\"Permanent Link to ".get_the_title()."\">".get_the_post_thumbnail($post->ID,'full')."</a></div>\r\n";
 			echo apply_filters('comicpress_display_post_thumbnail',$post_thumbnail);

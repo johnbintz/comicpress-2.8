@@ -859,6 +859,16 @@ ul.children {
 		padding: 3px;
 	}
 	
+	.sidebar .ComicPressLatestThumbnailWidget h2 {
+		text-align: left;
+	}
+	
+	.sidebar .ComicPressLatestThumbnailWidget {
+		text-align: center;
+	}
+	
+	
+	
 /* WIDGETS */
 
 .random-comic-icon, .random-post-icon {
