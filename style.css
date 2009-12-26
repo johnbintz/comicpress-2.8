@@ -970,6 +970,7 @@ ul.children {
 /* SEARCH */
 
 #s-search, #s-transcript {
+	height: 15px;
 	width: 140px;
 }
 	
