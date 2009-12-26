@@ -47,7 +47,7 @@
 						<?php _e('Checkmark this and your site will not display the contents of #blogheader.','comicpress'); ?>
 					</td>
 				</tr>
-				<tr>
+				<tr class="alternate">
 					<th scope="row"><label for="enable_comment_count_in_rss"><?php _e('Enable the comment count to show in feed title.','comicpress'); ?></label></th>
 					<td>
 						<input id="enable_comment_count_in_rss" name="enable_comment_count_in_rss" type="checkbox" value="1" <?php checked(true, $comicpress_options['enable_comment_count_in_rss']); ?> />		
@@ -55,7 +55,7 @@
 					<td>
 						<?php _e('Will show how many comments there are in the title of the post in the feed.','comicpress'); ?>
 					</td>
-				</tr>	
+				</tr>
 			</table>
 			
 			<table class="widefat">
@@ -158,6 +158,15 @@
 					</td>
 					<td>
 						<?php _e('Default text in the footer will not display. Enable this if you do not want any text in the footer. If you wish to add you own custom content, you may do so via Appearance -> Widgets-> Footer.', 'comicpress'); ?>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="enable_scroll_to_top"><?php _e('Enable the scroll to top link in the footer?','comicpress'); ?></label></th>
+					<td>
+						<input id="enable_scroll_to_top" name="enable_scroll_to_top" type="checkbox" value="1" <?php checked(true, $comicpress_options['enable_scroll_to_top']); ?> />		
+					</td>
+					<td>
+						<?php _e('When this link is clicked on long pages it will scroll back to the top.','comicpress'); ?>
 					</td>
 				</tr>
 			</table>

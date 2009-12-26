@@ -42,6 +42,7 @@ function __comicpress_widgets_init() {
 
 function __comicpress_init() {
 	global $comicpress_options, $__comicpress_handlable_classes;
+
 	$comicpress_options = array();
 	// Check if the $comicpress_options exist, if not set defaults
 	$comicpress_options = comicpress_load_options();
@@ -54,7 +55,9 @@ function __comicpress_init() {
 	}
 
 	// Queue up the scripts.
-	wp_enqueue_script('comicpress_scroll', get_template_directory_uri() . '/js/scroll.js');
+	if (!is_admin() && $comicpress_options['enable_scroll_to_top']) {
+		wp_enqueue_script('comicpress_scroll', get_template_directory_uri() . '/js/scroll.js');
+	}
 
 	// remove intense debates control over the comment numbers
 	if (function_exists('id_get_comment_number')) {
@@ -199,7 +202,8 @@ function comicpress_load_options() {
 
 			'enable_blogroll_off_links' => false,
 			
-			'enable_comment_count_in_rss' => false
+			'enable_comment_count_in_rss' => false,
+			'enable_scroll_to_top' => false
 
 		) as $field => $value) {
 			$comicpress_options[$field] = $value;
