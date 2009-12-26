@@ -24,15 +24,17 @@ class ComicPressMenubarWidget extends WP_Widget {
 			if (file_exists(get_stylesheet_directory() . '/custom-menubar.php')) {
 				include(get_stylesheet_directory() . '/custom-menubar.php');
 			} else { ?>
-			<div id="menubar">
-				
-				<div id="menunav">
+
+		<div id="menubar">
+			<div id="menunav">
 				<?php if ($comicpress_options['enable_search_in_menubar']) { ?>
-					<div class="menunav-search"><?php include(get_template_directory() . '/searchform.php'); ?></div>
+<div class="menunav-search">
+	<?php the_widget('WP_Widget_Search',array(),array('before_widget'=>'', 'after_widget'=>'')); ?>
+				</div>
 				<?php } ?>
-				<?php if ($comicpress_options['enable_rss_in_menubar']) { ?>
-					<a href="<?php bloginfo('rss2_url') ?>" title="RSS Feed" class="menunav-rss">RSS</a>
-				<?php } ?>
+<?php if ($comicpress_options['enable_rss_in_menubar']) { ?>
+<a href="<?php bloginfo('rss2_url') ?>" title="RSS Feed" class="menunav-rss">RSS</a>
+<?php } ?>
 				<?php if ($comicpress_options['enable_navigation_in_menubar']) { ?>
 					<?php if (is_home() && !$comicpress_options['disable_comic_frontpage']) {
 						$comicFrontpage = new WP_Query(); $comicFrontpage->query('showposts=1&cat='.get_all_comic_categories_as_cat_string());

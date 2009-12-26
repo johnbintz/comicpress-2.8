@@ -1,6 +1,6 @@
 <?php global $comicpress_options;
 	if (!$comicpress_options['disable_default_menubar']) {
-		the_widget('ComicPressMenubarWidget',array(),array());
+		the_widget('ComicPressMenubarWidget',array(),array('before_widget'=>'', 'after_widget'=>''));
 	} 
 ?>
 <?php if (comicpress_is_active_sidebar('Menubar')) { ?>
