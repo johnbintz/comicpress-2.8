@@ -124,7 +124,7 @@ function comicpress_load_options() {
 	global $comicpress_options;
 	$comicpress_options = get_option('comicpress_options');
 	if (empty($comicpress_options)) {
-		$comicpress_options['comicpress_version'] = '2.9.0.8';
+		$comicpress_options['comicpress_version'] = '2.9.0.9';
 		foreach (array(
 			'cp_theme_layout' => 'standard',
 			
@@ -212,7 +212,7 @@ function comicpress_load_options() {
 		add_option('comicpress_options', $comicpress_options, '', 'yes');
 		// update_option('comicpress_options', $comicpress_options);
 	}
-	$comicpress_options['comicpress_version'] = '2.9.0.8';
+	$comicpress_options['comicpress_version'] = '2.9.0.9';
 	update_option('comicpress_options', $comicpress_options);
 	return $comicpress_options;
 }
