@@ -46,7 +46,16 @@
 					<td>
 						<?php _e('Checkmark this and your site will not display the contents of #blogheader.','comicpress'); ?>
 					</td>
-				</tr>			
+				</tr>
+				<tr>
+					<th scope="row"><label for="enable_comment_count_in_rss"><?php _e('Enable the comment count to show in feed title.','comicpress'); ?></label></th>
+					<td>
+						<input id="enable_comment_count_in_rss" name="enable_comment_count_in_rss" type="checkbox" value="1" <?php checked(true, $comicpress_options['enable_comment_count_in_rss']); ?> />		
+					</td>
+					<td>
+						<?php _e('Will show how many comments there are in the title of the post in the feed.','comicpress'); ?>
+					</td>
+				</tr>	
 			</table>
 			
 			<table class="widefat">
