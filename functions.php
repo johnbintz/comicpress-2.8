@@ -1,5 +1,7 @@
 <?php
 
+global $comicpress_options;
+
 // the_post_thumbnail('thumbnail/medium/full');
 if (function_exists('add_theme_support')) {
 	add_theme_support( 'post-thumbnails' );
@@ -44,6 +46,7 @@ function __comicpress_init() {
 	global $comicpress_options, $__comicpress_handlable_classes;
 
 	$comicpress_options = array();
+	
 	// Check if the $comicpress_options exist, if not set defaults
 	$comicpress_options = comicpress_load_options();
 	// xili-language plugin check
@@ -122,6 +125,8 @@ if (!empty($wpmu_version)) {
 
 function comicpress_load_options() {
 	global $comicpress_options;
+
+	
 	$comicpress_options = get_option('comicpress_options');
 	if (empty($comicpress_options)) {
 		$comicpress_options['comicpress_version'] = '2.9.0.9';

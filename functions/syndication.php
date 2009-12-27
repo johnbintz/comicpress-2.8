@@ -86,5 +86,8 @@ function comicpress_export_wp() {
 	remove_filter('the_title_rss', 'comicpress_the_title_rss');
 }
 
-add_filter('the_title_rss', 'comicpress_the_title_rss');
-add_action('export_wp', 'comicpress_export_wp');
+global $comicpress_options;
+if ($comicpress_options['enable_comment_count_in_rss']) {
+	add_filter('the_title_rss', 'comicpress_the_title_rss');
+	add_action('export_wp', 'comicpress_export_wp');
+}
