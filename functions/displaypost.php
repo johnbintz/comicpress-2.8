@@ -43,7 +43,7 @@ function comicpress_display_post_calendar($is_comic = false) {
 
 function comicpress_display_post_author() {
 	global $post;
-	$post_author = "<div class=\"post-author\"><span class=\"post-date\">".get_the_time('F jS, Y')."</span> <span class=\"pipe\">|</span> ".__(' by ','comicpress'). get_the_author_meta('display_name')."</div>\r\n";
+	$post_author = "<span class=\"post-date\">".get_the_time('F jS, Y')."</span> <span class=\"pipe\">|</span> <span class=\"post-author\">  ".__(' by ','comicpress'). get_the_author_meta('display_name')."</span>\r\n";
 	echo apply_filters('comicpress_display_post_author',$post_author);
 }
 
