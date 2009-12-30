@@ -233,6 +233,18 @@ function is_cp_theme_layout($choices) {
 	return false;
 }
 
+function is_cp_layout_avail($layout, $avail_layouts) {	
+	if (empty($layout)) return false;
+	if (empty($avail_layouts)) $avail_layouts = 'standard,v,3c,3c2r,v3c,v3cr,gn,rgn';
+	$avail_layouts = explode(",",$avail_layouts);
+	foreach ($avail_layouts as $able_layout) {
+		if ($layout == $able_layout) {
+			return true;
+		}
+	}
+	return false;
+}
+
 /**
  * Remove of wordpress auto-texturizer.
  * Dependant on the need remove the commented out areas of this code.

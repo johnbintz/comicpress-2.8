@@ -30,7 +30,7 @@ function comicpress_admin() {
 	<div class="clear"></div>
 	<?php 
 	$tab = '';
-	if ( wp_verify_nonce($_POST['_wpnonce'], 'update-options') ) {
+	if ( isset($_POST['_wponce']) && wp_verify_nonce($_POST['_wpnonce'], 'update-options') ) {
 		
 		if ($_REQUEST['action'] == 'comicpress_save_layout') {
 			foreach (array(
@@ -193,7 +193,7 @@ function comicpress_admin() {
 			<script>function hidemessage() { document.getElementById('message').style.display = 'none'; }</script>
 		<?php }  
 		}
-		if ($_REQUEST['action'] == 'comicpress_reset') {
+		if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'comicpress_reset') {
 			delete_option('comicpress_options');
 			$comicpress_options = comicpress_load_options();
 		?>
