@@ -26,24 +26,37 @@ class ComicPressLatestThumbnailWidget extends WP_Widget {
 		echo $before_widget;
 		$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']); 
 		if ( !empty( $title ) ) { echo $before_title . $title . $after_title; }; 
-		$latestcomics = get_posts('numberposts=1&category='.get_all_comic_categories_as_cat_string());
+		Protect();
+		$comic_query = 'showposts=1&cat='.get_all_comic_categories_as_cat_string();
+		query_posts($comic_query);
 		$archive_image = null;
-
-		foreach($latestcomics as $post) :
-			foreach (array("archive", "rss", "mini", "comic") as $type) {
-				if (($requested_archive_image = get_comic_url($type, $post)) !== false) {
-					$archive_image = "<img src=\"$requested_archive_image\" alt=\"".get_the_title()."\" title=\"".get_the_title()."\" />";
-					break;
+		if (have_posts()) {
+			while (have_posts()) : the_post();
+				if (!empty($post->post_content)) {
+					echo $before_widget;
+					$temp_query = $wp_query->is_single;
+					$wp_query->is_single = true;
+					foreach (array("archive", "rss", "mini", "comic") as $type) {
+						if (($requested_archive_image = get_comic_url($type, $post)) !== false) {
+							$archive_image = "<img src=\"$requested_archive_image\" alt=\"".get_the_title()."\" title=\"".get_the_title()."\" />";
+							break;
+						}
+					}
+					if (function_exists('has_post_thumbnail')) {
+						if ( has_post_thumbnail($post->ID) ) {
+							$archive_image = get_the_post_thumbnail($post->ID,'full');
+						}
+					}  ?>
+					<a href="<?php the_permalink(); ?>"><?php echo $archive_image; ?></a> 
+				<?php
+					$wp_query->is_single = $temp_query;
+					echo $after_widget;
 				}
-			}
-			if (function_exists('has_post_thumbnail')) {
-				if ( has_post_thumbnail($post->ID) ) {
-					$archive_image = get_the_post_thumbnail($post->ID,'full');
-				}
-			} 
-		?>
-			<a href="<?php the_permalink(); ?>"><?php echo $archive_image; ?></a>
-			<?php endforeach; 
+			endwhile;
+		}
+		Restore();
+		UnProtect();
+		wp_reset_query();
 		echo $after_widget;
 	}
 	
