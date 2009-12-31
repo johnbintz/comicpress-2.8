@@ -69,10 +69,12 @@ function comicpress_display_post_tags() {
 
 function comicpress_display_comment_link() {
 	global $post, $wp_query;
-	if ('open' == $post->comment_status && !is_page()) {
-		if (comicpress_check_child_file('partials/commentlink') == false && !is_single()) {
-			$post_comment_link = "<div class=\"comment-link\">".get_comment_reply_link('<span class="comment-balloon comment-balloon-empty">&nbsp;</span> '.__('Comment ','comicpress'), '<span class="comment-balloon">1</span> '.__('Comment ','comicpress'), '<span class="comment-balloon">%</span> '.__('Comments ','comicpress'))."</div>\r\n";
-			apply_filters('comicpress_display_comment_link',$post_comment_link);
+	if ('open' == $post->comment_status && !is_singular()) {
+		if (comicpress_check_child_file('partials/commentlink') == false) { ?>
+			<div class="comment-link">
+			<?php comments_popup_link('<span class="comment-balloon comment-balloon-empty">&nbsp;</span> '.__('Comment ','comicpress'), '<span class="comment-balloon">1</span> '.__('Comment ','comicpress'), '<span class="comment-balloon">%</span> '.__('Comments ','comicpress')); ?>
+			</div>
+		<?php
 		}
 	}
 }
