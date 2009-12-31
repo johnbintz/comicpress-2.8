@@ -10,7 +10,7 @@ if (have_posts()) : while (have_posts()) : the_post();
 			$next_comic = get_next_comic();
 			$next_comic = (array)$next_comic;
 			$next_date = mysql2date('Y-m-j', $next_comic['post_date']);
-			$blog_query = 'showposts='.$blog_postcount.'&order=asc&cat=-'.exclude_comic_categories();
+			$blog_query = 'showposts='.$comicpress_options['blog_postcount'].'&order=asc&cat=-'.exclude_comic_categories();
 		}
 	} else { 
 		comicpress_display_post();			
@@ -25,9 +25,8 @@ if (have_posts()) : while (have_posts()) : the_post();
 	
 	<?php 
 	if ($comicpress_options['static_blog'] && in_comic_category()) {
-		global $blog_postcount; 
 		if (!$comicpress_options['split_column_in_two']) {
-			$blog_query = 'showposts='.$blog_postcount.'&cat="-'.exclude_comic_categories().'"&paged='.$paged; 
+			$blog_query = 'showposts='.$comicpress_options['blog_postcount'].'&cat="-'.exclude_comic_categories().'"&paged='.$paged; 
 			
 			$posts = query_posts($blog_query);
 		if (have_posts()) { ?>

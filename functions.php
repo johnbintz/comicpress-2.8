@@ -100,7 +100,7 @@ add_action('init', '__comicpress_init');
 function comicpress_load_options() {
 	global $comicpress_options, $comiccat, $blogcat, $comic_folder, $rss_comic_folder, 
 	$archive_comic_folder, $mini_comic_folder, $archive_comic_width,
-	$rss_comic_width, $blog_postcount;
+	$rss_comic_width;
 	
 	$comicpress_options = get_option('comicpress_options');
 	if (empty($comicpress_options)) {
@@ -108,15 +108,14 @@ function comicpress_load_options() {
 		$comicpress_config = array();
 		foreach (array(
 			'comiccat'            => '3',
-			'blogcat'             => '2',
+			'blogcat'             => '1',
 			'comic_folder'         => 'comics',
 			'rss_comic_folder'      => 'comics-rss',
 			'archive_comic_folder'  => 'comics-archive',
 			'mini_comic_folder'     => 'comics-mini',
-			'archive_comic_width' => '480',
 			'rss_comic_width'     => '320',
-			'mini_comic_width'    => '80',
-			'blog_postcount'      => '10'
+			'archive_comic_width' => '480',
+			'mini_comic_width'    => '80'
 		) as $field => $value) {
 			$comicpress_options['comicpress_config'][$field] = $value;
 		}
@@ -126,6 +125,7 @@ function comicpress_load_options() {
 			'cp_theme_layout' => 'standard',
 			
 			'disable_comic_frontpage' => false,
+			'blog_postcount' => '10',
 			'disable_comic_blog_frontpage' => false,
 			'disable_comic_blog_single' => false,
 			'disable_blog_frontpage' => false,
@@ -144,7 +144,7 @@ function comicpress_load_options() {
 			'custom_image_header_width' => '980',
 			'custom_image_header_height' => '120',
 
-			'enable_numbered_pagination' => false,
+			'enable_numbered_pagination' => true,
 			'disable_page_restraints' => false,
 
 			'enable_related_comics' => false,

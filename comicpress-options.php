@@ -78,7 +78,7 @@ function comicpress_admin() {
 				) as $key) {
 					$comicpress_options[$key] = (bool)( $_REQUEST[$key] == 1 ? true : false );
 			}
-
+			$comicpress_options['blog_postcount'] = wp_filter_nohtml_kses($_REQUEST['blog_postcount']);
 			$tab = 'index';
 			update_option('comicpress_options',$comicpress_options);		
 		}
@@ -191,8 +191,7 @@ function comicpress_admin() {
 				'mini_comic_folder',
 				'archive_comic_width',
 				'rss_comic_width',
-				'mini_comic_width',
-				'blog_postcount'
+				'mini_comic_width'
 						) as $key) {
 				$comicpress_options['comicpress_config'][$key] = wp_filter_nohtml_kses($_REQUEST[$key]);
 			}
@@ -202,7 +201,7 @@ function comicpress_admin() {
 		
 		if ($tab) {
 			?>
-			<div id="message" class="updated fade"><p><strong><?php _e('ComicPress Settings SAVED!','comicpress'); ?></strong></p></div>
+			<div id="message" class="updated"><p><strong><?php _e('ComicPress Settings SAVED!','comicpress'); ?></strong></p></div>
 			<script>function hidemessage() { document.getElementById('message').style.display = 'none'; }</script>
 		<?php }  
 		}
@@ -210,7 +209,7 @@ function comicpress_admin() {
 			delete_option('comicpress_options');
 			$comicpress_options = comicpress_load_options();
 		?>
-			<div id="message" class="updated fade"><p><strong><?php _e('ComicPress Settings RESET!','comicpress'); ?></strong></p></div>
+			<div id="message" class="updated"><p><strong><?php _e('ComicPress Settings RESET!','comicpress'); ?></strong></p></div>
 			<script>function hidemessage() { document.getElementById('message').style.display = 'none'; }</script>
 		<?php
 	}

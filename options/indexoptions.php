@@ -20,6 +20,15 @@
 						<?php _e('Checkmark this and the blog will not display on the Home page of your site. The features allows to either not have a blog at all, or, if you place a menu link to your blog page, you can maintain your blog within the same site without readers having to see it when they are just trying to read your comic.','comicpress'); ?>
 					</td>
 				</tr>
+				<tr>
+					<th scope="row"><label for="blog_postcount"><?php _e('Blog Post Count','comicpress'); ?></label></th>
+					<td>
+						<input type="text" size="7" name="blog_postcount" id="blog_postcount" value="<?php echo $comicpress_options['blog_postcount']; ?>" />
+					</td>
+					<td>
+						<?php _e('How many blog posts you would like displayed on the index page at one time.','comicpress'); ?>
+					</td>
+				</tr>
 			</table>
 
 			<table class="widefat">
