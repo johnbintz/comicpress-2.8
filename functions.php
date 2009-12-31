@@ -96,32 +96,21 @@ function __comicpress_verify_nonce() {
 add_action('widgets_init', '__comicpress_widgets_init');
 add_action('init', '__comicpress_init');
 
-global $wpmu_version;
-if (!empty($wpmu_version)) {
 
-	if (get_option('upload_path') !== false) {
-		$variables_to_extract = array();
-
-		foreach (array(
-					'comiccat'            => 'comiccat',
-					'blogcat'             => 'blogcat',
-					'comics_path'         => 'comic_folder',
-					'comicsrss_path'      => 'rss_comic_folder',
-					'comicsarchive_path'  => 'archive_comic_folder',
-					'comicsmini_path'     => 'mini_comic_folder',
-					'archive_comic_width' => 'archive_comic_width',
-					'rss_comic_width'     => 'rss_comic_width',
-					'mini_comic_width'    => 'mini_comic_width',
-					'blog_postcount'      => 'blog_postcount') as $options => $variable_name) {
-			$variables_to_extract[$variable_name] = get_option("comicpress-${options}");
-		}
-
-		extract($variables_to_extract);
-	}
-
-} else {
-	require(get_template_directory() . '/comicpress-config.php');
+foreach (array(
+	'comiccat',
+	'blogcat',
+	'comic_folder',	
+	'rss_comic_folder',
+	'archive_comic_folder',
+	'mini_comic_folder',
+	'archive_comic_width',
+	'rss_comic_width',
+	'mini_comic_width',
+	'blog_postcount') as $option) {
+		extract($comicpress_options['comicpress_config'][$option]);
 }
+	
 
 function comicpress_load_options() {
 	global $comicpress_options;
@@ -129,6 +118,23 @@ function comicpress_load_options() {
 	
 	$comicpress_options = get_option('comicpress_options');
 	if (empty($comicpress_options)) {
+
+		$comicpress_config = array();
+		foreach (array(
+			'comiccat'            => '3',
+			'blogcat'             => '2',
+			'comics_path'         => 'comics',
+			'comicsrss_path'      => 'comics-rss',
+			'comicsarchive_path'  => 'comics-archive',
+			'comicsmini_path'     => 'comics-mini',
+			'archive_comic_width' => '480',
+			'rss_comic_width'     => '320',
+			'mini_comic_width'    => '80',
+			'blog_postcount'      => '10'
+		) as $field => $value) {
+			$comicpress_options['comicpress_config'][$field] = $value;
+		}
+		
 		$comicpress_options['comicpress_version'] = '2.9.0.9';
 		foreach (array(
 			'cp_theme_layout' => 'standard',
