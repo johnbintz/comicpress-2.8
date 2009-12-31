@@ -684,6 +684,7 @@ h4, h4 a {
 
 .commentsrsslink {
 	font-size: 11px;
+	float: right;
 }
 
 #comment-textarea {
