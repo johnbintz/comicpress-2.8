@@ -9,6 +9,13 @@ function comicpress_notice_debug() {
 	$comicpress_options = comicpress_load_options();
 	
 	$error = array();
+	
+	if (floatval(phpversion()) < 5.0) {
+		$phpversion = phpversion();
+		$error[] = array('header', __('You are using PHP version: ','comicpress'). $phpversion);
+		$error[] = __('Version 5 or higher is required for this theme to work correctly.  Please check with your host about upgrading to a newer version.','comicpress');
+	}
+
 	$post_cat_link = get_bloginfo('wpurl') . '/wp-admin/categories.php';
 	
 	// Check Categories
