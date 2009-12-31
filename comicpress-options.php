@@ -30,14 +30,10 @@ function comicpress_admin() {
 	<div class="clear"></div>
 	<?php 
 	$tab = '';
-	if ( isset($_POST['_wponce']) && wp_verify_nonce($_POST['_wpnonce'], 'update-options') ) {
+	if ( wp_verify_nonce($_POST['_wpnonce'], 'update-options') ) {
 		
 		if ($_REQUEST['action'] == 'comicpress_save_layout') {
-			foreach (array(
-				'cp_theme_layout'
-						) as $key) {
-				$comicpress_options[$key] = wp_filter_nohtml_kses($_REQUEST[$key]);
-			}
+			$comicpress_options['cp_theme_layout'] = wp_filter_nohtml_kses($_REQUEST['cp_theme_layout']);
 			$tab = 'themestyle';
 			update_option('comicpress_options',$comicpress_options);
 		}

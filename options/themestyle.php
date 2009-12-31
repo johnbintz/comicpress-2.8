@@ -20,9 +20,9 @@
 						<th colspan="4"><?php _e('Layout','comicpress'); ?></th>
 					</tr>
 				</thead>
-				<?php $avail_layouts = ''; ?>
+				<?php global $avail_layouts; ?>
 				<tr class="alternate">
-					<th scope="row" style="width:250px" valign="top"><label for="cp_theme_layout" style="text-align:left"><?php _e('Choose Your Website Layout','comicpress'); ?></label>
+					<th scope="row" style="width:250px"><label for="cp_theme_layout" style="text-align:left"><?php _e('Choose Your Website Layout','comicpress'); ?></label>
 						<select name="cp_theme_layout" id="cp_theme_layout" onchange="showimage(this,'cpthemestyle')">
 						<?php if (is_cp_layout_avail('standard',$avail_layouts)) { ?>
 							<option class="level-0" value="standard" <?php if ($comicpress_options['cp_theme_layout'] == 'standard') { ?>selected="selected" <?php } ?>><?php _e('2 Column - Standard','comicpress'); ?></option>
