@@ -43,12 +43,17 @@ function __comicpress_widgets_init() {
 }
 
 function __comicpress_init() {
-	global $comicpress_options, $__comicpress_handlable_classes;
+	global $comicpress_options, $__comicpress_handlable_classes, $comiccat, $blogcat,
+	$comic_folder, $rss_comic_folder, $archive_comic_folder, $mini_comic_folder, $archive_comic_width,
+	$rss_comic_width, $blog_postcount;
 
 	$comicpress_options = array();
 	
 	// Check if the $comicpress_options exist, if not set defaults
 	$comicpress_options = comicpress_load_options();
+
+	extract($comicpress_options['comicpress_config']);
+	
 	// xili-language plugin check
 	if (class_exists('xili_language')) {
 		define('THEME_TEXTDOMAIN','comicpress');
@@ -96,25 +101,8 @@ function __comicpress_verify_nonce() {
 add_action('widgets_init', '__comicpress_widgets_init');
 add_action('init', '__comicpress_init');
 
-
-foreach (array(
-	'comiccat',
-	'blogcat',
-	'comic_folder',	
-	'rss_comic_folder',
-	'archive_comic_folder',
-	'mini_comic_folder',
-	'archive_comic_width',
-	'rss_comic_width',
-	'mini_comic_width',
-	'blog_postcount') as $option) {
-		extract($comicpress_options['comicpress_config'][$option]);
-}
-	
-
 function comicpress_load_options() {
 	global $comicpress_options;
-
 	
 	$comicpress_options = get_option('comicpress_options');
 	if (empty($comicpress_options)) {
@@ -123,10 +111,10 @@ function comicpress_load_options() {
 		foreach (array(
 			'comiccat'            => '3',
 			'blogcat'             => '2',
-			'comics_path'         => 'comics',
-			'comicsrss_path'      => 'comics-rss',
-			'comicsarchive_path'  => 'comics-archive',
-			'comicsmini_path'     => 'comics-mini',
+			'comic_folder'         => 'comics',
+			'rss_comic_folder'      => 'comics-rss',
+			'archive_comic_folder'  => 'comics-archive',
+			'mini_comic_folder'     => 'comics-mini',
 			'archive_comic_width' => '480',
 			'rss_comic_width'     => '320',
 			'mini_comic_width'    => '80',
