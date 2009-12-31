@@ -44,6 +44,9 @@ function __comicpress_widgets_init() {
 
 function __comicpress_init() {
 	global $comicpress_options, $__comicpress_handlable_classes;
+
+	$comicpress_options = array();
+	
 	// Check if the $comicpress_options exist, if not set defaults
 	$comicpress_options = comicpress_load_options();
 	// xili-language plugin check
@@ -55,7 +58,9 @@ function __comicpress_init() {
 	}
 
 	// Queue up the scripts.
-	wp_enqueue_script('comicpress_scroll', get_template_directory_uri() . '/js/scroll.js');
+	if (!is_admin() && $comicpress_options['enable_scroll_to_top']) {
+		wp_enqueue_script('comicpress_scroll', get_template_directory_uri() . '/js/scroll.js');
+	}
 
 	// remove intense debates control over the comment numbers
 	if (function_exists('id_get_comment_number')) {
@@ -120,10 +125,14 @@ if (!empty($wpmu_version)) {
 
 function comicpress_load_options() {
 	global $comicpress_options;
+
+	
 	$comicpress_options = get_option('comicpress_options');
 	if (empty($comicpress_options)) {
-		$comicpress_options['comicpress_version'] = '2.9.0.7';
+		$comicpress_options['comicpress_version'] = '2.9.0.9';
 		foreach (array(
+			'cp_theme_layout' => 'standard',
+			
 			'disable_comic_frontpage' => false,
 			'disable_comic_blog_frontpage' => false,
 			'disable_comic_blog_single' => false,
@@ -196,7 +205,10 @@ function comicpress_load_options() {
 			'enable_comicpress_debug' => true,
 			'enable_full_post_check' => false,
 
-			'enable_blogroll_off_links' => false
+			'enable_blogroll_off_links' => false,
+			
+			'enable_comment_count_in_rss' => false,
+			'enable_scroll_to_top' => false
 
 		) as $field => $value) {
 			$comicpress_options[$field] = $value;
@@ -205,17 +217,28 @@ function comicpress_load_options() {
 		add_option('comicpress_options', $comicpress_options, '', 'yes');
 		// update_option('comicpress_options', $comicpress_options);
 	}
-	$comicpress_options['comicpress_version'] = '2.9.0.7';
+	$comicpress_options['comicpress_version'] = '2.9.0.9';
 	update_option('comicpress_options', $comicpress_options);
 	return $comicpress_options;
 }
 
 function is_cp_theme_layout($choices) {
-	global $comicpress_options;
+	$comicpress_options = comicpress_load_options();
 	$choices = explode(",", $choices);
 	foreach ($choices as $choice) {
+		if ($comicpress_options['cp_theme_layout'] == $choice) {
+			return true;
+		}
+	}
+	return false;
+}
 
-		if ($choice == $comicpress_options['cp_theme_layout']) {
+function is_cp_layout_avail($layout, $avail_layouts) {	
+	if (empty($layout)) return false;
+	if (empty($avail_layouts)) $avail_layouts = 'standard,v,3c,3c2r,v3c,v3cr,gn,rgn';
+	$avail_layouts = explode(",",$avail_layouts);
+	foreach ($avail_layouts as $able_layout) {
+		if ($layout == $able_layout) {
 			return true;
 		}
 	}

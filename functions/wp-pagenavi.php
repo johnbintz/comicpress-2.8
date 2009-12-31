@@ -92,9 +92,15 @@ if ($comicpress_options['enable_numbered_pagination']) {
 								echo '<li class="paginav-extend">'.$pagenavi_options['dotleft_text'].'</li>';
 							}
 						}
-						echo '<li class="paginav-previous">';
-						previous_posts_link($pagenavi_options['prev_text']);
-						echo '</li>';
+						$prev_post_link = get_previous_posts_link( $pagenavi_options['prev_text'] );
+						
+						if (!empty($prev_post_link)) {
+							echo "<li class=\"paginav-previous\">\r\n";
+							echo $prev_post_link . "\r\n";
+							echo "</li>\r\n";
+						}
+						
+						
 						for($i = $start_page; $i  <= $end_page; $i++) {
 							if($i == $paged) {
 								$current_page_text = str_replace("%PAGE_NUMBER%", number_format_i18n($i), $pagenavi_options['current_text']);
@@ -104,9 +110,12 @@ if ($comicpress_options['enable_numbered_pagination']) {
 								echo '<li><a href="'.clean_url(get_pagenum_link($i)).'" title="'.$page_text.'">'.$page_text.'</a></li>';
 							}
 						}
-						echo '<li class="paginav-next">';
-						next_posts_link($pagenavi_options['next_text'], $max_page);
-						echo '</li>';
+						$next_post_link = get_next_posts_link($pagenavi_options['next_text'], $max_page);
+						if (!empty($next_post_link)) {
+							echo "<li class=\"paginav-next\">\r\n";
+							echo $next_post_link ."\r\n";
+							echo "</li>\r\n";
+						}
 						if ($end_page < $max_page) {
 							if(!empty($pagenavi_options['dotright_text'])) {
 								echo '<li class="paginav-extend">'.$pagenavi_options['dotright_text'].'</li>';

@@ -20,17 +20,34 @@
 						<th colspan="4"><?php _e('Layout','comicpress'); ?></th>
 					</tr>
 				</thead>
+				<?php global $avail_layouts; ?>
 				<tr class="alternate">
 					<th scope="row" style="width:250px"><label for="cp_theme_layout" style="text-align:left"><?php _e('Choose Your Website Layout','comicpress'); ?></label>
 						<select name="cp_theme_layout" id="cp_theme_layout" onchange="showimage(this,'cpthemestyle')">
+						<?php if (is_cp_layout_avail('standard',$avail_layouts)) { ?>
 							<option class="level-0" value="standard" <?php if ($comicpress_options['cp_theme_layout'] == 'standard') { ?>selected="selected" <?php } ?>><?php _e('2 Column - Standard','comicpress'); ?></option>
+						<?php } ?>
+						<?php if (is_cp_layout_avail('v',$avail_layouts)) { ?>
 							<option class="level-0" value="v" <?php if ($comicpress_options['cp_theme_layout'] =='v') { ?>selected="selected" <?php } ?>><?php _e('2 Column - Vertical','comicpress'); ?></option>
+						<?php } ?>
+						<?php if (is_cp_layout_avail('3c',$avail_layouts)) { ?>
 							<option class="level-0" value="3c" <?php if ($comicpress_options['cp_theme_layout'] =='3c') { ?>selected="selected" <?php } ?>><?php _e('3 Column - Standard ','comicpress'); ?></option>
+						<?php } ?>
+						<?php if (is_cp_layout_avail('3c2r',$avail_layouts)) { ?>							
 							<option class="level-0" value="3c2r" <?php if ($comicpress_options['cp_theme_layout'] =='3c2r') { ?>selected="selected" <?php } ?>><?php _e('3 Column - Double Right Sidebar','comicpress'); ?></option>							
+						<?php } ?>
+						<?php if (is_cp_layout_avail('v3c',$avail_layouts)) { ?>
 							<option class="level-0" value="v3c" <?php if ($comicpress_options['cp_theme_layout'] =='v3c') { ?>selected="selected" <?php } ?>><?php _e('3 Column - Vertical','comicpress'); ?></option>	
+						<?php } ?>
+						<?php if (is_cp_layout_avail('v3cr',$avail_layouts)) { ?>
 							<option class="level-0" value="v3cr" <?php if ($comicpress_options['cp_theme_layout'] =='v3c') { ?>selected="selected" <?php } ?>><?php _e('3 Column - Vertical Double Right Sidebar','comicpress'); ?></option>	
+						<?php } ?>
+						<?php if (is_cp_layout_avail('gn',$avail_layouts)) { ?>
 							<option class="level-0" value="gn" <?php if ($comicpress_options['cp_theme_layout'] =='gn') { ?>selected="selected" <?php } ?>><?php _e('Graphic Novel - Left Sidebar','comicpress'); ?></option>
+						<?php } ?>
+						<?php if (is_cp_layout_avail('rgn',$avail_layouts)) { ?>
 							<option class="level-0" value="rgn" <?php if ($comicpress_options['cp_theme_layout'] =='rgn') { ?>selected="selected" <?php } ?>><?php _e('Graphic Novel - Right Sidebar','comicpress'); ?></option>
+						<?php } ?>
 						</select>
 					</th>
 					<td>

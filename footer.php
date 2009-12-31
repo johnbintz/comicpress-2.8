@@ -27,13 +27,15 @@
 				<span class="footer-pipe">|</span>
 				Subscribe: <a href="<?php bloginfo('rss2_url') ?>">RSS</a>
 			</span>
+<?php if ($comicpress_options['enable_scroll_to_top']) { ?>
 			<span class="footer-uptotop">
 				<span class="footer-pipe">|</span>
 				<a href="#outside" onclick="scrollup(); return false;"><?php _e('Back to Top &uarr;','comicpress'); ?></a>
 			</span>
-			<br /><?php echo get_num_queries() ?> queries. <?php timer_stop(1) ?> seconds.
+<?php } ?>
 		</p>
 	<?php } ?>
+	<p><?php echo get_num_queries() ?> queries. <?php timer_stop(1) ?> seconds.</p>
 </div>
  
 <?php if (!$comicpress_options['disable_page_restraints']) { ?>

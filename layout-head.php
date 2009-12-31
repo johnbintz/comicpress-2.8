@@ -14,14 +14,14 @@
 		<div id="pagewrap-left">
 	<?php } ?>
 
-	<?php if (!is_cp_theme_layout('gn,rgn,v3cr')) { ?>
+	<?php if (is_cp_theme_layout('v,v3c')) { ?>
 		<div id="content" class="narrowcolumn">
 			<div class="column">
 	<?php } ?>
 
 <?php 
-	Protect();
 	if (!$comicpress_options['disable_comic_frontpage'] && is_home()) {
+		Protect();
 		$comic_query = 'showposts=1&cat='.get_all_comic_categories_as_cat_string();
 		$posts = query_posts($comic_query);
 		if (have_posts()) {
@@ -30,9 +30,10 @@
 				display_comic_area();
 			endwhile;
 		}
+		Restore();
+		UnProtect();
+		wp_reset_query();
 	}
-	Restore();
-	UnProtect();
 	if (is_single() & in_comic_category()) {
 		display_comic_area();
 	}

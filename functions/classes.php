@@ -91,6 +91,8 @@ function comicpress_post_class($classes = '') {
 	global $post;
 	static $post_alt;
 
+	$is_comic = in_comic_category();
+
 	$args = array(
 		'entry_tax' => array( 'category', 'post_tag' )
 	);
@@ -99,9 +101,9 @@ function comicpress_post_class($classes = '') {
 	$classes[] = 'uentry';
 	
 	/* if a comic category */
-	if (in_comic_category()) $classes[] = 'post-comic';
+	if ($is_comic) $classes[] = 'post-comic';
 	if (is_page()) $classes[] = 'post-page';
-	if (!in_comic_category() && !is_page()) $classes[] = 'post-blog';
+	if (!$is_comic && !is_page()) $classes[] = 'post-blog';
 	
 
 	/* Post alt class. */

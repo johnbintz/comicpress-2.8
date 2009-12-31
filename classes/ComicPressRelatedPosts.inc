@@ -44,7 +44,7 @@ class ComicPressRelatedPosts {
 	function _handle_shortcode_attrs($attrs) {
 		return shortcode_atts(array(
 			'limit' => '5',
-		), $atts);
+		), $attrs);
 	}
 
 	function _new_comicpressstoryline() { return new ComicPressStoryline(); }

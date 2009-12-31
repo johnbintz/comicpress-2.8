@@ -20,7 +20,7 @@ class ComicPressLatestComicsWidget extends WP_Widget {
 	function widget($args, $instance) {
 		global $post;
 		extract($args, EXTR_SKIP); 
-		
+		Protect();
 		echo $before_widget;
 		$title = empty($instance['title']) ? __('Latest Comics','comicpress') : apply_filters('widget_title', $instance['title']); 
 		if ( !empty( $title ) ) { echo $before_title . $title . $after_title; }; 
@@ -30,7 +30,10 @@ class ComicPressLatestComicsWidget extends WP_Widget {
 			<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 			<?php endforeach; ?>
 		</ul>
-		<?php echo $after_widget;
+		<?php
+		Restore();
+		UnProtect();
+		echo $after_widget;
 	}
 	
 	function update($new_instance, $old_instance) {

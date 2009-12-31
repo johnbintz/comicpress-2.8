@@ -75,7 +75,7 @@ function comicpress_showmood_edit_post() {
 				$newmood = $newmood[0]; ?>
 				<div style="float:left; margin-top: 10px; text-align: center; width: 68px; overflow: hidden;"> 
 				<label for="postmood-<?php echo $newmood; ?>" style="cursor:pointer;">
-				<img src="<?php echo $moods_uri; ?>/images/moods/<?php echo $moods_directory; ?>/<?php echo basename($file); ?>"><br />
+				<img src="<?php echo $moods_uri; ?>/images/moods/<?php echo $moods_directory; ?>/<?php echo basename($file); ?>" /><br />
 				<?php echo $newmood; ?>
 				</label>
 				<br />

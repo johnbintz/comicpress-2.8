@@ -2,7 +2,7 @@
 
 	<form method="post" id="myForm" name="template" enctype="multipart/form-data">
 	<?php wp_nonce_field('update-options') ?>
-
+	
 		<div id="comicpress-options">
 
 			<table class="widefat">
@@ -41,23 +41,23 @@
 				<tr>
 					<th scope="row"><label for="disable_blogheader"><?php _e('Disable blog header','comicpress'); ?></label></th>
 					<td>
-						<input id="disable_blogheader" name="disable_blogheader" type="checkbox" value="1" <?php checked(true, $comicpress_options['disable_blogheader']); ?> />
+						<input id="disable_blogheader" name="disable_blogheader" type="checkbox" value="1" <?php checked(true, $comicpress_options['disable_blogheader']); ?> />		
 					</td>
 					<td>
 						<?php _e('Checkmark this and your site will not display the contents of #blogheader.','comicpress'); ?>
 					</td>
 				</tr>
-				<tr>
-					<th scope="row"><label for="disable_rss_comments_count"><?php _e('Disable RSS comments count','comicpress'); ?></label></th>
+				<tr class="alternate">
+					<th scope="row"><label for="enable_comment_count_in_rss"><?php _e('Enable the comment count to show in feed title.','comicpress'); ?></label></th>
 					<td>
-						<input id="disable_rss_comments_count" name="disable_rss_comments_count" type="checkbox" value="1" <?php checked(true, $comicpress_options['disable_rss_comments_count']); ?> />
+						<input id="enable_comment_count_in_rss" name="enable_comment_count_in_rss" type="checkbox" value="1" <?php checked(true, $comicpress_options['enable_comment_count_in_rss']); ?> />		
 					</td>
 					<td>
-						<?php _e('Enable this option to not show comment counts in RSS feed post titles.','comicpress'); ?>
+						<?php _e('Will show how many comments there are in the title of the post in the feed.','comicpress'); ?>
 					</td>
 				</tr>
 			</table>
-
+			
 			<table class="widefat">
 				<thead>
 					<tr>
@@ -91,34 +91,34 @@
 						<?php _e('The default comic post navigation is above each comic blog post.','comicpress'); ?>
 					</td>
 				</tr>
-				<?php
+				<?php 
 					$current_gnav_directory = $comicpress_options['graphicnav_directory'];
 					if (empty($current_gnav_directory)) $current_gnav_directory = 'default';
 					$dirs_to_search = array_unique(array(get_template_directory(),get_stylesheet_directory()));
 					$gnav_directories = array();
 					foreach ($dirs_to_search as $dir) { $gnav_directories = array_merge($gnav_directories,glob("${dir}/images/nav/*")); }
-				?>
+				?>	
 				<tr>
-					<th scope="row" colspan="2"><label for="graphicnav_directory"><?php _e('Graphic Navigation Directory','comicpress'); ?></label>
-
+					<th scope="row" colspan="2"><label for="graphicnav_directory"><?php _e('Graphic Navigation Directory','comicpress'); ?></label>	
+						
 							<select name="graphicnav_directory" id="graphicnav_directory">
 								<?php
 									foreach ($gnav_directories as $gnav_dirs) {
-										if (is_dir($gnav_dirs)) {
+										if (is_dir($gnav_dirs)) { 
 											$gnav_dir_name = basename($gnav_dirs); ?>
 											<option class="level-0" value="<?php echo $gnav_dir_name; ?>" <?php if ($current_gnav_directory == $gnav_dir_name) { ?>selected="selected"<?php } ?>><?php echo $gnav_dir_name; ?></option>
 									<?php }
 									}
 								?>
 							</select>
-
+						
 					</th>
 					<td>
 						<?php _e('Choose a directory to get the graphic navigation styling from. To create your own custom graphic navigation menu buttons just create a directory under <i>images/nav/</i> and place your image files inside of it and create a navstyle.css file to determine the style of your navigation display.','comicpress'); ?>
 					</td>
 				</tr>
 			</table>
-
+			
 			<table class="widefat">
 				<thead>
 					<tr>
@@ -142,9 +142,9 @@
 					<td>
 						<?php _e('Your home page will not display the default left/right sidebars. Minimalists dream. WARNING: Not recommended for use with Graphic Novel layouts.','comicpress'); ?>
 					</td>
-				</tr>
+				</tr>		
 			</table>
-
+			
 			<table class="widefat">
 				<thead>
 					<tr>
@@ -160,8 +160,17 @@
 						<?php _e('Default text in the footer will not display. Enable this if you do not want any text in the footer. If you wish to add you own custom content, you may do so via Appearance -> Widgets-> Footer.', 'comicpress'); ?>
 					</td>
 				</tr>
+				<tr>
+					<th scope="row"><label for="enable_scroll_to_top"><?php _e('Enable the scroll to top link in the footer?','comicpress'); ?></label></th>
+					<td>
+						<input id="enable_scroll_to_top" name="enable_scroll_to_top" type="checkbox" value="1" <?php checked(true, $comicpress_options['enable_scroll_to_top']); ?> />		
+					</td>
+					<td>
+						<?php _e('When this link is clicked on long pages it will scroll back to the top.','comicpress'); ?>
+					</td>
+				</tr>
 			</table>
-
+			
 			<table class="widefat">
 				<thead>
 					<tr>
@@ -187,7 +196,7 @@
 					</td>
 				</tr>
 			</table>
-
+		
 		</div>
 
 		<div id="comicpress-options-save">
@@ -199,7 +208,8 @@
 				<div class="clear"></div>
 			</div>
 		</div>
-
+		
 	</form>
-
+	
 </div>
+	
