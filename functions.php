@@ -43,20 +43,12 @@ function __comicpress_widgets_init() {
 }
 
 function __comicpress_init() {
-	global $comicpress_options, $__comicpress_handlable_classes, $comiccat, $blogcat,
-	$comic_folder, $rss_comic_folder, $archive_comic_folder, $mini_comic_folder, $archive_comic_width,
-	$rss_comic_width, $blog_postcount;
+	global $comicpress_options, $__comicpress_handlable_classes;
 
 	$comicpress_options = array();
 	
 	// Check if the $comicpress_options exist, if not set defaults
 	$comicpress_options = comicpress_load_options();
-
-	if (file_exists(get_template_directory() . '/comicpress-config.php')) {
-		include(get_template_directory() . '/comicpress-config.php');
-	} else {
-		extract($comicpress_options['comicpress_config']);
-	}
 	
 	// xili-language plugin check
 	if (class_exists('xili_language')) {
@@ -106,7 +98,9 @@ add_action('widgets_init', '__comicpress_widgets_init');
 add_action('init', '__comicpress_init');
 
 function comicpress_load_options() {
-	global $comicpress_options;
+	global $comicpress_options, $comiccat, $blogcat, $comic_folder, $rss_comic_folder, 
+	$archive_comic_folder, $mini_comic_folder, $archive_comic_width,
+	$rss_comic_width, $blog_postcount;
 	
 	$comicpress_options = get_option('comicpress_options');
 	if (empty($comicpress_options)) {
@@ -216,6 +210,13 @@ function comicpress_load_options() {
 		// update_option('comicpress_options', $comicpress_options);
 	}
 	$comicpress_options['comicpress_version'] = '2.9.0.9';
+	
+//	if (file_exists(get_template_directory() . '/comicpress-config.php')) {
+//		include(get_template_directory() . '/comicpress-config.php');
+//	} else {
+		extract($comicpress_options['comicpress_config']);
+//	}	
+	
 	update_option('comicpress_options', $comicpress_options);
 	return $comicpress_options;
 }

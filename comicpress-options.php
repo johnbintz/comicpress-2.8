@@ -179,6 +179,26 @@ function comicpress_admin() {
 			$tab = 'buyprint';
 			update_option('comicpress_options',$comicpress_options);
 		}
+
+		if ($_REQUEST['action'] == 'comicpress_save_config') {
+			
+			foreach (array(
+				'comiccat',
+				'blogcat',
+				'comic_folder',
+				'rss_comic_folder',
+				'archive_comic_folder',
+				'mini_comic_folder',
+				'archive_comic_width',
+				'rss_comic_width',
+				'mini_comic_width',
+				'blog_postcount'
+						) as $key) {
+				$comicpress_options['comicpress_config'][$key] = wp_filter_nohtml_kses($_REQUEST[$key]);
+			}
+			$tab = 'config';
+			update_option('comicpress_options',$comicpress_options);
+		}
 		
 		if ($tab) {
 			?>
@@ -186,7 +206,7 @@ function comicpress_admin() {
 			<script>function hidemessage() { document.getElementById('message').style.display = 'none'; }</script>
 		<?php }  
 		}
-		if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'comicpress_reset') {
+		if ($_REQUEST['action'] == 'comicpress_reset') {
 			delete_option('comicpress_options');
 			$comicpress_options = comicpress_load_options();
 		?>
