@@ -26,7 +26,8 @@ function comicpress_display_post_thumbnail($is_comic = false) {
 
 function comicpress_display_author_gravatar($is_comic = false) {
 	global $post, $wp_query, $comicpress_options;
-	if (((!$is_comic && $comicpress_options['enable_post_author_gravatar']) || ($is_comic && $comicpress_options['enable_comic_post_author_gravatar'])) && !is_page()) {
+	if (is_page()) return;
+	if (((!$is_comic && $comicpress_options['enable_post_author_gravatar']) || ($is_comic && $comicpress_options['enable_comic_post_author_gravatar']))) {
 		$author_get_gravatar = str_replace("alt='", "alt='".get_the_author_meta('display_name')."' title='".get_the_author_meta('display_name'),comicpress_get_avatar(get_the_author_meta('email'), 64));
 		$author_gravatar = "<div class=\"post-author-gravatar\">".$author_get_gravatar."</div>\r\n";
 		echo apply_filters('comicpress_display_author_gravatar', $author_gravatar);
@@ -35,7 +36,8 @@ function comicpress_display_author_gravatar($is_comic = false) {
 
 function comicpress_display_post_calendar($is_comic = false) {
 	global $post, $wp_query, $comicpress_options;
-	if ((!$is_comic && $comicpress_options['enable_post_calendar']) || ($is_comic && $comicpress_options['enable_comic_post_calendar']) && !is_page()) { 
+	if (is_page()) return;
+	if ((!$is_comic && $comicpress_options['enable_post_calendar']) || ($is_comic && $comicpress_options['enable_comic_post_calendar'])) { 
 		$post_calendar = "<div class=\"post-calendar-date\"><div class=\"calendar-date\"><span>".get_the_time('M')."</span>".get_the_time('d')."</div></div>\r\n";
 		echo apply_filters('comicpress_display_post_calendar',$post_calendar);
 	}
