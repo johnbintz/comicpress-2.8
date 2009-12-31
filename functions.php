@@ -52,7 +52,11 @@ function __comicpress_init() {
 	// Check if the $comicpress_options exist, if not set defaults
 	$comicpress_options = comicpress_load_options();
 
-	extract($comicpress_options['comicpress_config']);
+	if (file_exists(get_template_directory() . '/comicpress-config.php')) {
+		include(get_template_directory() . '/comicpress-config.php');
+	} else {
+		extract($comicpress_options['comicpress_config']);
+	}
 	
 	// xili-language plugin check
 	if (class_exists('xili_language')) {

@@ -58,8 +58,10 @@ function comicpress_admin() {
 				) as $key) {
 					$comicpress_options[$key] = (bool)( $_REQUEST[$key] == 1 ? true : false );
 			}
+
 			foreach (array(
-				'graphicnav_directory'
+				'graphicnav_directory',
+				'members_post_category'
 						) as $key) {
 				$comicpress_options[$key] = wp_filter_nohtml_kses($_REQUEST[$key]);
 			}
@@ -178,11 +180,6 @@ function comicpress_admin() {
 			update_option('comicpress_options',$comicpress_options);
 		}
 		
-		if ($_REQUEST['action'] == 'comicpress_save_members') {
-			$comicpress_options['members_post_category'] = wp_filter_nohtml_kses($_REQUEST['members_post_category']);
-			$tab = 'members';
-			update_option('comicpress_options',$comicpress_options);
-		}
 		if ($tab) {
 			?>
 			<div id="message" class="updated fade"><p><strong><?php _e('ComicPress Settings SAVED!','comicpress'); ?></strong></p></div>
@@ -211,7 +208,8 @@ function comicpress_admin() {
 			<div class="<?php if ($tab == 'menubar') { ?>on<?php } else { ?>off<?php } ?>" title="menubaroptions"><span><?php _e('Menubar','comicpress'); ?></span></div>
 			<div class="<?php if ($tab == 'customheader') { ?>on<?php } else { ?>off<?php } ?>" title="customheader"><span><?php _e('Custom Header','comicpress'); ?></span></div>
 			<div class="<?php if ($tab == 'buyprint') { ?>on<?php } else { ?>off<?php } ?>" title="buyprintoptions"><span><?php _e('Buy Print','comicpress'); ?></span></div>
-			<div class="<?php if ($tab == 'members') { ?>on<?php } else { ?>off<?php } ?>" title="membersoptions"><span><?php _e('Members','comicpress'); ?></span></div>
+			<div class="<?php if ($tab == 'config') { ?>on<?php } else { ?>off<?php } ?>" title="configoptions"><span><?php _e('Configuration','comicpress'); ?></span></div>
+
 		</div>
 		
 		<?php
