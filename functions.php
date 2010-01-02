@@ -802,16 +802,10 @@ if ( function_exists('register_sidebar') ) {
 	) as $label) {
 		register_sidebar(array(
 			'name'=> $label,
-			'before_widget' => '
-	<div class="widget-head"></div>
-	<div id="%1$s" class="widget %2$s">
-',
-			'after_widget'  => '
-	</div>
-	<div class="widget-foot"></div>
-',
-			'before_title'  => '		<h2 class="widgettitle">',
-			'after_title'   => '</h2>'
+			'before_widget' => "<div class=\"widget-head\"></div>\r\n<div id=\"".'%1$s'."\" class=\"widget ".'%2$s'."\">\r\n",
+			'after_widget'  => "</div>\r\n<div class=\"widget-foot\"></div>\r\n",
+			'before_title'  => "<h2 class=\"widgettitle\">\r\n",
+			'after_title'   => "</h2>\r\n"
 		));
 	}
 }
