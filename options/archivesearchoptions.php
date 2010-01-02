@@ -8,7 +8,7 @@
 			<table class="widefat">
 				<thead>
 					<tr>
-						<th colspan="3"><?php _e('Archive & Search Results','comicpress'); ?></th>
+						<th colspan="3"><?php _e('Archive &amp; Search Results','comicpress'); ?></th>
 					</tr>
 				</thead>
 				<tr class="alternate">

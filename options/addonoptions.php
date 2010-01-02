@@ -1,6 +1,6 @@
 <div id="comicpress-addons">
 
-	<form method="post" id="myForm" name="template" enctype="multipart/form-data">
+	<form method="post" id="myForm" name="template" enctype="multipart/form-data" action="">
 	<?php wp_nonce_field('update-options') ?>
 
 		<div id="comicpress-options">
@@ -93,10 +93,8 @@
 			</tr>
 			<tr>
 				<th scope="row"><label for="buy_print_us_ship"><?php _e('Shipping Cost (US/Canada)','comicpress'); ?></label></th>
-				<td>
+				<td colspan="2">
 					<input type="text" size="7" name="buy_print_us_ship" id="buy_print_us_ship" value="<?php echo $comicpress_options['buy_print_us_ship']; ?>" />
-				</td>
-				<td>
 				</td>
 			</tr>
 			<tr class="alternate">
@@ -110,10 +108,8 @@
 			</tr>
 			<tr>
 				<th scope="row"><label for="buy_print_int_ship"><?php _e('Shipping Cost (International)','comicpress'); ?></label></th>
-				<td>
+				<td colspan="2">
 					<input type="text" size="7" name="buy_print_int_ship" id="buy_print_int_ship" value="<?php echo $comicpress_options['buy_print_int_ship']; ?>" />
-				</td>
-				<td/>
 				</td>
 			</tr>
 		</table>

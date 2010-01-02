@@ -56,7 +56,7 @@
 					</td>
 				</tr>
 				<tr class="alternate">
-					<th scope="row"><label for="disable_comic_blog_single"><?php _e('Disable the comic blog on the single pages','comicpress'); ?></lable></th>
+					<th scope="row"><label for="disable_comic_blog_single"><?php _e('Disable the comic blog on the single pages','comicpress'); ?></label></th>
 					<td>
 						<input id="disable_comic_blog_single" name="disable_comic_blog_single" type="checkbox" value="1" <?php checked(true, $comicpress_options['disable_comic_blog_single']); ?> />
 					</td>

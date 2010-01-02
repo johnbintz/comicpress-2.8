@@ -17,7 +17,7 @@
 						<input id="disable_page_restraints" name="disable_page_restraints" type="checkbox" value="1" <?php checked(true, $comicpress_options['disable_page_restraints']); ?> />
 					</td>
 					<td>
-						<?php _e('Allows the width of your site to either be Dynamic (fills browser window) or Fixed (width is specified, e.g., 980px, 780px, etc.)  If Dynamic is enabled #page and #page-wide will not load. This allow you to use the entire browser for your canvas instead of the 780px/980px that the two elements limit you to by default.','comicpress'); ?></th>
+						<?php _e('Allows the width of your site to either be Dynamic (fills browser window) or Fixed (width is specified, e.g., 980px, 780px, etc.)  If Dynamic is enabled #page and #page-wide will not load. This allow you to use the entire browser for your canvas instead of the 780px/980px that the two elements limit you to by default.','comicpress'); ?>
 					</td>
 				</tr>
 				<tr>
@@ -209,7 +209,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<p><?php _e('USAGE: Edit the user with <em>Dashboard -> Users -> Authors & Users</em> and flag the user you want to be a member with the option at the bottom.','comicpress'); ?></p>
+						<p><?php _e('USAGE: Edit the user with <em>Dashboard -> Users -> Authors &amp; Users</em> and flag the user you want to be a member with the option at the bottom.','comicpress'); ?></p>
 						<p><?php _e('Inside posts, add [members] content you only want members to see [/members]','comicpress'); ?></p>
 						<p><?php _e('When setting a \'members\' category, you *cannot* use an existing comic category, uncategorized, or blog category!','comicpress'); ?></p>
 						<p><?php _e('You MUST create a whole new category and called it "members", then you select that category here and create a page called "Members" or something equivelant and associate the Member\'s Only template to it.','comicpress'); ?></p>
