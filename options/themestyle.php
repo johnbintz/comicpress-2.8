@@ -1,19 +1,19 @@
 <script language="javascript">
 	function showimage(sel,pic) {
-	if (!document.images) 
+	if (!document.images)
 	return
 	document.getElementById(pic).src = '<?php echo get_template_directory_uri(); ?>/images/options/'+sel.options[sel.selectedIndex].value+'.png'
 	}
 </script>
-	
-<div id="themestyle" class="<?php if ($tab == 'themestyle' || empty($tab)) { ?>show<?php } else { ?>hide<?php } ?>">
-	
+
+<div id="comicpress-themestyle">
+
 	<form method="post" id="myForm" name="template" enctype="multipart/form-data">
-	
+
 	<?php wp_nonce_field('update-options') ?>
-		
+
 		<div id="comicpress-options">
-			
+
 			<table class="widefat" cellspacing="0">
 				<thead>
 					<tr>
@@ -33,14 +33,14 @@
 						<?php if (is_cp_layout_avail('3c',$avail_layouts)) { ?>
 							<option class="level-0" value="3c" <?php if ($comicpress_options['cp_theme_layout'] =='3c') { ?>selected="selected" <?php } ?>><?php _e('3 Column - Standard ','comicpress'); ?></option>
 						<?php } ?>
-						<?php if (is_cp_layout_avail('3c2r',$avail_layouts)) { ?>							
-							<option class="level-0" value="3c2r" <?php if ($comicpress_options['cp_theme_layout'] =='3c2r') { ?>selected="selected" <?php } ?>><?php _e('3 Column - Double Right Sidebar','comicpress'); ?></option>							
+						<?php if (is_cp_layout_avail('3c2r',$avail_layouts)) { ?>
+							<option class="level-0" value="3c2r" <?php if ($comicpress_options['cp_theme_layout'] =='3c2r') { ?>selected="selected" <?php } ?>><?php _e('3 Column - Double Right Sidebar','comicpress'); ?></option>
 						<?php } ?>
 						<?php if (is_cp_layout_avail('v3c',$avail_layouts)) { ?>
-							<option class="level-0" value="v3c" <?php if ($comicpress_options['cp_theme_layout'] =='v3c') { ?>selected="selected" <?php } ?>><?php _e('3 Column - Vertical','comicpress'); ?></option>	
+							<option class="level-0" value="v3c" <?php if ($comicpress_options['cp_theme_layout'] =='v3c') { ?>selected="selected" <?php } ?>><?php _e('3 Column - Vertical','comicpress'); ?></option>
 						<?php } ?>
 						<?php if (is_cp_layout_avail('v3cr',$avail_layouts)) { ?>
-							<option class="level-0" value="v3cr" <?php if ($comicpress_options['cp_theme_layout'] =='v3c') { ?>selected="selected" <?php } ?>><?php _e('3 Column - Vertical Double Right Sidebar','comicpress'); ?></option>	
+							<option class="level-0" value="v3cr" <?php if ($comicpress_options['cp_theme_layout'] =='v3c') { ?>selected="selected" <?php } ?>><?php _e('3 Column - Vertical Double Right Sidebar','comicpress'); ?></option>
 						<?php } ?>
 						<?php if (is_cp_layout_avail('gn',$avail_layouts)) { ?>
 							<option class="level-0" value="gn" <?php if ($comicpress_options['cp_theme_layout'] =='gn') { ?>selected="selected" <?php } ?>><?php _e('Graphic Novel - Left Sidebar','comicpress'); ?></option>
@@ -60,11 +60,11 @@
 					</td>
 				</tr>
 			</table>
-			
+
 			<div class="clear"></div>
-			
+
 		</div>
-		
+
 		<div id="comicpress-options-save">
 			<div id="major-publishing-actions">
 				<div id="publishing-action">
@@ -74,9 +74,9 @@
 				<div class="clear"></div>
 			</div>
 		</div>
-		
+
 	</form>
-	
+
 	<div class="clear"></div>
 
 	<div class="cpadmin-footer">
@@ -104,13 +104,13 @@
 				</td>
 				<td style="width:200px;">
 					<form method="post" id="myForm" name="template" enctype="multipart/form-data">
-						<?php wp_nonce_field('update-options') ?>		
+						<?php wp_nonce_field('update-options') ?>
 						<input name="comicpress_reset" type="submit" class="button" value="Reset All Settings" />
-						<input type="hidden" name="action" value="comicpress_reset" />	
+						<input type="hidden" name="action" value="comicpress_reset" />
 					</form>
 				</td>
 			</tr>
 		</table>
 	</div>
-	
+
 </div>

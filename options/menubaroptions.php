@@ -1,4 +1,4 @@
-<div id="menubaroptions" class="<?php if ($tab == 'menubar') { ?>show<?php } else { ?>hide<?php } ?>">
+<div id="comicpress-menubar">
 
 	<form method="post" id="myForm" name="template" enctype="multipart/form-data">
 	<?php wp_nonce_field('update-options') ?>
@@ -19,7 +19,7 @@
 					<td>
 						<?php _e('Allows you to customize the location of the Menubar via Widgets.','comicpress'); ?>
 					</td>
-				</tr>		
+				</tr>
 				<tr>
 					<th scope="row"><label for="enable_search_in_menubar"><?php _e('Enable Search Form','comicpress'); ?></label></th>
 					<td>
@@ -28,7 +28,7 @@
 					<td>
 						<?php _e('Searchforms can be fun when you have something to search for.','comicpress'); ?>
 					</td>
-				</tr>		
+				</tr>
 				<tr class="alternate">
 					<th scope="row"><label for="enable_rss_in_menubar"><?php _e('Enable RSS Link','comicpress'); ?></label></th>
 					<td>
@@ -37,7 +37,7 @@
 					<td>
 					<?php _e('Adds an RSS link icon to your menubar on the right side.','comicpress'); ?>
 					</td>
-				</tr>		
+				</tr>
 				<tr>
 					<th scope="row"><label for="enable_navigation_in_menubar"><?php _e('Enable mini navigation','comicpress'); ?></label></th>
 					<td>
@@ -46,7 +46,7 @@
 					<td>
 						<?php _e('Mini Navigation adds small previous and next arrows arrow to the right side of your Menubar.','comicpress'); ?>
 					</td>
-				</tr>		
+				</tr>
 				<tr class="alternate">
 					<th scope="row"><label for="contact_in_menubar"><?php _e('Enable Contact/custom links','comicpress'); ?></label></th>
 					<td>
@@ -55,7 +55,7 @@
 					<td>
 					<?php _e('Adds a Contact button to the Menubar associated with your admin email.  You can also create a links category called <i>Menubar</i> and whatever links you add to that will appear in the Menubar.','comicpress'); ?>
 					</td>
-				</tr>		
+				</tr>
 				<tr>
 					<th scope="row"><label for="disable_dynamic_menubar_links"><?php _e('Disable auto-generated WordPress links','comicpress'); ?></label></th>
 					<td>
@@ -75,7 +75,7 @@
 					</td>
 				</tr>
 			</table>
-		
+
 		</div>
 
 		<div id="comicpress-options-save">
@@ -87,7 +87,7 @@
 				<div class="clear"></div>
 			</div>
 		</div>
-	
+
 	</form>
-	
-</div>		
+
+</div>

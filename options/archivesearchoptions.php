@@ -1,4 +1,4 @@
-<div id="archivesearch" class="<?php if ($tab == 'archivesearch') { ?>show<?php } else { ?>hide<?php } ?>">
+<div id="comicpress-archivesearch">
 
 	<form method="post" id="myForm" name="template" enctype="multipart/form-data">
 	<?php wp_nonce_field('update-options') ?>
@@ -59,9 +59,9 @@
 					</td>
 				</tr>
 			</table>
-			
+
 		</div>
-		
+
 		<div id="comicpress-options-save">
 			<div id="major-publishing-actions">
 				<div id="publishing-action">
@@ -71,7 +71,7 @@
 				<div class="clear"></div>
 			</div>
 		</div>
-	
+
 	</form>
-	
-</div>		
+
+</div>

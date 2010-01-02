@@ -1,10 +1,10 @@
-<div id="customheader" class="<?php if ($tab == 'customheader') { ?>show<?php } else { ?>hide<?php } ?>">
+<div id="comicpress-customheader">
 
 	<form method="post" id="myForm" name="template" enctype="multipart/form-data">
 	<?php wp_nonce_field('update-options') ?>
 
 		<div id="comicpress-options">
-	
+
 		<table class="widefat">
 			<thead>
 				<tr>
@@ -39,9 +39,9 @@
 				</td>
 			</tr>
 		</table>
-		
+
 	</div>
-	
+
 	<div id="comicpress-options-save">
 			<div id="major-publishing-actions">
 				<div id="publishing-action">
@@ -51,7 +51,7 @@
 				<div class="clear"></div>
 			</div>
 		</div>
-	
+
 	</form>
-	
+
 </div>

@@ -1,10 +1,10 @@
-<div id="buyprintoptions" class="<?php if ($tab == 'buyprint') { ?>show<?php } else { ?>hide<?php } ?>">
+<div id="comicpress-buyprint">
 
 	<form method="post" id="myForm" name="template" enctype="multipart/form-data">
 	<?php wp_nonce_field('update-options') ?>
 
 		<div id="comicpress-options">
-		
+
 			<table class="widefat">
 				<thead>
 					<tr>
@@ -30,12 +30,12 @@
 						<span style="color: #d54e21;"><?php _e('* This must be correct, the form needs some place to go.','comicpress'); ?></span><br />
 						<?php _e('The URL address to which you associated the buy print template.','comicpress'); ?><br />
 						<em>
-							<?php _e('Examples:','comicpress'); ?>			
+							<?php _e('Examples:','comicpress'); ?>
 							"http://yourdomain.com/?p=233",
 							"http://yourdomain.com/shop/",
 							"/?p=233",
 							"/shop/".
-						</em>					
+						</em>
 					</td>
 				</tr>
 				<tr>
@@ -63,7 +63,7 @@
 					</td>
 					<td>
 					</td>
-				</tr>		
+				</tr>
 				<tr class="alternate">
 					<th scope="row"><label for="buy_print_int_amount"><?php _e('Print Cost (International)','comicpress'); ?></label></th>
 					<td>
@@ -72,7 +72,7 @@
 					<td>
 						<?php _e('How much does a print cost for people *NOT* in the United States and Canada (International)','comicpress'); ?>
 					</td>
-				</tr>		
+				</tr>
 				<tr>
 					<th scope="row"><label for="buy_print_int_ship"><?php _e('Shipping Cost (International)','comicpress'); ?></label></th>
 					<td>
@@ -82,9 +82,9 @@
 					</td>
 				</tr>
 			</table>
-			
+
 		</div>
-		
+
 		<div id="comicpress-options-save">
 			<div id="major-publishing-actions">
 				<div id="publishing-action">
@@ -94,7 +94,7 @@
 				<div class="clear"></div>
 			</div>
 		</div>
-		
+
 	</form>
-	
+
 </div>
