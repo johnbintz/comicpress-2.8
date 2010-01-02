@@ -50,6 +50,7 @@ function comicpress_admin() {
 				'disable_comment_note',
 				'enable_numbered_pagination',
 				'enable_comment_count_in_rss',
+				'enable_post_thumbnail_rss',
 				'comic_clicks_next',
 				'disable_default_comic_nav',
 				'enable_widgetarea_use_sidebar_css',
