@@ -31,12 +31,6 @@ if (have_posts()) {
 			$description = $category->description;
 			$first_comic_in_category = get_terminal_post_in_category($category_id,true);
 			$first_comic_permalink = get_permalink($first_comic_in_category->ID);
-			$archive_image = null;
-			foreach (array("mini", "archive", "rss", "comic") as $type) {
-				if (($requested_archive_image = get_comic_url($type, $first_comic_in_category)) !== false) {
-					$archive_image = $requested_archive_image; break;
-				}
-			}
 			if ($target_depth < $current_depth) {
 				echo str_repeat("</ul></li>", ($current_depth - $target_depth));
 			}
@@ -49,7 +43,7 @@ if (have_posts()) {
 						
 						<li id="storyline-<?php echo $category->category_nicename ?>"<?php echo $storyline_root; $storyline_root = null ?>>
 							<?php if (!empty($first_comic_in_category)) { ?>
-								<a href="<?php echo $first_comic_permalink ?>" title="<?php _e('First comic in','comicpress'); ?> <?php echo $category->cat_name ?>."><img src="<?php echo $archive_image ?>" style="width: <?php echo $mini_comic_width; ?>px" /></a>
+								<a href="<?php echo $first_comic_permalink ?>" title="<?php _e('First comic in','comicpress'); ?> <?php echo $category->cat_name ?>."><?php echo comicpress_display_comic_image('mini,archive,rss,comic', false, $first_comic_in_category, __('First comic in','comicpress').' '.$category->cat_name); ?></a>
 							<?php } ?>
 							<a href="<?php echo get_category_link($category_id) ?>" class="storyline-title"><?php echo $category->cat_name ?></a>
 							<?php if (!empty($description)) { ?>

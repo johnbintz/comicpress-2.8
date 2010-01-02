@@ -720,9 +720,11 @@ function comicpress_list_storyline_categories($args = "") {
 * Display text when image (comic) is hovered
 * Text is taken from a custom field named "hovertext"
 */
-function the_hovertext() {
-	$hovertext = get_post_meta( get_the_ID(), "hovertext", true );
-  return (empty($hovertext)) ? get_the_title() : $hovertext;
+function the_hovertext($post_to_use = null) {
+	global $post;
+	$post_to_use = !is_null($override_post) ? $override_post : $post;
+	$hovertext = get_post_meta( $post_to_use->ID, "hovertext", true );
+	return (empty($hovertext)) ? get_the_title($post_to_use->ID) : $hovertext;
 }
 
 /**
