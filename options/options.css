@@ -11,6 +11,7 @@
 	padding: 5px 0 0 0;
 	line-height: 5px;
 	margin: 0 0 -1px 0;
+	overflow: hidden
 }
 
 #cpadmin div {
@@ -192,8 +193,8 @@ width: auto;
 	#comicpress-version-title  a {
 		color: #333;
 	}
-	
-#comicpress-version-number {	
+
+#comicpress-version-number {
 	font-family: monospace;
 	font-size: 16px;
 	letter-spacing: 8px;
