@@ -109,5 +109,6 @@ function comicpress_insert_comic_feed($content) {
 }
 
 add_filter('the_content','comicpress_insert_comic_feed');
+add_filter('the_excerpt','comicpress_insert_comic_feed');
 
 ?>
