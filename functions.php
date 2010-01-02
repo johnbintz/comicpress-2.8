@@ -119,6 +119,7 @@ function comicpress_load_options() {
 			'disable_page_titles' => false,
 			'static_blog' => false,
 			'disable_default_comic_nav' => false,
+			'enable_post_thumbnail_rss' => true,
 
 			'cp_theme_layout' => 'standard',
 			'transcript_in_posts' => false,
@@ -721,7 +722,7 @@ function comicpress_list_storyline_categories($args = "") {
 */
 function the_hovertext() {
 	$hovertext = get_post_meta( get_the_ID(), "hovertext", true );
-  echo (empty($hovertext)) ? get_the_title() : $hovertext;
+  return (empty($hovertext)) ? get_the_title() : $hovertext;
 }
 
 /**
@@ -761,26 +762,6 @@ function the_transcript($displaymode = 'raw') {
       break;
   }
 }
-
-//Insert the comic image into the RSS feed
-function comic_feed() {
-	foreach (array("rss", "archive", "mini", "comic") as $type) {
-		if (($requested_thumbnail_image = get_comic_url($type, $first_comic_in_category)) !== false) {
-			$thumbnail_image = $requested_thumbnail_image; break;
-		}
-	}
-	?>
-	<p><a href="<?php the_permalink() ?>"><img src="<?php echo $thumbnail_image; ?>" border="0" alt="<?php the_title() ?>" title="<?php the_hovertext() ?>" /></a></p><?php
-}
-
-function insert_comic_feed($content) {
-	if (is_feed() && in_comic_category()) {
-		return comic_feed() . $content;
-	} else {
-		return $content;
-	}
-}
-add_filter('the_content','insert_comic_feed');
 
 // Register Sidebar and Define Widgets
 

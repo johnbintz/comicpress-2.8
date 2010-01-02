@@ -12,7 +12,7 @@ function display_comics_multi() {
 	if (($result = get_comic_path('comic', '', '', 1)) !== false) {
 		foreach ($result as $pathto_comic) { ?>
 			<div class="comicdisp">
-			<img src="<?php echo get_option('home'). '/' .$pathto_comic; ?>" alt="<?php the_title(); ?>" title="<?php the_hovertext(); ?>" />
+			<img src="<?php echo get_option('home'). '/' .$pathto_comic; ?>" alt="<?php the_title(); ?>" title="<?php echo the_hovertext(); ?>" />
 			</div>
 		<?php }
 	}

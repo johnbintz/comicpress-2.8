@@ -75,7 +75,7 @@ function comicpress_the_title_rss($title = '') {
 			$title_pattern = sprintf(__('%%s (%d Comments)', 'comicpress'), $count);
 			break;
 	}
-
+	
 	return sprintf($title_pattern, $title);
 }
 
@@ -91,3 +91,23 @@ if ($comicpress_options['enable_comment_count_in_rss']) {
 	add_filter('the_title_rss', 'comicpress_the_title_rss');
 	add_action('export_wp', 'comicpress_export_wp');
 }
+
+//Insert the comic image into the RSS feed
+function comicpress_comic_feed() { 
+	global $post, $comicpress_options; ?>
+	<p><a href="<?php the_permalink() ?>"><?php echo comicpress_display_comic_image('rss,comic',$comicpress_options['enable_post_thumbnail_rss']); ?></a></p><?php
+}
+
+// removed the in_comic_category so that if it has a post-image it will add it to the rss feed (else rss comic thumb)
+function comicpress_insert_comic_feed($content) {
+	global $post, $wp_query;
+	if (is_feed()) {
+		return comicpress_comic_feed() . $content;
+	} else {
+		return $content;
+	}
+}
+
+add_filter('the_content','comicpress_insert_comic_feed');
+
+?>

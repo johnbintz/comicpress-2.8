@@ -47,6 +47,14 @@
 						<?php _e('Checkmark this and your site will not display the contents of #blogheader.','comicpress'); ?>
 					</td>
 				</tr>
+			</table>
+			
+			<table class="widefat">
+				<thead>
+					<tr>
+						<th colspan="3"><?php _e('RSS','comicpress'); ?></th>
+					</tr>
+				</thead>			
 				<tr class="alternate">
 					<th scope="row"><label for="enable_comment_count_in_rss"><?php _e('Enable the comment count to show in feed title.','comicpress'); ?></label></th>
 					<td>
@@ -54,6 +62,15 @@
 					</td>
 					<td>
 						<?php _e('Will show how many comments there are in the title of the post in the feed.','comicpress'); ?>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="enable_post_thumbnail_rss"><?php _e('Enable the post thumbnails in the RSS feed?','comicpress'); ?></label></th>
+					<td>
+						<input id="enable_post_thumbnail_rss" name="enable_post_thumbnail_rss" type="checkbox" value="1" <?php checked(true, $comicpress_options['enable_post_thumbnail_rss']); ?> />		
+					</td>
+					<td>
+						<?php _e('If enabled will show the post thumbnail of the post in the RSS feed.','comicpress'); ?>
 					</td>
 				</tr>
 			</table>
