@@ -27,7 +27,7 @@
 		if (have_posts()) {
 			while (have_posts()) : the_post();
 				$wp_query->is_single = true;
-				display_comic_area();
+				comicpress_display_comic_area();
 			endwhile;
 		}
 		Restore();
@@ -35,7 +35,7 @@
 		wp_reset_query();
 	}
 	if (is_single() & in_comic_category()) {
-		display_comic_area();
+		comicpress_display_comic_area();
 	}
 ?>
 

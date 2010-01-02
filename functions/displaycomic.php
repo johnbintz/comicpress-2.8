@@ -1,13 +1,36 @@
 <?php
 
-function display_comic_area() {
+function comicpress_display_comic_image($searchorder = "comic",$use_post_image = false) {
+	global $post;
+	if ($use_post_image) {
+		if (function_exists('has_post_thumbnail')) {
+			if ( has_post_thumbnail($post->ID) ) {
+				$comic_image = get_the_post_thumbnail($post->ID,'full');
+			} 
+		}
+	}
+	if (!isset($comic_image)) {
+		$searchorder = explode(',',$searchorder);
+		$requested_archive_image = '';
+		foreach ($searchorder as $type) {
+			if (($requested_archive_image = get_comic_url($type, $post)) !== false) {
+				$comic_image = "<img src=\"$requested_archive_image\" alt=\"".get_the_title()."\" title=\"".get_the_title()."\" />";
+				break;
+			}
+		}
+	}
+	return apply_filters('comicpress_display_comic_image',$comic_image);
+}
+
+
+function comicpress_display_comic_area() {
 	global $post, $wp_query, $comicpress_options;
 	if (comicpress_check_child_file('partials/displaycomic') == false) { ?>
 		<div id="comic-wrap">
 			<div id="comic-head"><?php get_sidebar('over'); ?></div>
 			<div class="clear"></div>
 			<?php get_sidebar('comicleft'); ?>
-			<div id="comic"><?php display_comic(); ?></div>
+			<div id="comic"><?php comicpress_display_comic(); ?></div>
 			<?php get_sidebar('comicright'); ?>
 			<div class="clear"></div>
 			<div id="comic-foot"><?php get_sidebar('under'); ?></div>
@@ -15,7 +38,7 @@ function display_comic_area() {
 <?php }	
 }
 
-function display_comic() { 
+function comicpress_display_comic() { 
 	global $post, $wp_query, $rascal_says, $comicpress_options, $comic_filename_filters;
 	$next_comic = get_next_comic_permalink();
 	$comic = explode(".", the_comic_filename()); 

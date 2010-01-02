@@ -32,26 +32,10 @@ class ComicPressLatestThumbnailWidget extends WP_Widget {
 		$archive_image = null;
 		if (have_posts()) {
 			while (have_posts()) : the_post();
-				if (!empty($post->post_content)) {
-					echo $before_widget;
-					$temp_query = $wp_query->is_single;
-					$wp_query->is_single = true;
-					foreach (array("archive", "rss", "mini", "comic") as $type) {
-						if (($requested_archive_image = get_comic_url($type, $post)) !== false) {
-							$archive_image = "<img src=\"$requested_archive_image\" alt=\"".get_the_title()."\" title=\"".get_the_title()."\" />";
-							break;
-						}
-					}
-					if (function_exists('has_post_thumbnail')) {
-						if ( has_post_thumbnail($post->ID) ) {
-							$archive_image = get_the_post_thumbnail($post->ID,'full');
-						}
-					}  ?>
-					<a href="<?php the_permalink(); ?>"><?php echo $archive_image; ?></a> 
-				<?php
-					$wp_query->is_single = $temp_query;
-					echo $after_widget;
-				}
+				$temp_query = $wp_query->is_single;
+				$wp_query->is_single = true;
+				echo "<a href=\"".get_permalink()."\">".comicpress_display_comic_image('rss,archive,mini,comic',true)."</a>\r\n";
+				$wp_query->is_single = $temp_query;
 			endwhile;
 		}
 		Restore();
