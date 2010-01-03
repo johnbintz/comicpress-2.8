@@ -1,6 +1,6 @@
 <div id="comicpress-post">
 
-	<form method="post" id="myForm" name="template" enctype="multipart/form-data" action="">
+	<form method="post" id="myForm-post" enctype="multipart/form-data" action="">
 	<?php wp_nonce_field('update-options') ?>
 
 		<div class="comicpress-options">
