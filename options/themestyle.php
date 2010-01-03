@@ -12,7 +12,7 @@
 
 	<?php wp_nonce_field('update-options') ?>
 
-		<div id="comicpress-options">
+		<div class="comicpress-options">
 
 			<table class="widefat" cellspacing="0">
 				<thead>

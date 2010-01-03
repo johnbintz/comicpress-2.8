@@ -97,7 +97,7 @@ div.show img {
 	text-decoration: none;
 }
 
-#comicpress-options {
+.comicpress-options {
 	padding: 10px 10px 1px 10px;
 	background: #fff;
 	border-width: 1px 1px 1px 1px;
@@ -131,54 +131,54 @@ div.show img {
 	-khtml-border-bottom-right-radius: 6px;
 }
 
-#comicpress-options  table.widefat thead tr th {
+.comicpress-options  table.widefat thead tr th {
 	font-size: 14px;
 }
 
-#comicpress-options  table.widefat label {
+.comicpress-options  table.widefat label {
 	display: block;
 	text-align: right;
 }
 
-#comicpress-options  table.widefat label.inline-label {
+.comicpress-options  table.widefat label.inline-label {
 	display: inline;
 }
 
-#comicpress-options  table.widefat select {
+.comicpress-options  table.widefat select {
 	width: 100%;
 }
 
-#comicpress-options table.widefat {
+.comicpress-options table.widefat {
 	margin-bottom: 10px;
 	border-bottom: none;
 }
 
-#comicpress-options table.widefat th {
+.comicpress-options table.widefat th {
 	width: 200px;
 }
 
-#comicpress-options table.widefat th input{
+.comicpress-options table.widefat th input{
 margin: 1px;
 padding: 3px;
 width: 100%;
 }
 
-#comicpress-options table.widefat th .radio input{
+.comicpress-options table.widefat th .radio input{
 margin: 0;
 padding: 0;
 width: auto;
 }
 
-#comicpress-options table.widefat th label {
+.comicpress-options table.widefat th label {
 	color: #21759b;
 	text-align: left;
 }
 
-#comicpress-options table.widefat th label:hover {
+.comicpress-options table.widefat th label:hover {
 	color: #d54e21;
 }
 
-#comicpress-options table.widefat th, #comicpress-options table.widefat td {
+.comicpress-options table.widefat th, .comicpress-options table.widefat td {
 	vertical-align: middle;
 }
 #comicpress-version-title {
@@ -200,7 +200,7 @@ width: auto;
 	letter-spacing: 8px;
 }
 
-#comicpress-options .radio {
+.comicpress-options .radio {
 	padding-top: 5px;
 	text-align: right;
 }
