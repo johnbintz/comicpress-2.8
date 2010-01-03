@@ -280,7 +280,7 @@
 
 		</div>
 
-		<div id="comicpress-options-save">
+		<div class="comicpress-options-save">
 			<div id="major-publishing-actions">
 				<div id="publishing-action">
 						<input name="comicpress_save_post" type="submit" class="button-primary" value="Save Settings" />
