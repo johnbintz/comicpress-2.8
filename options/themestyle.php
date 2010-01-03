@@ -8,7 +8,7 @@
 
 <div id="comicpress-themestyle">
 
-	<form method="post" id="myForm" name="template" enctype="multipart/form-data">
+	<form method="post" id="myForm" name="template" enctype="multipart/form-data" action="">
 
 	<?php wp_nonce_field('update-options') ?>
 
@@ -103,7 +103,7 @@
 					<a href="http://comicpress.org/"><img src="<?php echo get_template_directory_uri(); ?>/images/cal/default.png" /></a>
 				</td>
 				<td style="width:200px;">
-					<form method="post" id="myForm" name="template" enctype="multipart/form-data">
+					<form method="post" id="myForm" name="template" enctype="multipart/form-data" action="">
 						<?php wp_nonce_field('update-options') ?>
 						<input name="comicpress_reset" type="submit" class="button" value="Reset All Settings" />
 						<input type="hidden" name="action" value="comicpress_reset" />
