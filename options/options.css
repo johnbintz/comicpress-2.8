@@ -208,3 +208,16 @@ width: auto;
 div.show .cpadmin-footer img{
 	float: none;
 }
+
+.comicpress-major-publishing-actions {
+	padding: 6px;
+	clear: both;
+	border-top: none;
+	background: #eaf2fa;
+}
+
+.comicpress-major-publishing-actions input {
+	float: right;
+	min-width: 80px;
+	text-align: center;
+}
