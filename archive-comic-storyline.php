@@ -31,12 +31,6 @@ if (have_posts()) {
 						$description = $category->description;
 						$first_comic_in_category = get_terminal_post_in_category($category_id);
 						$first_comic_permalink = get_permalink($first_comic_in_category->ID);
-						$archive_image = null;
-						foreach (array("mini", "archive", "rss", "comic") as $type) {
-							if (($requested_archive_image = get_comic_url($type, $first_comic_in_category)) !== false) {
-								$archive_image = $requested_archive_image; break;
-							}
-						}
 						if ($target_depth < $current_depth) {
 							echo str_repeat("</ul></li>", ($current_depth - $target_depth));
 						}
