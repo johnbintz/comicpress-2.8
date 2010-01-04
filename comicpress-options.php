@@ -65,8 +65,7 @@ function comicpress_admin() {
 			}
 
 			foreach (array(
-				'graphicnav_directory',
-				'members_post_category'
+				'graphicnav_directory'
 						) as $key) {
 				$comicpress_options[$key] = wp_filter_nohtml_kses($_REQUEST[$key]);
 			}
@@ -152,6 +151,7 @@ function comicpress_admin() {
 		if ($_REQUEST['action'] == 'comicpress_save_addons') {
 			foreach (array(
 				'enable_custom_image_header',
+				'enable_members_only_post_comments',
 				'buy_print_add_shipping'
 						) as $key) {
 				$comicpress_options[$key] = (bool)( $_REQUEST[$key] == 1 ? true : false );
@@ -159,6 +159,8 @@ function comicpress_admin() {
 			foreach (array(
 				'custom_image_header_width',
 				'custom_image_header_height',
+				'enable_members_only',
+				'members_post_category',
 				'buy_print_email',
 				'buy_print_url',
 				'buy_print_us_amount',
