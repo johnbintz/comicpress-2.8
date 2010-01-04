@@ -38,8 +38,9 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 			
 			$latest_comic = get_permalink( get_terminal_post_in_category(get_all_comic_categories_as_cat_string(), false) );
 			?>
-			<div id="comic_navi_wrapper">
-			<table id="comic_navi" cellpadding="0" cellspacing="0"><tr><td>
+<div id="comic_navi_wrapper">
+	<div class="comic_navi">
+		<span class="comic_navi_left">
 			<?php if ($instance['first'] == 'on') {
 				if (!empty($first_comic) && ($first_comic != $this_permalink)) { ?>
 					<a href="<?php echo $first_comic; ?>" class="navi navi-first" title="<?php echo $instance['first_title']; ?>"><?php echo $instance['first_title']; ?></a>
@@ -60,15 +61,18 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 				<?php } else { ?>
 					<div class="navi navi-prev navi-void"><?php echo $instance['previous_title']; ?></div>
 				<?php } 
-			}
+			} ?>
+		</span>
+		<span class="comic_navi_center">
+		<?php
 			if ($instance['archives'] == 'on' && !empty($instance['archive_path'])) { ?>
-				<a href="<?php echo $instance['archive_path']; ?>" class="navi navi-archive" title="<?php echo $instance['archives_title']; ?>"><?php echo $instance['archives_title']; ?></a>
+				<a href="<?php echo $instance['archive_path']; ?>" class="navi navi-archives navi-archive" title="<?php echo $instance['archives_title']; ?>"><?php echo $instance['archives_title']; ?></a>
 			<?php } 
 			if ($instance['random'] == 'on') { ?>
 				<a href="<?php echo bloginfo('url'); ?>/?randomcomic" class="navi navi-random" title="<?php echo $instance['random_title']; ?>"><?php echo $instance['random_title']; ?></a>
 			<?php }
 			if ($instance['comictitle'] == 'on') { ?>
-				<div class="navi-comictitle"><a href="<?php the_permalink(); ?>">"<?php the_title(); ?>"</a></div>
+				<span class="navi-comictitle"><a href="<?php the_permalink(); ?>">"<?php the_title(); ?>"</a></span>
 			<?php } 
 			if ($instance['comments'] == 'on') { ?>
 				<a href="<?php the_permalink(); ?>#comment" class="navi navi-comments" title="<?php echo $instance['comments_title']; ?>"><span class="navi-comments-count"><?php comments_number('0', '1', '%'); ?></span><?php echo $instance['comments_title']; ?></a>
@@ -78,7 +82,10 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 				<input type="hidden" name="comic" value="<?php echo get_the_ID(); ?>" /> 
 				<button class="navi navi-buyprint" type="submit" value="buyprint"><?php echo $instance['buyprint_title']; ?></button> 
 				</form> 
-			<?php } 	
+			<?php } ?>
+		</span>
+		<span class="comic_navi_right">
+			<?php
 			if ($instance['next'] == 'on') {
 				if (!empty($next_comic)) {
 					if (($next_comic == $latest_comic) && $instance['lastgohome'] == 'on') { ?>
@@ -108,10 +115,9 @@ class widget_comicpress_graphical_navigation extends WP_Widget {
 					<div class="navi navi-last navi-void"><?php echo $instance['last_title']; ?></div>
 				<?php }
 			} ?>
-			</td>
-			</tr>
-			</table>
-			</div>
+		</span>
+	</div>
+</div>
 			
 		<?php // } 
 	}
