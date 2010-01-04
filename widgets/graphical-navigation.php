@@ -12,8 +12,8 @@ Author URI: http://frumph.net/
 class widget_comicpress_graphical_navigation extends WP_Widget {
 	
 	function widget_comicpress_graphical_navigation() {
-		$widget_ops = array('classname' => 'widget_comicpress_graphical_navigation', 'description' => __('Displays Graphical Navigation Buttons. (used in comic sidebars)','comicpress') );
-		$this->WP_Widget('comicpress_graphicalnavigation', __('ComicPress Navigation (orig)','comicpress'), $widget_ops);
+		$widget_ops = array('classname' => 'widget_comicpress_graphical_navigation', 'description' => __('Displays Graphical Navigation Buttons. This widget is for when you are not using the advanced storyline enabled widget.','comicpress') );
+		$this->WP_Widget('comicpress_graphicalnavigation', __('ComicPress Navigation','comicpress'), $widget_ops);
 	}
 	
 	function widget($args, $instance) {

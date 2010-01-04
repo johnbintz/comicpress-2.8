@@ -14,8 +14,8 @@ class ComicPressGraphicalNavigationWidget extends WP_Widget {
 
 	function ComicPressGraphicalNavigationWidget($skip_widget_init = false) {
 		if (!$skip_widget_init) {
-			$widget_ops = array('classname' => __CLASS__, 'description' => __('Displays Graphical Navigation Buttons. (used in comic sidebars)','comicpress') );
-			$this->WP_Widget(__CLASS__, __('ComicPress Comic Navigation','comicpress'), $widget_ops);
+			$widget_ops = array('classname' => __CLASS__, 'description' => __('Displays Graphical Navigation Buttons. This widget is used in conjunction with ComicPress Manager and it\'s storyline enabled features.','comicpress') );
+			$this->WP_Widget(__CLASS__, __('ComicPress Navigation(Storyline)','comicpress'), $widget_ops);
 		}
 	}
 
