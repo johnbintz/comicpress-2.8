@@ -68,6 +68,26 @@ function __comicpress_init() {
 		remove_filter('comments_number','id_get_comment_number');
 	}
 
+  $storyline = get_option('comicpress-storyline-category-order');
+
+  $do_rebuild = false;
+
+  if (empty($storyline)) {
+  	$do_rebuild = true;
+  } else {
+	  $first = array_pop(explode('/', array_shift(explode(',', $storyline))));
+
+	  if ($first != $comicpress_options['comicpress_config']['comiccat']) {
+	  	$do_rebuild = true;
+	  }
+  }
+
+  if ($do_rebuild) {
+  	$storyline = new ComicPressStoryline();
+
+  	update_option('comicpress-storyline-category-order', $storyline->get_category_flattened($comicpress_options['comicpress_config']['comiccat']));
+  }
+
 	do_action('comicpress_init');
 
 	if ($verified_nonce = __comicpress_verify_nonce()) {
@@ -220,11 +240,6 @@ function comicpress_load_options() {
 //	}
 
 	update_option('comicpress_options', $comicpress_options);
-
-  $storyline = get_option('comicpress-storyline-category-order');
-  if (empty($storyline)) {
-  	update_option('comicpress-storyline-category-order', "0/$comiccat");
-  }
 
 	return $comicpress_options;
 }
