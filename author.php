@@ -12,7 +12,6 @@
 			<h2><?php _e('No such author.','comicpress'); ?></h2>
 		<?php } else { ?>
 		<div <?php post_class(); ?>>
-			<?php comicpress_display_post_thumbnail(); ?>
 			<div class="post-head"></div>
 			<div class="post-content">
 					<div class="userpage-avatar">
@@ -50,12 +49,12 @@
 							<h3><?php _e('Posts by','comicpress'); ?> <?php echo $authorname; ?> (<?php echo get_usernumposts($curauth->ID); ?>) &not;</h3>
 							<?php // this area is a loop that shows what posts the person has done. ?>
 							<ol>
-									<table class="month-table">
+									<li><table class="month-table">
 							<?php while (have_posts()) : the_post() ?>
 									<tr><td class="archive-date" align="right"><?php the_time('M j, Y') ?></td><td class="archive-title"><a href="<?php the_permalink(); ?>"><?php the_title() ?></a></td>
 													
 							<?php endwhile; ?>
-									</table>
+									</table></li>
 							</ol>
 							
 							<?php comicpress_pagination(); ?>
