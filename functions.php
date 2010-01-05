@@ -270,7 +270,7 @@ if ($comicpress_options['remove_wptexturize']) {
 $dirs_to_search = array_unique(array(get_template_directory(), get_stylesheet_directory()));
 $__comicpress_handlable_classes = array();
 foreach ($dirs_to_search as $dir) {
-	foreach (array('widgets' => 'php', 'functions' => 'php', 'classes' => 'inc') as $folder => $extension) {
+	foreach (array('classes' => 'inc', 'widgets' => 'php', 'functions' => 'php') as $folder => $extension) {
 		foreach (glob($dir . "/${folder}/*.${extension}") as $__file) {
 			require_once($__file);
 			$__class_name = preg_replace('#\..*$#', '', basename($__file));
