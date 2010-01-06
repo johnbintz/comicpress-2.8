@@ -15,7 +15,7 @@ function comicpress_display_comic_area() {
 <?php }	
 }
 
-function comicpress_display_comic_image($searchorder = "comic",$use_post_image = false, $override_post = null, $title = null) {
+function comicpress_display_comic_image($searchorder = "comic", $use_post_image = false, $override_post = null, $title = null) {
 	global $post;
 	$post_to_use = !is_null($override_post) ? $override_post : $post;
 	$title_to_use = !is_null($title) ? $title : the_hovertext($post_to_use);
@@ -67,8 +67,8 @@ function comicpress_display_comic() {
 		case 'png':
 		case 'gif':
 		case 'jpg':
-			$output = comicpress_display_comic_image('comic', false, $post, the_hovertext());
 		default:
+			$output = comicpress_display_comic_image('comic', false, $post, the_hovertext());
 	}
 	echo apply_filters('comicpress_display_comic', $output);
 }
@@ -87,7 +87,7 @@ function comicpress_rascal_says($output) {
 		$output = preg_replace('#title="([^*]*)"#', '', $output);
 		$href_to_use = "#";
 
-		$output = "<span class=\"tooltip\"><span class=\"top\">&nbsp;</span><span class=\"middle\">{$hovertext}</span><span class=\"bottom\">&nbsp;</span></span>{$output}</a>\r\n";
+		$output = "<span class=\"tooltip\"><span class=\"top\">&nbsp;</span><span class=\"middle\">{$hovertext}</span><span class=\"bottom\">&nbsp;</span></span>{$output}\r\n";
 	}
 	if ($comicpress_options['comic_clicks_next']) {
 		$href_to_use = get_next_comic_permalink();
