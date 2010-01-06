@@ -27,9 +27,15 @@ function comicpress_notice_debug() {
 	
 	if (empty($error)) {
 		// Check Comics Folder
-		if (!is_dir(ABSPATH . '/' . $comic_folder)) {
+		$document_root = ABSPATH;
+		
+		if (function_exists('cpm_wpmu_modify_path')) {
+			$document_root = cpm_wpmu_modify_path($document_root);
+		}
+		if (!is_dir($document_root .'/'. $comic_folder)) {
 			$error[] = array('header', __('Comics Folder is not configured and is unable to be found.','comicpress'));
 			$error[] = __('ComicPress stores the files it uses inside a specific directory and that directory is set from within ComicPress Manager.  When this error is present it means that the theme is unable to find the appropriate directory to read the comics from.','comicpress');
+			$error[] = __('ComicPress Manager - Manager Config will allow you to create the directories needed.');
 		}
 	}
 	
