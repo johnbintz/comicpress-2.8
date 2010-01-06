@@ -87,7 +87,7 @@ function comicpress_rascal_says($output) {
 		$output = preg_replace('#title="([^*]*)"#', '', $output);
 		$href_to_use = "#";
 
-		$output = "<span class=\"tooltip\"><span class=\"top\"></span><span class=\"middle\">{$hovertext}</span><span class=\"bottom\">&nbsp;</span></span>{$output}</a>\r\n";
+		$output = "<span class=\"tooltip\"><span class=\"top\">&nbsp;</span><span class=\"middle\">{$hovertext}</span><span class=\"bottom\">&nbsp;</span></span>{$output}</a>\r\n";
 	}
 	if ($comicpress_options['comic_clicks_next']) {
 		$href_to_use = get_next_comic_permalink();
