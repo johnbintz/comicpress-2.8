@@ -284,9 +284,9 @@ if ($comicpress_options['remove_wptexturize']) {
 // WIDGETS WP 2.8 compatible ONLY, no backwards compatibility here.
 $dirs_to_search = array_unique(array(get_template_directory(), get_stylesheet_directory()));
 $__comicpress_handlable_classes = array();
-foreach ($dirs_to_search as $dir) {
+foreach ($dirs_to_search as $__dir) {
 	foreach (array('classes' => 'inc', 'widgets' => 'php', 'functions' => 'php') as $folder => $extension) {
-		foreach (glob($dir . "/${folder}/*.${extension}") as $__file) {
+		foreach (glob($__dir . "/${folder}/*.${extension}") as $__file) {
 			require_once($__file);
 			$__class_name = preg_replace('#\..*$#', '', basename($__file));
 			if (class_exists($__class_name)) {
@@ -916,3 +916,4 @@ function random_post() {
 
 if ( isset( $_GET['randompost'] ) )
 	add_action( 'template_redirect', 'random_post' );
+
