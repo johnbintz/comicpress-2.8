@@ -29,7 +29,7 @@ class ComicPressMenubarWidget extends WP_Widget {
 			<div id="menunav">
 				<?php if ($comicpress_options['enable_search_in_menubar']) { ?>
 <div class="menunav-search">
-	<?php the_widget('WP_Widget_Search',array(),array('before_widget'=>'', 'after_widget'=>'')); ?>
+					<?php include(get_template_directory().'/searchform.php'); ?>
 				</div>
 				<?php } ?>
 <?php if ($comicpress_options['enable_rss_in_menubar']) { ?>
