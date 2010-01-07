@@ -777,11 +777,7 @@ ul.children {
 				opacity:0.5; /* firefox, opera, safari, chrome */
 				-khtml-opacity: 0.5;      /* khtml, old safari */
 				}
-
-.comicarchiveframe img {
-	border: 1px solid #000;
-}
-
+				
 .comicarchiveframe h3 {
 	margin: 0;
 }
