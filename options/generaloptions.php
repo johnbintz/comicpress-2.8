@@ -212,6 +212,15 @@
 						<?php _e('Enable this if you would like to check ALL of your posts to see if there are any category problems and inconsistancies.', 'comicpress'); ?>
 					</td>
 				</tr>
+				<tr class="alternate">
+					<th scope="row"><label for="enable_page_load_info"><?php _e('Enable the page load info in the footer?','comicpress'); ?></label></th>
+					<td>
+						<input id="enable_page_load_info" name="enable_page_load_info" type="checkbox" value="1" <?php checked(true, $comicpress_options['enable_page_load_info']); ?> />
+					</td>
+					<td>
+						<?php _e('Will display information on how many queries and how fast it took to load the page in the footer.', 'comicpress'); ?>
+					</td>
+				</tr>
 			</table>
 
 		</div>

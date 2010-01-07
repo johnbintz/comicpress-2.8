@@ -35,7 +35,9 @@
 <?php } ?>
 		</p>
 	<?php } ?>
-	<p><?php echo get_num_queries() ?> queries. <?php timer_stop(1) ?> seconds.</p>
+	<?php if ($comicpress_options['enable_page_load_info']) { ?>
+		<p><?php echo get_num_queries() ?> queries. <?php timer_stop(1) ?> seconds.</p>
+	<?php } ?>
 </div>
  
 <?php if (!$comicpress_options['disable_page_restraints']) { ?>

@@ -205,7 +205,8 @@ function comicpress_load_options() {
 			'enable_blogroll_off_links' => false,
 
 			'enable_comment_count_in_rss' => false,
-			'enable_scroll_to_top' => false
+			'enable_scroll_to_top' => false,
+			'enable_page_load_info' => false
 
 		) as $field => $value) {
 			$comicpress_options[$field] = $value;

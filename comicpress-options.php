@@ -59,7 +59,8 @@ function comicpress_admin() {
 				'disable_blogheader',
 				'enable_comicpress_debug',
 				'enable_full_post_check',
-				'enable_scroll_to_top'
+				'enable_scroll_to_top',
+				'enable_page_load_info'
 				) as $key) {
 					$comicpress_options[$key] = (bool)( $_REQUEST[$key] == 1 ? true : false );
 			}
