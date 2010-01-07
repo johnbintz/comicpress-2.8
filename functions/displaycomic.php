@@ -18,8 +18,9 @@ function comicpress_display_comic_area() {
 function comicpress_display_comic_image($searchorder = "comic", $use_post_image = false, $override_post = null, $title = null) {
 	global $post;
 	$post_to_use = !is_null($override_post) ? $override_post : $post;
-	$title_to_use = !is_null($title) ? $title : the_hovertext($post_to_use); 
-	if ($use_post_image) {
+	$title_to_use = !is_null($title) ? $title : the_hovertext($post_to_use);
+	$comic = explode(".", the_comic_filename());
+	if ($use_post_image || strtolower($comic[1]) == 'swf') {
 		if (function_exists('has_post_thumbnail')) {
 			if ( has_post_thumbnail($post_to_use->ID) ) {
 				$comic_image = get_the_post_thumbnail($post_to_use->ID,'full');
@@ -29,7 +30,7 @@ function comicpress_display_comic_image($searchorder = "comic", $use_post_image 
 	}
 	if (!isset($comic_image)) {
 		$comic = explode(".", the_comic_filename());
-		if ($comic[1] == 'swf') {
+		if (strtolower($comic[1]) == 'swf') {
 			$comic_image = "<img src=\"".get_template_directory_uri().'/images/mediafile.png'."\" alt=\"{$title_to_use}\" />";
 		}
 	}

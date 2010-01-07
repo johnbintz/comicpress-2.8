@@ -128,7 +128,7 @@ function comicpress_display_the_content($is_comic = false) {
 	if (is_archive() || is_search()) {
 		if ($is_comic) { ?>
 			<div class="comicarchiveframe">
-				<a href="<?php the_permalink() ?>"><img src="<?php the_comic_archive() ?>" alt="<?php the_title() ?>" title="Click for full size." /></a>
+				<a href="<?php the_permalink() ?>"><?php echo comicpress_display_comic_image("archive,rss,comic", true); ?></a>
 			</div>			
 		<?php }
 		if ($comicpress_options['excerpt_or_content_archive'] != 'excerpt') {
