@@ -60,12 +60,8 @@
 					</div>
 				</div>
 				
-			<?php } else { ?>
-				<?php if (in_comic_category()) {
-					comicpress_display_post();
-				} else {
-					comicpress_display_post();
-				}
+			<?php } else { 
+				comicpress_display_post();
 			}
 			
 		endwhile;
