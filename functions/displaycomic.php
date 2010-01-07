@@ -31,7 +31,12 @@ function comicpress_display_comic_image($searchorder = "comic", $use_post_image 
 	if (!isset($comic_image)) {
 		$comic = explode(".", the_comic_filename());
 		if (strtolower($comic[1]) == 'swf') {
-			$comic_image = "<img src=\"".get_template_directory_uri().'/images/mediafile.png'."\" alt=\"{$title_to_use}\" />";
+			if (file_exists(get_stylesheet_directory().'/images/mediafile.png')) {
+				$directory_to_use = get_stylesheet_directory_uri();
+			} else {
+				$directory_to_use = get_template_directory_uri();
+			}
+			$comic_image = "<img src=\"{$directory_to_use}/images/mediafile.png\" alt=\"{$title_to_use}\" />";
 		}
 	}
 	if (!isset($comic_image)) {
