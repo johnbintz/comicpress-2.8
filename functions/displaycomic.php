@@ -44,6 +44,7 @@ function comicpress_display_comic_image($searchorder = "comic", $use_post_image 
 			}
 		}
 	}
+	$comic_image = preg_replace('/\<(.*?)(width="(.*?)")(.*?)(height="(.*?)")(.*?)\>/i', '<$1$4$7>', $comic_image);
 	return apply_filters('comicpress_display_comic_image',$comic_image);
 }
 
