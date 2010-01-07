@@ -93,7 +93,7 @@ function comicpress_display_related_posts($is_comic = false) {
 
 function comicpress_display_blog_navigation($is_comic = false) {
 	global $post, $wp_query;
-	if (is_single() && !$is_comic) { ?>
+	if (is_single() && !$is_comic && !is_page() && !is_archive() && !is_search()) { ?>
 		<div class="blognav">
 			<div class="nav-single">
 				<?php previous_post_link('%link',__(' &lsaquo; Previous ','comicpress'), TRUE); ?>
