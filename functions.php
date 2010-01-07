@@ -119,7 +119,7 @@ add_action('init', '__comicpress_init');
 
 function comicpress_load_options() {
 	global $comicpress_options, $comiccat, $blogcat, $comic_folder, $rss_comic_folder,
-	$archive_comic_folder, $mini_comic_folder, $archive_comic_width,
+	$archive_comic_folder, $mini_comic_folder, $archive_comic_width, $mini_comic_width,
 	$rss_comic_width;
 
 	$comicpress_options = get_option('comicpress_options');
@@ -232,11 +232,12 @@ function comicpress_load_options() {
 	}
 
 	$comicpress_options['comicpress_version'] = '2.9.0.9';
+	extract($comicpress_options['comicpress_config']);
 
 //	if (file_exists(get_template_directory() . '/comicpress-config.php')) {
 //		include(get_template_directory() . '/comicpress-config.php');
 //	} else {
-		extract($comicpress_options['comicpress_config']);
+
 //	}
 
 	update_option('comicpress_options', $comicpress_options);

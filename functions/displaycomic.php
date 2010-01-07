@@ -18,7 +18,7 @@ function comicpress_display_comic_area() {
 function comicpress_display_comic_image($searchorder = "comic", $use_post_image = false, $override_post = null, $title = null) {
 	global $post;
 	$post_to_use = !is_null($override_post) ? $override_post : $post;
-	$title_to_use = !is_null($title) ? $title : the_hovertext($post_to_use);
+	$title_to_use = !is_null($title) ? $title : the_hovertext($post_to_use); 
 	if ($use_post_image) {
 		if (function_exists('has_post_thumbnail')) {
 			if ( has_post_thumbnail($post_to_use->ID) ) {
@@ -28,11 +28,17 @@ function comicpress_display_comic_image($searchorder = "comic", $use_post_image 
 		}
 	}
 	if (!isset($comic_image)) {
+		$comic = explode(".", the_comic_filename());
+		if ($comic[1] == 'swf') {
+			$comic_image = "<img src=\"".get_template_directory_uri().'/images/mediafile.png'."\" alt=\"{$title_to_use}\" />";
+		}
+	}
+	if (!isset($comic_image)) {
 		$searchorder = explode(',',$searchorder);
 		$requested_archive_image = '';
 		foreach ($searchorder as $type) {
 			if (($requested_archive_image = get_comic_url($type, $post_to_use)) !== false) {
-				$comic_image = "<img src=\"$requested_archive_image\" alt=\"".get_the_title($post_to_use)."\" title=\"".$title_to_use."\" class=\"instant itiltleft icolorFFFCE9 ishadow40 historical\" />";
+				$comic_image = "<img src=\"{$requested_archive_image}\" alt=\"".get_the_title($post_to_use)."\" title=\"{$title_to_use}\" class=\"instant itiltleft icolorFFFCE9 ishadow40 historical\" />";
 				break;
 			}
 		}

@@ -54,8 +54,9 @@
 			if (is_category() && in_comic_category()) { ?>
 
 				<div class="comicthumbwrap">
+					<?php global $mini_comic_width; ?>
 					<div class="comicarchiveframe" style="width: <?php echo $mini_comic_width; ?>px">
-						<a href="<?php the_permalink() ?>"><img src="<?php the_comic_mini() ?>" alt="<?php the_title() ?>" title="<?php the_title() ?>"  /></a>
+						<a href="<?php the_permalink() ?>"><?php echo comicpress_display_comic_image("mini,rss,archive,comic", false); ?></a>
 					</div>
 				</div>
 				
