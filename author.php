@@ -3,8 +3,7 @@
 	
 <?php 
 	if(get_query_var('author_name') ) {
-		// NOTE: 2.0 bug requires: get_userdatabylogin(get_the_author_login());
-		$curauth = get_userdatabylogin(get_query_var('author_name'));
+		$curauth = get_user_by('slug', get_query_var('author_name'));
 	} else {
 		$curauth = get_userdata(get_query_var('author'));
 	}
