@@ -138,7 +138,7 @@
 					</td>
 				</tr>
 				<?php
-					$current_directory = $comicpres_options['moods_directory'];
+					$current_directory = $comicpress_options['moods_directory'];
 					if (empty($current_directory)) $current_directory = 'default';
 					$dirs_to_search = array_unique(array(get_template_directory(),get_stylesheet_directory()));
 					$mood_directories = array();
