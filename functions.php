@@ -144,6 +144,7 @@ function comicpress_load_options() {
 			'cp_theme_layout' => 'standard',
 			'transcript_in_posts' => false,
 			'enable_widgetarea_use_sidebar_css' => false,
+			'enable_random_comic_frontpage' => false,
 
 			'enable_custom_image_header' => false,
 			'custom_image_header_width' => '980',
