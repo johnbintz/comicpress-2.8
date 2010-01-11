@@ -87,7 +87,8 @@ function comicpress_display_comic() {
 }
 
 function comicpress_comic_clicks_next($output) {
-	global $post, $comicpress_options;
+	global $post, $wp_query, $comicpress_options;
+	if (is_search() || is_archive()) return $output;
 	$next_comic = get_next_comic_permalink();
 	$output = "<a href=\"{$next_comic}\">{$output}</a>\r\n";
 	return $output;
@@ -95,6 +96,7 @@ function comicpress_comic_clicks_next($output) {
 
 function comicpress_rascal_says($output) {
 	global $post, $wp_query, $comicpress_options;
+	if (is_search() || is_archive()) return $output;
 	$hovertext = get_post_meta( get_the_ID(), "hovertext", true ); 
 	if (!empty($hovertext)) {
 		$output = preg_replace('#title="([^*]*)"#', '', $output);
