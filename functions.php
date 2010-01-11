@@ -232,15 +232,6 @@ function comicpress_load_options() {
 			$comicpress_options['comicpress_config'][$field] = $value;
 		}
 	}
-
-	extract($comicpress_options['comicpress_config']);
-
-//	if (file_exists(get_template_directory() . '/comicpress-config.php')) {
-//		include(get_template_directory() . '/comicpress-config.php');
-//	} else {
-
-//	}
-
 	update_option('comicpress_options', $comicpress_options);
 
 	return $comicpress_options;
