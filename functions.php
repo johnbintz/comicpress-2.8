@@ -233,7 +233,7 @@ function comicpress_load_options() {
 		}
 	}
 	update_option('comicpress_options', $comicpress_options);
-
+	extract($comicpress_options['comicpress_config']);
 	return $comicpress_options;
 }
 
