@@ -247,19 +247,36 @@ class ComicPressStoryline {
 		return $this->_merge_simple_storyline($simple_storyline);
 	}
 
+	// @codeCoverageIgnoreStart
+	function get_comicpress_dbi() {
+		return ComicPressDBInterface::get_instance();
+	}
+	// @codeCoverageIgnoreEnd
+
 	/**
 	 * Get a simple structure.
 	 */
 	function get_category_simple_structure($parent = null) {
-		$structure = array();
-		foreach (get_all_category_ids() as $category_id) {
-			$category = get_category($category_id);
-			if (!isset($structure[$category->parent])) {
-				$structure[$category->parent] = array();
-			}
-			$structure[$category->parent][$category_id] = true;
+		$cache_key = $this->generate_cache_key('storyline-structure', $parent);
+		$result = wp_cache_get($cache_key, 'comicpress');
+		if (is_array($result)) {
+			return $result;
 		}
+
+		$structure = array();
+		$dbi = $this->get_comicpress_dbi();
+
+		$result = $dbi->get_parent_child_category_ids();
+
+		foreach ($result as $cat_id => $cat_parent) {
+			if (!isset($structure[$cat_parent])) {
+				$structure[$cat_parent] = array();
+			}
+			$structure[$cat_parent][$cat_id] = true;
+		}
+
 		$structure = $this->_merge_simple_storyline($structure);
+
 		if (!empty($parent)) {
 			if (isset($structure[0])) {
 				foreach ($structure[0] as $key => $children) {
@@ -267,7 +284,17 @@ class ComicPressStoryline {
 				}
 			}
 		}
+
+		wp_cache_set($cache_key, $structure, 'comicpress');
+
 		return $structure;
+	}
+
+	function generate_cache_key($key_name, $param) {
+		if (!empty($param)) {
+			$key_name = "${key_name}-${param}";
+		}
+		return $key_name;
 	}
 
 	/**
@@ -338,6 +365,9 @@ class ComicPressStoryline {
 		$comicpress = ComicPress::get_instance();
 
 		$valid_ids = get_all_category_ids();
+
+		if (!isset($comicpress->comicpress_options['category_groupings'])) { $comicpress->comicpress_options['category_groupings'] = array(); }
+		if (!is_array($comicpress->comicpress_options['category_groupings'])) { $comicpress->comicpress_options['category_groupings'] = array(); }
 
 		foreach ($comicpress->comicpress_options['category_groupings'] as $group_id => $category_ids) {
 			$comicpress->comicpress_options['category_groupings'][$group_id] = array_intersect($category_ids, $valid_ids);
