@@ -80,7 +80,6 @@ function comicpress_admin() {
 				'disable_comic_blog_frontpage',
 				'disable_comic_blog_single',
 				'disable_blog_frontpage',
-				'enable_random_comic_frontpage'
 				) as $key) {
 					$comicpress_options[$key] = (bool)( $_REQUEST[$key] == 1 ? true : false );
 			}

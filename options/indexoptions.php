@@ -64,15 +64,6 @@
 						<?php _e('Checkmark this and the blog portion of the comic will not display on the single/archive pages of your site.','comicpress'); ?>
 					</td>
 				</tr>
-				<tr>
-					<th scope="row"><label for="enable_random_comic_frontpage"><?php _e('Have it so that the index/front page shows a random comic each pageload?','comicpress'); ?></label></th>
-					<td>
-						<input id="enable_random_comic_frontpage" name="enable_random_comic_frontpage" type="checkbox" value="1" <?php checked(true, $comicpress_options['enable_random_comic_frontpage']); ?> />
-					</td>
-					<td>
-						<?php _e('When this is checkmarked, the front page will display a random comic from the archive.','comicpress'); ?>
-					</td>
-				</tr>
 			</table>
 
 		</div>
