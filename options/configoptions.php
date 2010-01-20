@@ -159,7 +159,6 @@
 						<input type="text" size="7" name="mini_comic_width" id="mini_comic_width" value="<?php echo $comicpress_options['comicpress_config']['mini_comic_width']; ?>" />
 					</td>
 				</tr>
-
 				<?php
 					$cpmh = new ComicPressMediaHandling();
 
@@ -168,7 +167,6 @@
 						$filters['default'] = $cpmh->default_filter;
 					}
 				?>
-
 				<tr>
 					<th scope="row"><label><?php _e('Comic Filename Filters', 'comicpress'); ?></label></th>
 					<td colspan="2">
@@ -194,7 +192,7 @@
 										          </label>\
 										          <label>\
 										          	<strong>Filter:</strong>\
-										          	<input type="text" size="60" name="comic_filename_filters[' + key + '][name]" value="' + data.filter + '" />\
+										          	<input type="text" size="60" name="comic_filename_filters[' + key + '][filter]" value="' + data.filter + '" />\
 										          </label>\
 										          <a href="#">Remove</a>\
 											      </div>');

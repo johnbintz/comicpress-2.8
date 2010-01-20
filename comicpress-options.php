@@ -207,6 +207,13 @@ function comicpress_admin() {
 						) as $key) {
 				$comicpress_options['comicpress_config'][$key] = wp_filter_nohtml_kses($_REQUEST[$key]);
 			}
+
+			if (isset($_REQUEST['comic_filename_filters'])) {
+				$comicpress_options['comic_filename_filters'] = comicpress_save_options_comic_filename_filters($_REQUEST['comic_filename_filters']);
+			} else {
+				$comicpress_options['comic_filename_filters'] = array();
+			}
+
 			$tab = 'config';
 			update_option('comicpress_options',$comicpress_options);
 		}
