@@ -41,7 +41,8 @@ class ComicPressMediaHandlingTest extends PHPUnit_Framework_TestCase {
 			array(null, $default),
 			array('fail', $default),
 			array(array(), $default),
-			array('test', 'test')
+			array('test', 'test'),
+			array('test-from-option', 'test-from-option'),
 		);
 	}
 
@@ -52,6 +53,12 @@ class ComicPressMediaHandlingTest extends PHPUnit_Framework_TestCase {
 		global $comic_filename_filters;
 
 		$comic_filename_filters['test'] = 'test';
+
+		update_option('comicpress_options', array(
+			'comic_filename_filters' => array(
+				'test-from-option' => 'test-from-option'
+			)
+		));
 
 		$default = str_replace('{date}', $this->cpmh->default_filename_filter, $this->cpmh->default_filter);
 

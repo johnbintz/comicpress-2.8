@@ -30,6 +30,10 @@ class ComicPressMediaHandling {
 				if (isset($comic_filename_filters[$filter_to_use])) {
 					return $this->_convert_to_percent_filter($comic_filename_filters[$filter_to_use]);
 				}
+				$options = get_option('comicpress_options');
+				if (isset($options['comic_filename_filters'][$filter_to_use])) {
+					return $this->_convert_to_percent_filter($options['comic_filename_filters'][$filter_to_use]);
+				}
 			}
 		}
 
