@@ -160,6 +160,76 @@
 					</td>
 				</tr>
 
+				<?php
+					$cpmh = new ComicPressMediaHandling();
+
+					$filters = $comicpress_options['comic_filename_filters'];
+					if (!isset($filters['default'])) {
+						$filters['default'] = $cpmh->default_filter;
+					}
+				?>
+
+				<tr>
+					<th scope="row"><label><?php _e('Comic Filename Filters', 'comicpress'); ?></label></th>
+					<td colspan="2">
+						<p>
+							<em>For advanced users.</em> Specify the filters used to find the filename.
+						</p>
+						<div id="comicpress-comic-filename-filters-holder">
+						</div>
+						<a href="#" id="add-new-filter"><?php _e('Add new filter', 'comicpress') ?></a>
+						<script type="text/javascript">
+							(function($) {
+								var filter_data = [];
+								<?php foreach ($filters as $name => $filter) { ?>
+									filter_data.push({name:'<?php echo esc_js($name) ?>', filter:'<?php echo esc_js($filter) ?>'});
+								<?php } ?>
+
+								var build_row = function(data) {
+									var key = (new Date()).getTime();
+									var row = $('<div>\
+										          <label>\
+										            <strong>Key:</strong>\
+										            <input type="text" size="15" name="comic_filename_filters[' + key + '][name]" value="' + data.name + '" />\
+										          </label>\
+										          <label>\
+										          	<strong>Filter:</strong>\
+										          	<input type="text" size="60" name="comic_filename_filters[' + key + '][name]" value="' + data.filter + '" />\
+										          </label>\
+										          <a href="#">Remove</a>\
+											      </div>');
+									$('a', row).click(function() {
+										if (confirm('<?php _e('Are you sure?', 'comicpress') ?>')) {
+											$(this).parent().remove();
+										}
+										return false;
+									});
+
+									return row;
+								};
+
+								$('#add-new-filter').click(function() {
+									$('#comicpress-comic-filename-filters-holder').append(build_row({name:'new_filter',filter:'%wordpress%'}));
+									return false;
+								});
+
+								$.each(filter_data, function(index, f) {
+									$('#comicpress-comic-filename-filters-holder').append(build_row(f));
+								});
+							}(jQuery))
+						</script>
+						<p>
+							Available parameters:
+						</p>
+						<ul>
+							<li><strong>%wordpress%</strong>: The WordPress root folder</li>
+							<li><strong>%type-folder%</strong>: The folder for the requested filetype (comic, rss, archive, or mini)</li>
+							<li><strong>%date-(format)%</strong>: The formatting to use for the requested date as per the <a href="http://php.net/date">date()</a> function <em>(ex: %date-Ymd% is <?php echo date('Ymd') ?>)</em></li>
+							<li><strong>%upload-path%</strong>: The value of the upload_path option, which is the destination upload directory for WPMU installs.</li>
+						</ul>
+					</td>
+				</tr>
+
 			</table>
 
 		</div>
