@@ -135,7 +135,7 @@
 
 					</th>
 					<td>
-						<?php _e('Choose a directory to get the MINI thumbnails from. (for archive-comic-list, etc.)','comicpress'); ?>
+						<?php _e('Choose a directory to get the Mini thumbnails from. (for archive-comic-list, etc.)','comicpress'); ?>
 					</td>
 				</tr>
 
@@ -147,14 +147,14 @@
 				</tr>
 
 				<tr>
-					<th scope="row"><label for="archive_comic_width"><?php _e('ARCHIVE Thumbnail Width','comicpress'); ?></label></th>
+					<th scope="row"><label for="archive_comic_width"><?php _e('Archive Thumbnail Width','comicpress'); ?></label></th>
 					<td colspan="2">
 						<input type="text" size="7" name="archive_comic_width" id="archive_comic_width" value="<?php echo $comicpress_options['comicpress_config']['archive_comic_width']; ?>" />
 					</td>
 				</tr>
 
 				<tr class="alternate">
-					<th scope="row"><label for="mini_comic_width"><?php _e('MINI Thumbnail Width','comicpress'); ?></label></th>
+					<th scope="row"><label for="mini_comic_width"><?php _e('Mini Thumbnail Width','comicpress'); ?></label></th>
 					<td colspan="2">
 						<input type="text" size="7" name="mini_comic_width" id="mini_comic_width" value="<?php echo $comicpress_options['comicpress_config']['mini_comic_width']; ?>" />
 					</td>
