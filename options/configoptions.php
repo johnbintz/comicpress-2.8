@@ -112,7 +112,7 @@
 
 					</th>
 					<td>
-						<?php _e('Choose a directory to get the ARCHIVE/SEARCH thumbnails from.','comicpress'); ?>
+						<?php _e('Choose a directory to get the Archive/Search thumbnails from.','comicpress'); ?>
 					</td>
 				</tr>
 
