@@ -16,6 +16,7 @@
 
 	<?php if (is_cp_theme_layout('v,v3c')) { ?>
 		<div id="content" class="narrowcolumn">
+			<?php get_sidebar('overblog'); ?>
 			<div class="column">
 	<?php } ?>
 
@@ -46,8 +47,7 @@
 	<div id="subcontent-wrapper">
 <?php } ?>
 
-	<?php get_sidebar('overblog'); ?>
-	<?php if (is_cp_theme_layout('3c,rgn')) get_sidebar('left'); ?>
+<?php if (is_cp_theme_layout('3c,rgn')) get_sidebar('left'); ?>
 
 <?php if (is_cp_theme_layout('v3cr')) {  ?>
 <div id="subcontent-wrapper-head"></div>
@@ -56,6 +56,7 @@
 
 	<?php if (!is_cp_theme_layout('v3c,v')) { ?>
 		<div id="content" class="narrowcolumn">
+			<?php get_sidebar('overblog'); ?>
 			<div class="column">
 	<?php } ?>
 <?php } ?>
