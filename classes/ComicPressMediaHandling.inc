@@ -30,6 +30,10 @@ class ComicPressMediaHandling {
 				if (isset($comic_filename_filters[$filter_to_use])) {
 					return $this->_convert_to_percent_filter($comic_filename_filters[$filter_to_use]);
 				}
+				$options = get_option('comicpress_options');
+				if (isset($options['comic_filename_filters'][$filter_to_use])) {
+					return $this->_convert_to_percent_filter($options['comic_filename_filters'][$filter_to_use]);
+				}
 			}
 		}
 
@@ -95,6 +99,9 @@ class ComicPressMediaHandling {
 				break;
 			case 'type-folder':
 				$value = $this->type_folder;
+				break;
+			case 'upload-path':
+				$value = get_option('upload_path');
 				break;
 			default:
 				if (preg_match('#^date-(.*)$#', $matches[1], $date_matches) > 0) {

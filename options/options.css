@@ -221,3 +221,20 @@ div.show .cpadmin-footer img{
 	min-width: 80px;
 	text-align: center;
 }
+
+/** Comic Filters **/
+
+#comicpress-comic-filename-filters-holder div {
+	border: solid #ddd 1px;
+	padding: 3px;
+	overflow: hidden;
+}
+
+#comicpress-comic-filename-filters-holder label {
+	float: left;
+	display: inline;
+}
+
+#comicpress-comic-filename-filters-holder input {
+	margin: 0 10px;
+}

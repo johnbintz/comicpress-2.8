@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://comicpress.local/" />
+<title>TestComicFilenameFilters</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">TestComicFilenameFilters</td></tr>
+</thead><tbody>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=ComicPress Options</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='comicpress-tab-config']/span</td>
+	<td></td>
+</tr>
+<!--Remove existing filters-->
+<tr>
+	<td>storeXpathCount</td>
+	<td>//div[@id=&quot;comicpress-comic-filename-filters-holder&quot;]/div</td>
+	<td>filter_count</td>
+</tr>
+<tr>
+	<td>while</td>
+	<td>${filter_count} &gt; 0</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='comicpress-comic-filename-filters-holder']/div[1]/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Are you sure?</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeXpathCount</td>
+	<td>//div[@id=&quot;comicpress-comic-filename-filters-holder&quot;]/div</td>
+	<td>filter_count</td>
+</tr>
+<tr>
+	<td>endWhile</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>comicpress_save_config</td>
+	<td></td>
+</tr>
+<!--Add and remove works-->
+<tr>
+	<td>storeXpathCount</td>
+	<td>//div[@id=&quot;comicpress-comic-filename-filters-holder&quot;]/div</td>
+	<td>filter_count</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td>${filter_count}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>add-new-filter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeXpathCount</td>
+	<td>//div[@id=&quot;comicpress-comic-filename-filters-holder&quot;]/div</td>
+	<td>new_filter_count</td>
+</tr>
+<tr>
+	<td>assertEval</td>
+	<td>(${new_filter_count}) == (${filter_count} + 1)</td>
+	<td>true</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>comicpress_save_config</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>ComicPress Settings SAVED!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeXpathCount</td>
+	<td>//div[@id=&quot;comicpress-comic-filename-filters-holder&quot;]/div</td>
+	<td>new_filter_count</td>
+</tr>
+<tr>
+	<td>assertEval</td>
+	<td>(${new_filter_count}) == (${filter_count} + 1)</td>
+	<td>true</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='comicpress-comic-filename-filters-holder']/div[2]/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Are you sure?</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeXpathCount</td>
+	<td>//div[@id=&quot;comicpress-comic-filename-filters-holder&quot;]/div</td>
+	<td>new_filter_count</td>
+</tr>
+<tr>
+	<td>assertEval</td>
+	<td>(${new_filter_count}) == (${filter_count})</td>
+	<td>true</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>comicpress_save_config</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>ComicPress Settings SAVED!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeXpathCount</td>
+	<td>//div[@id=&quot;comicpress-comic-filename-filters-holder&quot;]/div</td>
+	<td>new_filter_count</td>
+</tr>
+<tr>
+	<td>assertEval</td>
+	<td>(${new_filter_count}) == (${filter_count})</td>
+	<td>true</td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>ComicPress Settings SAVED!</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

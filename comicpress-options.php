@@ -19,6 +19,23 @@ function comicpress_admin_print_styles() {
 	wp_enqueue_style('comicpress-options', get_template_directory_uri() . '/options/options.css');
 }
 
+function comicpress_save_options_comic_filename_filters($incoming) {
+	$filters = array();
+
+	foreach (array_values($incoming) as $filter) {
+		$filters[wp_filter_nohtml_kses($filter['name'])] = wp_filter_nohtml_kses($filter['filter']);
+	}
+
+	if (!empty($filters)) {
+		if (!isset($filters['default'])) {
+			$cpmh = new ComicPressMediaHandling();
+			$filters['default'] = $cpmh->default_filter;
+		}
+	}
+
+	return $filters;
+}
+
 function comicpress_admin_page_head() { ?>
 	<!--[if lt ie 8]> <style> div.show { position: static; margin-top: 1px; } #cpadmin div.off { height: 22px; } </style> <![endif]-->
 <?php }
@@ -190,6 +207,13 @@ function comicpress_admin() {
 						) as $key) {
 				$comicpress_options['comicpress_config'][$key] = wp_filter_nohtml_kses($_REQUEST[$key]);
 			}
+
+			if (isset($_REQUEST['comic_filename_filters'])) {
+				$comicpress_options['comic_filename_filters'] = comicpress_save_options_comic_filename_filters($_REQUEST['comic_filename_filters']);
+			} else {
+				$comicpress_options['comic_filename_filters'] = array();
+			}
+
 			$tab = 'config';
 			update_option('comicpress_options',$comicpress_options);
 		}
