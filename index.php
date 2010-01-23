@@ -12,13 +12,13 @@
 			comicpress_display_post();
 		endwhile;
 	}
-	Restore(); 
-	UnProtect(); 
+	Restore();
+	UnProtect();
 	wp_reset_query();
 ?>
 <?php } ?>
 
-	<?php if (function_exists('the_project_wonderful_ad')) { 
+	<?php if (function_exists('the_project_wonderful_ad')) {
 		the_project_wonderful_ad('blog');
 	} ?>
 

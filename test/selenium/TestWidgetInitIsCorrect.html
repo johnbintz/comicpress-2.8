@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="" />
+<title>TestWidgetInitIsCorrect</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">TestWidgetInitIsCorrect</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/wp-admin/</td>
+	<td></td>
+</tr>
+<!--Blow away all widgets-->
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Post Fixtures</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=themes/comicpress-2.8/test/fixtures/destroy-widgets.inc</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>pf[is_ok]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Load Provided Data']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>New data set loaded into WordPress.</td>
+	<td></td>
+</tr>
+<!--Check to make sure no widgets have lingering init code-->
+<tr>
+	<td>clickAndWait</td>
+	<td>site-visit-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>//script[contains(text(), 'var image_root')]</td>
+	<td></td>
+</tr>
+<!--Done, go home-->
+<tr>
+	<td>open</td>
+	<td>/wp-admin/</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
