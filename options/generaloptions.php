@@ -152,12 +152,12 @@
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><label for="disable_lrsidebars_frontpage"><?php _e('Disable home page sidebars','comicpress'); ?></label></th>
+					<th scope="row"><label for="disable_lrsidebars"><?php _e('Disable left and right sidebars','comicpress'); ?></label></th>
 					<td>
-						<input id="disable_lrsidebars_frontpage" name="disable_lrsidebars_frontpage" type="checkbox" value="1" <?php checked(true, $comicpress_options['disable_lrsidebars_frontpage']); ?> />
+						<input id="disable_lrsidebars" name="disable_lrsidebars" type="checkbox" value="1" <?php checked(true, $comicpress_options['disable_lrsidebars']); ?> />
 					</td>
 					<td>
-						<?php _e('Your home page will not display the default left/right sidebars. Minimalists dream. WARNING: Not recommended for use with Graphic Novel layouts.','comicpress'); ?>
+						<?php _e('Your site will not display the default left/right sidebars. Minimalists dream. WARNING: Not recommended for use with Graphic Novel layouts.','comicpress'); ?>
 					</td>
 				</tr>
 			</table>

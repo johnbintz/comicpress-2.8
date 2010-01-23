@@ -1,5 +1,5 @@
 <?php global $comicpress_options;
-if (!$comicpress_options['disable_lrsidebars_frontpage']) { ?>
+if (!$comicpress_options['disable_lrsidebars']) { ?>
 <div id="sidebar-right">
 	<div class="sidebar-head"></div>
 		<div class="sidebar">

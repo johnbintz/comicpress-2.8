@@ -71,7 +71,7 @@ function comicpress_admin() {
 				'comic_clicks_next',
 				'disable_default_comic_nav',
 				'enable_widgetarea_use_sidebar_css',
-				'disable_lrsidebars_frontpage',
+				'disable_lrsidebars',
 				'disable_footer_text',
 				'disable_blogheader',
 				'enable_comicpress_debug',
