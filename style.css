@@ -444,7 +444,6 @@ h4, h4 a {
 
 	.narrowcolumn {
 		width: 540px;
-		padding: 5px 10px;
 	}
 	
 	/* add 10px to smaller width layouts */
@@ -455,10 +454,6 @@ h4, h4 a {
 	.widecolumn {
 		width: 760px;
 		padding: 5px 10px;
-		overflow: hidden;
-	}
-	
-	.column {
 		overflow: hidden;
 	}
 	
