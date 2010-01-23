@@ -2,12 +2,15 @@
 <?php include(get_template_directory() . '/layout-head.php'); ?>
 
 <?php if (!$comicpress_options['disable_comic_frontpage'] && !$comicpress_options['disable_comic_blog_frontpage'] && !is_paged() )  {
+	if (is_archive()) echo "Thinks its an archive";
 	Protect();
-	$comic_query = '&showposts=1&cat='.get_all_comic_categories_as_cat_string();
-	$posts = query_posts($comic_query);
+	$comic_query = 'showposts=1&cat="'.get_all_comic_categories_as_cat_string().'"';
+	query_posts($comic_query);
 	$wp_query->is_archive = false;
 	if (have_posts()) {
-		comicpress_display_post();
+		while (have_posts()) : the_post();
+			comicpress_display_post();
+		endwhile;
 	}
 	Restore(); 
 	UnProtect(); 
