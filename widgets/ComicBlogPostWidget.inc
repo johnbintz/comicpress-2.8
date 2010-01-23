@@ -32,7 +32,7 @@ class ComicPressComicBlogPostWidget extends WP_Widget {
 						echo $before_widget;
 						$temp_query = $wp_query->is_single;
 						$wp_query->is_single = true;
-						$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
+						$title = empty($instance['title']) ? the_title() : apply_filters('widget_title', $instance['title']);
 						if ( !empty( $title ) ) { echo "<div class=\"comic-post-header\">".$title."</div>\r\n"; } 
 						the_content();
 						$wp_query->is_single = $temp_query;
