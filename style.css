@@ -443,8 +443,8 @@ h4, h4 a {
 }
 
 	.narrowcolumn {
-		width: 540px;
-		padding: 5px 10px;
+		width: 550px;
+		padding: 0 5px;
 	}
 	
 	/* add 10px to smaller width layouts */
@@ -455,10 +455,6 @@ h4, h4 a {
 	.widecolumn {
 		width: 760px;
 		padding: 5px 10px;
-		overflow: hidden;
-	}
-	
-	.column {
 		overflow: hidden;
 	}
 	
@@ -474,18 +470,15 @@ h4, h4 a {
 		padding: 1%; 
 	}
 
-.post, .post-page {
-	clear: both;
-	text-align: left;
-	padding: 2px;
-	margin-bottom: 20px;
-}
+.post {}
 
 .post-content {
 	padding: 3px;
 }
 
-.post-foot {
+.home .post-blog .post-foot, 
+.page-template-blog-php .post-foot {
+	margin-bottom: 40px;
 }
 
 .post-image {
