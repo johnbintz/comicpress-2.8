@@ -1,5 +1,4 @@
 <?php if (comicpress_check_child_file('layout-foot') == false) { ?>
-	</div>
 </div>
 <?php if (is_cp_theme_layout('v3cr')) { ?>
 		</div>

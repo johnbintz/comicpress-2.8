@@ -443,7 +443,8 @@ h4, h4 a {
 }
 
 	.narrowcolumn {
-		width: 540px;
+		width: 550px;
+		padding: 0 5px;
 	}
 	
 	/* add 10px to smaller width layouts */
