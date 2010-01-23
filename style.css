@@ -476,7 +476,8 @@ h4, h4 a {
 	padding: 3px;
 }
 
-.home .post-blog .post-foot {
+.home .post-blog .post-foot, 
+.page-template-blog-php .post-foot {
 	margin-bottom: 40px;
 }
 
