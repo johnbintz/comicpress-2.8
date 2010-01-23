@@ -7,7 +7,7 @@ Author: Philip M. Hofer (Frumph)
 Version: 1.05
 Author URI: http://frumph.net/
 
-*/	
+*/
 	
 class ComicPressComicBlogPostWidget extends WP_Widget {
 	
@@ -20,37 +20,15 @@ class ComicPressComicBlogPostWidget extends WP_Widget {
 	
 	function widget($args, $instance) {
 		global $post, $wp_query;
-		if (!is_home() && $instance['onlyhome'] || (is_page() || is_archive() || is_search())) return;
+		if (!is_home() && $instance['onlyhome'])  return;
+		if (is_page() || is_search() || is_archive()) return;
 		extract($args, EXTR_SKIP);
-		if (is_home()) {
-			Protect();
-			$comic_query = 'showposts=1&cat='.get_all_comic_categories_as_cat_string();
-			$posts = query_posts($comic_query);
-			if (have_posts()) {
-				while (have_posts()) : the_post();
-					if (!empty($post->post_content)) {
-						echo $before_widget;
-						$temp_query = $wp_query->is_single;
-						$wp_query->is_single = true;
-						$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
-						if ( !empty( $title ) ) { echo "<div class=\"comic-post-header\">".$title."</div>\r\n"; } 
-						the_content();
-						$wp_query->is_single = $temp_query;
-						echo $after_widget;
-					}
-				endwhile;
-			}
-			Restore();
-			UnProtect();
-			wp_reset_query();
-		} else {
-			if (!empty($post->post_content)) {
-				echo $before_widget;
-				$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
-				if ( !empty( $title ) ) { echo "<div class=\"comic-post-header\">".$title."</div>\r\n"; }
-				the_content();
-				echo $after_widget;
-			}
+		if (!empty($post->post_content)) {
+			echo $before_widget;
+			$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
+			if ( !empty( $title ) ) { echo "<div class=\"comic-post-header\">".$title."</div>\r\n"; }
+			the_content();
+			echo $after_widget;
 		}
 	}
 	

@@ -21,10 +21,10 @@
 
 <?php 
 	if (is_home()) {
-		
 		if (!$comicpress_options['disable_comic_frontpage']) {
+			Protect();
 			$comic_query = 'showposts=1&cat='.get_all_comic_categories_as_cat_string();
-			query_posts($comic_query);
+			query_posts($comic_query);		
 			if (have_posts()) {
 				while (have_posts()) : the_post();
 					$temp_single = $wp_query->is_single;
@@ -34,6 +34,9 @@
 					$temp_single = null;
 				endwhile;
 			}
+			Restore();
+			UnProtect();
+			wp_reset_query();	
 		}
 	} else {
 		if (is_single() && in_comic_category()) {
