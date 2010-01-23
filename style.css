@@ -470,18 +470,14 @@ h4, h4 a {
 		padding: 1%; 
 	}
 
-.post, .post-page {
-	clear: both;
-	text-align: left;
-	padding: 2px;
-	margin-bottom: 20px;
-}
+.post {}
 
 .post-content {
 	padding: 3px;
 }
 
-.post-foot {
+.home .post-blog .post-foot {
+	margin-bottom: 40px;
 }
 
 .post-image {
