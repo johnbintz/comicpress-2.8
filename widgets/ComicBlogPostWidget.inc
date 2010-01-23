@@ -44,9 +44,9 @@ class ComicPressComicBlogPostWidget extends WP_Widget {
 			UnProtect();
 			wp_reset_query();
 		} else {
-			if (!empty($post->post_content)) {
+			if (!empty($post->post_content) && in_comic_category()) {
 				echo $before_widget;
-				$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
+				$title = empty($instance['title']) ? the_title() : apply_filters('widget_title', $instance['title']);
 				if ( !empty( $title ) ) { echo "<div class=\"comic-post-header\">".$title."</div>\r\n"; }
 				the_content();
 				echo $after_widget;
