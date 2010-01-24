@@ -24,16 +24,15 @@ class ComicPressMediaHandling {
 
 	function _get_filter($filter_to_use = null) {
 		global $comic_filename_filters;
-
 		if (!is_null($filter_to_use)) {
 			if (is_string($filter_to_use)) {
 				if (isset($comic_filename_filters[$filter_to_use])) {
 					return $this->_convert_to_percent_filter($comic_filename_filters[$filter_to_use]);
 				}
 				$options = get_option('comicpress_options');
-				if (isset($options['comic_filename_filters'][$filter_to_use])) {
-					return $this->_convert_to_percent_filter($options['comic_filename_filters'][$filter_to_use]);
-				}
+//				if (isset($options['comic_filename_filters'][$filter_to_use])) {
+//					return $this->_convert_to_percent_filter($options['comic_filename_filters'][$filter_to_use]);
+//				}
 			}
 		}
 
@@ -43,7 +42,6 @@ class ComicPressMediaHandling {
 		} else {
 			$filter = str_replace('{date}', $this->default_filename_filter, $filter);
 		}
-
 		return $filter;
 	}
 
