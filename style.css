@@ -86,15 +86,6 @@ acronym, abbr {
 	border-bottom: 1px dashed #000;
 }
 
-code {
-	padding: 5px;
-	margin: 10px 0; 
-	display: block;
-	overflow: scroll;
-	font-family: 'Courier', monospace;
-	border: 1px dotted #000;
-}
-
 form {
 	margin: 0;
 }
