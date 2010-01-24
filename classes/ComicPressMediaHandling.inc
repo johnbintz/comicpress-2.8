@@ -98,9 +98,6 @@ class ComicPressMediaHandling {
 			case 'type-folder':
 				$value = $this->type_folder;
 				break;
-			case 'upload-path':
-				$value = get_option('upload_path');
-				break;
 			default:
 				if (preg_match('#^date-(.*)$#', $matches[1], $date_matches) > 0) {
 					if (isset($this->post_to_use)) {
