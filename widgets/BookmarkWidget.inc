@@ -45,11 +45,12 @@ class ComicPressBookmarkWidget extends WP_Widget {
 		);
 	}
 
-  function init() {}
+  function init() {
+    add_action('wp_head', array(&$this, 'wp_head'));
+  }
 
   function is_active() {
-    add_action('wp_head', array(&$this, 'wp_head'));
-  	add_action('template_redirect', array(&$this, 'template_redirect'));
+		add_action('template_redirect', array(&$this, 'template_redirect'));
   }
 
   function template_redirect() {
